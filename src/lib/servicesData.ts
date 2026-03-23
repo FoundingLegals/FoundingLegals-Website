@@ -10,6 +10,7 @@ export type ServicePattern = {
   heroCategory: string;
   heroTitle: string;
   heroDescription: string;
+  heroImage: string;
   featuresTitle: string;
   features: {
     title: string;
@@ -30,6 +31,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Start",
     heroTitle: "Secure Your Perfect Company Name",
     heroDescription: "Verify availability and register your desired company name instantly with the MCA. We ensure your brand identity is protected from day one.",
+    heroImage: "/startup-start-hero.png",
     featuresTitle: "Why register with Founding Legals?",
     features: [
       {
@@ -63,6 +65,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Start",
     heroTitle: "Incorporate Your Startup the Right Way",
     heroDescription: "Fast, error-free company registration. From Private Limited to LLP, get your Certificate of Incorporation, PAN, and TAN in days, not weeks.",
+    heroImage: "/startup-start-hero.png",
     featuresTitle: "The smartest way to incorporate",
     features: [
       {
@@ -96,6 +99,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Start",
     heroTitle: "Zero-Friction Corporate Banking",
     heroDescription: "Skip the branch visits. We partner with top-tier banks to open your startup's current account seamlessly alongside incorporation.",
+    heroImage: "/startup-start-hero.png",
     featuresTitle: "Banking made for startups",
     features: [
       {
@@ -129,6 +133,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Start",
     heroTitle: "Unlock Startup India Benefits",
     heroDescription: "Get DPIIT recognition, MSME (Udyam) registration, and ISO certifications to access government grants and tax exemptions.",
+    heroImage: "/startup-start-hero.png",
     featuresTitle: "Essential startup credentials",
     features: [
       {
@@ -162,6 +167,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Start",
     heroTitle: "Flawless Tax Compliance",
     heroDescription: "From GST registration to monthly GSTR filings and annual returns. Stay absolutely compliant with India's tax laws.",
+    heroImage: "/startup-start-hero.png",
     featuresTitle: "Tax management on autopilot",
     features: [
       {
@@ -197,6 +203,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Compliance",
     heroTitle: "The Complete Startup Compliance Playbook",
     heroDescription: "A comprehensive framework covering everything from board meetings to statutory registers. Never miss an ROC deadline.",
+    heroImage: "/startup-compliance-hero.png",
     featuresTitle: "Your legal safeguard",
     features: [
       {
@@ -230,6 +237,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Compliance",
     heroTitle: "Smart, Compliant Invoicing",
     heroDescription: "Generate professional, GST-compliant e-invoices instantly. Manage receivables, track payments, and sync directly with your filings.",
+    heroImage: "/startup-compliance-hero.png",
     featuresTitle: "Invoicing built for accuracy",
     features: [
       {
@@ -263,6 +271,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Compliance",
     heroTitle: "Deep Insights Into Your Runway",
     heroDescription: "Track every rupee. AI-powered categorization of expenses to optimize your burn rate and categorize costs for tax deductions.",
+    heroImage: "/startup-compliance-hero.png",
     featuresTitle: "Financial clarity",
     features: [
       {
@@ -296,6 +305,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Compliance",
     heroTitle: "Defend Your Intellectual Property",
     heroDescription: "Secure your brand, software, and inventions. End-to-end trademark, copyright, and patent filing by experienced IP attorneys.",
+    heroImage: "/startup-compliance-hero.png",
     featuresTitle: "Fortify your startup's assets",
     features: [
       {
@@ -329,6 +339,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Compliance",
     heroTitle: "Your Startup's Data Room",
     heroDescription: "A secure, centralized vault for all your legal, financial, and compliance documents. Always be audit-ready.",
+    heroImage: "/startup-compliance-hero.png",
     featuresTitle: "Organized and secure",
     features: [
       {
@@ -364,6 +375,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Raise",
     heroTitle: "Craft a Winning Pitch Deck",
     heroDescription: "Access industry-standard templates, financial models, and pitch reviews from experts who know exactly what VCs want to see.",
+    heroImage: "/startup-raise-hero.png",
     featuresTitle: "Perfect your narrative",
     features: [
       {
@@ -397,6 +409,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Raise",
     heroTitle: "Connect With Relevant Capital",
     heroDescription: "Don't cold email blindly. Leverage our curated database to find angels, syndicates, and VCs actively investing in your sector.",
+    heroImage: "/startup-raise-hero.png",
     featuresTitle: "Targeted fundraising",
     features: [
       {
@@ -430,6 +443,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Raise",
     heroTitle: "Swift Capital via SAFEs & CCPS",
     heroDescription: "Need capital now? Setup agile funding instruments like SAFEs (Simple Agreement for Future Equity) and CCPS without pricing your round.",
+    heroImage: "/startup-raise-hero.png",
     featuresTitle: "Agile fundraising tools",
     features: [
       {
@@ -463,6 +477,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Raise",
     heroTitle: "Execute Your Equity Round Flawlessly",
     heroDescription: "The complete infrastructure to manage your Seed or Series A. From Term Sheet to SHA to money in the bank.",
+    heroImage: "/startup-raise-hero.png",
     featuresTitle: "End-to-end round management",
     features: [
       {
@@ -496,6 +511,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Raise",
     heroTitle: "Investor-Ready Financials",
     heroDescription: "Before VCs wire funds, they run financial due diligence. We ensure your books, projections, and valuation reports are bulletproof.",
+    heroImage: "/startup-raise-hero.png",
     featuresTitle: "Bulletproof economics",
     features: [
       {
@@ -529,6 +545,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Raise",
     heroTitle: "Top-Tier Startup Counsel",
     heroDescription: "Don't sign a Term Sheet blindly. Get expert advice from startup lawyers who negotiate against tier-1 VC counsel every day.",
+    heroImage: "/startup-raise-hero.png",
     featuresTitle: "Strategic legal defense",
     features: [
       {
@@ -562,6 +579,7 @@ export const services: ServicePattern[] = [
     heroCategory: "Raise",
     heroTitle: "Close Checks in 24 Hours",
     heroDescription: "Have an angel investor ready to wire? Use our Instant Investment workflow to generate legally binding documents and close immediately.",
+    heroImage: "/startup-raise-hero.png",
     featuresTitle: "Speed is a feature",
     features: [
       {

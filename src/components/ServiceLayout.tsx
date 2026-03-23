@@ -206,8 +206,8 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
         <div className="relative z-0 w-full md:w-1/2 h-[50vh] md:h-full min-h-[600px] lg:min-h-[85vh]">
           <div className="absolute inset-0 bg-[#e0dfd5]" />
           <Image
-            src="/forest-hero.png"
-            alt="Founding Legals Illustration"
+            src={service.heroImage}
+            alt={service.heroTitle}
             fill
             priority
             className="object-cover object-center mix-blend-multiply opacity-80"
