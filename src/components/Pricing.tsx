@@ -310,7 +310,7 @@ export default function Pricing() {
                   href={process.env.NEXT_PUBLIC_APP_URL || "#"}
                   className="flex items-center justify-center gap-2 w-full px-6 py-4 bg-lime-bg text-olive-800 font-semibold rounded-full hover:bg-white transition-all"
                 >
-                  Request Demo
+                  Start Free
                   <ArrowRight className="w-5 h-5" />
                 </a>
                 <p className="text-center text-xs text-olive-200 mt-3">

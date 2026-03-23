@@ -266,7 +266,7 @@ export default function ComplianceCalendar() {
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-olive-600 text-lime-bg text-sm font-medium rounded-full hover:bg-olive-800 transition-all"
               >
                 <Bell className="w-4 h-4" />
-                Request Demo
+                Start Free
                 <ExternalLink className="w-3.5 h-3.5 ml-1" />
               </a>
             </div>

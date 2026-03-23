@@ -235,7 +235,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
               href="#demo"
               className="inline-flex items-center justify-center px-7 py-3 bg-[#5A7338] text-white text-[15px] font-semibold rounded-lg hover:bg-[#4A5D2A] transition-colors shadow-sm"
             >
-              Request Demo
+              Start Free
             </a>
           </div>
           <div className="w-full flex justify-end">
