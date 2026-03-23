@@ -17,9 +17,8 @@ const footerLinks = {
     { name: "FL Credits System", href: "#pricing" },
   ],
   Company: [
-    { name: "About Us", href: "#about" },
+    { name: "About Us", href: "/company/about-us" },
     { name: "Contact", href: process.env.NEXT_PUBLIC_APP_URL || "#" },
-    { name: "Careers", href: "#careers" },
     { name: "Partner CAs", href: "#partners" },
   ],
 };

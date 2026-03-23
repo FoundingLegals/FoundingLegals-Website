@@ -212,10 +212,8 @@ export default function Header() {
                 <>
                   {/* Invisible hover bridge */}
                   <div className="absolute top-full left-0 right-0 h-4" />
-                  <div className="absolute left-1/2 -translate-x-1/2 top-[52px] w-[500px] bg-[#f5f1e6] rounded-[24px] shadow-[0_12px_40px_rgba(43,39,35,0.08)] animate-dropdown flex items-center justify-between px-10 py-6">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-[52px] w-[300px] bg-[#f5f1e6] rounded-[24px] shadow-[0_12px_40px_rgba(43,39,35,0.08)] animate-dropdown flex items-center justify-center px-10 py-6">
                     <a href="/company/about-us" className="text-[14px] font-serif text-[#33312c] hover:text-olive-700 transition-colors">About us</a>
-                    <a href="/company/careers" className="text-[14px] font-serif text-[#33312c] hover:text-olive-700 transition-colors">Careers</a>
-                    <a href="/company/news" className="text-[14px] font-serif text-[#33312c] hover:text-olive-700 transition-colors">News</a>
                   </div>
                 </>
               )}
@@ -288,6 +286,13 @@ export default function Header() {
 
             <div className="border-t border-brown-100/60 my-1.5" />
             <div className="px-2 pt-1 pb-2 space-y-1.5">
+              <a
+                href="/company/about-us"
+                onClick={() => setIsMobileOpen(false)}
+                className="block px-3 py-2 text-[13px] font-medium text-brown-600 hover:text-brown-900 rounded-lg hover:bg-cream transition-colors"
+              >
+                About Us
+              </a>
               <a
                 href="#pricing"
                 onClick={() => setIsMobileOpen(false)}
