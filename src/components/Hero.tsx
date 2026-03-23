@@ -196,7 +196,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-linear-to-t from-[#2A3A16]/15 via-transparent to-transparent pointer-events-none" />
 
       {/* ===== HERO CONTENT ===== */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 min-h-svh flex items-center pt-32 pb-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 min-h-svh flex items-center pt-44 lg:pt-32 pb-20">
         <div className="max-w-[680px]">
           <h1 className="hero-animate font-serif text-[38px] sm:text-[52px] lg:text-[64px] font-medium text-brown-900 leading-[1.05] tracking-[-0.02em] mb-6">
             Transparent Legal Services for Indian Founders.
@@ -210,7 +210,7 @@ export default function Hero() {
               href={process.env.NEXT_PUBLIC_APP_URL || "#"}
               className="inline-flex items-center px-8 py-3.5 bg-olive-600 text-white text-[15px] font-semibold rounded-full hover:bg-olive-700 transition-all duration-300 shadow-lg shadow-olive-600/15 hover:shadow-olive-600/25 hover:-translate-y-0.5"
             >
-              Request Demo
+              Start Free
             </a>
           </div>
         </div>
