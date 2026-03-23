@@ -7,25 +7,25 @@ import { SectionDivider } from "./Illustrations";
 const steps = [
   {
     icon: ClipboardList,
-    title: "Choose Your Service",
+    title: "Service Selection",
     description:
       "Select from incorporation, compliance, GST, IEC, or any of our legal services. Tell us about your business and requirements.",
   },
   {
     icon: Calculator,
-    title: "Get Transparent Quote",
+    title: "Fee Transparency",
     description:
       "See a complete breakdown: government fees + our professional fee + CA fee (if bundled). No surprises, no hidden charges.",
   },
   {
     icon: FileCheck,
-    title: "We Handle Filings",
+    title: "Managed Regulatory Filings",
     description:
       "Our team manages all documentation, MCA filings, and government coordination. Track progress in real-time on your dashboard.",
   },
   {
     icon: CalendarCheck,
-    title: "Documents & Calendar",
+    title: "Strategic Governance Calendar",
     description:
       "Receive all incorporation documents and a personalized compliance calendar with due dates for GST, TDS, ROC, and ITR filings.",
   },
@@ -39,11 +39,11 @@ export default function Process() {
       <SectionDivider />
       <div className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section intro — ivo style: left text + right visual */}
+          {/* Section intro — founding leals style: left text + right visual */}
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="reveal-left">
               <h2 className="font-serif text-4xl sm:text-5xl font-medium text-brown-900 leading-[1.15] mb-6">
-                Compliance is more than just filings. It&apos;s peace of mind.
+                Precision-Led Startup Governance
               </h2>
               <p className="text-lg text-brown-600 leading-relaxed max-w-md">
                 Get your company incorporated and stay compliant with clear

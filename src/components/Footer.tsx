@@ -2,32 +2,32 @@ import { Shield, Linkedin, Twitter } from "lucide-react";
 
 const footerLinks = {
   Services: [
-    { name: "Pvt Ltd Registration", href: "#services" },
-    { name: "LLP Registration", href: "#services" },
-    { name: "GST Registration", href: "#services" },
-    { name: "IEC Registration", href: "#services" },
-    { name: "Annual ROC Pack", href: "#services" },
-    { name: "Trademark Registration", href: "#services" },
+    { name: "Company Incorporation", href: "#services" },
+    { name: "GST & Compliance", href: "#services" },
+    { name: "DPIIT Certification", href: "#services" },
+    { name: "Agreements & Documents", href: "#services" },
+    { name: "Fund Raising", href: "#services" },
+    { name: "Marketplace", href: "#services" },
   ],
   Resources: [
+    { name: "Pricing & Credits", href: "#pricing" },
     { name: "Compliance Calendar", href: "#calendar" },
-    { name: "Fee Calculator", href: "#pricing" },
     { name: "Incorporation Guide", href: "#resources" },
     { name: "Blog & Updates", href: "#resources" },
-    { name: "MCA Circulars", href: "#resources" },
+    { name: "FL Credits System", href: "#pricing" },
   ],
   Company: [
     { name: "About Us", href: "#about" },
+    { name: "Contact", href: process.env.NEXT_PUBLIC_APP_URL || "#" },
     { name: "Careers", href: "#careers" },
-    { name: "Contact", href: "#contact" },
     { name: "Partner CAs", href: "#partners" },
   ],
 };
 
 export default function Footer() {
   return (
-    <footer className="bg-cream border-t border-brown-200" id="contact">
-      {/* Main Footer — ivo.ai style: cream bg, multi-column, clean text */}
+    <footer className="bg-cream border-t border-brown-200">
+      {/* Main Footer — founding leals.ai style: cream bg, multi-column, clean text */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Column */}
@@ -42,7 +42,7 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Link Columns — ivo style: simple text links */}
+          {/* Link Columns — founding leals style: simple text links */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
               <h3 className="text-sm font-semibold text-brown-900 mb-4">
@@ -65,7 +65,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar — ivo style */}
+      {/* Bottom Bar — founding leals style */}
       <div className="border-t border-brown-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">

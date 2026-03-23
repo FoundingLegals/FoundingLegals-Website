@@ -15,16 +15,16 @@ import { useReveal } from "@/lib/useReveal";
 const services = [
   {
     icon: Building2,
-    title: "Private Limited Registration",
+    title: "Pvt Ltd Incorporation",
     description:
-      "Complete Pvt Ltd incorporation with SPICe+, DIN, DSC, PAN, TAN — all government fees shown separately.",
-    features: ["Name approval (RUN)", "SPICe+ filing", "PAN & TAN", "GST included"],
+      "Complete Pvt Ltd incorporation with SPICe+, DIN, DSC, PAN, TAN — company PAN & bank account setup included.",
+    features: ["Company Name Registration", "DSC for Directors", "PAN & Bank Account", "Auditor Appointment"],
     price: "From ₹4,999",
     priceNote: "+ govt. fees",
   },
   {
     icon: Scale,
-    title: "LLP Registration",
+    title: "LLP Setup",
     description:
       "Register your Limited Liability Partnership with transparent fee structure and end-to-end filing support.",
     features: ["Name reservation", "LLP Agreement", "PAN & TAN", "Filing support"],
@@ -33,7 +33,7 @@ const services = [
   },
   {
     icon: FileText,
-    title: "GST Registration & Filing",
+    title: "GST Compliance",
     description:
       "Get your GSTIN and manage monthly/quarterly returns with our compliance team tracking every due date.",
     features: ["GSTIN registration", "Monthly returns", "Annual filing", "Input credit"],
@@ -51,7 +51,7 @@ const services = [
   },
   {
     icon: Calendar,
-    title: "Annual ROC Compliance",
+    title: "Annual Compliance",
     description:
       "Never miss a filing deadline with our annual compliance package — AOC-4, MGT-7, ADT-1, and more.",
     features: ["AOC-4 & MGT-7", "Board resolutions", "Statutory registers", "ADT-1 filing"],
@@ -60,7 +60,7 @@ const services = [
   },
   {
     icon: Briefcase,
-    title: "Audit Coordination",
+    title: "Statutory Audit",
     description:
       "We coordinate with your auditor for statutory audit, tax audit, and compliance certifications.",
     features: ["Auditor appointment", "Statutory audit", "Tax audit support", "Certifications"],
@@ -69,7 +69,7 @@ const services = [
   },
   {
     icon: Award,
-    title: "Trademark Registration",
+    title: "IP Protection",
     description:
       "Protect your brand identity with trademark registration — search, filing, and objection handling.",
     features: ["TM search", "Application filing", "Objection reply", "Renewal"],
@@ -78,10 +78,10 @@ const services = [
   },
   {
     icon: Rocket,
-    title: "Startup India / DPIIT",
+    title: "DPIIT Recognition",
     description:
-      "Get DPIIT recognition for tax benefits, funding access, and government tender eligibility.",
-    features: ["DPIIT registration", "Tax exemptions", "Self-certification", "IPR benefits"],
+      "Get DPIIT recognition for tax benefits, self-certification, and government tender eligibility. Unlock IPR benefits.",
+    features: ["DPIIT Certificate", "Udyam (MSME)", "Self-certification", "IPR benefits"],
     price: "From ₹2,999",
     priceNote: "one-time",
   },
@@ -92,7 +92,7 @@ export default function Services() {
 
   return (
     <section id="services" ref={ref} className="py-24 lg:py-32 bg-cream">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 reveal">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-lime-bg rounded-full mb-6">
@@ -101,11 +101,11 @@ export default function Services() {
             </span>
           </div>
           <h2 className="font-serif text-4xl sm:text-5xl font-medium text-brown-900 mb-5">
-            Everything your company needs, transparently priced
+            Institutional-Grade Legal Support
           </h2>
           <p className="text-lg text-brown-500 leading-relaxed">
-            From incorporation to annual compliance — each service shows exact
-            government charges separately from our professional fees.
+            We provide the analytical rigor and legal precision necessary for
+            modern Indian enterprises, with absolute fee transparency at every stage.
           </p>
         </div>
 

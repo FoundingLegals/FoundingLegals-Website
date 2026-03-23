@@ -3,15 +3,15 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title:
-    "Founding Legals — Transparent Legal Services for Indian Founders",
+    "FoundingLegals — Complete Startup Legal & Compliance Platform for India",
   description:
-    "Incorporate your Pvt Ltd, manage compliance, and file returns with clear government-fee separation and fixed professional charges. No hidden costs.",
+    "From company registration to fund raising — FoundingLegals is the all-in-one compliance and growth platform built exclusively for Indian startups. We handle the paperwork, you build the product.",
   keywords:
-    "private limited registration, LLP registration, GST registration, company incorporation India, ROC compliance, IEC registration, startup India, DPIIT, trademark registration",
+    "startup legal os, company incorporation India, GST registration, DPIIT certification, fund raising, startup compliance, agreements, cap table, private limited registration, LLP registration",
   openGraph: {
-    title: "Founding Legals — Transparent Legal Services for Indian Founders",
+    title: "FoundingLegals — Complete Startup Legal & Compliance Platform for India",
     description:
-      "Incorporate your Pvt Ltd with clear fee breakdowns. Government fees shown separately from professional charges.",
+      "From company registration to fund raising — the all-in-one compliance and growth platform built exclusively for Indian startups.",
     type: "website",
     locale: "en_IN",
   },

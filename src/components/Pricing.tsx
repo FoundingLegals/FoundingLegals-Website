@@ -80,7 +80,7 @@ export default function Pricing() {
       className="py-24 lg:py-32 bg-cream-light"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header — ivo style */}
+        {/* Header — founding leals style */}
         <div className="text-center max-w-2xl mx-auto mb-16 reveal">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-lime-bg rounded-full mb-6">
             <span className="text-sm font-medium text-olive-700">
@@ -88,7 +88,7 @@ export default function Pricing() {
             </span>
           </div>
           <h2 className="font-serif text-4xl sm:text-5xl font-medium text-brown-900 mb-5">
-            See exactly what you pay: no hidden fees
+            Transparent Startup Pricing
           </h2>
           <p className="text-lg text-brown-500 leading-relaxed">
             Government charges + our professional fee — split clearly so you
@@ -125,11 +125,10 @@ export default function Pricing() {
                           setSelectedState(state);
                           setIsStateOpen(false);
                         }}
-                        className={`w-full text-left px-4 py-2.5 text-sm hover:bg-cream transition-colors ${
-                          state === selectedState
+                        className={`w-full text-left px-4 py-2.5 text-sm hover:bg-cream transition-colors ${state === selectedState
                             ? "bg-cream text-brown-900 font-semibold"
                             : "text-brown-600"
-                        }`}
+                          }`}
                       >
                         {state}
                         <span className="float-right text-brown-400">
@@ -155,11 +154,10 @@ export default function Pricing() {
                   <button
                     key={slab.label}
                     onClick={() => setSelectedCapital(idx)}
-                    className={`px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                      idx === selectedCapital
+                    className={`px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${idx === selectedCapital
                         ? "bg-olive-600 text-lime-bg shadow-md"
                         : "bg-cream-light border border-brown-200 text-brown-600 hover:border-brown-300"
-                    }`}
+                      }`}
                   >
                     {slab.label}
                   </button>
@@ -177,19 +175,17 @@ export default function Pricing() {
                   <button
                     key={addon.id}
                     onClick={() => toggleAddOn(addon.id)}
-                    className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all ${
-                      selectedAddOns.includes(addon.id)
+                    className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all ${selectedAddOns.includes(addon.id)
                         ? "bg-lime-bg border-2 border-olive-600"
                         : "bg-cream-light border border-brown-200 hover:border-brown-300"
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-3">
                       <div
-                        className={`w-5 h-5 rounded-md flex items-center justify-center ${
-                          selectedAddOns.includes(addon.id)
+                        className={`w-5 h-5 rounded-md flex items-center justify-center ${selectedAddOns.includes(addon.id)
                             ? "bg-olive-600 text-white"
                             : "border border-brown-300"
-                        }`}
+                          }`}
                       >
                         {selectedAddOns.includes(addon.id) && (
                           <Check className="w-3 h-3" />
@@ -208,7 +204,7 @@ export default function Pricing() {
             </div>
           </div>
 
-          {/* Summary Card - Right — olive green like ivo's visual panels */}
+          {/* Summary Card - Right — olive green like founding leals's visual panels */}
           <div className="lg:col-span-2">
             <div className="sticky top-24 bg-olive-600 rounded-2xl p-8 text-white shadow-lg">
               <div className="flex items-center gap-2 mb-6">
@@ -311,10 +307,10 @@ export default function Pricing() {
                   </span>
                 </div>
                 <a
-                  href="#contact"
+                  href={process.env.NEXT_PUBLIC_APP_URL || "#"}
                   className="flex items-center justify-center gap-2 w-full px-6 py-4 bg-lime-bg text-olive-800 font-semibold rounded-full hover:bg-white transition-all"
                 >
-                  Start Incorporation
+                  Start Free
                   <ArrowRight className="w-5 h-5" />
                 </a>
                 <p className="text-center text-xs text-olive-200 mt-3">

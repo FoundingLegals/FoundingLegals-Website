@@ -59,29 +59,29 @@ export default function Possibilities() {
   }, []);
 
   return (
-    <section ref={ref} className="py-28 lg:py-36 bg-cream-light">
+    <section ref={ref} className="py-16 lg:py-20 bg-cream-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div className="reveal-left">
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-[56px] font-medium text-brown-900 leading-[1.12] mb-8">
-              Legal compliance is more than just filings. It&apos;s your
-              foundation.
+            <h2 className="font-serif text-4xl sm:text-[42px] lg:text-5xl font-medium text-brown-900 leading-[1.15] mb-8">
+              One platform. Every milestone.
             </h2>
-            <p className="text-lg text-brown-500 leading-relaxed mb-10 max-w-md">
-              Get your company incorporated, stay compliant, and raise funding
-              &mdash; all with full transparency and clarity at every step.
+            <p className="text-base sm:text-lg text-brown-500 leading-relaxed mb-10 max-w-md">
+              We architect the complete legal backbone of your startup
+              from your first incorporation filing to your Series A close.
+              Built by founders who&apos;ve been where you are.
             </p>
             <a
-              href="#contact"
+              href={process.env.NEXT_PUBLIC_APP_URL || "#"}
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-olive-600 text-white font-medium rounded-full hover:bg-olive-700 transition-all text-base"
             >
-              Request Demo
+              Start Free
             </a>
           </div>
 
           <div className="reveal-right">
             <div className="bg-olive-600 rounded-3xl aspect-square flex items-center justify-center relative overflow-hidden">
-              <div className="absolute top-[20%] left-[20%] w-[60%] h-[60%] rounded-full bg-white/[0.03] blur-[40px]" />
+              <div className="absolute top-[20%] left-[20%] w-[60%] h-[60%] rounded-full bg-white/3 blur-2xl" />
 
               {/* Background acronyms — always jiggling */}
               {acronyms.map((a, i) => (

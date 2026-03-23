@@ -91,6 +91,7 @@ const monthlyFilings: Record<number, Filing[]> = {
     { date: 7, name: "TDS Payment", type: "tds", description: "Monthly TDS deposit" },
     { date: 11, name: "GSTR-1", type: "gst", description: "Monthly outward supplies return" },
     { date: 15, name: "Advance Tax", type: "itr", description: "3rd instalment of advance tax" },
+    { date: 15, name: "Board Meeting Minutes", type: "roc", description: "Quarterly board meeting documentation" },
     { date: 20, name: "GSTR-3B", type: "gst", description: "Monthly summary return" },
   ],
 };
@@ -122,7 +123,7 @@ export default function ComplianceCalendar() {
       className="py-24 lg:py-32 bg-cream"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header — ivo style */}
+        {/* Header — founding leals style */}
         <div className="text-center max-w-2xl mx-auto mb-16 reveal">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-lime-bg rounded-full mb-6">
             <Calendar className="w-4 h-4 text-olive-600" />
@@ -164,11 +165,10 @@ export default function ComplianceCalendar() {
             <div className="px-6 sm:px-8 py-4 border-b border-brown-200 flex flex-wrap gap-2">
               <button
                 onClick={() => setActiveFilter("all")}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
-                  activeFilter === "all"
+                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${activeFilter === "all"
                     ? "bg-olive-600 text-lime-bg"
                     : "bg-cream text-brown-600 hover:bg-cream-dark"
-                }`}
+                  }`}
               >
                 All Filings
               </button>
@@ -176,11 +176,10 @@ export default function ComplianceCalendar() {
                 <button
                   key={key}
                   onClick={() => setActiveFilter(key)}
-                  className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all flex items-center gap-1.5 ${
-                    activeFilter === key
+                  className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all flex items-center gap-1.5 ${activeFilter === key
                       ? `${val.light} border`
                       : "bg-cream text-brown-600 hover:bg-cream-dark"
-                  }`}
+                    }`}
                 >
                   <div className={`w-2 h-2 rounded-full ${val.color}`} />
                   {val.label}
@@ -209,11 +208,10 @@ export default function ComplianceCalendar() {
                             selectedFiling?.name === filing.name ? null : filing
                           )
                         }
-                        className={`w-full flex items-center gap-4 sm:gap-6 p-4 sm:p-5 rounded-xl border transition-all text-left ${
-                          selectedFiling?.name === filing.name
+                        className={`w-full flex items-center gap-4 sm:gap-6 p-4 sm:p-5 rounded-xl border transition-all text-left ${selectedFiling?.name === filing.name
                             ? `${type.light} border shadow-sm`
                             : "border-brown-200 hover:border-brown-300 hover:shadow-sm"
-                        }`}
+                          }`}
                       >
                         {/* Date */}
                         <div className="text-center shrink-0 w-12">
@@ -264,11 +262,11 @@ export default function ComplianceCalendar() {
                 Get automatic reminders for all upcoming filings
               </p>
               <a
-                href="#contact"
+                href={process.env.NEXT_PUBLIC_APP_URL || "#"}
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-olive-600 text-lime-bg text-sm font-medium rounded-full hover:bg-olive-800 transition-all"
               >
                 <Bell className="w-4 h-4" />
-                Set Up Reminders
+                Start Free
                 <ExternalLink className="w-3.5 h-3.5 ml-1" />
               </a>
             </div>

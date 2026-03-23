@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  /* === IVO.AI EXACT COLOR SYSTEM — Warm Cream + Olive Green === */
+  /* === FL EXACT COLOR SYSTEM — Warm Cream + Olive Green === */
 
-  /* Cream / Off-white backgrounds (ivo's base) */
+  /* Cream / Off-white backgrounds (founding leals's base) */
   --color-cream: #F5F0EB;
   --color-cream-light: #FAF7F4;
   --color-cream-dark: #EDE6DE;
   --color-cream-darker: #E5DDD4;
 
-  /* Olive Green Primary (ivo's #5C6F2D) */
+  /* Olive Green Primary (founding leals's #5C6F2D) */
   --color-olive-50: #f4f6ee;
   --color-olive-100: #e5eacf;
   --color-olive-200: #d4e09e;
@@ -21,12 +21,12 @@
   --color-olive-800: #3c481d;
   --color-olive-900: #2d3616;
 
-  /* Lime highlight (ivo's badge bg) */
+  /* Lime highlight (founding leals's badge bg) */
   --color-lime: #D4E157;
   --color-lime-light: #E8F5A3;
   --color-lime-bg: #E6EDC6;
 
-  /* Brown text palette (ivo's text colors) */
+  /* Brown text palette (founding leals's text colors) */
   --color-brown-900: #2B2723;
   --color-brown-800: #3D3733;
   --color-brown-700: #524B44;
@@ -138,217 +138,733 @@ body {
 }
 
 /* Stagger delay classes for child elements */
-.stagger-1 { transition-delay: 100ms; }
-.stagger-2 { transition-delay: 200ms; }
-.stagger-3 { transition-delay: 300ms; }
-.stagger-4 { transition-delay: 400ms; }
-.stagger-5 { transition-delay: 500ms; }
-.stagger-6 { transition-delay: 600ms; }
-.stagger-7 { transition-delay: 700ms; }
-.stagger-8 { transition-delay: 800ms; }
+.stagger-1 {
+  transition-delay: 100ms;
+}
+
+.stagger-2 {
+  transition-delay: 200ms;
+}
+
+.stagger-3 {
+  transition-delay: 300ms;
+}
+
+.stagger-4 {
+  transition-delay: 400ms;
+}
+
+.stagger-5 {
+  transition-delay: 500ms;
+}
+
+.stagger-6 {
+  transition-delay: 600ms;
+}
+
+.stagger-7 {
+  transition-delay: 700ms;
+}
+
+.stagger-8 {
+  transition-delay: 800ms;
+}
 
 /* ===========================
    HERO ANIMATIONS (on load)
    =========================== */
 @keyframes hero-fade-up {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-animate {
   opacity: 0;
   animation: hero-fade-up 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-.hero-animate-delay-1 { animation-delay: 0.15s; }
-.hero-animate-delay-2 { animation-delay: 0.3s; }
-.hero-animate-delay-3 { animation-delay: 0.45s; }
-.hero-animate-delay-4 { animation-delay: 0.6s; }
+
+.hero-animate-delay-1 {
+  animation-delay: 0.15s;
+}
+
+.hero-animate-delay-2 {
+  animation-delay: 0.3s;
+}
+
+.hero-animate-delay-3 {
+  animation-delay: 0.45s;
+}
+
+.hero-animate-delay-4 {
+  animation-delay: 0.6s;
+}
 
 /* ===========================
-   HERO SCENE — LAYERED ANIMATIONS
-   Each layer moves at its own speed/direction
+   HERO FOREST SCENE — DYNAMIC ANIMATIONS
+   Sun rays, falling leaves, parallax depth, particles
    =========================== */
 
-/* Sun — gentle pulse */
-@keyframes sun-pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.08); opacity: 0.85; }
-}
-.hero-sun {
-  animation: sun-pulse 8s ease-in-out infinite;
+/* 3D Parallax perspective container */
+.hero-perspective {
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
 }
 
-/* Distant hills — very slow lateral drift */
-@keyframes hills-drift {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(-12px); }
-}
-.hero-hills-far {
-  animation: hills-drift 25s ease-in-out infinite;
+/* Background — very subtle slow drift for depth */
+@keyframes forest-bg-drift {
+
+  0%,
+  100% {
+    transform: scale(1.04) translate(0, 0);
+  }
+
+  25% {
+    transform: scale(1.04) translate(-4px, -2px);
+  }
+
+  50% {
+    transform: scale(1.06) translate(2px, -4px);
+  }
+
+  75% {
+    transform: scale(1.04) translate(4px, -1px);
+  }
 }
 
-/* Hedge wall — subtle sway */
-@keyframes hedge-sway {
-  0%, 100% { transform: translateX(0) scaleY(1); }
-  50% { transform: translateX(5px) scaleY(1.01); }
-}
-.hero-hedge {
-  animation: hedge-sway 18s ease-in-out infinite;
+.forest-parallax-back {
+  animation: forest-bg-drift 40s ease-in-out infinite;
 }
 
-/* Trees — gentle swaying (each different timing) */
-@keyframes tree-sway-1 {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(0.4deg); }
-  75% { transform: rotate(-0.3deg); }
-}
-@keyframes tree-sway-2 {
-  0%, 100% { transform: rotate(0deg); }
-  30% { transform: rotate(-0.5deg); }
-  70% { transform: rotate(0.3deg); }
-}
-@keyframes tree-sway-3 {
-  0%, 100% { transform: rotate(0deg); }
-  40% { transform: rotate(0.35deg); }
-  60% { transform: rotate(-0.45deg); }
-}
-.hero-tree-1 {
-  transform-origin: 853px bottom;
-  animation: tree-sway-1 10s ease-in-out infinite;
-}
-.hero-tree-2 {
-  transform-origin: 1052px bottom;
-  animation: tree-sway-2 12s ease-in-out infinite;
-}
-.hero-tree-3 {
-  transform-origin: 1242px bottom;
-  animation: tree-sway-3 11s ease-in-out infinite;
+/* Mid layer (content) — opposite subtle drift for parallax */
+.forest-parallax-mid {
+  animation: none;
+  /* text stays still for readability */
 }
 
-/* Palm tree — more pronounced sway */
-@keyframes palm-sway {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(0.8deg); }
-  75% { transform: rotate(-0.6deg); }
-}
-.hero-palm {
-  transform-origin: 385px bottom;
-  animation: palm-sway 8s ease-in-out infinite;
+/* ---- SUN RAYS — individual sweeping beams ---- */
+.forest-ray {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transform-origin: top center;
 }
 
-/* Mid foliage — slow wave */
-@keyframes mid-foliage-wave {
-  0%, 100% { transform: translateX(0) translateY(0); }
-  50% { transform: translateX(-8px) translateY(-3px); }
-}
-.hero-mid-foliage {
-  animation: mid-foliage-wave 14s ease-in-out infinite;
+@keyframes ray-sweep-1 {
+  0% {
+    left: 30%;
+    opacity: 0;
+    transform: rotate(-8deg) scaleX(1);
+  }
+
+  15% {
+    opacity: 0.9;
+  }
+
+  50% {
+    left: 38%;
+    opacity: 0.6;
+    transform: rotate(-3deg) scaleX(1.2);
+  }
+
+  85% {
+    opacity: 0.9;
+  }
+
+  100% {
+    left: 30%;
+    opacity: 0;
+    transform: rotate(-8deg) scaleX(1);
+  }
 }
 
-/* Dense foreground — opposite wave */
-@keyframes foreground-wave {
-  0%, 100% { transform: translateX(0) translateY(0); }
-  50% { transform: translateX(6px) translateY(-2px); }
-}
-.hero-foreground {
-  animation: foreground-wave 12s ease-in-out infinite;
+.forest-ray-1 {
+  animation: ray-sweep-1 12s ease-in-out infinite;
 }
 
-/* Edge leaves — gentle breathing */
-@keyframes leaves-breathe-left {
-  0%, 100% { transform: translateX(0) scaleX(1); }
-  50% { transform: translateX(3px) scaleX(1.02); }
-}
-@keyframes leaves-breathe-right {
-  0%, 100% { transform: translateX(0) scaleX(1); }
-  50% { transform: translateX(-3px) scaleX(1.02); }
-}
-.hero-leaves-left {
-  transform-origin: left bottom;
-  animation: leaves-breathe-left 10s ease-in-out infinite;
-}
-.hero-leaves-right {
-  transform-origin: right bottom;
-  animation: leaves-breathe-right 10s ease-in-out infinite 1s;
+@keyframes ray-sweep-2 {
+  0% {
+    left: 55%;
+    opacity: 0;
+    transform: rotate(-5deg);
+  }
+
+  20% {
+    opacity: 0.7;
+  }
+
+  50% {
+    left: 60%;
+    opacity: 0.4;
+    transform: rotate(-2deg);
+  }
+
+  80% {
+    opacity: 0.7;
+  }
+
+  100% {
+    left: 55%;
+    opacity: 0;
+    transform: rotate(-5deg);
+  }
 }
 
-/* Bottom plants — subtle bobbing */
-@keyframes bottom-plants-bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-2px); }
-}
-.hero-bottom-plants {
-  animation: bottom-plants-bob 6s ease-in-out infinite;
+.forest-ray-2 {
+  animation: ray-sweep-2 10s ease-in-out infinite 2s;
 }
 
-/* Floating leaf particles — drift across screen */
-@keyframes leaf-drift-1 {
-  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.18; }
-  50% { transform: translate(60px, 30px) rotate(15deg); }
-  90% { opacity: 0.18; }
-  100% { transform: translate(120px, 60px) rotate(30deg); opacity: 0; }
-}
-@keyframes leaf-drift-2 {
-  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.15; }
-  50% { transform: translate(-40px, 40px) rotate(-20deg); }
-  90% { opacity: 0.15; }
-  100% { transform: translate(-80px, 80px) rotate(-40deg); opacity: 0; }
-}
-@keyframes leaf-drift-3 {
-  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.12; }
-  50% { transform: translate(30px, 50px) rotate(10deg); }
-  90% { opacity: 0.12; }
-  100% { transform: translate(60px, 100px) rotate(20deg); opacity: 0; }
-}
-.hero-leaf-drift-1 {
-  animation: leaf-drift-1 16s ease-in-out infinite;
-}
-.hero-leaf-drift-2 {
-  animation: leaf-drift-2 20s ease-in-out infinite 3s;
-}
-.hero-leaf-drift-3 {
-  animation: leaf-drift-3 22s ease-in-out infinite 7s;
+@keyframes ray-sweep-3 {
+  0% {
+    left: 42%;
+    opacity: 0;
+    transform: rotate(-10deg) scaleX(0.8);
+  }
+
+  25% {
+    opacity: 0.5;
+  }
+
+  50% {
+    left: 48%;
+    opacity: 0.3;
+    transform: rotate(-5deg) scaleX(1.3);
+  }
+
+  75% {
+    opacity: 0.5;
+  }
+
+  100% {
+    left: 42%;
+    opacity: 0;
+    transform: rotate(-10deg) scaleX(0.8);
+  }
 }
 
-/* Birds — gliding across */
-@keyframes bird-glide-1 {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(300px, -40px); }
+.forest-ray-3 {
+  animation: ray-sweep-3 15s ease-in-out infinite 4s;
 }
-@keyframes bird-glide-2 {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(250px, -30px); }
+
+@keyframes ray-sweep-4 {
+  0% {
+    left: 68%;
+    opacity: 0;
+    transform: rotate(-3deg);
+  }
+
+  30% {
+    opacity: 0.8;
+  }
+
+  50% {
+    left: 72%;
+    opacity: 0.5;
+    transform: rotate(0deg);
+  }
+
+  70% {
+    opacity: 0.8;
+  }
+
+  100% {
+    left: 68%;
+    opacity: 0;
+    transform: rotate(-3deg);
+  }
 }
-.hero-bird-1 {
-  animation: bird-glide-1 30s linear infinite;
+
+.forest-ray-4 {
+  animation: ray-sweep-4 8s ease-in-out infinite 1s;
 }
-.hero-bird-2 {
-  animation: bird-glide-2 35s linear infinite 5s;
+
+@keyframes ray-sweep-5 {
+  0% {
+    left: 20%;
+    opacity: 0;
+    transform: rotate(-12deg);
+  }
+
+  20% {
+    opacity: 0.6;
+  }
+
+  50% {
+    left: 26%;
+    opacity: 0.35;
+    transform: rotate(-7deg);
+  }
+
+  80% {
+    opacity: 0.6;
+  }
+
+  100% {
+    left: 20%;
+    opacity: 0;
+    transform: rotate(-12deg);
+  }
+}
+
+.forest-ray-5 {
+  animation: ray-sweep-5 14s ease-in-out infinite 6s;
+}
+
+/* ---- FALLING LEAVES — drift, spin, sway ---- */
+.forest-leaf {
+  position: absolute;
+  top: -40px;
+  pointer-events: none;
+}
+
+@keyframes leaf-fall-1 {
+  0% {
+    top: -5%;
+    left: 15%;
+    opacity: 0;
+    transform: rotate(0deg) translateX(0);
+  }
+
+  10% {
+    opacity: 0.7;
+  }
+
+  25% {
+    transform: rotate(45deg) translateX(30px);
+  }
+
+  50% {
+    transform: rotate(120deg) translateX(-20px);
+    left: 18%;
+  }
+
+  75% {
+    transform: rotate(200deg) translateX(40px);
+  }
+
+  90% {
+    opacity: 0.7;
+  }
+
+  100% {
+    top: 105%;
+    left: 22%;
+    opacity: 0;
+    transform: rotate(300deg) translateX(10px);
+  }
+}
+
+.forest-leaf-1 {
+  animation: leaf-fall-1 18s ease-in-out infinite;
+}
+
+@keyframes leaf-fall-2 {
+  0% {
+    top: -5%;
+    left: 60%;
+    opacity: 0;
+    transform: rotate(0deg) translateX(0);
+  }
+
+  10% {
+    opacity: 0.6;
+  }
+
+  30% {
+    transform: rotate(-40deg) translateX(-25px);
+  }
+
+  50% {
+    transform: rotate(-100deg) translateX(35px);
+    left: 57%;
+  }
+
+  70% {
+    transform: rotate(-180deg) translateX(-15px);
+  }
+
+  90% {
+    opacity: 0.6;
+  }
+
+  100% {
+    top: 105%;
+    left: 63%;
+    opacity: 0;
+    transform: rotate(-280deg) translateX(20px);
+  }
+}
+
+.forest-leaf-2 {
+  animation: leaf-fall-2 22s ease-in-out infinite 3s;
+}
+
+@keyframes leaf-fall-3 {
+  0% {
+    top: -5%;
+    left: 40%;
+    opacity: 0;
+    transform: rotate(10deg) translateX(0);
+  }
+
+  10% {
+    opacity: 0.55;
+  }
+
+  25% {
+    transform: rotate(60deg) translateX(50px);
+  }
+
+  50% {
+    transform: rotate(150deg) translateX(-30px);
+    left: 44%;
+  }
+
+  75% {
+    transform: rotate(240deg) translateX(35px);
+  }
+
+  90% {
+    opacity: 0.55;
+  }
+
+  100% {
+    top: 105%;
+    left: 48%;
+    opacity: 0;
+    transform: rotate(340deg) translateX(-10px);
+  }
+}
+
+.forest-leaf-3 {
+  animation: leaf-fall-3 25s ease-in-out infinite 6s;
+}
+
+@keyframes leaf-fall-4 {
+  0% {
+    top: -5%;
+    left: 80%;
+    opacity: 0;
+    transform: rotate(-15deg) translateX(0);
+  }
+
+  12% {
+    opacity: 0.65;
+  }
+
+  35% {
+    transform: rotate(55deg) translateX(-40px);
+  }
+
+  55% {
+    transform: rotate(130deg) translateX(25px);
+    left: 77%;
+  }
+
+  80% {
+    transform: rotate(210deg) translateX(-30px);
+  }
+
+  88% {
+    opacity: 0.65;
+  }
+
+  100% {
+    top: 105%;
+    left: 82%;
+    opacity: 0;
+    transform: rotate(320deg) translateX(15px);
+  }
+}
+
+.forest-leaf-4 {
+  animation: leaf-fall-4 16s ease-in-out infinite 9s;
+}
+
+@keyframes leaf-fall-5 {
+  0% {
+    top: -5%;
+    left: 28%;
+    opacity: 0;
+    transform: rotate(20deg) translateX(0);
+  }
+
+  15% {
+    opacity: 0.5;
+  }
+
+  40% {
+    transform: rotate(-70deg) translateX(45px);
+  }
+
+  60% {
+    transform: rotate(-160deg) translateX(-20px);
+    left: 32%;
+  }
+
+  85% {
+    transform: rotate(-250deg) translateX(30px);
+  }
+
+  90% {
+    opacity: 0.5;
+  }
+
+  100% {
+    top: 105%;
+    left: 35%;
+    opacity: 0;
+    transform: rotate(-350deg) translateX(-5px);
+  }
+}
+
+.forest-leaf-5 {
+  animation: leaf-fall-5 20s ease-in-out infinite 2s;
+}
+
+@keyframes leaf-fall-6 {
+  0% {
+    top: -5%;
+    left: 72%;
+    opacity: 0;
+    transform: rotate(5deg);
+  }
+
+  10% {
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: rotate(180deg) translateX(-35px);
+    left: 69%;
+  }
+
+  90% {
+    opacity: 0.55;
+  }
+
+  100% {
+    top: 105%;
+    left: 74%;
+    opacity: 0;
+    transform: rotate(360deg) translateX(20px);
+  }
+}
+
+.forest-leaf-6 {
+  animation: leaf-fall-6 24s ease-in-out infinite 5s;
+}
+
+@keyframes leaf-fall-7 {
+  0% {
+    top: -5%;
+    left: 50%;
+    opacity: 0;
+    transform: rotate(-10deg);
+  }
+
+  12% {
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: rotate(160deg) translateX(30px);
+    left: 53%;
+  }
+
+  88% {
+    opacity: 0.45;
+  }
+
+  100% {
+    top: 105%;
+    left: 48%;
+    opacity: 0;
+    transform: rotate(350deg) translateX(-25px);
+  }
+}
+
+.forest-leaf-7 {
+  animation: leaf-fall-7 19s ease-in-out infinite 8s;
+}
+
+/* ---- MIST — slow lateral drift ---- */
+@keyframes mist-drift {
+
+  0%,
+  100% {
+    transform: translateX(0);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: translateX(40px);
+    opacity: 1;
+  }
+}
+
+.forest-mist {
+  animation: mist-drift 20s ease-in-out infinite;
+}
+
+/* ---- FLOATING PARTICLES — gentle drifting upward ---- */
+@keyframes particle-float-1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translate(40px, -50px) scale(1.4);
+  }
+
+  85% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translate(80px, -100px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes particle-float-2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translate(-30px, -60px) scale(1.6);
+  }
+
+  85% {
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: translate(-60px, -120px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes particle-float-3 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translate(20px, -70px);
+  }
+
+  80% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translate(40px, -140px);
+    opacity: 0;
+  }
+}
+
+.forest-particle-1 {
+  animation: particle-float-1 14s ease-in-out infinite;
+}
+
+.forest-particle-2 {
+  animation: particle-float-2 18s ease-in-out infinite 2s;
+}
+
+.forest-particle-3 {
+  animation: particle-float-1 20s ease-in-out infinite 4s;
+}
+
+.forest-particle-4 {
+  animation: particle-float-3 16s ease-in-out infinite 1s;
+}
+
+.forest-particle-5 {
+  animation: particle-float-2 22s ease-in-out infinite 6s;
+}
+
+.forest-particle-6 {
+  animation: particle-float-3 19s ease-in-out infinite 3s;
+}
+
+.forest-particle-7 {
+  animation: particle-float-1 17s ease-in-out infinite 5s;
+}
+
+.forest-particle-8 {
+  animation: particle-float-2 21s ease-in-out infinite 7s;
 }
 
 /* Utility float animations (reused elsewhere) */
 .float-animation {
   animation: float 6s ease-in-out infinite;
 }
+
 .float-slow-animation {
   animation: float-slow 8s ease-in-out infinite;
 }
+
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
 }
+
 @keyframes float-slow {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(1deg); }
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
 }
+
 @keyframes parallax-drift {
-  0% { transform: translate(0, 0); }
-  50% { transform: translate(10px, -10px); }
-  100% { transform: translate(0, 0); }
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(10px, -10px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
 }
+
 .parallax-drift {
   animation: parallax-drift 20s ease-in-out infinite;
 }
@@ -357,14 +873,37 @@ body {
    LETTER JIGGLE (Possibilities section)
    =========================== */
 @keyframes letter-jiggle {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  15% { transform: translate(1.5px, -2px) rotate(0.5deg); }
-  30% { transform: translate(-2px, 1px) rotate(-0.8deg); }
-  45% { transform: translate(2px, 2px) rotate(0.3deg); }
-  60% { transform: translate(-1px, -1.5px) rotate(-0.5deg); }
-  75% { transform: translate(1px, 2px) rotate(0.6deg); }
-  90% { transform: translate(-1.5px, -1px) rotate(-0.3deg); }
+
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  15% {
+    transform: translate(1.5px, -2px) rotate(0.5deg);
+  }
+
+  30% {
+    transform: translate(-2px, 1px) rotate(-0.8deg);
+  }
+
+  45% {
+    transform: translate(2px, 2px) rotate(0.3deg);
+  }
+
+  60% {
+    transform: translate(-1px, -1.5px) rotate(-0.5deg);
+  }
+
+  75% {
+    transform: translate(1px, 2px) rotate(0.6deg);
+  }
+
+  90% {
+    transform: translate(-1.5px, -1px) rotate(-0.3deg);
+  }
 }
+
 .letter-jiggle {
   animation: letter-jiggle 4s ease-in-out infinite;
 }
@@ -405,6 +944,7 @@ body {
     opacity: 0;
     transform: translateY(4px) scale(0.97);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -434,4 +974,129 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-brown-400);
+}
+
+/* ===========================
+   NODE TREE — step-by-step animation
+   =========================== */
+@keyframes node-tree-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===========================
+   ROADMAP — founding leals.ai L-curve tree
+   =========================== */
+
+.rm {
+  padding-top: 20px;
+}
+
+/* Each step container — uses CSS Grid for precise placement */
+.rm-step {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  grid-template-rows: auto auto;
+  gap: 0;
+  position: relative;
+  padding-bottom: 0;
+}
+
+/* Olive icon node — top-left */
+.rm-node {
+  grid-column: 1;
+  grid-row: 1;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #7a8a45;
+  border: 1px solid #6b7c3f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* Title — below icon */
+.rm-title {
+  grid-column: 1;
+  grid-row: 2;
+  font-size: 11px;
+  font-weight: 600;
+  color: #8a7e68;
+  text-align: center;
+  padding-top: 6px;
+  white-space: nowrap;
+}
+
+/* L-shaped curve: from node DOWN then curves RIGHT to tags */
+.rm-lcurve {
+  position: absolute;
+  top: 46px;
+  left: 25px;
+  width: 80px;
+  height: 52px;
+  border-left: 1.5px solid #c5bfab;
+  border-bottom: 1.5px solid #c5bfab;
+  border-bottom-left-radius: 28px;
+  border-top: none;
+  border-right: none;
+  z-index: 1;
+}
+
+/* Tags — positioned at the end of the L-curve */
+.rm-tags {
+  position: absolute;
+  top: 82px;
+  left: 112px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  z-index: 3;
+}
+
+/* Individual tag: label above, pill below */
+.rm-tag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.rm-tag-label {
+  font-size: 9px;
+  font-weight: 500;
+  color: #a09880;
+  white-space: nowrap;
+}
+
+.rm-tag-pill {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+/* Vertical line connecting to next node */
+.rm-vline {
+  position: absolute;
+  top: 52px;
+  left: 25px;
+  width: 1.5px;
+  height: 80px;
+  background: #c5bfab;
+  z-index: 0;
+}
+
+/* Step spacing — enough room for L-curve + tags + vline */
+.rm-step {
+  min-height: 130px;
 }

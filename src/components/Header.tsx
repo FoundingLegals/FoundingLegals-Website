@@ -34,11 +34,11 @@ const sections = [
     description: "Launch your company and get investment ready",
     icon: Rocket,
     items: [
-      { name: "Name Registration", href: "#start" },
-      { name: "Company Incorporation", href: "#start" },
-      { name: "Bank Opening", href: "#start" },
-      { name: "Certifications", href: "#start" },
-      { name: "GST Filing & Taxation", href: "#start" },
+      { name: "Name Registration", href: "/services/name-registration" },
+      { name: "Company Incorporation", href: "/services/company-incorporation" },
+      { name: "Bank Opening", href: "/services/bank-opening" },
+      { name: "Certifications", href: "/services/certifications" },
+      { name: "GST Filing & Taxation", href: "/services/gst-filing-and-taxation" },
     ],
   },
   {
@@ -46,11 +46,11 @@ const sections = [
     description: "Stay compliant and manage your filings",
     icon: ClipboardCheck,
     items: [
-      { name: "Essential Startup Approach", href: "#compliance" },
-      { name: "Client Invoice", href: "#compliance" },
-      { name: "Spend Analysis", href: "#compliance" },
-      { name: "IP Protection", href: "#compliance" },
-      { name: "Document Management", href: "#compliance" },
+      { name: "Essential Startup Approach", href: "/services/essential-startup-approach" },
+      { name: "Client Invoice", href: "/services/client-invoice" },
+      { name: "Spend Analysis", href: "/services/spend-analysis" },
+      { name: "IP Protection", href: "/services/ip-protection" },
+      { name: "Document Management", href: "/services/document-management" },
     ],
   },
   {
@@ -58,13 +58,13 @@ const sections = [
     description: "Everything you need to close investment",
     icon: TrendingUp,
     items: [
-      { name: "Pitch to Investors", href: "#raise" },
-      { name: "Find Investors", href: "#raise", isNew: true },
-      { name: "Raise Before a Round", href: "#raise" },
-      { name: "Do a Funding Round", href: "#raise" },
-      { name: "Finance for Fundraising", href: "#raise" },
-      { name: "Legal Advice for a Round", href: "#raise" },
-      { name: "Instant Investment", href: "#raise" },
+      { name: "Pitch to Investors", href: "/services/pitch-to-investors" },
+      { name: "Find Investors", href: "/services/find-investors", isNew: true },
+      { name: "Raise Before a Round", href: "/services/raise-before-a-round" },
+      { name: "Do a Funding Round", href: "/services/do-a-funding-round" },
+      { name: "Finance for Fundraising", href: "/services/finance-for-fundraising" },
+      { name: "Legal Advice for a Round", href: "/services/legal-advice-for-a-round" },
+      { name: "Instant Investment", href: "/services/instant-investment" },
     ],
   },
 ];
@@ -73,6 +73,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
+  const [companyOpen, setCompanyOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -81,18 +82,18 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-10 pt-3 sm:pt-4">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4">
       {/* Floating pill nav */}
       <nav
-        className={`max-w-[1200px] mx-auto rounded-full transition-all duration-500 ease-out ${
+        className={`max-w-7xl mx-auto rounded-full transition-all duration-500 ease-out ${
           isScrolled
             ? "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(43,39,35,0.1)]"
             : "bg-white shadow-[0_1px_12px_rgba(43,39,35,0.06)]"
         }`}
       >
-        <div className="flex items-center justify-between h-[56px] sm:h-[62px] pl-5 pr-3 sm:pl-7 sm:pr-5">
+        <div className="flex items-center justify-between h-[56px] sm:h-[62px] px-6 lg:px-8">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 shrink-0">
+          <a href="/" className="flex items-center gap-2.5 shrink-0">
             <div className="w-[30px] h-[30px] bg-olive-600 rounded-[8px] flex items-center justify-center">
               <Shield className="w-[15px] h-[15px] text-white" />
             </div>
@@ -184,15 +185,50 @@ export default function Header() {
             >
               Resources
             </a>
+            
+            {/* Company Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setCompanyOpen(true)}
+              onMouseLeave={() => setCompanyOpen(false)}
+            >
+              <button
+                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-medium rounded-full transition-all duration-200 ${
+                  companyOpen
+                    ? "bg-[#F0EBDF] text-[#33312c]"
+                    : "text-brown-600 hover:bg-cream hover:text-brown-800"
+                }`}
+              >
+                Company
+                <ChevronDown
+                  className={`w-3 h-3 transition-transform duration-200 ${
+                    companyOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              {/* Mega dropdown panel */}
+              {companyOpen && (
+                <>
+                  {/* Invisible hover bridge */}
+                  <div className="absolute top-full left-0 right-0 h-4" />
+                  <div className="absolute left-1/2 -translate-x-1/2 top-[52px] w-[500px] bg-[#f5f1e6] rounded-[24px] shadow-[0_12px_40px_rgba(43,39,35,0.08)] animate-dropdown flex items-center justify-between px-10 py-6">
+                    <a href="/company/about-us" className="text-[14px] font-serif text-[#33312c] hover:text-olive-700 transition-colors">About us</a>
+                    <a href="/company/careers" className="text-[14px] font-serif text-[#33312c] hover:text-olive-700 transition-colors">Careers</a>
+                    <a href="/company/news" className="text-[14px] font-serif text-[#33312c] hover:text-olive-700 transition-colors">News</a>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
 
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-1.5">
             <a
-              href="#contact"
+              href={process.env.NEXT_PUBLIC_APP_URL || "#"}
               className="px-5 py-[7px] bg-olive-600 text-white text-[13px] font-semibold rounded-full hover:bg-olive-700 transition-colors duration-200"
             >
-              Request Demo
+              Start Free
             </a>
             <a
               href="#login"
@@ -267,11 +303,11 @@ export default function Header() {
                 Resources
               </a>
               <a
-                href="#contact"
+                href={process.env.NEXT_PUBLIC_APP_URL || "#"}
                 onClick={() => setIsMobileOpen(false)}
                 className="block text-center px-4 py-2.5 bg-olive-600 text-white text-[13px] font-semibold rounded-full hover:bg-olive-700 transition-colors"
               >
-                Request Demo
+                Start Free
               </a>
             </div>
           </div>
