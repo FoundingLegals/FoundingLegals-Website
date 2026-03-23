@@ -228,7 +228,7 @@ export default function Header() {
               href={process.env.NEXT_PUBLIC_APP_URL || "#"}
               className="px-5 py-[7px] bg-olive-600 text-white text-[13px] font-semibold rounded-full hover:bg-olive-700 transition-colors duration-200"
             >
-              Start Free
+              Request Demo
             </a>
             <a
               href="#login"
@@ -307,7 +307,7 @@ export default function Header() {
                 onClick={() => setIsMobileOpen(false)}
                 className="block text-center px-4 py-2.5 bg-olive-600 text-white text-[13px] font-semibold rounded-full hover:bg-olive-700 transition-colors"
               >
-                Start Free
+                Request Demo
               </a>
             </div>
           </div>

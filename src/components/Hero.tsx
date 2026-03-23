@@ -202,7 +202,7 @@ export default function Hero() {
             Transparent Legal Services for Indian Founders.
           </h1>
           <p className="hero-animate hero-animate-delay-2 text-[16px] sm:text-[18px] text-brown-600 leading-relaxed mb-10 max-w-[540px]">
-            Incorporate your Pvt Ltd, manage compliance, and file returns &mdash;
+            Incorporate your Pvt Ltd, manage compliance, and file returns
             with clear fee separation and no hidden costs.
           </p>
           <div className="hero-animate hero-animate-delay-3">

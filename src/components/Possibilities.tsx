@@ -75,7 +75,7 @@ export default function Possibilities() {
               href={process.env.NEXT_PUBLIC_APP_URL || "#"}
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-olive-600 text-white font-medium rounded-full hover:bg-olive-700 transition-all text-base"
             >
-              Start Free
+              Request Demo
             </a>
           </div>
 
