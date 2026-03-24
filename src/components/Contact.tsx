@@ -5,7 +5,7 @@ import { Shield, Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
 
 export default function Contact() {
-  const [state, handleSubmit] = useForm("xgongnbz");
+  const [state, handleSubmit] = useForm("xqeyrnpp");
 
   if (state.succeeded) {
     return (
@@ -95,7 +95,12 @@ export default function Contact() {
           <div className="bg-white rounded-3xl shadow-[0_20px_50px_rgba(43,39,35,0.08)] border border-brown-100/50 p-8 sm:p-10">
             <h3 className="text-2xl font-serif font-semibold text-brown-900 mb-8">Request a Personal Demo</h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form 
+              action="https://formspree.io/f/xqeyrnpp"
+              method="POST"
+              onSubmit={handleSubmit} 
+              className="space-y-6"
+            >
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="first-name" className="block text-xs font-bold text-brown-400 uppercase tracking-widest mb-2">First Name</label>
@@ -131,8 +136,8 @@ export default function Contact() {
                   className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-cream/20"
                   placeholder="arjun@startup.com"
                 />
-                <ValidationError 
-                  prefix="Email" 
+                <ValidationError
+                  prefix="Email"
                   field="email"
                   errors={state.errors}
                   className="text-xs text-red-500 mt-1"
@@ -160,8 +165,8 @@ export default function Contact() {
                   className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-cream/20 resize-none"
                   placeholder="Tell us about your startup or specific requirements..."
                 />
-                <ValidationError 
-                  prefix="Message" 
+                <ValidationError
+                  prefix="Message"
                   field="message"
                   errors={state.errors}
                   className="text-xs text-red-500 mt-1"
@@ -183,6 +188,12 @@ export default function Contact() {
                   </>
                 )}
               </button>
+              
+              {state.errors && (
+                <p className="text-xs text-red-500 text-center mt-2">
+                  There was an error submitting the form. Please check your data and try again.
+                </p>
+              )}
 
               <p className="text-[11px] text-brown-400 text-center leading-relaxed">
                 By submitting this form, you agree to our privacy policy and consent to receiving marketing communications.
