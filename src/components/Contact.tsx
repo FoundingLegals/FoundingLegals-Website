@@ -179,6 +179,7 @@ export default function Contact() {
               <button 
                 type="submit" 
                 disabled={isLoading}
+                suppressHydrationWarning
                 className={`w-full py-4 bg-olive-600 text-white rounded-xl font-bold text-[15px] shadow-lg shadow-olive-600/20 hover:bg-olive-700 hover:shadow-olive-600/30 transition-all flex items-center justify-center gap-2 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
               >
                 {isLoading ? (
