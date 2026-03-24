@@ -193,6 +193,7 @@ export default function Header() {
               onMouseLeave={() => setCompanyOpen(false)}
             >
               <button
+                suppressHydrationWarning
                 className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-medium rounded-full transition-all duration-200 ${
                   companyOpen
                     ? "bg-[#F0EBDF] text-[#33312c]"
