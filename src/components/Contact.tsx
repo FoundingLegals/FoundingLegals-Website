@@ -103,7 +103,7 @@ export default function Contact() {
                 <div>
                   <h4 className="text-sm font-semibold text-brown-900 uppercase tracking-wider mb-1">Phone</h4>
                   <a href="tel:+919876543210" className="text-lg text-brown-600 hover:text-olive-600 transition-colors">
-                    +97 91222557
+                    +91 9791222557
                   </a>
                 </div>
               </div>
