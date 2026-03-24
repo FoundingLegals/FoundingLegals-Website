@@ -326,7 +326,7 @@ export function IntelligenceSection() {
                 Transform complex regulatory requirements into strategic clarity. Our command center provides the real-time insights necessary to navigate the Indian legal landscape with confidence.
               </p>
               <a
-                href={process.env.NEXT_PUBLIC_APP_URL || "#"}
+                href="https://app.foundinglegals.com/sign-up"
                 className="inline-flex items-center gap-2 px-8 py-3.5 bg-olive-600 text-lime-bg font-medium rounded-full hover:bg-olive-800 transition-all text-base"
               >
                 Start Free

@@ -307,7 +307,7 @@ export default function Pricing() {
                   </span>
                 </div>
                 <a
-                  href={process.env.NEXT_PUBLIC_APP_URL || "#"}
+                  href="https://app.foundinglegals.com/sign-up"
                   className="flex items-center justify-center gap-2 w-full px-6 py-4 bg-lime-bg text-olive-800 font-semibold rounded-full hover:bg-white transition-all"
                 >
                   Start Free

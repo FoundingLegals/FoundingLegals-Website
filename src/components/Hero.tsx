@@ -207,7 +207,7 @@ export default function Hero() {
           </p>
           <div className="hero-animate hero-animate-delay-3">
             <a
-              href={process.env.NEXT_PUBLIC_APP_URL || "#"}
+              href="https://app.foundinglegals.com/sign-up"
               className="inline-flex items-center px-8 py-3.5 bg-olive-600 text-white text-[15px] font-semibold rounded-full hover:bg-olive-700 transition-all duration-300 shadow-lg shadow-olive-600/15 hover:shadow-olive-600/25 hover:-translate-y-0.5"
             >
               Start Free

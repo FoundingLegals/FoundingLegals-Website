@@ -225,13 +225,13 @@ export default function Header() {
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-1.5">
             <a
-              href={process.env.NEXT_PUBLIC_APP_URL || "#"}
+              href="https://app.foundinglegals.com/sign-up"
               className="px-5 py-[7px] bg-olive-600 text-white text-[13px] font-semibold rounded-full hover:bg-olive-700 transition-colors duration-200"
             >
               Start Free
             </a>
             <a
-              href="#login"
+              href="https://app.foundinglegals.com/sign-in"
               className="px-4 py-[7px] text-[13px] font-medium text-brown-500 hover:text-brown-800 transition-colors duration-200"
             >
               Login
@@ -317,7 +317,14 @@ export default function Header() {
                 Contact Us
               </a>
               <a
-                href={process.env.NEXT_PUBLIC_APP_URL || "#"}
+                href="https://app.foundinglegals.com/sign-in"
+                onClick={() => setIsMobileOpen(false)}
+                className="block px-3 py-2 text-[13px] font-medium text-brown-600 hover:text-brown-900 rounded-lg hover:bg-cream transition-colors"
+              >
+                Login
+              </a>
+              <a
+                href="https://app.foundinglegals.com/sign-up"
                 onClick={() => setIsMobileOpen(false)}
                 className="block text-center px-4 py-2.5 bg-olive-600 text-white text-[13px] font-semibold rounded-full hover:bg-olive-700 transition-colors"
               >
