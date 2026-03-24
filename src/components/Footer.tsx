@@ -11,7 +11,7 @@ const footerLinks = {
   ],
   Company: [
     { name: "About Us", href: "/company/about-us" },
-    { name: "Contact", href: process.env.NEXT_PUBLIC_APP_URL || "#" },
+    { name: "Contact", href: "/contact" },
     { name: "Partner CAs", href: "#partners" },
   ],
 };
