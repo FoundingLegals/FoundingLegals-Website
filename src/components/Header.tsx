@@ -180,10 +180,10 @@ export default function Header() {
               Pricing
             </a>
             <a
-              href="#resources"
+              href="/contact"
               className="px-4 py-[7px] text-[13px] font-medium text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
             >
-              Resources
+              Schedule Demo
             </a>
             
             {/* Company Dropdown */}
@@ -301,11 +301,11 @@ export default function Header() {
                 Pricing
               </a>
               <a
-                href="#resources"
+                href="/contact"
                 onClick={() => setIsMobileOpen(false)}
                 className="block px-3 py-2 text-[13px] font-medium text-brown-600 hover:text-brown-900 rounded-lg hover:bg-cream transition-colors"
               >
-                Resources
+                Schedule Demo
               </a>
               <a
                 href={process.env.NEXT_PUBLIC_APP_URL || "#"}

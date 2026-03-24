@@ -9,13 +9,6 @@ const footerLinks = {
     { name: "Fund Raising", href: "#services" },
     { name: "Marketplace", href: "#services" },
   ],
-  Resources: [
-    { name: "Pricing & Credits", href: "#pricing" },
-    { name: "Compliance Calendar", href: "#calendar" },
-    { name: "Incorporation Guide", href: "#resources" },
-    { name: "Blog & Updates", href: "#resources" },
-    { name: "FL Credits System", href: "#pricing" },
-  ],
   Company: [
     { name: "About Us", href: "/company/about-us" },
     { name: "Contact", href: process.env.NEXT_PUBLIC_APP_URL || "#" },
