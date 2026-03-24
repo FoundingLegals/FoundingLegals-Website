@@ -98,13 +98,24 @@ export default function Contact() {
               
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm border border-brown-50">
+                  <Phone className="w-5 h-5 text-olive-600" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-semibold text-brown-900 uppercase tracking-wider mb-1">Phone</h4>
+                  <a href="tel:+919876543210" className="text-lg text-brown-600 hover:text-olive-600 transition-colors">
+                    +91 98765 43210
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm border border-brown-50">
                   <MapPin className="w-5 h-5 text-olive-600" />
                 </div>
                 <div>
                   <h4 className="text-sm font-semibold text-brown-900 uppercase tracking-wider mb-1">Office</h4>
                   <p className="text-lg text-brown-600">
-                    Tech Park, Sector 62 <br />
-                    Noida, UP 201301
+                    Hyderabad, India
                   </p>
                 </div>
               </div>
