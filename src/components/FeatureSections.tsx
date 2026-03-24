@@ -38,41 +38,16 @@ export function StartSection() {
           {/* Left — document visual (founding leals's contract screenshot style) */}
           <div className="reveal-left">
             <div className="bg-cream-dark rounded-3xl p-8 sm:p-10 relative overflow-hidden">
-              {/* Simulated legal document */}
-              <div className="bg-white rounded-2xl shadow-sm p-8 font-mono text-[11px] leading-[1.8] text-brown-500 uppercase tracking-wide max-h-[420px] overflow-hidden relative">
-                <p className="mb-4">
-                  <strong className="text-brown-800">1. NAME RESERVATION</strong>
-                </p>
-                <p className="mb-4">
-                  THE PROPOSED NAME SHALL BE RESERVED VIA THE RUN
-                  (RESERVE UNIQUE NAME) SERVICE OF THE MINISTRY OF
-                  CORPORATE AFFAIRS. THE NAME SHALL COMPLY WITH
-                  SECTION 4(2) OF THE COMPANIES ACT, 2013 AND RULE
-                  8 OF THE COMPANIES (INCORPORATION) RULES, 2014.
-                </p>
-                <p className="mb-4">
-                  <strong className="text-brown-800">2. INCORPORATION</strong>
-                </p>
-                <p className="mb-4">
-                  THE COMPANY SHALL BE INCORPORATED VIA SPICE+ FORM
-                  (SIMPLIFIED PROFORMA FOR INCORPORATING COMPANY
-                  ELECTRONICALLY PLUS). THIS INTEGRATED FORM COVERS
-                  NAME RESERVATION, INCORPORATION, DIN ALLOTMENT,
-                  PAN & TAN APPLICATION, AND <span className="text-olive-600 underline decoration-olive-300">GSTIN REGISTRATION</span>.
-                </p>
-                <p className="mb-4">
-                  <strong className="text-brown-800">3. AUTHORIZED CAPITAL</strong>
-                </p>
-                <p>
-                  THE AUTHORIZED SHARE CAPITAL AS STATED IN THE
-                  MEMORANDUM OF ASSOCIATION SHALL DETERMINE THE
-                  STAMP DUTY PAYABLE TO THE STATE GOVERNMENT AND
-                  THE FILING FEE PAYABLE TO THE{" "}
-                  <span className="text-olive-600 line-through decoration-olive-300">REGISTRAR</span>{" "}
-                  <span className="text-olive-600 underline decoration-olive-300">MCA PORTAL</span>.
-                </p>
-                {/* Fade out */}
-                <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-white to-transparent" />
+              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-[4/3] flex items-center justify-center">
+                <video
+                  src="/videos/start.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover scale-[1.4]"
+                  style={{ backgroundColor: 'white' }}
+                />
               </div>
             </div>
           </div>
@@ -214,57 +189,14 @@ export function ComplianceSection() {
             </div>
           </div>
 
-          {/* Right — interactive visual (founding leals's AI Field style) */}
+          {/* Right — interactive visual */}
           <div className="reveal-right">
-            <div className="bg-cream-dark rounded-3xl p-10 relative">
-              {/* Compliance dashboard mockup */}
-              <div className="bg-white rounded-2xl shadow-sm p-6 mb-4">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 rounded-lg bg-olive-600 flex items-center justify-center">
-                    <ShieldCheck className="w-4 h-4 text-lime-bg" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-brown-400">Compliance Status</p>
-                    <p className="text-sm font-semibold text-brown-900">All filings up to date</p>
-                  </div>
-                  <div className="ml-auto w-3 h-3 rounded-full bg-olive-500" />
+            <div className="bg-cream-dark rounded-3xl p-8 sm:p-10 relative overflow-hidden">
+              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-[4/3] flex items-center justify-center">
+                {/* Ready for Compliance video */}
+                <div className="absolute inset-0 bg-white/50 flex items-center justify-center border-2 border-dashed border-brown-200 m-4 rounded-xl">
+                  <p className="text-brown-400 font-medium">Compliance Video Coming Soon</p>
                 </div>
-                <div className="space-y-2.5">
-                  {[
-                    { name: "ROC Annual Return", status: "Filed", date: "Oct 30" },
-                    { name: "GST R-3B (Monthly)", status: "Filed", date: "Nov 20" },
-                    { name: "TDS Q3 Return", status: "Upcoming", date: "Jan 30" },
-                    { name: "Board Meeting Minutes", status: "Draft", date: "Dec 15" },
-                  ].map((item) => (
-                    <div
-                      key={item.name}
-                      className="flex items-center justify-between py-2.5 px-3 rounded-lg bg-cream-light"
-                    >
-                      <span className="text-sm text-brown-700">{item.name}</span>
-                      <div className="flex items-center gap-3 w-[140px] justify-end">
-                        <span className="text-xs text-brown-400 w-14 text-right">{item.date}</span>
-                        <span
-                          className={`text-[10px] text-center font-bold px-2 py-0.5 rounded-full w-[64px] ${item.status === "Filed"
-                            ? "bg-lime-bg text-olive-700"
-                            : item.status === "Upcoming"
-                              ? "bg-cream-dark text-brown-600"
-                              : "bg-brown-100 text-brown-500"
-                            }`}
-                        >
-                          {item.status}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* CTA card like founding leals's "Create AI Field" */}
-              <div className="bg-white rounded-2xl shadow-sm p-6 flex items-center justify-center gap-3 cursor-pointer hover:shadow-md transition-shadow">
-                <Plus className="w-6 h-6 text-brown-400" />
-                <span className="text-base font-medium text-brown-700">
-                  Add Compliance Task
-                </span>
               </div>
             </div>
           </div>
@@ -286,55 +218,14 @@ export function RaiseSection() {
     <section id="raise" ref={ref} className="py-20 lg:py-28 bg-cream border-t border-brown-100">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-          {/* Left — interactive visual (Requested left orientation) */}
+          {/* Left — interactive visual */}
           <div className="reveal-left order-2 lg:order-1">
-            <div className="bg-cream-dark rounded-3xl p-10 relative">
-              {/* Equity dashboard mockup */}
-              <div className="bg-white rounded-2xl shadow-sm p-6 mb-4">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 rounded-lg bg-olive-600 flex items-center justify-center">
-                    <TrendingUp className="w-4 h-4 text-lime-bg" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-brown-400">Fundraising Status</p>
-                    <p className="text-sm font-semibold text-brown-900">Investment Ready</p>
-                  </div>
-                  <div className="ml-auto w-3 h-3 rounded-full bg-olive-500" />
+            <div className="bg-cream-dark rounded-3xl p-8 sm:p-10 relative overflow-hidden">
+              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-[4/3] flex items-center justify-center">
+                {/* Ready for Raise video */}
+                <div className="absolute inset-0 bg-white/50 flex items-center justify-center border-2 border-dashed border-brown-200 m-4 rounded-xl">
+                  <p className="text-brown-400 font-medium">Raise Video Coming Soon</p>
                 </div>
-                <div className="space-y-2.5">
-                  {[
-                    { name: "Pitch Deck & Materials", status: "Prepared", detail: "100%" },
-                    { name: "Investor Outreach", status: "Active", detail: "24 Contacted" },
-                    { name: "Due Diligence Room", status: "Ready", detail: "Updated" },
-                    { name: "Term Sheet Negotiations", status: "Ongoing", detail: "2 Drafts" },
-                  ].map((item) => (
-                    <div
-                      key={item.name}
-                      className="flex items-center justify-between py-2.5 px-3 rounded-lg bg-cream-light"
-                    >
-                      <span className="text-sm text-brown-700">{item.name}</span>
-                      <div className="flex items-center gap-3 w-[164px] justify-end">
-                        <span className="text-xs text-brown-400 w-[84px] text-right">{item.detail}</span>
-                        <span
-                          className={`text-[10px] text-center font-bold px-2 py-0.5 rounded-full w-[68px] ${item.status === "Prepared" || item.status === "Active" || item.status === "Ready"
-                            ? "bg-lime-bg text-olive-700"
-                            : "bg-cream-dark text-brown-600"
-                            }`}
-                        >
-                          {item.status}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* CTA card */}
-              <div className="bg-white rounded-2xl shadow-sm p-6 flex items-center justify-center gap-3 cursor-pointer hover:shadow-md transition-shadow">
-                <Plus className="w-6 h-6 text-brown-400" />
-                <span className="text-base font-medium text-brown-700">
-                  Issue New Shares
-                </span>
               </div>
             </div>
           </div>
