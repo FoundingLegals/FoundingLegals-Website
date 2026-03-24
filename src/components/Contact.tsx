@@ -17,7 +17,8 @@ export default function Contact() {
     try {
       // Using Formspree (a professional service for static site forms)
       // I am using a placeholder endpoint. The user will need to confirm the email on Formspree.
-      const response = await fetch("https://formspree.io/f/mqaeedoz", {
+      const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID || "mqaeedoz";
+      const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
