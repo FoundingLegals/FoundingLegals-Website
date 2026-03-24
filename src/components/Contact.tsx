@@ -95,12 +95,7 @@ export default function Contact() {
           <div className="bg-white rounded-3xl shadow-[0_20px_50px_rgba(43,39,35,0.08)] border border-brown-100/50 p-8 sm:p-10">
             <h3 className="text-2xl font-serif font-semibold text-brown-900 mb-8">Request a Personal Demo</h3>
 
-            <form 
-              action="https://formspree.io/f/xqeyrnpp"
-              method="POST"
-              onSubmit={handleSubmit} 
-              className="space-y-6"
-            >
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="first-name" className="block text-xs font-bold text-brown-400 uppercase tracking-widest mb-2">First Name</label>
