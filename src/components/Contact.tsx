@@ -2,43 +2,12 @@
 
 import { useState } from "react";
 import { Shield, Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { useForm, ValidationError } from "@formspree/react";
 
 export default function Contact() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [state, handleSubmit] = useForm("xgongnbz");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    const formData = new FormData(e.target as HTMLFormElement);
-    const data = Object.fromEntries(formData.entries());
-
-    try {
-      // Using Formspree (a professional service for static site forms)
-      // I am using a placeholder endpoint. The user will need to confirm the email on Formspree.
-      const response = await fetch("https://formspree.io/f/mqaeedoz", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        setIsSubmitted(true);
-      } else {
-        alert("There was an error sending your message. Please try again or email us directly at info@foundinglegals.com");
-      }
-    } catch (error) {
-      alert("There was an error sending your message. Please check your connection.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  if (isSubmitted) {
+  if (state.succeeded) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-6">
         <div className="w-20 h-20 bg-olive-100 rounded-full flex items-center justify-center mb-6 animate-bounce">
@@ -49,7 +18,7 @@ export default function Contact() {
           Thank you for reaching out. A Founding Legals expert will contact you at the provided email to schedule your demo shortly.
         </p>
         <button
-          onClick={() => setIsSubmitted(false)}
+          onClick={() => window.location.reload()}
           className="mt-8 text-olive-600 font-semibold hover:text-olive-700 underline underline-offset-4"
         >
           Send another message
@@ -115,9 +84,7 @@ export default function Contact() {
                 <div>
                   <h4 className="text-sm font-semibold text-brown-900 uppercase tracking-wider mb-1">Office</h4>
                   <p className="text-lg text-brown-600">
-                    The Herbt's Square building, 5th Floor
-                    APIIC I.T Park, Mangalagiri
-                    AMARAVATI-522503, AP
+                    The Herbt's Square building, 5th Floor APIIC I.T Park, Mangalagiri AMARAVATI-522503, AP
                   </p>
                 </div>
               </div>
@@ -164,6 +131,12 @@ export default function Contact() {
                   className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-cream/20"
                   placeholder="arjun@startup.com"
                 />
+                <ValidationError 
+                  prefix="Email" 
+                  field="email"
+                  errors={state.errors}
+                  className="text-xs text-red-500 mt-1"
+                />
               </div>
 
               <div>
@@ -187,15 +160,21 @@ export default function Contact() {
                   className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-cream/20 resize-none"
                   placeholder="Tell us about your startup or specific requirements..."
                 />
+                <ValidationError 
+                  prefix="Message" 
+                  field="message"
+                  errors={state.errors}
+                  className="text-xs text-red-500 mt-1"
+                />
               </div>
 
               <button
                 type="submit"
-                disabled={isLoading}
+                disabled={state.submitting}
                 suppressHydrationWarning
-                className={`w-full py-4 bg-olive-600 text-white rounded-xl font-bold text-[15px] shadow-lg shadow-olive-600/20 hover:bg-olive-700 hover:shadow-olive-600/30 transition-all flex items-center justify-center gap-2 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                className={`w-full py-4 bg-olive-600 text-white rounded-xl font-bold text-[15px] shadow-lg shadow-olive-600/20 hover:bg-olive-700 hover:shadow-olive-600/30 transition-all flex items-center justify-center gap-2 ${state.submitting ? 'opacity-70 cursor-not-allowed' : ''}`}
               >
-                {isLoading ? (
+                {state.submitting ? (
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                 ) : (
                   <>
