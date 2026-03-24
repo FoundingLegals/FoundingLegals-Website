@@ -37,15 +37,15 @@ export function StartSection() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Left — document visual (founding leals's contract screenshot style) */}
           <div className="reveal-left">
-            <div className="bg-cream-dark rounded-3xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-[4/3] flex items-center justify-center">
+            <div className="bg-cream-dark rounded-3xl p-3 sm:p-4 relative overflow-hidden">
+              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-video flex items-center justify-center">
                 <video
                   src="/videos/start.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="absolute inset-0 w-full h-full object-cover scale-[1.4]"
+                  className="absolute inset-0 w-full h-full object-cover scale-[1.3]"
                   style={{ backgroundColor: 'white' }}
                 />
               </div>
@@ -191,15 +191,15 @@ export function ComplianceSection() {
 
           {/* Right — interactive visual */}
           <div className="reveal-right">
-            <div className="bg-cream-dark rounded-3xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-[4/3] flex items-center justify-center">
+            <div className="bg-cream-dark rounded-3xl p-3 sm:p-4 relative overflow-hidden">
+              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-video flex items-center justify-center">
                 <video
                   src="/videos/compliance.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="absolute inset-0 w-full h-full object-cover scale-[1.4]"
+                  className="absolute inset-0 w-full h-full object-cover scale-[1.3]"
                   style={{ backgroundColor: 'white' }}
                 />
               </div>
@@ -225,8 +225,8 @@ export function RaiseSection() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Left — interactive visual */}
           <div className="reveal-left order-2 lg:order-1">
-            <div className="bg-cream-dark rounded-3xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-[4/3] flex items-center justify-center">
+            <div className="bg-cream-dark rounded-3xl p-3 sm:p-4 relative overflow-hidden">
+              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-video flex items-center justify-center">
                 {/* Ready for Raise video */}
                 <div className="absolute inset-0 bg-white/50 flex items-center justify-center border-2 border-dashed border-brown-200 m-4 rounded-xl">
                   <p className="text-brown-400 font-medium">Raise Video Coming Soon</p>
