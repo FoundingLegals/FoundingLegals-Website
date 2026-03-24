@@ -111,6 +111,7 @@ export default function Header() {
               onMouseLeave={() => setMegaOpen(false)}
             >
               <button
+                suppressHydrationWarning
                 className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-semibold rounded-full transition-all duration-200 ${
                   megaOpen
                     ? "bg-cream-dark text-brown-900"
