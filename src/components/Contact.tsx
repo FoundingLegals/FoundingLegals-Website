@@ -11,11 +11,31 @@ export default function Contact() {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsLoading(false);
-    setIsSubmitted(true);
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      // Using Formspree (a professional service for static site forms)
+      // I am using a placeholder endpoint. The user will need to confirm the email on Formspree.
+      const response = await fetch("https://formspree.io/f/mqaeedoz", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        alert("There was an error sending your message. Please try again or email us directly at info@foundinglegals.com");
+      }
+    } catch (error) {
+      alert("There was an error sending your message. Please check your connection.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (isSubmitted) {
@@ -102,6 +122,7 @@ export default function Contact() {
                   <input 
                     type="text" 
                     id="first-name" 
+                    name="firstName"
                     required
                     className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-cream/20"
                     placeholder="Arjun"
@@ -112,6 +133,7 @@ export default function Contact() {
                   <input 
                     type="text" 
                     id="last-name"
+                    name="lastName"
                     required
                     className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-cream/20"
                     placeholder="Mehta"
@@ -124,6 +146,7 @@ export default function Contact() {
                 <input 
                   type="email" 
                   id="email"
+                  name="email"
                   required
                   className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-cream/20"
                   placeholder="arjun@startup.com"
@@ -135,6 +158,7 @@ export default function Contact() {
                 <input 
                   type="text" 
                   id="company"
+                  name="company"
                   required
                   className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-cream/20"
                   placeholder="Unicorn Inc."
@@ -145,6 +169,7 @@ export default function Contact() {
                 <label htmlFor="message" className="block text-xs font-bold text-brown-400 uppercase tracking-widest mb-2">How can we help?</label>
                 <textarea 
                   id="message"
+                  name="message"
                   rows={4}
                   className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-cream/20 resize-none"
                   placeholder="Tell us about your startup or specific requirements..."
