@@ -97,7 +97,7 @@ export default function Header() {
             <div className="w-[30px] h-[30px] bg-olive-600 rounded-[8px] flex items-center justify-center">
               <Shield className="w-[15px] h-[15px] text-white" />
             </div>
-            <span className="text-[17px] font-semibold tracking-[-0.01em] text-brown-900 italic font-serif hidden sm:block">
+            <span className="text-[15px] sm:text-[17px] font-semibold tracking-[-0.01em] text-brown-900 italic font-serif block">
               Founding Legals
             </span>
           </a>
@@ -308,6 +308,13 @@ export default function Header() {
                 className="block px-3 py-2 text-[13px] font-medium text-brown-600 hover:text-brown-900 rounded-lg hover:bg-cream transition-colors"
               >
                 Schedule Demo
+              </a>
+              <a
+                href="/contact"
+                onClick={() => setIsMobileOpen(false)}
+                className="block px-3 py-2 text-[13px] font-medium text-brown-600 hover:text-brown-900 rounded-lg hover:bg-cream transition-colors"
+              >
+                Contact Us
               </a>
               <a
                 href={process.env.NEXT_PUBLIC_APP_URL || "#"}
