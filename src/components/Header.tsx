@@ -92,15 +92,12 @@ export default function Header() {
       >
         <div className="flex items-center justify-between h-[56px] sm:h-[62px] px-6 lg:px-8">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2.5 shrink-0 group">
+          <a href="/" className="flex items-center shrink-0 group">
             <img
-              src="/Logo.png"
-              alt="Founding Legals Logo"
-              className="w-9 h-9 sm:w-11 sm:h-11 object-contain transition-transform duration-300 group-hover:scale-105"
+              src="/Founding Legals Logo.png"
+              alt="Founding Legals"
+              className="h-11 sm:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
-            <span className="text-[15px] sm:text-[17px] font-semibold tracking-[-0.01em] text-brown-900 italic font-serif block">
-              Founding Legals
-            </span>
           </a>
 
           {/* Desktop Nav */}

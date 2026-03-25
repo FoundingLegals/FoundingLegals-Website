@@ -272,11 +272,11 @@ export default function Roadmap() {
             {/* NODE - Plain Logo */}
             <g id="nodebox" ref={nodeboxRef} opacity="0">
               <image
-                x="210"
-                y="305"
-                width="72"
-                height="72"
-                href="/Logo.png"
+                x="155"
+                y="318"
+                width="170"
+                height="50"
+                href="/Founding Legals Logo.png"
                 className="drop-shadow-sm"
               />
             </g>
