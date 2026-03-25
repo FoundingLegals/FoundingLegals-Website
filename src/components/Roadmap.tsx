@@ -7,36 +7,39 @@ function easeInOut(t: number) {
   return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 }
 
-// ─── Path keyframes ─────────────────────────────────────────
+// ─── Path keyframes (Aligned for 1280px ViewBox) ──────────────
 const SEGMENTS = [
-  { pts: [{ x: 218, y: 0 }, { x: 218, y: 248 }], dur: 900 },
-  { pts: [{ x: 218, y: 248 }, { x: 230, y: 275 }, { x: 255, y: 308 }, { x: 295, y: 330 }, { x: 340, y: 339 }, { x: 387, y: 341 }], dur: 750 },
-  { pts: [{ x: 387, y: 341 }, { x: 434, y: 341 }, { x: 482, y: 341 }], dur: 400, showNode: true },
-  { pts: [{ x: 482, y: 341 }, { x: 540, y: 352 }, { x: 590, y: 385 }, { x: 640, y: 445 }, { x: 685, y: 490 }, { x: 710, y: 503 }], dur: 950 },
-  { pts: [{ x: 710, y: 503 }, { x: 760, y: 503 }], dur: 400 },
+  { pts: [{ x: 32, y: 0 }, { x: 32, y: 248 }], dur: 900 }, // vline
+  { pts: [{ x: 32, y: 248 }, { x: 44, y: 275 }, { x: 69, y: 308 }, { x: 109, y: 330 }, { x: 154, y: 339 }, { x: 201, y: 341 }], dur: 750 }, // arc
+  { pts: [{ x: 201, y: 341 }, { x: 248, y: 341 }, { x: 296, y: 341 }], dur: 450, showNode: true }, // Reach logo
+  { pts: [{ x: 296, y: 341 }, { x: 334, y: 352 }, { x: 374, y: 385 }, { x: 414, y: 445 }, { x: 449, y: 490 }, { x: 464, y: 503 }], dur: 950 }, // scurve
+  { pts: [{ x: 464, y: 503 }, { x: 480, y: 503 }], dur: 300 }, // hline start
   { pause: 950, tagId: 'tag1' },
-  { pts: [{ x: 760, y: 503 }, { x: 935, y: 503 }], dur: 650 },
+  { pts: [{ x: 480, y: 503 }, { x: 590, y: 503 }], dur: 600 },
   { pause: 950, tagId: 'tag2' },
-  { pts: [{ x: 935, y: 503 }, { x: 1110, y: 503 }], dur: 650 },
+  { pts: [{ x: 590, y: 503 }, { x: 700, y: 503 }], dur: 600 },
   { pause: 950, tagId: 'tag3' },
-  { pts: [{ x: 1110, y: 503 }, { x: 1285, y: 503 }], dur: 650 },
+  { pts: [{ x: 700, y: 503 }, { x: 810, y: 503 }], dur: 600 },
   { pause: 950, tagId: 'tag4' },
-  { pts: [{ x: 1285, y: 503 }, { x: 1460, y: 503 }], dur: 650 },
+  { pts: [{ x: 810, y: 503 }, { x: 920, y: 503 }], dur: 600 },
   { pause: 950, tagId: 'tag5' },
-  { pts: [{ x: 1460, y: 503 }, { x: 1536, y: 503 }], dur: 500 },
+  { pts: [{ x: 920, y: 503 }, { x: 1030, y: 503 }], dur: 600 },
+  { pause: 950, tagId: 'tag6' },
+  { pts: [{ x: 1030, y: 503 }, { x: 1140, y: 503 }], dur: 600 },
+  { pause: 950, tagId: 'tag7' },
+  { pts: [{ x: 1140, y: 503 }, { x: 1280, y: 503 }], dur: 400 },
 ];
 
 const LINE_SEGS = [
   { id: 'vline', tStart: 0, tEnd: 900, len: 248 },
   { id: 'arc', tStart: 900, tEnd: 1650, len: 210 },
-  { id: 'scurve', tStart: 2050, tEnd: 3000, len: 420 },
-  { id: 'hline', tStart: 3000, tEnd: 7150, len: 826 },
+  { id: 'scurve', tStart: 2100, tEnd: 3050, len: 420 }, // 1650 + 450 = 2100
+  { id: 'hline', tStart: 3050, tEnd: 11100, len: 816 },
 ];
 
 export default function Roadmap() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // SVG Refs
   const dotRef = useRef<SVGCircleElement>(null);
   const dotGlowRef = useRef<SVGCircleElement>(null);
   const nodeboxRef = useRef<SVGGElement>(null);
@@ -46,6 +49,8 @@ export default function Roadmap() {
   const tag3Ref = useRef<SVGGElement>(null);
   const tag4Ref = useRef<SVGGElement>(null);
   const tag5Ref = useRef<SVGGElement>(null);
+  const tag6Ref = useRef<SVGGElement>(null);
+  const tag7Ref = useRef<SVGGElement>(null);
 
   const vlineRef = useRef<SVGLineElement>(null);
   const arcRef = useRef<SVGPathElement>(null);
@@ -64,6 +69,8 @@ export default function Roadmap() {
       tag3: tag3Ref.current,
       tag4: tag4Ref.current,
       tag5: tag5Ref.current,
+      tag6: tag6Ref.current,
+      tag7: tag7Ref.current,
     };
 
     const lines = {
@@ -100,17 +107,17 @@ export default function Roadmap() {
       };
     }
 
-    function updateLines(moveDur: number) {
+    function updateLines(totalElapsed: number) {
       LINE_SEGS.forEach(s => {
         const el = lines[s.id as keyof typeof lines];
         if (!el) return;
-        if (moveDur <= s.tStart) {
+        if (totalElapsed <= s.tStart) {
           el.setAttribute('stroke-dashoffset', String(s.len));
-        } else if (moveDur >= s.tEnd) {
+        } else if (totalElapsed >= s.tEnd) {
           el.setAttribute('stroke-dashoffset', "0");
         } else {
-          const p = (moveDur - s.tStart) / (s.tEnd - s.tStart);
-          el.setAttribute('stroke-dashoffset', String(s.len * (1 - easeInOut(p))));
+          const progress = (totalElapsed - s.tStart) / (s.tEnd - s.tStart);
+          el.setAttribute('stroke-dashoffset', String(s.len * (1 - easeInOut(progress))));
         }
       });
     }
@@ -149,30 +156,31 @@ export default function Roadmap() {
       } else {
         if (step.showNode && !nodeShown) {
           nodeShown = true;
-          fadeIn(nodeboxRef.current, 400);
+          fadeIn(nodeboxRef.current, 500);
         }
 
-        const startMove = moveElapsed;
+        const startMoveTime = moveElapsed;
         const stepDur = step.dur!;
         const startTime = performance.now();
 
         function frame(now: number) {
           if (!isRunning) return;
-          const raw = Math.min((now - startTime) / stepDur, 1);
-          const eased = easeInOut(raw);
+          const raw = (now - startTime) / stepDur;
+          const clamped = Math.min(raw, 1);
+          const eased = easeInOut(clamped);
 
           const pos = lerpPts(step.pts!, eased);
           setDot(pos.x, pos.y);
 
-          const currentMove = startMove + raw * stepDur;
-          updateLines(currentMove);
+          // Update lines with combined linear time
+          updateLines(startMoveTime + clamped * stepDur);
 
           if (raw < 1) {
             currentRaf = requestAnimationFrame(frame);
           } else {
             const end = step.pts![step.pts!.length - 1];
             setDot(end.x, end.y);
-            moveElapsed = startMove + stepDur;
+            moveElapsed = startMoveTime + stepDur;
             runStep(index + 1);
           }
         }
@@ -195,14 +203,14 @@ export default function Roadmap() {
         if (el) el.setAttribute('stroke-dashoffset', String(s.len));
       });
 
-      setDot(218, 0);
-      currentTimeout = setTimeout(() => runStep(0), 300);
+      setDot(32, 0);
+      currentTimeout = setTimeout(() => runStep(0), 400);
     }
 
     observer = new IntersectionObserver(([e]) => {
       if (e.isIntersecting && !isRunning) {
         isRunning = true;
-        setDot(218, 0);
+        setDot(32, 0);
         currentTimeout = setTimeout(() => runStep(0), 600);
       } else if (!e.isIntersecting && isRunning) {
         isRunning = false;
@@ -227,76 +235,98 @@ export default function Roadmap() {
     <section
       ref={containerRef}
       id="roadmap"
-      className="py-16 lg:py-20 w-full overflow-hidden"
-      style={{ background: "#F2F0EA" }}
+      className="py-20 lg:py-28 w-full overflow-hidden bg-[#F2F0EA]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
-        <h2 className="font-serif text-3xl sm:text-4xl lg:text-[40px] font-medium text-brown-900 leading-[1.15] mb-5">
-          From Incorporation to Fundraising
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
+        <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-medium text-brown-900 leading-[1.1] mb-6 max-w-4xl mx-auto">
+          Complete Startup Life-Cycle:<br /> From Incorporation to Global Scale
         </h2>
+        <p className="text-xl text-brown-600 max-w-3xl mx-auto italic leading-relaxed">
+          Track the journey of your venture as we manage everything from legal foundations to post-funding governance and beyond.
+        </p>
       </div>
 
-      <div style={{ width: "100%", maxWidth: 1024, margin: "0 auto", position: "relative" }}>
-        <svg id="svg" width="100%" height="auto" viewBox="0 0 1536 580" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-          {/* User's exact background rect */}
-          <rect width="1536" height="580" fill="#F2F0EA"/>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full relative bg-[#F2F0EA]">
+          <svg
+            id="roadmap-svg"
+            viewBox="0 0 1280 580"
+            className="w-full h-auto"
+            preserveAspectRatio="xMinYMid meet"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="1280" height="580" fill="#F2F0EA" />
 
-          {/* LINES */}
-          <line id="vline" ref={vlineRef} x1="218" y1="0" x2="218" y2="248"
-                stroke="#C0BAB0" strokeWidth="1.5" strokeDasharray="248" strokeDashoffset="248"/>
-          <path id="arc" ref={arcRef} d="M 218 248 Q 218 341 387 341"
-                fill="none" stroke="#C0BAB0" strokeWidth="1.5" strokeDasharray="210" strokeDashoffset="210"/>
-          <path id="scurve" ref={scurveRef} d="M 482 341 C 615 341 650 503 710 503"
-                fill="none" stroke="#C0BAB0" strokeWidth="1.5" strokeDasharray="420" strokeDashoffset="420"/>
-          <line id="hline" ref={hlineRef} x1="710" y1="503" x2="1536" y2="503"
-                stroke="#C0BAB0" strokeWidth="1" strokeDasharray="826" strokeDashoffset="826"/>
+            {/* Path Lines */}
+            <line id="vline" ref={vlineRef} x1="32" y1="0" x2="32" y2="248"
+              stroke="#D2C9BD" strokeWidth="2.5" strokeDasharray="248" strokeDashoffset="248" />
+            <path id="arc" ref={arcRef} d="M 32 248 Q 32 341 201 341"
+              fill="none" stroke="#D2C9BD" strokeWidth="2.5" strokeDasharray="210" strokeDashoffset="210" />
+            <path id="scurve" ref={scurveRef} d="M 296 341 C 406 341 414 503 464 503"
+              fill="none" stroke="#D2C9BD" strokeWidth="2.5" strokeDasharray="420" strokeDashoffset="420" />
+            <line id="hline" ref={hlineRef} x1="464" y1="503" x2="1280" y2="503"
+              stroke="#D2C9BD" strokeWidth="2" strokeDasharray="816" strokeDashoffset="816" />
 
-          {/* NODE */}
-          <g id="nodebox" ref={nodeboxRef} opacity="0">
-            <rect x="387" y="295" width="95" height="92" rx="14" fill="#CEC5B8"/>
-            <circle cx="434" cy="341" r="20" stroke="#5C7A28" strokeWidth="2.2" fill="none"/>
-            <path d="M 414 341 Q 421 333 434 341 Q 447 349 454 341"
-                  stroke="#5C7A28" strokeWidth="2.2" fill="none" strokeLinecap="round"/>
-            <line x1="434" y1="321" x2="434" y2="361"
-                  stroke="#5C7A28" strokeWidth="2.2" strokeLinecap="round"/>
-          </g>
+            {/* START ICON (Document) */}
+            <g id="startIcon" transform="translate(14,-25)">
+              <rect x="0" y="0" width="36" height="46" rx="6" fill="white" stroke="#D2C9BD" strokeWidth="2" />
+              <line x1="10" y1="12" x2="26" y2="12" stroke="#D2C9BD" strokeWidth="2" />
+              <line x1="10" y1="22" x2="26" y2="22" stroke="#D2C9BD" strokeWidth="2" />
+              <line x1="10" y1="32" x2="18" y2="32" stroke="#D2C9BD" strokeWidth="2" />
+            </g>
 
-          {/* TAGS */}
-          <g id="tag1" ref={tag1Ref} opacity="0">
-            <rect x="698" y="450" width="124" height="30" rx="15" fill="#F5A520"/>
-            <text x="760" y="465" textAnchor="middle" dominantBaseline="middle"
-                  fill="white" fontSize="13" fontWeight="500"
-                  fontFamily="-apple-system,'Helvetica Neue',Arial,sans-serif">Registration</text>
-          </g>
-          <g id="tag2" ref={tag2Ref} opacity="0">
-            <rect x="873" y="523" width="124" height="30" rx="15" fill="#C4B0C8"/>
-            <text x="935" y="538" textAnchor="middle" dominantBaseline="middle"
-                  fill="#4a3060" fontSize="13" fontWeight="500"
-                  fontFamily="-apple-system,'Helvetica Neue',Arial,sans-serif">Compliance</text>
-          </g>
-          <g id="tag3" ref={tag3Ref} opacity="0">
-            <rect x="1042" y="450" width="136" height="30" rx="15" fill="#C9DBA2"/>
-            <text x="1110" y="465" textAnchor="middle" dominantBaseline="middle"
-                  fill="#4e6e1e" fontSize="13" fontWeight="500"
-                  fontFamily="-apple-system,'Helvetica Neue',Arial,sans-serif">Certifications</text>
-          </g>
-          <g id="tag4" ref={tag4Ref} opacity="0">
-            <rect x="1245" y="523" width="80" height="30" rx="15" fill="#F07868"/>
-            <text x="1285" y="538" textAnchor="middle" dominantBaseline="middle"
-                  fill="white" fontSize="13" fontWeight="500"
-                  fontFamily="-apple-system,'Helvetica Neue',Arial,sans-serif">Legal</text>
-          </g>
-          <g id="tag5" ref={tag5Ref} opacity="0">
-            <rect x="1398" y="450" width="124" height="30" rx="15" fill="#7DD5C8"/>
-            <text x="1460" y="465" textAnchor="middle" dominantBaseline="middle"
-                  fill="#1a5c52" fontSize="13" fontWeight="500"
-                  fontFamily="-apple-system,'Helvetica Neue',Arial,sans-serif">Fundraising</text>
-          </g>
+            {/* NODE - Plain Logo */}
+            <g id="nodebox" ref={nodeboxRef} opacity="0">
+              <image
+                x="206"
+                y="301"
+                width="80"
+                height="80"
+                href="/Logo.png"
+                className="drop-shadow-sm"
+              />
+            </g>
 
-          {/* CIRCLE — solid filled, no glow */}
-          <circle id="dotGlow" ref={dotGlowRef} cx="218" cy="0" r="1" fill="none" opacity="0"/>
-          <circle id="dot" ref={dotRef} cx="218" cy="0" r="7" fill="#A8A89E" opacity="1"/>
-        </svg>
+            {/* TAGS - Original Vibrant Palette */}
+            <g id="tag1" ref={tag1Ref} opacity="0">
+              <rect x="420" y="450" width="120" height="30" rx="15" fill="#F5A520" />
+              <text x="480" y="465" textAnchor="middle" dominantBaseline="middle"
+                fill="white" fontSize="12" fontWeight="600">Registration</text>
+            </g>
+            <g id="tag2" ref={tag2Ref} opacity="0">
+              <rect x="530" y="523" width="120" height="30" rx="15" fill="#C4B0C8" />
+              <text x="590" y="538" textAnchor="middle" dominantBaseline="middle"
+                fill="#4a3060" fontSize="12" fontWeight="600">Compliance</text>
+            </g>
+            <g id="tag3" ref={tag3Ref} opacity="0">
+              <rect x="640" y="450" width="128" height="30" rx="15" fill="#C9DBA2" />
+              <text x="704" y="465" textAnchor="middle" dominantBaseline="middle"
+                fill="#4e6e1e" fontSize="12" fontWeight="600">Certifications</text>
+            </g>
+            <g id="tag4" ref={tag4Ref} opacity="0">
+              <rect x="770" y="523" width="80" height="30" rx="15" fill="#F07868" />
+              <text x="810" y="538" textAnchor="middle" dominantBaseline="middle"
+                fill="white" fontSize="12" fontWeight="600">Legal</text>
+            </g>
+            <g id="tag5" ref={tag5Ref} opacity="0">
+              <rect x="860" y="450" width="120" height="30" rx="15" fill="#7DD5C8" />
+              <text x="920" y="465" textAnchor="middle" dominantBaseline="middle"
+                fill="#1a5c52" fontSize="12" fontWeight="600">Fundraising</text>
+            </g>
+            <g id="tag6" ref={tag6Ref} opacity="0">
+              <rect x="970" y="523" width="120" height="30" rx="15" fill="#A4C2F4" />
+              <text x="1030" y="538" textAnchor="middle" dominantBaseline="middle"
+                fill="#2c4a8a" fontSize="12" fontWeight="600">Governance</text>
+            </g>
+            <g id="tag7" ref={tag7Ref} opacity="0">
+              <rect x="1080" y="450" width="120" height="30" rx="15" fill="#B6D7A8" />
+              <text x="1140" y="465" textAnchor="middle" dominantBaseline="middle"
+                fill="#3a632b" fontSize="12" fontWeight="600">IPO Ready</text>
+            </g>
+
+            <circle id="dot" ref={dotRef} cx="32" cy="0" r="8" fill="#A8A89E" opacity="1" />
+          </svg>
+        </div>
       </div>
     </section>
   );

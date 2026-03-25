@@ -37,8 +37,8 @@ export default function Contact() {
 
           {/* Left Column: Info */}
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brown-100 rounded-md text-olive-700 text-[13px] font-semibold tracking-wide mb-8">
-              <Shield className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-white border border-brown-100 rounded-lg text-olive-700 text-[13px] font-semibold tracking-wide mb-8 shadow-sm">
+              <img src="/Logo.png" alt="" className="w-5 h-5 object-contain" />
               Schedule a Demo
             </div>
 
@@ -183,7 +183,7 @@ export default function Contact() {
                   </>
                 )}
               </button>
-              
+
               {state.errors && (
                 <p className="text-xs text-red-500 text-center mt-2">
                   There was an error submitting the form. Please check your data and try again.

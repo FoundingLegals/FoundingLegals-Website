@@ -85,18 +85,19 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4">
       {/* Floating pill nav */}
       <nav
-        className={`max-w-7xl mx-auto rounded-full transition-all duration-500 ease-out ${
-          isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(43,39,35,0.1)]"
-            : "bg-white shadow-[0_1px_12px_rgba(43,39,35,0.06)]"
-        }`}
+        className={`max-w-7xl mx-auto rounded-full transition-all duration-500 ease-out ${isScrolled
+          ? "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(43,39,35,0.1)]"
+          : "bg-white shadow-[0_1px_12px_rgba(43,39,35,0.06)]"
+          }`}
       >
         <div className="flex items-center justify-between h-[56px] sm:h-[62px] px-6 lg:px-8">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2.5 shrink-0">
-            <div className="w-[30px] h-[30px] bg-olive-600 rounded-[8px] flex items-center justify-center">
-              <Shield className="w-[15px] h-[15px] text-white" />
-            </div>
+          <a href="/" className="flex items-center gap-2.5 shrink-0 group">
+            <img
+              src="/Logo.png"
+              alt="Founding Legals Logo"
+              className="w-10 h-10 sm:w-12 sm:h-12 object-contain transition-transform duration-300 group-hover:scale-105"
+            />
             <span className="text-[15px] sm:text-[17px] font-semibold tracking-[-0.01em] text-brown-900 italic font-serif block">
               Founding Legals
             </span>
@@ -112,17 +113,15 @@ export default function Header() {
             >
               <button
                 suppressHydrationWarning
-                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-semibold rounded-full transition-all duration-200 ${
-                  megaOpen
-                    ? "bg-cream-dark text-brown-900"
-                    : "text-olive-700 hover:bg-cream hover:text-brown-900"
-                }`}
+                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-semibold rounded-full transition-all duration-200 ${megaOpen
+                  ? "bg-cream-dark text-brown-900"
+                  : "text-olive-700 hover:bg-cream hover:text-brown-900"
+                  }`}
               >
                 For Founders
                 <ChevronDown
-                  className={`w-3 h-3 transition-transform duration-200 ${
-                    megaOpen ? "rotate-180" : ""
-                  }`}
+                  className={`w-3 h-3 transition-transform duration-200 ${megaOpen ? "rotate-180" : ""
+                    }`}
                 />
               </button>
 
@@ -186,7 +185,7 @@ export default function Header() {
             >
               Schedule Demo
             </a>
-            
+
             {/* Company Dropdown */}
             <div
               className="relative"
@@ -195,17 +194,15 @@ export default function Header() {
             >
               <button
                 suppressHydrationWarning
-                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-medium rounded-full transition-all duration-200 ${
-                  companyOpen
-                    ? "bg-[#F0EBDF] text-[#33312c]"
-                    : "text-brown-600 hover:bg-cream hover:text-brown-800"
-                }`}
+                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-medium rounded-full transition-all duration-200 ${companyOpen
+                  ? "bg-[#F0EBDF] text-[#33312c]"
+                  : "text-brown-600 hover:bg-cream hover:text-brown-800"
+                  }`}
               >
                 Company
                 <ChevronDown
-                  className={`w-3 h-3 transition-transform duration-200 ${
-                    companyOpen ? "rotate-180" : ""
-                  }`}
+                  className={`w-3 h-3 transition-transform duration-200 ${companyOpen ? "rotate-180" : ""
+                    }`}
                 />
               </button>
 

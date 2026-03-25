@@ -62,11 +62,9 @@ export default function Process() {
             {/* Right: olive panel with process steps */}
             <div className="reveal-right">
               <div className="bg-olive-600 rounded-3xl p-10 relative overflow-hidden smooth-hover">
-                {/* Subtle FL watermark */}
-                <div className="absolute inset-0 opacity-[0.04] flex items-center justify-center pointer-events-none">
-                  <div className="text-white text-[140px] font-serif font-bold leading-none select-none">
-                    FL
-                  </div>
+                {/* Subtle Logo watermark */}
+                <div className="absolute inset-0 opacity-[0.05] flex items-center justify-center pointer-events-none">
+                  <img src="/Logo.png" alt="" className="w-[220px] h-[220px] object-contain brightness-0 invert" />
                 </div>
                 <div className="relative space-y-6">
                   {steps.map((step, idx) => (

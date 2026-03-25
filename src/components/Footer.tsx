@@ -24,11 +24,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <a href="#" className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-olive-600 rounded-lg flex items-center justify-center">
-                <Shield className="w-4 h-4 text-white" />
-              </div>
-              <span className="text-lg font-semibold tracking-tight text-brown-900 italic font-serif">
+            <a href="#" className="flex items-center gap-3 mb-6 group">
+              <img
+                src="/Logo.png"
+                alt="Founding Legals Logo"
+                className="w-11 h-11 sm:w-14 sm:h-14 object-contain transition-transform duration-300 group-hover:scale-105"
+              />
+              <span className="text-xl font-semibold tracking-tight text-brown-900 italic font-serif">
                 Founding Legals
               </span>
             </a>

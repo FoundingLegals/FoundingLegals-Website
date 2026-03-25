@@ -228,9 +228,15 @@ export function RaiseSection() {
             <div className="bg-cream-dark rounded-3xl p-8 sm:p-10 relative overflow-hidden">
               <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-[4/3] flex items-center justify-center">
                 {/* Ready for Raise video */}
-                <div className="absolute inset-0 bg-white/50 flex items-center justify-center border-2 border-dashed border-brown-200 m-4 rounded-xl">
-                  <p className="text-brown-400 font-medium">Raise Video Coming Soon</p>
-                </div>
+                <video
+                  src="/videos/raise.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover scale-[1.4]"
+                  style={{ backgroundColor: 'white' }}
+                />
               </div>
             </div>
           </div>
