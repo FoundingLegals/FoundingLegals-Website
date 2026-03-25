@@ -38,7 +38,7 @@ export default function Contact() {
           {/* Left Column: Info */}
           <div>
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-white border border-brown-100 rounded-lg text-olive-700 text-[13px] font-semibold tracking-wide mb-8 shadow-sm">
-              <img src="/Logo.png" alt="" className="w-5 h-5 object-contain" />
+              <img src="/Logo.png" alt="" className="w-4 h-4 object-contain" />
               Schedule a Demo
             </div>
 

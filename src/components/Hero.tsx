@@ -2,7 +2,7 @@
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[100svh] overflow-hidden bg-[#EDE5DA]">
+    <section className="relative min-h-svh overflow-hidden bg-[#EDE5DA]">
 
       {/* ===== LAYER 0: SKY GRADIENT ===== */}
       <div className="absolute inset-0" style={{

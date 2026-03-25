@@ -267,21 +267,15 @@ export default function Roadmap() {
             <line id="hline" ref={hlineRef} x1="464" y1="503" x2="1280" y2="503"
               stroke="#D2C9BD" strokeWidth="2" strokeDasharray="816" strokeDashoffset="816" />
 
-            {/* START ICON (Document) */}
-            <g id="startIcon" transform="translate(14,-25)">
-              <rect x="0" y="0" width="36" height="46" rx="6" fill="white" stroke="#D2C9BD" strokeWidth="2" />
-              <line x1="10" y1="12" x2="26" y2="12" stroke="#D2C9BD" strokeWidth="2" />
-              <line x1="10" y1="22" x2="26" y2="22" stroke="#D2C9BD" strokeWidth="2" />
-              <line x1="10" y1="32" x2="18" y2="32" stroke="#D2C9BD" strokeWidth="2" />
-            </g>
+
 
             {/* NODE - Plain Logo */}
             <g id="nodebox" ref={nodeboxRef} opacity="0">
               <image
-                x="206"
-                y="301"
-                width="80"
-                height="80"
+                x="210"
+                y="305"
+                width="72"
+                height="72"
                 href="/Logo.png"
                 className="drop-shadow-sm"
               />

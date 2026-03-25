@@ -64,7 +64,7 @@ export default function Process() {
               <div className="bg-olive-600 rounded-3xl p-10 relative overflow-hidden smooth-hover">
                 {/* Subtle Logo watermark */}
                 <div className="absolute inset-0 opacity-[0.05] flex items-center justify-center pointer-events-none">
-                  <img src="/Logo.png" alt="" className="w-[220px] h-[220px] object-contain brightness-0 invert" />
+                  <img src="/Logo.png" alt="" className="w-[180px] h-[180px] object-contain brightness-0 invert" />
                 </div>
                 <div className="relative space-y-6">
                   {steps.map((step, idx) => (

@@ -38,7 +38,7 @@ export function StartSection() {
           {/* Left — document visual (founding leals's contract screenshot style) */}
           <div className="reveal-left">
             <div className="bg-cream-dark rounded-3xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-[4/3] flex items-center justify-center">
+              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-4/3 flex items-center justify-center">
                 <video
                   src="/videos/start.mp4"
                   autoPlay
@@ -64,7 +64,7 @@ export function StartSection() {
             </div>
 
             <h2 className="font-serif text-4xl sm:text-[42px] lg:text-5xl font-medium text-brown-900 leading-[1.15] mb-10">
-            Seamless Corporate Foundations
+              Seamless Corporate Foundations
             </h2>
 
             <div className="space-y-8">
@@ -192,7 +192,7 @@ export function ComplianceSection() {
           {/* Right — interactive visual */}
           <div className="reveal-right">
             <div className="bg-cream-dark rounded-3xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-[4/3] flex items-center justify-center">
+              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-4/3 flex items-center justify-center">
                 <video
                   src="/videos/compliance.mp4"
                   autoPlay
@@ -226,7 +226,7 @@ export function RaiseSection() {
           {/* Left — interactive visual */}
           <div className="reveal-left order-2 lg:order-1">
             <div className="bg-cream-dark rounded-3xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-[4/3] flex items-center justify-center">
+              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-4/3 flex items-center justify-center">
                 {/* Ready for Raise video */}
                 <video
                   src="/videos/raise.mp4"

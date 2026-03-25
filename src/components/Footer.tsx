@@ -28,7 +28,7 @@ export default function Footer() {
               <img
                 src="/Logo.png"
                 alt="Founding Legals Logo"
-                className="w-11 h-11 sm:w-14 sm:h-14 object-contain transition-transform duration-300 group-hover:scale-105"
+                className="w-10 h-10 sm:w-13 sm:h-13 object-contain transition-transform duration-300 group-hover:scale-105"
               />
               <span className="text-xl font-semibold tracking-tight text-brown-900 italic font-serif">
                 Founding Legals
@@ -65,7 +65,9 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             {/* Social icons */}
             <a
-              href="#"
+              href="https://www.linkedin.com/company/arvya-tech-pvt-ltd/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-brown-400 hover:text-olive-600 transition-colors"
               aria-label="LinkedIn"
             >
