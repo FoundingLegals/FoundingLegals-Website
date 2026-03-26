@@ -15,6 +15,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
   },
+  icons: {
+    icon: "/Logo.png?v=1",
+    apple: "/apple-touch-icon.png?v=1",
+  },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
