@@ -208,8 +208,10 @@ export default function Header() {
                 <>
                   {/* Invisible hover bridge */}
                   <div className="absolute top-full left-0 right-0 h-4" />
-                  <div className="absolute left-1/2 -translate-x-1/2 top-[52px] w-[300px] bg-[#f5f1e6] rounded-[24px] shadow-[0_12px_40px_rgba(43,39,35,0.08)] animate-dropdown flex items-center justify-center px-10 py-6">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-[52px] w-[300px] bg-[#f5f1e6] rounded-[24px] shadow-[0_12px_40px_rgba(43,39,35,0.08)] animate-dropdown flex flex-col items-center justify-center gap-4 px-10 py-6">
                     <a href="/company/about-us" className="text-[14px] font-serif text-[#33312c] hover:text-olive-700 transition-colors">About us</a>
+                    <div className="w-full h-px bg-brown-100/50" />
+                    <a href="/company/careers" className="text-[14px] font-serif text-[#33312c] hover:text-olive-700 transition-colors">Careers</a>
                   </div>
                 </>
               )}
@@ -318,11 +320,11 @@ export default function Header() {
                 Login
               </a>
               <a
-                href="https://app.foundinglegals.com/sign-up"
+                href="/services"
                 onClick={() => setIsMobileOpen(false)}
                 className="block text-center px-4 py-2.5 bg-olive-600 text-white text-[13px] font-semibold rounded-full hover:bg-olive-700 transition-colors"
               >
-                Start Free
+                Start Your Journey
               </a>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { Star, ArrowRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -74,24 +74,33 @@ export default function AboutUsPage() {
 
 
       {/* 6. WE'RE HIRING (Screenshot 5) */}
-      <section className="w-full relative min-h-[500px] bg-[#d7dacb]">
+      <section className="w-full relative min-h-[600px] bg-[#d7dacb] overflow-hidden">
          <div className="absolute inset-0 bg-[#e4e3d9]" />
          <img 
             src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80"
              alt="Office"
-            className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-60"
+            className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-50 transition-transform duration-[10s] hover:scale-110"
          />
-         <div className="absolute inset-0 flex items-center justify-center p-6">
-            <div className="bg-[#FAF9F6] w-full max-w-[1000px] rounded-[24px] p-8 sm:p-14 lg:p-20 flex flex-col md:flex-row items-start md:items-center justify-between shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
-               <h2 className="text-[44px] sm:text-[56px] lg:text-[64px] font-serif font-medium leading-[1.05] text-[#2b2723] mb-8 md:mb-0">
-                  We're hiring.<br/>Join us.
-               </h2>
-               <a 
-                 href="#careers"
-                 className="px-8 py-3.5 bg-[#5A6E3B] text-white text-[16px] font-semibold rounded-lg hover:bg-[#4A5D2A] transition-colors shadow-sm"
-               >
-                  Careers
-               </a>
+         <div className="absolute inset-0 flex items-center justify-center p-6 sm:p-12">
+            <div className="bg-white/80 backdrop-blur-xl w-full max-w-[1100px] rounded-[48px] p-10 sm:p-16 lg:p-24 flex flex-col md:flex-row items-center justify-between shadow-[0_40px_100px_rgba(43,39,35,0.12)] border border-white/50 relative overflow-hidden group">
+               <div className="absolute top-0 left-0 w-64 h-64 bg-olive-100/30 -ml-32 -mt-32 rounded-full transition-transform duration-700 group-hover:scale-150" />
+               <div className="relative z-10 max-w-xl">
+                 <h2 className="text-[44px] sm:text-[60px] lg:text-[72px] font-serif font-medium leading-none text-[#2b2723] mb-8 tracking-tight">
+                    We're hiring.<br/><span className="italic text-olive-700">Join our mission.</span>
+                 </h2>
+                 <p className="text-brown-600 text-[18px] font-light leading-relaxed mb-10 md:mb-0">
+                    Become part of the team shaping the future of legal infrastructure for the next generation of Indian startups.
+                 </p>
+               </div>
+               <div className="relative z-10">
+                 <a 
+                   href="/company/careers"
+                   className="group/btn inline-flex items-center gap-4 px-10 py-5 bg-[#5A6E3B] text-white text-[17px] font-bold rounded-[20px] hover:bg-[#4A5D2A] transition-all duration-300 shadow-xl shadow-olive-900/20 hover:shadow-olive-900/40"
+                 >
+                    Explore Careers
+                    <ArrowRight className="w-6 h-6 group-hover/btn:translate-x-2 transition-transform duration-300" />
+                 </a>
+               </div>
             </div>
          </div>
       </section>

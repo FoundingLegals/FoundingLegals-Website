@@ -43,11 +43,7 @@ export default function Trust() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto mb-16 reveal">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-lime-bg rounded-full mb-6">
-              <span className="text-sm font-medium text-olive-700">
-                Security
-              </span>
-            </div>
+            <div className="mb-6" />
             <h2 className="font-serif text-4xl sm:text-[42px] lg:text-5xl font-medium text-brown-900 leading-[1.15] mb-5">
               Engineered for the Indian startup ecosystem
             </h2>
@@ -62,7 +58,7 @@ export default function Trust() {
             {badges.map((badge) => (
               <div
                 key={badge.title}
-                className="bg-cream-light rounded-2xl border border-brown-200 p-8 flex flex-col justify-between min-h-[220px] hover:shadow-md transition-all"
+                className="bg-cream-light rounded-2xl border border-brown-200 p-8 flex flex-col justify-between min-h-[220px] shadow-sm"
               >
                 <div>
                   <h4 className="font-semibold text-brown-900 text-base mb-2">

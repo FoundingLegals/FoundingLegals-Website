@@ -180,10 +180,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
       <section className="relative w-full overflow-hidden flex flex-col md:flex-row items-center border-b border-[#E5E1D6]">
         {/* Left Text Box */}
         <div className="relative z-10 w-full md:w-1/2 pt-[140px] px-8 sm:px-16 md:px-20 lg:px-28 pb-20 md:pb-32">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/50 backdrop-blur-sm border border-[#E5E1D6] rounded-md text-[#5f6b53] text-[13px] font-semibold tracking-wide mb-8">
-            <LayoutTemplate className="w-4 h-4" />
-            {service.heroCategory}
-          </div>
+          <div className="mb-8" />
 
           <h1 className="text-[44px] sm:text-[56px] lg:text-[68px] font-medium text-[#2b2723] leading-[1.05] tracking-[-0.02em] font-serif mb-8">
             {service.heroTitle}
@@ -194,10 +191,10 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
           </p>
 
           <a
-            href={process.env.NEXT_PUBLIC_APP_URL || "#"}
+            href="/services"
             className="inline-flex items-center justify-center px-8 py-3.5 bg-[#5A7338] text-white text-[15px] font-semibold rounded-lg hover:bg-[#4A5D2A] transition-colors shadow-sm"
           >
-            Start Free
+            Start Your Journey
           </a>
         </div>
 
@@ -232,10 +229,10 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
               {service.ctaDescription} {service.title} ensures you never miss a strategic advantage, putting your founder team at the center of enterprise strategy.
             </p>
             <a
-              href="#demo"
+              href="/services"
               className="inline-flex items-center justify-center px-7 py-3 bg-[#5A7338] text-white text-[15px] font-semibold rounded-lg hover:bg-[#4A5D2A] transition-colors shadow-sm"
             >
-              Start Free
+              Opt Service
             </a>
           </div>
           <div className="w-full flex justify-end">
@@ -246,42 +243,49 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
         </div>
       </section>
 
-      {/* 3. FLOWCHART SECTION (Screenshot 3 reversed to left) */}
+      {/* 3. FLOWCHART & BENEFITS SECTION (Redesigned for Width) */}
       <section className="px-6 md:px-16 lg:px-28 py-24 md:py-36 bg-white border-y border-[#E5E1D6]">
-        <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-16 md:gap-24 items-center">
-          <div className="w-full order-2 md:order-1 flex justify-start">
-            <div className="w-full max-w-[500px]">
-              <FlowchartGraphic title={service.title} />
+        <div className="max-w-[1400px] mx-auto">
+          {/* Header and Graphic row */}
+          <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center mb-20">
+            <div className="w-full order-2 md:order-1 flex justify-start">
+              <div className="w-full max-w-[550px]">
+                <FlowchartGraphic title={service.title} />
+              </div>
+            </div>
+            <div className="order-1 md:order-2">
+              <h2 className="text-[40px] sm:text-[48px] lg:text-[56px] font-serif font-medium text-[#2b2723] leading-[1.1] mb-6">
+                {service.featuresTitle || "Gain complete contract visibility"}
+              </h2>
+              <p className="text-lg text-brown-600 font-light max-w-xl">
+                Modernize your startup operations with our integrated legal framework. Built for speed, compliance, and strategic clarity.
+              </p>
             </div>
           </div>
-          <div className="order-1 md:order-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#d7f0b9]/40 border border-[#b8e280]/30 text-[#4c661b] text-[12px] font-bold tracking-wide rounded-md mb-6">
-              <Layers className="w-3.5 h-3.5" />
-              {service.heroCategory} Clarity
-            </div>
 
-            <h2 className="text-[36px] sm:text-[42px] font-serif font-medium text-[#2b2723] leading-[1.15] mb-12">
-              {service.featuresTitle || "Gain complete contract visibility"}
-            </h2>
+          {/* Professional Card Grid for Benefits (Full Width) */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+            {service.benefits.map((benefit, idx) => {
+              const parts = benefit.split('.');
+              const title = parts[0].trim();
+              const description = parts.slice(1).join('.').trim();
 
-            {/* Dynamic Features List mapped to text bullets */}
-            <div className="space-y-8">
-              {service.benefits.map((benefit, idx) => (
-                <div key={idx} className="flex gap-4">
-                  <div className="shrink-0 mt-0.5">
-                    <svg className="w-5 h-5 text-[#5A7338]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                    </svg>
+              return (
+                <div key={idx} className="bg-white rounded-[32px] p-8 sm:p-10 border border-brown-100/60 shadow-[0_10px_35px_rgba(43,39,35,0.04)] flex flex-col h-full transition-all duration-300 hover:shadow-[0_15px_45px_rgba(43,39,35,0.07)]">
+                  <div className="w-12 h-12 bg-olive-50 rounded-2xl flex items-center justify-center text-olive-600 mb-8 shrink-0">
+                    <CheckCircle2 className="w-6 h-6" strokeWidth={2.5} />
                   </div>
-                  <div>
-                    <h3 className="font-medium text-[#2b2723] text-[16px] mb-2 font-sans">Strategic Compliance</h3>
-                    <p className="text-[15px] text-[#6b6965] leading-relaxed">
-                      {benefit}
+                  <div className="flex-1">
+                    <h3 className="font-serif font-semibold text-[#2b2723] text-[22px] mb-4 leading-tight tracking-tight">
+                      {title}.
+                    </h3>
+                    <p className="text-[16px] text-brown-600 leading-[1.6] font-light">
+                      {description}
                     </p>
                   </div>
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -293,23 +297,22 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
             {"Built for trust, flexibility, and speed"}
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-6 text-left">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
             {service.features.map((feature, idx) => {
               const iconKey = feature.iconName as keyof typeof Icons;
               const Icon = (Icons[iconKey] || Icons.CheckCircle) as React.ElementType;
 
               return (
-                <div key={idx} className="bg-[#f0ebe1] rounded-2xl p-8 sm:p-10 border border-[#e5e1d6] flex flex-col h-full min-h-[300px]">
-                  <h3 className="text-[17px] font-medium text-[#4a4742] mb-3">
+                <div key={idx} className="group bg-[#f0ebe1]/60 backdrop-blur-sm rounded-[32px] p-10 border border-[#e5e1d6]/80 flex flex-col h-full min-h-[320px] transition-all duration-500 hover:bg-[#f0ebe1] hover:shadow-[0_20px_40px_rgba(43,39,35,0.04)]">
+                  <h3 className="text-[19px] font-serif font-semibold text-[#3a3732] mb-4 group-hover:text-[#2b2723] transition-colors">
                     {feature.title}
                   </h3>
-                  <p className="text-[14px] text-[#7a766f] leading-relaxed mb-auto">
+                  <p className="text-[15px] text-[#6b6965] leading-[1.6] mb-auto font-light">
                     {feature.description}
                   </p>
 
-                  {/* Icon placed at the bottom-left with characteristic thick styling */}
-                  <div className="mt-12 text-[#4d6330]">
-                    <Icon className="w-8 h-8" strokeWidth={2.5} />
+                  <div className="mt-12 text-[#5A7338]">
+                    <Icon className="w-9 h-9" strokeWidth={2} />
                   </div>
                 </div>
               );

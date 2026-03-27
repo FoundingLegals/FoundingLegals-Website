@@ -58,57 +58,34 @@ export function StartSection() {
               <div className="w-10 h-10 rounded-xl bg-olive-600 flex items-center justify-center">
                 <Building2 className="w-5 h-5 text-lime-bg" />
               </div>
-              <span className="text-sm font-medium text-olive-700 bg-lime-bg px-3 py-1 rounded-full">
-                Start
-              </span>
             </div>
 
             <h2 className="font-serif text-4xl sm:text-[42px] lg:text-5xl font-medium text-brown-900 leading-[1.15] mb-10">
               Seamless Corporate Foundations
             </h2>
 
-            <div className="space-y-8">
-              <div className="flex gap-4">
-                <div className="shrink-0 mt-0.5">
-                  <FileText className="w-5 h-5 text-olive-600" />
+            <div className="space-y-6">
+              {[
+                { icon: FileText, title: "Precision Incorporation", desc: "Execute your Private Limited registration with absolute accuracy, from name reservation to final certification." },
+                { icon: Landmark, title: "Operational Excellence", desc: "Accelerate your market entry with integrated banking, MSME certification, and regulatory readiness." },
+                { icon: Receipt, title: "Automated Tax Compliance", desc: "Navigate the Indian tax landscape with automated GST filings and strategic financial reporting." }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-5 bg-white/60 backdrop-blur-sm p-6 rounded-[24px] border border-brown-100/50 shadow-[0_4px_20px_rgba(43,39,35,0.02)] transition-all hover:shadow-[0_8px_30px_rgba(43,39,35,0.04)]">
+                  <div className="shrink-0 mt-1">
+                    <div className="w-10 h-10 rounded-xl bg-olive-50 flex items-center justify-center text-olive-600">
+                      <item.icon className="w-5 h-5" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-brown-900 mb-1.5 text-[17px]">
+                      {item.title}
+                    </h3>
+                    <p className="text-brown-500 text-[14px] leading-relaxed font-light">
+                      {item.desc}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Precision Incorporation
-                  </h3>
-                  <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Execute your Private Limited registration with absolute accuracy, from name reservation to final certification.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="shrink-0 mt-0.5">
-                  <Landmark className="w-5 h-5 text-olive-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Operational Excellence
-                  </h3>
-                  <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Accelerate your market entry with integrated banking, MSME certification, and regulatory readiness.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="shrink-0 mt-0.5">
-                  <Receipt className="w-5 h-5 text-olive-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Automated Tax Compliance
-                  </h3>
-                  <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Navigate the Indian tax landscape with automated GST filings and strategic financial reporting.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -135,57 +112,34 @@ export function ComplianceSection() {
               <div className="w-10 h-10 rounded-xl bg-olive-600 flex items-center justify-center">
                 <ShieldCheck className="w-5 h-5 text-lime-bg" />
               </div>
-              <span className="text-sm font-medium text-olive-700 bg-lime-bg px-3 py-1 rounded-full">
-                Compliance
-              </span>
             </div>
 
             <h2 className="font-serif text-4xl sm:text-[42px] lg:text-5xl font-medium text-brown-900 leading-[1.15] mb-10">
               Governance Without Complexity
             </h2>
 
-            <div className="space-y-8">
-              <div className="flex gap-4">
-                <div className="shrink-0 mt-0.5">
-                  <Sparkles className="w-5 h-5 text-olive-600" />
+            <div className="space-y-6">
+              {[
+                { icon: Sparkles, title: "Strategic ROC Oversight", desc: "Maintain flawless corporate standing with automated ROC monitoring, board resolutions, and statutory compliance." },
+                { icon: CreditCard, title: "Centralized Invoicing", desc: "Deploy professional, GST-compliant financial operations with real-time visibility into corporate expenditures." },
+                { icon: FolderOpen, title: "IP and Document Vault", desc: "Safeguard your intellectual property and manage critical corporate governance files in an encrypted, centralized vault." }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-5 bg-white/60 backdrop-blur-sm p-6 rounded-[24px] border border-brown-100/50 shadow-[0_4px_20px_rgba(43,39,35,0.02)] transition-all hover:shadow-[0_8px_30px_rgba(43,39,35,0.04)]">
+                  <div className="shrink-0 mt-1">
+                    <div className="w-10 h-10 rounded-xl bg-olive-50 flex items-center justify-center text-olive-600">
+                      <item.icon className="w-5 h-5" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-brown-900 mb-1.5 text-[17px]">
+                      {item.title}
+                    </h3>
+                    <p className="text-brown-500 text-[14px] leading-relaxed font-light">
+                      {item.desc}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Strategic ROC Oversight
-                  </h3>
-                  <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Maintain flawless corporate standing with automated ROC monitoring, board resolutions, and statutory compliance.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="shrink-0 mt-0.5">
-                  <CreditCard className="w-5 h-5 text-olive-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Centralized Invoicing
-                  </h3>
-                  <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Deploy professional, GST-compliant financial operations with real-time visibility into corporate expenditures.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="shrink-0 mt-0.5">
-                  <FolderOpen className="w-5 h-5 text-olive-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-brown-900 mb-1.5">
-                    IP and Document Vault
-                  </h3>
-                  <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Safeguard your intellectual property and manage critical corporate governance files in an encrypted, centralized vault.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
@@ -247,57 +201,34 @@ export function RaiseSection() {
               <div className="w-10 h-10 rounded-xl bg-olive-600 flex items-center justify-center">
                 <TrendingUp className="w-5 h-5 text-lime-bg" />
               </div>
-              <span className="text-sm font-medium text-olive-700 bg-lime-bg px-3 py-1 rounded-full">
-                Raise
-              </span>
             </div>
 
             <h2 className="font-serif text-4xl sm:text-[42px] lg:text-5xl font-medium text-brown-900 leading-[1.15] mb-10">
               Accelerate Funding Readiness
             </h2>
 
-            <div className="space-y-8">
-              <div className="flex gap-4">
-                <div className="shrink-0 mt-0.5">
-                  <Zap className="w-5 h-5 text-olive-600" />
+            <div className="space-y-6">
+              {[
+                { icon: Zap, title: "Investor Intelligence", desc: "Develop sophisticated pitch materials and identify strategic investment partners for your growth cycle." },
+                { icon: BarChart3, title: "Structured Round Execution", desc: "Streamline complex fundraising events with automated documentation and comprehensive due diligence infrastructure." },
+                { icon: Scale, title: "Expert Legal Advisory", desc: "Engage with term sheets and investor agreements from a position of strength with expert legal and financial oversight." }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-5 bg-white/60 backdrop-blur-sm p-6 rounded-[24px] border border-brown-100/50 shadow-[0_4px_20px_rgba(43,39,35,0.02)] transition-all hover:shadow-[0_8px_30px_rgba(43,39,35,0.04)]">
+                  <div className="shrink-0 mt-1">
+                    <div className="w-10 h-10 rounded-xl bg-olive-50 flex items-center justify-center text-olive-600">
+                      <item.icon className="w-5 h-5" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-brown-900 mb-1.5 text-[17px]">
+                      {item.title}
+                    </h3>
+                    <p className="text-brown-500 text-[14px] leading-relaxed font-light">
+                      {item.desc}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Investor Intelligence
-                  </h3>
-                  <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Develop sophisticated pitch materials and identify strategic investment partners for your growth cycle.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="shrink-0 mt-0.5">
-                  <BarChart3 className="w-5 h-5 text-olive-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Structured Round Execution
-                  </h3>
-                  <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Streamline complex fundraising events with automated documentation and comprehensive due diligence infrastructure.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="shrink-0 mt-0.5">
-                  <Scale className="w-5 h-5 text-olive-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Expert Legal Advisory
-                  </h3>
-                  <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Engage with term sheets and investor agreements from a position of strength with expert legal and financial oversight.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -327,7 +258,6 @@ export function IntelligenceSection() {
                 <div className="w-10 h-10 rounded-xl bg-olive-600 flex items-center justify-center">
                   <TrendingUp className="w-5 h-5 text-lime-bg" />
                 </div>
-                <span className="text-xs font-medium text-olive-700">Intelligence</span>
               </div>
 
               <h2 className="font-serif text-4xl sm:text-[42px] lg:text-5xl font-medium text-brown-900 leading-[1.15] mb-6">

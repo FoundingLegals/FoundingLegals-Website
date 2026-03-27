@@ -1,7 +1,7 @@
 import { 
   Rocket, Shield, Briefcase, FileText, Banknote, Scroll, CheckCircle, 
   Search, ShieldCheck, Scale, LineChart, FileSignature, Coins, 
-  TrendingUp, Eye, FileSearch, Building2
+  TrendingUp, Eye, FileSearch, Building2, Award, Presentation, Zap
 } from "lucide-react";
 
 export type ServicePattern = {
@@ -52,9 +52,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "The benefits of early registration",
     benefits: [
-      "Avoid trademark infringement issues down the line.",
-      "Secure digital assets like domains matching your registered name.",
-      "Build brand equity with a government-recognized entity name."
+      "Brand Protection. Prevent trademark infringement and passing-off issues by securing legal rights early in your journey.",
+      "Digital Asset Security. Ensure your domains and social handles match your legal entity for a cohesive brand presence.",
+      "Regulatory Credibility. Build immediate brand equity with a government-recognized entity name that investors trust."
     ],
     ctaTitle: "Ready to lock in your name?",
     ctaDescription: "Start the name reservation process today and take the first step toward launching your startup."
@@ -86,9 +86,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "Why founders choose us",
     benefits: [
-      "100% online process with bank-grade security.",
-      "Transparent pricing with no hidden government fee markups.",
-      "Dedicated startup expert assigned to your incorporation."
+      "Frictionless Experience. Enjoy a 100% online process with bank-grade security and zero physical visits.",
+      "Transparent Pricing. Pay exactly what you see with no hidden government fee markups or consultation surprises.",
+      "Dedicated Support. Get a startup expert assigned to your incorporation to handle queries and edge cases."
     ],
     ctaTitle: "Launch your company today",
     ctaDescription: "Join hundreds of founders who trust Founding Legals to build their legal foundation."
@@ -120,9 +120,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "Advantages of our banking partners",
     benefits: [
-      "No physical branch visits required for most major cities.",
-      "Exclusive startup perks and corporate credit card eligibility.",
-      "Priority customer support for Founding Legals clients."
+      "Zero Branch Visits. Complete your KYC and account activation remotely for most major Indian metropolitan cities.",
+      "Exclusive Fintech Perks. Access startup-focused credit cards and cloud credits through our banking ecosystem.",
+      "Priority Relationship. Benefit from dedicated startup desks at tier-1 banks for faster transaction processing."
     ],
     ctaTitle: "Open your current account",
     ctaDescription: "Streamline your startup finances from day one with our banking integration."
@@ -154,9 +154,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "Value of certifications",
     benefits: [
-      "Eligible for fast-track patent applications with 80% fee rebate.",
-      "Access to the ₹10,000 Crore Fund of Funds for Startups.",
-      "Self-certification compliance under labor and environmental laws."
+      "IP Support. Fast-track your patent applications with an 80% fee rebate available exclusively to DPIIT-recognized startups.",
+      "Capital Access. Gain eligibility for the \u20B910,000 Crore Fund of Funds and other government-backed credit schemes.",
+      "Regulatory Relief. Enjoy self-certification benefits under labor and environmental laws for the first three years."
     ],
     ctaTitle: "Claim your startup benefits",
     ctaDescription: "Let us handle the paperwork so you can focus on building your product."
@@ -188,9 +188,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "Peace of mind guaranteed",
     benefits: [
-      "Expert representation during GST departmental audits or notices.",
-      "Real-time tax dashboard to track liabilities and credits.",
-      "Proactive tax planning to optimize your startup's cash flow."
+      "Audit Protection. Receive expert representation during GST departmental audits or routine scrutiny notices.",
+      "Real-time Visibility. Access a comprehensive dashboard to track tax liabilities and input credits across multiple branches.",
+      "Strategic Planning. Optimize your startup's cash flow with proactive tax advice from certified chartered accountants."
     ],
     ctaTitle: "Automate your GST compliance",
     ctaDescription: "Hand over your tax headaches to our chartered accountants today."
@@ -224,9 +224,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "Why regular compliance matters",
     benefits: [
-      "Prevents heavy penalties and director disqualifications.",
-      "Keeps your company 'Active' and in good standing for investors.",
-      "Simplifies the due diligence process during fundraising rounds."
+      "Penalty Avoidance. Prevent heavy compounding fees and director disqualifications by staying ahead of ROC filing dates.",
+      "Investor Readiness. Maintain your 'Active' status and good standing, a prerequisite for any institutional fundraising.",
+      "Smooth Diligence. Simplify the exhaustive due diligence process during Series A rounds with organized secretarial records."
     ],
     ctaTitle: "Audit your startup's compliance",
     ctaDescription: "Ensure your company is 100% compliant with our essential checkup."
@@ -258,9 +258,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "Better cash flow management",
     benefits: [
-      "Get paid faster with integrated payment gateway links.",
-      "Automated follow-ups for overdue client payments.",
-      "Clear visibility into revenue metrics and outstanding dues."
+      "Accelerated Receivables. Get paid 2x faster with integrated payment links and automated friendly reminders.",
+      "E-Way Bill Sync. Automatically trigger e-way bill generation for physical goods delivery alongside your compliant invoice.",
+      "Data Integrity. Eliminate reconciliation errors by syncing your sales data directly with your monthly GST returns."
     ],
     ctaTitle: "Upgrade your invoicing",
     ctaDescription: "Start sending legally compliant invoices in minutes."
@@ -292,9 +292,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "Make data-driven financial decisions",
     benefits: [
-      "Identify SaaS subscriptions and hidden costs bleeding your runway.",
-      "Ensure maximum tax deductions with proper expense tracking.",
-      "Generate instant financial reports for your investors."
+      "Runway Optimization. Identify redundant SaaS subscriptions and hidden banking charges bleeding your monthly runway.",
+      "Tax Efficiency. Categorize every expense accurately to ensure maximum eligible deductions during annual IT filings.",
+      "Board Transparency. Generate instant, boardroom-ready financial reports that clearly articulate your unit economics."
     ],
     ctaTitle: "Analyze your spend",
     ctaDescription: "Take control of your startup's finances and extend your runway."
@@ -326,9 +326,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "The ROI of IP protection",
     benefits: [
-      "Significantly increases startup valuation during funding rounds.",
-      "Legal leverage to issue takedowns to infringing competitors.",
-      "Safeguards your unique selling proposition in the market."
+      "Valuation Growth. Significantly increase your startup's enterprise value by securing proprietary intangible assets.",
+      "Enforcement Leverage. Gain the legal firepower to issue takedown notices and defend against infringing competitors.",
+      "Market Monopoly. Safeguard your unique selling proposition and prevent market dilution by unauthorized imitators."
     ],
     ctaTitle: "Protect your IP",
     ctaDescription: "Don't let competitors steal your hard work. Secure your rights today."
@@ -360,9 +360,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "Never lose a critical document again",
     benefits: [
-      "Instantly retrieve any incorporation document or signed NDA.",
-      "Bank-grade encryption ensures your sensitive data is safe.",
-      "Dramatically speeds up the investor due diligence process."
+      "Instant Retrieval. Find any incorporation certificate, board resolution, or signed NDA in seconds with smart search.",
+      "Military-Grade Security. Rest easy knowing your most sensitive company data is protected by end-to-end encryption.",
+      "Efficient Due Diligence. Reduce round-closing times by weeks with a pre-organized data room ready for investor review."
     ],
     ctaTitle: "Organize your documents",
     ctaDescription: "Set up your secure legal data room in just a few clicks."
@@ -396,9 +396,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "Stand out in an investor's inbox",
     benefits: [
-      "Structure a clear, compelling story that highlights your traction.",
-      "Anticipate and prepare for tough valuation questions.",
-      "Save weeks of design time with battle-tested layouts."
+      "Compelling Storytelling. Structure a narrative that highlights your unique insights and massive market opportunity.",
+      "Data Confidence. Present unit economics and growth projections that withstand the most rigorous analyst scrutiny.",
+      "Design Excellence. Save hundreds of design hours with modern, investor-preferred layouts that communicate clearly."
     ],
     ctaTitle: "Prepare your pitch",
     ctaDescription: "Get the insights you need to confidently approach investors."
@@ -430,9 +430,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "Maximize your raise velocity",
     benefits: [
-      "Avoid wasting time pitching to funds that don't match your profile.",
-      "Keep momentum high with organized follow-up tracking.",
-      "Expand your network beyond your local ecosystem."
+      "Strategic Targeting. Avoid 'spray and pray' by pitching only to funds that match your startup's DNA and stage.",
+      "Higher Conversion. Increase your meeting-to-term-sheet ratio with warm introductions from our trusted network.",
+      "Pipeline Control. Maintain absolute momentum with organized tracking and automated follow-up reminders."
     ],
     ctaTitle: "Discover investors",
     ctaDescription: "Find the strategic partners who will back your vision."
@@ -464,9 +464,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "Why raise unpriced rounds?",
     benefits: [
-      "Close cash immediately without long valuation negotiations.",
-      "Dramatically lower legal fees compared to a full equity round.",
-      "Perfect for pre-seed startups establishing early traction."
+      "Speed to Cash. Close angel checks in days instead of months by deferring complex valuation negotiations.",
+      "Low Legal Friction. Dramatically reduce closing costs compared to traditional priced equity rounds.",
+      "Founder Control. Secure early capital while preserving your board structure and operational autonomy."
     ],
     ctaTitle: "Issue your first SAFE",
     ctaDescription: "Get the standardized paperwork you need to close rapid capital."
@@ -498,9 +498,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "A frictionless closing experience",
     benefits: [
-      "Ensure all shareholder rights, liquidation preferences, and anti-dilution clauses are standard.",
-      "Keep investors confident with a completely transparent, professional process.",
-      "Save up to 60% on traditional law firm fees."
+      "Rigorous Standards. Ensure your SHA contains institutionally preferred rights and protection clauses.",
+      "Investor Trust. Impress VCs with a completely transparent, digitally-managed closing process.",
+      "Cost Efficiency. Save over 60% on traditional law firm fees without compromising on legal quality."
     ],
     ctaTitle: "Start your funding round",
     ctaDescription: "Close your round faster and cleaner with Founding Legals."
@@ -532,9 +532,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "Breeze through due diligence",
     benefits: [
-      "Avoid term sheet withdrawals due to hidden financial liabilities.",
-      "Present a confident, professional face to tough financial auditors.",
-      "Ensure strict compliance with RBI/FEMA regulations for foreign FDI."
+      "Deal Protection. Prevent term sheet withdrawals by proactively resolving hidden financial or tax liabilities.",
+      "Expert Representation. Face rigorous institutional audits with the confidence of expert CA support by your side.",
+      "FEMA Compliance. Ensure all foreign direct investment (FDI) meets strict RBI reporting and valuation mandates."
     ],
     ctaTitle: "Prepare your financials",
     ctaDescription: "Get your numbers verified and structured for institutional investors."
@@ -566,9 +566,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "Why you need specialist counsel",
     benefits: [
-      "Protect your board seats and operational control of the company.",
-      "Understand the long-term impact of participating preferred liquidation preferences.",
-      "Ensure founder-friendly terms without alienating the investor."
+      "Control Safeguards. Protect your board seats and operational veto rights from overreaching investor clauses.",
+      "Economic Clarity. Fully understand the long-term impact of liquidation preferences and anti-dilution terms.",
+      "Fairness Equilibrium. Negotiate founder-friendly terms that keep you motivated without alienating top-tier VCs."
     ],
     ctaTitle: "Talk to a legal expert",
     ctaDescription: "Have an investor term sheet? Let our experts review it today."
@@ -600,9 +600,9 @@ export const services: ServicePattern[] = [
     ],
     benefitsTitle: "Strike while the iron is hot",
     benefits: [
-      "Don't give investors time to cool off. Send closing documents the same day.",
-      "Zero back-and-forth emails. A seamless digital experience for angels.",
-      "Maintain absolute legal rigor despite the speed of closing."
+      "Zero Latency. Close investors exactly when their interest is highest with same-day document execution.",
+      "Premium Experience. Provide your angel investors with a seamless, professional digital closing workflow.",
+      "Legal Rigor. Maintain absolute compliance with the Companies Act while moving at the speed of light."
     ],
     ctaTitle: "Close your first check",
     ctaDescription: "Experience the fastest way to accept capital in the Indian ecosystem."
