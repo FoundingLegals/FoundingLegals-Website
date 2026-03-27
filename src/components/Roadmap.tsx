@@ -9,11 +9,11 @@ function easeInOut(t: number) {
 
 // ─── Path keyframes (Aligned for 1280px ViewBox) ──────────────
 const SEGMENTS = [
-  { pts: [{ x: 32, y: 0 }, { x: 32, y: 248 }], dur: 900 }, // vline
-  { pts: [{ x: 32, y: 248 }, { x: 44, y: 275 }, { x: 69, y: 308 }, { x: 109, y: 330 }, { x: 154, y: 339 }, { x: 201, y: 341 }], dur: 750 }, // arc
-  { pts: [{ x: 201, y: 341 }, { x: 248, y: 341 }, { x: 296, y: 341 }], dur: 450, showNode: true }, // Reach logo
-  { pts: [{ x: 296, y: 341 }, { x: 334, y: 352 }, { x: 374, y: 385 }, { x: 414, y: 445 }, { x: 449, y: 490 }, { x: 464, y: 503 }], dur: 950 }, // scurve
-  { pts: [{ x: 464, y: 503 }, { x: 480, y: 503 }], dur: 300 }, // hline start
+  { pts: [{ x: 32, y: 0 }, { x: 32, y: 248 }], dur: 900 },
+  { pts: [{ x: 32, y: 248 }, { x: 201, y: 341 }], dur: 750, pathRef: 'arc' },
+  { pts: [{ x: 201, y: 341 }, { x: 296, y: 341 }], dur: 450, showNode: true },
+  { pts: [{ x: 296, y: 341 }, { x: 464, y: 503 }], dur: 950, pathRef: 'scurve' },
+  { pts: [{ x: 464, y: 503 }, { x: 480, y: 503 }], dur: 300 },
   { pause: 950, tagId: 'tag1' },
   { pts: [{ x: 480, y: 503 }, { x: 590, y: 503 }], dur: 600 },
   { pause: 950, tagId: 'tag2' },
@@ -28,13 +28,6 @@ const SEGMENTS = [
   { pts: [{ x: 1030, y: 503 }, { x: 1140, y: 503 }], dur: 600 },
   { pause: 950, tagId: 'tag7' },
   { pts: [{ x: 1140, y: 503 }, { x: 1280, y: 503 }], dur: 400 },
-];
-
-const LINE_SEGS = [
-  { id: 'vline', tStart: 0, tEnd: 900, len: 248 },
-  { id: 'arc', tStart: 900, tEnd: 1650, len: 210 },
-  { id: 'scurve', tStart: 2100, tEnd: 3050, len: 420 }, // 1650 + 450 = 2100
-  { id: 'hline', tStart: 3050, tEnd: 11100, len: 816 },
 ];
 
 export default function Roadmap() {
@@ -71,6 +64,8 @@ export default function Roadmap() {
       tag5: tag5Ref.current,
       tag6: tag6Ref.current,
       tag7: tag7Ref.current,
+      arc: arcRef.current,
+      scurve: scurveRef.current,
     };
 
     const lines = {
@@ -80,8 +75,31 @@ export default function Roadmap() {
       hline: hlineRef.current,
     };
 
+    const len = {
+      vline: lines.vline?.getTotalLength() ?? 248,
+      arc: lines.arc?.getTotalLength() ?? 210,
+      scurve: lines.scurve?.getTotalLength() ?? 420,
+      hline: lines.hline?.getTotalLength() ?? 816,
+    };
+
+    if (lines.vline) {
+      lines.vline.setAttribute('stroke-dasharray', String(len.vline));
+      lines.vline.setAttribute('stroke-dashoffset', String(len.vline));
+    }
+    if (lines.arc) {
+      lines.arc.setAttribute('stroke-dasharray', String(len.arc));
+      lines.arc.setAttribute('stroke-dashoffset', String(len.arc));
+    }
+    if (lines.scurve) {
+      lines.scurve.setAttribute('stroke-dasharray', String(len.scurve));
+      lines.scurve.setAttribute('stroke-dashoffset', String(len.scurve));
+    }
+    if (lines.hline) {
+      lines.hline.setAttribute('stroke-dasharray', String(len.hline));
+      lines.hline.setAttribute('stroke-dashoffset', String(len.hline));
+    }
+
     let nodeShown = false;
-    let moveElapsed = 0;
     let currentTimeout: NodeJS.Timeout;
     let currentRaf: number;
 
@@ -107,19 +125,31 @@ export default function Roadmap() {
       };
     }
 
-    function updateLines(totalElapsed: number) {
-      LINE_SEGS.forEach(s => {
-        const el = lines[s.id as keyof typeof lines];
-        if (!el) return;
-        if (totalElapsed <= s.tStart) {
-          el.setAttribute('stroke-dashoffset', String(s.len));
-        } else if (totalElapsed >= s.tEnd) {
-          el.setAttribute('stroke-dashoffset', "0");
-        } else {
-          const progress = (totalElapsed - s.tStart) / (s.tEnd - s.tStart);
-          el.setAttribute('stroke-dashoffset', String(s.len * (1 - easeInOut(progress))));
-        }
-      });
+    function syncLines(dotX: number, stepIndex: number, eased: number) {
+      if (stepIndex === 0 && lines.vline) {
+        lines.vline.setAttribute('stroke-dashoffset', String(len.vline * (1 - eased)));
+      } else if (stepIndex > 0 && lines.vline) {
+        lines.vline.setAttribute('stroke-dashoffset', "0");
+      }
+
+      if (stepIndex === 1 && lines.arc) {
+        lines.arc.setAttribute('stroke-dashoffset', String(len.arc * (1 - eased)));
+      } else if (stepIndex > 1 && lines.arc) {
+        lines.arc.setAttribute('stroke-dashoffset', "0");
+      }
+
+      if (stepIndex === 3 && lines.scurve) {
+        lines.scurve.setAttribute('stroke-dashoffset', String(len.scurve * (1 - eased)));
+      } else if (stepIndex > 3 && lines.scurve) {
+        lines.scurve.setAttribute('stroke-dashoffset', "0");
+      }
+
+      if (stepIndex >= 4 && lines.hline && dotX >= 464) {
+        const hlineProgress = Math.min((dotX - 464) / 816, 1);
+        lines.hline.setAttribute('stroke-dashoffset', String(len.hline * (1 - hlineProgress)));
+      } else if (stepIndex < 4 && lines.hline) {
+        lines.hline.setAttribute('stroke-dashoffset', String(len.hline));
+      }
     }
 
     function fadeIn(el: SVGElement | null, duration: number) {
@@ -159,7 +189,6 @@ export default function Roadmap() {
           fadeIn(nodeboxRef.current, 500);
         }
 
-        const startMoveTime = moveElapsed;
         const stepDur = step.dur!;
         const startTime = performance.now();
 
@@ -169,18 +198,24 @@ export default function Roadmap() {
           const clamped = Math.min(raw, 1);
           const eased = easeInOut(clamped);
 
-          const pos = lerpPts(step.pts!, eased);
-          setDot(pos.x, pos.y);
+          let pos = { x: 0, y: 0 };
+          const pRef = step.pathRef ? elements[step.pathRef as keyof typeof elements] as SVGPathElement : null;
+          if (pRef && pRef.getPointAtLength) {
+            const pathLen = pRef.getTotalLength();
+            pos = pRef.getPointAtLength(eased * pathLen);
+          } else if (step.pts) {
+            pos = lerpPts(step.pts, eased);
+          }
 
-          // Update lines with combined linear time
-          updateLines(startMoveTime + clamped * stepDur);
+          setDot(pos.x, pos.y);
+          syncLines(pos.x, index, eased);
 
           if (raw < 1) {
             currentRaf = requestAnimationFrame(frame);
           } else {
             const end = step.pts![step.pts!.length - 1];
             setDot(end.x, end.y);
-            moveElapsed = startMoveTime + stepDur;
+            syncLines(end.x, index, 1);
             runStep(index + 1);
           }
         }
@@ -191,17 +226,19 @@ export default function Roadmap() {
     function restartAll() {
       if (!isRunning) return;
       nodeShown = false;
-      moveElapsed = 0;
 
       if (nodeboxRef.current) nodeboxRef.current.setAttribute('opacity', '0');
-      Object.values(elements).forEach(el => {
-        if (el) el.setAttribute('opacity', '0');
+      Object.keys(elements).forEach(key => {
+        if (key.startsWith('tag')) {
+          const el = elements[key as keyof typeof elements] as SVGElement;
+          if (el) el.setAttribute('opacity', '0');
+        }
       });
 
-      LINE_SEGS.forEach(s => {
-        const el = lines[s.id as keyof typeof lines];
-        if (el) el.setAttribute('stroke-dashoffset', String(s.len));
-      });
+      if (lines.vline) lines.vline.setAttribute('stroke-dashoffset', String(len.vline));
+      if (lines.arc) lines.arc.setAttribute('stroke-dashoffset', String(len.arc));
+      if (lines.scurve) lines.scurve.setAttribute('stroke-dashoffset', String(len.scurve));
+      if (lines.hline) lines.hline.setAttribute('stroke-dashoffset', String(len.hline));
 
       setDot(32, 0);
       currentTimeout = setTimeout(() => runStep(0), 400);
@@ -318,6 +355,7 @@ export default function Roadmap() {
                 fill="#3a632b" fontSize="12" fontWeight="600">IPO Ready</text>
             </g>
 
+            <circle id="dot-glow" ref={dotGlowRef} cx="32" cy="0" r="16" fill="rgba(168, 168, 158, 0.3)" opacity="1" style={{ filter: 'blur(3px)' }} />
             <circle id="dot" ref={dotRef} cx="32" cy="0" r="8" fill="#A8A89E" opacity="1" />
           </svg>
         </div>

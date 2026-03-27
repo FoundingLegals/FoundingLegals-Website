@@ -24,6 +24,7 @@ import {
   Landmark,
   Rocket,
   ClipboardCheck,
+  Handshake,
 } from "lucide-react";
 
 /* ── Menu data ── */
@@ -96,7 +97,7 @@ export default function Header() {
             <img
               src="/Founding Legals Logo.png"
               alt="Founding Legals"
-              className="h-11 sm:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </a>
 
@@ -208,10 +209,12 @@ export default function Header() {
                 <>
                   {/* Invisible hover bridge */}
                   <div className="absolute top-full left-0 right-0 h-4" />
-                  <div className="absolute left-1/2 -translate-x-1/2 top-[52px] w-[300px] bg-[#f5f1e6] rounded-[24px] shadow-[0_12px_40px_rgba(43,39,35,0.08)] animate-dropdown flex flex-col items-center justify-center gap-4 px-10 py-6">
-                    <a href="/company/about-us" className="text-[14px] font-serif text-[#33312c] hover:text-olive-700 transition-colors">About us</a>
-                    <div className="w-full h-px bg-brown-100/50" />
-                    <a href="/company/careers" className="text-[14px] font-serif text-[#33312c] hover:text-olive-700 transition-colors">Careers</a>
+                  <div className="absolute left-1/2 -translate-x-1/2 top-[52px] bg-[#f5f1e6] rounded-[20px] shadow-[0_12px_40px_rgba(43,39,35,0.08)] animate-dropdown flex items-center gap-1 px-2 py-2">
+                    <a href="/company/about-us" className="px-4 py-2 text-[13px] font-medium text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap">About us</a>
+                    <div className="w-px h-5 bg-brown-200/50" />
+                    <a href="/company/careers" className="px-4 py-2 text-[13px] font-medium text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap">Careers</a>
+                    <div className="w-px h-5 bg-brown-200/50" />
+                    <a href="/company/partnership" className="px-4 py-2 text-[13px] font-medium text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap flex items-center gap-1.5"><Handshake className="w-3.5 h-3.5" />Partnership</a>
                   </div>
                 </>
               )}
@@ -290,6 +293,20 @@ export default function Header() {
                 className="block px-3 py-2 text-[13px] font-medium text-brown-600 hover:text-brown-900 rounded-lg hover:bg-cream transition-colors"
               >
                 About Us
+              </a>
+              <a
+                href="/company/careers"
+                onClick={() => setIsMobileOpen(false)}
+                className="block px-3 py-2 text-[13px] font-medium text-brown-600 hover:text-brown-900 rounded-lg hover:bg-cream transition-colors"
+              >
+                Careers
+              </a>
+              <a
+                href="/company/partnership"
+                onClick={() => setIsMobileOpen(false)}
+                className="block px-3 py-2 text-[13px] font-medium text-brown-600 hover:text-brown-900 rounded-lg hover:bg-cream transition-colors"
+              >
+                Partnership
               </a>
               <a
                 href="#pricing"

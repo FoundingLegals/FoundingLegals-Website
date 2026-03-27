@@ -33,7 +33,7 @@ export default function CareersPage() {
       
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 sm:px-12 lg:px-24">
-        <div className="max-w-4xl">
+        <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-olive-600/10 border border-olive-600/20 rounded-md text-olive-700 text-[13px] font-semibold tracking-wide mb-8">
             <Briefcase className="w-4 h-4" />
             Careers at Founding Legals
@@ -60,8 +60,8 @@ export default function CareersPage() {
                 <div className="w-14 h-14 bg-olive-600/10 rounded-2xl flex items-center justify-center mb-8 border border-olive-600/10 transition-transform duration-500">
                   <Users className="w-7 h-7 text-olive-600" />
                 </div>
-                <h2 className="text-[28px] font-serif font-semibold text-brown-900 mb-6 tracking-tight">We are hiring for CA's</h2>
-                <p className="text-brown-600 text-[16px] leading-[1.6] mb-8 font-light italic">
+                <h2 className="text-[28px] font-serif font-semibold text-brown-900 mb-6 tracking-tight text-left">We are hiring for CA's</h2>
+                <p className="text-brown-600 text-[16px] leading-[1.6] mb-8 font-light italic text-left">
                   Searching for ambitious Chartered Accountants (CAs) to lead our compliance team. If you're passionate about tax technology and the startup ecosystem, we want to hear from you.
                 </p>
                 <ul className="space-y-4 mb-4">
@@ -84,8 +84,8 @@ export default function CareersPage() {
                 <div className="w-14 h-14 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8 border border-white/10 transition-transform duration-500">
                   <Handshake className="w-7 h-7 text-white" />
                 </div>
-                <h2 className="text-[28px] font-serif font-semibold mb-6 tracking-tight">Partnership for CA Firms</h2>
-                <p className="text-white/80 text-[16px] leading-[1.6] mb-12 font-light">
+                <h2 className="text-[28px] font-serif font-semibold mb-6 tracking-tight text-left">Partnership for CA Firms</h2>
+                <p className="text-white/80 text-[16px] leading-[1.6] mb-12 font-light text-left">
                   Partner with Founding Legals to offer premium legal and secretarial services to your clients. We provide the infrastructure, you provide the expertise. Join our network of certified partners.
                 </p>
                 <div className="mt-auto">
@@ -98,28 +98,29 @@ export default function CareersPage() {
           </div>
 
           {/* Form Column */}
-          <div id="apply" className="bg-white rounded-3xl p-8 sm:p-10 border border-brown-100 shadow-[0_12px_40px_rgba(43,39,35,0.06)] sticky top-32">
-            <h3 className="text-2xl font-serif font-semibold text-brown-900 mb-8">Apply or Inquire</h3>
+          <div id="apply" className="bg-white rounded-[32px] p-8 sm:p-12 border border-brown-100 shadow-[0_20px_60px_rgba(43,39,35,0.05)] sticky top-32">
+            <h3 className="text-[32px] font-serif font-semibold text-brown-900 mb-10 tracking-tight text-left">Apply or Inquire</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-xs font-bold text-brown-400 uppercase tracking-widest mb-2">Full Name</label>
+                  <label htmlFor="name" className="block text-[11px] font-bold text-brown-400 uppercase tracking-[0.15em] mb-3 text-left">Full Name</label>
                     <input
                       type="text"
                       id="name"
                       name="name"
                       required
-                      className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-[#F6F4F0]/50"
+                      placeholder="Jane Smith"
+                      className="w-full px-5 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-[#FAF9F6] text-brown-900 placeholder-brown-300 text-left"
                     />
-                    <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-500 text-xs mt-2" />
+                    <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-500 text-[11px] mt-1.5" />
                 </div>
                 <div>
-                  <label htmlFor="type" className="block text-xs font-bold text-brown-400 uppercase tracking-widest mb-2">I am an...</label>
+                  <label htmlFor="type" className="block text-[11px] font-bold text-brown-400 uppercase tracking-[0.15em] mb-3 text-left">I am an...</label>
                   <select
                     id="type"
                     name="applicationType"
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-[#F6F4F0]/50"
+                    className="w-full px-5 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-[#FAF9F6] text-brown-900 font-medium cursor-pointer text-left"
                   >
                     <option value="individual-ca">Individual CA (Applying)</option>
                     <option value="ca-firm">CA Firm (Partnership)</option>
@@ -129,42 +130,40 @@ export default function CareersPage() {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-xs font-bold text-brown-400 uppercase tracking-widest mb-2">Email Address</label>
+                <label htmlFor="email" className="block text-[11px] font-bold text-brown-400 uppercase tracking-[0.15em] mb-3 text-left">Email Address</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-[#F6F4F0]/50"
+                    placeholder="jane@startup.com"
+                    className="w-full px-5 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-[#FAF9F6] text-brown-900 placeholder-brown-300 text-left"
                   />
-                  <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-xs mt-2" />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-[11px] mt-1.5" />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-xs font-bold text-brown-400 uppercase tracking-widest mb-2">Message / Portfolio Link</label>
+                <label htmlFor="message" className="block text-[11px] font-bold text-brown-400 uppercase tracking-[0.15em] mb-3 text-left">Message / Portfolio Link</label>
                   <textarea
                     id="message"
                     name="message"
                     required
                     rows={4}
-                    className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-[#F6F4F0]/50 resize-none"
+                    className="w-full px-5 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-[#FAF9F6] text-brown-900 placeholder-brown-300 resize-none text-left"
                     placeholder="Tell us about yourself or your firm..."
                   />
-                  <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-500 text-xs mt-2" />
+                  <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-500 text-[11px] mt-1.5" />
               </div>
 
               <button
                 type="submit"
                 disabled={state.submitting}
-                className="w-full py-4 bg-olive-600 text-white rounded-xl font-bold text-[15px] shadow-lg shadow-olive-600/20 hover:bg-olive-700 transition-all flex items-center justify-center gap-2"
+                className="w-full py-4 bg-[#5A7338] text-white rounded-xl font-bold text-[16px] shadow-lg shadow-olive-900/20 hover:bg-[#4a5f2e] transition-all flex items-center justify-center"
               >
                 {state.submitting ? (
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                 ) : (
-                  <>
-                    <Send className="w-4 h-4" />
-                    Send Application
-                  </>
+                  "Send Application"
                 )}
               </button>
             </form>
