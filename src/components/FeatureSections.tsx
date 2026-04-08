@@ -37,15 +37,15 @@ export function StartSection() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Left — document visual (founding leals's contract screenshot style) */}
           <div className="reveal-left">
-            <div className="bg-cream-dark rounded-3xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-4/3 flex items-center justify-center">
+            <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
+              <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-14/10 sm:aspect-16/10 flex items-center justify-center">
                 <video
                   src="/videos/start new.mp4.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="absolute inset-0 w-full h-full object-cover scale-[1.25] -translate-x-[1%]"
+                  className="absolute w-full h-auto left-0 top-0 scale-[1.03] origin-top -translate-y-[1%]"
                   style={{ backgroundColor: 'white' }}
                 />
               </div>
@@ -191,15 +191,15 @@ export function ComplianceSection() {
 
           {/* Right — interactive visual */}
           <div className="reveal-right">
-            <div className="bg-cream-dark rounded-3xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-4/3 flex items-center justify-center">
+            <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
+              <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-14/10 sm:aspect-16/10 flex items-center justify-center">
                 <video
-                  src="/videos/compliance new .mp4.mp4"
+                  src="/videos/Home page Goverense.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="absolute inset-0 w-full h-full object-cover scale-[1.25] -translate-x-[1%]"
+                  className="absolute w-full h-auto left-0 top-0 scale-[1.03] origin-top -translate-y-[1%]"
                   style={{ backgroundColor: 'white' }}
                 />
               </div>
@@ -225,8 +225,8 @@ export function RaiseSection() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Left — interactive visual */}
           <div className="reveal-left order-2 lg:order-1">
-            <div className="bg-cream-dark rounded-3xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-2xl shadow-sm overflow-hidden relative aspect-4/3 flex items-center justify-center">
+            <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
+              <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-14/10 sm:aspect-16/10 flex items-center justify-center">
                 {/* Ready for Raise video */}
                 <video
                   src="/videos/compliance new .mp4.mp4"
@@ -234,7 +234,7 @@ export function RaiseSection() {
                   loop
                   muted
                   playsInline
-                  className="absolute inset-0 w-full h-full object-cover scale-[1.25] -translate-x-[1%]"
+                  className="absolute w-full h-auto left-0 top-0 scale-[1.03] origin-top -translate-y-[1%]"
                   style={{ backgroundColor: 'white' }}
                 />
               </div>

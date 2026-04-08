@@ -126,8 +126,8 @@ export default function Pricing() {
                           setIsStateOpen(false);
                         }}
                         className={`w-full text-left px-4 py-2.5 text-sm hover:bg-cream transition-colors ${state === selectedState
-                            ? "bg-cream text-brown-900 font-semibold"
-                            : "text-brown-600"
+                          ? "bg-cream text-brown-900 font-semibold"
+                          : "text-brown-600"
                           }`}
                       >
                         {state}
@@ -155,8 +155,8 @@ export default function Pricing() {
                     key={slab.label}
                     onClick={() => setSelectedCapital(idx)}
                     className={`px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${idx === selectedCapital
-                        ? "bg-olive-600 text-lime-bg shadow-md"
-                        : "bg-cream-light border border-brown-200 text-brown-600 hover:border-brown-300"
+                      ? "bg-olive-600 text-lime-bg shadow-md"
+                      : "bg-cream-light border border-brown-200 text-brown-600 hover:border-brown-300"
                       }`}
                   >
                     {slab.label}
@@ -176,15 +176,15 @@ export default function Pricing() {
                     key={addon.id}
                     onClick={() => toggleAddOn(addon.id)}
                     className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all ${selectedAddOns.includes(addon.id)
-                        ? "bg-lime-bg border-2 border-olive-600"
-                        : "bg-cream-light border border-brown-200 hover:border-brown-300"
+                      ? "bg-lime-bg border-2 border-olive-600"
+                      : "bg-cream-light border border-brown-200 hover:border-brown-300"
                       }`}
                   >
                     <div className="flex items-center gap-3">
                       <div
                         className={`w-5 h-5 rounded-md flex items-center justify-center ${selectedAddOns.includes(addon.id)
-                            ? "bg-olive-600 text-white"
-                            : "border border-brown-300"
+                          ? "bg-olive-600 text-white"
+                          : "border border-brown-300"
                           }`}
                       >
                         {selectedAddOns.includes(addon.id) && (
