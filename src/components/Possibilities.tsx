@@ -14,9 +14,9 @@ export default function Possibilities() {
               One platform. Every milestone.
             </h2>
             <p className="text-base sm:text-lg text-brown-500 leading-relaxed mb-10 max-w-md">
-              We architect the complete legal backbone of your startup
-              from your first incorporation filing to your Series A close.
-              Built by founders who&apos;ve been where you are.
+              We architect the complete legal backbone of your startup from your
+              first incorporation filing to your Series A close. Built by
+              founders who&apos;ve been where you are.
             </p>
             <a
               href={process.env.NEXT_PUBLIC_APP_URL || "#"}
@@ -27,17 +27,15 @@ export default function Possibilities() {
           </div>
 
           <div className="reveal-right">
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-brown-100">
-              <div className="bg-white rounded-xl overflow-hidden relative aspect-[16/10] flex items-center justify-center">
-                <video
-                  src="/videos/founding Legals product vedio.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover scale-[1.12] origin-center"
-                />
-              </div>
+            <div className="bg-white w-full shadow-2xl overflow-hidden">
+              <video
+                src="/videos/founding Legals product vedio.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto block"
+              />
             </div>
           </div>
         </div>
@@ -45,4 +43,3 @@ export default function Possibilities() {
     </section>
   );
 }
-

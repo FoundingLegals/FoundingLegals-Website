@@ -32,20 +32,25 @@ export function StartSection() {
   const ref = useReveal();
 
   return (
-    <section id="start" ref={ref} className="py-20 lg:py-28 bg-cream border-t border-brown-100">
+    <section
+      id="start"
+      ref={ref}
+      className="py-20 lg:py-28 bg-cream border-t border-brown-100"
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Left — document visual (founding leals's contract screenshot style) */}
           <div className="reveal-left">
             <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-[16/10] flex items-center justify-center">
+              <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-14/10 sm:aspect-16/10 flex items-center justify-center">
                 <video
                   src="/videos/start new.mp4.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover scale-[1.12] origin-center"
+                  className="absolute w-full h-auto left-0 top-0 scale-[1.03] origin-top -translate-y-[1%]"
+                  style={{ backgroundColor: "white" }}
                 />
               </div>
             </div>
@@ -76,7 +81,8 @@ export function StartSection() {
                     Precision Incorporation
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Execute your Private Limited registration with absolute accuracy, from name reservation to final certification.
+                    Execute your Private Limited registration with absolute
+                    accuracy, from name reservation to final certification.
                   </p>
                 </div>
               </div>
@@ -90,7 +96,8 @@ export function StartSection() {
                     Operational Excellence
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Accelerate your market entry with integrated banking, MSME certification, and regulatory readiness.
+                    Accelerate your market entry with integrated banking, MSME
+                    certification, and regulatory readiness.
                   </p>
                 </div>
               </div>
@@ -104,7 +111,8 @@ export function StartSection() {
                     Automated Tax Compliance
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Navigate the Indian tax landscape with automated GST filings and strategic financial reporting.
+                    Navigate the Indian tax landscape with automated GST filings
+                    and strategic financial reporting.
                   </p>
                 </div>
               </div>
@@ -125,7 +133,11 @@ export function ComplianceSection() {
   const ref = useReveal();
 
   return (
-    <section id="compliance" ref={ref} className="py-20 lg:py-28 bg-cream-light border-t border-brown-100">
+    <section
+      id="compliance"
+      ref={ref}
+      className="py-20 lg:py-28 bg-cream-light border-t border-brown-100"
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Left — features */}
@@ -153,7 +165,8 @@ export function ComplianceSection() {
                     Strategic ROC Oversight
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Maintain flawless corporate standing with automated ROC monitoring, board resolutions, and statutory compliance.
+                    Maintain flawless corporate standing with automated ROC
+                    monitoring, board resolutions, and statutory compliance.
                   </p>
                 </div>
               </div>
@@ -167,7 +180,8 @@ export function ComplianceSection() {
                     Centralized Invoicing
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Deploy professional, GST-compliant financial operations with real-time visibility into corporate expenditures.
+                    Deploy professional, GST-compliant financial operations with
+                    real-time visibility into corporate expenditures.
                   </p>
                 </div>
               </div>
@@ -181,7 +195,9 @@ export function ComplianceSection() {
                     IP and Document Vault
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Safeguard your intellectual property and manage critical corporate governance files in an encrypted, centralized vault.
+                    Safeguard your intellectual property and manage critical
+                    corporate governance files in an encrypted, centralized
+                    vault.
                   </p>
                 </div>
               </div>
@@ -191,14 +207,15 @@ export function ComplianceSection() {
           {/* Right — interactive visual */}
           <div className="reveal-right">
             <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-[16/10] flex items-center justify-center">
+              <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-14/10 sm:aspect-16/10 flex items-center justify-center">
                 <video
                   src="/videos/Home page Goverense.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover scale-[1.12] origin-center"
+                  className="absolute w-full h-auto left-0 top-0 scale-[1.03] origin-top -translate-y-[1%]"
+                  style={{ backgroundColor: "white" }}
                 />
               </div>
             </div>
@@ -218,20 +235,26 @@ export function RaiseSection() {
   const ref = useReveal();
 
   return (
-    <section id="raise" ref={ref} className="py-20 lg:py-28 bg-cream border-t border-brown-100">
+    <section
+      id="raise"
+      ref={ref}
+      className="py-20 lg:py-28 bg-cream border-t border-brown-100"
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Left — interactive visual */}
           <div className="reveal-left order-2 lg:order-1">
             <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-[16/10] flex items-center justify-center">
+              <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-14/10 sm:aspect-16/10 flex items-center justify-center">
+                {/* Ready for Raise video */}
                 <video
                   src="/videos/compliance new .mp4.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover scale-[1.12] origin-center"
+                  className="absolute w-full h-auto left-0 top-0 scale-[1.03] origin-top -translate-y-[1%]"
+                  style={{ backgroundColor: "white" }}
                 />
               </div>
             </div>
@@ -262,7 +285,8 @@ export function RaiseSection() {
                     Investor Intelligence
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Develop sophisticated pitch materials and identify strategic investment partners for your growth cycle.
+                    Develop sophisticated pitch materials and identify strategic
+                    investment partners for your growth cycle.
                   </p>
                 </div>
               </div>
@@ -276,7 +300,9 @@ export function RaiseSection() {
                     Structured Round Execution
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Streamline complex fundraising events with automated documentation and comprehensive due diligence infrastructure.
+                    Streamline complex fundraising events with automated
+                    documentation and comprehensive due diligence
+                    infrastructure.
                   </p>
                 </div>
               </div>
@@ -290,7 +316,9 @@ export function RaiseSection() {
                     Expert Legal Advisory
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Engage with term sheets and investor agreements from a position of strength with expert legal and financial oversight.
+                    Engage with term sheets and investor agreements from a
+                    position of strength with expert legal and financial
+                    oversight.
                   </p>
                 </div>
               </div>
@@ -302,7 +330,6 @@ export function RaiseSection() {
   );
 }
 
-
 /* ============================================================
    FEATURE SECTION: INTELLIGENCE
    Layout: Text left / animated node tree right
@@ -312,7 +339,11 @@ export function IntelligenceSection() {
   const ref = useReveal();
 
   return (
-    <section id="raise" ref={ref} className="relative overflow-hidden border-t border-brown-100">
+    <section
+      id="raise"
+      ref={ref}
+      className="relative overflow-hidden border-t border-brown-100"
+    >
       {/* Text left + Animated node visualization right */}
       <div className="bg-cream py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -323,14 +354,19 @@ export function IntelligenceSection() {
                 <div className="w-10 h-10 rounded-xl bg-olive-600 flex items-center justify-center">
                   <TrendingUp className="w-5 h-5 text-lime-bg" />
                 </div>
-                <span className="text-xs font-medium text-olive-700">Intelligence</span>
+                <span className="text-xs font-medium text-olive-700">
+                  Intelligence
+                </span>
               </div>
 
               <h2 className="font-serif text-4xl sm:text-[42px] lg:text-5xl font-medium text-brown-900 leading-[1.15] mb-6">
                 Strategic Regulatory Intelligence
               </h2>
               <p className="text-base sm:text-lg text-brown-500 leading-relaxed mb-10 max-w-lg">
-                Transform complex regulatory requirements into strategic clarity. Our command center provides the real-time insights necessary to navigate the Indian legal landscape with confidence.
+                Transform complex regulatory requirements into strategic
+                clarity. Our command center provides the real-time insights
+                necessary to navigate the Indian legal landscape with
+                confidence.
               </p>
               <a
                 href="https://app.foundinglegals.com/sign-up"
@@ -367,29 +403,64 @@ export function IntelligenceSection() {
                 </div>
 
                 {/* Branch lines from center node */}
-                <svg className="node-tree-animate node-delay-3 absolute top-[175px] left-0 w-full h-[60px] pointer-events-none" preserveAspectRatio="none">
+                <svg
+                  className="node-tree-animate node-delay-3 absolute top-[175px] left-0 w-full h-[60px] pointer-events-none"
+                  preserveAspectRatio="none"
+                >
                   {/* Right branch line */}
-                  <line x1="50%" y1="20" x2="85%" y2="55" stroke="#d4c9a8" strokeWidth="1.5" className="lg:block hidden" />
-                  <line x1="50%" y1="20" x2="75%" y2="55" stroke="#d4c9a8" strokeWidth="1.5" className="lg:hidden" />
+                  <line
+                    x1="50%"
+                    y1="20"
+                    x2="85%"
+                    y2="55"
+                    stroke="#d4c9a8"
+                    strokeWidth="1.5"
+                    className="lg:block hidden"
+                  />
+                  <line
+                    x1="50%"
+                    y1="20"
+                    x2="75%"
+                    y2="55"
+                    stroke="#d4c9a8"
+                    strokeWidth="1.5"
+                    className="lg:hidden"
+                  />
                 </svg>
 
                 {/* Tags row 1 — right side */}
                 <div className="node-tree-animate node-delay-4 absolute top-[240px] right-0 flex flex-wrap gap-3 justify-end max-w-[360px]">
                   <div className="flex flex-col items-center gap-1">
-                    <span className="text-[9px] text-brown-400 font-medium">Filing Type</span>
-                    <span className="text-[11px] font-bold px-3 py-1.5 rounded-full bg-olive-600 text-white">ROC</span>
+                    <span className="text-[9px] text-brown-400 font-medium">
+                      Filing Type
+                    </span>
+                    <span className="text-[11px] font-bold px-3 py-1.5 rounded-full bg-olive-600 text-white">
+                      ROC
+                    </span>
                   </div>
                   <div className="flex flex-col items-center gap-1">
-                    <span className="text-[9px] text-brown-400 font-medium">Due Date</span>
-                    <span className="text-[11px] font-semibold px-3 py-1.5 rounded-full bg-cream-dark border border-brown-200 text-brown-700">Oct 30, 2025</span>
+                    <span className="text-[9px] text-brown-400 font-medium">
+                      Due Date
+                    </span>
+                    <span className="text-[11px] font-semibold px-3 py-1.5 rounded-full bg-cream-dark border border-brown-200 text-brown-700">
+                      Oct 30, 2025
+                    </span>
                   </div>
                   <div className="flex flex-col items-center gap-1">
-                    <span className="text-[9px] text-brown-400 font-medium">Category</span>
-                    <span className="text-[11px] font-semibold px-3 py-1.5 rounded-full bg-[#e8d5e8] text-[#7a3d7a]">Annual Return</span>
+                    <span className="text-[9px] text-brown-400 font-medium">
+                      Category
+                    </span>
+                    <span className="text-[11px] font-semibold px-3 py-1.5 rounded-full bg-[#e8d5e8] text-[#7a3d7a]">
+                      Annual Return
+                    </span>
                   </div>
                   <div className="flex flex-col items-center gap-1">
-                    <span className="text-[9px] text-brown-400 font-medium">Risk Level</span>
-                    <span className="text-[11px] font-semibold px-3 py-1.5 rounded-full bg-cream-dark border border-brown-200 text-brown-600">Low</span>
+                    <span className="text-[9px] text-brown-400 font-medium">
+                      Risk Level
+                    </span>
+                    <span className="text-[11px] font-semibold px-3 py-1.5 rounded-full bg-cream-dark border border-brown-200 text-brown-600">
+                      Low
+                    </span>
                   </div>
                 </div>
 
@@ -398,16 +469,28 @@ export function IntelligenceSection() {
                   {/* Small connector circle */}
                   <div className="absolute -top-3 right-[180px] w-2 h-2 rounded-full border border-brown-300 bg-cream hidden lg:block" />
                   <div className="flex flex-col items-center gap-1">
-                    <span className="text-[9px] text-brown-400 font-medium">Jurisdiction</span>
-                    <span className="text-[11px] font-semibold px-3 py-1.5 rounded-full bg-[#d4ebd4] text-[#2d6b2d]">India, MCA</span>
+                    <span className="text-[9px] text-brown-400 font-medium">
+                      Jurisdiction
+                    </span>
+                    <span className="text-[11px] font-semibold px-3 py-1.5 rounded-full bg-[#d4ebd4] text-[#2d6b2d]">
+                      India, MCA
+                    </span>
                   </div>
                   <div className="flex flex-col items-center gap-1">
-                    <span className="text-[9px] text-brown-400 font-medium">Compliance Status</span>
-                    <span className="text-[11px] font-semibold px-3 py-1.5 rounded-full bg-[#ffecd4] text-[#995500]">On Track</span>
+                    <span className="text-[9px] text-brown-400 font-medium">
+                      Compliance Status
+                    </span>
+                    <span className="text-[11px] font-semibold px-3 py-1.5 rounded-full bg-[#ffecd4] text-[#995500]">
+                      On Track
+                    </span>
                   </div>
                   <div className="flex flex-col items-center gap-1">
-                    <span className="text-[9px] text-brown-400 font-medium">Auto-remind</span>
-                    <span className="text-[11px] font-semibold px-3 py-1.5 rounded-full bg-cream-dark border border-brown-200 text-brown-600">Yes</span>
+                    <span className="text-[9px] text-brown-400 font-medium">
+                      Auto-remind
+                    </span>
+                    <span className="text-[11px] font-semibold px-3 py-1.5 rounded-full bg-cream-dark border border-brown-200 text-brown-600">
+                      Yes
+                    </span>
                   </div>
                 </div>
               </div>
