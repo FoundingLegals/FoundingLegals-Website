@@ -38,17 +38,15 @@ export function StartSection() {
           {/* Left — document visual (founding leals's contract screenshot style) */}
           <div className="reveal-left">
             <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-2xl p-2 sm:p-4 relative overflow-hidden shadow-2xl border border-brown-100">
-                <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-[16/10] flex items-center justify-center">
-                  <video
-                    src="/videos/start new.mp4.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover scale-[1.12] origin-center"
-                  />
-                </div>
+              <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-[16/10] flex items-center justify-center">
+                <video
+                  src="/videos/start new.mp4.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover scale-[1.12] origin-center"
+                />
               </div>
             </div>
           </div>
@@ -193,17 +191,15 @@ export function ComplianceSection() {
           {/* Right — interactive visual */}
           <div className="reveal-right">
             <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-2xl p-2 sm:p-4 relative overflow-hidden shadow-2xl border border-brown-100">
-                <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-[16/10] flex items-center justify-center">
-                  <video
-                    src="/videos/Home page Goverense.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover scale-[1.12] origin-center"
-                  />
-                </div>
+              <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-[16/10] flex items-center justify-center">
+                <video
+                  src="/videos/Home page Goverense.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover scale-[1.12] origin-center"
+                />
               </div>
             </div>
           </div>
@@ -228,17 +224,15 @@ export function RaiseSection() {
           {/* Left — interactive visual */}
           <div className="reveal-left order-2 lg:order-1">
             <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-2xl p-2 sm:p-4 relative overflow-hidden shadow-2xl border border-brown-100">
-                <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-[16/10] flex items-center justify-center">
-                  <video
-                    src="/videos/compliance new .mp4.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover scale-[1.12] origin-center"
-                  />
-                </div>
+              <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-[16/10] flex items-center justify-center">
+                <video
+                  src="/videos/compliance new .mp4.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover scale-[1.12] origin-center"
+                />
               </div>
             </div>
           </div>
