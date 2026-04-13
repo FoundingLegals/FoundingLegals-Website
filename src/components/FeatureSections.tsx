@@ -49,7 +49,7 @@ export function StartSection() {
                   loop
                   muted
                   playsInline
-                  className="absolute w-full h-auto left-0 top-0 scale-[1.03] origin-top -translate-y-[1%]"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
                   style={{ backgroundColor: "white" }}
                 />
               </div>
@@ -253,7 +253,7 @@ export function RaiseSection() {
                   loop
                   muted
                   playsInline
-                  className="absolute w-full h-auto left-0 top-0 scale-[1.03] origin-top -translate-y-[1%]"
+                  className="absolute inset-0 w-full h-full object-cover object-center scale-[1.03]"
                   style={{ backgroundColor: "white" }}
                 />
               </div>

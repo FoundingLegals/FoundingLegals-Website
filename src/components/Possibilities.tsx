@@ -27,14 +27,14 @@ export default function Possibilities() {
           </div>
 
           <div className="reveal-right">
-            <div className="bg-white w-full shadow-2xl overflow-hidden">
+            <div className="w-full shadow-2xl overflow-hidden flex items-center justify-center">
               <video
                 src="/videos/founding Legals product vedio.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="w-full h-auto block"
+                className="w-full h-auto block scale-[1.05] origin-center"
               />
             </div>
           </div>
