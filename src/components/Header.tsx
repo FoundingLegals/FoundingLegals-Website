@@ -36,10 +36,16 @@ const sections = [
     icon: Rocket,
     items: [
       { name: "Name Registration", href: "/services/name-registration" },
-      { name: "Company Incorporation", href: "/services/company-incorporation" },
+      {
+        name: "Company Incorporation",
+        href: "/services/company-incorporation",
+      },
       { name: "Bank Opening", href: "/services/bank-opening" },
       { name: "Certifications", href: "/services/certifications" },
-      { name: "GST Filing & Taxation", href: "/services/gst-filing-and-taxation" },
+      {
+        name: "GST Filing & Taxation",
+        href: "/services/gst-filing-and-taxation",
+      },
     ],
   },
   {
@@ -47,7 +53,10 @@ const sections = [
     description: "Stay compliant and manage your filings",
     icon: ClipboardCheck,
     items: [
-      { name: "Essential Startup Approach", href: "/services/essential-startup-approach" },
+      {
+        name: "Essential Startup Approach",
+        href: "/services/essential-startup-approach",
+      },
       { name: "Client Invoice", href: "/services/client-invoice" },
       { name: "Spend Analysis", href: "/services/spend-analysis" },
       { name: "IP Protection", href: "/services/ip-protection" },
@@ -63,8 +72,14 @@ const sections = [
       { name: "Find Investors", href: "/services/find-investors", isNew: true },
       { name: "Raise Before a Round", href: "/services/raise-before-a-round" },
       { name: "Do a Funding Round", href: "/services/do-a-funding-round" },
-      { name: "Finance for Fundraising", href: "/services/finance-for-fundraising" },
-      { name: "Legal Advice for a Round", href: "/services/legal-advice-for-a-round" },
+      {
+        name: "Finance for Fundraising",
+        href: "/services/finance-for-fundraising",
+      },
+      {
+        name: "Legal Advice for a Round",
+        href: "/services/legal-advice-for-a-round",
+      },
       { name: "Instant Investment", href: "/services/instant-investment" },
     ],
   },
@@ -86,10 +101,11 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4">
       {/* Floating pill nav */}
       <nav
-        className={`max-w-7xl mx-auto rounded-full transition-all duration-500 ease-out ${isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(43,39,35,0.1)]"
-          : "bg-white shadow-[0_1px_12px_rgba(43,39,35,0.06)]"
-          }`}
+        className={`max-w-7xl mx-auto rounded-full transition-all duration-500 ease-out ${
+          isScrolled
+            ? "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(43,39,35,0.1)]"
+            : "bg-white shadow-[0_1px_12px_rgba(43,39,35,0.06)]"
+        }`}
       >
         <div className="flex items-center justify-between h-[56px] sm:h-[62px] px-6 lg:px-8">
           {/* Logo */}
@@ -111,15 +127,17 @@ export default function Header() {
             >
               <button
                 suppressHydrationWarning
-                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-semibold rounded-full transition-all duration-200 ${megaOpen
-                  ? "bg-cream-dark text-brown-900"
-                  : "text-olive-700 hover:bg-cream hover:text-brown-900"
-                  }`}
+                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-semibold rounded-full transition-all duration-200 ${
+                  megaOpen
+                    ? "bg-cream-dark text-brown-900"
+                    : "text-olive-700 hover:bg-cream hover:text-brown-900"
+                }`}
               >
                 For Founders
                 <ChevronDown
-                  className={`w-3 h-3 transition-transform duration-200 ${megaOpen ? "rotate-180" : ""
-                    }`}
+                  className={`w-3 h-3 transition-transform duration-200 ${
+                    megaOpen ? "rotate-180" : ""
+                  }`}
                 />
               </button>
 
@@ -131,7 +149,10 @@ export default function Header() {
                   <div className="fixed left-1/2 -translate-x-1/2 top-[74px] w-full max-w-[860px] bg-white rounded-2xl shadow-[0_12px_40px_rgba(43,39,35,0.12)] border border-brown-100/40 animate-dropdown">
                     <div className="grid grid-cols-3 divide-x divide-brown-100/50 p-8 gap-0">
                       {sections.map((section) => (
-                        <div key={section.title} className="px-6 first:pl-0 last:pr-0">
+                        <div
+                          key={section.title}
+                          className="px-6 first:pl-0 last:pr-0"
+                        >
                           {/* Section header */}
                           <div className="flex items-center gap-2.5 mb-2">
                             <div className="w-8 h-8 rounded-lg bg-olive-600/10 flex items-center justify-center">
@@ -192,15 +213,17 @@ export default function Header() {
             >
               <button
                 suppressHydrationWarning
-                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-medium rounded-full transition-all duration-200 ${companyOpen
-                  ? "bg-[#F0EBDF] text-[#33312c]"
-                  : "text-brown-600 hover:bg-cream hover:text-brown-800"
-                  }`}
+                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-medium rounded-full transition-all duration-200 ${
+                  companyOpen
+                    ? "bg-[#F0EBDF] text-[#33312c]"
+                    : "text-brown-600 hover:bg-cream hover:text-brown-800"
+                }`}
               >
                 Company
                 <ChevronDown
-                  className={`w-3 h-3 transition-transform duration-200 ${companyOpen ? "rotate-180" : ""
-                    }`}
+                  className={`w-3 h-3 transition-transform duration-200 ${
+                    companyOpen ? "rotate-180" : ""
+                  }`}
                 />
               </button>
 
@@ -210,11 +233,27 @@ export default function Header() {
                   {/* Invisible hover bridge */}
                   <div className="absolute top-full left-0 right-0 h-4" />
                   <div className="absolute left-1/2 -translate-x-1/2 top-[52px] bg-[#f5f1e6] rounded-[20px] shadow-[0_12px_40px_rgba(43,39,35,0.08)] animate-dropdown flex items-center gap-1 px-2 py-2">
-                    <a href="/company/about-us" className="px-4 py-2 text-[13px] font-medium text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap">About us</a>
+                    <a
+                      href="/company/about-us"
+                      className="px-4 py-2 text-[13px] font-medium text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap"
+                    >
+                      About us
+                    </a>
                     <div className="w-px h-5 bg-brown-200/50" />
-                    <a href="/company/careers" className="px-4 py-2 text-[13px] font-medium text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap">Careers</a>
+                    <a
+                      href="/company/careers"
+                      className="px-4 py-2 text-[13px] font-medium text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap"
+                    >
+                      Careers
+                    </a>
                     <div className="w-px h-5 bg-brown-200/50" />
-                    <a href="/company/partnership" className="px-4 py-2 text-[13px] font-medium text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap flex items-center gap-1.5"><Handshake className="w-3.5 h-3.5" />Partnership</a>
+                    <a
+                      href="/company/partnership"
+                      className="px-4 py-2 text-[13px] font-medium text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap flex items-center gap-1.5"
+                    >
+                      <Handshake className="w-3.5 h-3.5" />
+                      Partnership
+                    </a>
                   </div>
                 </>
               )}
@@ -223,12 +262,15 @@ export default function Header() {
 
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-1.5">
-            <a
-              href="https://app.foundinglegals.com/sign-up"
-              className="px-5 py-[7px] bg-olive-600 text-white text-[13px] font-semibold rounded-full hover:bg-olive-700 transition-colors duration-200"
-            >
-              Start Free
-            </a>
+            <div className="relative inline-block">
+              <a
+                href="https://app.foundinglegals.com/sign-up"
+                className="block px-6 py-[8px] bg-olive-600 text-white text-[13px] font-semibold rounded-l-full rounded-br-full rounded-tr-xl hover:bg-olive-700 hover:scale-[1.03] shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                Start Free
+              </a>
+              <Sparkles className="absolute -top-[5px] -right-[5px] w-4 h-4 text-[#D4AF37] fill-[#D4AF37] rotate-12 drop-shadow-md animate-[pulse_2s_ease-in-out_infinite]" />
+            </div>
             <a
               href="https://app.foundinglegals.com/sign-in"
               className="px-4 py-[7px] text-[13px] font-medium text-brown-500 hover:text-brown-800 transition-colors duration-200"
@@ -258,7 +300,9 @@ export default function Header() {
           <div className="p-3">
             {sections.map((section, sIdx) => (
               <div key={section.title}>
-                {sIdx > 0 && <div className="border-t border-brown-100/60 my-1.5" />}
+                {sIdx > 0 && (
+                  <div className="border-t border-brown-100/60 my-1.5" />
+                )}
                 <div className="flex items-center gap-2 px-3 pt-3 pb-1">
                   <div className="w-6 h-6 rounded-md bg-olive-600/10 flex items-center justify-center">
                     <section.icon className="w-3 h-3 text-olive-600" />
@@ -336,13 +380,16 @@ export default function Header() {
               >
                 Login
               </a>
-              <a
-                href="/services"
-                onClick={() => setIsMobileOpen(false)}
-                className="block text-center px-4 py-2.5 bg-olive-600 text-white text-[13px] font-semibold rounded-full hover:bg-olive-700 transition-colors"
-              >
-                Start Your Journey
-              </a>
+              <div className="relative inline-block w-full">
+                <a
+                  href="/services"
+                  onClick={() => setIsMobileOpen(false)}
+                  className="block w-full text-center px-4 py-2.5 bg-olive-600 text-white text-[13px] font-semibold rounded-l-full rounded-br-full rounded-tr-xl hover:bg-olive-700 hover:-translate-y-0.5 shadow-sm hover:shadow-md transition-all duration-300"
+                >
+                  Start Your Journey
+                </a>
+                <Sparkles className="absolute -top-[6px] -right-[2px] w-[18px] h-[18px] text-[#D4AF37] fill-[#D4AF37] rotate-12 drop-shadow-md animate-[pulse_2s_ease-in-out_infinite]" />
+              </div>
             </div>
           </div>
         </div>
