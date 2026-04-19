@@ -329,18 +329,18 @@ export default function Header() {
                   <div key={section.title} className="bg-white rounded-2xl border border-brown-100/60 overflow-hidden shadow-sm">
                     <button
                       onClick={() => toggleSection(section.title)}
-                      className="relative w-full flex items-center justify-between p-4"
+                      className="w-full flex items-center justify-between p-4"
                     >
-                      <div className="flex items-center">
+                      <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-xl bg-olive-600/10 flex items-center justify-center">
                           <section.icon className="w-4 h-4 text-olive-600" />
                         </div>
+                        <span className="text-[14px] font-bold text-brown-900 tracking-wide uppercase text-left">
+                          {section.title}
+                        </span>
                       </div>
-                      <span className="absolute left-1/2 -translate-x-1/2 text-[14px] font-bold text-brown-900 tracking-wide uppercase text-center">
-                        {section.title}
-                      </span>
                       <ChevronDown
-                        className={`w-4 h-4 text-brown-500 transition-transform duration-300 flex-shrink-0 ${isOpen ? "rotate-180" : ""}`}
+                        className={`w-4 h-4 text-brown-500 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
                       />
                     </button>
                     {isOpen && (
@@ -351,7 +351,7 @@ export default function Header() {
                             key={item.name}
                             href={item.href}
                             onClick={() => setIsMobileOpen(false)}
-                            className="flex items-center justify-center py-2.5 px-2 rounded-lg text-[13px] font-medium text-brown-600 hover:text-brown-900 hover:bg-cream transition-colors text-center"
+                            className="flex items-center py-2.5 px-2 rounded-lg text-[13px] font-medium text-brown-600 hover:text-brown-900 hover:bg-cream transition-colors"
                           >
                             {item.name}
                             {"isNew" in item && item.isNew && (
@@ -368,53 +368,53 @@ export default function Header() {
               })}
             </div>
 
-            <div className="mt-4 bg-white rounded-2xl border border-brown-100/60 p-2 shadow-sm space-y-1">
+            <div className="mt-6 pt-4 border-t border-brown-200/50 px-2 space-y-1">
               <a
                 href="/company/about-us"
                 onClick={() => setIsMobileOpen(false)}
-                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors text-center"
+                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 About Us
               </a>
               <a
                 href="/company/careers"
                 onClick={() => setIsMobileOpen(false)}
-                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors text-center"
+                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Careers
               </a>
               <a
                 href="/company/partnership"
                 onClick={() => setIsMobileOpen(false)}
-                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors text-center"
+                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Partnership
               </a>
               <a
                 href="#pricing"
                 onClick={() => setIsMobileOpen(false)}
-                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors text-center"
+                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Pricing
               </a>
               <a
                 href="/contact"
                 onClick={() => setIsMobileOpen(false)}
-                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors text-center"
+                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Schedule Demo
               </a>
               <a
                 href="/contact"
                 onClick={() => setIsMobileOpen(false)}
-                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors text-center"
+                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Contact Us
               </a>
               <a
                 href="https://app.foundinglegals.com/sign-in"
                 onClick={() => setIsMobileOpen(false)}
-                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors text-center"
+                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Login
               </a>
