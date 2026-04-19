@@ -90,6 +90,7 @@ export default function Header() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [companyOpen, setCompanyOpen] = useState(false);
+  const [openSections, setOpenSections] = useState<string[]>([]);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -97,12 +98,30 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileOpen]);
+
+  const toggleSection = (title: string) => {
+    setOpenSections((prev) =>
+      prev.includes(title) ? prev.filter((t) => t !== title) : [...prev, title]
+    );
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4">
       {/* Floating pill nav */}
       <nav
-        className={`max-w-7xl mx-auto rounded-full transition-all duration-500 ease-out ${
-          isScrolled
+        className={`relative z-50 max-w-7xl mx-auto rounded-full transition-all duration-500 ease-out ${
+          isScrolled || isMobileOpen
             ? "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(43,39,35,0.1)]"
             : "bg-white shadow-[0_1px_12px_rgba(43,39,35,0.06)]"
         }`}
@@ -282,109 +301,131 @@ export default function Header() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="lg:hidden w-9 h-9 flex items-center justify-center rounded-full hover:bg-cream transition-colors"
+            className="lg:hidden relative w-9 h-9 flex items-center justify-center rounded-full hover:bg-cream transition-colors"
             aria-label="Toggle menu"
           >
-            {isMobileOpen ? (
-              <X className="w-[18px] h-[18px] text-brown-700" />
-            ) : (
-              <Menu className="w-[18px] h-[18px] text-brown-700" />
-            )}
+            <X
+              className={`absolute w-[18px] h-[18px] text-brown-700 transition-all duration-300 ${
+                isMobileOpen ? "rotate-0 opacity-100 scale-100" : "-rotate-90 opacity-0 scale-50"
+              }`}
+            />
+            <Menu
+              className={`absolute w-[18px] h-[18px] text-brown-700 transition-all duration-300 ${
+                isMobileOpen ? "rotate-90 opacity-0 scale-50" : "rotate-0 opacity-100 scale-100"
+              }`}
+            />
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Content */}
       {isMobileOpen && (
-        <div className="lg:hidden mt-2 max-w-[1200px] mx-auto bg-white rounded-2xl shadow-[0_8px_30px_rgba(43,39,35,0.12)] border border-brown-100/60 animate-dropdown overflow-hidden max-h-[80vh] overflow-y-auto">
-          <div className="p-3">
-            {sections.map((section, sIdx) => (
-              <div key={section.title}>
-                {sIdx > 0 && (
-                  <div className="border-t border-brown-100/60 my-1.5" />
-                )}
-                <div className="flex items-center gap-2 px-3 pt-3 pb-1">
-                  <div className="w-6 h-6 rounded-md bg-olive-600/10 flex items-center justify-center">
-                    <section.icon className="w-3 h-3 text-olive-600" />
-                  </div>
-                  <span className="text-[11px] font-bold text-brown-900 uppercase tracking-[0.08em]">
-                    {section.title}
-                  </span>
-                </div>
-                {section.items.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setIsMobileOpen(false)}
-                    className="block px-3 py-2 ml-8 rounded-lg text-[13px] font-medium text-brown-600 hover:text-brown-900 hover:bg-cream transition-colors"
-                  >
-                    {item.name}
-                    {"isNew" in item && item.isNew && (
-                      <span className="ml-2 text-[9px] font-bold uppercase tracking-widest bg-lime-bg text-olive-700 px-1.5 py-0.5 rounded-full">
-                        New
-                      </span>
+        <div className="fixed inset-0 z-40 bg-[#fcfbf9] lg:hidden overflow-y-auto pt-[80px] sm:pt-[96px] pb-10">
+          <div className="px-4">
+            <div className="space-y-3">
+              {sections.map((section) => {
+                const isOpen = openSections.includes(section.title);
+                return (
+                  <div key={section.title} className="bg-white rounded-2xl border border-brown-100/60 overflow-hidden shadow-sm">
+                    <button
+                      onClick={() => toggleSection(section.title)}
+                      className="w-full flex items-center justify-between p-4"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-xl bg-olive-600/10 flex items-center justify-center">
+                          <section.icon className="w-4 h-4 text-olive-600" />
+                        </div>
+                        <span className="text-[14px] font-bold text-brown-900 tracking-wide uppercase text-left">
+                          {section.title}
+                        </span>
+                      </div>
+                      <ChevronDown
+                        className={`w-4 h-4 text-brown-500 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                      />
+                    </button>
+                    {isOpen && (
+                      <div className="px-4 pb-4 space-y-1">
+                        <div className="border-t border-brown-100/40 mb-2" />
+                        {section.items.map((item) => (
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            onClick={() => setIsMobileOpen(false)}
+                            className="flex items-center py-2.5 px-2 rounded-lg text-[13px] font-medium text-brown-600 hover:text-brown-900 hover:bg-cream transition-colors"
+                          >
+                            {item.name}
+                            {"isNew" in item && item.isNew && (
+                              <span className="ml-2 text-[9px] font-bold uppercase tracking-widest bg-lime-bg text-olive-700 px-1.5 py-0.5 rounded-full">
+                                New
+                              </span>
+                            )}
+                          </a>
+                        ))}
+                      </div>
                     )}
-                  </a>
-                ))}
-              </div>
-            ))}
+                  </div>
+                );
+              })}
+            </div>
 
-            <div className="border-t border-brown-100/60 my-1.5" />
-            <div className="px-2 pt-1 pb-2 space-y-1.5">
+            <div className="mt-4 bg-white rounded-2xl border border-brown-100/60 p-2 shadow-sm space-y-1">
               <a
                 href="/company/about-us"
                 onClick={() => setIsMobileOpen(false)}
-                className="block px-3 py-2 text-[13px] font-medium text-brown-600 hover:text-brown-900 rounded-lg hover:bg-cream transition-colors"
+                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 About Us
               </a>
               <a
                 href="/company/careers"
                 onClick={() => setIsMobileOpen(false)}
-                className="block px-3 py-2 text-[13px] font-medium text-brown-600 hover:text-brown-900 rounded-lg hover:bg-cream transition-colors"
+                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Careers
               </a>
               <a
                 href="/company/partnership"
                 onClick={() => setIsMobileOpen(false)}
-                className="block px-3 py-2 text-[13px] font-medium text-brown-600 hover:text-brown-900 rounded-lg hover:bg-cream transition-colors"
+                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Partnership
               </a>
               <a
                 href="#pricing"
                 onClick={() => setIsMobileOpen(false)}
-                className="block px-3 py-2 text-[13px] font-medium text-brown-600 hover:text-brown-900 rounded-lg hover:bg-cream transition-colors"
+                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Pricing
               </a>
               <a
                 href="/contact"
                 onClick={() => setIsMobileOpen(false)}
-                className="block px-3 py-2 text-[13px] font-medium text-brown-600 hover:text-brown-900 rounded-lg hover:bg-cream transition-colors"
+                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Schedule Demo
               </a>
               <a
                 href="/contact"
                 onClick={() => setIsMobileOpen(false)}
-                className="block px-3 py-2 text-[13px] font-medium text-brown-600 hover:text-brown-900 rounded-lg hover:bg-cream transition-colors"
+                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Contact Us
               </a>
               <a
                 href="https://app.foundinglegals.com/sign-in"
                 onClick={() => setIsMobileOpen(false)}
-                className="block px-3 py-2 text-[13px] font-medium text-brown-600 hover:text-brown-900 rounded-lg hover:bg-cream transition-colors"
+                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Login
               </a>
+            </div>
+
+            <div className="mt-6">
               <div className="relative inline-block w-full">
                 <a
                   href="/services"
                   onClick={() => setIsMobileOpen(false)}
-                  className="block w-full text-center px-4 py-2.5 bg-olive-600 text-white text-[13px] font-semibold rounded-l-full rounded-br-full rounded-tr-xl hover:bg-olive-700 hover:-translate-y-0.5 shadow-sm hover:shadow-md transition-all duration-300"
+                  className="block w-full text-center px-4 py-3 bg-olive-600 text-white text-[14px] font-semibold rounded-l-full rounded-br-full rounded-tr-xl hover:bg-olive-700 hover:-translate-y-0.5 shadow-sm hover:shadow-md transition-all duration-300"
                 >
                   Start Your Journey
                 </a>
