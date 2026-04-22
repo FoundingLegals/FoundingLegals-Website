@@ -8,10 +8,10 @@ const LoadingOverlay = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Show splash screen for at least 1.5 seconds
+    // Show splash screen for 2.5 seconds to match the GIF animation speed
     const timer = setTimeout(() => {
       setIsVisible(false);
-    }, 1500);
+    }, 2500);
 
     // Clean up
     return () => {
