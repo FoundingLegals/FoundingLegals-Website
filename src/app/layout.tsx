@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import LoadingOverlay from "@/components/LoadingOverlay";
 
 export const metadata: Metadata = {
   title:
@@ -30,7 +31,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased bg-cream">{children}</body>
+      <body className="antialiased bg-cream">
+        <LoadingOverlay />
+        {children}
+      </body>
     </html>
   );
 }
