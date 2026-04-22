@@ -5,19 +5,25 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const LoadingOverlay = () => {
-  const [isVisible, setIsVisible] = useState(true);
+  // Initialize to false to prevent flashing on internal navigation
+  const [isVisible, setIsVisible] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
-    // Show splash screen for 2.5 seconds to match the GIF animation speed
-    const timer = setTimeout(() => {
-      setIsVisible(false);
-    }, 2500);
+    // Check if user has already seen the splash screen in this session
+    const hasSeenSplash = sessionStorage.getItem("hasSeenFoundingLegalsSplash");
 
-    // Clean up
-    return () => {
-      clearTimeout(timer);
-      document.body.style.overflow = "unset";
-    };
+    if (!hasSeenSplash) {
+      setIsVisible(true);
+      setShouldRender(true);
+
+      const timer = setTimeout(() => {
+        setIsVisible(false);
+        sessionStorage.setItem("hasSeenFoundingLegalsSplash", "true");
+      }, 2500);
+
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   useEffect(() => {
@@ -26,10 +32,17 @@ const LoadingOverlay = () => {
     } else {
       document.body.style.overflow = "unset";
     }
+    
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [isVisible]);
 
+  // If already seen or animation finished, don't render anything
+  if (!shouldRender) return null;
+
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={() => setShouldRender(false)}>
       {isVisible && (
         <motion.div
           id="loading-overlay"
