@@ -59,7 +59,6 @@ const sections = [
       },
       { name: "Client Invoice", href: "/services/client-invoice" },
       { name: "Spend Analysis", href: "/services/spend-analysis" },
-      { name: "IP Protection", href: "/services/ip-protection" },
       { name: "Document Management", href: "/services/document-management" },
     ],
   },
@@ -81,6 +80,7 @@ const sections = [
         href: "/services/legal-advice-for-a-round",
       },
       { name: "Instant Investment", href: "/services/instant-investment" },
+      { name: "IP Protection", href: "/services/ip-protection" },
     ],
   },
 ];
@@ -120,11 +120,10 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4">
       {/* Floating pill nav */}
       <nav
-        className={`relative z-50 max-w-7xl mx-auto rounded-full transition-all duration-500 ease-out ${
-          isScrolled || isMobileOpen
+        className={`relative z-50 max-w-7xl mx-auto rounded-full transition-all duration-500 ease-out ${isScrolled || isMobileOpen
             ? "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(43,39,35,0.1)]"
             : "bg-white shadow-[0_1px_12px_rgba(43,39,35,0.06)]"
-        }`}
+          }`}
       >
         <div className="flex items-center justify-between h-[56px] sm:h-[62px] px-6 lg:px-8">
           {/* Logo */}
@@ -146,17 +145,15 @@ export default function Header() {
             >
               <button
                 suppressHydrationWarning
-                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-semibold rounded-full transition-all duration-200 ${
-                  megaOpen
+                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-semibold rounded-full transition-all duration-200 ${megaOpen
                     ? "bg-cream-dark text-brown-900"
                     : "text-olive-700 hover:bg-cream hover:text-brown-900"
-                }`}
+                  }`}
               >
                 For Founders
                 <ChevronDown
-                  className={`w-3 h-3 transition-transform duration-200 ${
-                    megaOpen ? "rotate-180" : ""
-                  }`}
+                  className={`w-3 h-3 transition-transform duration-200 ${megaOpen ? "rotate-180" : ""
+                    }`}
                 />
               </button>
 
@@ -212,12 +209,6 @@ export default function Header() {
 
             {/* Static nav items */}
             <a
-              href="#pricing"
-              className="px-4 py-[7px] text-[13px] font-medium text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
-            >
-              Pricing
-            </a>
-            <a
               href="/contact"
               className="px-4 py-[7px] text-[13px] font-medium text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
             >
@@ -232,17 +223,15 @@ export default function Header() {
             >
               <button
                 suppressHydrationWarning
-                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-medium rounded-full transition-all duration-200 ${
-                  companyOpen
+                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-medium rounded-full transition-all duration-200 ${companyOpen
                     ? "bg-[#F0EBDF] text-[#33312c]"
                     : "text-brown-600 hover:bg-cream hover:text-brown-800"
-                }`}
+                  }`}
               >
                 Company
                 <ChevronDown
-                  className={`w-3 h-3 transition-transform duration-200 ${
-                    companyOpen ? "rotate-180" : ""
-                  }`}
+                  className={`w-3 h-3 transition-transform duration-200 ${companyOpen ? "rotate-180" : ""
+                    }`}
                 />
               </button>
 
@@ -305,14 +294,12 @@ export default function Header() {
             aria-label="Toggle menu"
           >
             <X
-              className={`absolute w-[18px] h-[18px] text-brown-700 transition-all duration-300 ${
-                isMobileOpen ? "rotate-0 opacity-100 scale-100" : "-rotate-90 opacity-0 scale-50"
-              }`}
+              className={`absolute w-[18px] h-[18px] text-brown-700 transition-all duration-300 ${isMobileOpen ? "rotate-0 opacity-100 scale-100" : "-rotate-90 opacity-0 scale-50"
+                }`}
             />
             <Menu
-              className={`absolute w-[18px] h-[18px] text-brown-700 transition-all duration-300 ${
-                isMobileOpen ? "rotate-90 opacity-0 scale-50" : "rotate-0 opacity-100 scale-100"
-              }`}
+              className={`absolute w-[18px] h-[18px] text-brown-700 transition-all duration-300 ${isMobileOpen ? "rotate-90 opacity-0 scale-50" : "rotate-0 opacity-100 scale-100"
+                }`}
             />
           </button>
         </div>
@@ -389,13 +376,6 @@ export default function Header() {
                 className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Partnership
-              </a>
-              <a
-                href="#pricing"
-                onClick={() => setIsMobileOpen(false)}
-                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
-              >
-                Pricing
               </a>
               <a
                 href="/contact"

@@ -48,7 +48,7 @@ export default function Trust() {
               Engineered for the Indian startup ecosystem
             </h2>
             <p className="text-base sm:text-lg text-brown-500 leading-relaxed">
-              MCA, DPIIT, GST, SEBI — we understand the regulatory maze
+              MCA, DPIIT, GST,   we understand the regulatory maze
               inside out, so you never have to.
             </p>
           </div>

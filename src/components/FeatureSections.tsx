@@ -188,16 +188,16 @@ export function ComplianceSection() {
 
               <div className="flex gap-4">
                 <div className="shrink-0 mt-0.5">
-                  <FolderOpen className="w-5 h-5 text-olive-600" />
+                  <Shield className="w-5 h-5 text-olive-600" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-brown-900 mb-1.5">
-                    IP and Document Vault
+                    Automated Audit Readiness
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Safeguard your intellectual property and manage critical
-                    corporate governance files in an encrypted, centralized
-                    vault.
+                    Maintain an immutable digital record of all statutory filings
+                    and compliance actions, ensuring your enterprise is perpetually
+                    prepared for financial and legal audits.
                   </p>
                 </div>
               </div>
@@ -319,6 +319,22 @@ export function RaiseSection() {
                     Engage with term sheets and investor agreements from a
                     position of strength with expert legal and financial
                     oversight.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="shrink-0 mt-0.5">
+                  <FolderOpen className="w-5 h-5 text-olive-600" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-brown-900 mb-1.5">
+                    IP and Document Vault
+                  </h3>
+                  <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
+                    Safeguard your intellectual property and manage critical
+                    corporate governance files in an encrypted, centralized
+                    vault.
                   </p>
                 </div>
               </div>

@@ -1,6 +1,6 @@
-import { 
-  Rocket, Shield, Briefcase, FileText, Banknote, Scroll, CheckCircle, 
-  Search, ShieldCheck, Scale, LineChart, FileSignature, Coins, 
+import {
+  Rocket, Shield, Briefcase, FileText, Banknote, Scroll, CheckCircle,
+  Search, ShieldCheck, Scale, LineChart, FileSignature, Coins,
   TrendingUp, Eye, FileSearch, Building2, Award, Presentation, Zap
 } from "lucide-react";
 
@@ -302,7 +302,7 @@ export const services: ServicePattern[] = [
   {
     title: "IP Protection",
     slug: "ip-protection",
-    heroCategory: "Compliance",
+    heroCategory: "Raise",
     heroTitle: "Defend Your Intellectual Property",
     heroDescription: "Secure your brand, software, and inventions. End-to-end trademark, copyright, and patent filing by experienced IP attorneys.",
     heroImage: "/startup-compliance-hero.png",
