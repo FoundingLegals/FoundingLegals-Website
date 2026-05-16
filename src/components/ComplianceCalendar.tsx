@@ -123,7 +123,7 @@ export default function ComplianceCalendar() {
       className="py-24 lg:py-32 bg-cream"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header — founding leals style */}
+        {/* Header    founding leals style */}
         <div className="text-center max-w-2xl mx-auto mb-16 reveal">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-lime-bg rounded-full mb-6">
             <Calendar className="w-4 h-4 text-olive-600" />

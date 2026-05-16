@@ -1,5 +1,5 @@
 /* Professional abstract illustrations for the hero and section dividers.
-   Uses organic shapes, gradients, and subtle patterns — not literal tree/nature art. */
+   Uses organic shapes, gradients, and subtle patterns    not literal tree/nature art. */
 
 export function HeroIllustration({ className = "" }: { className?: string }) {
   return (
@@ -41,13 +41,13 @@ export function HeroIllustration({ className = "" }: { className?: string }) {
       <ellipse cx="380" cy="500" rx="200" ry="180" fill="url(#blob2)" />
       <ellipse cx="600" cy="180" rx="160" ry="140" fill="url(#blob3)" />
 
-      {/* Subtle concentric arcs — like topographic lines */}
+      {/* Subtle concentric arcs    like topographic lines */}
       <circle cx="480" cy="360" r="100" stroke="#5C6F2D" strokeWidth="0.5" strokeOpacity="0.06" fill="none" />
       <circle cx="480" cy="360" r="160" stroke="#5C6F2D" strokeWidth="0.5" strokeOpacity="0.05" fill="none" />
       <circle cx="480" cy="360" r="220" stroke="#5C6F2D" strokeWidth="0.5" strokeOpacity="0.04" fill="none" />
       <circle cx="480" cy="360" r="280" stroke="#5C6F2D" strokeWidth="0.5" strokeOpacity="0.03" fill="none" />
 
-      {/* Abstract leaf/petal shapes — refined, not literal */}
+      {/* Abstract leaf/petal shapes    refined, not literal */}
       <path
         d="M440 200 Q500 140 540 200 Q500 260 440 200Z"
         fill="#5C6F2D"

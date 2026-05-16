@@ -1,4 +1,4 @@
-import { ArrowRight, Handshake, Users, Globe, TrendingUp, Shield, Zap, Building2 } from "lucide-react";
+import { Handshake, Users, Globe, TrendingUp, Shield, Zap, Building2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 

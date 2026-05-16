@@ -276,10 +276,11 @@ export default function Roadmap() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
         <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-medium text-brown-900 leading-[1.1] mb-6 max-w-4xl mx-auto">
-          Complete Startup Life-Cycle:<br /> From Incorporation to Global Scale
+          One thread, all the way <br /> 
         </h2>
         <p className="text-xl text-brown-600 max-w-3xl mx-auto italic leading-relaxed">
-          Track the journey of your venture as we manage everything from legal foundations to post-funding governance and beyond.
+          Registration, compliance, governance, fundraising     the
+          milestones connect, instead of scattering across people and tools.
         </p>
       </div>
 
@@ -352,7 +353,7 @@ export default function Roadmap() {
             <g id="tag7" ref={tag7Ref} opacity="0">
               <rect x="1080" y="450" width="120" height="30" rx="15" fill="#B6D7A8" />
               <text x="1140" y="465" textAnchor="middle" dominantBaseline="middle"
-                fill="#3a632b" fontSize="12" fontWeight="600">IPO Ready</text>
+                fill="#3a632b" fontSize="12" fontWeight="600">Series A Ready</text>
             </g>
 
             <circle id="dot-glow" ref={dotGlowRef} cx="32" cy="0" r="16" fill="rgba(168, 168, 158, 0.3)" opacity="1" style={{ filter: 'blur(3px)' }} />

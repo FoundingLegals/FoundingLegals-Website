@@ -1,4 +1,4 @@
-import { Star, ArrowRight } from "lucide-react";
+import { Star } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -16,7 +16,7 @@ export default function AboutUsPage() {
               About us
             </h1>
             <p className="text-white/90 text-[17px] sm:text-[19px] leading-[1.6] max-w-sm font-medium">
-              Helping founders bring their vision to life faster while ensuring ironclad corporate compliance and business strategy.
+              Helping Indian founders move faster on incorporation, compliance and paperwork     without giving up legal rigour.
             </p>
           </div>
 
@@ -38,7 +38,7 @@ export default function AboutUsPage() {
           Our vision
         </div>
         <h2 className="text-[36px] sm:text-[50px] lg:text-[60px] font-serif font-regular text-[#2b2723] leading-[1.15] max-w-[900px]">
-          Founding Legals is on a mission to reduce the <span className="text-[#5A6E3B]">time, effort and cost</span> spent on corporate compliance
+          We&apos;re on a mission to cut the <span className="text-[#5A6E3B]">time, effort and cost</span> Indian founders spend on legal and compliance work
         </h2>
       </section>
 
@@ -58,13 +58,13 @@ export default function AboutUsPage() {
             </h2>
             <div className="space-y-6 text-[15px] sm:text-[16px] text-[#4b4843] leading-[1.7]">
               <p>
-                Founding Legals was founded by top-tier legal practitioners and built by a team of technologists, compliance officers, and operators with deep experience in corporate structures. We've experienced firsthand how manual, fragmented registration workflows slow down business, introduce risk, and drain founder energy.
+                Founding Legals was started by founders, lawyers and operators who&apos;ve lived through the pain of running early-stage Indian startups     the back-and-forth with CAs, the scattered Drive folders, the missed ROC dates, the lawyer bills for one-page agreements.
               </p>
               <p>
-                That perspective informed our flagship platform: An AI-assisted compliance engine that helps startups register faster—without compromising legal integrity.
+                We built the tool we wished we had on day one: a single place to register your company, manage agreements, track your team, and stay on top of every compliance deadline.
               </p>
               <p>
-                Since then, Founding Legals has grown into a broader platform, serving not just incorporation, but also intellectual property, fund-raising support, and recurring compliances. We are proud to support some of the most innovative startups in India and beyond.
+                Today we support Indian founders across incorporation, GST and ROC compliance, IP protection and fundraising paperwork     with clear pricing and no hidden fees.
               </p>
             </div>
           </div>
@@ -89,16 +89,15 @@ export default function AboutUsPage() {
                     We're hiring.<br/><span className="italic text-olive-700">Join our mission.</span>
                  </h2>
                  <p className="text-brown-600 text-[18px] font-light leading-relaxed mb-10 md:mb-0">
-                    Become part of the team shaping the future of legal infrastructure for the next generation of Indian startups.
+                    Join the team building better legal and compliance infrastructure for the next generation of Indian founders.
                  </p>
                </div>
                <div className="relative z-10">
                  <a 
                    href="/company/careers"
-                   className="group/btn inline-flex items-center gap-4 px-10 py-5 bg-[#5A6E3B] text-white text-[17px] font-bold rounded-[20px] hover:bg-[#4A5D2A] transition-all duration-300 shadow-xl shadow-olive-900/20 hover:shadow-olive-900/40"
+                   className="inline-flex items-center justify-center px-10 py-5 bg-[#5A6E3B] text-white text-[17px] font-bold rounded-[20px] hover:bg-[#4A5D2A] transition-all duration-300 shadow-xl shadow-olive-900/20 hover:shadow-olive-900/40"
                  >
                     Explore Careers
-                    <ArrowRight className="w-6 h-6 group-hover/btn:translate-x-2 transition-transform duration-300" />
                  </a>
                </div>
             </div>

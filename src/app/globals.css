@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* === FL EXACT COLOR SYSTEM — Warm Cream + Olive Green === */
+  /* === FL EXACT COLOR SYSTEM    Warm Cream + Olive Green === */
 
   /* Cream / Off-white backgrounds (founding leals's base) */
   --color-cream: #F5F0EB;
@@ -77,7 +77,7 @@ body {
    SMOOTH SCROLL ANIMATIONS
    =========================== */
 
-/* Reveal on scroll — base state (invisible, shifted) */
+/* Reveal on scroll    base state (invisible, shifted) */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -207,7 +207,7 @@ body {
 }
 
 /* ===========================
-   HERO FOREST SCENE — DYNAMIC ANIMATIONS
+   HERO FOREST SCENE    DYNAMIC ANIMATIONS
    Sun rays, falling leaves, parallax depth, particles
    =========================== */
 
@@ -217,7 +217,7 @@ body {
   perspective-origin: 50% 50%;
 }
 
-/* Background — very subtle slow drift for depth */
+/* Background    very subtle slow drift for depth */
 @keyframes forest-bg-drift {
 
   0%,
@@ -242,13 +242,13 @@ body {
   animation: forest-bg-drift 40s ease-in-out infinite;
 }
 
-/* Mid layer (content) — opposite subtle drift for parallax */
+/* Mid layer (content)    opposite subtle drift for parallax */
 .forest-parallax-mid {
   animation: none;
   /* text stays still for readability */
 }
 
-/* ---- SUN RAYS — individual sweeping beams ---- */
+/* ---- SUN RAYS    individual sweeping beams ---- */
 .forest-ray {
   position: absolute;
   top: 0;
@@ -416,7 +416,7 @@ body {
   animation: ray-sweep-5 14s ease-in-out infinite 6s;
 }
 
-/* ---- FALLING LEAVES — drift, spin, sway ---- */
+/* ---- FALLING LEAVES    drift, spin, sway ---- */
 .forest-leaf {
   position: absolute;
   top: -40px;
@@ -694,7 +694,7 @@ body {
   animation: leaf-fall-7 19s ease-in-out infinite 8s;
 }
 
-/* ---- MIST — slow lateral drift ---- */
+/* ---- MIST    slow lateral drift ---- */
 @keyframes mist-drift {
 
   0%,
@@ -713,7 +713,7 @@ body {
   animation: mist-drift 20s ease-in-out infinite;
 }
 
-/* ---- FLOATING PARTICLES — gentle drifting upward ---- */
+/* ---- FLOATING PARTICLES    gentle drifting upward ---- */
 @keyframes particle-float-1 {
   0% {
     transform: translate(0, 0) scale(1);
@@ -977,7 +977,7 @@ body {
 }
 
 /* ===========================
-   NODE TREE — step-by-step animation
+   NODE TREE    step-by-step animation
    =========================== */
 @keyframes node-tree-reveal {
   from {
@@ -992,14 +992,14 @@ body {
 }
 
 /* ===========================
-   ROADMAP — founding leals.ai L-curve tree
+   ROADMAP    founding leals.ai L-curve tree
    =========================== */
 
 .rm {
   padding-top: 20px;
 }
 
-/* Each step container — uses CSS Grid for precise placement */
+/* Each step container    uses CSS Grid for precise placement */
 .rm-step {
   display: grid;
   grid-template-columns: 52px 1fr;
@@ -1009,7 +1009,7 @@ body {
   padding-bottom: 0;
 }
 
-/* Olive icon node — top-left */
+/* Olive icon node    top-left */
 .rm-node {
   grid-column: 1;
   grid-row: 1;
@@ -1024,7 +1024,7 @@ body {
   z-index: 2;
 }
 
-/* Title — below icon */
+/* Title    below icon */
 .rm-title {
   grid-column: 1;
   grid-row: 2;
@@ -1051,7 +1051,7 @@ body {
   z-index: 1;
 }
 
-/* Tags — positioned at the end of the L-curve */
+/* Tags    positioned at the end of the L-curve */
 .rm-tags {
   position: absolute;
   top: 82px;
@@ -1096,7 +1096,7 @@ body {
   z-index: 0;
 }
 
-/* Step spacing — enough room for L-curve + tags + vline */
+/* Step spacing    enough room for L-curve + tags + vline */
 .rm-step {
   min-height: 130px;
 }

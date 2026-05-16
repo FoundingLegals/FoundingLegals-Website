@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { services } from "@/lib/servicesData";
 import { useForm, ValidationError } from "@formspree/react";
-import { Sparkles, CheckCircle2, Send, ChevronDown, ArrowRight, Mail, Phone, MapPin, Calendar } from "lucide-react";
+import { Sparkles, CheckCircle2, Send, ChevronDown, Mail, Phone, MapPin, Calendar } from "lucide-react";
 import { useState } from "react";
 
 export default function ServicesPage() {

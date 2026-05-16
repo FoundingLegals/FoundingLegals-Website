@@ -19,7 +19,7 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="bg-cream border-t border-brown-200">
-      {/* Main Footer — founding leals.ai style: cream bg, multi-column, clean text */}
+      {/* Main Footer    founding leals.ai style: cream bg, multi-column, clean text */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Column */}
@@ -33,7 +33,7 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Link Columns — founding leals style: simple text links */}
+          {/* Link Columns    founding leals style: simple text links */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
               <h3 className="text-sm font-semibold text-brown-900 mb-4">
@@ -56,7 +56,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar — founding leals style */}
+      {/* Bottom Bar    founding leals style */}
       <div className="border-t border-brown-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">

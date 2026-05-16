@@ -39,7 +39,7 @@ export function StartSection() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-          {/* Left — document visual (founding leals's contract screenshot style) */}
+          {/* Left    document visual (founding leals's contract screenshot style) */}
           <div className="reveal-left">
             <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
               <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-14/10 sm:aspect-16/10 flex items-center justify-center">
@@ -56,7 +56,7 @@ export function StartSection() {
             </div>
           </div>
 
-          {/* Right — features (founding leals style: icon + badge, heading, 3 bullet features) */}
+          {/* Right    features (founding leals style: icon + badge, heading, 3 bullet features) */}
           <div className="reveal-right">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-xl bg-olive-600 flex items-center justify-center">
@@ -68,7 +68,7 @@ export function StartSection() {
             </div>
 
             <h2 className="font-serif text-4xl sm:text-[42px] lg:text-5xl font-medium text-brown-900 leading-[1.15] mb-10">
-              Seamless Corporate Foundations
+              Born ready. From day one.
             </h2>
 
             <div className="space-y-8">
@@ -78,11 +78,11 @@ export function StartSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Precision Incorporation
+                    Incorporation in 7 days
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Execute your Private Limited registration with absolute
-                    accuracy, from name reservation to final certification.
+                    Name, SPICe+, DIN, DSC, PAN and TAN     filed for you
+                    with live status updates.
                   </p>
                 </div>
               </div>
@@ -93,11 +93,11 @@ export function StartSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Operational Excellence
+                    Banking &amp; certifications, sorted
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Accelerate your market entry with integrated banking, MSME
-                    certification, and regulatory readiness.
+                    Current account, Udyam (MSME) and DPIIT recognition
+                        lined up without portal-hopping.
                   </p>
                 </div>
               </div>
@@ -108,11 +108,11 @@ export function StartSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Automated Tax Compliance
+                    GST set up, returns on autopilot
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Navigate the Indian tax landscape with automated GST filings
-                    and strategic financial reporting.
+                    GSTIN registration plus monthly and quarterly returns
+                        nudged a week ahead, never the night before.
                   </p>
                 </div>
               </div>
@@ -140,7 +140,7 @@ export function ComplianceSection() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-          {/* Left — features */}
+          {/* Left    features */}
           <div className="reveal-left">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-xl bg-olive-600 flex items-center justify-center">
@@ -152,7 +152,7 @@ export function ComplianceSection() {
             </div>
 
             <h2 className="font-serif text-4xl sm:text-[42px] lg:text-5xl font-medium text-brown-900 leading-[1.15] mb-10">
-              Governance Without Complexity
+              Compliance, quietly running in the background.
             </h2>
 
             <div className="space-y-8">
@@ -162,11 +162,11 @@ export function ComplianceSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Strategic ROC Oversight
+                    ROC, always on time
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Maintain flawless corporate standing with automated ROC
-                    monitoring, board resolutions, and statutory compliance.
+                    AOC-4, MGT-7, board resolutions, statutory registers
+                        filed before the deadline, never after.
                   </p>
                 </div>
               </div>
@@ -177,11 +177,11 @@ export function ComplianceSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Centralized Invoicing
+                    Invoices &amp; spend, neatly tracked
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Deploy professional, GST-compliant financial operations with
-                    real-time visibility into corporate expenditures.
+                    GST-ready invoices, payments tracked, monthly books
+                    your CA can open without a single follow-up email.
                   </p>
                 </div>
               </div>
@@ -192,19 +192,19 @@ export function ComplianceSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Automated Audit Readiness
+                    One vault, always audit-ready
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Maintain an immutable digital record of all statutory filings
-                    and compliance actions, ensuring your enterprise is perpetually
-                    prepared for financial and legal audits.
+                    Filings, agreements and resolutions in one folder.
+                    When diligence calls, you share a link     not a
+                    last-minute scramble.
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right — interactive visual */}
+          {/* Right    interactive visual */}
           <div className="reveal-right">
             <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
               <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-14/10 sm:aspect-16/10 flex items-center justify-center">
@@ -242,7 +242,7 @@ export function RaiseSection() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-          {/* Left — interactive visual */}
+          {/* Left    interactive visual */}
           <div className="reveal-left order-2 lg:order-1">
             <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
               <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-14/10 sm:aspect-16/10 flex items-center justify-center">
@@ -260,7 +260,7 @@ export function RaiseSection() {
             </div>
           </div>
 
-          {/* Right — features */}
+          {/* Right    features */}
           <div className="reveal-right order-1 lg:order-2">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-xl bg-olive-600 flex items-center justify-center">
@@ -272,7 +272,7 @@ export function RaiseSection() {
             </div>
 
             <h2 className="font-serif text-4xl sm:text-[42px] lg:text-5xl font-medium text-brown-900 leading-[1.15] mb-10">
-              Accelerate Funding Readiness
+              The yes from your investor shouldn&apos;t catch you off guard.
             </h2>
 
             <div className="space-y-8">
@@ -282,11 +282,11 @@ export function RaiseSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Investor Intelligence
+                    A data room that holds up
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Develop sophisticated pitch materials and identify strategic
-                    investment partners for your growth cycle.
+                    Cap table, deck and key documents in one shareable
+                    space     reusable round after round.
                   </p>
                 </div>
               </div>
@@ -297,12 +297,11 @@ export function RaiseSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Structured Round Execution
+                    Round paperwork in lockstep
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Streamline complex fundraising events with automated
-                    documentation and comprehensive due diligence
-                    infrastructure.
+                    Term sheets, SHA, SSA, board approvals, share
+                    allotments     one timeline, zero handover gaps.
                   </p>
                 </div>
               </div>
@@ -313,12 +312,11 @@ export function RaiseSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Expert Legal Advisory
+                    Plain-English clause notes
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Engage with term sheets and investor agreements from a
-                    position of strength with expert legal and financial
-                    oversight.
+                    Every term sheet comes with footnotes from Indian
+                    advocates     so you understand what you&apos;re signing.
                   </p>
                 </div>
               </div>
@@ -329,12 +327,11 @@ export function RaiseSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brown-900 mb-1.5">
-                    IP and Document Vault
+                    Encrypted IP &amp; governance vault
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Safeguard your intellectual property and manage critical
-                    corporate governance files in an encrypted, centralized
-                    vault.
+                    Trademarks, IP assignments and board records    
+                    versioned, encrypted, ready when DD starts.
                   </p>
                 </div>
               </div>
@@ -364,7 +361,7 @@ export function IntelligenceSection() {
       <div className="bg-cream py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            {/* Left — text content */}
+            {/* Left    text content */}
             <div className="reveal-left">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-olive-600 flex items-center justify-center">
@@ -376,13 +373,12 @@ export function IntelligenceSection() {
               </div>
 
               <h2 className="font-serif text-4xl sm:text-[42px] lg:text-5xl font-medium text-brown-900 leading-[1.15] mb-6">
-                Strategic Regulatory Intelligence
+                See what&apos;s next, long before it&apos;s due.
               </h2>
               <p className="text-base sm:text-lg text-brown-500 leading-relaxed mb-10 max-w-lg">
-                Transform complex regulatory requirements into strategic
-                clarity. Our command center provides the real-time insights
-                necessary to navigate the Indian legal landscape with
-                confidence.
+                Every filing, board meeting and certification on one
+                timeline     with reminders calibrated to your team,
+                not the portal.
               </p>
               <a
                 href="https://app.foundinglegals.com/sign-up"
@@ -392,7 +388,7 @@ export function IntelligenceSection() {
               </a>
             </div>
 
-            {/* Right — animated node tree (founding leals.ai style) */}
+            {/* Right    animated node tree (founding leals.ai style) */}
             <div className="reveal-right">
               <div className="relative min-h-[420px]">
                 {/* Document preview card at top */}
@@ -444,7 +440,7 @@ export function IntelligenceSection() {
                   />
                 </svg>
 
-                {/* Tags row 1 — right side */}
+                {/* Tags row 1    right side */}
                 <div className="node-tree-animate node-delay-4 absolute top-[240px] right-0 flex flex-wrap gap-3 justify-end max-w-[360px]">
                   <div className="flex flex-col items-center gap-1">
                     <span className="text-[9px] text-brown-400 font-medium">
@@ -480,7 +476,7 @@ export function IntelligenceSection() {
                   </div>
                 </div>
 
-                {/* Tags row 2 — right side lower */}
+                {/* Tags row 2    right side lower */}
                 <div className="node-tree-animate node-delay-5 absolute top-[310px] right-0 flex flex-wrap gap-3 justify-end max-w-[360px]">
                   {/* Small connector circle */}
                   <div className="absolute -top-3 right-[180px] w-2 h-2 rounded-full border border-brown-300 bg-cream hidden lg:block" />

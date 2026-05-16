@@ -9,14 +9,14 @@ export default function Hero() {
         background: "linear-gradient(180deg, #E8DFD5 0%, #F0E8DE 35%, #E8DDD0 60%, #D4C4A8 85%, #C9B896 100%)"
       }} />
 
-      {/* ===== LAYER 1: SUN GLOW — pulsing ===== */}
+      {/* ===== LAYER 1: SUN GLOW    pulsing ===== */}
       <div className="absolute top-[5%] right-[25%] w-[500px] h-[500px] hero-sun">
         <div className="w-full h-full rounded-full" style={{
           background: "radial-gradient(circle, rgba(245,230,200,0.7) 0%, rgba(245,230,200,0.2) 40%, transparent 70%)"
         }} />
       </div>
 
-      {/* ===== LAYER 2: DISTANT HILLS — slow drift ===== */}
+      {/* ===== LAYER 2: DISTANT HILLS    slow drift ===== */}
       <div className="absolute inset-0 hero-hills-far">
         <svg viewBox="0 -220 1440 1120" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
           <path d="M-40 520 Q200 460 440 490 Q680 440 920 480 Q1160 450 1400 470 Q1480 465 1520 490 L1520 900 L-40 900Z" fill="#B8CC6A" opacity="0.2" />
@@ -24,7 +24,7 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* ===== LAYER 3: HEDGE WALL — gentle sway ===== */}
+      {/* ===== LAYER 3: HEDGE WALL    gentle sway ===== */}
       <div className="absolute inset-0 hero-hedge">
         <svg viewBox="0 -220 1440 1120" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
           <defs>
@@ -37,7 +37,7 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* ===== LAYER 4: TREES — each independently animated ===== */}
+      {/* ===== LAYER 4: TREES    each independently animated ===== */}
       <style>{`
         @keyframes sway {
           0%, 100% { transform: rotate(0deg); }
@@ -49,7 +49,7 @@ export default function Hero() {
         .palm-anim { animation: sway 7s ease-in-out infinite 3s; transform-origin: 380px 700px; }
       `}</style>
 
-      {/* Tree 1 — tall center-right */}
+      {/* Tree 1    tall center-right */}
       <div className="absolute top-0 left-0 w-full h-full hero-tree-1">
         <svg viewBox="0 -220 1440 1120" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
           <g className="tree-1-anim">
@@ -61,7 +61,7 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* Tree 2 — shorter right */}
+      {/* Tree 2    shorter right */}
       <div className="absolute top-0 left-0 w-full h-full hero-tree-2">
         <svg viewBox="0 -220 1440 1120" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
           <g className="tree-2-anim">
@@ -73,7 +73,7 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* Orange fruit tree — far right */}
+      {/* Orange fruit tree    far right */}
       <div className="absolute top-0 left-0 w-full h-full hero-tree-3">
         <svg viewBox="0 -220 1440 1120" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
           <g className="tree-3-anim">
@@ -91,7 +91,7 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* Palm tree — left of center */}
+      {/* Palm tree    left of center */}
       <div className="absolute top-0 left-0 w-full h-full hero-palm">
         <svg viewBox="0 -220 1440 1120" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
           <g className="palm-anim">
@@ -107,7 +107,7 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* ===== LAYER 5: MID FOLIAGE HILLS — parallax drift ===== */}
+      {/* ===== LAYER 5: MID FOLIAGE HILLS    parallax drift ===== */}
       <div className="absolute inset-0 hero-mid-foliage">
         <svg viewBox="0 -220 1440 1120" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
           <path d="M-40 650 Q150 598 340 628 Q540 588 740 618 Q940 590 1140 610 Q1340 588 1520 618 L1520 900 L-40 900Z" fill="#9AB545" opacity="0.32" />
@@ -115,7 +115,7 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* ===== LAYER 6: DENSE FOREGROUND — slow wave ===== */}
+      {/* ===== LAYER 6: DENSE FOREGROUND    slow wave ===== */}
       <div className="absolute inset-0 hero-foreground">
         <svg viewBox="0 -220 1440 1120" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
           <path d="M-40 738 Q180 708 400 728 Q620 698 840 722 Q1060 702 1280 718 Q1400 708 1520 728 L1520 900 L-40 900Z" fill="#3E5422" opacity="0.65" />
@@ -123,7 +123,7 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* ===== LAYER 7: EDGE LEAVES — left ===== */}
+      {/* ===== LAYER 7: EDGE LEAVES    left ===== */}
       <div className="absolute inset-0 hero-leaves-left">
         <svg viewBox="0 -220 1440 1120" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
           <path d="M-30 900 C-30 650 40 450 80 350 C90 328 100 338 95 368 C80 448 50 598 30 900Z" fill="#2A3A16" />
@@ -135,7 +135,7 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* ===== LAYER 7b: EDGE LEAVES — right ===== */}
+      {/* ===== LAYER 7b: EDGE LEAVES    right ===== */}
       <div className="absolute inset-0 hero-leaves-right">
         <svg viewBox="0 -220 1440 1120" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
           <path d="M1460 900 C1460 678 1408 498 1378 398 C1370 373 1361 380 1366 408 C1383 488 1418 658 1438 900Z" fill="#2A3A16" />
@@ -162,7 +162,7 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* ===== LAYER 9: FLOATING PARTICLES — leaves drifting ===== */}
+      {/* ===== LAYER 9: FLOATING PARTICLES    leaves drifting ===== */}
       <div className="absolute top-[12%] left-[12%] hero-leaf-drift-1">
         <svg width="28" height="38" viewBox="0 0 28 38" fill="none">
           <path d="M14 2 Q24 9 20 22 Q17 31 14 35 Q11 31 8 22 Q4 9 14 2Z" fill="#5C6F2D" opacity="0.18" />
@@ -199,11 +199,10 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 min-h-svh flex items-center pt-44 lg:pt-32 pb-20">
         <div className="max-w-[680px]">
           <h1 className="hero-animate font-serif text-[38px] sm:text-[52px] lg:text-[64px] font-medium text-brown-900 leading-[1.05] tracking-[-0.02em] mb-6">
-            Transparent Legal Services for Indian Founders.
+            Built for founders who move fast.
           </h1>
           <p className="hero-animate hero-animate-delay-2 text-[16px] sm:text-[18px] text-brown-600 leading-relaxed mb-10 max-w-[540px]">
-            Incorporate your Pvt Ltd, manage compliance, and file returns
-            with clear fee separation and no hidden costs.
+                Founding Legals Built for founders who move fast
           </p>
           <div className="hero-animate hero-animate-delay-3">
             <a

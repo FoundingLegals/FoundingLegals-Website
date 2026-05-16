@@ -4,15 +4,15 @@ import LoadingOverlay from "@/components/LoadingOverlay";
 
 export const metadata: Metadata = {
   title:
-    "FoundingLegals — Complete Startup Legal & Compliance Platform for India",
+    "FoundingLegals    Complete Startup Legal & Compliance Platform for India",
   description:
-    "From company registration to fund raising — FoundingLegals is the all-in-one compliance and growth platform built exclusively for Indian startups. We handle the paperwork, you build the product.",
+    "From company registration to fund raising    FoundingLegals is the all-in-one compliance and growth platform built exclusively for Indian startups. We handle the paperwork, you build the product.",
   keywords:
     "startup legal os, company incorporation India, GST registration, DPIIT certification, fund raising, startup compliance, agreements, cap table, private limited registration, LLP registration",
   openGraph: {
-    title: "FoundingLegals — Complete Startup Legal & Compliance Platform for India",
+    title: "FoundingLegals    Complete Startup Legal & Compliance Platform for India",
     description:
-      "From company registration to fund raising — the all-in-one compliance and growth platform built exclusively for Indian startups.",
+      "From company registration to fund raising    the all-in-one compliance and growth platform built exclusively for Indian startups.",
     type: "website",
     locale: "en_IN",
   },

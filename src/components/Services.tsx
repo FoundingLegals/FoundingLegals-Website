@@ -17,7 +17,7 @@ const services = [
     icon: Building2,
     title: "Pvt Ltd Incorporation",
     description:
-      "Complete Pvt Ltd incorporation with SPICe+, DIN, DSC, PAN, TAN — company PAN & bank account setup included.",
+      "Complete Pvt Ltd incorporation with SPICe+, DIN, DSC, PAN, TAN    company PAN & bank account setup included.",
     features: ["Company Name Registration", "DSC for Directors", "PAN & Bank Account", "Auditor Appointment"],
     price: "From ₹4,999",
     priceNote: "+ govt. fees",
@@ -44,7 +44,7 @@ const services = [
     icon: Landmark,
     title: "IEC / Import Export Code",
     description:
-      "Obtain your Import Export Code for international trade — fast processing with DGFT portal filing.",
+      "Obtain your Import Export Code for international trade    fast processing with DGFT portal filing.",
     features: ["DGFT filing", "Digital IEC", "Quick turnaround", "Amendment support"],
     price: "From ₹1,999",
     priceNote: "one-time",
@@ -53,7 +53,7 @@ const services = [
     icon: Calendar,
     title: "Annual Compliance",
     description:
-      "Never miss a filing deadline with our annual compliance package — AOC-4, MGT-7, ADT-1, and more.",
+      "Never miss a filing deadline with our annual compliance package    AOC-4, MGT-7, ADT-1, and more.",
     features: ["AOC-4 & MGT-7", "Board resolutions", "Statutory registers", "ADT-1 filing"],
     price: "From ₹7,999",
     priceNote: "per year",
@@ -71,7 +71,7 @@ const services = [
     icon: Award,
     title: "IP Protection",
     description:
-      "Protect your brand identity with trademark registration — search, filing, and objection handling.",
+      "Protect your brand identity with trademark registration    search, filing, and objection handling.",
     features: ["TM search", "Application filing", "Objection reply", "Renewal"],
     price: "From ₹2,499",
     priceNote: "+ govt. fees",
@@ -101,11 +101,12 @@ export default function Services() {
             </span>
           </div>
           <h2 className="font-serif text-4xl sm:text-5xl font-medium text-brown-900 mb-5">
-            Institutional-Grade Legal Support
+            Legal and compliance support, without the guesswork.
           </h2>
           <p className="text-lg text-brown-500 leading-relaxed">
-            We provide the analytical rigor and legal precision necessary for
-            modern Indian enterprises, with absolute fee transparency at every stage.
+            Pick what you need     incorporation, GST, audit, IP or DPIIT
+            recognition. Government and service fees are shown separately, so
+            you know exactly what you&apos;re paying for at every stage.
           </p>
         </div>
 

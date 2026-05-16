@@ -1,5 +1,5 @@
 import { ServicePattern } from "@/lib/servicesData";
-import { ArrowRight, Clock, FileText, LayoutTemplate, Layers, CheckCircle2 } from "lucide-react";
+import { Clock, FileText, LayoutTemplate, Layers, CheckCircle2 } from "lucide-react";
 import * as Icons from "lucide-react";
 import Image from "next/image";
 

@@ -7,27 +7,27 @@ import { SectionDivider } from "./Illustrations";
 const steps = [
   {
     icon: ClipboardList,
-    title: "Service Selection",
+    title: "Pick what you need",
     description:
-      "Select from incorporation, compliance, GST, IEC, or any of our legal services. Tell us about your business and requirements.",
+      "Choose a service      incorporation, GST, IEC, compliance      and share a few details about your company.",
   },
   {
     icon: Calculator,
-    title: "Fee Transparency",
+    title: "See the full cost up front",
     description:
-      "See a complete breakdown: government fees + our professional fee + CA fee (if bundled). No surprises, no hidden charges.",
+      "Government fees, our service fee, any bundled CA work      itemised before you pay a rupee.",
   },
   {
     icon: FileCheck,
-    title: "Managed Regulatory Filings",
+    title: "We file, you watch",
     description:
-      "Our team manages all documentation, MCA filings, and government coordination. Track progress in real-time on your dashboard.",
+      "Documents drafted, MCA portals navigated, replies handled. Your dashboard mirrors every step in real time.",
   },
   {
     icon: CalendarCheck,
-    title: "Strategic Governance Calendar",
+    title: "Calendar set, deadlines covered",
     description:
-      "Receive all incorporation documents and a personalized compliance calendar with due dates for GST, TDS, ROC, and ITR filings.",
+      "Once you're live, every GST, TDS, ROC and ITR date lands on your calendar with reminders.",
   },
 ];
 
@@ -39,15 +39,16 @@ export default function Process() {
       <SectionDivider />
       <div className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section intro — founding leals style: left text + right visual */}
+          {/* Section intro    founding leals style: left text + right visual */}
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="reveal-left">
               <h2 className="font-serif text-4xl sm:text-5xl font-medium text-brown-900 leading-[1.15] mb-6">
-                Precision-Led Startup Governance
+                Four steps. No phone tag.
               </h2>
               <p className="text-lg text-brown-600 leading-relaxed max-w-md">
-                Get your company incorporated and stay compliant with clear
-                processes and transparent pricing at every step.
+                A predictable path from &ldquo;how do I start?&rdquo; to a
+                running, compliant company     priced openly at every
+                stage.
               </p>
               <div className="mt-8">
                 <a

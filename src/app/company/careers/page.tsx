@@ -3,7 +3,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useForm, ValidationError } from "@formspree/react";
-import { Briefcase, Users, Handshake, CheckCircle2, ArrowRight, Send } from "lucide-react";
+import { Briefcase, Users, Handshake, CheckCircle2, Send } from "lucide-react";
 
 export default function CareersPage() {
   const [state, handleSubmit] = useForm("xqeyrnpp"); // Using existing formspree ID
@@ -89,8 +89,8 @@ export default function CareersPage() {
                   Partner with Founding Legals to offer premium legal and secretarial services to your clients. We provide the infrastructure, you provide the expertise. Join our network of certified partners.
                 </p>
                 <div className="mt-auto">
-                  <a href="#apply" className="inline-flex items-center gap-3 text-[13px] font-bold uppercase tracking-[0.2em] hover:gap-5 transition-all duration-300">
-                    Learn about partnership <ArrowRight className="w-5 h-5" strokeWidth={2.5} />
+                  <a href="#apply" className="inline-flex items-center text-[13px] font-bold uppercase tracking-[0.2em] hover:opacity-80 transition-all duration-300">
+                    Learn about partnership
                   </a>
                 </div>
               </div>

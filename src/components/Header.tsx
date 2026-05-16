@@ -137,7 +137,7 @@ export default function Header() {
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
-            {/* For Founders — mega dropdown trigger */}
+            {/* For Founders    mega dropdown trigger */}
             <div
               className="relative"
               onMouseEnter={() => setMegaOpen(true)}
@@ -209,10 +209,16 @@ export default function Header() {
 
             {/* Static nav items */}
             <a
+              href="/pricing"
+              className="px-4 py-[7px] text-[13px] font-medium text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
+            >
+              Pricing
+            </a>
+            <a
               href="/contact"
               className="px-4 py-[7px] text-[13px] font-medium text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
             >
-              Schedule Demo
+              Contact
             </a>
 
             {/* Company Dropdown */}
@@ -269,7 +275,7 @@ export default function Header() {
           </div>
 
           {/* Desktop CTAs */}
-          <div className="hidden lg:flex items-center gap-1.5">
+          <div className="hidden lg:flex items-center gap-2">
             <div className="relative inline-block">
               <a
                 href="https://app.foundinglegals.com/sign-up"
@@ -281,9 +287,9 @@ export default function Header() {
             </div>
             <a
               href="https://app.foundinglegals.com/sign-in"
-              className="px-4 py-[7px] text-[13px] font-medium text-brown-500 hover:text-brown-800 transition-colors duration-200"
+              className="px-5 py-[8px] bg-white/80 backdrop-blur-sm border border-brown-200/60 text-brown-900 text-[13px] font-semibold rounded-full hover:bg-white hover:border-brown-300 hover:shadow-sm transition-all duration-300"
             >
-              Login
+              Log in
             </a>
           </div>
 
@@ -378,25 +384,18 @@ export default function Header() {
                 Partnership
               </a>
               <a
-                href="/contact"
+                href="/pricing"
                 onClick={() => setIsMobileOpen(false)}
                 className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
-                Schedule Demo
+                Pricing
               </a>
               <a
                 href="/contact"
                 onClick={() => setIsMobileOpen(false)}
                 className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
-                Contact Us
-              </a>
-              <a
-                href="https://app.foundinglegals.com/sign-in"
-                onClick={() => setIsMobileOpen(false)}
-                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
-              >
-                Login
+                Contact
               </a>
             </div>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, ChevronDown, Info, Shield, ArrowRight } from "lucide-react";
+import { Check, ChevronDown, Info, Shield } from "lucide-react";
 import { useReveal } from "@/lib/useReveal";
 
 const states: Record<string, number> = {
@@ -80,7 +80,7 @@ export default function Pricing() {
       className="py-24 lg:py-32 bg-cream-light"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header — founding leals style */}
+        {/* Header    founding leals style */}
         <div className="text-center max-w-2xl mx-auto mb-16 reveal">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-lime-bg rounded-full mb-6">
             <span className="text-sm font-medium text-olive-700">
@@ -88,11 +88,11 @@ export default function Pricing() {
             </span>
           </div>
           <h2 className="font-serif text-4xl sm:text-5xl font-medium text-brown-900 mb-5">
-            Transparent Startup Pricing
+            Build your quote in 30 seconds.
           </h2>
           <p className="text-lg text-brown-500 leading-relaxed">
-            Government charges + our professional fee — split clearly so you
-            know where every rupee goes.
+            Pick your state and capital. We&apos;ll show you the government
+            fee, our service fee and any add-ons     line by line.
           </p>
         </div>
 
@@ -204,7 +204,7 @@ export default function Pricing() {
             </div>
           </div>
 
-          {/* Summary Card - Right — olive green like founding leals's visual panels */}
+          {/* Summary Card - Right    olive green like founding leals's visual panels */}
           <div className="lg:col-span-2">
             <div className="sticky top-24 bg-olive-600 rounded-2xl p-8 text-white shadow-lg">
               <div className="flex items-center gap-2 mb-6">
@@ -247,7 +247,7 @@ export default function Pricing() {
                   </div>
                 </div>
                 <div className="flex justify-between mt-3 pt-3 border-t border-white/20 text-sm font-semibold">
-                  <span className="text-olive-100">Subtotal — Govt.</span>
+                  <span className="text-olive-100">Subtotal    Govt.</span>
                   <span>₹{govtFees.toLocaleString("en-IN")}</span>
                 </div>
               </div>
@@ -285,7 +285,7 @@ export default function Pricing() {
                       </div>
                     ))}
                   <div className="flex justify-between mt-2 pt-2 border-t border-white/20 text-sm font-semibold">
-                    <span className="text-olive-100">Subtotal — Add-Ons</span>
+                    <span className="text-olive-100">Subtotal    Add-Ons</span>
                     <span>₹{addOnTotal.toLocaleString("en-IN")}</span>
                   </div>
                 </div>
@@ -308,10 +308,9 @@ export default function Pricing() {
                 </div>
                 <a
                   href="https://app.foundinglegals.com/sign-up"
-                  className="flex items-center justify-center gap-2 w-full px-6 py-4 bg-lime-bg text-olive-800 font-semibold rounded-full hover:bg-white transition-all"
+                  className="flex items-center justify-center w-full px-6 py-4 bg-lime-bg text-olive-800 font-semibold rounded-full hover:bg-white transition-all"
                 >
                   Start Free
-                  <ArrowRight className="w-5 h-5" />
                 </a>
                 <p className="text-center text-xs text-olive-200 mt-3">
                   Exact fees confirmed after document review
