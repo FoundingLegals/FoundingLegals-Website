@@ -403,17 +403,28 @@ export default function Header() {
               </a>
             </div>
 
-            <div className="mt-6">
+            <div className="mt-6 flex flex-col gap-3">
               <div className="relative inline-block w-full">
                 <a
-                  href="/services"
+                  href="https://app.foundinglegals.com/sign-up"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setIsMobileOpen(false)}
-                  className="block w-full text-center px-4 py-3 bg-olive-600 text-white text-[14px] font-semibold rounded-l-full rounded-br-full rounded-tr-xl hover:bg-olive-700 hover:-translate-y-0.5 shadow-sm hover:shadow-md transition-all duration-300"
+                  className="block w-full text-center px-4 py-3 bg-olive-600 text-white text-[14px] font-semibold rounded-l-full rounded-br-full rounded-tr-xl hover:bg-olive-700 shadow-sm transition-all duration-300"
                 >
-                  Start Your Journey
+                  Start Free
                 </a>
                 <Sparkles className="absolute -top-[6px] -right-[2px] w-[18px] h-[18px] text-[#D4AF37] fill-[#D4AF37] rotate-12 drop-shadow-md animate-[pulse_2s_ease-in-out_infinite]" />
               </div>
+              <a
+                href="https://app.foundinglegals.com/sign-in"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMobileOpen(false)}
+                className="block w-full text-center px-4 py-3 bg-white border border-brown-200 text-brown-900 text-[14px] font-semibold rounded-full hover:bg-cream shadow-sm transition-all duration-300"
+              >
+                Log in
+              </a>
             </div>
           </div>
         </div>
