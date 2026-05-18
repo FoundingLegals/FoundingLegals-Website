@@ -279,6 +279,8 @@ export default function Header() {
             <div className="relative inline-block">
               <a
                 href="https://app.foundinglegals.com/sign-up"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block px-6 py-[8px] bg-olive-600 text-white text-[13px] font-semibold rounded-l-full rounded-br-full rounded-tr-xl hover:bg-olive-700 hover:scale-[1.03] shadow-sm hover:shadow-md transition-all duration-300"
               >
                 Start Free
@@ -287,6 +289,8 @@ export default function Header() {
             </div>
             <a
               href="https://app.foundinglegals.com/sign-in"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-5 py-[8px] bg-white/80 backdrop-blur-sm border border-brown-200/60 text-brown-900 text-[13px] font-semibold rounded-full hover:bg-white hover:border-brown-300 hover:shadow-sm transition-all duration-300"
             >
               Log in
@@ -414,6 +418,7 @@ export default function Header() {
           </div>
         </div>
       )}
+
     </header>
   );
 }

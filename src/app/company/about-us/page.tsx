@@ -20,15 +20,16 @@ export default function AboutUsPage() {
             </p>
           </div>
 
-          {/* Right Image Box */}
-          <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
-            {/* using unoptimized img to avoid next.config domain issues, keeping matching fidelity */}
-            <img 
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80"
-              alt="Founding Legals Team"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </div>
+            {/* Right Image Box - Indian-themed team */}
+            <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
+              <img 
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1200"
+                alt="Indian startup team at Founding Legals"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              {/* Warm overlay for Indian warm tones */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#5A6E3B]/10 to-transparent" />
+            </div>
         </section>
       </div>
 
@@ -47,8 +48,8 @@ export default function AboutUsPage() {
         <section className="flex flex-col md:flex-row min-h-auto md:min-h-[600px] lg:min-h-[700px] rounded-3xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.03)] bg-white border border-[#E5E1D6]">
           <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-full">
              <img 
-              src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80"
-              alt="Our Story"
+              src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&q=80&w=1200"
+              alt="Our Story - Indian co-working"
               className="absolute inset-0 w-full h-full object-cover"
              />
           </div>
@@ -77,7 +78,7 @@ export default function AboutUsPage() {
       <section className="w-full relative min-h-[600px] bg-[#d7dacb] overflow-hidden">
          <div className="absolute inset-0 bg-[#e4e3d9]" />
          <img 
-            src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1400"
              alt="Office"
             className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-50 transition-transform duration-[10s] hover:scale-110"
          />

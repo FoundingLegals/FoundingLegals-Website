@@ -1,5 +1,7 @@
 "use client";
 
+import { ChevronDown } from "lucide-react";
+
 export default function Hero() {
   return (
     <section className="relative min-h-svh overflow-hidden bg-[#EDE5DA]">
@@ -212,6 +214,14 @@ export default function Hero() {
               Start Your Journey
             </a>
           </div>
+        </div>
+      </div>
+
+      {/* ===== SCROLL ARROW INDICATOR ===== */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 animate-bounce">
+        <span className="text-[11px] font-medium tracking-widest uppercase text-brown-600/70">Scroll</span>
+        <div className="w-9 h-9 rounded-full border-2 border-brown-400/50 flex items-center justify-center bg-white/30 backdrop-blur-sm shadow-sm">
+          <ChevronDown className="w-4 h-4 text-brown-600" />
         </div>
       </div>
     </section>
