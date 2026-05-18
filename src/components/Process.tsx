@@ -52,7 +52,7 @@ export default function Process() {
               </p>
               <div className="mt-8">
                 <a
-                  href="#pricing"
+                  href="/pricing"
                   className="inline-flex items-center gap-2 px-7 py-3 bg-olive-600 text-lime-bg font-medium rounded-full hover:bg-olive-800 transition-all text-sm"
                 >
                   Get Started

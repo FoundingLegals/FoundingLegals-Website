@@ -93,7 +93,7 @@ export default function Trust() {
                 us on incorporation day.
               </p>
               <a
-                href="#pricing"
+                href="/pricing"
                 className="inline-flex items-center gap-2 px-8 py-3.5 bg-lime-bg text-olive-800 font-semibold rounded-full hover:bg-white transition-all"
               >
                 <Eye className="w-5 h-5" />

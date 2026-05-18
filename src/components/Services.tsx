@@ -154,7 +154,7 @@ export default function Services() {
                     </span>
                   </div>
                   <a
-                    href="#pricing"
+                    href="/pricing"
                     className="text-sm font-semibold text-olive-600 hover:text-olive-800 transition-colors"
                   >
                     See Full Pricing &rarr;
