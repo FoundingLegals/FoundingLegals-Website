@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import LoadingOverlay from "@/components/LoadingOverlay";
 import CookieBanner from "@/components/CookieBanner";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
   title:
@@ -33,6 +34,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased bg-cream">
+        <ScrollToTop />
         <LoadingOverlay />
         {children}
         <CookieBanner />
