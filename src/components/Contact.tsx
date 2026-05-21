@@ -30,7 +30,7 @@ export default function Contact() {
   return (
     <section className="relative py-24 lg:py-32 bg-[#F6F4F0] overflow-hidden">
       {/* Background patterns */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-olive-900/5 -skew-x-12 translate-x-1/2 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-olive-900/5 -skew-x-12 translate-x-1/2 pointer-events-none" /> 
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
