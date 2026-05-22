@@ -204,7 +204,7 @@ export default function Hero() {
             Built for founders who move fast.
           </h1>
           <p className="hero-animate hero-animate-delay-2 text-[16px] sm:text-[18px] text-brown-600 leading-relaxed mb-10 max-w-[540px]">
-                Founding Legals Built for founders who move fast
+                Founding Legals clears the legal hurdles so you can maintain your momentum
           </p>
           <div className="hero-animate hero-animate-delay-3">
             <a

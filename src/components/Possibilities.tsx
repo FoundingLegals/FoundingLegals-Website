@@ -14,9 +14,7 @@ export default function Possibilities() {
               Made for the founder who wears every hat.
             </h2>
             <p className="text-base sm:text-lg text-brown-500 leading-relaxed mb-10 max-w-md">
-              If you&apos;re running a team of 5 to 50, you shouldn&apos;t need
-              three lawyers, two CAs and a spreadsheet to stay in good
-              standing. We replace all of that.
+              If you are running a team of 5 to 50, you should not need to worry about complex spreadsheets or expensive professional fees just to stay in good standing. We streamline all of that, so there is no need for expensive legal or accounting expertise anymore.
             </p>
             <a
               href={process.env.NEXT_PUBLIC_APP_URL || "#"}

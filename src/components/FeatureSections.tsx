@@ -248,13 +248,16 @@ export function RaiseSection() {
               <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-14/10 sm:aspect-16/10 flex items-center justify-center">
                 {/* Ready for Raise video */}
                 <video
-                  src="/videos/compliance new .mp4.mp4"
+                  src="/videos/raise.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="absolute inset-0 w-full h-full object-cover object-center scale-[1.03]"
-                  style={{ backgroundColor: "white" }}
+                  disablePictureInPicture
+                  controlsList="nodownload nofullscreen noremoteplayback"
+                  onContextMenu={(e) => e.preventDefault()}
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                  style={{ backgroundColor: "white", userSelect: "none" }}
                 />
               </div>
             </div>
