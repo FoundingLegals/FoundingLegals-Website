@@ -199,7 +199,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
         </div>
 
         {/* Right Illustration Graphic Area */}
-        {/* We use the provided forest-hero with extensive clipping and cinematic gradient overlays to simulate the deep rich illustration aesthetic of founding leals */}
+        {/* Right-side illustration with cinematic gradient overlays */}
         <div className="relative z-0 w-full md:w-1/2 h-[50vh] md:h-full min-h-[600px] lg:min-h-[85vh]">
           <div className="absolute inset-0 bg-[#e0dfd5]" />
           <Image

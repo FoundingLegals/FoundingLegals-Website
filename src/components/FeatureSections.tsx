@@ -21,7 +21,6 @@ import {
   Plus,
 } from "lucide-react";
 import { useReveal } from "@/lib/useReveal";
-import { HeroIllustration } from "./Illustrations";
 
 /* ============================================================
    FEATURE SECTION: START
@@ -39,12 +38,12 @@ export function StartSection() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-          {/* Left    document visual (founding leals's contract screenshot style) */}
+          {/* Left    document visual (contract screenshot style) */}
           <div className="reveal-left">
             <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
               <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-14/10 sm:aspect-16/10 flex items-center justify-center">
                 <video
-                  src="/videos/start new.mp4.mp4"
+                  src="/videos/start.mp4"
                   autoPlay
                   loop
                   muted
@@ -209,7 +208,7 @@ export function ComplianceSection() {
             <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
               <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-14/10 sm:aspect-16/10 flex items-center justify-center">
                 <video
-                  src="/videos/Home page Goverense.mp4"
+                  src="/videos/governance.mp4"
                   autoPlay
                   loop
                   muted

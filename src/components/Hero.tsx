@@ -201,10 +201,10 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 min-h-svh flex items-center pt-44 lg:pt-32 pb-20">
         <div className="max-w-[680px]">
           <h1 className="hero-animate font-serif text-[38px] sm:text-[52px] lg:text-[64px] font-medium text-brown-900 leading-[1.05] tracking-[-0.02em] mb-6">
-            Built for founders who move fast.
+            India&apos;s First Founder Centric Platform
           </h1>
           <p className="hero-animate hero-animate-delay-2 text-[16px] sm:text-[18px] text-brown-600 leading-relaxed mb-10 max-w-[540px]">
-                Founding Legals clears the legal hurdles so you can maintain your momentum
+                Built for founders who move fast.
           </p>
           <div className="hero-animate hero-animate-delay-3">
             <a

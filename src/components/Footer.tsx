@@ -33,7 +33,7 @@ export default function Footer() {
           <div className="lg:col-span-3">
             <a href="/" className="flex items-center mb-6 group">
               <img
-                src="/Founding Legals Logo.png"
+                src="/founding-legals-logo.png"
                 alt="Founding Legals"
                 className="h-14 sm:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />

@@ -129,7 +129,7 @@ export default function Header() {
           {/* Logo */}
           <a href="/" className="flex items-center shrink-0 group">
             <img
-              src="/Founding Legals Logo.png"
+              src="/founding-legals-logo.png"
               alt="Founding Legals"
               className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />

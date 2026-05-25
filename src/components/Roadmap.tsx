@@ -314,7 +314,7 @@ export default function Roadmap() {
                 y="305"
                 width="72"
                 height="72"
-                href="/Logo.png"
+                href="/logo.png"
                 className="drop-shadow-sm"
               />
             </g>

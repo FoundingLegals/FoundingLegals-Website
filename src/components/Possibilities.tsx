@@ -27,7 +27,7 @@ export default function Possibilities() {
           <div className="reveal-right">
             <div className="w-full shadow-2xl overflow-hidden flex items-center justify-center">
               <video
-                src="/videos/founding Legals product vedio.mp4"
+                src="/videos/product-demo.mp4"
                 autoPlay
                 loop
                 muted

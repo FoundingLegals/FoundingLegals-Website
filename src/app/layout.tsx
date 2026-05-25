@@ -33,7 +33,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased bg-cream">
+      <body className="antialiased bg-cream" suppressHydrationWarning>
         <ScrollToTop />
         <LoadingOverlay />
         {children}

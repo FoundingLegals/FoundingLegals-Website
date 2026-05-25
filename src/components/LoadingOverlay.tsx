@@ -54,7 +54,7 @@ const LoadingOverlay = () => {
         >
           <div className="relative w-[180px] h-[180px] md:w-[240px] md:h-[240px]">
             <Image
-              src="/Founding Legals Page Over Lay..gif"
+              src="/page-loader.gif"
               alt="Founding Legals Loading..."
               fill
               className="object-contain"
