@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
+import LawyerTrustBadge from "./LawyerTrustBadge";
 
 export default function Hero() {
   return (
@@ -203,9 +204,12 @@ export default function Hero() {
           <h1 className="hero-animate font-serif text-[38px] sm:text-[52px] lg:text-[64px] font-medium text-brown-900 leading-[1.05] tracking-[-0.02em] mb-6">
             India&apos;s First Founder Centric Platform
           </h1>
-          <p className="hero-animate hero-animate-delay-2 text-[16px] sm:text-[18px] text-brown-600 leading-relaxed mb-10 max-w-[540px]">
+          <p className="hero-animate hero-animate-delay-2 text-[16px] sm:text-[18px] text-brown-600 leading-relaxed mb-6 sm:mb-8 max-w-[540px]">
                 Built for founders who move fast.
           </p>
+          <div className="hero-animate hero-animate-delay-2 mb-8 sm:mb-10">
+            <LawyerTrustBadge />
+          </div>
           <div className="hero-animate hero-animate-delay-3">
             <a
               href="/services"
