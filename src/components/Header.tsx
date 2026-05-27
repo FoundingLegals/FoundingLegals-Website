@@ -41,7 +41,7 @@ const sections = [
         href: "/services/company-incorporation",
       },
       { name: "Bank Opening", href: "/services/bank-opening" },
-      { name: "Certifications", href: "/services/certifications" },
+      { name: "DPIIT Certification", href: "/services/certifications" },
       {
         name: "GST Filing & Taxation",
         href: "/services/gst-filing-and-taxation",

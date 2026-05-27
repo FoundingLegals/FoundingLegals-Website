@@ -128,7 +128,7 @@ export const services: ServicePattern[] = [
     ctaDescription: "Streamline your startup finances from day one with our banking integration."
   },
   {
-    title: "Certifications",
+    title: "DPIIT Certification",
     slug: "certifications",
     heroCategory: "Start",
     heroTitle: "Unlock Startup India Benefits",

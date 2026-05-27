@@ -5,9 +5,11 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export function generateStaticParams() {
-  return services.map((s) => ({
-    slug: s.slug,
-  }));
+  return services
+    .filter((s) => s.slug !== "certifications")
+    .map((s) => ({
+      slug: s.slug,
+    }));
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
