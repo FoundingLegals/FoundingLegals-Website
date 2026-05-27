@@ -2,6 +2,7 @@
 
 import { ChevronDown } from "lucide-react";
 import LawyerTrustBadge from "./LawyerTrustBadge";
+import WatchDemoButton from "./WatchDemoButton";
 
 export default function Hero() {
   return (
@@ -210,13 +211,14 @@ export default function Hero() {
           <div className="hero-animate hero-animate-delay-2 mb-8 sm:mb-10">
             <LawyerTrustBadge />
           </div>
-          <div className="hero-animate hero-animate-delay-3">
+          <div className="hero-animate hero-animate-delay-3 flex flex-wrap items-center gap-3 sm:gap-4">
             <a
               href="/services"
               className="inline-flex items-center px-8 py-3.5 bg-olive-600 text-white text-[15px] font-semibold rounded-full hover:bg-olive-700 transition-all duration-300 shadow-lg shadow-olive-600/15 hover:shadow-olive-600/25 hover:-translate-y-0.5"
             >
               Start Your Journey
             </a>
+            <WatchDemoButton videoId="lfrcHLXDpjg" />
           </div>
         </div>
       </div>
