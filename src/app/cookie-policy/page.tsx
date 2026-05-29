@@ -4,7 +4,8 @@ import { Cookie } from "lucide-react";
 
 export const metadata = {
   title: "Cookie Policy | Founding Legals",
-  description: "Learn how Founding Legals uses cookies and similar technologies on our platform.",
+  description:
+    "How Founding Legals (Arvya Tech Pvt. Ltd.) uses cookies and similar storage technologies on its website, and how you can manage your preferences.",
 };
 
 export default function CookiePolicyPage() {
@@ -23,7 +24,7 @@ export default function CookiePolicyPage() {
             Cookie Policy
           </h1>
           <p className="text-white/80 text-[16px] leading-relaxed">
-            Last updated: {new Date().toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
+            Effective date: <strong className="text-white/90">29 May 2026</strong>
           </p>
         </div>
       </section>
@@ -31,34 +32,162 @@ export default function CookiePolicyPage() {
       {/* Content */}
       <section className="max-w-3xl mx-auto px-6 py-16 sm:py-24 space-y-10 text-[15px] sm:text-[16px] text-[#4b4843] leading-[1.8]">
         <div>
-          <h2 className="text-[22px] font-serif font-semibold text-[#2b2723] mb-3">1. What are Cookies?</h2>
-          <p>Cookies are small text files placed on your device when you visit a website. They help websites remember information about your visit, which can both make it easier to visit the site again and make the site more useful to you.</p>
+          <h2 className="text-[22px] font-serif font-semibold text-[#2b2723] mb-3">
+            1. About this Policy
+          </h2>
+          <p>
+            This Cookie Policy explains how{" "}
+            <strong>Arvya Tech Pvt. Ltd.</strong> (CIN:{" "}
+            <strong>U62011AP2025PTC121416</strong>), operating the{" "}
+            <strong>Founding Legals</strong> website at{" "}
+            <a
+              href="https://www.foundinglegals.com"
+              className="text-[#5A6E3B] font-medium hover:underline"
+            >
+              www.foundinglegals.com
+            </a>{" "}
+            (&ldquo;Website&rdquo;), uses cookies and similar local-storage
+            technologies. It supplements our{" "}
+            <a
+              href="/privacy-policy"
+              className="text-[#5A6E3B] font-medium hover:underline"
+            >
+              Privacy Policy
+            </a>
+            .
+          </p>
         </div>
+
         <div>
-          <h2 className="text-[22px] font-serif font-semibold text-[#2b2723] mb-3">2. How We Use Cookies</h2>
-          <p>Founding Legals (operated by Arvya Tech Pvt. Ltd.) uses cookies for the following purposes:</p>
-          <ul className="list-disc list-inside space-y-2 pl-2 mt-3">
-            <li><strong>Essential Cookies:</strong> Required for the Platform to function. These cannot be disabled.</li>
-            <li><strong>Analytics Cookies:</strong> Help us understand how visitors interact with our Platform (e.g., Google Analytics).</li>
-            <li><strong>Preference Cookies:</strong> Remember your settings and preferences for a better experience.</li>
-            <li><strong>Marketing Cookies:</strong> Used to deliver relevant advertisements and track campaign performance.</li>
-          </ul>
+          <h2 className="text-[22px] font-serif font-semibold text-[#2b2723] mb-3">
+            2. What are Cookies and Similar Technologies?
+          </h2>
+          <p>
+            &ldquo;Cookies&rdquo; are small text files placed on your device by
+            a website. The Website also uses{" "}
+            <strong>browser local storage</strong> and{" "}
+            <strong>session storage</strong>, which serve a similar purpose but
+            store data within your browser rather than as HTTP cookies. In
+            this Policy, references to &ldquo;cookies&rdquo; include such
+            similar storage technologies.
+          </p>
         </div>
+
         <div>
-          <h2 className="text-[22px] font-serif font-semibold text-[#2b2723] mb-3">3. Third-Party Cookies</h2>
-          <p>We may allow third-party service providers (such as Google, Razorpay, and Intercom) to place cookies on your device when you use our Platform. These providers have their own privacy policies governing cookie usage.</p>
+          <h2 className="text-[22px] font-serif font-semibold text-[#2b2723] mb-3">
+            3. Categories We Use
+          </h2>
+          <p>The Website currently uses the following:</p>
+          <div className="mt-4 overflow-x-auto">
+            <table className="w-full text-[14px] border-collapse">
+              <thead>
+                <tr className="bg-[#f0ede4]">
+                  <th className="text-left px-4 py-3 font-semibold text-[#2b2723] border border-[#e0d8cc]">
+                    Name / Type
+                  </th>
+                  <th className="text-left px-4 py-3 font-semibold text-[#2b2723] border border-[#e0d8cc]">
+                    Category
+                  </th>
+                  <th className="text-left px-4 py-3 font-semibold text-[#2b2723] border border-[#e0d8cc]">
+                    Purpose
+                  </th>
+                  <th className="text-left px-4 py-3 font-semibold text-[#2b2723] border border-[#e0d8cc]">
+                    Duration
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#e0d8cc]">
+                {[
+                  [
+                    "fl_cookie_consent (local storage)",
+                    "Strictly necessary",
+                    "Records your cookie-banner choice so we do not re-prompt you on every visit.",
+                    "Persistent until cleared",
+                  ],
+                  [
+                    "hasSeenFoundingLegalsSplash (session storage)",
+                    "Strictly necessary",
+                    "Records that you have seen the introductory splash screen in the current session.",
+                    "Session only",
+                  ],
+                  [
+                    "YouTube (youtube-nocookie.com)",
+                    "Third-party (functional)",
+                    "Embedded demo videos use YouTube's privacy-enhanced mode. No third-party cookies are set unless you actively play a video.",
+                    "As determined by YouTube",
+                  ],
+                ].map((row, i) => (
+                  <tr
+                    key={i}
+                    className={i % 2 === 0 ? "bg-white" : "bg-[#faf9f6]"}
+                  >
+                    {row.map((cell, j) => (
+                      <td
+                        key={j}
+                        className="px-4 py-3 border border-[#e0d8cc] align-top"
+                      >
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-4 text-[14px] text-[#65605b]">
+            The Website does <strong>not</strong> currently load Google
+            Analytics, Razorpay, Intercom, or other marketing/analytics
+            trackers. If we introduce such tools in the future, this Policy
+            will be updated and (where required) your consent will be sought
+            before any non-essential cookies are set.
+          </p>
         </div>
+
         <div>
-          <h2 className="text-[22px] font-serif font-semibold text-[#2b2723] mb-3">4. Managing Cookies</h2>
-          <p>You can control or delete cookies at any time through your browser settings. However, disabling cookies may affect the functionality of our Platform. You may also manage your consent preferences through our cookie banner shown at the bottom of the page.</p>
+          <h2 className="text-[22px] font-serif font-semibold text-[#2b2723] mb-3">
+            4. Managing Your Cookie Preferences
+          </h2>
+          <p>
+            You can manage your preferences using the cookie-consent banner
+            shown on your first visit. You can also re-open the banner at any
+            time using the &ldquo;Cookie preferences&rdquo; link in the
+            footer.
+          </p>
+          <p className="mt-3">
+            In addition, most browsers allow you to block or delete cookies via
+            their settings menu. Note that blocking strictly necessary cookies
+            may affect the basic functioning of the Website.
+          </p>
         </div>
+
         <div>
-          <h2 className="text-[22px] font-serif font-semibold text-[#2b2723] mb-3">5. Your Consent</h2>
-          <p>By clicking &ldquo;Accept All&rdquo; on our cookie banner, you consent to the use of all cookies described in this policy. You may withdraw your consent at any time by clearing your browser cookies and revisiting our site.</p>
+          <h2 className="text-[22px] font-serif font-semibold text-[#2b2723] mb-3">
+            5. Your Consent
+          </h2>
+          <p>
+            Strictly necessary cookies are set as soon as you access the
+            Website because they are essential to its operation; consent is
+            not required for these under applicable law. Non-essential cookies
+            (such as analytics or marketing cookies) will only be set after
+            you have provided consent through the cookie banner, and you may
+            withdraw that consent at any time.
+          </p>
         </div>
+
         <div>
-          <h2 className="text-[22px] font-serif font-semibold text-[#2b2723] mb-3">6. Contact Us</h2>
-          <p>For questions about our Cookie Policy, contact us at <a href="mailto:privacy@foundinglegals.com" className="text-[#5A6E3B] font-medium hover:underline">privacy@foundinglegals.com</a>.</p>
+          <h2 className="text-[22px] font-serif font-semibold text-[#2b2723] mb-3">
+            6. Contact
+          </h2>
+          <p>
+            Questions about this Cookie Policy? Write to us at{" "}
+            <a
+              href="mailto:info@foundinglegals.com"
+              className="text-[#5A6E3B] font-medium hover:underline"
+            >
+              info@foundinglegals.com
+            </a>
+            .
+          </p>
         </div>
       </section>
 

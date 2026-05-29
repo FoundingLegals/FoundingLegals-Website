@@ -1,3 +1,5 @@
+"use client";
+
 import { Linkedin, Instagram, Youtube } from "lucide-react";
 
 const footerLinks = {
@@ -114,7 +116,17 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-brown-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-4">
+          <div className="text-xs text-brown-400 leading-relaxed">
+            <p>
+              <span className="font-semibold text-brown-500">Arvya Tech Pvt. Ltd.</span>{" "}
+              &middot; CIN: U62011AP2025PTC121416
+            </p>
+            <p className="mt-1">
+              Registered Office: 5th Floor, The Herbt&apos;s Square Building, Autonagar, APIIC IT Park, Mangalagiri, Amaravati, Andhra Pradesh 522503, India.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <span className="text-xs text-brown-400">
             &copy; {new Date().getFullYear()} Founding Legals (Arvya Tech Pvt. Ltd.) All rights reserved.
           </span>
@@ -129,8 +141,20 @@ export default function Footer() {
               Cookie Policy
             </a>
             <a href="/refund-policy" className="hover:text-olive-600 transition-colors">
-              Refund Policy
+              Refund &amp; Cancellation Policy
             </a>
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.dispatchEvent(new Event("fl:open-cookie-preferences"));
+                }
+              }}
+              className="hover:text-olive-600 transition-colors"
+            >
+              Cookie preferences
+            </button>
+          </div>
           </div>
         </div>
       </div>
