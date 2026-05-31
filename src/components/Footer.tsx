@@ -22,6 +22,7 @@ const footerLinks = {
     { name: "Terms & Conditions", href: "/terms" },
     { name: "Cookie Policy", href: "/cookie-policy" },
     { name: "Refund Policy", href: "/refund-policy" },
+    { name: "Help Center", href: "/help" },
   ],
 };
 
@@ -142,6 +143,9 @@ export default function Footer() {
             </a>
             <a href="/refund-policy" className="hover:text-olive-600 transition-colors">
               Refund &amp; Cancellation Policy
+            </a>
+            <a href="/help" className="hover:text-olive-600 transition-colors">
+              Help Center
             </a>
             <button
               type="button"
