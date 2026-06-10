@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { HELP_ARTICLES, HELP_MODULES } from "@/lib/helpData";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowLeft, Clock, Calendar, HelpCircle, Presentation, PieChart, FileText, Wallet } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, HelpCircle, Presentation, PieChart, FileText, Wallet, BookOpen, Users } from "lucide-react";
 
 interface ArticlePageProps {
   params: Promise<{
@@ -23,6 +23,10 @@ const getModuleIcon = (iconName: string, className = "w-5 h-5") => {
       return <FileText className={className} />;
     case "Wallet":
       return <Wallet className={className} />;
+    case "BookOpen":
+      return <BookOpen className={className} />;
+    case "Users":
+      return <Users className={className} />;
     default:
       return <HelpCircle className={className} />;
   }
@@ -65,7 +69,7 @@ export default async function HelpArticlePage({ params }: ArticlePageProps) {
           <aside className="w-full lg:w-64 shrink-0 lg:sticky lg:top-[100px]">
             <Link
               href={parentModule ? `/help/${parentModule.id}` : "/help"}
-              className="inline-flex items-center gap-2.5 px-5 py-3 bg-white border border-[#e5ddd4] rounded-2xl text-sm font-semibold text-brown-700 hover:text-[#5C6F2D] hover:bg-cream-light transition-all shadow-sm w-full justify-center group"
+              className="inline-flex items-center gap-2.5 px-5 py-3 bg-white border border-[#e5ddd4] rounded-2xl text-sm font-semibold text-brown-700 hover:text-[#5C6F2D] hover:bg-[#5C6F2D]/5 transition-all shadow-sm w-full justify-center group"
             >
               <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
               Back to Help Center
@@ -75,7 +79,7 @@ export default async function HelpArticlePage({ params }: ArticlePageProps) {
               <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#9e9890] mb-4">
                 MODULE
               </h4>
-              <div className="flex items-center gap-3 px-3 py-2 bg-cream-light rounded-xl border border-[#e5ddd4]/30">
+              <div className="flex items-center gap-3 px-3 py-2 bg-[#5C6F2D]/5 rounded-xl border border-[#e5ddd4]/30">
                 <span className="p-2 bg-[#5C6F2D]/10 text-[#5C6F2D] rounded-lg">
                   {getModuleIcon(parentModule?.icon || "")}
                 </span>
@@ -103,7 +107,7 @@ export default async function HelpArticlePage({ params }: ArticlePageProps) {
           <article className="flex-1 min-w-0 bg-white border border-[#e5ddd4] rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm">
             {/* Meta details (mobile view) */}
             <div className="lg:hidden flex flex-wrap gap-4 text-xs font-medium text-brown-500 mb-6 pb-6 border-b border-[#e5ddd4]">
-              <span className="px-2.5 py-1 bg-cream-light rounded-md border border-[#e5ddd4]/30">
+              <span className="px-2.5 py-1 bg-[#5C6F2D]/5 rounded-md border border-[#e5ddd4]/30">
                 {article.moduleName}
               </span>
               <span className="flex items-center gap-1">
@@ -124,7 +128,7 @@ export default async function HelpArticlePage({ params }: ArticlePageProps) {
             </header>
 
             {/* Quick Summary Callout */}
-            <div className="bg-cream-light border-l-4 border-[#5C6F2D] p-5 sm:p-6 rounded-r-2xl mb-8">
+            <div className="bg-[#5C6F2D]/5 border-l-4 border-[#5C6F2D] p-5 sm:p-6 rounded-r-2xl mb-8">
               <h4 className="text-sm font-bold uppercase tracking-wider text-[#5C6F2D] mb-1.5">
                 Quick Summary
               </h4>

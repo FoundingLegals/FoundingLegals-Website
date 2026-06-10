@@ -12,21 +12,324 @@ export interface HelpArticle {
 }
 
 export const HELP_MODULES = [
-  { id: "pitch-investor-readiness", name: "Pitch & Investor Readiness", icon: "Presentation" },
-  { id: "cap-table-share-management", name: "Cap Table & Share Management", icon: "PieChart" },
-  { id: "team-agreements-policies", name: "Team, Agreements & Policies", icon: "FileText" },
+  { id: "pitch", name: "Pitch", icon: "Presentation" },
+  { id: "agreements", name: "Agreements", icon: "FileText" },
+  { id: "cap-table-share-management", name: "Cap Table", icon: "PieChart" },
+  { id: "policies", name: "Policies", icon: "BookOpen" },
+  { id: "team-members", name: "Team Members", icon: "Users" },
   { id: "payslips-payroll", name: "Payslips & Payroll", icon: "Wallet" },
 ];
 
 export const HELP_ARTICLES: HelpArticle[] = [
   // ==========================================
-  // MODULE 1: PITCH & INVESTOR READINESS
+  // MODULE 1: PITCH
+  // ==========================================
+  {
+    id: "how-to-add-elevator-pitch-video",
+    title: "How to Add Your Elevator Pitch Video",
+    moduleId: "pitch",
+    moduleName: "Pitch",
+    readingTime: "3 minutes",
+    lastUpdated: "May 2026",
+    summary: "Your Elevator Pitch Video is the first thing investors see. Upload a short, compelling video (max 90 seconds) to Vimeo first, then paste the link here to showcase your startup's story. This guide walks you through adding, editing, and replacing your video.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">What is an Elevator Pitch Video?</h3>
+          <p className="text-brown-700 leading-relaxed">
+            An Elevator Pitch Video is a short, powerful video (ideally under 90 seconds) that explains who you are, what problem you solve, and why your startup matters — all before an investor can finish their coffee. It's your first impression in a data room.
+          </p>
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">How to Add Your Video — Step by Step</h3>
+          <ol className="list-decimal pl-5 space-y-4 text-brown-700">
+            <li>
+              <strong>Step 1:</strong> Upload your video to <strong>Vimeo</strong> (recommended for quality and privacy controls). Avoid YouTube links — investors may see unrelated recommendations.
+            </li>
+            <li>
+              <strong>Step 2:</strong> On Vimeo, set the video privacy to <strong>"Only people with the link"</strong> so only investors with your data room link can view it.
+            </li>
+            <li>
+              <strong>Step 3:</strong> Go to <strong>Pitch → Elevator Pitch Video</strong> on Founding Legals.
+              <div className="mt-3 max-w-lg">
+                <img src="/Help Center Guide/Elevetor Pitch Vedio - 1.png" alt="Elevator Pitch Video Card Empty State" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+            <li>
+              <strong>Step 4:</strong> Click <strong>"Add Video"</strong> and paste your Vimeo URL. The platform automatically previews and validates the link.
+              <div className="mt-3 max-w-lg">
+                <img src="/Help Center Guide/Elevetor Pitch Vedio - 2.png" alt="Add Video Link Modal Popup" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+            <li>
+              <strong>Step 5:</strong> Save. Your video now appears in the Pitch section and is automatically included in your investor-shared data room.
+              <div className="mt-3 max-w-lg">
+                <img src="/Help Center Guide/Elevetor pitch Vedio - 3.png" alt="Elevator Pitch Video Successfully Added" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">To Edit or Replace Your Video</h3>
+          <ol className="list-decimal pl-5 space-y-2 text-brown-700">
+            <li>Go to <strong>Pitch → Elevator Pitch Video</strong>.</li>
+            <li>Click the <strong>three-dot menu (⋮)</strong> at the top-right of the video card.</li>
+            <li>Select <strong>"Edit"</strong> to update the Vimeo URL, or <strong>"Delete"</strong> to remove the video entirely.</li>
+            <li>Paste the new Vimeo link and save.</li>
+          </ol>
+        </div>
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Keep it Under 90 Seconds
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Indian VCs and angel investors skim dozens of decks a week. A crisp 60–90 second video that covers the Problem, Solution, and Team is far more effective than a polished 5-minute pitch. Structure it as: 15 sec on the problem → 30 sec on your solution → 15 sec on traction → 15 sec on the ask.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "how-to-upload-pitch-deck",
+    title: "How to Upload Your Pitch Deck (PDF)",
+    moduleId: "pitch",
+    moduleName: "Pitch",
+    readingTime: "3 minutes",
+    lastUpdated: "May 2026",
+    summary: "Your Pitch Deck is the cornerstone of investor conversations. Upload it as a PDF (max 10MB) to share securely with investors. This guide explains how to upload, manage, and share your deck through the Founding Legals platform.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">What is the Pitch Deck Section?</h3>
+          <p className="text-brown-700 leading-relaxed">
+            The Pitch Deck section lets you upload your startup's investor presentation as a PDF file (maximum 10MB). Once uploaded, investors can view it directly within your secure data room — no email attachments, no version confusion.
+          </p>
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">How to Upload Your Pitch Deck</h3>
+          <ol className="list-decimal pl-5 space-y-4 text-brown-700">
+            <li>
+              <strong>Step 1:</strong> Go to <strong>Pitch → Pitch Deck</strong> on your dashboard.
+              <div className="mt-3 max-w-lg">
+                <img src="/Help Center Guide/Pitch Deck - 1.png" alt="Pitch Deck Card Empty State" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+            <li>
+              <strong>Step 2:</strong> Click <strong>"Upload Deck"</strong>. A file upload dialog will open.
+            </li>
+            <li>
+              <strong>Step 3:</strong> Select your PDF file (max 10MB). You can also <strong>drag and drop</strong> the file directly onto the upload area.
+              <div className="mt-3 max-w-lg">
+                <img src="/Help Center Guide/Pitch Deck - 2.png" alt="Upload Pitch Deck Modal Popup" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+            <li>
+              <strong>Step 4:</strong> Click <strong>"Upload"</strong>. The platform processes and previews your deck instantly.
+            </li>
+            <li>
+              <strong>Step 5:</strong> Your deck is now live in your data room and ready to share with investors.
+              <div className="mt-3 max-w-lg">
+                <img src="/Help Center Guide/Pitch Deck - 3.png" alt="Pitch Deck Successfully Uploaded" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">To Replace or Delete Your Deck</h3>
+          <ol className="list-decimal pl-5 space-y-2 text-brown-700">
+            <li>Go to <strong>Pitch → Pitch Deck</strong>.</li>
+            <li>Click the <strong>three-dot menu (⋮)</strong> at the top-right corner of the Pitch Deck card.</li>
+            <li>Select <strong>"Replace"</strong> to upload a newer version, or <strong>"Delete"</strong> to remove it.</li>
+          </ol>
+        </div>
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Important: Secure Your Deck with an NDA First
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Always have investors sign an NDA <em>before</em> sharing your Pitch Deck. Go to Agreements → NDA Generator to create a stamped, e-signed NDA in under 2 minutes. Sharing your deck without an NDA means your financials, roadmap, and IP have no legal protection.
+          </p>
+        </div>
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Use a Watermarked Version for Early-Stage Sharing
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Add a "Confidential — [Your Company Name] — [Date]" watermark to your deck PDF before uploading. This discourages unauthorised forwarding and strengthens your NDA's evidentiary value if confidentiality is ever breached.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "how-to-write-elevator-pitch-text",
+    title: "How to Write Your Elevator Pitch (Text)",
+    moduleId: "pitch",
+    moduleName: "Pitch",
+    readingTime: "4 minutes",
+    lastUpdated: "May 2026",
+    summary: "Your Elevator Pitch is a 2–5 sentence written description of what you're building and why it matters. It appears on your investor profile and data room. This guide explains how to write one that captures attention and drives investor interest.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">What is the Elevator Pitch (Text)?</h3>
+          <p className="text-brown-700 leading-relaxed">
+            The Elevator Pitch is your startup's written "tweet" — a concise 2–5 sentence summary of what you're building, the problem you're solving, and why now. It's the first text investors read in your profile and sets the tone for everything else.
+          </p>
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">How to Add or Edit Your Elevator Pitch</h3>
+          <ol className="list-decimal pl-5 space-y-4 text-brown-700">
+            <li>
+              <strong>Step 1:</strong> Go to <strong>Pitch</strong> on your dashboard.
+            </li>
+            <li>
+              <strong>Step 2:</strong> Scroll to the <strong>Elevator Pitch</strong> card (the one with the quotation marks icon).
+            </li>
+            <li>
+              <strong>Step 3:</strong> Click <strong>"Add Pitch"</strong> (or <strong>"Edit Pitch"</strong> if you've already added one).
+              <div className="mt-3 max-w-lg">
+                <img src="/Help Center Guide/Elevetor Pitch - 1.png" alt="Elevator Pitch Card Empty State" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+            <li>
+              <strong>Step 4:</strong> Write your pitch in the text box. Aim for 3–4 sentences.
+              <div className="mt-3 max-w-lg">
+                <img src="/Help Center Guide/Elevetor Pitch - 2.png" alt="Add Elevator Pitch Modal Popup" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+            <li>
+              <strong>Step 5:</strong> Click <strong>"Save"</strong>. Your pitch is immediately visible in your investor data room.
+              <div className="mt-3 max-w-lg">
+                <img src="/Help Center Guide/Elevetor Pitch - 3.png" alt="Elevator Pitch Successfully Added" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">The 4-Part Formula for a Strong Elevator Pitch</h3>
+          <div className="overflow-x-auto border border-brown-200 rounded-xl text-sm">
+            <table className="min-w-full divide-y divide-brown-200">
+              <thead className="bg-cream-dark">
+                <tr>
+                  <th className="px-4 py-2.5 text-left font-semibold text-brown-900">Part</th>
+                  <th className="px-4 py-2.5 text-left font-semibold text-brown-900">What to Write</th>
+                  <th className="px-4 py-2.5 text-left font-semibold text-brown-900">Example</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-brown-200 bg-white">
+                <tr>
+                  <td className="px-4 py-2.5 font-semibold text-brown-900">The Problem</td>
+                  <td className="px-4 py-2.5 text-brown-700">What painful problem exists?</td>
+                  <td className="px-4 py-2.5 text-brown-700 italic">"85% of Indian SMEs lose 12+ hours a week to manual GST reconciliation."</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-2.5 font-semibold text-brown-900">The Solution</td>
+                  <td className="px-4 py-2.5 text-brown-700">What do you do?</td>
+                  <td className="px-4 py-2.5 text-brown-700 italic">"We automate GST filing with AI that integrates with Tally and Zoho in one click."</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-2.5 font-semibold text-brown-900">The Traction</td>
+                  <td className="px-4 py-2.5 text-brown-700">Why should investors believe you?</td>
+                  <td className="px-4 py-2.5 text-brown-700 italic">"₹2.1 Cr ARR, 340 paying customers, 92% retention."</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-2.5 font-semibold text-brown-900">The Ask</td>
+                  <td className="px-4 py-2.5 text-brown-700">What are you raising?</td>
+                  <td className="px-4 py-2.5 text-brown-700 italic">"Raising ₹3 Cr Seed to expand to 5 new states and add payroll automation."</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Use Numbers, Not Adjectives
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Avoid phrases like "revolutionary," "world-class," or "disruptive." Indian investors are pragmatic — they respond to specifics: ₹ amounts, customer counts, growth rates, and market sizes. Every sentence should contain at least one concrete number.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "how-to-add-vision-and-problem",
+    title: "How to Add Your Vision & Problem Statement",
+    moduleId: "pitch",
+    moduleName: "Pitch",
+    readingTime: "4 minutes",
+    lastUpdated: "May 2026",
+    summary: "The Vision & Problem section lets you articulate your company's long-term vision, the specific problem you're solving, and your solution — in a structured format that investors and accelerators expect. This guide explains how to fill it in effectively.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">What is the Vision & Problem Section?</h3>
+          <p className="text-brown-700 leading-relaxed">
+            The Vision & Problem section is a structured form with three sub-sections: <strong>Our Vision</strong> (where your company is going in 10 years), <strong>The Problem</strong> (the specific pain point you solve), and <strong>Our Solution</strong> (how you uniquely solve it). Together, these tell your startup's "why" story.
+          </p>
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">How to Fill in Vision & Problem</h3>
+          <ol className="list-decimal pl-5 space-y-4 text-brown-700">
+            <li><strong>Step 1:</strong> Go to <strong>Pitch</strong> on your dashboard.</li>
+            <li><strong>Step 2:</strong> Scroll to the <strong>Vision & Problem</strong> card at the bottom of the Pitch page.</li>
+            <li>
+              <strong>Step 3:</strong> Click <strong>"Add Now"</strong> (or <strong>"Edit Vision & Problem"</strong> if already filled).
+              <div className="mt-3 max-w-lg">
+                <img src="/Help Center Guide/Elevetor Pitch - 1.png" alt="Elevator Pitch Card Empty State" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+            <li>
+              <strong>Step 4:</strong> Fill in all three fields: Our Vision, The Problem, and Our Solution. Each field has a 500-character limit — be precise.
+              <div className="mt-3 max-w-lg">
+                <img src="/Help Center Guide/Elevetor Pitch - 2.png" alt="Add Elevator Pitch Modal Popup" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+            <li>
+              <strong>Step 5:</strong> Click <strong>"Save"</strong>. The section appears in your investor profile immediately.
+              <div className="mt-3 max-w-lg">
+                <img src="/Help Center Guide/Elevetor Pitch - 3.png" alt="Elevator Pitch Successfully Added" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Writing Tips for Each Sub-Section</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="border border-brown-200 bg-white rounded-xl p-4 shadow-sm">
+              <h4 className="font-semibold text-brown-900 mb-2">💡 Our Vision</h4>
+              <p className="text-xs text-brown-700">Describe the world as it will look if your startup succeeds. Think 10 years out. Example: "A world where every Indian SME has a full-time CFO in their pocket, regardless of their size."</p>
+            </div>
+            <div className="border border-brown-200 bg-white rounded-xl p-4 shadow-sm">
+              <h4 className="font-semibold text-brown-900 mb-2">🎯 The Problem</h4>
+              <p className="text-xs text-brown-700">Be specific about the pain. Use data if possible. Avoid vague statements. Example: "SMEs waste ₹18,000 Cr annually on manual accounting errors and missed GST deadlines."</p>
+            </div>
+            <div className="border border-brown-200 bg-white rounded-xl p-4 shadow-sm">
+              <h4 className="font-semibold text-brown-900 mb-2">✅ Our Solution</h4>
+              <p className="text-xs text-brown-700">Explain your unique approach. Focus on what makes your solution different from alternatives. Avoid "we use AI" without context — explain what the AI does.</p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Align Vision with Your Pitch Deck
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Investors often cross-reference your Vision & Problem text with your Pitch Deck slides. Make sure the language, numbers, and narrative are consistent across both. Contradictions — even small ones — create doubt and slow down due diligence.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  // ==========================================
+  // MODULE 2: AGREEMENTS
   // ==========================================
   {
     id: "drafting-india-enforceable-nda",
     title: "Drafting an India-Enforceable NDA Before You Share Your Pitch Deck",
-    moduleId: "pitch-investor-readiness",
-    moduleName: "Pitch & Investor Readiness",
+    moduleId: "agreements",
+    moduleName: "Agreements",
     readingTime: "5 minutes",
     lastUpdated: "May 2026",
     summary: "Sharing your pitch deck, financial model, or product roadmap without a properly executed Non-Disclosure Agreement is one of the riskiest moves an early-stage founder can make. This article explains how to draft an NDA that holds up in Indian courts under the Indian Contract Act, 1872, what stamp duty applies, and how Founding Legals generates a court-enforceable NDA in under 90 seconds.",
@@ -132,8 +435,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Tag Your Deck Pages
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -146,8 +449,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
   {
     id: "preparing-for-angel-tax",
     title: "Preparing for Angel Tax — Section 56(2)(viib) & DPIIT Exemption",
-    moduleId: "pitch-investor-readiness",
-    moduleName: "Pitch & Investor Readiness",
+    moduleId: "pitch",
+    moduleName: "Pitch",
     readingTime: "7 minutes",
     lastUpdated: "May 2026",
     summary: "If your startup raises money at a valuation higher than its \"Fair Market Value,\" the excess can be taxed as income under Section 56(2)(viib) of the Income Tax Act, 1961 — the infamous \"Angel Tax.\" This article explains how the tax works, who is exempt, and how Founding Legals helps you secure DPIIT recognition before your first cheque arrives.",
@@ -234,8 +537,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Get a Valuation Report Even If Exempt
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -248,8 +551,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
   {
     id: "pre-round-data-room-checklist",
     title: "The Pre-Round Data Room Checklist Every Indian Investor Will Demand",
-    moduleId: "pitch-investor-readiness",
-    moduleName: "Pitch & Investor Readiness",
+    moduleId: "pitch",
+    moduleName: "Pitch",
     readingTime: "6 minutes",
     lastUpdated: "May 2026",
     summary: "Indian VCs and angel networks conduct due diligence under tighter compliance lenses than most founders expect — covering MCA, GST, ROC, FEMA, and labour law filings. This article lists every document your data room must contain before a term sheet is signed, and shows how Founding Legals auto-organises them into an investor-ready Vault.",
@@ -327,10 +630,20 @@ export const HELP_ARTICLES: HelpArticle[] = [
 
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">How to Do It on Founding Legals</h3>
-          <ol className="list-decimal pl-5 space-y-3 text-brown-700">
-            <li><strong>Step 1:</strong> Go to Pitch → Data Room → Setup. The platform auto-imports your incorporation documents, MCA filings, and cap table data already on your dashboard.</li>
+          <ol className="list-decimal pl-5 space-y-4 text-brown-700">
+            <li>
+              <strong>Step 1:</strong> Go to Pitch → Data Room → Setup. The platform auto-imports your incorporation documents, MCA filings, and cap table data already on your dashboard.
+              <div className="mt-3 max-w-lg">
+                <img src="/Help Center Guide/Pitch Data Room - 1.png" alt="Data Room Setup Page" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
             <li><strong>Step 2:</strong> Run the &quot;Compliance Gap Scan&quot;. The system cross-references your CIN against the MCA21 portal and flags missing filings (e.g., overdue MGT-7, unfiled PAS-3 from a past round).</li>
-            <li><strong>Step 3:</strong> Upload pending documents through guided checklists. Each document is auto-tagged, indexed, and OCR-scanned for quick investor search.</li>
+            <li>
+              <strong>Step 3:</strong> Upload pending documents through guided checklists. Each document is auto-tagged, indexed, and OCR-scanned for quick investor search.
+              <div className="mt-3 max-w-lg">
+                <img src="/Help Center Guide/Pitch Data Room - 2.png" alt="Data Room Guided Checklist" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
             <li><strong>Step 4:</strong> Click &quot;Generate Investor Share Link&quot;. Choose granular access: View Only, Watermark Per Page, Download Disabled, and Expiry Date (typical: 14 days).</li>
             <li><strong>Step 5:</strong> Track investor engagement in real-time — see which documents were opened, by whom, and for how long. The audit log doubles as evidence under the IT Act, 2000 if confidentiality is ever breached.</li>
           </ol>
@@ -345,8 +658,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Build the Data Room Before You Pitch
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -359,8 +672,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
   {
     id: "convertible-notes-safe-isafe",
     title: "Convertible Notes, SAFE & iSAFE — Which Instrument to Use in India",
-    moduleId: "pitch-investor-readiness",
-    moduleName: "Pitch & Investor Readiness",
+    moduleId: "pitch",
+    moduleName: "Pitch",
     readingTime: "7 minutes",
     lastUpdated: "May 2026",
     summary: "Early-stage Indian startups raising bridge capital typically choose between Convertible Notes (CN), SAFE (Simple Agreement for Future Equity), and iSAFE (India SAFE). Each has very different legal treatment under the Companies Act, 2013 and FEMA, 1999. Picking the wrong one can disqualify your round or trigger RBI penalties. This article explains the right fit and how Founding Legals generates the correct instrument.",
@@ -474,8 +787,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Use CN for Bridge Rounds, CCPS for Priced Rounds
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -488,8 +801,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
   {
     id: "term-sheet-negotiation",
     title: "Term Sheet Negotiation — The 12 Indian Clauses That Matter",
-    moduleId: "pitch-investor-readiness",
-    moduleName: "Pitch & Investor Readiness",
+    moduleId: "pitch",
+    moduleName: "Pitch",
     readingTime: "9 minutes",
     lastUpdated: "May 2026",
     summary: "A term sheet is \"non-binding\" except for a few clauses — but it sets the legal architecture of your funding round and is 90% replicated verbatim into the Share Subscription Agreement (SSA) and Shareholders' Agreement (SHA). This article breaks down the 12 most consequential clauses an Indian founder must negotiate.",
@@ -595,8 +908,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Negotiate Veto Items Down to &lt;10
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -724,8 +1037,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Authorize 2× What You Need
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -855,8 +1168,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Negotiate &quot;Broad-Based&quot; Anti-Dilution
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -962,8 +1275,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Nominees Are Not Optional
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -1109,8 +1422,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: DPIIT Tax Deferral for Eligible Startups
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -1209,8 +1522,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Bundle ROFR Waivers Upfront
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -1317,8 +1630,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Use a Single AD Bank for All FDI
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -1453,8 +1766,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Maintain a &quot;Director Compliance Card&quot;
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -1622,8 +1935,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Hold Your AGM by 30th September
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -1640,8 +1953,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
   {
     id: "ironclad-ip-assignment-clause",
     title: "The Ironclad IP Assignment Clause Every Indian Startup Needs",
-    moduleId: "team-agreements-policies",
-    moduleName: "Team, Agreements & Policies",
+    moduleId: "agreements",
+    moduleName: "Agreements",
     readingTime: "6 minutes",
     lastUpdated: "May 2026",
     summary: "Under the Indian Copyright Act, 1957, the person who creates code, design, or content owns the copyright — not the company that pays them — unless there is an explicit written assignment. This is the single biggest IP risk for Indian startups, and it's why every founder, employee, and contractor agreement on Founding Legals contains a non-deletable IP Assignment clause.",
@@ -1724,8 +2037,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Assign Before You Pay
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -1738,8 +2051,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
   {
     id: "why-post-employment-non-competes-dont-work",
     title: "Why Post-Employment Non-Competes Don't Work in India — And What to Use Instead",
-    moduleId: "team-agreements-policies",
-    moduleName: "Team, Agreements & Policies",
+    moduleId: "agreements",
+    moduleName: "Agreements",
     readingTime: "5 minutes",
     lastUpdated: "May 2026",
     summary: "If your employment agreement says \"the employee shall not work for a competitor for 2 years after leaving,\" that clause is void and unenforceable in India under Section 27 of the Indian Contract Act, 1872. This article explains why, and shows the three clauses you can enforce — Confidentiality, Non-Solicitation, and Garden Leave.",
@@ -1826,8 +2139,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Make Non-Solicit Specific and Recent
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -1840,8 +2153,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
   {
     id: "posh-act-compliance-10-employees",
     title: "POSH Act Compliance — The 10-Employee Trigger Every Founder Must Know",
-    moduleId: "team-agreements-policies",
-    moduleName: "Team, Agreements & Policies",
+    moduleId: "policies",
+    moduleName: "Policies",
     readingTime: "7 minutes",
     lastUpdated: "May 2026",
     summary: "The moment your startup reaches 10 or more employees (including contractors, interns, and part-timers), you are legally mandated to comply with the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 — known as the POSH Act. Non-compliance carries a penalty of ₹50,000, escalating to cancellation of business licence. This article shows exactly what you must do.",
@@ -1975,8 +2288,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Don&apos;t Wait Till You Hit 10
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -1989,8 +2302,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
   {
     id: "founders-agreement-vesting-exits",
     title: "The Founder's Agreement — Vesting, Roles, and Co-Founder Exits",
-    moduleId: "team-agreements-policies",
-    moduleName: "Team, Agreements & Policies",
+    moduleId: "team-members",
+    moduleName: "Team Members",
     readingTime: "8 minutes",
     lastUpdated: "May 2026",
     summary: "The Founder's Agreement (also called Co-Founders Agreement) is the single most important contract between you and your co-founders — yet it's the one Indian founders most often skip. It handles founder vesting, role definitions, decision-making, IP assignment, and what happens if a co-founder leaves. This article shows what it must contain.",
@@ -2148,8 +2461,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Sign It Before Equal Splits Get Awkward
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -2162,8 +2475,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
   {
     id: "maternity-benefit-act-paid-leave",
     title: "Maternity Benefit Act — 26 Weeks Paid Leave & ICC Coordination",
-    moduleId: "team-agreements-policies",
-    moduleName: "Team, Agreements & Policies",
+    moduleId: "policies",
+    moduleName: "Policies",
     readingTime: "5 minutes",
     lastUpdated: "May 2026",
     summary: "Under the Maternity Benefit (Amendment) Act, 2017, every Indian employer with 10 or more employees must provide 26 weeks of paid maternity leave to eligible women employees. This article covers eligibility, payment, crèche obligations, and how Founding Legals automates leave tracking.",
@@ -2280,8 +2593,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Frame Maternity as a Retention Investment
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -2294,8 +2607,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
   {
     id: "shops-establishment-act-registration",
     title: "Shops & Establishment Act — The State Registration You Cannot Skip",
-    moduleId: "team-agreements-policies",
-    moduleName: "Team, Agreements & Policies",
+    moduleId: "policies",
+    moduleName: "Policies",
     readingTime: "6 minutes",
     lastUpdated: "May 2026",
     summary: "Every Indian commercial establishment — including SaaS startups operating from a single room with 2 employees — must register under the state-specific Shops and Establishments Act within 30 days of starting operations. This article shows how registration works, what it covers, and why most early-stage founders forget it.",
@@ -2447,8 +2760,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Register in Each State Where Employees Sit
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -2637,8 +2950,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Let Employees Pick Their Regime in April
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -2810,8 +3123,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Voluntary EPF Below 20 Employees
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -2980,8 +3293,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Lock Regime Selection by 30th April
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -3086,8 +3399,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: PT Saves Tax Twice
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -3235,8 +3548,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Don&apos;t Register Until You Absolutely Must (For B2C Startups)
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
@@ -3365,8 +3678,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </p>
         </div>
 
-        <div className="bg-olive-50 border border-olive-200 p-5 rounded-2xl">
-          <div className="flex gap-2.5 text-olive-700 font-semibold mb-2">
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
             <span>💡</span> Pro-Tip: Pre-Calculate FnF Before Accepting Resignation
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">

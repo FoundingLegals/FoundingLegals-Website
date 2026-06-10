@@ -1,29 +1,26 @@
 "use client";
 
 import React, { useState, useMemo, useEffect } from "react";
-import { 
-  Search, 
-  Clock, 
-  Calendar, 
-  ChevronRight, 
-  Presentation, 
-  PieChart, 
-  FileText, 
-  Wallet, 
+import {
+  Search,
+  ChevronRight,
+  Presentation,
+  PieChart,
+  FileText,
+  Wallet,
   BookOpen,
   HelpCircle,
-  AlertTriangle,
-  X
+  X,
+  Users,
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { HELP_ARTICLES, HELP_MODULES } from "@/lib/helpData";
 
-// Icon mapper for modules
-const getModuleIcon = (iconName: string, className = "w-5 h-5") => {
+// ─── Icon mapper ──────────────────────────────────────────────────────────────
+const getModuleIcon = (iconName: string, className = "w-8 h-8") => {
   switch (iconName) {
     case "Presentation":
       return <Presentation className={className} />;
@@ -33,24 +30,50 @@ const getModuleIcon = (iconName: string, className = "w-5 h-5") => {
       return <FileText className={className} />;
     case "Wallet":
       return <Wallet className={className} />;
+    case "BookOpen":
+      return <BookOpen className={className} />;
+    case "Users":
+      return <Users className={className} />;
     default:
       return <HelpCircle className={className} />;
   }
 };
 
-export default function HelpCenterClient({ initialModuleId = null }: { initialModuleId?: string | null }) {
+// Short descriptions shown under each category card on the home grid
+const MODULE_DESC: Record<string, string> = {
+  "pitch":
+    "Elevator pitch video, pitch deck PDF, elevator pitch text, vision & problem statements, term sheets & angel tax.",
+  "agreements":
+    "Employment agreements, NDAs, contractor agreements, advisor agreements & founder covenants.",
+  "cap-table-share-management":
+    "Authorized vs paid-up capital, CCPS, ESOP pools, share transfers & MCA filings.",
+  "policies":
+    "POSH compliance, maternity benefits, HR policies & Shops & Establishments registrations.",
+  "team-members":
+    "Co-founders vesting, advisor/mentor onboarding, team roles & permissions.",
+  "payslips-payroll":
+    "Salary structuring, PF/ESIC compliance, TDS on salaries & payroll registers.",
+};
+
+// ─── Main Component ───────────────────────────────────────────────────────────
+export default function HelpCenterClient({
+  initialModuleId = null,
+}: {
+  initialModuleId?: string | null;
+}) {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedModule, setSelectedModule] = useState<string | null>(initialModuleId);
+  const [selectedModule, setSelectedModule] = useState<string | null>(
+    initialModuleId
+  );
 
-  // Sync selectedModule when the route's initialModuleId changes (e.g. forward/back buttons)
   useEffect(() => {
     setSelectedModule(initialModuleId);
   }, [initialModuleId]);
 
-  // Handle module selection with clean routing
   const handleSelectModule = (moduleId: string | null) => {
     setSelectedModule(moduleId);
+    setSearchQuery("");
     if (moduleId) {
       router.push(`/help/${moduleId}`);
     } else {
@@ -58,7 +81,7 @@ export default function HelpCenterClient({ initialModuleId = null }: { initialMo
     }
   };
 
-  // Group and count articles for the sidebar
+  // Article counts per module
   const moduleCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     HELP_ARTICLES.forEach((art) => {
@@ -67,282 +90,358 @@ export default function HelpCenterClient({ initialModuleId = null }: { initialMo
     return counts;
   }, []);
 
-  // Filter articles based on selected category and search query
-  const filteredArticles = useMemo(() => {
-    return HELP_ARTICLES.filter((article) => {
-      const matchesModule = !selectedModule || article.moduleId === selectedModule;
-      
-      if (!searchQuery.trim()) return matchesModule;
+  // Articles for the selected category
+  const categoryArticles = useMemo(() => {
+    if (!selectedModule) return [];
+    return HELP_ARTICLES.filter((a) => a.moduleId === selectedModule);
+  }, [selectedModule]);
 
-      const query = searchQuery.toLowerCase();
-      const matchesSearch = 
-        article.title.toLowerCase().includes(query) ||
-        article.summary.toLowerCase().includes(query) ||
-        article.moduleName.toLowerCase().includes(query) ||
-        article.id.replace(/-/g, " ").toLowerCase().includes(query);
+  // Global search results (all articles)
+  const globalSearchResults = useMemo(() => {
+    if (!searchQuery.trim()) return [];
+    const q = searchQuery.toLowerCase();
+    return HELP_ARTICLES.filter(
+      (a) =>
+        a.title.toLowerCase().includes(q) ||
+        a.summary.toLowerCase().includes(q) ||
+        a.moduleName.toLowerCase().includes(q)
+    ).slice(0, 8);
+  }, [searchQuery]);
+
+  const activeModule = HELP_MODULES.find((m) => m.id === selectedModule);
+
+  // ── Shared Dark Hero with Search ────────────────────────────────────────────
+  const heroBanner = (
+    <section className="w-full relative min-h-[440px] bg-[#d7dacb] overflow-hidden py-12 px-4 sm:px-6 flex items-center justify-center">
+      <div className="absolute inset-0 bg-[#e4e3d9]" />
+      <img
+        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1400"
+        alt="Office background"
+        className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-55 transition-transform duration-[10s] hover:scale-105"
+      />
+      <div className="w-full max-w-[1100px] bg-white/90 backdrop-blur-xl rounded-[40px] p-6 sm:p-12 lg:p-14 flex flex-col md:flex-row items-center justify-between shadow-[0_20px_50px_rgba(43,39,35,0.08)] border border-white/60 relative group z-10">
         
-      return matchesModule && matchesSearch;
-    });
-  }, [selectedModule, searchQuery]);
+        {/* Left side */}
+        <div className="relative z-10 max-w-xl w-full md:w-[54%] text-left">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#5C6F2D]/10 rounded-full text-[#5C6F2D] text-xs font-semibold tracking-wider uppercase mb-4">
+            <BookOpen className="w-3.5 h-3.5" />
+            Knowledge Base
+          </span>
+          <h1 className="text-[32px] sm:text-[44px] lg:text-[52px] font-serif font-medium leading-[1.15] text-[#2b2723] mb-4 tracking-tight">
+            How can we<br /><span className="italic text-[#5C6F2D]">help you today?</span>
+          </h1>
+          <p className="text-brown-600/80 text-[14px] sm:text-[15px] font-normal leading-relaxed">
+            Search our comprehensive, statutory compliance &amp; legal database for Indian founders. Curated by expert CAs, CSs, and startup lawyers.
+          </p>
+        </div>
 
-  const handleResetFilters = () => {
-    setSearchQuery("");
-    handleSelectModule(null);
-  };
-
-  return (
-    <main className="min-h-screen bg-[#FAF9F6] pt-[70px] sm:pt-[82px] flex flex-col justify-between text-[#2b2723]">
-      <Header />
-
-      {/* Hero Section matching Image 2 style */}
-      <section className="w-full relative min-h-[560px] bg-[#d7dacb] overflow-hidden py-16 px-4 sm:px-6 flex items-center justify-center">
-         <div className="absolute inset-0 bg-[#e4e3d9]" />
-         <img 
-            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1400"
-            alt="Office background"
-            className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-50 transition-transform duration-[10s] hover:scale-110"
-         />
-          <div className="w-full max-w-[1100px] bg-white/80 backdrop-blur-xl rounded-[48px] p-8 sm:p-14 lg:p-18 flex flex-col md:flex-row items-center justify-between shadow-[0_40px_100px_rgba(43,39,35,0.12)] border border-white/50 relative group">
-             <div className="absolute top-0 left-0 w-64 h-64 bg-olive-100/30 -ml-32 -mt-32 rounded-full transition-transform duration-700 group-hover:scale-150 pointer-events-none" />
-             
-             {/* Left side */}
-             <div className="relative z-10 max-w-xl w-full md:w-[54%]">
-               <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#5C6F2D]/10 rounded-full text-[#5C6F2D] text-xs font-semibold tracking-wider uppercase mb-5">
-                 <BookOpen className="w-3.5 h-3.5" />
-                 Knowledge Base
-               </span>
-               <h1 className="text-[38px] sm:text-[52px] lg:text-[60px] font-serif font-medium leading-[1.1] text-[#2b2723] mb-6 tracking-tight">
-                 How can we<br/><span className="italic text-[#5A6E3B]">help you today?</span>
-               </h1>
-               <p className="text-brown-600 text-[16px] sm:text-[18px] font-light leading-relaxed">
-                 Search our comprehensive, statutory compliance &amp; legal database for Indian founders. Curated by expert CAs, CSs, and startup lawyers.
-               </p>
-             </div>
- 
-             {/* Right side - Search aligned perfectly with live autocomplete dropdown */}
-             <div className="relative z-20 w-full md:w-[42%] mt-8 md:mt-0 flex flex-col justify-center">
-               <div className="relative w-full">
-                 <div className="relative flex items-center bg-white rounded-2xl shadow-md border border-[#e5ddd4] overflow-hidden transition-all duration-300 focus-within:ring-2 focus-within:ring-[#5C6F2D] focus-within:border-transparent">
-                   <Search className="absolute left-4 w-5 h-5 text-[#9e9890] pointer-events-none" />
-                   <input
-                     type="text"
-                     placeholder="Search articles, forms..."
-                     value={searchQuery}
-                     onChange={(e) => {
-                       setSearchQuery(e.target.value);
-                     }}
-                     className="w-full pl-12 pr-10 py-4.5 text-sm text-brown-900 bg-transparent placeholder-brown-400 focus:outline-none"
-                   />
-                   {searchQuery && (
-                     <button
-                       onClick={() => setSearchQuery("")}
-                       className="absolute right-3.5 p-1 rounded-full text-[#9e9890] hover:bg-cream-dark hover:text-brown-900 transition-colors"
-                     >
-                       <X className="w-4 h-4" />
-                     </button>
-                   )}
-                 </div>
-
-                 {/* Real-time search dropdown overlay */}
-                 {searchQuery.trim() && (
-                   <div className="absolute left-0 right-0 top-full mt-2 bg-white border border-[#e5ddd4] rounded-2xl shadow-2xl z-50 max-h-[320px] overflow-y-auto divide-y divide-[#e5ddd4]/40 animate-in fade-in-50 slide-in-from-top-1 duration-200">
-                     {filteredArticles.length > 0 ? (
-                       <div>
-                         <div className="px-4 py-2.5 text-[10px] font-bold text-[#9e9890] uppercase tracking-wider bg-cream-light border-b border-[#e5ddd4]/40">
-                           Suggested Articles ({filteredArticles.length})
-                         </div>
-                         {filteredArticles.map((article) => (
-                           <Link
-                             key={article.id}
-                             href={`/help/article/${article.id}`}
-                             onClick={() => setSearchQuery("")}
-                             className="w-full px-4 py-3 hover:bg-cream-light text-left transition-colors flex items-center justify-between group border-b border-[#e5ddd4]/20 last:border-0 block"
-                           >
-                             <div className="min-w-0 flex-1">
-                               <p className="text-sm font-semibold text-brown-900 group-hover:text-[#5C6F2D] transition-colors truncate">
-                                 {article.title}
-                               </p>
-                               <p className="text-xs text-brown-400 truncate mt-0.5">
-                                 {article.moduleName} • {article.readingTime} read
-                               </p>
-                             </div>
-                             <ChevronRight className="w-4 h-4 text-[#9e9890] group-hover:text-[#5C6F2D] group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
-                           </Link>
-                         ))}
-                       </div>
-                     ) : (
-                       <div className="p-6 text-center">
-                         <p className="text-sm font-medium text-brown-500">
-                           No matches found for &quot;{searchQuery}&quot;
-                         </p>
-                       </div>
-                     )}
-                   </div>
-                 )}
-               </div>
-             </div>
-          </div>
-       </section>
-
-      {/* Main Content Area */}
-      <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
-          {/* Category Filter Sidebar */}
-          <aside className="w-full lg:w-72 shrink-0">
-            <div className="bg-white border border-[#e5ddd4] rounded-3xl p-6 shadow-sm lg:sticky lg:top-[100px]">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-[#9e9890] mb-4">
-                Categories
-              </h3>
-              <nav className="space-y-1">
+        {/* Right side - Search */}
+        <div className="relative z-20 w-full md:w-[40%] mt-6 md:mt-0 flex flex-col justify-center">
+          <div className="relative w-full">
+            <div className="relative flex items-center bg-white rounded-xl shadow-sm border border-[#e5ddd4] overflow-hidden focus-within:ring-2 focus-within:ring-[#5C6F2D] focus-within:border-transparent">
+              <Search className="absolute left-4 w-4 h-4 text-[#9e9890] pointer-events-none" />
+              <input
+                type="text"
+                placeholder="Search articles, forms..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "14px 40px 14px 44px",
+                  fontSize: "14px",
+                  color: "#2b2723",
+                  background: "transparent",
+                  border: "none",
+                  outline: "none",
+                }}
+              />
+              {searchQuery && (
                 <button
-                  onClick={() => handleSelectModule(null)}
-                  className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-semibold transition-all duration-200 text-left ${
-                    selectedModule === null
-                      ? "bg-[#5C6F2D] text-white shadow-md shadow-[#5C6F2D]/10"
-                      : "text-brown-700 hover:bg-cream-light hover:text-[#5C6F2D]"
-                  }`}
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-3 p-1 rounded-full text-[#9e9890] hover:bg-[#faf9f6] transition-colors border-none cursor-pointer bg-transparent"
                 >
-                  <span className="flex items-center gap-2.5">
-                    <BookOpen className="w-4 h-4" />
-                    All Modules
-                  </span>
-                  <span className={`text-xs px-2.5 py-0.5 rounded-full ${
-                    selectedModule === null
-                      ? "bg-white/20 text-white"
-                      : "bg-cream text-brown-500"
-                  }`}>
-                    {HELP_ARTICLES.length}
-                  </span>
-                </button>
-
-                {HELP_MODULES.map((mod) => {
-                  const isActive = selectedModule === mod.id;
-                  const count = moduleCounts[mod.id] || 0;
-                  return (
-                    <button
-                      key={mod.id}
-                      onClick={() => handleSelectModule(mod.id)}
-                      className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-semibold transition-all duration-200 text-left ${
-                        isActive
-                          ? "bg-[#5C6F2D] text-white shadow-md shadow-[#5C6F2D]/10"
-                          : "text-brown-700 hover:bg-cream-light hover:text-[#5C6F2D]"
-                      }`}
-                    >
-                      <span className="flex items-center gap-2.5 truncate">
-                        {getModuleIcon(mod.icon, "w-4 h-4 shrink-0")}
-                        <span className="truncate">{mod.name}</span>
-                      </span>
-                      <span className={`text-xs px-2.5 py-0.5 rounded-full shrink-0 ${
-                        isActive
-                          ? "bg-white/20 text-white"
-                          : "bg-cream text-brown-500"
-                      }`}>
-                        {count}
-                      </span>
-                    </button>
-                  );
-                })}
-              </nav>
-            </div>
-          </aside>
-
-          {/* Articles Directory list */}
-          <div className="flex-1 min-w-0">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-              <div>
-                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-brown-900">
-                  {selectedModule 
-                    ? HELP_MODULES.find((m) => m.id === selectedModule)?.name 
-                    : "All Help Resources"}
-                </h2>
-                <p className="text-sm text-brown-500 mt-1">
-                  Showing {filteredArticles.length} of {HELP_ARTICLES.length} articles
-                </p>
-              </div>
-
-              {/* Reset filters button if active */}
-              {(selectedModule || searchQuery) && (
-                <button
-                  onClick={handleResetFilters}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#5C6F2D] hover:text-[#4a5a24] border-b border-transparent hover:border-[#4a5a24] pb-0.5 transition-colors self-start sm:self-center"
-                >
-                  Reset filters
+                  <X className="w-3.5 h-3.5" />
                 </button>
               )}
             </div>
 
-            {filteredArticles.length > 0 ? (
-              /* Grid of Article Cards */
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {filteredArticles.map((article) => (
-                  <Link
-                    key={article.id}
-                    href={`/help/article/${article.id}`}
-                    className="group flex flex-col justify-between bg-white border border-[#e5ddd4] rounded-3xl p-6 sm:p-8 hover:border-[#5C6F2D] hover:shadow-lg transition-all duration-300 relative overflow-hidden"
-                  >
-                    {/* subtle highlight bar */}
-                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#5C6F2D] opacity-0 group-hover:opacity-100 transition-opacity" />
-                    
-                    <div>
-                      {/* Module tag & read time */}
-                      <div className="flex items-center justify-between gap-2 mb-4 text-xs font-semibold text-[#9e9890]">
-                        <span className="text-[#5C6F2D] flex items-center gap-1.5 font-bold">
-                          {getModuleIcon(HELP_MODULES.find(m => m.id === article.moduleId)?.icon || "", "w-3.5 h-3.5")}
-                          {article.moduleName}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-3.5 h-3.5" />
-                          {article.readingTime}
-                        </span>
-                      </div>
-
-                      <h3 className="text-lg sm:text-xl font-serif font-bold text-brown-900 group-hover:text-[#5C6F2D] transition-colors leading-snug mb-3">
-                        {article.title}
-                      </h3>
-                      <p className="text-sm text-brown-500 leading-relaxed line-clamp-3 mb-6">
-                        {article.summary}
-                      </p>
+            {/* Real-time search dropdown overlay */}
+            {searchQuery.trim() && (
+              <div className="absolute left-0 right-0 top-full mt-2 bg-white border border-[#e5ddd4] rounded-xl shadow-2xl z-50 max-h-[280px] overflow-y-auto divide-y divide-[#e5ddd4]/40">
+                {globalSearchResults.length > 0 ? (
+                  <div>
+                    <div className="px-4 py-2 text-[10px] font-bold text-[#9e9890] uppercase tracking-wider bg-[#faf9f6] border-b border-[#e5ddd4]/40 text-left">
+                      Suggested Articles ({globalSearchResults.length})
                     </div>
-
-                    <div className="flex items-center justify-between pt-4 border-t border-[#e5ddd4]/50">
-                      <span className="text-xs text-[#9e9890]">
-                        Updated {article.lastUpdated}
-                      </span>
-                      <span className="inline-flex items-center gap-1 text-sm font-semibold text-[#5C6F2D] group-hover:translate-x-1.5 transition-transform duration-300">
-                        Read Article
-                        <ChevronRight className="w-4 h-4" />
-                      </span>
-                    </div>
-                  </Link>
-                ))}
+                    {globalSearchResults.map((article) => (
+                      <Link
+                        key={article.id}
+                        href={`/help/article/${article.id}`}
+                        onClick={() => setSearchQuery("")}
+                        className="w-full px-4 py-3 hover:bg-[#faf9f6] text-left transition-colors flex items-center justify-between group border-b border-[#e5ddd4]/20 last:border-0"
+                        style={{ display: "flex", textDecoration: "none" }}
+                      >
+                        <div className="min-w-0 flex-1">
+                          <p className="text-sm font-semibold text-brown-900 group-hover:text-[#5C6F2D] transition-colors truncate m-0">
+                            {article.title}
+                          </p>
+                          <p className="text-xs text-brown-400 truncate mt-0.5 m-0">
+                            {article.moduleName}
+                          </p>
+                        </div>
+                        <ChevronRight className="w-4 h-4 text-[#9e9890] group-hover:text-[#5C6F2D] group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="p-6 text-center">
+                    <p className="text-sm font-medium text-brown-500 m-0">
+                      No matches found for &quot;{searchQuery}&quot;
+                    </p>
+                  </div>
+                )}
               </div>
-            ) : (
-              /* Zero results state */
-              <div className="bg-white border border-[#e5ddd4] rounded-3xl p-12 text-center max-w-xl mx-auto shadow-sm mt-8">
-                <div className="w-16 h-16 bg-[#CD412B]/10 text-[#CD412B] rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <AlertTriangle className="w-8 h-8" />
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+
+  // ════════════════════════════════════════════════════════════════════════════
+  // VIEW A: HELP CENTER HOME — Category tiles grid (matches images 1–4)
+  // ════════════════════════════════════════════════════════════════════════════
+  if (!selectedModule) {
+    return (
+      <main style={{ minHeight: "100vh", background: "#f0f2f5", paddingTop: "70px", display: "flex", flexDirection: "column", color: "#2b2723" }}>
+        <Header />
+        {heroBanner}
+
+        {/* Category grid section */}
+        <div style={{ flex: 1, maxWidth: "1100px", width: "100%", margin: "0 auto", padding: "48px 20px 64px" }}>
+          {/* 3-column grid — same layout as SeedLegals reference */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: "20px",
+            }}
+            className="help-category-grid"
+          >
+            {HELP_MODULES.map((mod) => (
+              <button
+                key={mod.id}
+                onClick={() => handleSelectModule(mod.id)}
+                style={{
+                  background: "#ffffff",
+                  border: "1px solid #e2e6ea",
+                  borderRadius: "8px",
+                  padding: "36px 28px 32px",
+                  textAlign: "center",
+                  cursor: "pointer",
+                  transition: "box-shadow 0.2s, transform 0.2s",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "0",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 20px rgba(0,0,0,0.12)";
+                  (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
+                  (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
+                }}
+              >
+                {/* Icon — centered at top, green color matching brand theme */}
+                <div style={{ color: "#5C6F2D", marginBottom: "18px" }}>
+                  {getModuleIcon(mod.icon, "w-10 h-10")}
                 </div>
-                <h3 className="text-xl font-serif font-bold text-brown-900 mb-3">
-                  No results found
+
+                {/* Category title */}
+                <h3
+                  style={{
+                    fontSize: "16px",
+                    fontWeight: 600,
+                    color: "#5C6F2D",
+                    marginBottom: "10px",
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {mod.name}
                 </h3>
-                <p className="text-sm text-brown-500 leading-relaxed mb-8 max-w-md mx-auto">
-                  We couldn&apos;t find any articles matching &quot;{searchQuery}&quot;. Try adjusting your keywords or browse by category in the sidebar.
+
+                {/* Description */}
+                <p
+                  style={{
+                    fontSize: "13px",
+                    color: "#5a5a72",
+                    lineHeight: 1.55,
+                    margin: 0,
+                  }}
+                >
+                  {MODULE_DESC[mod.id] ?? "Explore articles and guides in this section."}
                 </p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <button
-                    onClick={handleResetFilters}
-                    className="px-5 py-3 bg-[#5C6F2D] hover:bg-[#4a5a24] text-white text-sm font-semibold rounded-xl transition-all shadow-sm"
-                  >
-                    Reset Search
-                  </button>
-                  <a
-                    href="/contact"
-                    className="px-5 py-3 bg-white border border-[#e5ddd4] hover:bg-cream-light text-brown-700 text-sm font-semibold rounded-xl transition-all shadow-sm inline-flex items-center justify-center"
-                  >
-                    Talk to an Expert
-                  </a>
-                </div>
-              </div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <style>{`
+          @media (max-width: 768px) {
+            .help-category-grid {
+              grid-template-columns: repeat(1, 1fr) !important;
+            }
+          }
+          @media (min-width: 769px) and (max-width: 1024px) {
+            .help-category-grid {
+              grid-template-columns: repeat(2, 1fr) !important;
+            }
+          }
+        `}</style>
+
+        <Footer />
+      </main>
+    );
+  }
+
+  // ════════════════════════════════════════════════════════════════════════════
+  // VIEW B: CATEGORY DETAIL PAGE (matches image 5 exactly)
+  // Left sidebar: list of all categories
+  // Right: Category heading + description + simple article links
+  // ════════════════════════════════════════════════════════════════════════════
+  return (
+    <main style={{ minHeight: "100vh", background: "#f0f2f5", paddingTop: "70px", display: "flex", flexDirection: "column", color: "#2b2723" }}>
+      <Header />
+      {heroBanner}
+
+      {/* Breadcrumb — exactly like image 5 */}
+      <div style={{ background: "#f0f2f5", borderBottom: "1px solid #e2e6ea" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "12px 20px" }}>
+          <nav style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "13px", color: "#5a5a72" }}>
+            <button
+              onClick={() => handleSelectModule(null)}
+              style={{
+                background: "none", border: "none", cursor: "pointer",
+                color: "#5C6F2D", fontSize: "13px", padding: 0,
+                textDecoration: "none",
+              }}
+            >
+              Help Centre
+            </button>
+            <span style={{ color: "#9e9890" }}>&gt;</span>
+            <span style={{ color: "#2b2723", fontWeight: 500 }}>
+              {activeModule?.name}
+            </span>
+          </nav>
+        </div>
+      </div>
+
+      {/* Two-column layout */}
+      <div style={{ flex: 1, maxWidth: "1100px", width: "100%", margin: "0 auto", padding: "32px 20px 64px", display: "flex", gap: "40px" }}>
+
+        {/* ── Left Sidebar ─────────────────────────────────────────────────── */}
+        <aside style={{ width: "220px", flexShrink: 0 }}>
+          <nav style={{ position: "sticky", top: "100px" }}>
+            {HELP_MODULES.map((mod) => {
+              const isActive = selectedModule === mod.id;
+              return (
+                <button
+                  key={mod.id}
+                  onClick={() => handleSelectModule(mod.id)}
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    padding: "12px 14px",
+                    background: isActive ? "#F1F3EB" : "none",
+                    border: "none",
+                    borderRadius: "6px",
+                    cursor: "pointer",
+                    textAlign: "left",
+                    fontSize: "14px",
+                    fontWeight: isActive ? 700 : 400,
+                    color: isActive ? "#5C6F2D" : "#4a4a6a",
+                    marginBottom: "2px",
+                    transition: "background 0.15s, color 0.15s",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      (e.currentTarget as HTMLButtonElement).style.background = "#F1F3EB";
+                      (e.currentTarget as HTMLButtonElement).style.color = "#5C6F2D";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      (e.currentTarget as HTMLButtonElement).style.background = "none";
+                      (e.currentTarget as HTMLButtonElement).style.color = "#4a4a6a";
+                    }
+                  }}
+                >
+                  <span style={{ lineHeight: 1.35 }}>{mod.name}</span>
+                  {(moduleCounts[mod.id] || 0) > 0 && (
+                    <ChevronRight
+                      style={{
+                        width: "16px", height: "16px",
+                        color: isActive ? "#5C6F2D" : "#b0b0c0",
+                        flexShrink: 0, marginLeft: "6px",
+                      }}
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </nav>
+        </aside>
+
+        {/* ── Right Content ─────────────────────────────────────────────────── */}
+        <div style={{ flex: 1, minWidth: 0 }}>
+          {/* Category heading — like image 5 */}
+          <h2
+            style={{
+              fontSize: "26px",
+              fontWeight: 700,
+              color: "#5C6F2D",
+              marginBottom: "8px",
+              fontFamily: "Georgia, serif",
+            }}
+          >
+            {activeModule?.name}
+          </h2>
+          <p style={{ fontSize: "14px", color: "#5a5a72", marginBottom: "24px" }}>
+            {MODULE_DESC[selectedModule] ?? "Explore articles and guides in this section."}
+          </p>
+
+          {/* Article links — simple green links exactly like image 5 */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+            {categoryArticles.map((article) => (
+              <Link
+                key={article.id}
+                href={`/help/article/${article.id}`}
+                style={{
+                  display: "block",
+                  fontSize: "14px",
+                  color: "#5C6F2D",
+                  textDecoration: "none",
+                  padding: "8px 0",
+                  borderBottom: "1px solid transparent",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.textDecoration = "underline";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.textDecoration = "none";
+                }}
+              >
+                {article.title}
+              </Link>
+            ))}
+            {categoryArticles.length === 0 && (
+              <p style={{ color: "#9e9890", fontSize: "14px" }}>
+                No articles found in this section yet.
+              </p>
             )}
           </div>
         </div>
