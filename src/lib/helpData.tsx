@@ -18,6 +18,7 @@ export const HELP_MODULES = [
   { id: "policies", name: "Policies", icon: "BookOpen" },
   { id: "team-members", name: "Team Members", icon: "Users" },
   { id: "payslips-payroll", name: "Payslips & Payroll", icon: "Wallet" },
+  { id: "account-settings", name: "Account Settings", icon: "Settings" },
 ];
 
 export const HELP_ARTICLES: HelpArticle[] = [
@@ -325,6 +326,199 @@ export const HELP_ARTICLES: HelpArticle[] = [
   // ==========================================
   // MODULE 2: AGREEMENTS
   // ==========================================
+  {
+    id: "step-by-step-guide-to-drafting-agreements",
+    title: "Step-by-Step Guide: How to Draft and Execute Agreements",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "8 minutes",
+    lastUpdated: "June 2026",
+    summary: "A complete visual walkthrough showing how to choose templates, customize terms, manage signers, pay stamp duty, and execute legally binding agreements on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Overview of the Drafting Workflow</h3>
+          <p className="text-brown-700 leading-relaxed">
+            Founding Legals automates the entire contract lifecycle — from template selection and customization to e-stamping, signing, and storage. Follow this 16-step visual guide to draft and execute court-enforceable agreements in minutes.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">16 Steps to Draft and Execute</h3>
+          <ol className="list-decimal pl-5 space-y-8 text-brown-700">
+            <li className="space-y-3">
+              <div>
+                <strong>Step 1: Access the Agreements Dashboard</strong>
+                <p className="text-sm text-brown-600 mt-1">Navigate to the "Agreements" section on the left sidebar to view your contract templates and active draft pipelines.</p>
+              </div>
+              <div className="max-w-lg">
+                <img src="/Help Center Guide/Aggrements drafting help images/Agreemnts draftt - 1.png" alt="Agreements Dashboard" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+
+            <li className="space-y-3">
+              <div>
+                <strong>Step 2: Start a New Draft</strong>
+                <p className="text-sm text-brown-600 mt-1">Click the "Create New Draft" button to open the interactive contract builder wizard.</p>
+              </div>
+              <div className="max-w-lg">
+                <img src="/Help Center Guide/Aggrements drafting help images/Aggrements draft - 2.png" alt="Create New Draft" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+
+            <li className="space-y-3">
+              <div>
+                <strong>Step 3: Choose Your Agreement Template</strong>
+                <p className="text-sm text-brown-600 mt-1">Select from our library of lawyer-curated templates, such as Employment Agreements, NDAs, contractor terms, or founder covenants.</p>
+              </div>
+              <div className="max-w-lg">
+                <img src="/Help Center Guide/Aggrements drafting help images/Aggrement draft - 3.png" alt="Select Agreement Type" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+
+            <li className="space-y-3">
+              <div>
+                <strong>Step 4: Configure Disclosing Party (Company) Details</strong>
+                <p className="text-sm text-brown-600 mt-1">Enter your company's official name, registered address, CIN, and authorized signatory details.</p>
+              </div>
+              <div className="max-w-lg">
+                <img src="/Help Center Guide/Aggrements drafting help images/Aggrement draft - 4.png" alt="Company Information" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+
+            <li className="space-y-3">
+              <div>
+                <strong>Step 5: Define Counterparty Information</strong>
+                <p className="text-sm text-brown-600 mt-1">Provide the name, email, PAN, and address of the counterparty (employee, contractor, or partner).</p>
+              </div>
+              <div className="max-w-lg">
+                <img src="/Help Center Guide/Aggrements drafting help images/Aggrement draft - 5.png" alt="Counterparty Information" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+
+            <li className="space-y-3">
+              <div>
+                <strong>Step 6: Set Core Commercial &amp; Contract Terms</strong>
+                <p className="text-sm text-brown-600 mt-1">Specify key dates, duration, compensation structures, or specific commercial terms of the arrangement.</p>
+              </div>
+              <div className="max-w-lg">
+                <img src="/Help Center Guide/Aggrements drafting help images/Aggrements draft - 6.png" alt="Commercial Terms" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+
+            <li className="space-y-3">
+              <div>
+                <strong>Step 7: Customize Intellectual Property (IP) Assignment Covenants</strong>
+                <p className="text-sm text-brown-600 mt-1">Configure IP ownership clauses to ensure all work product created belongs strictly to the company from day one.</p>
+              </div>
+              <div className="max-w-lg">
+                <img src="/Help Center Guide/Aggrements drafting help images/Aggrement draft - 7.png" alt="Intellectual Property Covenants" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+
+            <li className="space-y-3">
+              <div>
+                <strong>Step 8: Set Restrictive Covenants &amp; Non-Compete Clauses</strong>
+                <p className="text-sm text-brown-600 mt-1">Define reasonable non-solicit (employees &amp; clients) and confidentiality periods to protect corporate interests.</p>
+              </div>
+              <div className="max-w-lg">
+                <img src="/Help Center Guide/Aggrements drafting help images/Aggrements draft - 8.png" alt="Restrictive Covenants" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+
+            <li className="space-y-3">
+              <div>
+                <strong>Step 9: Choose Governing Law &amp; Court Jurisdiction</strong>
+                <p className="text-sm text-brown-600 mt-1">Select the state law governing the contract and specify the local courts that hold exclusive dispute jurisdiction.</p>
+              </div>
+              <div className="max-w-lg">
+                <img src="/Help Center Guide/Aggrements drafting help images/Aggrement draft - 9.png" alt="Governing Law and Jurisdiction" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+
+            <li className="space-y-3">
+              <div>
+                <strong>Step 10: Preview the Dynamically Generated Contract</strong>
+                <p className="text-sm text-brown-600 mt-1">Review the fully assembled contract text in real-time. Our editor dynamically injects your form data into the template.</p>
+              </div>
+              <div className="max-w-lg">
+                <img src="/Help Center Guide/Aggrements drafting help images/Aggrements draft - 10.png" alt="Contract Preview" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+
+            <li className="space-y-3">
+              <div>
+                <strong>Step 11: Set Up E-Stamping &amp; Pay Stamp Duty</strong>
+                <p className="text-sm text-brown-600 mt-1">Select the state for execution to calculate stamp duty, and complete digital payment for the government e-stamp certificate.</p>
+              </div>
+              <div className="max-w-lg">
+                <img src="/Help Center Guide/Aggrements drafting help images/Aggrements draft - 11.png" alt="E-Stamping Configuration" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+
+            <li className="space-y-3">
+              <div>
+                <strong>Step 12: Add Signatories &amp; Signing Roles</strong>
+                <p className="text-sm text-brown-600 mt-1">Specify signing order and designate who signs on behalf of the company, the counterparty, and optional witnesses.</p>
+              </div>
+              <div className="max-w-lg">
+                <img src="/Help Center Guide/Aggrements drafting help images/Aggrement draft - 12.png" alt="Signatory Setup" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+
+            <li className="space-y-3">
+              <div>
+                <strong>Step 13: Route for Digital Signature (e-Sign)</strong>
+                <p className="text-sm text-brown-600 mt-1">Trigger signing invitations. Signers receive links to securely authenticate and sign via Aadhaar e-Sign.</p>
+              </div>
+              <div className="max-w-lg">
+                <img src="/Help Center Guide/Aggrements drafting help images/Aggrement Draft - 13.png" alt="Route for e-Sign" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+
+            <li className="space-y-3">
+              <div>
+                <strong>Step 14: Monitor Signature Progress</strong>
+                <p className="text-sm text-brown-600 mt-1">Track the signing lifecycle on your dashboard to see who has signed and whose signature is pending.</p>
+              </div>
+              <div className="max-w-lg">
+                <img src="/Help Center Guide/Aggrements drafting help images/Aggrement Drafft - 14.png" alt="Signature Tracking" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+
+            <li className="space-y-3">
+              <div>
+                <strong>Step 15: Finalize Execution</strong>
+                <p className="text-sm text-brown-600 mt-1">Once all signers complete authentication, the platform seals the document with secure Digital Signature Certificates (DSC).</p>
+              </div>
+              <div className="max-w-lg">
+                <img src="/Help Center Guide/Aggrements drafting help images/Aggrement Darfft - 15.png" alt="Final Execution Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+
+            <li className="space-y-3">
+              <div>
+                <strong>Step 16: Access the Executed Document in Your Vault</strong>
+                <p className="text-sm text-brown-600 mt-1">Download the fully executed agreement, complete with the e-stamp certificate and digital signature audit log, from the secure Vault.</p>
+              </div>
+              <div className="max-w-lg">
+                <img src="/Help Center Guide/Aggrements drafting help images/Aggrement Draft - 16.png" alt="Vault Storage" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Enable Automatic Reminders
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            If a counterparty hasn't signed an agreement within 48 hours, Founding Legals can automatically send SMS and WhatsApp reminders to speed up the onboarding or negotiation cycle. Turn this on in your Settings under "Notifications".
+          </p>
+        </div>
+      </div>
+    ),
+  },
   {
     id: "drafting-india-enforceable-nda",
     title: "Drafting an India-Enforceable NDA Before You Share Your Pitch Deck",
@@ -3684,6 +3878,411 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
             When an employee submits resignation, run a provisional FnF on the platform same-day and share the indicative numbers. This builds trust, manages employee expectations, and prevents last-day surprises. It also lets you identify whether you&apos;ll recover or pay notice — useful for cash flow planning.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  // ==========================================
+  // MODULE 7: ACCOUNT SETTINGS
+  // ==========================================
+  {
+    id: "overview-to-account-settings",
+    title: "Overview: Managing Your Account Settings",
+    moduleId: "account-settings",
+    moduleName: "Account Settings",
+    readingTime: "4 minutes",
+    lastUpdated: "June 2026",
+    summary: "Account Settings is the central control room of your Founding Legals workspace. Learn how setting up your company identity, team access, and branding flows automatically into every document and transaction.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">The Central Control Room of Your Workspace</h3>
+          <p className="text-brown-700 leading-relaxed">
+            Your Account Settings is the control centre of your Founding Legals workspace. Everything you configure here — your company identity, your people, your signature, your seal, and your branded templates — flows automatically into every agreement, invoice, and document you generate. Set it up once, and your paperwork stays consistent, compliant, and unmistakably yours.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">The Six Areas of Account Settings</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="border border-brown-200 bg-white rounded-xl p-5 shadow-sm">
+              <h4 className="font-semibold text-brown-900 mb-2">1. Details</h4>
+              <p className="text-xs text-brown-700 leading-relaxed">
+                The foundation of everything you create. Manage registry info, address, bank details, logos, and social links. Contains the live 100% completion indicator.
+              </p>
+            </div>
+            <div className="border border-brown-200 bg-white rounded-xl p-5 shadow-sm">
+              <h4 className="font-semibold text-brown-900 mb-2">2. Users &amp; Roles</h4>
+              <p className="text-xs text-brown-700 leading-relaxed">
+                Invite team members and assign access permissions. Color-coded badges differentiate your Executive Team from the wider team.
+              </p>
+            </div>
+            <div className="border border-brown-200 bg-white rounded-xl p-5 shadow-sm">
+              <h4 className="font-semibold text-brown-900 mb-2">3. Membership</h4>
+              <p className="text-xs text-brown-700 leading-relaxed">
+                Select or upgrade subscription plans (Starter, Professional, Enterprise) and toggle between monthly and annual billing.
+              </p>
+            </div>
+            <div className="border border-brown-200 bg-white rounded-xl p-5 shadow-sm">
+              <h4 className="font-semibold text-brown-900 mb-2">4. Signature</h4>
+              <p className="text-xs text-brown-700 leading-relaxed">
+                Draw or type your authorized signature. Securely stored and applied to documents executed under your name.
+              </p>
+            </div>
+            <div className="border border-brown-200 bg-white rounded-xl p-5 shadow-sm">
+              <h4 className="font-semibold text-brown-900 mb-2">5. Stamp</h4>
+              <p className="text-xs text-brown-700 leading-relaxed">
+                Create a professional company seal by custom-generating wording or uploading an image. Match your brand color seamlessly.
+              </p>
+            </div>
+            <div className="border border-brown-200 bg-white rounded-xl p-5 shadow-sm">
+              <h4 className="font-semibold text-brown-900 mb-2">6. Templates</h4>
+              <p className="text-xs text-brown-700 leading-relaxed">
+                Build letterheads and layouts customized by purpose (Agreements, Invoices, Policies) with a live builder and preview system.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Configure Settings First
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Completing your Account Settings setup before drafting agreements or sending invoices prevents execution errors. Because variables like your official address, director signatures, and stamps are pulled dynamically, the system relies on this central database to output fully compliant documents.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "managing-company-details",
+    title: "Managing Company Details & Registry Information",
+    moduleId: "account-settings",
+    moduleName: "Account Settings",
+    readingTime: "5 minutes",
+    lastUpdated: "June 2026",
+    summary: "Your company's Details tab houses core registry, address, logo, bank details, and social profiles. Ensure your profile is 100% complete so that every document matches legal and corporate standards.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">The Single Source of Truth</h3>
+          <p className="text-brown-700 leading-relaxed">
+            The <strong>Details</strong> tab holds your company&apos;s core registry information — the single source of truth that populates the headers, footers, signature blocks, and payment sections of every document you produce. 
+          </p>
+          <p className="text-brown-700 leading-relaxed mt-2">
+            A live completion indicator sits beside the tab, showing how much of your essential profile is filled in. When it reads 100%, your company is fully document-ready; until then, it gently highlights what&apos;s still missing so nothing important is left blank on a legal page.
+          </p>
+          <div className="mt-4 max-w-2xl">
+            <img src="/Help Center Guide/Settings Help Center/Settings - 1.png" alt="Company Details Dashboard" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">What You Can Manage Here</h3>
+          <div className="space-y-4 text-brown-700">
+            <div>
+              <h4 className="font-semibold text-brown-800">1. Company Details</h4>
+              <p className="text-sm leading-relaxed">
+                Your registered company name, authorised signatory, company type (Private Limited, LLP, OPC, Section 8, and more), the matching legal suffix, your CIN/LLPIN, GST number, PAN, official email, and phone. Entering a Company Number? A one-click link lets you verify it directly on the MCA Government Portal to check filings status.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-brown-800">2. Company Address</h4>
+              <p className="text-sm leading-relaxed">
+                Your registered office address as listed on MCA records, which is automatically printed across all filings, board resolutions, and agreements.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-brown-800">3. Logo &amp; Website</h4>
+              <p className="text-sm leading-relaxed">
+                Upload your company logo (PNG, JPG, SVG, up to 5 MB) and add your website. Your logo updates across all dashboard screens and document letterheads in real time.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-brown-800">4. Bank Details</h4>
+              <p className="text-sm leading-relaxed">
+                Your account holder name, bank, account number, IFSC, branch, and account type. These appear automatically on invoices and the settlement sections of agreements — no re-typing, no errors.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold text-brown-800">5. Social Media</h4>
+              <p className="text-sm leading-relaxed">
+                Connect your LinkedIn, X, Instagram, and Facebook profiles to enrich your branded footers and public profile pages.
+              </p>
+            </div>
+          </div>
+          <div className="mt-6 max-w-2xl">
+            <img src="/Help Center Guide/Settings Help Center/Settings - 2.png" alt="Company Address and Social Media Settings" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Important: Match PAN/CIN Exactly
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Smart validation checks your email and PAN formats as you go, and required fields are clearly marked. Ensure these details match your tax registrations exactly, as mismatching corporate details can invalidate invoices and lead to GST reconciliation queries from clients. Changes are saved automatically as you work, with a clear confirmation on every update.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Fast MCA Verification
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Always click the MCA Verification link after entering your CIN. This lets you inspect the public records and confirm the company status, assuring potential investors or corporate clients of your statutory standing.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "managing-users-and-roles",
+    title: "Managing Users, Team Members, and Access Roles",
+    moduleId: "account-settings",
+    moduleName: "Account Settings",
+    readingTime: "4 minutes",
+    lastUpdated: "June 2026",
+    summary: "Invite your team and assign appropriate administrative or governance roles. Set up proper access permissions for directors, signatories, and shareholders.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Build and Structure Your Team</h3>
+          <p className="text-brown-700 leading-relaxed">
+            The <strong>Users &amp; Roles</strong> tab is where you build and manage your organisation. Invite colleagues, assign roles, and keep your team structure clear and current. Because signatories defined here feed directly into your agreements, your documents always reflect the right people with the right authority.
+          </p>
+          <div className="mt-4 max-w-2xl">
+            <img src="/Help Center Guide/Settings Help Center/Settings - 3.png" alt="Users and Roles Dashboard" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Key Capabilities</h3>
+          <ul className="list-disc pl-5 space-y-3 text-brown-700">
+            <li>
+              <strong>Invite members:</strong> Add a new team member with their name, email, title, role, and joining details. They receive a secure email invitation to join your workspace.
+              <div className="mt-3 max-w-2xl">
+                <img src="/Help Center Guide/Settings Help Center/Settings - 4.png" alt="Invite Team Member Drawer" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </li>
+            <li>
+              <strong>Assign roles:</strong> Grant the access each person needs, from Admin, Founder, and Director to Signatory and Shareholder. Roles are shown as clear, colour-coded badges at a glance.
+            </li>
+            <li>
+              <strong>Organised view:</strong> Your Executive Team (admins, founders, directors, and signatories) is presented separately from the wider team, so leadership and authority are always easy to find.
+            </li>
+            <li>
+              <strong>Edit &amp; remove:</strong> Update a member&apos;s details and roles at any time, or remove a member or revoke a pending invitation with a simple, confirmed action.
+            </li>
+          </ul>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Caution: Signatory Verification
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Only assign the &quot;Signatory&quot; role to individuals authorized by a Board Resolution to bind the company. Executing contracts via e-sign with unauthorized personnel can render agreements voidable under Section 18 of the Indian Contract Act, 1872.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Board Resolutions Synergy
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Keep your Director and Signatory list updated. When you generate board resolutions or shareholder notices, the platform automatically pulls active Director details, saving you from manual entry.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "understanding-membership-plans",
+    title: "Choosing the Right Founding Legals Subscription Plan",
+    moduleId: "account-settings",
+    moduleName: "Account Settings",
+    readingTime: "4 minutes",
+    lastUpdated: "June 2026",
+    summary: "Compare Founding Legals' Starter, Professional, and Enterprise plans to find the right tier for your organization's digital execution and legal document storage needs.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Choose the Plan That Grows With You</h3>
+          <p className="text-brown-700 leading-relaxed">
+            The <strong>Membership</strong> tab presents your subscription options in a clear, side-by-side comparison, with a simple toggle to switch between monthly and annual billing. This transparent view lets you choose the perfect fit for your operational velocity.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">The Three Subscription Tiers</h3>
+          <div className="space-y-4 text-brown-700">
+            <div className="border border-brown-100 rounded-xl p-4 bg-white shadow-sm">
+              <h4 className="font-semibold text-[#5C6F2D]">Starter Plan</h4>
+              <p className="text-sm mt-1">
+                For small teams beginning their digital signing journey. Includes up to 5 members, 50 signatures a month, essential templates, and document tracking.
+              </p>
+            </div>
+            <div className="border border-brown-200 rounded-xl p-4 bg-[#5C6F2D]/5 shadow-sm">
+              <div className="flex justify-between items-center">
+                <h4 className="font-semibold text-[#5C6F2D]">Professional Plan</h4>
+                <span className="text-xs px-2.5 py-0.5 bg-[#5C6F2D] text-white rounded-full font-semibold">Most Popular</span>
+              </div>
+              <p className="text-sm mt-1">
+                For growing organisations. Supports up to 25 members, 500 signatures a month, custom templates, bulk signing, advanced analytics, white-label branding, and API access.
+              </p>
+            </div>
+            <div className="border border-brown-100 rounded-xl p-4 bg-white shadow-sm">
+              <h4 className="font-semibold text-brown-900">Enterprise Plan</h4>
+              <p className="text-sm mt-1">
+                For larger organisations needing full compliance control. Unlocks unlimited members and signatures, legally vetted templates, SSO and advanced security, custom integrations, dedicated support, and compliance reporting.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Go Annual for Better Pricing
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Toggling to annual billing grants up to a 20% discount on the total plan price. For startups with fluctuating agreement volumes, annual memberships also offer flexible monthly limits to handle sudden hiring or round closures.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "setting-up-signature-and-stamp",
+    title: "Setting Up Your Authorized Signature and Company Stamp",
+    moduleId: "account-settings",
+    moduleName: "Account Settings",
+    readingTime: "5 minutes",
+    lastUpdated: "June 2026",
+    summary: "Create your secure, legally binding digital signature and generate a professional company seal (stamp) to apply directly to contracts and agreements.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Authorized Signatures &amp; Seals</h3>
+          <p className="text-brown-700 leading-relaxed">
+            Founding Legals makes document execution seamless by consolidating your official signature and company seal in one secure location. Setting these up ensures they are formatted correctly and applied instantly upon contract completion.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">1. Customizing Your Signature</h3>
+          <p className="text-brown-700 leading-relaxed">
+            The <strong>Signature</strong> tab lets you create the official signature that appears on documents executed in your name. You can produce it in two ways:
+          </p>
+          <ul className="list-disc pl-5 mt-2 space-y-2 text-brown-700">
+            <li>
+              <strong>Draw:</strong> Sign naturally with your mouse, trackpad, or touchscreen for an authentic, handwritten mark.
+            </li>
+            <li>
+              <strong>Type a styled signature:</strong> Enter your name and choose from elegant signature fonts for a polished, consistent look.
+            </li>
+          </ul>
+          <p className="text-brown-700 leading-relaxed mt-2">
+            Pick your preferred ink colour, preview the result instantly, and save. Your signature is stored securely against your company profile and applied wherever your authorised sign-off is required.
+          </p>
+          <div className="mt-4 max-w-2xl">
+            <img src="/Help Center Guide/Settings Help Center/Settings - 5.png" alt="Authorized Signatures Dashboard" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">2. Generating Your Company Stamp</h3>
+          <p className="text-brown-700 leading-relaxed">
+            The <strong>Stamp</strong> tab lets you add your company&apos;s official seal to documents — either by uploading an existing stamp image or by generating a clean, professional one within Founding Legals. When you create a stamp, you control every line:
+          </p>
+          <ul className="list-disc pl-5 mt-2 space-y-2 text-brown-700">
+            <li>
+              <strong>Top and bottom text:</strong> Typically your registered company name and location.
+            </li>
+            <li>
+              <strong>Three centre lines:</strong> Ideal for your corporate address, city, state, pincode, and CIN.
+            </li>
+            <li>
+              <strong>Seal colour:</strong> Matched to your corporate branding.
+            </li>
+          </ul>
+          <p className="text-brown-700 leading-relaxed mt-2">
+            To save you time, the stamp is pre-filled from your company details, so a complete, accurate seal is ready almost instantly. Preview it live, fine-tune the wording, and save.
+          </p>
+          <div className="mt-4 max-w-2xl">
+            <img src="/Help Center Guide/Settings Help Center/Settings - 6.png" alt="Company Stamp/Seal Generator" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Warning: Stamp Legitimacy
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under the IT Act, 2000, digital signatures coupled with Aadhaar e-signs have full legal enforceability. Ensure company stamp layouts comply with your Articles of Association (AOA) regulations regarding the usage of the common seal.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Ink Color Harmony
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Choose a consistent ink color (traditional blue is recommended in India) for both your digital signature and stamp. This provides a unified, professional appearance on executed PDFs.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "designing-branded-templates",
+    title: "Designing Branded Document Templates and Letterheads",
+    moduleId: "account-settings",
+    moduleName: "Account Settings",
+    readingTime: "5 minutes",
+    lastUpdated: "June 2026",
+    summary: "Design consistent, professional letterhead headers and footers for your Agreements, Invoices, and Policies to make every document carry your brand's unique identity.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Branded Letterheads and Styling</h3>
+          <p className="text-brown-700 leading-relaxed">
+            The <strong>Templates</strong> tab is where your documents gain their professional, branded finish. Here you design the letterhead headers and footers that frame your agreements, invoices, and policies.
+          </p>
+          <div className="mt-4 max-w-2xl">
+            <img src="/Help Center Guide/Settings Help Center/Settings - 7.png" alt="Branded Document Templates and Letterheads" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Key Styling Actions</h3>
+          <ul className="list-disc pl-5 space-y-3 text-brown-700">
+            <li>
+              <strong>Upload or create:</strong> Bring your own designed letterhead graphic, or build one from scratch.
+            </li>
+            <li>
+              <strong>Organise by purpose:</strong> Maintain separate templates for Agreements, Invoices, and Policies, so each document type carries the right look (e.g., invoices need banking info, agreements require clean margins).
+            </li>
+            <li>
+              <strong>Design the header:</strong> Choose its layout (left, centre, or right) and decide what appears: logo, company name, address, contact details, and CIN. Set the accent colour, border style, and font size.
+            </li>
+            <li>
+              <strong>Design the footer:</strong> Display your company name, address, contact, CIN, and website, with full control over layout, alignment, color, and borders.
+            </li>
+            <li>
+              <strong>Live preview &amp; defaults:</strong> See your header and footer exactly as they&apos;ll appear before you save, and mark a template as your default so it&apos;s applied automatically to new documents.
+            </li>
+          </ul>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Default Layout Consistency
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Set your main Corporate Agreement template as default. This ensures that even if you draft a quick customized NDA or consulting contract, the header, logo, and footer align exactly with your company brand guidelines without manual adjustment.
           </p>
         </div>
       </div>

@@ -12,6 +12,7 @@ import {
   HelpCircle,
   X,
   Users,
+  Settings,
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -34,6 +35,8 @@ const getModuleIcon = (iconName: string, className = "w-8 h-8") => {
       return <BookOpen className={className} />;
     case "Users":
       return <Users className={className} />;
+    case "Settings":
+      return <Settings className={className} />;
     default:
       return <HelpCircle className={className} />;
   }
@@ -53,6 +56,8 @@ const MODULE_DESC: Record<string, string> = {
     "Co-founders vesting, advisor/mentor onboarding, team roles & permissions.",
   "payslips-payroll":
     "Salary structuring, PF/ESIC compliance, TDS on salaries & payroll registers.",
+  "account-settings":
+    "Manage company details, team roles, subscription membership, signatures, stamps, and document templates.",
 };
 
 // ─── Main Component ───────────────────────────────────────────────────────────

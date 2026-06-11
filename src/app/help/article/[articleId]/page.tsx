@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { HELP_ARTICLES, HELP_MODULES } from "@/lib/helpData";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowLeft, Clock, Calendar, HelpCircle, Presentation, PieChart, FileText, Wallet, BookOpen, Users } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, HelpCircle, Presentation, PieChart, FileText, Wallet, BookOpen, Users, Settings } from "lucide-react";
 
 interface ArticlePageProps {
   params: Promise<{
@@ -27,6 +27,8 @@ const getModuleIcon = (iconName: string, className = "w-5 h-5") => {
       return <BookOpen className={className} />;
     case "Users":
       return <Users className={className} />;
+    case "Settings":
+      return <Settings className={className} />;
     default:
       return <HelpCircle className={className} />;
   }
