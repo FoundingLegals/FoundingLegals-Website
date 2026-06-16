@@ -1868,6 +1868,272 @@ export const HELP_ARTICLES: HelpArticle[] = [
     ),
   },
   {
+    id: "how-to-create-ip-assignment-agreement",
+    title: "How to Draft an Intellectual Property (IP) Assignment Agreement",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "8 minutes",
+    lastUpdated: "June 2026",
+    summary: "An Intellectual Property (IP) Assignment Agreement permanently transfers ownership of intellectual property rights (such as software, patents, trademarks, or designs) from an individual creator or entity to a company. Learn how to define assignors, assignees, IP schedules, payment terms, and execute it legally on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Protect Your IP — Agreement Type</p>
+          <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Protect Your IP</strong> category on the Founding Legals Agreements page, alongside the Non-Compete Agreement, Mutual Non-Disclosure Agreement (NDA), Technology Transfer Agreement, Software License Agreement, and Trademark License Agreement.</p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Understanding the IP Assignment Agreement</h3>
+          <p className="text-brown-700 leading-relaxed">
+            For startups and early-stage companies, ownership of intellectual property (IP) is the single most critical asset driving company valuation, investment readiness, and competitive advantage. Often, IP (such as source code, designs, branding, or algorithms) is created by founders, contractors, or external agencies before the company is officially incorporated or outside of formal employment contracts. An IP Assignment Agreement acts as a permanent, legally binding bridge that transfers all right, title, and interest in such IP from the creator (the Assignor) to the company (the Assignee).
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Creating an IP Assignment Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Navigate to Agreements and Select IP Assignment Agreement</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the module:</strong> Click on <em>Agreements</em> in the left-side navigation panel of the dashboard. Scroll to the <em>Protect Your IP</em> category and locate the <em>IP Assignment Agreement</em> card. This agreement permanently transfers complete ownership of intellectual property rights, including patents, copyrights, and trademarks, from creator to company. Click <em>+ Create</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/IP Assignment Agreement/IP Assignment Agreement - 1.png" alt="Step 1: Locate IP Assignment Agreement and click + Create" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient (Assignor)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Assign the counterparty:</strong> The <em>Select Recipient</em> panel slides out from the right side of the page. Choose the creator (the individual or entity transferring the IP rights) from your existing contacts, or click <em>+ Add new recipient</em> to register a new user. Recipient selection is mandatory to configure and execute the document.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/IP Assignment Agreement/IP Assignment Agreement - 2.png" alt="Step 2: Choose or add the Assignor recipient" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Choose Agreement Terms Baseline</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select default or custom terms:</strong> The <em>Choose Agreement Terms</em> panel will appear. You can pick:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals Standard Terms:</strong> Automatically pre-populates standard IP assignment language (including comprehensive transfer of moral rights, waiver of future claims, and indemnification against third-party IP infringement).</li>
+              <li><strong>Custom Terms:</strong> Choose this to import your legal team&apos;s specific assignment clauses.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Make your choice and click <em>Confirm</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/IP Assignment Agreement/IP Assignment Agreement - 3.png" alt="Step 3: Select default standard terms or custom terms" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Agreement Details (Step 1 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Specify the signing parameters:</strong> Under Step 1 of the configuration flow, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Execution Place:</strong> Enter the city where this agreement is legally signed (e.g., Bengaluru).</li>
+              <li><strong>Execution Date:</strong> Select the date of signing from the calendar.</li>
+              <li><strong>Execution Month &amp; Year:</strong> Auto-filled based on the date selected above.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save and proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/IP Assignment Agreement/IP Assignment Agreement - 4.jpg" alt="Step 4: Agreement Details — place and execution date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Assignor Details (Step 2 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the creator&apos;s legal information:</strong> Step 2 gathers the details of the party transferring the IP:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Assignor Name:</strong> Full legal name of the individual creator or company.</li>
+              <li><strong>Assignor Type:</strong> Select whether the Assignor is &quot;an individual&quot; or &quot;a company&quot;.</li>
+              <li><strong>Assignor CIN (if company):</strong> If the Assignor is a corporate entity, provide their 21-character Corporate Identification Number.</li>
+              <li><strong>Assignor PAN Number:</strong> Enter the Assignor&apos;s 10-character alphanumeric Permanent Account Number (PAN). This is required for taxation and stamp duty verification.</li>
+              <li><strong>Assignor Address:</strong> Complete residential address (for individuals) or registered office address (for companies).</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/IP Assignment Agreement/IP Assignment Agreement - 5.jpg" alt="Step 5: Assignor Details — name, type, PAN, and address" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Assignee Details (Step 3 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the acquiring company&apos;s details:</strong> Step 3 gathers information for the company acquiring the IP:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Assignee Company Name (without Private Limited):</strong> Enter the legal name of your company, excluding the &quot;Private Limited&quot; suffix.</li>
+              <li><strong>Assignee CIN:</strong> Enter your company&apos;s Corporate Identification Number.</li>
+              <li><strong>Assignee Registered Office Address:</strong> Enter your company&apos;s registered address with the pin code.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Read any important system alerts that pop up, click <em>OK</em> on notifications, and click <em>Next Step</em> to proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/IP Assignment Agreement/IP Assignment Agreement - 6.jpg" alt="Step 6: Assignee Details — acquiring company information" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">IP Details - Schedules A &amp; B (Step 4 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Delineate assigned IP vs. retained IP:</strong> Step 4 contains the core operational definition of the IP assets. You must fill out two schedules:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Description of Assigned IP (Schedule A):</strong> Fully describe the intellectual property being transferred. Be as specific as possible (e.g., &quot;Source code repository located at github.com/org/repo, UX/UI designs, system architectures, domain names, patents, and associated databases created for the product.&quot;).</li>
+              <li><strong>Description of Pre-existing IP (Schedule B):</strong> List any intellectual property owned or developed by the Assignor *prior* to this engagement or outside this project that is NOT being assigned to the company. If none, write &quot;None&quot; or &quot;Not Applicable.&quot;</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save schedules and proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/IP Assignment Agreement/IP Assignment Agreement - 7.jpg" alt="Step 7: IP Details — Schedule A (Assigned) and Schedule B (Pre-existing) descriptions" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Commercial &amp; Payment Terms (Step 5 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure consideration and tax sections:</strong> An assignment without consideration is void under Indian contract law. Fill in the financial structures in Step 5:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Total Consideration Amount (INR):</strong> Enter the total acquisition price. The total must match the sum of Tranche 1 and Tranche 2 (e.g., 10,00,000).</li>
+              <li><strong>Total Consideration in Words:</strong> Auto-calculated and rendered.</li>
+              <li><strong>Tranche 1 Payment Amount (INR):</strong> Specify the first milestone payment due (e.g., 5,00,000).</li>
+              <li><strong>Tranche 1 Payment Days:</strong> Enter the number of days after agreement execution within which Tranche 1 must be paid.</li>
+              <li><strong>Tranche 2 Amount (upon recordal) (INR):</strong> Enter the final payment amount (e.g., 5,00,000) due after formal registration/recordal.</li>
+              <li><strong>TDS Section:</strong> Choose the applicable Tax Deducted at Source (TDS) section for the assignor (e.g., Section 194J for technical/professional service fees).</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save and move forward.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/IP Assignment Agreement/IP Assignment Agreement - 8.jpg" alt="Step 8: Commercial &amp; Payment Terms — milestones and TDS section" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 9 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">9</span>
+              <strong className="text-base text-brown-900">Legal Provisions (Step 6 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select the seat of dispute resolution:</strong> In Step 6, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Court Jurisdiction / Arbitration Seat City:</strong> Specify the city where courts have exclusive jurisdiction and where arbitration will take place (e.g., Bengaluru). The platform verifies that this aligns with the company registered corporate seat.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save legal provisions.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/IP Assignment Agreement/IP Assignment Agreement - 9.jpg" alt="Step 9: Legal Provisions — jurisdiction and arbitration seat" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 10 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Final Review &amp; Field Placement (Step 7 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Review and execute the assignment document:</strong> On the final step, preview the full IP Assignment Agreement. Verify the title, the parties, recitals, and intellectual property descriptions. To finalize:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Drag Interactive Fields:</strong> Drag and drop the <em>Signature</em>, <em>Date</em>, and <em>Stamp</em> blocks onto the respective signatory sections for both the Assignor and the Assignee.</li>
+              <li><strong>Configure Layout Settings:</strong> Choose whether to use your company letterhead, background watermarks, or adjust the viewer zoom controls.</li>
+              <li><strong>Send for Signing:</strong> Click the <em>Shared</em> button to dispatch the document to the Assignor for digital signature. The progress can be monitored in the main dashboard until the status changes to <em>Signed</em>.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/IP Assignment Agreement/IP Assignment Agreement - 10.jpg" alt="Step 10: Final document review, interactive field dragging, and status tracking" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Warning: Strict Requirements Under Section 19 of the Copyright Act, 1957
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under Indian copyright law, assignments are strictly regulated. Section 19 of the Copyright Act, 1957 mandates that an assignment of copyright is not legally valid unless it is in writing and signed by the assignor. Furthermore, it must explicitly specify the assigned work, the rights assigned, the duration, and the territorial extent of the assignment. If the agreement fails to specify the duration, it defaults to 5 years by law. If the territory is omitted, it defaults to India only. The Founding Legals template is pre-configured to specify a <strong>perpetual</strong> and <strong>worldwide</strong> transfer to avoid these statutory defaults and protect your company&apos;s global ownership.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Ensure Clear Separation Between Schedule A &amp; Schedule B
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            The clarity of your schedules is what prevents costly litigation down the line. Make sure that <strong>Schedule A (Assigned IP)</strong> explicitly names all repositories, design links, databases, and trade secrets, rather than relying on a vague statement like &quot;all work done.&quot; Conversely, if the founder or contractor has previous open-source libraries or patented algorithms they intend to leverage, these must be explicitly excluded under <strong>Schedule B (Pre-existing IP)</strong> to avoid claiming ownership over third-party or prior assets.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
     id: "step-by-step-guide-to-drafting-agreements",
     title: "Step-by-Step Guide: How to Draft and Execute Agreements",
     moduleId: "agreements",
