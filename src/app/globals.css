@@ -1102,6 +1102,6 @@ body {
 }
 
 /* Force visited links to retain their defined text colors and prevent browser default blue/purple states */
-a:visited {
+a:not([class*="text-"]):visited {
   color: inherit !important;
 }
