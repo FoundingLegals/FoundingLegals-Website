@@ -20,7 +20,7 @@ function readConsent(): Consent | null {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     if (raw === "accepted" || raw === "declined") {
-      // legacy value from previous banner — treat as not yet recorded so user re-consents
+      // legacy value from previous banner: treat as not yet recorded so user re-consents
       return null;
     }
     const parsed = JSON.parse(raw);

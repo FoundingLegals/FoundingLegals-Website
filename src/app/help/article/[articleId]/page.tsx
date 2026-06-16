@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { HELP_ARTICLES, HELP_MODULES } from "@/lib/helpData";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowLeft, Clock, Calendar, HelpCircle, Presentation, PieChart, FileText, Wallet, BookOpen, Users, Settings } from "lucide-react";
+import { Clock, Calendar, HelpCircle, Presentation, PieChart, FileText, Wallet, BookOpen, Users, Settings, ChevronDown, ChevronRight } from "lucide-react";
 
 interface ArticlePageProps {
   params: Promise<{
@@ -64,43 +64,89 @@ export default async function HelpArticlePage({ params }: ArticlePageProps) {
     <main className="min-h-screen bg-[#FAF9F6] pt-[70px] sm:pt-[82px] flex flex-col justify-between text-[#2b2723]">
       <Header />
 
+      {/* Breadcrumbs: standard navigation */}
+      <div className="bg-[#FAF9F6] border-b border-[#e5ddd4]/55">
+        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+          <nav className="flex items-center gap-2 text-[13px] text-brown-500">
+            <Link href="/help" className="text-[#5C6F2D] hover:underline font-semibold">
+              Help Centre
+            </Link>
+            <span className="text-brown-300 font-medium">&gt;</span>
+            <Link href={`/help/${parentModule?.id}`} className="text-[#5C6F2D] hover:underline font-semibold">
+              {parentModule?.name}
+            </Link>
+            <span className="text-brown-300 font-medium">&gt;</span>
+            <span className="text-brown-800 font-semibold truncate max-w-[200px] sm:max-w-xs md:max-w-md">
+              {article.title}
+            </span>
+          </nav>
+        </div>
+      </div>
+
       {/* Main Content Area */}
       <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
-          {/* Back to Directory button side rail */}
+          {/* Unified Sidebar Navigation */}
           <aside className="w-full lg:w-64 shrink-0 lg:sticky lg:top-[100px]">
-            <Link
-              href={parentModule ? `/help/${parentModule.id}` : "/help"}
-              className="inline-flex items-center gap-2.5 px-5 py-3 bg-white border border-[#e5ddd4] rounded-2xl text-sm font-semibold text-brown-700 hover:text-[#5C6F2D] hover:bg-[#5C6F2D]/5 transition-all shadow-sm w-full justify-center group"
-            >
-              <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-              Back to Help Center
-            </Link>
+            {/* Category Navigation List */}
+            <nav className="space-y-1 mb-6">
+              {HELP_MODULES.map((mod) => {
+                const isActive = article.moduleId === mod.id;
+                const siblings = HELP_ARTICLES.filter((art) => art.moduleId === mod.id);
+                return (
+                  <div key={mod.id} className="flex flex-col">
+                    {/* Category Item */}
+                    <Link
+                      href={`/help/${mod.id}`}
+                      className={`flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm transition-colors font-semibold ${
+                        isActive
+                          ? "bg-[#F1F3EB] text-[#5C6F2D]"
+                          : "hover:bg-[#F1F3EB] hover:text-[#5C6F2D] text-brown-600"
+                      }`}
+                    >
+                      <span className="line-clamp-1">{mod.name}</span>
+                      {isActive ? (
+                        <ChevronDown className="w-4 h-4 text-[#5C6F2D] shrink-0 ml-2" />
+                      ) : (
+                        <ChevronRight className="w-4 h-4 text-[#9e9890] shrink-0 ml-2" />
+                      )}
+                    </Link>
 
-            <div className="hidden lg:block mt-8 bg-white border border-[#e5ddd4] rounded-3xl p-6 shadow-sm">
-              <h4 className="text-[11px] font-bold uppercase tracking-widest text-[#9e9890] mb-4">
-                MODULE
-              </h4>
-              <div className="flex items-center gap-3 px-3 py-2 bg-[#5C6F2D]/5 rounded-xl border border-[#e5ddd4]/30">
-                <span className="p-2 bg-[#5C6F2D]/10 text-[#5C6F2D] rounded-lg">
-                  {getModuleIcon(parentModule?.icon || "")}
-                </span>
-                <div className="min-w-0">
-                  <p className="text-xs font-semibold text-brown-800 truncate">
-                    {article.moduleName}
-                  </p>
-                </div>
+                    {/* Sibling Articles (if active category) */}
+                    {isActive && (
+                      <div className="pl-4 mt-1.5 space-y-1 border-l-2 border-[#5C6F2D]/20 ml-3.5">
+                        {siblings.map((art) => {
+                          const isCurrentArticle = art.id === article.id;
+                          return (
+                            <Link
+                              key={art.id}
+                              href={`/help/article/${art.id}`}
+                              className={`block text-xs py-2 px-3 rounded-md transition-all leading-normal ${
+                                isCurrentArticle
+                                  ? "bg-[#5C6F2D]/10 text-[#5C6F2D] font-bold"
+                                  : "text-brown-500 hover:bg-[#F1F3EB]/50 hover:text-[#5C6F2D]"
+                              }`}
+                            >
+                              {art.title}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </nav>
+
+            {/* Article Meta Card */}
+            <div className="bg-white border border-[#e5ddd4] rounded-2xl p-5 shadow-sm space-y-3.5">
+              <div className="flex items-center gap-2 text-xs text-brown-500">
+                <Clock className="w-4 h-4 text-[#9e9890]" />
+                <span>{article.readingTime} read</span>
               </div>
-
-              <div className="mt-6 space-y-4 pt-6 border-t border-[#e5ddd4]">
-                <div className="flex items-center gap-2 text-xs text-brown-500">
-                  <Clock className="w-4 h-4 text-[#9e9890]" />
-                  <span>{article.readingTime} read</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-brown-500">
-                  <Calendar className="w-4 h-4 text-[#9e9890]" />
-                  <span>Updated {article.lastUpdated}</span>
-                </div>
+              <div className="flex items-center gap-2 text-xs text-brown-500 border-t border-[#e5ddd4]/40 pt-3">
+                <Calendar className="w-4 h-4 text-[#9e9890]" />
+                <span>Updated {article.lastUpdated}</span>
               </div>
             </div>
           </aside>

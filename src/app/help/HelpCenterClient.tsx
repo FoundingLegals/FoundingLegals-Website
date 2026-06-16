@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import {
   Search,
   ChevronRight,
+  ChevronDown,
   Presentation,
   PieChart,
   FileText,
@@ -13,6 +14,7 @@ import {
   X,
   Users,
   Settings,
+  Briefcase,
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -37,6 +39,8 @@ const getModuleIcon = (iconName: string, className = "w-8 h-8") => {
       return <Users className={className} />;
     case "Settings":
       return <Settings className={className} />;
+    case "Briefcase":
+      return <Briefcase className={className} />;
     default:
       return <HelpCircle className={className} />;
   }
@@ -58,6 +62,8 @@ const MODULE_DESC: Record<string, string> = {
     "Salary structuring, PF/ESIC compliance, TDS on salaries & payroll registers.",
   "account-settings":
     "Manage company details, team roles, subscription membership, signatures, stamps, and document templates.",
+  "client-management":
+    "Add new clients, manage client profiles, and generate GST-ready invoices.",
 };
 
 // ─── Main Component ───────────────────────────────────────────────────────────
@@ -71,14 +77,30 @@ export default function HelpCenterClient({
   const [selectedModule, setSelectedModule] = useState<string | null>(
     initialModuleId
   );
+  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsCategoryDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     setSelectedModule(initialModuleId);
+    setIsCategoryDropdownOpen(false);
   }, [initialModuleId]);
 
   const handleSelectModule = (moduleId: string | null) => {
     setSelectedModule(moduleId);
     setSearchQuery("");
+    setIsCategoryDropdownOpen(false);
     if (moduleId) {
       router.push(`/help/${moduleId}`);
     } else {
@@ -214,7 +236,7 @@ export default function HelpCenterClient({
   );
 
   // ════════════════════════════════════════════════════════════════════════════
-  // VIEW A: HELP CENTER HOME — Category tiles grid (matches images 1–4)
+  // VIEW A: HELP CENTER HOME: Category tiles grid (matches images 1–4)
   // ════════════════════════════════════════════════════════════════════════════
   if (!selectedModule) {
     return (
@@ -224,7 +246,7 @@ export default function HelpCenterClient({
 
         {/* Category grid section */}
         <div style={{ flex: 1, maxWidth: "1100px", width: "100%", margin: "0 auto", padding: "48px 20px 64px" }}>
-          {/* 3-column grid — same layout as SeedLegals reference */}
+          {/* 3-column grid: same layout as SeedLegals reference */}
           <div
             style={{
               display: "grid",
@@ -259,7 +281,7 @@ export default function HelpCenterClient({
                   (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
                 }}
               >
-                {/* Icon — centered at top, green color matching brand theme */}
+                {/* Icon: centered at top, green color matching brand theme */}
                 <div style={{ color: "#5C6F2D", marginBottom: "18px" }}>
                   {getModuleIcon(mod.icon, "w-10 h-10")}
                 </div>
@@ -313,15 +335,14 @@ export default function HelpCenterClient({
 
   // ════════════════════════════════════════════════════════════════════════════
   // VIEW B: CATEGORY DETAIL PAGE (matches image 5 exactly)
-  // Left sidebar: list of all categories
+  // Left sidebar: list of all categories with nested accordion topics
   // Right: Category heading + description + simple article links
   // ════════════════════════════════════════════════════════════════════════════
   return (
     <main style={{ minHeight: "100vh", background: "#f0f2f5", paddingTop: "70px", display: "flex", flexDirection: "column", color: "#2b2723" }}>
       <Header />
-      {heroBanner}
 
-      {/* Breadcrumb — exactly like image 5 */}
+      {/* Breadcrumb: exactly like image 5 */}
       <div style={{ background: "#f0f2f5", borderBottom: "1px solid #e2e6ea" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "12px 20px" }}>
           <nav style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "13px", color: "#5a5a72" }}>
@@ -344,58 +365,90 @@ export default function HelpCenterClient({
       </div>
 
       {/* Two-column layout */}
-      <div style={{ flex: 1, maxWidth: "1100px", width: "100%", margin: "0 auto", padding: "32px 20px 64px", display: "flex", gap: "40px" }}>
+      <div style={{ flex: 1, maxWidth: "1100px", width: "100%", margin: "0 auto", padding: "32px 20px 64px", display: "flex", gap: "40px" }} className="help-detail-layout">
 
         {/* ── Left Sidebar ─────────────────────────────────────────────────── */}
-        <aside style={{ width: "220px", flexShrink: 0 }}>
+        <aside style={{ width: "260px", flexShrink: 0 }} className="help-detail-sidebar">
           <nav style={{ position: "sticky", top: "100px" }}>
             {HELP_MODULES.map((mod) => {
               const isActive = selectedModule === mod.id;
               return (
-                <button
-                  key={mod.id}
-                  onClick={() => handleSelectModule(mod.id)}
-                  style={{
-                    width: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    padding: "12px 14px",
-                    background: isActive ? "#F1F3EB" : "none",
-                    border: "none",
-                    borderRadius: "6px",
-                    cursor: "pointer",
-                    textAlign: "left",
-                    fontSize: "14px",
-                    fontWeight: isActive ? 700 : 400,
-                    color: isActive ? "#5C6F2D" : "#4a4a6a",
-                    marginBottom: "2px",
-                    transition: "background 0.15s, color 0.15s",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!isActive) {
-                      (e.currentTarget as HTMLButtonElement).style.background = "#F1F3EB";
-                      (e.currentTarget as HTMLButtonElement).style.color = "#5C6F2D";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isActive) {
-                      (e.currentTarget as HTMLButtonElement).style.background = "none";
-                      (e.currentTarget as HTMLButtonElement).style.color = "#4a4a6a";
-                    }
-                  }}
-                >
-                  <span style={{ lineHeight: 1.35 }}>{mod.name}</span>
-                  {(moduleCounts[mod.id] || 0) > 0 && (
-                    <ChevronRight
+                <div key={mod.id} style={{ marginBottom: "4px" }}>
+                  <button
+                    onClick={() => handleSelectModule(mod.id)}
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      padding: "12px 14px",
+                      background: isActive ? "#F1F3EB" : "none",
+                      border: "none",
+                      borderRadius: "6px",
+                      cursor: "pointer",
+                      textAlign: "left",
+                      fontSize: "14px",
+                      fontWeight: isActive ? 700 : 500,
+                      color: isActive ? "#5C6F2D" : "#4a4a6a",
+                      transition: "background 0.15s, color 0.15s",
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isActive) {
+                        (e.currentTarget as HTMLButtonElement).style.background = "#F1F3EB";
+                        (e.currentTarget as HTMLButtonElement).style.color = "#5C6F2D";
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isActive) {
+                        (e.currentTarget as HTMLButtonElement).style.background = "none";
+                        (e.currentTarget as HTMLButtonElement).style.color = "#4a4a6a";
+                      }
+                    }}
+                  >
+                    <span style={{ lineHeight: 1.35 }}>{mod.name}</span>
+                    <ChevronDown
                       style={{
-                        width: "16px", height: "16px",
+                        width: "16px",
+                        height: "16px",
                         color: isActive ? "#5C6F2D" : "#b0b0c0",
-                        flexShrink: 0, marginLeft: "6px",
+                        transform: isActive ? "rotate(180deg)" : "rotate(0deg)",
+                        transition: "transform 0.2s ease",
                       }}
                     />
+                  </button>
+
+                  {/* Accordion / Dropdown Topics inside Sidebar */}
+                  {isActive && (
+                    <div style={{ paddingLeft: "16px", marginTop: "4px", display: "flex", flexDirection: "column", gap: "2px" }}>
+                      {categoryArticles.map((art) => (
+                        <Link
+                          key={art.id}
+                          href={`/help/article/${art.id}`}
+                          style={{
+                            display: "block",
+                            fontSize: "13px",
+                            color: "#5a5a72",
+                            textDecoration: "none",
+                            padding: "6px 10px",
+                            borderRadius: "4px",
+                            lineHeight: "1.4",
+                            transition: "all 0.15s",
+                          }}
+                          onMouseEnter={(e) => {
+                            (e.currentTarget as HTMLAnchorElement).style.background = "#F1F3EB";
+                            (e.currentTarget as HTMLAnchorElement).style.color = "#5C6F2D";
+                          }}
+                          onMouseLeave={(e) => {
+                            (e.currentTarget as HTMLAnchorElement).style.background = "none";
+                            (e.currentTarget as HTMLAnchorElement).style.color = "#5a5a72";
+                          }}
+                        >
+                          {art.title}
+                        </Link>
+                      ))}
+                    </div>
                   )}
-                </button>
+                </div>
               );
             })}
           </nav>
@@ -403,7 +456,7 @@ export default function HelpCenterClient({
 
         {/* ── Right Content ─────────────────────────────────────────────────── */}
         <div style={{ flex: 1, minWidth: 0 }}>
-          {/* Category heading — like image 5 */}
+          {/* Category heading: like image 5 */}
           <h2
             style={{
               fontSize: "26px",
@@ -419,7 +472,7 @@ export default function HelpCenterClient({
             {MODULE_DESC[selectedModule] ?? "Explore articles and guides in this section."}
           </p>
 
-          {/* Article links — simple green links exactly like image 5 */}
+          {/* Article links: simple green links exactly like image 5 */}
           <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
             {categoryArticles.map((article) => (
               <Link
@@ -432,12 +485,15 @@ export default function HelpCenterClient({
                   textDecoration: "none",
                   padding: "8px 0",
                   borderBottom: "1px solid transparent",
+                  transition: "all 0.2s ease",
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLAnchorElement).style.textDecoration = "underline";
+                  (e.currentTarget as HTMLAnchorElement).style.paddingLeft = "4px";
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLAnchorElement).style.textDecoration = "none";
+                  (e.currentTarget as HTMLAnchorElement).style.paddingLeft = "0";
                 }}
               >
                 {article.title}
@@ -451,6 +507,18 @@ export default function HelpCenterClient({
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .help-detail-layout {
+            flex-direction: column !important;
+            gap: 24px !important;
+          }
+          .help-detail-sidebar {
+            width: 100% !important;
+          }
+        }
+      `}</style>
 
       <Footer />
     </main>

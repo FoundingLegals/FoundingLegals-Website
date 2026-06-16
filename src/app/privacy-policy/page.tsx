@@ -5,7 +5,7 @@ import { Shield } from "lucide-react";
 export const metadata = {
   title: "Privacy Policy | Founding Legals",
   description:
-    "Privacy Policy of Founding Legals (Arvya Tech Pvt. Ltd.) — how we collect, use, store and protect your personal data under the Digital Personal Data Protection Act, 2023 and other applicable Indian law.",
+    "Privacy Policy of Founding Legals (Arvya Tech Pvt. Ltd.): how we collect, use, store and protect your personal data under the Digital Personal Data Protection Act, 2023 and other applicable Indian law.",
 };
 
 const EFFECTIVE_DATE = "29 May 2026";
@@ -158,7 +158,7 @@ const sections = [
             type and version, operating system, device identifiers.
           </li>
           <li>
-            <strong>Cookies and similar technologies</strong> — see our{" "}
+            <strong>Cookies and similar technologies</strong>: see our{" "}
             <a
               href="/cookie-policy"
               className="text-[#5A6E3B] font-medium hover:underline"
@@ -659,7 +659,7 @@ const sections = [
         </p>
         <div className="mt-5 bg-[#f5f2ec] border border-[#e5ddd4] rounded-2xl p-6 sm:p-8">
           <p className="font-bold text-[#2b2723] text-[16px] mb-3">
-            Grievance Officer — Arvya Tech Pvt. Ltd.
+            Grievance Officer: Arvya Tech Pvt. Ltd.
           </p>
           <div className="space-y-2 text-[14px] text-[#4b4843]">
             <p>

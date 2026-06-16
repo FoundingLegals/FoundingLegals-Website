@@ -19,6 +19,7 @@ export const HELP_MODULES = [
   { id: "team-members", name: "Team Members", icon: "Users" },
   { id: "payslips-payroll", name: "Payslips & Payroll", icon: "Wallet" },
   { id: "account-settings", name: "Account Settings", icon: "Settings" },
+  { id: "client-management", name: "Client Management", icon: "Briefcase" },
 ];
 
 export const HELP_ARTICLES: HelpArticle[] = [
@@ -38,14 +39,14 @@ export const HELP_ARTICLES: HelpArticle[] = [
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">What is an Elevator Pitch Video?</h3>
           <p className="text-brown-700 leading-relaxed">
-            An Elevator Pitch Video is a short, powerful video (ideally under 90 seconds) that explains who you are, what problem you solve, and why your startup matters — all before an investor can finish their coffee. It's your first impression in a data room.
+            An Elevator Pitch Video is a short, powerful video (ideally under 90 seconds) that explains who you are, what problem you solve, and why your startup matters: all before an investor can finish their coffee. It's your first impression in a data room.
           </p>
         </div>
         <div>
-          <h3 className="text-xl font-semibold text-brown-900 mb-3">How to Add Your Video — Step by Step</h3>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">How to Add Your Video: Step by Step</h3>
           <ol className="list-decimal pl-5 space-y-4 text-brown-700">
             <li>
-              <strong>Step 1:</strong> Upload your video to <strong>Vimeo</strong> (recommended for quality and privacy controls). Avoid YouTube links — investors may see unrelated recommendations.
+              <strong>Step 1:</strong> Upload your video to <strong>Vimeo</strong> (recommended for quality and privacy controls). Avoid YouTube links: investors may see unrelated recommendations.
             </li>
             <li>
               <strong>Step 2:</strong> On Vimeo, set the video privacy to <strong>"Only people with the link"</strong> so only investors with your data room link can view it.
@@ -103,7 +104,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">What is the Pitch Deck Section?</h3>
           <p className="text-brown-700 leading-relaxed">
-            The Pitch Deck section lets you upload your startup's investor presentation as a PDF file (maximum 10MB). Once uploaded, investors can view it directly within your secure data room — no email attachments, no version confusion.
+            The Pitch Deck section lets you upload your startup's investor presentation as a PDF file (maximum 10MB). Once uploaded, investors can view it directly within your secure data room: no email attachments, no version confusion.
           </p>
         </div>
         <div>
@@ -156,7 +157,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>💡</span> Pro-Tip: Use a Watermarked Version for Early-Stage Sharing
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Add a "Confidential — [Your Company Name] — [Date]" watermark to your deck PDF before uploading. This discourages unauthorised forwarding and strengthens your NDA's evidentiary value if confidentiality is ever breached.
+            Add a "Confidential: [Your Company Name]: [Date]" watermark to your deck PDF before uploading. This discourages unauthorised forwarding and strengthens your NDA's evidentiary value if confidentiality is ever breached.
           </p>
         </div>
       </div>
@@ -175,7 +176,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">What is the Elevator Pitch (Text)?</h3>
           <p className="text-brown-700 leading-relaxed">
-            The Elevator Pitch is your startup's written "tweet" — a concise 2–5 sentence summary of what you're building, the problem you're solving, and why now. It's the first text investors read in your profile and sets the tone for everything else.
+            The Elevator Pitch is your startup's written "tweet": a concise 2–5 sentence summary of what you're building, the problem you're solving, and why now. It's the first text investors read in your profile and sets the tone for everything else.
           </p>
         </div>
         <div>
@@ -248,7 +249,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>💡</span> Pro-Tip: Use Numbers, Not Adjectives
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Avoid phrases like "revolutionary," "world-class," or "disruptive." Indian investors are pragmatic — they respond to specifics: ₹ amounts, customer counts, growth rates, and market sizes. Every sentence should contain at least one concrete number.
+            Avoid phrases like "revolutionary," "world-class," or "disruptive." Indian investors are pragmatic: they respond to specifics: ₹ amounts, customer counts, growth rates, and market sizes. Every sentence should contain at least one concrete number.
           </p>
         </div>
       </div>
@@ -261,7 +262,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
     moduleName: "Pitch",
     readingTime: "4 minutes",
     lastUpdated: "May 2026",
-    summary: "The Vision & Problem section lets you articulate your company's long-term vision, the specific problem you're solving, and your solution — in a structured format that investors and accelerators expect. This guide explains how to fill it in effectively.",
+    summary: "The Vision & Problem section lets you articulate your company's long-term vision, the specific problem you're solving, and your solution: in a structured format that investors and accelerators expect. This guide explains how to fill it in effectively.",
     content: (
       <div className="space-y-6">
         <div>
@@ -282,7 +283,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               </div>
             </li>
             <li>
-              <strong>Step 4:</strong> Fill in all three fields: Our Vision, The Problem, and Our Solution. Each field has a 500-character limit — be precise.
+              <strong>Step 4:</strong> Fill in all three fields: Our Vision, The Problem, and Our Solution. Each field has a 500-character limit: be precise.
               <div className="mt-3 max-w-lg">
                 <img src="/Help Center Guide/Elevetor Pitch - 2.png" alt="Add Elevator Pitch Modal Popup" className="rounded-xl border border-brown-200 w-full shadow-sm" />
               </div>
@@ -308,7 +309,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             </div>
             <div className="border border-brown-200 bg-white rounded-xl p-4 shadow-sm">
               <h4 className="font-semibold text-brown-900 mb-2">✅ Our Solution</h4>
-              <p className="text-xs text-brown-700">Explain your unique approach. Focus on what makes your solution different from alternatives. Avoid "we use AI" without context — explain what the AI does.</p>
+              <p className="text-xs text-brown-700">Explain your unique approach. Focus on what makes your solution different from alternatives. Avoid "we use AI" without context: explain what the AI does.</p>
             </div>
           </div>
         </div>
@@ -317,7 +318,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>💡</span> Pro-Tip: Align Vision with Your Pitch Deck
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Investors often cross-reference your Vision & Problem text with your Pitch Deck slides. Make sure the language, numbers, and narrative are consistent across both. Contradictions — even small ones — create doubt and slow down due diligence.
+            Investors often cross-reference your Vision & Problem text with your Pitch Deck slides. Make sure the language, numbers, and narrative are consistent across both. Contradictions: even small ones: create doubt and slow down due diligence.
           </p>
         </div>
       </div>
@@ -326,6 +327,235 @@ export const HELP_ARTICLES: HelpArticle[] = [
   // ==========================================
   // MODULE 2: AGREEMENTS
   // ==========================================
+  {
+    id: "how-to-create-founders-agreement",
+    title: "How to Draft and Customize Your Founders' Agreement",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "8 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Founders' Agreement is the legal cornerstone of any co-founded startup. Learn how to define capital structures, equity splits, vesting schedules, and governance rules step-by-step on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Creating Your Founders&apos; Agreement</h3>
+          <p className="text-brown-700 leading-relaxed">
+            Welcome to the step-by-step administrator guide for drafting, configuring, and executing a legally robust co-founder contract on the Founding Legals platform. By documenting share splits, roles, vesting schedules, and corporate governance early, you protect your startup from potential co-founder disputes and align your leadership team.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Creating a Founders&apos; Agreement</h3>
+
+          {/* Step 0 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">0</span>
+              <strong className="text-base text-brown-900">Choose Agreement Terms</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select your baseline terms:</strong> Before entering company metrics, establish your baseline legal framework using the right slide-out panel. Select <em>&quot;Founding Legals standard terms&quot;</em> to pre-populate the contract with legally vetted, standard industry clauses, or choose <em>&quot;Custom terms&quot;</em> if you intend to write or import specialized, custom-tailored legal provisions.
+            </p>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Company Details</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter corporate identity details:</strong> Provide the foundational corporate identity of your startup as registered with the Ministry of Corporate Affairs (MCA). Click the Question Mark Icon (❓) next to any field if you need a quick tip. You will need to enter the Company Name (with PRIVATE LIMITED), the 21-character alphanumeric Corporate Identification Number (CIN), registered address, incorporation date, and a short business object description.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Founders agreement/Founders Agreement - 1.png" alt="Step 1: Company Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Founder 1 Identity Details</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Input Founder 1 Details:</strong> Fill in the legal identification fields for Founder 1. Enter their full legal name exactly as it appears on their PAN card, parentage, age (must be 18 or older), PAN number, Aadhaar number, permanent address, and active notification email address.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Founders agreement/Founders Agreement - 2.png" alt="Step 2: Founder 1 Identity Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Founder 2 Identity Details</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Input Founder 2 Details:</strong> Fill in the identical legal identification fields for Founder 2. Enter their name, parentage, age, PAN number, Aadhaar number, permanent address, and active notification email.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Founders agreement/Founders Agreement - 3.png" alt="Step 3: Founder 2 Identity Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Capital Structure</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define equity boundaries:</strong> Define your startup&apos;s authorized and actual paid-up equity limits. Enter the Authorised Share Capital (₹) representing the maximum monetary cap your company can legally issue as stated in your MoA, and the Paid-up Share Capital (₹) representing the total capital contributions paid by founders so far.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Founders agreement/Founders Agreement - 4.png" alt="Step 4: Capital Structure" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Shareholding Pattern</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Allocate equity and vesting:</strong> Allocate your equity split and establish vesting conditions. Enter the ownership percentage for Founder 1 and Founder 2. The combination must equal exactly 100%. You can also select the percentage of shares subject to vesting (standard startup practice is 100% vesting over 3 or 4 years). Changing any percentage automatically updates the respective share counts and subscription prices in real time.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Founders agreement/Founders Agreement - 5.png" alt="Step 5: Shareholding Pattern" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Founder 1 Contributions &amp; Roles</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define Founder 1 Role:</strong> Select the official designation (e.g., CEO, CTO), and detail key daily responsibilities. You can also specify pre-incorporation expenses to be reimbursed and list any intellectual property or non-cash assets contributed to the company by Founder 1.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Founders agreement/Founders Agreement - 6.png" alt="Step 6: Founder 1 Contributions &amp; Roles" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Founder 2 Contributions &amp; Roles</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define Founder 2 Role:</strong> Complete the matching role profiles, IP assignments, and pre-incorporation expense details for Founder 2 to ensure equal clarity on operational roles.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Founders agreement/Founders Agreement - 7.png" alt="Step 7: Founder 2 Contributions &amp; Roles" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Limits &amp; Governance</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Set unanimous approval thresholds:</strong> Set financial and operational thresholds to determine when unanimous founder approval is required. Define the maximum limits for indebtedness, asset disposal, litigation settlements, and maximum ESOP pool grants. Select who holds the tie-breaking casting vote on split decisions.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Founders agreement/Founders Agreement - 8.png" alt="Step 8: Limits &amp; Governance" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 9 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">9</span>
+              <strong className="text-base text-brown-900">Agreement &amp; Execution</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define legal jurisdiction:</strong> Define your signing date, place of execution, and the arbitration seat (Arbitration and Conciliation Act, 1996) and jurisdiction courts. Select the state for stamp duty calculation and specify attention persons for corporate notices.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Founders agreement/Founders Agreement - 9.png" alt="Step 9: Agreement &amp; Execution" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 10 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">10</span>
+              <strong className="text-base text-brown-900">Additional Terms &amp; Generation</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Compile and Generate:</strong> Add any custom legal clauses if needed. Verify that all 10 items in the left-hand progress sidebar display a green checkmark (✓). Check your token balance in the top-right and click the green <em>&quot;Generate&quot;</em> button to compile your details.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Founders agreement/Founders Agreement - 10.png" alt="Step 10: Additional Terms &amp; Generation" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Final Phase */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Document Editor &amp; Formatting</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Format and Sign:</strong> Once generated, the system opens your interactive live contract document viewer. Use the <em>&quot;Add Fields&quot;</em> right panel to drag and drop signature placeholders, date lines, or corporate stamp fields. Use the settings panel to toggle your branded company letterhead or logo watermark on or off.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10 space-y-4">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Founders agreement/Founders Agreement - 11.png" alt="Final Phase: Document Editor Add Fields Panel" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Founders agreement/Founders Agreement - 12.png" alt="Final Phase: Document Editor Settings &amp; Branding" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Caution: Clear Equity Vesting Rules under Indian Law
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Co-founder equity should always be subject to a vesting schedule (such as a 4-year vesting schedule with a 1-year cliff). If a co-founder leaves the company early, unvested shares can be repurchased by the company or remaining founders at face value. Executing a founders agreement without vesting rules leaves the company vulnerable to dead equity issues.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Stamp Your Founders&apos; Agreement Properly
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under state-specific stamp acts, a founders agreement must be stamped with appropriate non-judicial stamp duty to be admissible as evidence in court. Choose the correct execution state during the drafting process to ensure Founding Legals calculates the correct stamp duty denomination.
+          </p>
+        </div>
+      </div>
+    ),
+  },
   {
     id: "step-by-step-guide-to-drafting-agreements",
     title: "Step-by-Step Guide: How to Draft and Execute Agreements",
@@ -339,7 +569,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">Overview of the Drafting Workflow</h3>
           <p className="text-brown-700 leading-relaxed">
-            Founding Legals automates the entire contract lifecycle — from template selection and customization to e-stamping, signing, and storage. Follow this 16-step visual guide to draft and execute court-enforceable agreements in minutes.
+            Founding Legals automates the entire contract lifecycle: from template selection and customization to e-stamping, signing, and storage. Follow this 16-step visual guide to draft and execute court-enforceable agreements in minutes.
           </p>
         </div>
 
@@ -532,11 +762,11 @@ export const HELP_ARTICLES: HelpArticle[] = [
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">The Legal Breakdown / Why It Matters</h3>
           <p className="text-brown-700 leading-relaxed">
-            An NDA in India is a contract — and like every contract, it must satisfy the essential elements under Section 10 of the Indian Contract Act, 1872: free consent, lawful consideration, lawful object, and competent parties. Three India-specific elements separate an enforceable NDA from a worthless one:
+            An NDA in India is a contract: and like every contract, it must satisfy the essential elements under Section 10 of the Indian Contract Act, 1872: free consent, lawful consideration, lawful object, and competent parties. Three India-specific elements separate an enforceable NDA from a worthless one:
           </p>
           <ul className="list-disc pl-5 mt-3 space-y-2 text-brown-700">
             <li>
-              <strong>Stamp Duty:</strong> An NDA executed on plain paper without proper stamping under the relevant State Stamp Act is inadmissible as evidence under Section 35 of the Indian Stamp Act, 1899. It&apos;s not invalid — just unusable when you need it most.
+              <strong>Stamp Duty:</strong> An NDA executed on plain paper without proper stamping under the relevant State Stamp Act is inadmissible as evidence under Section 35 of the Indian Stamp Act, 1899. It&apos;s not invalid: just unusable when you need it most.
             </li>
             <li>
               <strong>Jurisdiction Clause:</strong> Indian courts strictly enforce exclusive jurisdiction clauses. Without one, you may end up litigating IP theft in a city 2,000 km from your office.
@@ -562,7 +792,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
                 <tr>
                   <td className="px-4 py-3 font-medium text-brown-900">Definition of Confidential Information</td>
                   <td className="px-4 py-3 text-brown-700">Common Law + Contract Act, 1872</td>
-                  <td className="px-4 py-3 text-brown-700">Specific, identifiable categories — not vague &quot;all business info&quot;</td>
+                  <td className="px-4 py-3 text-brown-700">Specific, identifiable categories: not vague &quot;all business info&quot;</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-3 font-medium text-brown-900">Permitted Use Restriction</td>
@@ -576,7 +806,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
                 </tr>
                 <tr>
                   <td className="px-4 py-3 font-medium text-brown-900">Jurisdiction &amp; Governing Law</td>
-                  <td className="px-4 py-3 text-brown-700">CPC, 1908 — Section 20</td>
+                  <td className="px-4 py-3 text-brown-700">CPC, 1908: Section 20</td>
                   <td className="px-4 py-3 text-brown-700">Exclusive Indian court (e.g., &quot;Courts of Bengaluru&quot;)</td>
                 </tr>
               </tbody>
@@ -612,10 +842,10 @@ export const HELP_ARTICLES: HelpArticle[] = [
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">How to Do It on Founding Legals</h3>
           <ol className="list-decimal pl-5 space-y-3 text-brown-700">
-            <li><strong>Step 1:</strong> Go to Pitch → NDA Generator → New NDA. Choose between Mutual NDA (both parties share confidential info — e.g., co-founder discussions) or Unilateral NDA (only you disclose — e.g., investor meetings).</li>
+            <li><strong>Step 1:</strong> Go to Pitch → NDA Generator → New NDA. Choose between Mutual NDA (both parties share confidential info: e.g., co-founder discussions) or Unilateral NDA (only you disclose: e.g., investor meetings).</li>
             <li><strong>Step 2:</strong> Enter the counterparty&apos;s name, address, and PAN/CIN. The platform validates the CIN against the MCA database in real-time.</li>
-            <li><strong>Step 3:</strong> Select your jurisdiction city — Bengaluru, Mumbai, Delhi, Hyderabad, Pune, Gurugram, or Chennai. The system auto-calculates the applicable state stamp duty and shows you the exact denomination needed.</li>
-            <li><strong>Step 4:</strong> Pick a Confidentiality Period (default: 3 years post-termination — the platform warns you if you exceed 5 years).</li>
+            <li><strong>Step 3:</strong> Select your jurisdiction city: Bengaluru, Mumbai, Delhi, Hyderabad, Pune, Gurugram, or Chennai. The system auto-calculates the applicable state stamp duty and shows you the exact denomination needed.</li>
+            <li><strong>Step 4:</strong> Pick a Confidentiality Period (default: 3 years post-termination: the platform warns you if you exceed 5 years).</li>
             <li><strong>Step 5:</strong> Click &quot;Generate &amp; E-Sign&quot;. Founding Legals creates the NDA, integrates with NSDL/Protean Aadhaar e-Sign under the IT Act, 2000, and stores the executed version with an audit trail in your dashboard&apos;s Vault.</li>
           </ol>
         </div>
@@ -625,7 +855,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: The Unstamped NDA Problem
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Founders frequently share decks under &quot;email NDAs&quot; or e-signed PDFs without paying stamp duty. While the contract technically exists, if your IP is stolen and you sue, the court will demand the agreement be stamped with penalty — up to 10× the deficit duty under Section 40 of the Indian Stamp Act — before it can even be admitted as evidence. Always stamp before signing.
+            Founders frequently share decks under &quot;email NDAs&quot; or e-signed PDFs without paying stamp duty. While the contract technically exists, if your IP is stolen and you sue, the court will demand the agreement be stamped with penalty: up to 10× the deficit duty under Section 40 of the Indian Stamp Act: before it can even be admitted as evidence. Always stamp before signing.
           </p>
         </div>
 
@@ -634,7 +864,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>💡</span> Pro-Tip: Tag Your Deck Pages
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            An NDA only protects information explicitly marked or identifiable as confidential. Add a clear &quot;Confidential — Subject to NDA dated [date]&quot; watermark on every page of your pitch deck and financial model. Founding Legals&apos; Deck Watermark Tool does this automatically.
+            An NDA only protects information explicitly marked or identifiable as confidential. Add a clear &quot;Confidential: Subject to NDA dated [date]&quot; watermark on every page of your pitch deck and financial model. Founding Legals&apos; Deck Watermark Tool does this automatically.
           </p>
         </div>
       </div>
@@ -642,18 +872,18 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "preparing-for-angel-tax",
-    title: "Preparing for Angel Tax — Section 56(2)(viib) & DPIIT Exemption",
+    title: "Preparing for Angel Tax: Section 56(2)(viib) & DPIIT Exemption",
     moduleId: "pitch",
     moduleName: "Pitch",
     readingTime: "7 minutes",
     lastUpdated: "May 2026",
-    summary: "If your startup raises money at a valuation higher than its \"Fair Market Value,\" the excess can be taxed as income under Section 56(2)(viib) of the Income Tax Act, 1961 — the infamous \"Angel Tax.\" This article explains how the tax works, who is exempt, and how Founding Legals helps you secure DPIIT recognition before your first cheque arrives.",
+    summary: "If your startup raises money at a valuation higher than its \"Fair Market Value,\" the excess can be taxed as income under Section 56(2)(viib) of the Income Tax Act, 1961: the infamous \"Angel Tax.\" This article explains how the tax works, who is exempt, and how Founding Legals helps you secure DPIIT recognition before your first cheque arrives.",
     content: (
       <div className="space-y-6">
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">The Legal Breakdown / Why It Matters</h3>
           <p className="text-brown-700 leading-relaxed">
-            Under Section 56(2)(viib) of the Income Tax Act, 1961, when a private limited company issues shares to a resident at a price above the Fair Market Value (FMV) of those shares, the excess premium is treated as &quot;Income from Other Sources&quot; and taxed at the applicable corporate rate — currently up to 30.9% with surcharge and cess.
+            Under Section 56(2)(viib) of the Income Tax Act, 1961, when a private limited company issues shares to a resident at a price above the Fair Market Value (FMV) of those shares, the excess premium is treated as &quot;Income from Other Sources&quot; and taxed at the applicable corporate rate: currently up to 30.9% with surcharge and cess.
           </p>
           <p className="text-brown-700 leading-relaxed mt-2">
             <strong>Fair Market Value (FMV):</strong> The value of shares determined either by the Net Asset Value (NAV) method or the Discounted Cash Flow (DCF) method, certified by a SEBI-registered Merchant Banker or a Registered Valuer under Rule 11UA of the Income Tax Rules, 1962.
@@ -677,7 +907,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
                 </tr>
                 <tr>
                   <td className="px-4 py-3 font-medium text-brown-900">Issuing shares at premium to a non-resident / foreign VC</td>
-                  <td className="px-4 py-3 text-olive-600 font-medium">❌ No (post Finance Act 2023 reversal — under review)</td>
+                  <td className="px-4 py-3 text-olive-600 font-medium">❌ No (post Finance Act 2023 reversal: under review)</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-3 font-medium text-brown-900">Issuing shares to a SEBI-registered Category I/II AIF</td>
@@ -716,7 +946,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
           <ol className="list-decimal pl-5 space-y-3 text-brown-700">
             <li><strong>Step 1:</strong> Go to Pitch → DPIIT Recognition → Eligibility Check. Answer 6 questions about your incorporation date, turnover, and innovation criteria. The platform tells you instantly whether you qualify.</li>
             <li><strong>Step 2:</strong> If eligible, click &quot;Generate DPIIT Application&quot;. Founding Legals auto-fills the Startup India portal application using your COI, MOA, PAN, and pitch deck stored in your Vault.</li>
-            <li><strong>Step 3:</strong> Upload your Brief Write-up on Innovation — the platform provides a 3-paragraph template aligned with what DPIIT officers approve most frequently.</li>
+            <li><strong>Step 3:</strong> Upload your Brief Write-up on Innovation: the platform provides a 3-paragraph template aligned with what DPIIT officers approve most frequently.</li>
             <li><strong>Step 4:</strong> Once your DPIIT Recognition Certificate is issued (typically 7–15 working days), upload it to Pitch → Tax Exemptions. The dashboard automatically prepares Form 2 for the Section 56(2)(viib) exemption declaration.</li>
             <li><strong>Step 5:</strong> Before any priced round closes, run the &quot;Angel Tax Risk Check&quot; on your dashboard. It compares your round valuation against your FMV (computed from your last filed financials) and flags any premium that could trigger tax exposure.</li>
           </ol>
@@ -727,7 +957,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: File Form 2 BEFORE Allotment
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            The Section 56(2)(viib) exemption only applies if Form 2 is filed with DPIIT before the share allotment. Filing it after the fact does not retroactively cure the tax liability. Many founders raise first and discover the exemption process later — by then, the Assessing Officer can issue a tax demand for the entire premium.
+            The Section 56(2)(viib) exemption only applies if Form 2 is filed with DPIIT before the share allotment. Filing it after the fact does not retroactively cure the tax liability. Many founders raise first and discover the exemption process later: by then, the Assessing Officer can issue a tax demand for the entire premium.
           </p>
         </div>
 
@@ -749,13 +979,13 @@ export const HELP_ARTICLES: HelpArticle[] = [
     moduleName: "Pitch",
     readingTime: "6 minutes",
     lastUpdated: "May 2026",
-    summary: "Indian VCs and angel networks conduct due diligence under tighter compliance lenses than most founders expect — covering MCA, GST, ROC, FEMA, and labour law filings. This article lists every document your data room must contain before a term sheet is signed, and shows how Founding Legals auto-organises them into an investor-ready Vault.",
+    summary: "Indian VCs and angel networks conduct due diligence under tighter compliance lenses than most founders expect: covering MCA, GST, ROC, FEMA, and labour law filings. This article lists every document your data room must contain before a term sheet is signed, and shows how Founding Legals auto-organises them into an investor-ready Vault.",
     content: (
       <div className="space-y-6">
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">The Legal Breakdown / Why It Matters</h3>
           <p className="text-brown-700 leading-relaxed">
-            When an Indian investor commits capital, their legal team will conduct a Legal Due Diligence (LDD) covering compliance under the Companies Act, 2013, Income Tax Act, 1961, GST Act, 2017, FEMA, 1999, and applicable Labour Laws. Missing documents don&apos;t just delay closure — they often trigger Conditions Precedent (CPs) in the Share Subscription Agreement that you must satisfy before funds are released.
+            When an Indian investor commits capital, their legal team will conduct a Legal Due Diligence (LDD) covering compliance under the Companies Act, 2013, Income Tax Act, 1961, GST Act, 2017, FEMA, 1999, and applicable Labour Laws. Missing documents don&apos;t just delay closure: they often trigger Conditions Precedent (CPs) in the Share Subscription Agreement that you must satisfy before funds are released.
           </p>
         </div>
 
@@ -766,7 +996,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <h4 className="font-semibold text-brown-900 mb-2">1. Corporate &amp; Statutory</h4>
               <ul className="list-disc pl-5 text-xs text-brown-700 space-y-1">
                 <li>Certificate of Incorporation (COI) with CIN</li>
-                <li>MOA &amp; AOA — latest amended versions</li>
+                <li>MOA &amp; AOA: latest amended versions</li>
                 <li>PAN and TAN of the company</li>
                 <li>Shop &amp; Establishment Registration certificate</li>
                 <li>GST Registration Certificate (GSTIN)</li>
@@ -839,7 +1069,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               </div>
             </li>
             <li><strong>Step 4:</strong> Click &quot;Generate Investor Share Link&quot;. Choose granular access: View Only, Watermark Per Page, Download Disabled, and Expiry Date (typical: 14 days).</li>
-            <li><strong>Step 5:</strong> Track investor engagement in real-time — see which documents were opened, by whom, and for how long. The audit log doubles as evidence under the IT Act, 2000 if confidentiality is ever breached.</li>
+            <li><strong>Step 5:</strong> Track investor engagement in real-time: see which documents were opened, by whom, and for how long. The audit log doubles as evidence under the IT Act, 2000 if confidentiality is ever breached.</li>
           </ol>
         </div>
 
@@ -848,7 +1078,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: Unfiled MGT-7 = Deal Breaker
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Investors run an MCA Master Data check within the first hour of due diligence. If your Form MGT-7 (Annual Return) is overdue, your company is marked as a &quot;Defaulting Company&quot; under Section 164(2) — and your directors become disqualified from being on any other board for 5 years. This alone can collapse a round.
+            Investors run an MCA Master Data check within the first hour of due diligence. If your Form MGT-7 (Annual Return) is overdue, your company is marked as a &quot;Defaulting Company&quot; under Section 164(2): and your directors become disqualified from being on any other board for 5 years. This alone can collapse a round.
           </p>
         </div>
 
@@ -857,7 +1087,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>💡</span> Pro-Tip: Build the Data Room Before You Pitch
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            The best Indian founders maintain a &quot;live&quot; data room that&apos;s always 90% investor-ready — not one assembled in panic after a term sheet. Founding Legals continuously updates your Vault with every MCA filing, contract, and resolution you execute on the platform, so when an investor says &quot;send us your data room,&quot; you&apos;re a single click away.
+            The best Indian founders maintain a &quot;live&quot; data room that&apos;s always 90% investor-ready: not one assembled in panic after a term sheet. Founding Legals continuously updates your Vault with every MCA filing, contract, and resolution you execute on the platform, so when an investor says &quot;send us your data room,&quot; you&apos;re a single click away.
           </p>
         </div>
       </div>
@@ -865,7 +1095,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "convertible-notes-safe-isafe",
-    title: "Convertible Notes, SAFE & iSAFE — Which Instrument to Use in India",
+    title: "Convertible Notes, SAFE & iSAFE: Which Instrument to Use in India",
     moduleId: "pitch",
     moduleName: "Pitch",
     readingTime: "7 minutes",
@@ -876,7 +1106,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">The Legal Breakdown / Why It Matters</h3>
           <p className="text-brown-700 leading-relaxed font-semibold">
-            Convertible Note (CN) — Defined under Rule 2(1)(c) of the Companies (Acceptance of Deposits) Rules, 2014. A debt instrument that converts into equity on a future trigger event (next priced round, maturity, or exit). Treated as a &quot;non-deposit&quot; only if minimum investment is ₹25 Lakh per investor and the startup is DPIIT-recognised.
+            Convertible Note (CN): Defined under Rule 2(1)(c) of the Companies (Acceptance of Deposits) Rules, 2014. A debt instrument that converts into equity on a future trigger event (next priced round, maturity, or exit). Treated as a &quot;non-deposit&quot; only if minimum investment is ₹25 Lakh per investor and the startup is DPIIT-recognised.
           </p>
           <p className="text-brown-700 leading-relaxed mt-2">
             <strong>SAFE / iSAFE:</strong> Not a debt instrument. A contractual right to receive future equity at a discount/cap. SAFE in its Western form is not legally recognised in India because Indian company law doesn&apos;t permit issuing shares without a defined price or face value upfront. iSAFE is the India-adapted version structured as CCPS with conversion deferral, made compliant by 100X.VC.
@@ -946,11 +1176,11 @@ export const HELP_ARTICLES: HelpArticle[] = [
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 font-medium text-brown-900">Maturity Date</td>
-                  <td className="px-4 py-2.5 text-brown-700">When the note matures — must be within 10 years under Indian law</td>
+                  <td className="px-4 py-2.5 text-brown-700">When the note matures: must be within 10 years under Indian law</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 font-medium text-brown-900">Trigger Event</td>
-                  <td className="px-4 py-2.5 text-brown-700">Priced round, IPO, M&amp;A, or expiry — whichever first</td>
+                  <td className="px-4 py-2.5 text-brown-700">Priced round, IPO, M&amp;A, or expiry: whichever first</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 font-medium text-brown-900">Interest Rate</td>
@@ -967,7 +1197,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <li><strong>Step 1:</strong> Go to Pitch → Instrument Selector. Answer 4 questions: (a) Are you DPIIT-recognised? (b) Is the investor Indian or foreign? (c) Investment amount? (d) Expected next round timeline? The platform recommends CN, iSAFE, or direct CCPS.</li>
             <li><strong>Step 2:</strong> If CN is recommended, generate the Convertible Note Agreement with valuation cap, discount, maturity, and trigger events pre-filled.</li>
             <li><strong>Step 3:</strong> File Form MGT-14 (if special resolution required) and issue the CN to the investor. Funds are received in the company bank account against a board-approved investor list.</li>
-            <li><strong>Step 4:</strong> On the next priced round, the platform runs the CN Conversion Engine — calculates whether the discount or the cap gives the investor more shares, and converts the CN into CCPS or equity automatically.</li>
+            <li><strong>Step 4:</strong> On the next priced round, the platform runs the CN Conversion Engine: calculates whether the discount or the cap gives the investor more shares, and converts the CN into CCPS or equity automatically.</li>
             <li><strong>Step 5:</strong> File Form PAS-3 for the share allotment within 30 days of conversion.</li>
           </ol>
         </div>
@@ -977,7 +1207,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: ₹25 Lakh Minimum for CN
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Under the Companies (Acceptance of Deposits) Rules, 2014, a Convertible Note from a single investor must be at least ₹25 Lakh to qualify as &quot;not a deposit.&quot; Receiving smaller amounts as CN reclassifies them as public deposits — a serious violation attracting refund + interest + penalty under Section 73 of the Companies Act.
+            Under the Companies (Acceptance of Deposits) Rules, 2014, a Convertible Note from a single investor must be at least ₹25 Lakh to qualify as &quot;not a deposit.&quot; Receiving smaller amounts as CN reclassifies them as public deposits: a serious violation attracting refund + interest + penalty under Section 73 of the Companies Act.
           </p>
         </div>
 
@@ -986,7 +1216,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>💡</span> Pro-Tip: Use CN for Bridge Rounds, CCPS for Priced Rounds
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            CNs are excellent for quick bridge capital between priced rounds where valuation is ambiguous. For your first institutional round, skip the CN and go directly to a priced CCPS round — most Indian VCs prefer the certainty of a defined cap table.
+            CNs are excellent for quick bridge capital between priced rounds where valuation is ambiguous. For your first institutional round, skip the CN and go directly to a priced CCPS round: most Indian VCs prefer the certainty of a defined cap table.
           </p>
         </div>
       </div>
@@ -994,18 +1224,18 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "term-sheet-negotiation",
-    title: "Term Sheet Negotiation — The 12 Indian Clauses That Matter",
+    title: "Term Sheet Negotiation: The 12 Indian Clauses That Matter",
     moduleId: "pitch",
     moduleName: "Pitch",
     readingTime: "9 minutes",
     lastUpdated: "May 2026",
-    summary: "A term sheet is \"non-binding\" except for a few clauses — but it sets the legal architecture of your funding round and is 90% replicated verbatim into the Share Subscription Agreement (SSA) and Shareholders' Agreement (SHA). This article breaks down the 12 most consequential clauses an Indian founder must negotiate.",
+    summary: "A term sheet is \"non-binding\" except for a few clauses: but it sets the legal architecture of your funding round and is 90% replicated verbatim into the Share Subscription Agreement (SSA) and Shareholders' Agreement (SHA). This article breaks down the 12 most consequential clauses an Indian founder must negotiate.",
     content: (
       <div className="space-y-6">
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">The Legal Breakdown / Why It Matters</h3>
           <p className="text-brown-700 leading-relaxed">
-            Term Sheet — A preliminary document outlining the commercial and legal terms of an investment. In India, the binding clauses are typically Exclusivity, Confidentiality, Costs, and Governing Law. The rest become binding only via the SSA and SHA, but in practice are very hard to renegotiate.
+            Term Sheet: A preliminary document outlining the commercial and legal terms of an investment. In India, the binding clauses are typically Exclusivity, Confidentiality, Costs, and Governing Law. The rest become binding only via the SSA and SHA, but in practice are very hard to renegotiate.
           </p>
         </div>
 
@@ -1022,16 +1252,16 @@ export const HELP_ARTICLES: HelpArticle[] = [
               </thead>
               <tbody className="divide-y divide-brown-200 bg-white">
                 {[
-                  ["1", "Valuation (Pre-money / Post-money)", "\"Post-money valuation\" includes the ESOP pool — confirm whose dilution it sits on"],
+                  ["1", "Valuation (Pre-money / Post-money)", "\"Post-money valuation\" includes the ESOP pool: confirm whose dilution it sits on"],
                   ["2", "ESOP Pool", "Investors push for 10–15% pool pre-money, fully diluting founders"],
-                  ["3", "Liquidation Preference", "Push for 1× non-participating — anything more is investor-friendly"],
+                  ["3", "Liquidation Preference", "Push for 1× non-participating: anything more is investor-friendly"],
                   ["4", "Anti-Dilution", "Demand Broad-Based Weighted Average, never Full Ratchet"],
                   ["5", "Drag-Along Rights", "Allow only above a minimum sale price (e.g., 2× of last valuation)"],
-                  ["6", "Tag-Along Rights", "Standard — accept, but cap to founder's transfer above 1%"],
-                  ["7", "Right of First Refusal (ROFR)", "Investor's right to buy if founder sells — accept with carve-outs"],
-                  ["8", "Board Composition", "Each investor wants 1 seat — cap total Investor Directors at 1–2"],
-                  ["9", "Reserved Matters / Veto Rights", "List items needing investor consent — minimise to truly strategic items"],
-                  ["10", "Exit / Liquidity", "Investors demand exit within 5–7 years — push for 7"],
+                  ["6", "Tag-Along Rights", "Standard: accept, but cap to founder's transfer above 1%"],
+                  ["7", "Right of First Refusal (ROFR)", "Investor's right to buy if founder sells: accept with carve-outs"],
+                  ["8", "Board Composition", "Each investor wants 1 seat: cap total Investor Directors at 1–2"],
+                  ["9", "Reserved Matters / Veto Rights", "List items needing investor consent: minimise to truly strategic items"],
+                  ["10", "Exit / Liquidity", "Investors demand exit within 5–7 years: push for 7"],
                   ["11", "Vesting (Founders!)", "Investors will require founders to re-vest over 4 years with 1-year cliff"],
                   ["12", "Non-Compete on Founders", "Reasonable during employment; perpetual is unenforceable under Section 27"]
                 ].map(([num, cl, desc]) => (
@@ -1063,7 +1293,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 font-medium text-brown-900">Exclusivity (No-Shop)</td>
-                  <td className="px-4 py-2.5 text-olive-600 font-semibold">✅ Binding — typically 30–60 days</td>
+                  <td className="px-4 py-2.5 text-olive-600 font-semibold">✅ Binding: typically 30–60 days</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 font-medium text-brown-900">Confidentiality</td>
@@ -1089,7 +1319,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <li><strong>Step 2:</strong> Use the Dilution Calculator to model founder ownership before/after, impact of pre-money vs post-money ESOP, and impact of liquidation preferences.</li>
             <li><strong>Step 3:</strong> Get redline suggestions with statutory justifications you can quote back to the investor&apos;s lawyer (e.g., &quot;non-compete post-employment is void under Section 27, Indian Contract Act&quot;).</li>
             <li><strong>Step 4:</strong> Sign the negotiated term sheet via integrated Aadhaar e-Sign. The platform auto-generates the SSA + SHA drafts matching the term sheet&apos;s commercial terms.</li>
-            <li><strong>Step 5:</strong> Track the Exclusivity Clock — the platform alerts you 5 days before exclusivity expires so you can renegotiate or walk away.</li>
+            <li><strong>Step 5:</strong> Track the Exclusivity Clock: the platform alerts you 5 days before exclusivity expires so you can renegotiate or walk away.</li>
           </ol>
         </div>
 
@@ -1107,7 +1337,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>💡</span> Pro-Tip: Negotiate Veto Items Down to &lt;10
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Investors typically list 25–35 reserved matters. Most are reasonable (M&amp;A, dissolution, dividend), but several creep into operational decisions (budget approval, hiring senior staff, opening bank accounts). Push for a tight list of 8–10 truly strategic items — operational vetoes will paralyse you 18 months in.
+            Investors typically list 25–35 reserved matters. Most are reasonable (M&amp;A, dissolution, dividend), but several creep into operational decisions (budget approval, hiring senior staff, opening bank accounts). Push for a tight list of 8–10 truly strategic items: operational vetoes will paralyse you 18 months in.
           </p>
         </div>
       </div>
@@ -1124,13 +1354,13 @@ export const HELP_ARTICLES: HelpArticle[] = [
     moduleName: "Cap Table & Share Management",
     readingTime: "6 minutes",
     lastUpdated: "May 2026",
-    summary: "Authorized Capital is the maximum share capital your company is legally allowed to issue, while Paid-Up Capital is the actual money shareholders have paid in exchange for shares. Confusing the two is one of the most expensive early-stage mistakes Indian founders make — it can stall a funding round by 3–4 weeks and trigger penalties under the Companies Act, 2013.",
+    summary: "Authorized Capital is the maximum share capital your company is legally allowed to issue, while Paid-Up Capital is the actual money shareholders have paid in exchange for shares. Confusing the two is one of the most expensive early-stage mistakes Indian founders make: it can stall a funding round by 3–4 weeks and trigger penalties under the Companies Act, 2013.",
     content: (
       <div className="space-y-6">
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">The Legal Breakdown / Why It Matters</h3>
           <p className="text-brown-700 leading-relaxed">
-            Under the Companies Act, 2013, every Indian private limited company is required to declare its share capital structure in Clause V of its Memorandum of Association (MOA) — known as the Capital Clause. This single clause sets the ceiling for everything your cap table can ever do.
+            Under the Companies Act, 2013, every Indian private limited company is required to declare its share capital structure in Clause V of its Memorandum of Association (MOA): known as the Capital Clause. This single clause sets the ceiling for everything your cap table can ever do.
           </p>
           <ul className="list-disc pl-5 mt-3 space-y-2 text-brown-700">
             <li>
@@ -1143,7 +1373,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold text-brown-900 mb-3">Authorized vs. Paid-Up — The Key Distinctions</h3>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Authorized vs. Paid-Up: The Key Distinctions</h3>
           <div className="overflow-x-auto border border-brown-200 rounded-xl text-sm">
             <table className="min-w-full divide-y divide-brown-200">
               <thead className="bg-cream-dark">
@@ -1171,8 +1401,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
                 </tr>
                 <tr>
                   <td className="px-4 py-3 font-semibold text-brown-900">Can Exceed the Other?</td>
-                  <td className="px-4 py-3 text-brown-700">Yes — must always be ≥ Paid-Up</td>
-                  <td className="px-4 py-3 text-brown-700">No — can never exceed Authorized</td>
+                  <td className="px-4 py-3 text-brown-700">Yes: must always be ≥ Paid-Up</td>
+                  <td className="px-4 py-3 text-brown-700">No: can never exceed Authorized</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-3 font-semibold text-brown-900">Form to Modify</td>
@@ -1181,7 +1411,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
                 </tr>
                 <tr>
                   <td className="px-4 py-3 font-semibold text-brown-900">Stamp Duty</td>
-                  <td className="px-4 py-3 text-brown-700">Yes — state-specific, paid on increase</td>
+                  <td className="px-4 py-3 text-brown-700">Yes: state-specific, paid on increase</td>
                   <td className="px-4 py-3 text-brown-700">No separate duty on allotment</td>
                 </tr>
                 <tr>
@@ -1202,7 +1432,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
           <ul className="list-decimal pl-5 mt-2 space-y-1.5 text-brown-700">
             <li>Pass a Board Resolution to increase Authorized Capital.</li>
             <li>Convene an EGM and pass an Ordinary Resolution of shareholders (unless your AOA requires a special resolution).</li>
-            <li>Amend the MOA — and possibly the AOA via Form MGT-14, if the AOA caps the authorized limit.</li>
+            <li>Amend the MOA: and possibly the AOA via Form MGT-14, if the AOA caps the authorized limit.</li>
             <li>File Form SH-7 with the MCA within 30 days of the resolution, with prescribed ROC fee + state stamp duty.</li>
             <li>Only then can you allot shares and file Form PAS-3 within 30 days of allotment.</li>
           </ul>
@@ -1227,7 +1457,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: The ₹1 Lakh Default Trap
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Nearly every Indian private limited company is incorporated with a default Authorized Capital of ₹1,00,000 (10,000 shares of ₹10 face value). Founders discover the limit only when a Series A investor is ready to wire funds — triggering a frantic 3-week scramble. If your committed round is north of ₹50 Lakh, you almost certainly need to increase Authorized Capital before closing.
+            Nearly every Indian private limited company is incorporated with a default Authorized Capital of ₹1,00,000 (10,000 shares of ₹10 face value). Founders discover the limit only when a Series A investor is ready to wire funds: triggering a frantic 3-week scramble. If your committed round is north of ₹50 Lakh, you almost certainly need to increase Authorized Capital before closing.
           </p>
         </div>
 
@@ -1244,12 +1474,12 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "ccps-explained-preference-shares",
-    title: "CCPS Explained — Why Indian Investors Don't Take Equity Shares",
+    title: "CCPS Explained: Why Indian Investors Don't Take Equity Shares",
     moduleId: "cap-table-share-management",
     moduleName: "Cap Table & Share Management",
     readingTime: "7 minutes",
     lastUpdated: "May 2026",
-    summary: "Almost every institutional investor in India invests through Compulsorily Convertible Preference Shares (CCPS) rather than equity shares — for tax, downside protection, and FEMA reasons. This article explains how CCPS work under the Companies Act, 2013, why your cap table must distinguish Current vs. Fully Diluted ownership, and how Founding Legals automates the conversion math.",
+    summary: "Almost every institutional investor in India invests through Compulsorily Convertible Preference Shares (CCPS) rather than equity shares: for tax, downside protection, and FEMA reasons. This article explains how CCPS work under the Companies Act, 2013, why your cap table must distinguish Current vs. Fully Diluted ownership, and how Founding Legals automates the conversion math.",
     content: (
       <div className="space-y-6">
         <div>
@@ -1263,13 +1493,13 @@ export const HELP_ARTICLES: HelpArticle[] = [
           <ul className="list-disc pl-5 mt-2 space-y-1.5 text-brown-700">
             <li><strong>Liquidation Preference:</strong> In a downside scenario, CCPS holders are paid out before equity shareholders, under the priority waterfall set in the AOA.</li>
             <li><strong>Anti-Dilution Protection:</strong> If a future round is at a lower valuation (&quot;down round&quot;), the conversion ratio adjusts to protect the investor.</li>
-            <li><strong>FEMA Compliance:</strong> Under FEMA 20(R), CCPS qualify as &quot;equity instruments&quot; for FDI purposes — unlike Optionally Convertible Preference Shares (OCPS), which are treated as External Commercial Borrowings (ECB).</li>
+            <li><strong>FEMA Compliance:</strong> Under FEMA 20(R), CCPS qualify as &quot;equity instruments&quot; for FDI purposes: unlike Optionally Convertible Preference Shares (OCPS), which are treated as External Commercial Borrowings (ECB).</li>
             <li><strong>No Voting at Equity Threshold:</strong> Until conversion, CCPS typically carry voting rights only on matters affecting their class.</li>
           </ul>
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold text-brown-900 mb-3">CCPS Key Terms — A Founder&apos;s Glossary</h3>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">CCPS Key Terms: A Founder&apos;s Glossary</h3>
           <div className="overflow-x-auto border border-brown-200 rounded-xl text-sm">
             <table className="min-w-full divide-y divide-brown-200">
               <thead className="bg-cream-dark">
@@ -1293,7 +1523,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 font-semibold text-brown-900">Conversion Trigger</td>
-                  <td className="px-4 py-2.5 text-brown-700">Event that forces conversion — typically IPO, exit, or expiry of tenure</td>
+                  <td className="px-4 py-2.5 text-brown-700">Event that forces conversion: typically IPO, exit, or expiry of tenure</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 font-semibold text-brown-900">Liquidation Preference</td>
@@ -1358,7 +1588,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: The 20-Year Conversion Cap
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Under Rule 9 of the Companies (Share Capital and Debentures) Rules, 2014, CCPS must convert into equity within 20 years from the date of issue. If your termsheet specifies a longer or open-ended conversion window, the share issue is invalid. For FDI-funded CCPS, FEMA 20(R) further restricts conversion price formulas — your CCPS must convert at a price determined upfront or by an internationally accepted pricing methodology.
+            Under Rule 9 of the Companies (Share Capital and Debentures) Rules, 2014, CCPS must convert into equity within 20 years from the date of issue. If your termsheet specifies a longer or open-ended conversion window, the share issue is invalid. For FDI-funded CCPS, FEMA 20(R) further restricts conversion price formulas: your CCPS must convert at a price determined upfront or by an internationally accepted pricing methodology.
           </p>
         </div>
 
@@ -1380,7 +1610,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
     moduleName: "Cap Table & Share Management",
     readingTime: "4 minutes",
     lastUpdated: "May 2026",
-    summary: "Under Section 88 of the Companies Act, 2013, every Indian company must maintain a Register of Members in Form MGT-1. This is not optional — failure to maintain it attracts a penalty of ₹3 Lakh on the company plus ₹50,000 per officer in default. This article shows how Founding Legals auto-generates MGT-1 every time you update your cap table.",
+    summary: "Under Section 88 of the Companies Act, 2013, every Indian company must maintain a Register of Members in Form MGT-1. This is not optional: failure to maintain it attracts a penalty of ₹3 Lakh on the company plus ₹50,000 per officer in default. This article shows how Founding Legals auto-generates MGT-1 every time you update your cap table.",
     content: (
       <div className="space-y-6">
         <div>
@@ -1411,7 +1641,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
                 </tr>
                 <tr>
                   <td className="px-4 py-3 font-semibold text-brown-900">Share Class</td>
-                  <td className="px-4 py-3 text-brown-700">Equity / Preference / CCPS — and class-wise breakdown</td>
+                  <td className="px-4 py-3 text-brown-700">Equity / Preference / CCPS: and class-wise breakdown</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-3 font-semibold text-brown-900">Consideration</td>
@@ -1454,7 +1684,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
           <ol className="list-decimal pl-5 space-y-3 text-brown-700">
             <li><strong>Step 1:</strong> The Register of Members is auto-created the moment you set up your cap table. Every shareholder added automatically generates an MGT-1 row.</li>
             <li><strong>Step 2:</strong> Go to Cap Table → Statutory Registers → MGT-1. View the live, MCA-formatted register. Every column required under Rule 3 is pre-populated.</li>
-            <li><strong>Step 3:</strong> When you issue new shares via the platform, the register updates within seconds — folio, share certificate, and distinctive numbers are auto-allotted in continuous sequence.</li>
+            <li><strong>Step 3:</strong> When you issue new shares via the platform, the register updates within seconds: folio, share certificate, and distinctive numbers are auto-allotted in continuous sequence.</li>
             <li><strong>Step 4:</strong> Click &quot;Export for Inspection&quot; to download the register as a stamped PDF, or share a view-only link with members.</li>
             <li><strong>Step 5:</strong> When a share transfer happens, the register automatically updates the cessation entry for the transferor and creates a new entry for the transferee.</li>
           </ol>
@@ -1474,7 +1704,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>💡</span> Pro-Tip: Nominees Are Not Optional
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Encourage every shareholder — especially founders — to file a Form SH-13 nomination when they become members. Without a nominee, transmission of shares on death goes through a probate process that can freeze the cap table for 6–18 months. Founding Legals prompts every member to file SH-13 during onboarding.
+            Encourage every shareholder: especially founders: to file a Form SH-13 nomination when they become members. Without a nominee, transmission of shares on death goes through a probate process that can freeze the cap table for 6–18 months. Founding Legals prompts every member to file SH-13 during onboarding.
           </p>
         </div>
       </div>
@@ -1482,12 +1712,12 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "creating-esop-pool-vesting-tax",
-    title: "Creating an ESOP Pool — Vesting Schedules, Form MGT-14, and Tax Triggers",
+    title: "Creating an ESOP Pool: Vesting Schedules, Form MGT-14, and Tax Triggers",
     moduleId: "cap-table-share-management",
     moduleName: "Cap Table & Share Management",
     readingTime: "9 minutes",
     lastUpdated: "May 2026",
-    summary: "An Employee Stock Option Plan (ESOP) is the most powerful retention tool for early-stage Indian startups — but it's also one of the most over-engineered. This article explains how to set up an ESOP pool under the Companies Act, 2013, structure vesting, file Form MGT-14, and understand the double-taxation event under the Income Tax Act.",
+    summary: "An Employee Stock Option Plan (ESOP) is the most powerful retention tool for early-stage Indian startups: but it's also one of the most over-engineered. This article explains how to set up an ESOP pool under the Companies Act, 2013, structure vesting, file Form MGT-14, and understand the double-taxation event under the Income Tax Act.",
     content: (
       <div className="space-y-6">
         <div>
@@ -1612,7 +1842,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: Exercise Tax = Cash Crunch for Employees
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            When an employee exercises ESOPs, they pay the Exercise Price (cash) + Perquisite Tax (cash on the gap between FMV and Exercise Price) — all before they&apos;ve sold a single share. For unlisted startups, the FMV is determined by a Merchant Banker&apos;s valuation under Rule 3(8). Founders must communicate this cash burden upfront — or offer cashless exercise mechanisms in liquidity events.
+            When an employee exercises ESOPs, they pay the Exercise Price (cash) + Perquisite Tax (cash on the gap between FMV and Exercise Price): all before they&apos;ve sold a single share. For unlisted startups, the FMV is determined by a Merchant Banker&apos;s valuation under Rule 3(8). Founders must communicate this cash burden upfront: or offer cashless exercise mechanisms in liquidity events.
           </p>
         </div>
 
@@ -1621,7 +1851,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>💡</span> Pro-Tip: DPIIT Tax Deferral for Eligible Startups
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Under Section 192(1C) of the Income Tax Act (inserted via Finance Act 2020), employees of DPIIT-recognised eligible startups can defer ESOP perquisite tax for up to 5 years from exercise, sale of shares, or leaving the company — whichever is earliest. This is one of the biggest under-utilised benefits of DPIIT recognition.
+            Under Section 192(1C) of the Income Tax Act (inserted via Finance Act 2020), employees of DPIIT-recognised eligible startups can defer ESOP perquisite tax for up to 5 years from exercise, sale of shares, or leaving the company: whichever is earliest. This is one of the biggest under-utilised benefits of DPIIT recognition.
           </p>
         </div>
       </div>
@@ -1629,18 +1859,18 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "share-transfer-sh-4-guide",
-    title: "Share Transfer via Form SH-4 — Selling Founder/Investor Shares",
+    title: "Share Transfer via Form SH-4: Selling Founder/Investor Shares",
     moduleId: "cap-table-share-management",
     moduleName: "Cap Table & Share Management",
     readingTime: "5 minutes",
     lastUpdated: "May 2026",
-    summary: "Transferring shares in an Indian private limited company isn't as simple as signing a document — it requires Form SH-4, stamp duty under the Indian Stamp Act, 1899, board approval, and updates to your Register of Members. This article walks through the complete process.",
+    summary: "Transferring shares in an Indian private limited company isn't as simple as signing a document: it requires Form SH-4, stamp duty under the Indian Stamp Act, 1899, board approval, and updates to your Register of Members. This article walks through the complete process.",
     content: (
       <div className="space-y-6">
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">The Legal Breakdown / Why It Matters</h3>
           <p className="text-brown-700 leading-relaxed font-semibold">
-            Form SH-4 — The Share Transfer Deed prescribed under Section 56(1) of the Companies Act, 2013 read with Rule 11 of the Companies (Share Capital and Debentures) Rules, 2014. Without an executed and stamped SH-4, no share transfer is legally valid.
+            Form SH-4: The Share Transfer Deed prescribed under Section 56(1) of the Companies Act, 2013 read with Rule 11 of the Companies (Share Capital and Debentures) Rules, 2014. Without an executed and stamped SH-4, no share transfer is legally valid.
           </p>
         </div>
 
@@ -1712,7 +1942,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: 60-Day Lodging Deadline
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Under Section 56(1), the executed SH-4 must be lodged with the company within 60 days of execution. Miss this, and the transfer is invalid — even if both parties have agreed. The shares legally remain with the transferor, and the consideration may be treated as an &quot;unsecured loan.&quot; Always lodge immediately.
+            Under Section 56(1), the executed SH-4 must be lodged with the company within 60 days of execution. Miss this, and the transfer is invalid: even if both parties have agreed. The shares legally remain with the transferor, and the consideration may be treated as an &quot;unsecured loan.&quot; Always lodge immediately.
           </p>
         </div>
 
@@ -1721,7 +1951,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>💡</span> Pro-Tip: Bundle ROFR Waivers Upfront
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            If you&apos;re anticipating multiple founder/early-employee secondary sales over 12 months, get all existing shareholders to sign a blanket ROFR Waiver at the start. It saves you 30-day notice cycles for each transfer — and Indian VCs are usually open to this if structured around their portfolio reviews.
+            If you&apos;re anticipating multiple founder/early-employee secondary sales over 12 months, get all existing shareholders to sign a blanket ROFR Waiver at the start. It saves you 30-day notice cycles for each transfer: and Indian VCs are usually open to this if structured around their portfolio reviews.
           </p>
         </div>
       </div>
@@ -1729,12 +1959,12 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "fdi-compliance-fc-gpr-filing",
-    title: "FDI Compliance & FC-GPR Filing — When Foreign Investors Wire Money",
+    title: "FDI Compliance & FC-GPR Filing: When Foreign Investors Wire Money",
     moduleId: "cap-table-share-management",
     moduleName: "Cap Table & Share Management",
     readingTime: "8 minutes",
     lastUpdated: "May 2026",
-    summary: "The moment a foreign investor wires money to your Indian startup, you trigger Foreign Exchange Management Act (FEMA), 1999 compliance — including filing Form FC-GPR with the Reserve Bank of India within 30 days of share allotment. Miss this, and you face compounding fees, penalties up to 3× the contravention amount, and difficulty receiving future FDI. This article walks through the complete FDI flow.",
+    summary: "The moment a foreign investor wires money to your Indian startup, you trigger Foreign Exchange Management Act (FEMA), 1999 compliance: including filing Form FC-GPR with the Reserve Bank of India within 30 days of share allotment. Miss this, and you face compounding fees, penalties up to 3× the contravention amount, and difficulty receiving future FDI. This article walks through the complete FDI flow.",
     content: (
       <div className="space-y-6">
         <div>
@@ -1750,10 +1980,10 @@ export const HELP_ARTICLES: HelpArticle[] = [
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">The FDI Compliance Sequence</h3>
           <ol className="list-decimal pl-5 space-y-1.5 text-brown-700">
-            <li>Receive Funds via banking channel — money lands in INR via Authorised Dealer Bank (AD Bank).</li>
+            <li>Receive Funds via banking channel: money lands in INR via Authorised Dealer Bank (AD Bank).</li>
             <li>AD Bank issues KYC + FIRC (Foreign Inward Remittance Certificate) to the company.</li>
             <li>Allot Shares within 60 days of receipt of funds (otherwise refund + penalty).</li>
-            <li>Conduct a Rule 11UA Valuation — share price must be ≥ valuation determined by SEBI-registered Merchant Banker.</li>
+            <li>Conduct a Rule 11UA Valuation: share price must be ≥ valuation determined by SEBI-registered Merchant Banker.</li>
             <li>Pass Board Resolution and Issue Share Certificates.</li>
             <li>File Form PAS-3 with MCA within 30 days of allotment.</li>
             <li>File Form FC-GPR on FIRMS portal within 30 days of allotment.</li>
@@ -1808,7 +2038,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
           <h3 className="text-xl font-semibold text-brown-900 mb-3">How to Do It on Founding Legals</h3>
           <ol className="list-decimal pl-5 space-y-3 text-brown-700">
             <li><strong>Step 1:</strong> Go to Cap Table → Foreign Investor → New Allotment. Enter the investor&apos;s country, share class, investment amount, and the AD Bank.</li>
-            <li><strong>Step 2:</strong> Platform runs the Sectoral Cap Check — confirms your sector is under Automatic Route and FDI cap is not breached.</li>
+            <li><strong>Step 2:</strong> Platform runs the Sectoral Cap Check: confirms your sector is under Automatic Route and FDI cap is not breached.</li>
             <li><strong>Step 3:</strong> Upload the FIRC and KYC documents issued by your AD Bank. The platform validates the inward remittance reference and currency conversion rate.</li>
             <li><strong>Step 4:</strong> Generate the Rule 11UA Valuation Report through the platform&apos;s empanelled Merchant Banker network (typical turnaround: 5–7 days).</li>
             <li><strong>Step 5:</strong> On allotment, the platform files Form PAS-3 with MCA and Form FC-GPR on the FIRMS portal (both within 30 days).</li>
@@ -1837,7 +2067,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "director-appointments-dir-12-kyc",
-    title: "Director Appointments — DIR-3 KYC, DIN, and Form DIR-12",
+    title: "Director Appointments: DIR-3 KYC, DIN, and Form DIR-12",
     moduleId: "cap-table-share-management",
     moduleName: "Cap Table & Share Management",
     readingTime: "6 minutes",
@@ -1936,7 +2166,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <li>They have not paid any call on shares for 6 months.</li>
           </ul>
           <p className="text-brown-700 mt-2 leading-relaxed">
-            Disqualification #3 is the most common founder trap — missing 3 years of MGT-7 deactivates the DIN across all companies the director sits on.
+            Disqualification #3 is the most common founder trap: missing 3 years of MGT-7 deactivates the DIN across all companies the director sits on.
           </p>
         </div>
 
@@ -1946,8 +2176,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <li><strong>Step 1:</strong> Go to Cap Table → Directors → Add Director. Enter PAN, name, address, nationality. If they don&apos;t have a DIN, the platform initiates the DIR-3 application with auto-attached identity proofs.</li>
             <li><strong>Step 2:</strong> Once DIN is allotted, conduct the Board Meeting approving appointment (Section 152) and obtain consent in Form DIR-2 from the director.</li>
             <li><strong>Step 3:</strong> File Form DIR-12 within 30 days, signed digitally by an existing director using their DSC.</li>
-            <li><strong>Step 4:</strong> Set up the Annual DIR-3 KYC Reminder. Platform sends notifications to every DIN holder in Aug/Sept — and auto-files the KYC return if you provide consent.</li>
-            <li><strong>Step 5:</strong> Use the Director Disqualification Tracker — the platform monitors filings continuously and flags any 2-year overdue status before the 3-year trigger hits.</li>
+            <li><strong>Step 4:</strong> Set up the Annual DIR-3 KYC Reminder. Platform sends notifications to every DIN holder in Aug/Sept: and auto-files the KYC return if you provide consent.</li>
+            <li><strong>Step 5:</strong> Use the Director Disqualification Tracker: the platform monitors filings continuously and flags any 2-year overdue status before the 3-year trigger hits.</li>
           </ol>
         </div>
 
@@ -1956,7 +2186,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: One Missed MGT-7 Cascades Across Boards
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Under Section 164(2)(a), if your company misses MGT-7 for 3 consecutive years, every director is disqualified for 5 years from every company they sit on — including other investor portfolio companies and family businesses. This has triggered mass resignations and forced cleanups across the Indian startup ecosystem. Always file MGT-7 on time.
+            Under Section 164(2)(a), if your company misses MGT-7 for 3 consecutive years, every director is disqualified for 5 years from every company they sit on: including other investor portfolio companies and family businesses. This has triggered mass resignations and forced cleanups across the Indian startup ecosystem. Always file MGT-7 on time.
           </p>
         </div>
 
@@ -1973,12 +2203,12 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "annual-roc-filings-aoc-4-mgt-7",
-    title: "Annual ROC Filings — AOC-4, MGT-7 & DPT-3 Deadlines",
+    title: "Annual ROC Filings: AOC-4, MGT-7 & DPT-3 Deadlines",
     moduleId: "cap-table-share-management",
     moduleName: "Cap Table & Share Management",
     readingTime: "6 minutes",
     lastUpdated: "May 2026",
-    summary: "Every Indian private limited company — even one with zero revenue — must file annual returns with the Registrar of Companies (ROC). The three flagship filings are Form AOC-4 (financial statements), Form MGT-7/7A (annual return), and Form DPT-3 (return of deposits). Missing these is the single most common cause of startup director disqualification under Section 164.",
+    summary: "Every Indian private limited company: even one with zero revenue: must file annual returns with the Registrar of Companies (ROC). The three flagship filings are Form AOC-4 (financial statements), Form MGT-7/7A (annual return), and Form DPT-3 (return of deposits). Missing these is the single most common cause of startup director disqualification under Section 164.",
     content: (
       <div className="space-y-6">
         <div>
@@ -2125,7 +2355,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: The 3-Year Disqualification Cliff
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Under Section 164(2)(a), if your company fails to file AOC-4 OR MGT-7 for any 3 consecutive financial years, every director is automatically disqualified for 5 years from all companies — and their DIN is deactivated. The MCA runs this check annually after 31st March. Once disqualified, recovery requires NCLT proceedings under Section 252.
+            Under Section 164(2)(a), if your company fails to file AOC-4 OR MGT-7 for any 3 consecutive financial years, every director is automatically disqualified for 5 years from all companies: and their DIN is deactivated. The MCA runs this check annually after 31st March. Once disqualified, recovery requires NCLT proceedings under Section 252.
           </p>
         </div>
 
@@ -2151,7 +2381,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
     moduleName: "Agreements",
     readingTime: "6 minutes",
     lastUpdated: "May 2026",
-    summary: "Under the Indian Copyright Act, 1957, the person who creates code, design, or content owns the copyright — not the company that pays them — unless there is an explicit written assignment. This is the single biggest IP risk for Indian startups, and it's why every founder, employee, and contractor agreement on Founding Legals contains a non-deletable IP Assignment clause.",
+    summary: "Under the Indian Copyright Act, 1957, the person who creates code, design, or content owns the copyright: not the company that pays them: unless there is an explicit written assignment. This is the single biggest IP risk for Indian startups, and it's why every founder, employee, and contractor agreement on Founding Legals contains a non-deletable IP Assignment clause.",
     content: (
       <div className="space-y-6">
         <div>
@@ -2181,7 +2411,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 font-semibold text-brown-900">Full-time employee writes code</td>
-                  <td className="px-4 py-2.5 text-brown-700">Ambiguous — depends on whether agreement has assignment clause</td>
+                  <td className="px-4 py-2.5 text-brown-700">Ambiguous: depends on whether agreement has assignment clause</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 font-semibold text-brown-900">Contractor / freelancer / agency builds a feature</td>
@@ -2218,7 +2448,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <li><strong>Step 2:</strong> The system prompts you to execute a Founder IP Assignment Agreement that transfers all pre-incorporation MVP work product to the company.</li>
             <li><strong>Step 3:</strong> When onboarding, select the agreement type. The IP Assignment clause is pre-locked; you can review but cannot delete it.</li>
             <li><strong>Step 4:</strong> For consultants and contractors, the platform additionally includes a &quot;Work Made for Hire&quot; acknowledgment and a separate Deed of Assignment.</li>
-            <li><strong>Step 5:</strong> Use the IP Registry tab to log every codebase, trademark, and patent — linked to the relevant agreements, ready for due diligence.</li>
+            <li><strong>Step 5:</strong> Use the IP Registry tab to log every codebase, trademark, and patent: linked to the relevant agreements, ready for due diligence.</li>
           </ol>
         </div>
 
@@ -2227,7 +2457,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: The Pre-Incorporation IP Gap
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Founders typically build the MVP before incorporating the company. Without a Founder IP Assignment Agreement executed post-incorporation, that MVP legally belongs to the founders as individuals — not the company. If a co-founder later leaves, they can theoretically demand royalties or fork the product. Every Indian VC checks for this document during diligence. Execute it on day 1.
+            Founders typically build the MVP before incorporating the company. Without a Founder IP Assignment Agreement executed post-incorporation, that MVP legally belongs to the founders as individuals: not the company. If a co-founder later leaves, they can theoretically demand royalties or fork the product. Every Indian VC checks for this document during diligence. Execute it on day 1.
           </p>
         </div>
 
@@ -2244,21 +2474,21 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "why-post-employment-non-competes-dont-work",
-    title: "Why Post-Employment Non-Competes Don't Work in India — And What to Use Instead",
+    title: "Why Post-Employment Non-Competes Don't Work in India: And What to Use Instead",
     moduleId: "agreements",
     moduleName: "Agreements",
     readingTime: "5 minutes",
     lastUpdated: "May 2026",
-    summary: "If your employment agreement says \"the employee shall not work for a competitor for 2 years after leaving,\" that clause is void and unenforceable in India under Section 27 of the Indian Contract Act, 1872. This article explains why, and shows the three clauses you can enforce — Confidentiality, Non-Solicitation, and Garden Leave.",
+    summary: "If your employment agreement says \"the employee shall not work for a competitor for 2 years after leaving,\" that clause is void and unenforceable in India under Section 27 of the Indian Contract Act, 1872. This article explains why, and shows the three clauses you can enforce: Confidentiality, Non-Solicitation, and Garden Leave.",
     content: (
       <div className="space-y-6">
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">The Legal Breakdown / Why It Matters</h3>
           <p className="text-brown-700 leading-relaxed font-semibold">
-            Section 27 of the Indian Contract Act, 1872 — &quot;Every agreement by which any one is restrained from exercising a lawful profession, trade or business of any kind, is to that extent void.&quot;
+            Section 27 of the Indian Contract Act, 1872: &quot;Every agreement by which any one is restrained from exercising a lawful profession, trade or business of any kind, is to that extent void.&quot;
           </p>
           <p className="text-brown-700 leading-relaxed mt-2">
-            The only statutory exception is the sale of goodwill. Employment relationships are not an exception. Indian courts — including the Supreme Court in Niranjan Shankar Golikari v. Century Spinning (1967) and Wipro v. Beckman Coulter (2006) — have consistently held:
+            The only statutory exception is the sale of goodwill. Employment relationships are not an exception. Indian courts: including the Supreme Court in Niranjan Shankar Golikari v. Century Spinning (1967) and Wipro v. Beckman Coulter (2006): have consistently held:
           </p>
           <ul className="list-disc pl-5 mt-2 space-y-1 text-brown-700">
             <li><strong>During employment:</strong> reasonable non-compete is valid (employee owes duty of fidelity).</li>
@@ -2329,7 +2559,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: A Void Non-Compete Can Backfire
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Including an unenforceable non-compete doesn&apos;t just fail — it can damage your overall litigation position. Courts view founders who insert such clauses unfavourably, treating it as evidence of an attempt to suppress employee mobility. If you&apos;re litigating a confidentiality breach with an aggressive non-compete in the same contract, expect the judge to be skeptical.
+            Including an unenforceable non-compete doesn&apos;t just fail: it can damage your overall litigation position. Courts view founders who insert such clauses unfavourably, treating it as evidence of an attempt to suppress employee mobility. If you&apos;re litigating a confidentiality breach with an aggressive non-compete in the same contract, expect the judge to be skeptical.
           </p>
         </div>
 
@@ -2338,7 +2568,499 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>💡</span> Pro-Tip: Make Non-Solicit Specific and Recent
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            A non-solicit clause that says &quot;shall not solicit any client of the company&quot; is too broad. Narrow it to &quot;any client with whom the employee had material contact in the 12 months prior to termination.&quot; Indian courts uphold specific, recent, reasonable non-solicits — and strike down vague, sweeping ones.
+            A non-solicit clause that says &quot;shall not solicit any client of the company&quot; is too broad. Narrow it to &quot;any client with whom the employee had material contact in the 12 months prior to termination.&quot; Indian courts uphold specific, recent, reasonable non-solicits: and strike down vague, sweeping ones.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "generating-managing-company-policies",
+    title: "Getting Started with Company Policies & Employee Handbooks",
+    moduleId: "policies",
+    moduleName: "Policies",
+    readingTime: "6 minutes",
+    lastUpdated: "June 2026",
+    summary: "A robust set of company policies protects your business, ensures statutory compliance, and sets clear expectations for your team. Learn how to generate, customize, and publish legally compliant policies on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Your Compliance &amp; HR Foundation</h3>
+          <p className="text-brown-700 leading-relaxed">
+            Company policies are not just bureaucratic paperwork; they are the legal shield of your startup. From POSH guidelines to maternity benefits, leaves, and confidentiality, having clear, written policies prevents employee disputes and keeps you fully compliant with Indian labour laws. The Policies module on Founding Legals allows you to generate customized, state-specific policies in minutes.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">How to Generate &amp; Manage Company Policies</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Access the Policies Workspace</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Overview Dashboard:</strong> Navigate to the <em>&quot;Policies&quot;</em> tab in the main sidebar. The dashboard displays all active, drafting, and pending policies for your company. You can monitor overall compliance status and see what policies are missing or require updates at a glance.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/Policies - 1.png" alt="Step 1: Policies Dashboard Overview" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select a Policy Category</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Pre-vetted Legal Templates:</strong> Choose from standard folders containing categorized policies such as Employment Policies, Website Policies, and Staff Handbooks. Click on the specific policy you wish to create (e.g. Leave Policy, Maternity Policy, or Code of Conduct).
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/policies - 2.png" alt="Step 2: Select a Policy Template" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Answer the Customization Questionnaire</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Tailor to Your Business Structure:</strong> Complete the dynamic questionnaire fields. You will be prompted to enter details specific to your startup, including registered states, headcount, probation limits, standard working hours, and custom employee benefits.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/policies - 3.png" alt="Step 3: Customization Questionnaire" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Generate and Preview the Policy Draft</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Real-Time Policy Rendering:</strong> The platform reads your questionnaire answers and automatically compiles a legally vetted draft. Preview the organized sections, definitions, statutory references, and clauses on-screen before finalizing.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/policies - 4.png" alt="Step 4: Preview Generated Policy Document" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Customize Specific Clauses</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Edit directly in the Document Editor:</strong> Fine-tune text, insert company-specific clauses, or modify rules in the integrated editor. The core legal sections are protected to preserve compliance, but you can adjust operational details easily.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/policies - 5.png" alt="Step 5: Edit Document Clauses" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Publish, Share, and Track Consent</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Reconciliation and Compliance:</strong> Once satisfied, publish the policy. You can download the PDF under your company letterhead, distribute it to employees via email, and track electronic acknowledgments or signatures from the dashboard.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/policies - 6.png" alt="Step 6: Publish &amp; Distribute Policy" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Warning: State-Specific Variations under Shops &amp; Establishments Act
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Employment policies (especially regarding leaves, holidays, working hours, and termination notice) are governed by state-specific Shops and Establishments Acts. A leave policy that is perfectly legal in Maharashtra may violate statutory minimums in Karnataka or Delhi. Ensure that the correct state registry details are selected during the questionnaire phase to avoid producing non-compliant or illegal employment policies.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Obtain Written and Tracked Employee Acknowledgment
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Merely publishing a policy is not legally sufficient to enforce it during a dispute. To make policies (such as NDAs, Code of Conduct, or IT Security Rules) binding, you must obtain a signed acknowledgment of receipt and consent from every employee. Founding Legals automates this workflow by sending signature links and storing the signed acknowledgment files directly alongside each employee&apos;s records.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "drafting-customizing-staff-handbook",
+    title: "How to Draft and Customize Your Staff Handbook",
+    moduleId: "policies",
+    moduleName: "Policies",
+    readingTime: "5 minutes",
+    lastUpdated: "June 2026",
+    summary: "A comprehensive Staff Handbook aligns your team and sets clear operational boundaries. Learn how to draft, customize, and publish your company's employee handbook step-by-step on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Aligning Your Team With a Classy Employee Handbook</h3>
+          <p className="text-brown-700 leading-relaxed">
+            Your Staff Handbook is the cultural and operational guide for your startup. It sets clear boundaries around work ethics, data security, code of conduct, leaves, and core benefits. Rather than using generic templates, Founding Legals helps you build a professional, legally-compliant handbook tailored to your startup&apos;s specific operations and state regulations.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">How to Draft and Customize Your Staff Handbook</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Initiate the Staff Handbook Document</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select the Staff Handbook Builder:</strong> Go to the Policies panel and select the <em>&quot;Staff Handbook&quot;</em> builder. This opens the handbook configuration overview page, allowing you to track completion milestones and draft details in one centralized workspace.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/staff hand book/Staff hand book - 1.png" alt="Step 1: Open Staff Handbook Configurator" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Complete the Customization Questionnaire</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define Your Workplace Rules:</strong> Fill out the customization form. Answer questions regarding probation timelines, standard office timings, leaves, notice periods, and confidentiality rules to tailor the handbook to your operations.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/staff hand book/Staff hand book - 2.png" alt="Step 2: Answer Handbook Questionnaire" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Preview the Generated Chapters</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Interactive Document Outline:</strong> Preview the compiled chapters of your handbook. The platform automatically organizes standard sections such as Code of Conduct, IT Policies, and Statutory Employee Benefits for your review.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/staff hand book/Staff hand book - 3.png" alt="Step 3: Preview Generated Handbook Draft" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Fine-Tune and Edit Specific Chapters</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Tailored Wording &amp; Additions:</strong> Use the interactive document editor to refine individual clauses. You can adjust the text to match your startup&apos;s cultural values or add specific company guidelines.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/staff hand book/Staff hand book - 4.png" alt="Step 4: Edit and Customize Handbook Content" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Finalize, Export, and Distribute</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Lock and Share with Your Team:</strong> Finalize the handbook draft. You can export a beautifully formatted PDF with your company letterhead, distribute it directly to your employees, and collect digital acknowledgments through the portal.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/staff hand book/Staff hand book - 5.png" alt="Step 5: Publish &amp; Distribute Handbook" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Caution: Clear Notice Policies and Labor Laws
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Ensure notice periods and probation clauses comply with the Shops and Establishments Act of your company registry state. Notice periods that exceed legal minimums or arbitrary termination rules can be successfully challenged under industrial dispute laws. Always double check that notice periods during probation vs. confirmed employment are set logically.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Make the Handbook Part of New Hire Onboarding
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Integrate the handbook signoff into your automated onboarding checklist. Collecting signatures on the day of joining ensures that employees are bound by policies like non-disclosure, IP assignment, and code of conduct before they begin writing code or interacting with clients.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "drafting-generating-employment-agreements",
+    title: "How to Draft and Generate Employment Agreements",
+    moduleId: "policies",
+    moduleName: "Policies",
+    readingTime: "5 minutes",
+    lastUpdated: "June 2026",
+    summary: "An Employment Agreement outlines the terms of employment, compensation, and legal protections. Learn how to draft, customize, and generate legally compliant employment agreements on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Onboard Safely with Professional Employment Agreements</h3>
+          <p className="text-brown-700 leading-relaxed">
+            A solid employment agreement protects your intellectual property, prevents disputes, and ensures clarity for your hires. Instead of drafting contracts manually, Founding Legals provides a streamlined wizard that constructs state-specific, legally-compliant employment agreements tailored to your candidate&apos;s role, probation period, and salary components.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">How to Draft and Generate Employment Agreements</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Access the Employment Agreement Configurator</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Initiate a New Agreement:</strong> Navigate to the Policies dashboard and click on the <em>&quot;Employment Agreement&quot;</em> card. This launches the step-by-step drafting flow, letting you manage your draft database and candidate profiles from one page.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/Employment Polices/employement - 1.png" alt="Step 1: Open Employment Agreement Builder" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Input Employee and Job Details</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter Core Information:</strong> Fill out the form fields with the employee&apos;s full legal name, designation, department, and registry location. The platform matches these to your state settings for localized labor law compliance.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/Employment Polices/employement - 2.png" alt="Step 2: Input Employee Information" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Set Up Compensation and Working Terms</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure Work and Leave Parameters:</strong> Define the salary structure (CTC), probation periods, standard work hours, and notice terms. The configurator automatically aligns the fields with statutory minimums for your region.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/Employment Polices/employement - 3.png" alt="Step 3: Define Compensation &amp; Work Hours" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Generate and Review the Agreement Clauses</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Verify Legal Terms:</strong> Preview the compiled contract sections, including non-disclosure clauses, intellectual property assignment, and termination rules. The platform structures them logically so they are ready for signing.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/Employment Polices/employement - 4.png" alt="Step 4: Preview Generated Contract" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Export and Distribute for Signatures</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Finalize the Contract:</strong> Lock the generated draft. Download the branded PDF featuring your authorized signature, then email it directly to the employee or collect digital signatures through the dashboard.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/Employment Polices/employement - 5.png" alt="Step 5: Publish &amp; Sign Agreement" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Caution: Clear Non-Compete Clauses
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under Section 27 of the Indian Contract Act, 1872, post-employment non-compete clauses are generally void and unenforceable. Avoid adding sweeping non-compete restrictions that prevent employees from seeking work elsewhere. Instead, protect your interests using strong non-solicit and IP assignment clauses, which are fully enforceable under Indian law.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Align Employment Terms with Offer Letters
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Ensure the designation, CTC components, and joining date in the employment agreement match the offer letter exactly. Discrepancies between the two documents can lead to disputes and complicate compliance records during payroll integration.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "generating-website-policies",
+    title: "How to Generate and Manage Website Policies",
+    moduleId: "policies",
+    moduleName: "Policies",
+    readingTime: "5 minutes",
+    lastUpdated: "June 2026",
+    summary: "Every online business requires robust website legal agreements like Privacy Policies and Terms of Service. Learn how to draft, configure, and publish your website policies on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Protect Your Online Platform with Website Policies</h3>
+          <p className="text-brown-700 leading-relaxed">
+            Running a website or mobile app means interacting with user data and processing transactions. Having clear website policies (such as a Privacy Policy, Terms of Service, and Refund Rules) is essential to stay compliant with global data protection laws (like the DPDP Act in India and GDPR globally). Founding Legals makes this easy with an interactive builder that generates tailored policies for your platform.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">How to Generate and Manage Website Policies</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Access the Website Policies Workspace</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Open the Builder:</strong> Navigate to the Policies dashboard and select the <em>&quot;Website Policies&quot;</em> section. This workspace allows you to manage active policies, see missing agreements, and track draft versions.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/Website policies/Website policies - 1.png" alt="Step 1: Open Website Policies Workspace" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Input Platform and Company Information</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter Base Details:</strong> Fill in your platform domain name, registered business entity name, support email, and physical office address. The platform will map these details to the generated legal text.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/Website policies/Website policies - 2.png" alt="Step 2: Enter Base Information" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Define User Terms &amp; Refund Parameters</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Customize Policy Rules:</strong> Answer the questionnaire sections covering user account management, payment processing, intellectual property rights, governing law, and refund policies.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/Website policies/Website policies - 3.png" alt="Step 3: Define Terms and Refund Rules" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Generate and Preview the Policy Text</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Verify Legal Structures:</strong> Preview the compiled draft. The platform renders terms that match global privacy frameworks and local laws, ensuring all standard disclosures are structured clearly.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/Website policies/Website policies - 4.png" alt="Step 4: Preview Generated Policy Text" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Publish, Export, and Embed</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Distribute Legal Policies:</strong> Finalize the draft. You can download the documents in text format, export a branded PDF with your company letterhead, or copy the direct embed code to host it on your live website footer.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Policeis/Website policies/Website Policies - 5.png" alt="Step 5: Publish &amp; Export Policy" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Caution: Digital Personal Data Protection (DPDP) Act Compliance
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under India&apos;s DPDP Act, 2023, you must obtain explicit, unambiguous, and specific consent before processing user data. Your privacy policy must clearly state what data is collected, why it is processed, how users can withdraw consent, and provide details of your Grievance Officer. Non-compliance can lead to penalties up to ₹250 crores. Ensure your DPDP settings are filled out accurately.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Update Website Policies Annually
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Data privacy regulations and app store compliance standards change constantly. Review your privacy policy and terms of service at least once a year, or whenever you introduce new tracking tools, third-party analytics, or changes to payment flows.
           </p>
         </div>
       </div>
@@ -2346,18 +3068,18 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "posh-act-compliance-10-employees",
-    title: "POSH Act Compliance — The 10-Employee Trigger Every Founder Must Know",
+    title: "POSH Act Compliance: The 10-Employee Trigger Every Founder Must Know",
     moduleId: "policies",
     moduleName: "Policies",
     readingTime: "7 minutes",
     lastUpdated: "May 2026",
-    summary: "The moment your startup reaches 10 or more employees (including contractors, interns, and part-timers), you are legally mandated to comply with the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 — known as the POSH Act. Non-compliance carries a penalty of ₹50,000, escalating to cancellation of business licence. This article shows exactly what you must do.",
+    summary: "The moment your startup reaches 10 or more employees (including contractors, interns, and part-timers), you are legally mandated to comply with the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013: known as the POSH Act. Non-compliance carries a penalty of ₹50,000, escalating to cancellation of business licence. This article shows exactly what you must do.",
     content: (
       <div className="space-y-6">
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">The Legal Breakdown / Why It Matters</h3>
           <p className="text-brown-700 leading-relaxed">
-            <strong>POSH Act, 2013:</strong> A central legislation enacted to prevent and redress sexual harassment of women at the workplace. It applies to every workplace in India — corporate, NGO, household, public, private — regardless of sector.
+            <strong>POSH Act, 2013:</strong> A central legislation enacted to prevent and redress sexual harassment of women at the workplace. It applies to every workplace in India: corporate, NGO, household, public, private: regardless of sector.
           </p>
           <p className="text-brown-700 leading-relaxed mt-2">
             <strong>Section 4 of the POSH Act:</strong> Every employer with 10 or more employees must constitute an Internal Complaints Committee (ICC) at every office or branch.
@@ -2404,7 +3126,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
                 <tr>
                   <td className="px-4 py-2.5 font-semibold text-brown-900">Display POSH Policy at workplace</td>
                   <td className="px-4 py-2.5 text-brown-700">Section 19(b), POSH Act</td>
-                  <td className="px-4 py-2.5 text-brown-700">Permanent — at office + on intranet</td>
+                  <td className="px-4 py-2.5 text-brown-700">Permanent: at office + on intranet</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 font-semibold text-brown-900">File Annual Report with District Officer</td>
@@ -2422,7 +3144,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold text-brown-900 mb-3">ICC Composition — The 4 Mandatory Members</h3>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">ICC Composition: The 4 Mandatory Members</h3>
           <p className="text-brown-700 leading-relaxed">
             Under Section 4(2) of the POSH Act, the ICC must have:
           </p>
@@ -2468,7 +3190,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <li><strong>Step 1:</strong> Go to Team → Compliance Center → POSH. The dashboard counts headcount and flashes a red alert when you cross 10.</li>
             <li><strong>Step 2:</strong> Click &quot;Generate POSH Policy&quot;. The platform creates a 14-page POSH Policy customized to your industry.</li>
             <li><strong>Step 3:</strong> Use the ICC Builder to constitute your committee, generate letters, and connect with empanelled NGO professionals at fixed rates (₹15,000–₹30,000/year).</li>
-            <li><strong>Step 4:</strong> Roll out the POSH Training Module to all employees — a recorded course with quiz, auto-issuing completion certificates.</li>
+            <li><strong>Step 4:</strong> Roll out the POSH Training Module to all employees: a recorded course with quiz, auto-issuing completion certificates.</li>
             <li><strong>Step 5:</strong> On 1st January, the platform auto-prompts the ICC to file the Annual Report to the District Officer before the 31st January deadline.</li>
           </ol>
         </div>
@@ -2487,7 +3209,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>💡</span> Pro-Tip: Don&apos;t Wait Till You Hit 10
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Even if you have 5 employees today, draft the POSH Policy now. It establishes a written workplace standard, is auto-included in agreements, and demonstrates good governance during investor diligence — which Indian VCs increasingly evaluate. POSH compliance is now a standard CP in Series A term sheets.
+            Even if you have 5 employees today, draft the POSH Policy now. It establishes a written workplace standard, is auto-included in agreements, and demonstrates good governance during investor diligence: which Indian VCs increasingly evaluate. POSH compliance is now a standard CP in Series A term sheets.
           </p>
         </div>
       </div>
@@ -2495,12 +3217,12 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "founders-agreement-vesting-exits",
-    title: "The Founder's Agreement — Vesting, Roles, and Co-Founder Exits",
+    title: "The Founder's Agreement: Vesting, Roles, and Co-Founder Exits",
     moduleId: "team-members",
     moduleName: "Team Members",
     readingTime: "8 minutes",
     lastUpdated: "May 2026",
-    summary: "The Founder's Agreement (also called Co-Founders Agreement) is the single most important contract between you and your co-founders — yet it's the one Indian founders most often skip. It handles founder vesting, role definitions, decision-making, IP assignment, and what happens if a co-founder leaves. This article shows what it must contain.",
+    summary: "The Founder's Agreement (also called Co-Founders Agreement) is the single most important contract between you and your co-founders: yet it's the one Indian founders most often skip. It handles founder vesting, role definitions, decision-making, IP assignment, and what happens if a co-founder leaves. This article shows what it must contain.",
     content: (
       <div className="space-y-6">
         <div>
@@ -2567,7 +3289,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold text-brown-900 mb-3">Founder Vesting — The Indian VC Standard</h3>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Founder Vesting: The Indian VC Standard</h3>
           <div className="overflow-x-auto border border-brown-200 rounded-xl text-sm max-w-lg">
             <table className="min-w-full divide-y divide-brown-200">
               <thead className="bg-cream-dark">
@@ -2640,8 +3362,8 @@ export const HELP_ARTICLES: HelpArticle[] = [
           <ol className="list-decimal pl-5 space-y-3 text-brown-700">
             <li><strong>Step 1:</strong> Go to Team → Founder&apos;s Agreement → Setup. Add each co-founder, their initial equity split, role, and start date.</li>
             <li><strong>Step 2:</strong> Configure Vesting: Total period (default 4 years), Cliff (default 12 months), frequency (monthly/quarterly), and acceleration triggers.</li>
-            <li><strong>Step 3:</strong> Define Reserved Matters — strategic decisions requiring all-founder unanimous approval (e.g., M&amp;A, fundraise, key hires, equity dilution).</li>
-            <li><strong>Step 4:</strong> Toggle the Reverse Vesting clause — converts already-held founder shares into buyback-eligible structure.</li>
+            <li><strong>Step 3:</strong> Define Reserved Matters: strategic decisions requiring all-founder unanimous approval (e.g., M&amp;A, fundraise, key hires, equity dilution).</li>
+            <li><strong>Step 4:</strong> Toggle the Reverse Vesting clause: converts already-held founder shares into buyback-eligible structure.</li>
             <li><strong>Step 5:</strong> Generate, stamp (₹500 under Maharashtra Stamp Act), and e-sign via Aadhaar. The agreement is auto-linked to your Cap Table.</li>
           </ol>
         </div>
@@ -2651,7 +3373,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: Verbal Founder Agreements Always End Badly
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            60% of Indian startup founder disputes — including high-profile ones reaching NCLT and the High Courts — stem from the absence of a written founder&apos;s agreement. A handshake agreement is technically valid under Section 9 of the Contract Act, but evidentially impossible to enforce. Sign a written, stamped, e-signed Founder&apos;s Agreement before the first product line of code.
+            60% of Indian startup founder disputes: including high-profile ones reaching NCLT and the High Courts: stem from the absence of a written founder&apos;s agreement. A handshake agreement is technically valid under Section 9 of the Contract Act, but evidentially impossible to enforce. Sign a written, stamped, e-signed Founder&apos;s Agreement before the first product line of code.
           </p>
         </div>
 
@@ -2660,7 +3382,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>💡</span> Pro-Tip: Sign It Before Equal Splits Get Awkward
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Founders often delay this conversation because &quot;we&apos;re all equals.&quot; But by Year 2, roles, contributions, and motivation diverge — and renegotiating equity then is brutal. Sign the Founder&apos;s Agreement on Day 1 with equal splits and identical vesting, so the system is fair, predictable, and renegotiable later only by mutual amendment.
+            Founders often delay this conversation because &quot;we&apos;re all equals.&quot; But by Year 2, roles, contributions, and motivation diverge: and renegotiating equity then is brutal. Sign the Founder&apos;s Agreement on Day 1 with equal splits and identical vesting, so the system is fair, predictable, and renegotiable later only by mutual amendment.
           </p>
         </div>
       </div>
@@ -2668,7 +3390,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "maternity-benefit-act-paid-leave",
-    title: "Maternity Benefit Act — 26 Weeks Paid Leave & ICC Coordination",
+    title: "Maternity Benefit Act: 26 Weeks Paid Leave & ICC Coordination",
     moduleId: "policies",
     moduleName: "Policies",
     readingTime: "5 minutes",
@@ -2771,7 +3493,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
           <h3 className="text-xl font-semibold text-brown-900 mb-3">How to Do It on Founding Legals</h3>
           <ol className="list-decimal pl-5 space-y-3 text-brown-700">
             <li><strong>Step 1:</strong> Go to Team → Policies → Maternity Policy. Generate a Maternity Benefit Policy customised to headcount, working hours, etc.</li>
-            <li><strong>Step 2:</strong> When an eligible employee notifies pregnancy, go to Payroll → Leave → Maternity Leave. Enter expected delivery date — the platform calculates the 26-week paid leave window.</li>
+            <li><strong>Step 2:</strong> When an eligible employee notifies pregnancy, go to Payroll → Leave → Maternity Leave. Enter expected delivery date: the platform calculates the 26-week paid leave window.</li>
             <li><strong>Step 3:</strong> The platform auto-continues full salary payment through the 26 weeks (showing it as &quot;Maternity Pay&quot; on payslips) including all TDS and EPF deductions.</li>
             <li><strong>Step 4:</strong> Generate return-to-work documentation including nursing breaks, work-from-home eligibility, and a post-leave check-in workflow.</li>
             <li><strong>Step 5:</strong> If headcount crosses 50, the platform prompts you to set up a Crèche Policy (in-house or tied-up) and adds the cost provision to monthly forecasts.</li>
@@ -2783,7 +3505,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: 80-Day Eligibility Is Not Optional
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Many founders mistakenly think maternity benefits apply only to permanent employees. The law applies to any woman who has worked 80+ days in the preceding 12 months — including contract employees and probationers. Denying benefits citing &quot;probation&quot; or &quot;contract&quot; is a violation under Section 21 with personal liability on the employer.
+            Many founders mistakenly think maternity benefits apply only to permanent employees. The law applies to any woman who has worked 80+ days in the preceding 12 months: including contract employees and probationers. Denying benefits citing &quot;probation&quot; or &quot;contract&quot; is a violation under Section 21 with personal liability on the employer.
           </p>
         </div>
 
@@ -2800,12 +3522,12 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "shops-establishment-act-registration",
-    title: "Shops & Establishment Act — The State Registration You Cannot Skip",
+    title: "Shops & Establishment Act: The State Registration You Cannot Skip",
     moduleId: "policies",
     moduleName: "Policies",
     readingTime: "6 minutes",
     lastUpdated: "May 2026",
-    summary: "Every Indian commercial establishment — including SaaS startups operating from a single room with 2 employees — must register under the state-specific Shops and Establishments Act within 30 days of starting operations. This article shows how registration works, what it covers, and why most early-stage founders forget it.",
+    summary: "Every Indian commercial establishment: including SaaS startups operating from a single room with 2 employees: must register under the state-specific Shops and Establishments Act within 30 days of starting operations. This article shows how registration works, what it covers, and why most early-stage founders forget it.",
     content: (
       <div className="space-y-6">
         <div>
@@ -2818,7 +3540,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">Who Must Register</h3>
           <p className="text-brown-700 leading-relaxed">
-            Every commercial establishment, regardless of size — including: Private limited companies, LLPs, partnerships, SaaS / tech / consulting / service companies, and e-commerce warehouses.
+            Every commercial establishment, regardless of size: including: Private limited companies, LLPs, partnerships, SaaS / tech / consulting / service companies, and e-commerce warehouses.
           </p>
         </div>
 
@@ -2950,7 +3672,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: No Registration = No Bank Loan, No Vendor Onboarding
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Many startups discover their lack of Shops &amp; Establishment Registration only when applying for a working capital loan, vendor onboarding with a corporate, or government tender — all of which require the certificate as a basic document. Penalties for non-registration vary (₹50–₹10,000 + per-day continuing fines), but the operational impact is bigger than the fine.
+            Many startups discover their lack of Shops &amp; Establishment Registration only when applying for a working capital loan, vendor onboarding with a corporate, or government tender: all of which require the certificate as a basic document. Penalties for non-registration vary (₹50–₹10,000 + per-day continuing fines), but the operational impact is bigger than the fine.
           </p>
         </div>
 
@@ -2971,12 +3693,12 @@ export const HELP_ARTICLES: HelpArticle[] = [
   // ==========================================
   {
     id: "structuring-tax-optimized-ctc",
-    title: "Structuring a Tax-Optimized CTC — The Indian Salary Architecture",
+    title: "Structuring a Tax-Optimized CTC: The Indian Salary Architecture",
     moduleId: "payslips-payroll",
     moduleName: "Payslips & Payroll",
     readingTime: "8 minutes",
     lastUpdated: "May 2026",
-    summary: "A legally compliant Indian salary structure is not a single flat number — it's a Cost-to-Company (CTC) broken into Basic Salary, HRA, allowances, and statutory deductions. Get the ratios wrong, and your employees pay more tax, your EPF liability spikes, or you fail an Income Tax audit. This article explains the optimal structure and shows how Founding Legals auto-generates compliant payslips.",
+    summary: "A legally compliant Indian salary structure is not a single flat number: it's a Cost-to-Company (CTC) broken into Basic Salary, HRA, allowances, and statutory deductions. Get the ratios wrong, and your employees pay more tax, your EPF liability spikes, or you fail an Income Tax audit. This article explains the optimal structure and shows how Founding Legals auto-generates compliant payslips.",
     content: (
       <div className="space-y-6">
         <div>
@@ -3033,7 +3755,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
                   <td className="px-4 py-2.5 font-semibold text-brown-900">Standard Deduction</td>
                   <td className="px-4 py-2.5 text-brown-700">₹50,000 / ₹75,000 flat</td>
                   <td className="px-4 py-2.5 text-brown-700">Auto-applied</td>
-                  <td className="px-4 py-2.5 text-brown-700">Section 16(ia) — varies by regime</td>
+                  <td className="px-4 py-2.5 text-brown-700">Section 16(ia): varies by regime</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2.5 font-semibold text-brown-900">Employer EPF Contribution</td>
@@ -3078,7 +3800,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold text-brown-900 mb-3">Old vs. New Tax Regime — The Section 192 Decision</h3>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Old vs. New Tax Regime: The Section 192 Decision</h3>
           <div className="overflow-x-auto border border-brown-200 rounded-xl text-sm">
             <table className="min-w-full divide-y divide-brown-200">
               <thead className="bg-cream-dark">
@@ -3130,7 +3852,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <li><strong>Step 1:</strong> Go to Payroll → Salary Structure → New Template. Enter the CTC amount. The platform suggests an optimized compliant structure.</li>
             <li><strong>Step 2:</strong> Customise per employee using the Salary Architect (HRA metro/non-metro, Sodexo, LTA, books &amp; journals).</li>
             <li><strong>Step 3:</strong> Each employee declares their regime via the Tax Regime Selector in their portal, which locks in for the financial year.</li>
-            <li><strong>Step 4:</strong> Generate the CTC Breakup Letter automatically — a one-pager attached to every Employment Agreement showing all details.</li>
+            <li><strong>Step 4:</strong> Generate the CTC Breakup Letter automatically: a one-pager attached to every Employment Agreement showing all details.</li>
             <li><strong>Step 5:</strong> Monthly payroll generates payslips compliant with the Payment of Wages Act, 1936 and state Shops &amp; Establishment Acts.</li>
           </ol>
         </div>
@@ -3140,7 +3862,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: Low Basic = Income Tax Red Flag
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            A common founder mistake: setting Basic Salary at 20–25% of CTC and inflating &quot;Special Allowance&quot; to reduce EPF and Gratuity provisions. The Income Tax Department considers Basic below 40% of CTC a red flag and may reclassify allowances as Basic during scrutiny — back-charging EPF + interest + penalty. The Supreme Court in Vivekananda Vidyamandir v. EPFO (2019) held that allowances paid universally to all employees count as &quot;Basic Wages&quot; for EPF.
+            A common founder mistake: setting Basic Salary at 20–25% of CTC and inflating &quot;Special Allowance&quot; to reduce EPF and Gratuity provisions. The Income Tax Department considers Basic below 40% of CTC a red flag and may reclassify allowances as Basic during scrutiny: back-charging EPF + interest + penalty. The Supreme Court in Vivekananda Vidyamandir v. EPFO (2019) held that allowances paid universally to all employees count as &quot;Basic Wages&quot; for EPF.
           </p>
         </div>
 
@@ -3157,7 +3879,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "epf-esic-gratuity-mandatory-contributions",
-    title: "EPF, ESIC & Gratuity — The Three Mandatory Statutory Contributions",
+    title: "EPF, ESIC & Gratuity: The Three Mandatory Statutory Contributions",
     moduleId: "payslips-payroll",
     moduleName: "Payslips & Payroll",
     readingTime: "6 minutes",
@@ -3256,7 +3978,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold text-brown-900 mb-3">Quick Reference — Trigger Thresholds</h3>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Quick Reference: Trigger Thresholds</h3>
           <div className="overflow-x-auto border border-brown-200 rounded-xl text-sm">
             <table className="min-w-full divide-y divide-brown-200">
               <thead className="bg-cream-dark">
@@ -3304,7 +4026,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <li><strong>Step 2:</strong> Register for EPF and ESIC directly through Shram Suvidha portal integration. UAN generation is fully automatic.</li>
             <li><strong>Step 3:</strong> Running payroll auto-calculates EPF (12.5%), ESIC (3.25%, if gross ≤ ₹21,000), and Gratuity provision (4.81% of Basic, accumulated).</li>
             <li><strong>Step 4:</strong> Generate and file the monthly ECR for EPF and ESIC return before the 15th. Payment challans are auto-prepared with banking links.</li>
-            <li><strong>Step 5:</strong> Use the Gratuity Liability Dashboard to view accumulated reserves per employee — vital for M&amp;A due diligence and financial statements.</li>
+            <li><strong>Step 5:</strong> Use the Gratuity Liability Dashboard to view accumulated reserves per employee: vital for M&amp;A due diligence and financial statements.</li>
           </ol>
         </div>
 
@@ -3313,7 +4035,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: EPF Penalty Compounds Fast
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Delay in EPF deposit attracts interest at 12% per annum under Section 7Q + damages of 5–25% per annum under Section 14B of the EPF Act. Repeat default is a criminal offence with imprisonment up to 3 years. Indian VCs flag EPF defaults as a deal-breaker during diligence — fix it before raising.
+            Delay in EPF deposit attracts interest at 12% per annum under Section 7Q + damages of 5–25% per annum under Section 14B of the EPF Act. Repeat default is a criminal offence with imprisonment up to 3 years. Indian VCs flag EPF defaults as a deal-breaker during diligence: fix it before raising.
           </p>
         </div>
 
@@ -3330,7 +4052,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "tds-on-salary-section-192-regimes",
-    title: "TDS on Salary Under Section 192 — Old vs. New Regime Decoded",
+    title: "TDS on Salary Under Section 192: Old vs. New Regime Decoded",
     moduleId: "payslips-payroll",
     moduleName: "Payslips & Payroll",
     readingTime: "7 minutes",
@@ -3483,7 +4205,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: Wrong TDS = Employee ITR Hell
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            If your TDS deduction doesn&apos;t match the employee&apos;s Form 26AS / AIS (due to incorrect regime, missed investment proofs, or late deposits), the employee receives a demand notice when they file their ITR. They will come to you for fixes — and Form 24Q correction requests are a 30–60 day ordeal. Our TRACES Reconciliation Tool catches mismatches monthly.
+            If your TDS deduction doesn&apos;t match the employee&apos;s Form 26AS / AIS (due to incorrect regime, missed investment proofs, or late deposits), the employee receives a demand notice when they file their ITR. They will come to you for fixes: and Form 24Q correction requests are a 30–60 day ordeal. Our TRACES Reconciliation Tool catches mismatches monthly.
           </p>
         </div>
 
@@ -3500,7 +4222,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "state-wise-professional-tax-slabs",
-    title: "State-Wise Professional Tax (PT) — A Founder's Guide",
+    title: "State-Wise Professional Tax (PT): A Founder's Guide",
     moduleId: "payslips-payroll",
     moduleName: "Payslips & Payroll",
     readingTime: "5 minutes",
@@ -3576,7 +4298,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">How to Do It on Founding Legals</h3>
           <ol className="list-decimal pl-5 space-y-3 text-brown-700">
-            <li><strong>Step 1:</strong> Go to Payroll → Employee Onboarding. Enter each employee&apos;s working location (state) — this can differ from registered office for remote workers.</li>
+            <li><strong>Step 1:</strong> Go to Payroll → Employee Onboarding. Enter each employee&apos;s working location (state): this can differ from registered office for remote workers.</li>
             <li><strong>Step 2:</strong> The platform auto-applies state-specific PT slabs monthly. If multiple employees work in different states, PT calculations are independent.</li>
             <li><strong>Step 3:</strong> Register for PTEC and PTRC in each state directly through integrated Commercial Tax Department portals.</li>
             <li><strong>Step 4:</strong> Each month&apos;s payroll auto-generates the state-wise PT challan. Pay via integrated net banking; receipts are saved in the Vault.</li>
@@ -3589,7 +4311,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: Remote Workers Mean Multi-State PT
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Post-COVID, many Indian startups have employees in 8–10 states. Each state where an employee works requires a separate PTRC registration, and PT must be paid to that state&apos;s treasury — not the state of the registered office. Treating PT as a single-state obligation is a common audit finding that triggers penalty + interest.
+            Post-COVID, many Indian startups have employees in 8–10 states. Each state where an employee works requires a separate PTRC registration, and PT must be paid to that state&apos;s treasury: not the state of the registered office. Treating PT as a single-state obligation is a common audit finding that triggers penalty + interest.
           </p>
         </div>
 
@@ -3598,7 +4320,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>💡</span> Pro-Tip: PT Saves Tax Twice
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Professional Tax paid by an employee is deductible under Section 16(iii) of the Income Tax Act — reducing their taxable salary. For employees in the Old Regime, this is a small but automatic tax saving. The platform shows this deduction clearly in every payslip and in Form 16.
+            Professional Tax paid by an employee is deductible under Section 16(iii) of the Income Tax Act: reducing their taxable salary. For employees in the Old Regime, this is a small but automatic tax saving. The platform shows this deduction clearly in every payslip and in Form 16.
           </p>
         </div>
       </div>
@@ -3606,12 +4328,12 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "gst-registration-filing-startups",
-    title: "GST Registration for Startups — When to Register, How to File",
+    title: "GST Registration for Startups: When to Register, How to File",
     moduleId: "payslips-payroll",
     moduleName: "Payslips & Payroll",
     readingTime: "7 minutes",
     lastUpdated: "May 2026",
-    summary: "Goods and Services Tax (GST) registration is mandatory for every Indian business crossing the threshold turnover — ₹20 Lakh for services, ₹40 Lakh for goods. But early-stage startups often need GST even below the threshold for B2B credibility, ITC (Input Tax Credit) claims, and inter-state supply. This article explains when to register and how Founding Legals automates it.",
+    summary: "Goods and Services Tax (GST) registration is mandatory for every Indian business crossing the threshold turnover: ₹20 Lakh for services, ₹40 Lakh for goods. But early-stage startups often need GST even below the threshold for B2B credibility, ITC (Input Tax Credit) claims, and inter-state supply. This article explains when to register and how Founding Legals automates it.",
     content: (
       <div className="space-y-6">
         <div>
@@ -3633,11 +4355,11 @@ export const HELP_ARTICLES: HelpArticle[] = [
               </thead>
               <tbody className="divide-y divide-brown-200 bg-white">
                 <tr>
-                  <td className="px-4 py-2.5 font-medium text-brown-900">Aggregate turnover — Services</td>
+                  <td className="px-4 py-2.5 font-medium text-brown-900">Aggregate turnover: Services</td>
                   <td className="px-4 py-2.5 text-brown-700">₹20 Lakh/year (₹10 Lakh in special category states)</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2.5 font-medium text-brown-900">Aggregate turnover — Goods</td>
+                  <td className="px-4 py-2.5 font-medium text-brown-900">Aggregate turnover: Goods</td>
                   <td className="px-4 py-2.5 text-brown-700">₹40 Lakh/year (₹20 Lakh in special category states)</td>
                 </tr>
                 <tr>
@@ -3738,7 +4460,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: Letter of Undertaking (LUT) for Service Exports
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            If you export software/SaaS services, file a Letter of Undertaking (LUT) on the GST portal at the start of each financial year. Without it, you must pay IGST on exports and claim refund later — a 90-day cash flow drag. With LUT, your exports are zero-rated immediately. Renew every April.
+            If you export software/SaaS services, file a Letter of Undertaking (LUT) on the GST portal at the start of each financial year. Without it, you must pay IGST on exports and claim refund later: a 90-day cash flow drag. With LUT, your exports are zero-rated immediately. Renew every April.
           </p>
         </div>
 
@@ -3747,7 +4469,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>💡</span> Pro-Tip: Don&apos;t Register Until You Absolutely Must (For B2C Startups)
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            If you&apos;re a B2C startup (D2C, consumer app) and below threshold, delay GST registration until necessary. Once registered, you must charge GST to customers (raising your price by 18%) and comply with monthly filings — a significant operational burden. For B2B startups, register immediately for ITC and credibility.
+            If you&apos;re a B2C startup (D2C, consumer app) and below threshold, delay GST registration until necessary. Once registered, you must charge GST to customers (raising your price by 18%) and comply with monthly filings: a significant operational burden. For B2B startups, register immediately for ITC and credibility.
           </p>
         </div>
       </div>
@@ -3755,12 +4477,12 @@ export const HELP_ARTICLES: HelpArticle[] = [
   },
   {
     id: "full-final-settlement-fnf-process",
-    title: "Full & Final Settlement (FnF) — The Exit Payroll Process",
+    title: "Full & Final Settlement (FnF): The Exit Payroll Process",
     moduleId: "payslips-payroll",
     moduleName: "Payslips & Payroll",
     readingTime: "6 minutes",
     lastUpdated: "May 2026",
-    summary: "When an employee leaves your startup, Full and Final Settlement (FnF) is the legal closure of your employment relationship — covering unpaid salary, leave encashment, gratuity, PF settlement, TDS, and clearance certificates. Mishandling FnF leads to labour department complaints, EPFO grievances, and damaged employer brand. This article walks through the complete FnF flow.",
+    summary: "When an employee leaves your startup, Full and Final Settlement (FnF) is the legal closure of your employment relationship: covering unpaid salary, leave encashment, gratuity, PF settlement, TDS, and clearance certificates. Mishandling FnF leads to labour department complaints, EPFO grievances, and damaged employer brand. This article walks through the complete FnF flow.",
     content: (
       <div className="space-y-6">
         <div>
@@ -3857,7 +4579,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
           <ol className="list-decimal pl-5 space-y-3 text-brown-700">
             <li><strong>Step 1:</strong> When an employee resigns, go to Payroll → Exit Workflow → New Resignation. Enter exit details and notice served.</li>
             <li><strong>Step 2:</strong> The platform auto-calculates unpaid salary, notice adjustment, leave encashment, gratuity, and ESOP cutoffs.</li>
-            <li><strong>Step 3:</strong> Generate the FnF Statement — a single-page reconciliation. Share with the employee for acknowledgement before disbursal.</li>
+            <li><strong>Step 3:</strong> Generate the FnF Statement: a single-page reconciliation. Share with the employee for acknowledgement before disbursal.</li>
             <li><strong>Step 4:</strong> Disburse dues via integrated payroll. The platform automatically issues Relieving, Experience, Form 16, and Form 12B documents.</li>
             <li><strong>Step 5:</strong> Update the Cap Table for any ESOP exercises, file Form PAS-3 if needed, and archive the record in the Compliance Vault.</li>
           </ol>
@@ -3868,7 +4590,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>⚠️</span> Statutory Warning: Delayed FnF Attracts Labour Complaints
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            Under Section 15 of the Payment of Wages Act, delay beyond the prescribed FnF window allows the employee to file a complaint with the Labour Commissioner — and the employer can be ordered to pay up to 10× the delayed amount as compensation. The Indian startup ecosystem has seen multiple cases where ex-employees have publicised delays on social media, severely damaging employer brand. Always FnF on time.
+            Under Section 15 of the Payment of Wages Act, delay beyond the prescribed FnF window allows the employee to file a complaint with the Labour Commissioner: and the employer can be ordered to pay up to 10× the delayed amount as compensation. The Indian startup ecosystem has seen multiple cases where ex-employees have publicised delays on social media, severely damaging employer brand. Always FnF on time.
           </p>
         </div>
 
@@ -3877,7 +4599,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <span>💡</span> Pro-Tip: Pre-Calculate FnF Before Accepting Resignation
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
-            When an employee submits resignation, run a provisional FnF on the platform same-day and share the indicative numbers. This builds trust, manages employee expectations, and prevents last-day surprises. It also lets you identify whether you&apos;ll recover or pay notice — useful for cash flow planning.
+            When an employee submits resignation, run a provisional FnF on the platform same-day and share the indicative numbers. This builds trust, manages employee expectations, and prevents last-day surprises. It also lets you identify whether you&apos;ll recover or pay notice: useful for cash flow planning.
           </p>
         </div>
       </div>
@@ -3899,7 +4621,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">The Central Control Room of Your Workspace</h3>
           <p className="text-brown-700 leading-relaxed">
-            Your Account Settings is the control centre of your Founding Legals workspace. Everything you configure here — your company identity, your people, your signature, your seal, and your branded templates — flows automatically into every agreement, invoice, and document you generate. Set it up once, and your paperwork stays consistent, compliant, and unmistakably yours.
+            Your Account Settings is the control centre of your Founding Legals workspace. Everything you configure here: your company identity, your people, your signature, your seal, and your branded templates: flows automatically into every agreement, invoice, and document you generate. Set it up once, and your paperwork stays consistent, compliant, and unmistakably yours.
           </p>
         </div>
 
@@ -3969,7 +4691,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">The Single Source of Truth</h3>
           <p className="text-brown-700 leading-relaxed">
-            The <strong>Details</strong> tab holds your company&apos;s core registry information — the single source of truth that populates the headers, footers, signature blocks, and payment sections of every document you produce. 
+            The <strong>Details</strong> tab holds your company&apos;s core registry information: the single source of truth that populates the headers, footers, signature blocks, and payment sections of every document you produce. 
           </p>
           <p className="text-brown-700 leading-relaxed mt-2">
             A live completion indicator sits beside the tab, showing how much of your essential profile is filled in. When it reads 100%, your company is fully document-ready; until then, it gently highlights what&apos;s still missing so nothing important is left blank on a legal page.
@@ -4003,7 +4725,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
             <div>
               <h4 className="font-semibold text-brown-800">4. Bank Details</h4>
               <p className="text-sm leading-relaxed">
-                Your account holder name, bank, account number, IFSC, branch, and account type. These appear automatically on invoices and the settlement sections of agreements — no re-typing, no errors.
+                Your account holder name, bank, account number, IFSC, branch, and account type. These appear automatically on invoices and the settlement sections of agreements: no re-typing, no errors.
               </p>
             </div>
             <div>
@@ -4195,7 +4917,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
         <div>
           <h3 className="text-xl font-semibold text-brown-900 mb-3">2. Generating Your Company Stamp</h3>
           <p className="text-brown-700 leading-relaxed">
-            The <strong>Stamp</strong> tab lets you add your company&apos;s official seal to documents — either by uploading an existing stamp image or by generating a clean, professional one within Founding Legals. When you create a stamp, you control every line:
+            The <strong>Stamp</strong> tab lets you add your company&apos;s official seal to documents: either by uploading an existing stamp image or by generating a clean, professional one within Founding Legals. When you create a stamp, you control every line:
           </p>
           <ul className="list-disc pl-5 mt-2 space-y-2 text-brown-700">
             <li>
@@ -4283,6 +5005,166 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
             Set your main Corporate Agreement template as default. This ensures that even if you draft a quick customized NDA or consulting contract, the header, logo, and footer align exactly with your company brand guidelines without manual adjustment.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  // ==========================================
+  // MODULE: CLIENT MANAGEMENT
+  // ==========================================
+  {
+    id: "getting-started-with-client-management",
+    title: "Getting Started with Client Management & Invoicing",
+    moduleId: "client-management",
+    moduleName: "Client Management",
+    readingTime: "8 minutes",
+    lastUpdated: "June 2026",
+    summary: "The Clients workspace is where you get paid. Learn how to onboard customers, generate legally compliant GST invoices, track outstanding payments, and close the loop with automated receipts.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Your Financial Command Centre</h3>
+          <p className="text-brown-700 leading-relaxed">
+            Running a business means two things matter above all else: delivering great work and getting paid for it. The Clients tab is Founding Legals&apos; answer to the second part. From the moment you onboard a customer to the moment a payment receipt lands in their inbox, every step of your revenue cycle lives here: GST-compliant invoices, real-time payment tracking, automated reminders, and formal receipts. No spreadsheets, no back-and-forth emails, no lost invoices.
+          </p>
+        </div>
+        
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">The 7-Step Invoicing &amp; Revenue Lifecycle</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Onboard &amp; Manage Customers</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Build a Complete Client Profile:</strong> Start by entering your client&apos;s core legal and billing details: Company Name, GSTIN, PAN, registered address, and primary contact. The platform automatically validates the GSTIN format as you type, catching errors at the source before they can appear on an invoice.
+            </p>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Your Lightweight CRM, Built In:</strong> Every client you add gets a dedicated profile that serves as a single source of truth. All their contact information, complete transaction history, every invoice ever raised, and current payment status are organized in one clean, accessible view.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Invoice Sending/Invoice sending - 1.png" alt="Step 1: Onboarding Customers" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Create a GST-Compliant Invoice</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Generate a GST-Compliant Invoice in Minutes:</strong> The moment a service is delivered or a project milestone is signed off, click <em>&quot;+ Add Invoice&quot;</em>. The invoice builder opens with your client&apos;s details already populated. Add your line items: service description, quantity, and rate: and the platform assembles a fully formatted, legally compliant invoice in real time.
+            </p>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Zero-Error Tax Calculation, Every Time:</strong> The system reads your registered GSTIN and cross-references your client&apos;s state to automatically apply the correct tax structure: CGST + SGST for intra-state transactions, IGST for inter-state supplies.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Invoice Sending/invoice sending - 2.png" alt="Step 2: GST-Compliant Invoice Creation" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Preview &amp; Review Invoice Details</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Audit-Ready Professional Formatting:</strong> Review your invoice before dispatching it. Apply your company letterhead, insert your authorized digital signature, and attach your company stamp from your settings. You can review all line items, tax allocations, and total outstanding balances in one comprehensive preview screen.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Invoice Sending/invoice sending - 3.png" alt="Step 3: Invoice Preview &amp; Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Manage Receivables &amp; Record Payment Action</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Track Invoice Status:</strong> Access details of any invoice and monitor its state (Sent, Overdue, Paid). When a payment is received, click the <em>&quot;Record Payment&quot;</em> button from the invoice options page to initiate the bookkeeping reconciliation process.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Invoice Sending/Invoice sending - 4.png" alt="Step 4: Record Payment Action" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Log Transaction Details</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select Payment Mode &amp; Date:</strong> Document the payment transaction precisely by entering details in the Record Payment dialog. Enter the amount received, payment date, transaction mode (UPI, Net Banking, Cheque, or Cash), and add optional reference IDs or notes to guarantee neat auditing records.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Invoice Sending/invoice sending - 5.png" alt="Step 5: Log Transaction Details Dialog" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Track Communication &amp; Invoice History</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Complete Audit Log &amp; Timeline:</strong> Review automated history logs containing timestamps of when the invoice was drafted, sent, opened, and paid. Keep a clear record of email dispatch details and tracking history directly within the invoice timeline to eliminate client communication disputes.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Invoice Sending/Invoice sendoiing - 6.png" alt="Step 6: Communication Log &amp; History Timeline" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Download &amp; Share Payment Receipts</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Auto-Generate Formal Receipts:</strong> The moment an invoice is fully paid and recorded, the platform generates a formal, sequentially numbered payment receipt under your brand letterhead. You can download this PDF in one click and deliver it to your client for their tax filing and compliance documentation.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Invoice Sending/Invoice sending - 7.png" alt="Step 7: Automated Payment Receipt" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Caution: GSTIN Accuracy is Non-Negotiable
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Before generating any invoice, confirm that your client&apos;s GSTIN is correct and that their registered state matches the billing address. A wrong GSTIN or an incorrect tax classification: applying CGST/SGST to an inter-state supply that requires IGST, or vice versa: directly invalidates the invoice for your client&apos;s Input Tax Credit (ITC) claim under the Central GST Act, 2017. The downstream consequences are serious: your client will reject the invoice, request a credit note and revised bill, and may delay payment until the correction is processed. This creates cash flow gaps, strained relationships, and additional administrative burden on both sides. Verify all client tax details at the point of onboarding, and update them the moment a client informs you of a GST registration change.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Invoice the Day You Deliver: Not at Month-End
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            The single most effective habit for healthy cash flow is raising an invoice on the same day a service is delivered, a milestone is completed, or a phase is signed off: not in a batch at the end of the month. Research consistently shows that invoices raised within 24 hours of delivery are paid significantly faster than those raised days or weeks later. Founding Legals makes this effortless: open the client&apos;s profile, click <em>&quot;+ Add Invoice&quot;</em>, populate the line items, and hit Send: in under two minutes. Prompt invoicing compresses your payment cycle, creates a clear paper trail, eliminates scope disputes (&quot;I thought this was included&quot;), and keeps your revenue recognition aligned with your actual delivery timeline: clean, accurate, and audit-ready.
           </p>
         </div>
       </div>

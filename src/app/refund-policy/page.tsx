@@ -5,7 +5,7 @@ import { Receipt } from "lucide-react";
 export const metadata = {
   title: "Refund & Cancellation Policy | Founding Legals",
   description:
-    "Refund & Cancellation Policy for Founding Legals (Arvya Tech Pvt. Ltd.) — how subscriptions, credits, government fees and professional fees are treated on cancellation.",
+    "Refund & Cancellation Policy for Founding Legals (Arvya Tech Pvt. Ltd.): how subscriptions, credits, government fees and professional fees are treated on cancellation.",
 };
 
 export default function RefundPolicyPage() {

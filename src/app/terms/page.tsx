@@ -103,7 +103,7 @@ const sections = [
   },
   {
     id: "nature-of-services",
-    title: "3. Nature of Services — Technology Platform, Not a Law Firm",
+    title: "3. Nature of Services: Technology Platform, Not a Law Firm",
     content: (
       <>
         <p>
@@ -118,13 +118,13 @@ const sections = [
         <p className="mt-4">The Platform currently provides:</p>
         <ul className="list-disc list-inside space-y-2 pl-2 mt-3">
           <li>
-            <strong>Document automation / self-help tools</strong> — generic,
+            <strong>Document automation / self-help tools</strong>: generic,
             computer-generated drafts of agreements and filings based on
             information you input. These are templates, not advice tailored to
             your specific facts.
           </li>
           <li>
-            <strong>Compliance workflow tools</strong> — checklists, calendars,
+            <strong>Compliance workflow tools</strong>: checklists, calendars,
             a document vault, cap-table tooling and a data room.
           </li>
           <li>
@@ -138,7 +138,7 @@ const sections = [
           </li>
         </ul>
         <p className="mt-4">
-          <strong>Marketplace Services — important.</strong> Where you engage a
+          <strong>Marketplace Services: important.</strong> Where you engage a
           professional through the Platform, the professional service is
           rendered by that independent professional and{" "}
           <strong>
@@ -464,10 +464,10 @@ const sections = [
             law.
           </li>
           <li>
-            Clauses that by their nature should survive termination — including
+            Clauses that by their nature should survive termination: including
             10 (Disclaimers), 11 (Limitation of Liability), 12 (Indemnity), 15
             (Governing Law &amp; Jurisdiction), and any accrued payment
-            obligations — shall so survive.
+            obligations: shall so survive.
           </li>
         </ul>
       </>
