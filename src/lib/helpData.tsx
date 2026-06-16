@@ -328,6 +328,822 @@ export const HELP_ARTICLES: HelpArticle[] = [
   // MODULE 2: AGREEMENTS
   // ==========================================
   {
+    id: "how-to-create-service-certificate",
+    title: "How to Issue a Service Certificate (Experience Certificate)",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "5 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Service Certificate — also called an Experience Certificate — is a formal document issued by a company to acknowledge an employee's job role, total tenure, and successful completion of their duties. Learn how to generate one professionally on Founding Legals in just 3 steps.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Issuing a Service Certificate</h3>
+          <p className="text-brown-700 leading-relaxed">
+            A Service Certificate — commonly referred to as an Experience Certificate or Relieving Letter — is one of the most important documents an employer provides at the time of an employee&apos;s separation. It formally acknowledges the employee&apos;s association with the company, confirms their designation and dates of employment, and is routinely required by future employers, banks, and government authorities for background verification. The Founding Legals platform generates a professionally formatted, company-letterheaded Service Certificate in a fast, 3-step wizard.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Creating a Service Certificate</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Navigate to Agreements and Select Service Certificate</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the module:</strong> From your Founding Legals dashboard, click <em>Agreements</em> in the left-hand navigation panel. On the Agreements landing page, locate the <em>Hire Someone</em> section. You will find the <em>Service Certificate</em> card, described as a formal certificate acknowledging an employee&apos;s job role, total tenure, and successful completion of duties. Click the green <em>+ Create</em> button on the Service Certificate card to begin.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Service Certificate/Service Certificate  - 1.png" alt="Step 1: Navigate to Agreements and click + Create on Service Certificate card" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Link the certificate to the departing employee:</strong> A <em>Select Recipient</em> panel slides in from the right side of the screen. This step associates the Service Certificate with a specific employee record in your Founding Legals account. You have two options:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Select an Existing Team Member:</strong> Browse the list of existing contacts in your account and click on the relevant employee to assign them as the recipient. This is the fastest option if the employee is already recorded in your team directory.</li>
+              <li><strong>Add a New Recipient:</strong> Click the <em>+ Add new recipient</em> button at the top of the panel to manually enter the departing employee&apos;s details. You can also use the search bar to find existing contacts quickly by name or email.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Recipient selection is mandatory. The system will not allow you to proceed without selecting or creating a recipient for this certificate.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Service Certificate/Service Certificate - 2 .png" alt="Step 2: Select Recipient — choose existing employee or add new recipient" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Choose Agreement Terms</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select the legal baseline for your certificate:</strong> After selecting the recipient, the <em>Choose Agreement Terms</em> panel appears. Select one of the two options and click <em>Confirm</em> to proceed:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals Standard Terms:</strong> Pre-populates the certificate with legally vetted, professionally worded standard clauses. This is the recommended option for most companies — it produces a clean, formally phrased certificate that meets industry expectations for background verification.</li>
+              <li><strong>Custom Terms:</strong> Allows you to write, import, or modify your own certificate language from scratch. Choose this option if your company has specific language requirements, industry-mandated phrasing, or a proprietary certificate format.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Service Certificate/Service Certificate - 3.png" alt="Step 3: Choose Agreement Terms — Founding Legals standard or custom terms" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Certificate Details (Step 1 of 3)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the issuing company and signatory information:</strong> The 3-step wizard opens with Certificate Details. This section establishes the official identity of the issuing employer and the individual signing the certificate on behalf of the company. The left-hand sidebar shows all 3 steps — Certificate Details, Employee Details, and Additional Terms — with green checkmarks marking completed steps. Fill in each field precisely:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Date of Issue / Certificate Date:</strong> Select the date on which this Service Certificate is being formally issued (e.g., 16 Jun 2026). This date appears at the top of the generated certificate and serves as the official reference date for all legal and background verification purposes. Use the actual date of issue, not the employee&apos;s last working day.</li>
+              <li><strong>Company Name:</strong> Enter the full registered company name including its legal suffix, exactly as it appears in the Ministry of Corporate Affairs (MCA) records (e.g., Founding Legals Private Limited). The certificate header will carry this name and any discrepancy with official MCA records may undermine its legal standing.</li>
+              <li><strong>Authorised Signatory:</strong> Enter the full name of the person authorized to sign this certificate on behalf of the company (e.g., Amit Kumar). This should be a Director, CEO, HR Head, or any individual empowered by the Board to issue formal employment documents.</li>
+              <li><strong>Signatory Designation:</strong> Enter the official title of the authorized signatory (e.g., Director, CEO, Head of Human Resources). This designation prints below the signatory&apos;s name on the certificate and validates the authority with which the document is issued.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Once all fields are complete, click <em>Next Step</em> to save this information and advance to Employee Details.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Service Certificate/Service Certificate - 4.jpg" alt="Step 4: Certificate Details — issue date, company name, signatory, and designation" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Employee Details (Step 2 of 3)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the departing employee&apos;s service record:</strong> This is the core information section that defines the substance of the certificate. Every field here appears verbatim in the generated document and will be reviewed by future employers and background screening agencies. Accuracy is non-negotiable:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Salutation:</strong> Select the appropriate formal prefix for the employee (Mr., Ms., Mrs., Dr.). This determines the pronoun and greeting phrasing throughout the certificate, ensuring professional consistency in all formal references to the employee.</li>
+              <li><strong>Employee Name:</strong> Enter the employee&apos;s full legal name exactly as it appears on their official identity documents (PAN card, Aadhaar, or Passport). Any spelling discrepancy can cause the certificate to be flagged or rejected during background verification by a new employer or financial institution.</li>
+              <li><strong>Employee Number:</strong> Enter the unique internal HR identification number assigned to this employee within your organization (e.g., 10056). This number is referenced in the certificate to enable quick verification during background checks and for cross-referencing with payroll and statutory records.</li>
+              <li><strong>Last Held Position / Designation:</strong> Enter the employee&apos;s most recent official job title within the company at the time of their relieving (e.g., Team Member, Senior Engineer, Product Manager). This is the designation that will be cited in the certificate as the role held at the time of service completion.</li>
+              <li><strong>Date of Joining:</strong> Select the date on which the employee originally commenced their employment with your organization (e.g., 16 Apr 2026). This date marks the beginning of the employee&apos;s tenure and, combined with the Date of Relieving, defines the total duration of service stated in the certificate.</li>
+              <li><strong>Date of Relieving:</strong> Select the employee&apos;s official last working day (e.g., 8 Jun 2026). This is the date on which the employment relationship formally concluded and the date up to which the company is certifying the employee&apos;s service.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save the employee record and advance to the Additional Terms step. You can click <em>Previous</em> at any point to revise the Certificate Details without losing your progress.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Service Certificate/Service Certificate  - 5.jpg" alt="Step 5: Employee Details — salutation, name, employee number, designation, joining and relieving dates" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Final Phase */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Generate, Format &amp; Deliver the Service Certificate</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Review, finalize, and issue the certificate:</strong> Once all three steps display green checkmarks in the sidebar, click the green <em>Generate</em> button. The platform opens the live document viewer displaying your complete, professionally formatted Service Certificate — addressed "To Whomsoever It May Concern" — on your company letterhead with the company&apos;s stamp and signatory block. Before sharing, complete the following final actions:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Add Signature Field (Required):</strong> From the <em>Add Fields</em> panel on the right, drag and drop the <em>Signature</em> tile onto the signature line above the signatory&apos;s name at the bottom of the certificate. This enables the authorized signatory to apply a formal digital signature to the document before it is dispatched to the employee.</li>
+              <li><strong>Add Date Field:</strong> Drag the <em>Date</em> tile to the appropriate date area on the document to allow the signatory to stamp the execution date at the time of signing.</li>
+              <li><strong>Upload Custom Stamp:</strong> If your organization uses a company rubber stamp or official seal, use the <em>Upload Custom Stamp</em> option to add it to the document. A company stamp significantly adds to the credibility and acceptance of the certificate in background verification processes.</li>
+              <li><strong>Document Settings:</strong> Toggle <em>Use Company Letterhead</em> on to apply your company&apos;s official header and footer to the certificate. Toggle <em>Logo Watermark</em> on or off depending on your company&apos;s branding preference.</li>
+              <li><strong>Share the Certificate:</strong> Click the <em>Shared</em> button to formally dispatch the certificate to the employee via email. The counter (e.g., 0/1) tracks delivery and signature status in real time. Note: this action is final and cannot be undone once sent.</li>
+              <li><strong>View Signed Status:</strong> Click the <em>Signed</em> button after the employee has received and signed the document to view and download the fully executed, e-signed Service Certificate for your records.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Service Certificate/Service Certificate  - 6.jpg" alt="Final Phase: Generated Service Certificate — Add Signature, Date, Stamp, then Share" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Note: Issue Only After Full and Final Settlement
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under standard HR and legal practice in India, a Service Certificate or Experience Certificate should be issued only after the employee has completed their notice period, handed over all company assets and access credentials, and received their Full and Final Settlement (FnF) payment. Issuing a certificate before the FnF is settled can create complications if the employee later raises disputes regarding unpaid dues, as the certificate may be used as evidence that the employment relationship ended cleanly without any pending obligations.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Use Company Letterhead and Stamp for Maximum Credibility
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            A Service Certificate carries the most weight during background verification when it is issued on official company letterhead, bears a company stamp or seal, and carries the wet or digital signature of an authorized signatory. Always enable <em>Use Company Letterhead</em> in the Document Settings and upload your company stamp before sharing. Many banks, embassies, and large employers specifically require company-stamped experience certificates for processing visa applications, loan approvals, and employee onboarding, so a plain-text certificate without these elements may not be accepted.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "how-to-create-internship-agreement",
+    title: "How to Draft and Issue an Internship Agreement",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "7 minutes",
+    lastUpdated: "June 2026",
+    summary: "An Internship Agreement is a formal document that defines the scope, duration, confidentiality, and stipend terms for an intern. Learn how to navigate the 5-step Founding Legals wizard to produce a legally sound internship offer letter in minutes.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Drafting Your Internship Agreement</h3>
+          <p className="text-brown-700 leading-relaxed">
+            Onboarding interns without a formal agreement is a compliance risk many startups overlook. An internship agreement protects your company&apos;s intellectual property, sets clear performance expectations, defines reporting structures, and prevents future disputes over stipends or non-solicitation obligations. The Founding Legals platform walks you through a structured 5-step wizard to generate a complete, professional internship offer letter that is compliant with Indian employment practices.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Creating an Internship Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Navigate to Agreements and Select Internship Agreement</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the module:</strong> From your Founding Legals dashboard, click <em>Agreements</em> in the left-hand navigation panel. On the Agreements landing page, locate the <em>Hire Someone</em> section. You will see the <em>Internship Agreement</em> card — described as an internship offer letter covering role details, duration, confidentiality, and stipend terms. Click the green <em>+ Create</em> button on the Internship Agreement card to begin the workflow.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Internship Agreement/internship agreement - 1.png" alt="Step 1: Navigate to Agreements and click + Create on Internship Agreement card" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Assign the intern to this agreement:</strong> A <em>Select Recipient</em> panel slides in from the right. This step links the agreement to a specific individual in your system. You have two options:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Select an Existing Team Member:</strong> Browse the list of existing contacts already added to your Founding Legals account. Click the desired recipient to select them instantly. This is the quickest route if the intern is already in your team directory.</li>
+              <li><strong>Add a New Recipient:</strong> Click the <em>+ Add new recipient</em> button at the top of the panel to manually enter a new intern&apos;s details. Use the search bar to quickly locate existing entries by name or email before creating a new record.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Recipient selection is mandatory to proceed. The system will not allow you to advance without confirming the intern linked to this agreement.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Internship Agreement/internship agreement - 2.png" alt="Step 2: Select Recipient panel — add new or select existing intern" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Choose Agreement Terms</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select your legal baseline:</strong> After selecting the recipient, the <em>Choose Agreement Terms</em> panel appears. This is a critical decision that determines the legal foundation of your agreement. Select one of the two options and click <em>Confirm</em>:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals Standard Terms:</strong> Pre-populates the entire agreement with legally vetted, ready-to-use internship clauses covering IP ownership, confidentiality, and conduct. This is the recommended option for most startups as the clauses have been reviewed by legal professionals for Indian compliance.</li>
+              <li><strong>Custom Terms:</strong> Allows you to import, write, or customize your own specific clauses from scratch. Select this option only if your organization has proprietary legal templates or if industry-specific provisions are required that differ from standard practice.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Internship Agreement/internship agreement - 3.png" alt="Step 3: Choose Agreement Terms — standard or custom legal baseline" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Company Details (Step 1 of 5)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter your company&apos;s issuing information:</strong> The 5-step wizard begins with Company Details. This section establishes the legal identity of the employer and must match your official MCA registration records. Complete every field carefully:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Company Name:</strong> Enter the full registered company name including its legal suffix (e.g., Founding Legals Private Limited). This must exactly match the name as registered with the Ministry of Corporate Affairs.</li>
+              <li><strong>Registered Office Address:</strong> Provide the precise official address as registered with the MCA. This address will appear on the letterhead and determines the legal jurisdiction governing the agreement.</li>
+              <li><strong>Company Phone:</strong> Enter the official company contact number for formal communication references in the agreement.</li>
+              <li><strong>Company Website:</strong> Enter the company&apos;s domain in the correct URL format (e.g., www.foundinglegals.com or https://foundinglegals.com). Note: entering the company name instead of a valid URL will trigger an inline validation error — the field will highlight in orange and display a warning message reminding you to use a valid domain format.</li>
+              <li><strong>CIN Number:</strong> Enter your 21-character alphanumeric Corporate Identification Number as issued by the MCA (e.g., U72900MH2021PTC365412). This number uniquely identifies your company in all legal documents.</li>
+              <li><strong>Authorised Signatory Name:</strong> Enter the full name of the individual authorized by the Board or company charter to execute employment and internship contracts on behalf of the company.</li>
+              <li><strong>Signatory Designation:</strong> Enter the official designation of the authorized signatory (e.g., Director, CEO, Head of HR). The platform displays a guidance tip confirming this person must be authorized by the Board to bind the company in employment contracts.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              The left-hand sidebar tracks all 5 steps. Completed steps show a green checkmark. The active step is highlighted. Monitor this panel throughout the process to track your progress.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Internship Agreement/internship agreement - 4.jpg" alt="Step 4: Company Details — company name, address, CIN, signatory fields" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Intern Details (Step 2 of 5)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the intern&apos;s personal information:</strong> This step captures the intern&apos;s legal identity. The data entered here maps directly into all formal clauses of the internship agreement. Enter the following with care:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Intern Full Name:</strong> Enter the intern&apos;s complete legal name exactly as it appears on their Aadhaar card or Passport. Any discrepancy here will cause mismatches during background checks and compliance audits.</li>
+              <li><strong>Salutation:</strong> Select the appropriate formal prefix (Mr., Ms., Mrs., Dr.). This dynamically updates the pronoun and greeting logic used across all generated contract templates, ensuring professional consistency throughout the document.</li>
+              <li><strong>Phone Number:</strong> Enter the intern&apos;s active mobile number. This is the communication anchor used for e-sign link dispatch, onboarding alerts, and document status notifications.</li>
+              <li><strong>Reference Number:</strong> Assign a structured internal tracking code for HR filing, background checks, and compliance audits (e.g., FL/2026/001 or HR/INT/2026/042). This unique serial number is a vital risk management tool that enables clean audit trails across payroll systems and compliance review periods.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save and cache this data. Clicking <em>Previous</em> takes you back to Company Details without losing any information already entered.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Internship Agreement/internship agreement - 5.jpg" alt="Step 5: Intern Details — full name, salutation, phone, and reference number" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Internship Terms (Step 3 of 5)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define the operational and structural parameters of the internship:</strong> This is the core step that gives the agreement its legal and commercial substance. Every value entered here governs the temporal scope, reporting structure, and monetary arrangement of the internship. Complete each field precisely:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Designation / Role:</strong> Enter the intern&apos;s official job title or functional role within the organization (e.g., AI Engineer, Marketing Intern, Product Intern). This designation defines the performance standard and the technical proficiency level expected from the intern, and it is printed on the internship offer letter.</li>
+              <li><strong>Offer Date:</strong> Select the date on which this internship offer is formally being made. This is the legal execution date and commencement anchor for all temporal conditions referenced in the agreement.</li>
+              <li><strong>Internship Start Date:</strong> Set the confirmed first working day of the internship. This date triggers all duration calculations and is the reference point for stipend payment timelines if applicable.</li>
+              <li><strong>Internship End Date:</strong> Set the last working day of the internship. Together with the Start Date, this defines the total internship duration, which appears in the agreement and governs any performance review windows.</li>
+              <li><strong>Base of Operation / Work Location:</strong> Specify the city or office from which the intern will primarily operate (e.g., Bengaluru). This determines which local labor practices and compliance standards are applicable during the internship period.</li>
+              <li><strong>Reporting Manager Name:</strong> Enter the full name of the internal team leader or department head to whom the intern will directly report. This establishes a formal reporting structure and is referenced in the communication and evaluation clauses.</li>
+              <li><strong>Reporting Manager Designation:</strong> Enter the reporting manager&apos;s official title (e.g., HR Manager, Engineering Lead). This information is used in the agreement for communication hierarchy documentation.</li>
+              <li><strong>Stipend Basis:</strong> Select whether the internship is <em>Paid</em> or <em>Unpaid</em>. If Unpaid is selected, the platform confirms no further monetary state progression is required and the stipend fields are hidden. If Paid is selected, additional stipend amount and payment frequency fields appear for configuration.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Internship Agreement/internship agreement - 6.jpg" alt="Step 6: Internship Terms — designation, dates, location, manager, and stipend basis" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Legal &amp; Other Terms (Step 4 of 5)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Set the governing legal covenants:</strong> This step defines the protective legal parameters that make the internship agreement enforceable and professionally defensible. Each value entered here is binding and will appear in the formal terms section of the internship offer letter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Arbitration / Jurisdiction City:</strong> Enter the city whose courts will have exclusive jurisdiction over any legal dispute arising from this agreement (e.g., Bengaluru, Chennai, Mumbai). Best practice is to enter the city of your company&apos;s registered office, which the platform confirms with an <em>Ideal Setup</em> validation badge when the jurisdiction city matches your corporate headquarters.</li>
+              <li><strong>Notice Period (days):</strong> Enter the number of calendar days of written notice required for early termination by either party. 30 days is the standard industry-balanced period that allows adequate handover time and prevents operational disruption.</li>
+              <li><strong>Non-Solicitation Period (years):</strong> Enter the duration in years during which the intern is prohibited from soliciting the company&apos;s employees, clients, or business connections after the internship concludes. A period of 1 year is the standard minimum that courts in India have generally upheld as reasonable and enforceable.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save these terms and advance to the final configuration step. All data is cached and safe to revise by clicking <em>Previous</em> at any point.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Internship Agreement/internship agreement - 7.jpg" alt="Step 7: Legal &amp; Other Terms — jurisdiction, notice period, non-solicitation" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Final Phase */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Generate, Format &amp; Send the Internship Agreement</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Finalize, sign, and deliver the internship offer letter:</strong> Once all five steps display green checkmarks in the sidebar, click the green <em>Generate</em> button. The platform opens the live document viewer showing the complete, formatted Internship Offer Letter on company letterhead. From this final screen, you must complete the following actions before sharing:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Add Signature &amp; Date Fields (Required):</strong> Before sharing the document, you must drag and drop the <em>Signature</em> and <em>Date</em> fields from the <em>Add Fields</em> panel on the right onto the appropriate signature lines in the document. This makes the agreement ready for formal e-signing by the recipient. You can also add <em>Text</em> blocks or a <em>Stamp</em> field if your organization uses a company seal.</li>
+              <li><strong>Upload Custom Stamp:</strong> Use the <em>Upload Custom Stamp</em> option if your company uses a branded rubber stamp or official seal on legal documents.</li>
+              <li><strong>Document Settings:</strong> Use the settings panel to toggle <em>Use Company Letterhead</em> on or off (adds your company header and footer to the document) and to enable or disable the <em>Logo Watermark</em> that appears as a background watermark on each page.</li>
+              <li><strong>Share the Document:</strong> Click the <em>Shared</em> button to send the finalized agreement to the intern. Note: this action dispatches the document immediately and cannot be undone. The counter (e.g., 0/1) tracks how many recipients have received versus signed the document.</li>
+              <li><strong>View Signed Status:</strong> Once the intern signs the document, click the <em>Signed</em> button to view and download the fully executed internship agreement with all e-signatures applied.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Internship Agreement/internship agreement - 8.jpg" alt="Final Phase: Generated Internship Offer Letter — Add fields, share, and track signatures" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Caution: Interns Are Not Employees Under Indian Law
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under the Apprentices Act, 1961, and various state-level Shops and Establishments Acts, interns occupy a distinct legal category from regular employees. Do not insert clauses that grant PF (Provident Fund), ESI (Employee State Insurance), gratuity, or statutory leave entitlements in an internship agreement, as doing so can lead to courts reclassifying the relationship as employment. Additionally, unpaid internships are legally valid only if the intern is primarily receiving training or skill development — using unpaid interns as substitutes for regular productive employees is a compliance risk.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Always Add Signature Fields Before Sharing
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            The most common error when generating internship agreements is clicking <em>Shared</em> before placing the Signature and Date fields on the document. Once shared, the document is dispatched and the action cannot be undone. Always drag the Signature and Date tiles from the Add Fields panel onto the correct signature lines in the document viewer before clicking Shared. This ensures the intern can formally e-sign the agreement, creating a legally complete and auditable record.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "how-to-create-offer-letter",
+    title: "How to Draft and Issue an Offer Letter",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "6 minutes",
+    lastUpdated: "June 2026",
+    summary: "An Offer Letter is the first formal document that establishes a hiring relationship between your company and a new employee. Learn how to configure company details, define compensation structures, set employment terms, and issue a legally sound offer letter on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Drafting Your Offer Letter</h3>
+          <p className="text-brown-700 leading-relaxed">
+            An offer letter is not just a formality — it is the first legally significant document in an employee&apos;s lifecycle with your company. It defines compensation, job title, joining date, and the governing terms under which employment begins. The Founding Legals platform guides you through a structured 6-step wizard to produce a compliant, professionally formatted offer letter in minutes.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Creating an Offer Letter</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Navigate to Agreements and Select Offer Letter</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the module:</strong> From your Founding Legals dashboard, click <em>Agreements</em> in the left navigation panel. The platform will confirm you are creating an Offer Letter by displaying it in the breadcrumb at the top of the screen. The left-hand sidebar shows the six steps of the wizard: Company Details, Candidate Details, Offer &amp; Joining Terms, Compensation Structure, Employment Terms, and Additional Terms. Each step must be completed in sequence before clicking <em>Generate</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Offer Letter/Offer Letter - 1.jpg" alt="Step 1: Navigate to Agreements and Select Offer Letter" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Company Details</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter your company&apos;s issuing information:</strong> This step captures the legal identity of the employer and the authorized signatory. Fill in the following fields:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Company Name:</strong> Enter the full registered name including the corporate suffix (e.g., Founding Legals Private Limited).</li>
+              <li><strong>Registered Office Address:</strong> Provide the complete address as registered with the MCA. This address appears on the letterhead and governs jurisdictional applicability.</li>
+              <li><strong>Authorised Signatory Name:</strong> Enter the full name of the individual authorized by the Board or company charter to sign employment contracts (e.g., Director, CEO, or Head of HR).</li>
+              <li><strong>Signatory Designation:</strong> Enter their official designation. Ensure this matches their Board resolution to maintain enforceability.</li>
+              <li><strong>HR Department Name:</strong> Enter the name of the HR representative managing the onboarding process. This person is named in the joining instructions section of the letter.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click the <strong>❓ Question Mark Icon</strong> next to any field for inline guidance. Once all fields are complete, click <em>Next Step</em> to proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Offer Letter/Offer Letter - 2.jpg" alt="Step 2: Company Details — Company name, signatory, and HR contact" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Candidate Details</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the candidate&apos;s personal information:</strong> Accurate candidate details are critical as they map directly into all legal terms of the offer letter. Enter the following:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Candidate Full Name:</strong> Enter the full legal name exactly as it appears on the candidate&apos;s government-issued identity documents (PAN card, Aadhaar). Any discrepancy may invalidate background checks or onboarding documents.</li>
+              <li><strong>Salutation:</strong> Select the appropriate formal title (Mr., Ms., Dr., etc.) to maintain consistency in all business communications.</li>
+              <li><strong>Phone Number:</strong> Enter the candidate&apos;s active mobile number. This is used for offer notification, SMS alerts, and subsequent onboarding communications.</li>
+              <li><strong>Reference Number:</strong> Assign a unique internal tracking code for HR filing, audit trails, and background check tracking (e.g., FL/2026/001 or HR/OFF/2026/042). This code helps identify the offer across payroll, compliance, and legal systems.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Offer Letter/Offer Letter - 3.jpg" alt="Step 3: Candidate Details — name, salutation, phone, and reference number" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Offer &amp; Joining Terms</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define the candidate&apos;s position and onboarding schedule:</strong> This step governs the core operational parameters of the employment relationship. Complete each field carefully:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Designation / Job Title:</strong> Enter the official job title that will appear on the offer letter, employment contract, and future performance reviews (e.g., Senior Software Engineer, Team Member).</li>
+              <li><strong>Date of Joining:</strong> Select the confirmed first working day. This date is legally binding and triggers statutory entitlements such as PF enrollment and leave accruals.</li>
+              <li><strong>Offer Acceptance Deadline:</strong> Set the deadline by which the candidate must accept or reject the offer. This date must always fall before the Date of Joining. A joining date earlier than the acceptance deadline is logically and legally flawed and will trigger a generation error on the platform.</li>
+              <li><strong>Work Location (City / Office):</strong> Specify the primary office city. This determines which local labor laws, tax slabs, and state-specific compliance rules apply to the candidate.</li>
+              <li><strong>Reporting Time on Joining Day:</strong> Set the exact time the candidate is expected to report on their first day. This establishes a professional, structured onboarding experience from day one.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Offer Letter/Offer letter - 4.jpg" alt="Step 4: Offer &amp; Joining Terms — designation, dates, location, and reporting time" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Compensation Structure</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Build a balanced and compliant salary breakup:</strong> This step is the financial heart of the offer letter. The platform provides a real-time salary builder that automatically calculates all components from your Annual CTC input:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Total CTC (Annual):</strong> Enter the comprehensive gross annual value, including all fixed and variable pay components (e.g., ₹5,00,000). This is the primary anchor value for all subsequent calculations.</li>
+              <li><strong>Total CTC in Words (Read-Only):</strong> An auto-populated numerical confirmation that prevents clerical errors before contract generation. Verify this matches your intended amount.</li>
+              <li><strong>Basic Salary (Monthly &amp; Annual):</strong> Auto-calculated from the Annual CTC. Best practice is to keep Basic between 40% to 50% of CTC for statutory PF compliance. Lowering Basic reduces employer PF liability but can affect employee gratuity and loan eligibility.</li>
+              <li><strong>House Rent Allowance — HRA (Monthly &amp; Annual):</strong> Typically set at 50% of Basic Salary for metro cities (Mumbai, Delhi, Bengaluru, Chennai) or 40% for non-metro cities. HRA provides maximum tax benefits to the employee under Section 10(13A) of the Income Tax Act.</li>
+              <li><strong>Medical Allowance (Monthly &amp; Annual):</strong> A standard component added for employee health and wellness benefit coverage.</li>
+              <li><strong>Special Allowance (Monthly &amp; Annual):</strong> A dynamically calculated plug component that absorbs the remaining unallocated gross salary to ensure the total breakup matches the defined Annual CTC perfectly, with no funds unallocated.</li>
+              <li><strong>Add Field Button:</strong> Use this to add additional standard components such as Transport Allowance, LTA, or custom performance bonuses.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Monitor the <strong>Remaining Balance indicator</strong> in the top-right corner of the form. It must show <em>₹0 Balance</em> before proceeding, confirming your salary structure is fully balanced.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Offer Letter/Offer letter - 5.jpg" alt="Step 5: Compensation Structure — CTC, Basic, HRA, and allowances breakdown" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Employment Terms (Legal Terms)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Set the governing legal parameters of the employment relationship:</strong> This step defines the key protective and operational covenants that make the offer letter a legally enforceable document. Each value entered here carries binding legal weight:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Confidentiality Period (Years):</strong> Set how long confidential information must be protected after the employment relationship ends. The standard defensible range under Indian law is 2 to 5 years. Excessively long periods may be ruled unenforceable by courts.</li>
+              <li><strong>Liability Cap (Months of Fees):</strong> Define the maximum financial damages either party can seek in case of a dispute. Limiting liability is a critical risk management step for your company. A typical cap is 12 months of salary as a calculated ceiling.</li>
+              <li><strong>Termination Notice (Days):</strong> Enter the mandatory written notice period required for either party to end the employment relationship. 30 days is the industry-standard balanced period that allows proper handover transitions without operational disruption.</li>
+              <li><strong>Court Jurisdiction City:</strong> Specify the city whose courts will have exclusive jurisdiction over any legal dispute arising from this offer letter. Best practice is to select the city of your company&apos;s registered office (e.g., Bengaluru) to ensure litigation convenience.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              All entries in this section are displayed to the candidate in the offer letter. Review every value for accuracy before proceeding, as these clauses are legally binding upon acceptance.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Offer Letter/Offer letter - 6.jpg" alt="Step 6: Employment Terms — confidentiality, liability, notice period, and jurisdiction" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Final Phase */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Generate, Send &amp; Track the Offer Letter</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Execute and monitor the complete offer lifecycle:</strong> Once all six steps are complete and the sidebar displays green checkmarks, click the green <em>&quot;Generate&quot;</em> button. The platform opens the live document viewer with your completed, formatted offer letter. From this final screen you can:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Send the Offer:</strong> Click the green <em>Send</em> button to execute a secure e-sign send-out to the candidate via email and SMS. Tokens are deducted from your balance upon successful dispatch.</li>
+              <li><strong>Enable Public Access:</strong> Toggle the <em>Shared</em> switch to ON to generate a unique, non-authenticated link for the document. This allows you to share the offer via WhatsApp or any channel without requiring the candidate to log in.</li>
+              <li><strong>Live Tracking:</strong> Monitor real-time contract lifecycle progress — track how many recipients have accessed or signed the shared link directly from this screen.</li>
+              <li><strong>Token Balance:</strong> Your credit balance is displayed at the top-right. Ensure sufficient credits are available before initiating the send-out.</li>
+              <li><strong>Delete Draft:</strong> Use the <em>Delete</em> button to instantly remove un-sent or draft contracts, freeing up processing resources and allowing you to start a fresh workflow.</li>
+              <li><strong>System Alerts:</strong> The notification bell icon provides real-time document status changes, sending confirmations, and system-level updates.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Offer Letter/7Offer letter - 7.jpg" alt="Final Phase: Generated Offer Letter — Send, Track, and Manage" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Caution: Date Logic and Acceptance Deadlines
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            The Offer Acceptance Deadline must always fall before the Date of Joining. Setting a joining date earlier than the acceptance deadline is legally and logically flawed — it implies the employee starts work before formally accepting the offer — and will trigger a generation error on the platform. Always verify that the acceptance window allows the candidate adequate time to review, seek legal counsel if needed, and formally respond.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Balance Your Compensation Structure Before Generating
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Before clicking Generate, confirm the Remaining Balance indicator on the Compensation Structure step reads <strong>₹0 Balance</strong>. Any unallocated amount means your salary breakup does not total the stated Annual CTC, which will cause mathematical inconsistencies in the offer letter. Use the Special Allowance component as the balancing plug, or add custom allowance fields to absorb any remaining amount.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "drafting-consultancy-agreement",
+    title: "How to Draft and Customize Your Consultancy Agreement",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "7 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Consultancy Agreement governs the relationship between your company and external advisors, freelancers, or independent consultants. Learn how to configure terms, deliverables, IP rights, and payments on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Drafting Your Consultancy Agreement</h3>
+          <p className="text-brown-700 leading-relaxed">
+            Welcome to the step-by-step administrator guide for drafting, configuring, and executing a legally binding consultancy agreement on the Founding Legals platform. Whether you are hiring a freelance developer, a growth marketing expert, or a strategic business advisor, documenting expectations, deliverables, IP transfer, and payments protects your intellectual property and ensures business continuity.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Creating a Consultancy Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Choose Agreement Terms</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select your baseline terms:</strong> Choose between standard and custom terms in the right-hand slide-out sidebar. Standard terms pre-populate the draft with legally vetted, industry-accepted independent contractor clauses, while custom terms allow you to import custom provisions.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Consultancy Agreement/Consultancy Agreement - 1.png" alt="Step 1: Choose Agreement Terms" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Company Details</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter corporate details:</strong> Input your company registered name, registered office address, email address, and registry information (CIN). If you need help with any field, hover or click the Question Mark Icon (❓) next to the input fields.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Consultancy Agreement/Consultancy Agreement - 2.png" alt="Step 2: Company Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Consultant Identity Details</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Provide Consultant Info:</strong> Enter the legal credentials of the consultant. This includes their full legal name (matching their PAN card), permanent address, age, parentage, PAN, Aadhaar number, and professional contact email for formal notifications.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Consultancy Agreement/Consultancy Agreement - 3.png" alt="Step 3: Consultant Identity Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Scope of Services and Deliverables</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define the assignment parameters:</strong> Specify the exact deliverables, task timelines, and performance criteria the consultant is expected to satisfy. Clear drafting here prevents scope creep and future performance disputes.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Consultancy Agreement/Consultancy Agreement - 4.png" alt="Step 4: Scope of Services and Deliverables" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Compensation &amp; Payment Terms</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Set compensation parameters:</strong> Outline the fee structure, whether it is a fixed retainer, milestone payments, or hourly rates. Specify billing periods, invoice payment timelines (for example, net 15 or net 30 days), and how out-of-pocket expenses are reimbursed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Consultancy Agreement/Consultancy Agreement -5.jpg" alt="Step 5: Compensation &amp; Payment Terms" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Intellectual Property (IP) Rights</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Protect proprietary works:</strong> Determine the IP assignment terms. Select standard assignment clauses to ensure all codes, designs, branding, or operational workflows developed by the consultant are fully owned by the company upon payment.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Consultancy Agreement/Consultancy Agreement 6.jpg" alt="Step 6: Intellectual Property Rights" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Termination &amp; Notice Period</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Establish dissolution parameters:</strong> Define how the agreement can be ended. Set notice periods required for either party to terminate for convenience, and establish parameters for immediate termination for cause (such as breach of confidentiality).
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Consultancy Agreement/Consultancy Agreement - 7.jpg" alt="Step 7: Termination &amp; Notice Period" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Arbitration &amp; Jurisdiction Settings</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select dispute resolution seats:</strong> Specify the city of arbitration for formal dispute resolutions under the Arbitration and Conciliation Act, 1996, and set the exclusive courts holding local authority over legal disputes.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Consultancy Agreement/Consultancy Agreement 8.jpg" alt="Step 8: Arbitration &amp; Jurisdiction Settings" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 9 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">9</span>
+              <strong className="text-base text-brown-900">Additional Terms &amp; Covenants</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define custom rules:</strong> Enter any specialized legal clauses, non-disclosure parameters, or custom business covenants relevant to your consultancy relationship. If standard provisions are sufficient, you can leave these optional fields blank.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Consultancy Agreement/Consultancy Agreement 9.jpg" alt="Step 9: Additional Terms &amp; Covenants" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 10 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">10</span>
+              <strong className="text-base text-brown-900">Review Progress &amp; Generation</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Generate the document:</strong> Verify that all steps in the left-hand wizard navigation panel are successfully completed with green checkmarks. Check your wallet balance in the top-right and click the green <em>&quot;Generate&quot;</em> button to construct your contract draft.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Consultancy Agreement/Consultancy Agreement - 10.jpg" alt="Step 10: Review Progress &amp; Generation" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Final Phase */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Document Editor &amp; Formatting</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Format and sign:</strong> The editor opens the interactive contract viewer. Drag and drop signature placeholders, date lines, or company stamps from the right panel. Toggle letterheads and watermarks on or off, then send the agreement to the consultant.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Hire Someone/Consultancy Agreement/Consultancy Agreement 10.jpg" alt="Final Phase: Document Editor &amp; Formatting" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Caution: Avoid Employee Classification Risk
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under Indian labor laws, consultants must not be treated as regular employees. Avoid adding clauses that mandate fixed working hours, impose employee benefits (like Provident Fund or Gratuity), or restrict them from serving other clients. Doing so can lead to courts reclassifying the relationship as employer-employee, exposing your startup to retroactive benefit claims and tax liabilities.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Specify TDS and Tax Deductions
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Ensure your compensation terms state whether the consultancy fee is inclusive or exclusive of GST. Additionally, remember that payments to individual consultants are subject to Tax Deducted at Source (TDS) under Section 194J of the Income Tax Act (generally 10% for professional services or 2% for technical services). State these tax allocations clearly to avoid billing disputes.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
     id: "how-to-create-founders-agreement",
     title: "How to Draft and Customize Your Founders' Agreement",
     moduleId: "agreements",
@@ -551,6 +1367,501 @@ export const HELP_ARTICLES: HelpArticle[] = [
           </div>
           <p className="text-sm text-brown-700 leading-relaxed">
             Under state-specific stamp acts, a founders agreement must be stamped with appropriate non-judicial stamp duty to be admissible as evidence in court. Choose the correct execution state during the drafting process to ensure Founding Legals calculates the correct stamp duty denomination.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  // ==========================================
+  // MODULE 3: PROTECT YOUR IP
+  // ==========================================
+  {
+    id: "how-to-create-non-compete-agreement",
+    title: "How to Draft a Non-Compete Agreement",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "7 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Non-Compete Agreement is a critical IP protection tool that prevents employees, contractors, and business associates from working with competitors or soliciting your clients and team members. Learn how to configure and generate a legally enforceable Non-Compete Agreement on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Protect Your IP — Agreement Type</p>
+          <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Protect Your IP</strong> category on the Founding Legals Agreements page, alongside the Mutual NDA, IP Assignment Agreement, Technology Transfer Agreement, Software License Agreement, and Trademark License Agreement.</p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Drafting Your Non-Compete Agreement</h3>
+          <p className="text-brown-700 leading-relaxed">
+            A Non-Compete Agreement is one of the most powerful — and most misunderstood — legal instruments available to a founder. It contractually prevents an employee, contractor, or business associate from directly or indirectly working with a competitor, soliciting your clients, or poaching your team members during and after their engagement with your company. Under Indian contract law, non-compete covenants are enforceable when they are reasonable in scope, duration, and geographic territory. The Founding Legals platform structures this agreement across a clear 6-step wizard to ensure every clause is precise, balanced, and legally defensible.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Creating a Non-Compete Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Navigate to Agreements and Select Non-Compete Agreement</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the module:</strong> From your Founding Legals dashboard, click <em>Agreements</em> in the left-hand navigation panel. On the Agreements landing page, scroll to the <em>Protect Your IP</em> section — positioned below the Hire Someone category. Locate the <em>Non-Compete Agreement</em> card, described as preventing employees and business associates from working with competitors or soliciting your clients and team. Click the green <em>+ Create</em> button to start the workflow.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Non-Compete Agreement/Non-Compete Agreement - 1.png" alt="Step 1: Locate Non-Compete Agreement under Protect Your IP section and click + Create" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient (Covenantor)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Assign the individual bound by this agreement:</strong> A <em>Select Recipient</em> panel slides in from the right. The recipient in a Non-Compete Agreement is the Covenantor — the person who is legally bound by the non-compete restrictions. This is typically the employee, contractor, or business associate you are engaging. Choose one of the two options:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Select an Existing Contact:</strong> Browse the list of team members or contacts already registered in your Founding Legals account and click to select the relevant individual.</li>
+              <li><strong>Add a New Recipient:</strong> Click the <em>+ Add new recipient</em> button to manually enter the covenantor&apos;s details. Use the search bar to quickly check if the person already exists in your records before creating a new entry.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Recipient selection is mandatory to proceed. The system will not allow you to advance to the next panel without a confirmed covenantor.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Non-Compete Agreement/Non-Compete Agreement - 2.png" alt="Step 2: Select Recipient panel — select existing contact or add new covenantor" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Choose Agreement Terms</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select your legal baseline:</strong> After confirming the recipient, the <em>Choose Agreement Terms</em> panel appears. This determines the legal foundation of your Non-Compete Agreement. Select one of the two options and click <em>Confirm</em>:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals Standard Terms:</strong> Pre-populates the agreement with legally vetted, ready-to-use non-compete clauses covering competitive restrictions, solicitation prohibitions, confidentiality obligations, and remedies for breach. Recommended for most startups and growing businesses.</li>
+              <li><strong>Custom Terms:</strong> Allows you to import, write, or modify your own specialized clauses from scratch. Use this option if your industry has unique competitive restrictions, or if your legal counsel has prescribed specific covenant language.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Non-Compete Agreement/Non-Compete Agreement -3.png" alt="Step 3: Choose Agreement Terms — standard or custom terms baseline" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Agreement Details (Step 1 of 6)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Set the execution parameters of the agreement:</strong> The 6-step wizard opens with Agreement Details — the foundational execution metadata of the contract. The breadcrumb at the top confirms you are creating a <em>Non-Compete Agreement</em>. The left-hand sidebar lists all 6 steps: Agreement Details, Company Details, Covenantor Details, Commercial Terms, Restrictions &amp; Remedies, and Additional Terms. Track your progress via the green checkmarks. Complete each field:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Execution Place:</strong> Enter the city where this agreement is being formally executed (e.g., Bengaluru, Mumbai, Chennai). The execution city is cited in the opening clause of the agreement and determines which state&apos;s law and courts have primary jurisdiction over the contract.</li>
+              <li><strong>Execution Date:</strong> Click the calendar icon and select the date on which both parties are formally executing the agreement. This date is the legally effective commencement date of all restrictions and obligations in the contract.</li>
+              <li><strong>Execution Month &amp; Execution Year:</strong> These fields are automatically populated by the platform the moment you select the Execution Date. You do not need to fill them manually — they auto-fill to ensure formatting consistency throughout the generated document.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save these details and proceed to Company Details.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Non-Compete Agreement/Non-Compete Agreement -4.jpg" alt="Step 4: Agreement Details — execution place, date (auto-fills month and year)" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Company Details (Step 2 of 6)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the company&apos;s legal identity:</strong> This step establishes the legal identity of the company that is the beneficiary of the non-compete covenants — the party the covenantor is agreeing not to compete against. Note that the Company Name field in this agreement uses the short-form version without the corporate suffix. Complete all fields carefully:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Company Name (without Private Limited):</strong> Enter the company&apos;s short-form trading name, excluding the &quot;Private Limited&quot; suffix (e.g., Founding Legals Services). The platform appends the full legal suffix automatically in the generated agreement text.</li>
+              <li><strong>Company CIN:</strong> Enter your 21-character alphanumeric Corporate Identification Number as registered with the MCA (e.g., U72900MH2021PTC365412). This uniquely identifies your company in the agreement&apos;s parties clause.</li>
+              <li><strong>Registered Office Address:</strong> Provide the complete registered address as filed with the MCA. This address appears in the agreement&apos;s parties section and governs the legal domicile of the company for jurisdictional purposes.</li>
+              <li><strong>Authorised Signatory Name:</strong> Enter the full name of the company representative who is signing the Non-Compete Agreement on behalf of the company (e.g., Amit Kumar).</li>
+              <li><strong>Authorised Signatory Designation:</strong> Enter the official title of the authorized signatory (e.g., Director, Manager, CEO). This person must be authorized by the Board or company charter to execute legal agreements and bind the company.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save and proceed to Covenantor Details.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Non-Compete Agreement/Non-Compete Agreement -5.jpg" alt="Step 5: Company Details — short-form name, CIN, address, signatory name and designation" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Covenantor Details (Step 3 of 6)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the individual bound by the non-compete restrictions:</strong> The Covenantor is the person who will be legally restricted from competing with your business. This section captures their complete legal identity as it will appear in the agreement. Every field here maps verbatim into the Parties clause:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Covenantor Name:</strong> Enter the individual&apos;s full legal name exactly as it appears on their PAN card or Aadhaar. Any name discrepancy can create enforcement challenges if the agreement is contested in court.</li>
+              <li><strong>Son/Daughter of (Father&apos;s / Mother&apos;s Name):</strong> Enter the name of the covenantor&apos;s parent as it appears on their official identity documents. This field is standard in Indian legal agreements as it provides an additional layer of identity verification beyond the name alone, reducing the risk of identity disputes.</li>
+              <li><strong>PAN Number:</strong> Enter the covenantor&apos;s valid 10-character Permanent Account Number (e.g., LXAQW5689D). The PAN uniquely identifies the individual for tax and government record-keeping purposes and strengthens the legal traceability of the covenantor.</li>
+              <li><strong>Address:</strong> Enter the covenantor&apos;s complete permanent residential address including flat/house number, street, locality, city, state, and PIN code (e.g., Flat 4B, Skyview Apartments, Indiranagar 100 Feet Road, Bengaluru, Karnataka - 560038).</li>
+              <li><strong>Engagement Type:</strong> Select the nature of the covenantor&apos;s relationship with your company from the dropdown — for example, <em>an Employee</em>, <em>a Consultant</em>, or <em>a Business Associate</em>. This selection determines the legal framing of the recitals and governs which specific non-compete clauses are most applicable.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Non-Compete Agreement/Non-Compete Agreement -6.jpg" alt="Step 6: Covenantor Details — full name, parent name, PAN, address, engagement type" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Commercial Terms (Step 4 of 6)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define the commercial basis and competitive scope of the agreement:</strong> This step establishes the financial consideration being paid in exchange for the covenantor&apos;s agreement not to compete, and clearly defines the scope of business activities that are subject to restriction:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Consideration Type:</strong> Select the nature of the financial benefit the covenantor is receiving in exchange for agreeing to the non-compete restrictions. Common options include <em>Salary</em> (for employees), <em>Consulting Fee</em> (for contractors), or other agreed monetary forms. Under Indian contract law, a non-compete agreement must be supported by valid consideration — the covenantor must receive something of value in return for accepting the restrictions. A non-compete without consideration is generally unenforceable.</li>
+              <li><strong>Consideration Amount (INR):</strong> Enter the total monetary value of the consideration being exchanged (e.g., ₹5,00,000). This amount is stated in the recitals of the agreement and forms the contractual basis for the restrictions.</li>
+              <li><strong>Business Description (for Non-Compete scope):</strong> Write a precise, specific description of the company&apos;s business activities that define the competitive landscape the covenantor is restricted from entering (e.g., &quot;Delivering SaaS products for startup legal documentation and compliance automation&quot;). This description is critical — vague business descriptions lead to courts invalidating the non-compete scope as unreasonably broad.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Non-Compete Agreement/Non-Compete Agreement -7.jpg" alt="Step 7: Commercial Terms — consideration type, amount, and business description" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Restrictions &amp; Remedies (Step 5 of 6)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define the protective boundaries and financial consequences of breach:</strong> This is the most legally substantive step of the entire agreement. The restrictions and remedies you define here are the core enforceable covenants. Every value must be commercially reasonable and proportionate, as Indian courts have consistently struck down overbroad restrictions:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Post-Engagement Non-Compete Period (Months):</strong> Enter the number of months during which the covenantor is prohibited from competing with your business after their engagement ends (e.g., 24 months). This restriction applies to joining a competitor, starting a competing business, or providing competing services. Indian courts have generally upheld post-engagement non-competes of 12 to 24 months as reasonable — periods exceeding 36 months face increased risk of being declared unenforceable.</li>
+              <li><strong>Restricted Territory:</strong> Specify the geographic region within which the non-compete restrictions apply (e.g., Chennai, India, South Asia). The territory must be directly linked to where your company actively conducts business. Overly broad territories — particularly worldwide restrictions for a company operating only in India — are routinely struck down by courts.</li>
+              <li><strong>Non-Solicitation Period (Months):</strong> Enter the number of months during which the covenantor is prohibited from soliciting your employees, clients, and business contacts after their engagement (e.g., 24 months). Non-solicitation clauses are generally viewed more favorably by courts than pure non-compete restrictions and have a higher enforcement rate.</li>
+              <li><strong>Confidentiality Period (Years):</strong> Set the duration in years during which the covenantor must maintain confidentiality of all proprietary business information, trade secrets, and non-public data they accessed during their engagement (e.g., 5 years). The standard defensible range under Indian IP law is 3 to 5 years.</li>
+              <li><strong>Liquidated Damages Amount (INR):</strong> Enter the pre-agreed financial penalty the covenantor will be liable to pay if they breach the non-compete restrictions (e.g., ₹5,00,000). This sum must be a genuine pre-estimate of the loss your business would suffer from a breach — it cannot be punitive or disproportionate, or a court may refuse to enforce it.</li>
+              <li><strong>Court Jurisdiction City:</strong> Enter the city whose courts will have exclusive jurisdiction over disputes arising from this agreement (e.g., Bengaluru). Best practice is to align this with your company&apos;s registered office city to ensure litigation convenience.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Non-Compete Agreement/Non-Compete Agreement -8.jpg" alt="Step 8: Restrictions &amp; Remedies — non-compete period, territory, non-solicitation, confidentiality, liquidated damages, jurisdiction" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Final Phase */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Generate, Review &amp; Execute the Non-Compete Agreement</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Finalize and deliver the executed agreement:</strong> Once all six steps are complete with green checkmarks in the sidebar, click the green <em>Generate</em> button. The platform opens the live document viewer displaying the full, formatted Non-Compete Agreement on company letterhead. The document begins with a <em>Title</em> section, followed by a <em>Parties</em> clause naming both the company and the covenantor, a <em>Recitals</em> section confirming the nature of engagement and consideration, and then the operative <em>Covenant Not to Compete</em> clauses. Before sharing, complete these final actions:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Verify the Document:</strong> Carefully read through the full generated text. Confirm that the company name, covenantor details, consideration amount, business description, restriction period, and territory are all accurately reflected as entered.</li>
+              <li><strong>Add Signature Fields (Required):</strong> From the <em>Add Fields</em> panel on the right, drag and drop the <em>Signature</em> tile onto the signature lines for both the company signatory and the covenantor. This enables formal digital e-signing by both parties.</li>
+              <li><strong>Add Date Fields:</strong> Drag the <em>Date</em> tile to the date lines adjacent to each signature block so that the exact date of signing is recorded for both parties.</li>
+              <li><strong>Document Settings:</strong> Enable <em>Use Company Letterhead</em> to add your official company header and footer. Toggle the <em>Logo Watermark</em> based on your branding preference.</li>
+              <li><strong>Share the Agreement:</strong> Click <em>Shared</em> to send the agreement to the covenantor for review and e-signing. The counter (e.g., 0/1) tracks how many recipients have signed. This action is final and cannot be undone.</li>
+              <li><strong>Track Signed Status:</strong> Once the covenantor signs, click <em>Signed</em> to view and download the fully executed Non-Compete Agreement for your legal records.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Non-Compete Agreement/Non-Compete Agreement -9.jpg" alt="Final Phase: Generated Non-Compete Agreement — add signature and date fields, share, and track" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Legal Caution: Indian Courts and Non-Compete Enforceability
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under Section 27 of the Indian Contract Act, 1872, any agreement in restraint of trade is void. However, Indian courts have carved out a narrow exception for post-employment non-competes that are reasonable in scope, duration, and territory, and supported by genuine consideration. Blanket non-competes — those that ban an individual from working in any capacity in an industry, without geographic limits, or for periods exceeding 2 to 3 years — are routinely struck down. Always ensure your restrictions are specifically tailored to your actual business interests, and consult your legal counsel before serving a non-compete in a dispute context.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Be Specific in Your Business Description
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            The Business Description field on the Commercial Terms step is not a formality — it is the legal perimeter of your entire non-compete. Vague descriptions like &quot;technology company&quot; or &quot;software services&quot; give courts insufficient grounds to enforce the restriction precisely. Write a specific, focused description of exactly what your company does: the market segment, the type of customers served, the technology or service provided, and the geography. For example: &quot;SaaS-based legal documentation and startup compliance platform serving early-stage Indian founders and DPIIT-registered companies.&quot; The more precisely you define your business, the more enforceable your non-compete restriction becomes.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "how-to-create-mutual-nda",
+    title: "How to Draft a Mutual Non-Disclosure Agreement (NDA)",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "7 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Mutual Non-Disclosure Agreement (NDA) protects confidential information shared between two parties during business discussions. Learn how to configure disclosure details, party identities, confidentiality durations, and execute a legally sound Mutual NDA on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Protect Your IP — Agreement Type</p>
+          <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Protect Your IP</strong> category on the Founding Legals Agreements page, alongside the Non-Compete Agreement, IP Assignment Agreement, Technology Transfer Agreement, Software License Agreement, and Trademark License Agreement.</p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Drafting Your Mutual NDA</h3>
+          <p className="text-brown-700 leading-relaxed">
+            A Mutual Non-Disclosure Agreement (NDA), also known as a two-way NDA, is the bedrock of secure business discussions. It ensures that when two entities share proprietary business information, intellectual property, financial data, or trade secrets during evaluation stages (such as partnership discussions, investment pitches, or joint venture assessments), both parties are equally obligated to maintain confidentiality. The Founding Legals platform guides you through a clear, structured wizard to draft, review, and execute a balanced, legally binding Mutual NDA under Indian law.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Creating a Mutual NDA</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Navigate to Agreements and Select Mutual NDA</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the module:</strong> From your dashboard, click <em>Agreements</em> in the left-hand navigation menu. Scroll to the <em>Protect Your IP</em> section and locate the <em>Mutual Non-Disclosure Agreement (NDA)</em> card. This module is designed to protect private business information shared between two parties by preventing unauthorized disclosure. Click the green <em>+ Create</em> button to begin.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Mutual Non-Disclosure Agreement (NDA)/Mutual Non-Disclosure Agreement (NDA) - 1.png" alt="Step 1: Locate Mutual NDA and click + Create" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient (Party B)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define the counterparty (Party B):</strong> A slide-out panel titled <em>Select Recipient</em> appears from the right. In a Mutual NDA, you are Party A and the counterparty you are sharing information with is Party B. You must select who will sign the agreement. Select an existing team member/contact from the list, or click <em>+ Add new recipient</em> to enter a new counterparty contact details. Recipient selection is mandatory to proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Mutual Non-Disclosure Agreement (NDA)/Mutual Non-Disclosure Agreement (NDA) - 2.png" alt="Step 2: Select Recipient panel to assign the counterparty" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Choose Agreement Terms Baseline</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select your legal baseline:</strong> The <em>Choose Agreement Terms</em> panel slides out. Select between two options:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals Standard Terms:</strong> Pre-populates the agreement with legally vetted, standard mutual NDA provisions. This balances the rights and obligations of both parties equally, ensuring a smooth path to signature without heavy negotiations.</li>
+              <li><strong>Custom Terms:</strong> Choose this if you need to upload or paste custom-drafted confidentiality and non-use provisions tailored by your legal counsel.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Select your preference and click <em>Confirm</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Mutual Non-Disclosure Agreement (NDA)/Mutual Non-Disclosure Agreement (NDA) - 3.png" alt="Step 3: Choose default or custom agreement terms baseline" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Agreement Details (Step 1 of 6)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Establish the agreement&apos;s signing context:</strong> In Step 1 of the configuration wizard, enter the basic parameters for the contract&apos;s execution details:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Execution Place:</strong> Enter the city where the agreement is formally signed (e.g., Bengaluru). This city sets the geographic base for jurisdictional clauses.</li>
+              <li><strong>Execution Day:</strong> Click the calendar icon to select the exact execution date.</li>
+              <li><strong>Execution Month &amp; Execution Year:</strong> These are auto-filled by the platform based on the date selected in the Execution Day field, ensuring perfect document formatting.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save these details and proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Mutual Non-Disclosure Agreement (NDA)/Mutual Non-Disclosure Agreement (NDA) - 4.jpg" alt="Step 4: Agreement Details — place and execution date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Party A Details (Step 2 of 6)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Identify your company as the first party:</strong> Step 2 gathers the legal parameters of your organization (Party A):
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Party A Company Name (without Private Limited):</strong> Enter your company&apos;s name without the trailing &quot;Private Limited&quot; suffix (e.g., Testing). The template handles adding the corporate type suffix automatically.</li>
+              <li><strong>Party A CIN:</strong> Enter your company&apos;s 21-character Corporate Identification Number registered with the MCA (e.g., U72200MH2026PTC123456).</li>
+              <li><strong>Party A Registered Office Address:</strong> Enter your company registered office address. This must match your official MCA filing records exactly.</li>
+              <li><strong>Party A Authorised Signatory Name:</strong> Enter the name of the executive authorized to sign the NDA on behalf of Party A (e.g., John Doe).</li>
+              <li><strong>Party A Signatory Designation:</strong> Enter the signatory&apos;s official title (e.g., Director, Manager, CEO).</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to proceed to entering Party B&apos;s details.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Mutual Non-Disclosure Agreement (NDA)/Mutual Non-Disclosure Agreement (NDA) - 5.jpg" alt="Step 5: Party A Details — company name, CIN, registered office, and signatory info" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Party B Details (Step 3 of 6)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Identify the counterparty organization:</strong> Step 3 gathers the legal credentials of the second party (Party B) participating in the mutual information exchange:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Party B Company Name (without Private Limited):</strong> Enter the counterparty company name, omitting the &quot;Private Limited&quot; suffix (e.g., XYZ PVT LTD).</li>
+              <li><strong>Party B CIN:</strong> Enter the counterparty&apos;s 21-character Corporate Identification Number. If they are a foreign entity or do not possess a CIN, you can enter a placeholder ID, such as a dummy or national registration ID (e.g., U00000AA0000PTC000000).</li>
+              <li><strong>Party B Registered Office Address:</strong> Enter the complete physical address of Party B&apos;s registered office, including postal codes.</li>
+              <li><strong>Party B Authorised Signatory Name:</strong> Enter the full name of Party B&apos;s signing authority (e.g., Jane Doe).</li>
+              <li><strong>Party B Signatory Designation:</strong> Enter their corporate title (e.g., Director).</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save and move to configuration of agreement terms.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Mutual Non-Disclosure Agreement (NDA)/Mutual Non-Disclosure Agreement (NDA) - 6.jpg" alt="Step 6: Party B Details — counterparty legal identity details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Agreement Terms (Step 4 of 6)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define the scope and durations of confidentiality:</strong> Step 4 contains the core operational parameters of the mutual confidentiality covenants. Pay close attention to these settings:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Purpose of Disclosure:</strong> Write a concise, clear description of the business context for sharing info (e.g., &quot;To discuss potential business collaboration&quot;). This defines the scope of use — using the shared information for any purpose other than what is written here constitutes a breach of contract.</li>
+              <li><strong>Term of Agreement (Years):</strong> Specify the length of the sharing window during which the parties expect to exchange confidential information (e.g., 3 years).</li>
+              <li><strong>Termination Notice (Days):</strong> Set the notice period required if either party wants to terminate the agreement before the full term ends (e.g., 30 days, which is the standard industry buffer).</li>
+              <li><strong>Survival Period of Confidentiality (Years):</strong> Enter the number of years the confidentiality obligation continues *after* the agreement terminates or expires (e.g., 5 years). This ensures that even if discussions end, the shared secrets remain protected for the specified duration.</li>
+              <li><strong>Return/Destroy Certification Period (Days):</strong> Enter the number of days within which a party, upon written request, must return or destroy all physical/digital copies of confidential data and certify this in writing (e.g., 14 days).</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save and proceed to remedies configuration.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Mutual Non-Disclosure Agreement (NDA)/Mutual Non-Disclosure Agreement (NDA) - 7.jpg" alt="Step 7: Agreement Terms — purpose, term, notice, survival, and return period" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Remedies &amp; Jurisdiction (Step 5 of 6)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure dispute resolution and financial penalties:</strong> Step 5 outlines the legal recourse in the event of a breach of confidentiality. Complete the fields as follows:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Liquidated Damages Amount (INR):</strong> Specify the pre-agreed financial penalty that the breaching party must pay to the injured party upon a breach of confidentiality (e.g., 5,00,000).</li>
+              <li><strong>Liquidated Damages in Words:</strong> This field is auto-calculated and filled by the platform in text form (e.g., Rupees Five Lakh Only) to prevent discrepancies.</li>
+              <li><strong>Seat of Arbitration / Jurisdiction City:</strong> Enter the city whose courts will have exclusive jurisdiction, and where arbitration proceedings will take place if disputes arise (e.g., Bengaluru). The system displays a validation note if the seat matches your corporate seat.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Once these details are saved, the <em>Generate</em> button will become active. Click it to advance to final review.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Mutual Non-Disclosure Agreement (NDA)/Mutual Non-Disclosure Agreement (NDA) - 8.jpg" alt="Step 8: Remedies &amp; Jurisdiction — liquidated damages and arbitration seat" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Final Phase */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Final Review &amp; Field Placement (Step 6 of 6)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Prepare the document for execution:</strong> Once you click <em>Generate</em>, the system produces the full draft. The document viewer displays the Mutual Non-Disclosure Agreement, starting with the <em>Title</em>, followed by the <em>Parties</em> details, <em>Recitals</em> outlining the sharing context, and detailed terms. Follow these final execution steps:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Add Interactive Fields:</strong> Drag and drop the <em>Signature</em> field from the right-hand panel onto the respective signature lines for Party A and Party B.</li>
+              <li><strong>Add Date and Stamp Fields:</strong> Drag the <em>Date</em> field onto the signature block. You can also upload a custom stamp if necessary.</li>
+              <li><strong>Configure Settings:</strong> Toggle the <em>Use Company Letterhead</em> switch to add your company&apos;s branding. Toggle the <em>Logo Watermark</em> setting as desired.</li>
+              <li><strong>Send for Signatures:</strong> Click the <em>Shared (0/1)</em> button at the top to dispatch the agreement to the counterparty for e-signing. Once all parties sign, you can track the status using the <em>Signed</em> badge and download the final PDF.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Mutual Non-Disclosure Agreement (NDA)/Mutual Non-Disclosure Agreement (NDA) - 9.jpg" alt="Step 9: Final document generation, field dragging, sharing, and signing status" className="rounded-xl border border-[#D5DCB8] w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Warning: Scope of Confidentiality vs. Restraint of Trade
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            In India, while non-disclosure and confidentiality obligations are fully enforceable under common law and the Indian Contract Act, 1872, they must not act as a de facto restraint of trade under Section 27. Ensure that the restrictions on utilizing shared information are strictly limited to protecting actual trade secrets, intellectual property, and proprietary data. Using an NDA to block a counterparty from operating in an entire market sector without specific IP infringement may be ruled void as an unreasonable restraint.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Carefully Align Your Purpose of Disclosure
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            The Purpose of Disclosure in Step 4 acts as the legal boundary for the permitted use of the information. If you write a purpose that is too broad, such as &quot;general discussions,&quot; it becomes difficult to prove that a counterparty misused the shared data. Conversely, if it is too narrow, you might technically breach the NDA yourselves by discussing related business topics. A strong, balanced Purpose of Disclosure should specify the project or transaction: e.g., &quot;To evaluate a potential strategic commercial partnership and joint marketing collaboration between the parties.&quot;
           </p>
         </div>
       </div>
