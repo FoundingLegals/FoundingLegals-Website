@@ -2134,6 +2134,1566 @@ export const HELP_ARTICLES: HelpArticle[] = [
     ),
   },
   {
+    id: "how-to-create-technology-transfer-agreement",
+    title: "How to Draft a Technology Transfer Agreement",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "9 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Technology Transfer Agreement transfers or licenses technical know-how, designs, and proprietary information from one business to another. This visual step-by-step guide explains how to define the scope of technology, delivery timelines, milestones, consideration, and dispute resolution parameters on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Protect Your IP — Agreement Type</p>
+          <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Protect Your IP</strong> category on the Founding Legals Agreements page, alongside the Non-Compete Agreement, Mutual Non-Disclosure Agreement (NDA), IP Assignment Agreement, Software License Agreement, and Trademark License Agreement.</p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Understanding the Technology Transfer Agreement</h3>
+          <p className="text-brown-700 leading-relaxed">
+            In today&apos;s collaborative tech ecosystem, companies frequently transfer or license intellectual property assets—such as proprietary software, manufacturing designs, technical know-how, and trade secrets—to another business entity. A Technology Transfer Agreement (TTA) sets the legal boundaries for this transfer, detailing whether it is a permanent assignment of ownership or a limited license to use. It governs crucial details such as support and onboarding training, delivery timelines, payment milestones, royalties, and post-term confidentiality.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Drafting a Technology Transfer Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Locate and Select Technology Transfer Agreement</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the module:</strong> Click on <em>Agreements</em> in the left-side navigation panel of the dashboard. Scroll to the <em>Protect Your IP</em> category and locate the <em>Technology Transfer Agreement</em> card. This agreement permits transferring or licensing technical know-how, designs, and proprietary information from one business to another. Click <em>+ Create</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Technology Transfer Agreement/Technology Transfer Agreement - 1.png" alt="Step 1: Locate Technology Transfer Agreement and click + Create" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient (Transferee / Transferor)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Assign the counterparty:</strong> The <em>Select Recipient</em> panel slides out from the right side of the page. Select an existing team member or corporate contact from the list, or click <em>+ Add new recipient</em> to register a new user. Choosing a recipient is mandatory to proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Technology Transfer Agreement/Technology Transfer Agreement - 2.png" alt="Step 2: Select or register the recipient contact" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Select Agreement Terms Baseline</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select default or custom terms:</strong> The <em>Choose Agreement Terms</em> panel will appear. You can pick:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals standard terms:</strong> Pre-populates a comprehensive baseline that protects the background IP, sets explicit boundaries on transfer, and ensures standard legal warranties.</li>
+              <li><strong>Custom terms:</strong> Pick this option to write, import, or paste your own custom clauses from scratch.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Select your terms baseline and click <em>Confirm</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Technology Transfer Agreement/Technology Transfer Agreement - 3.png" alt="Step 3: Choose default standard terms or custom terms" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Agreement Details (Step 1 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Specify the signing parameters:</strong> Under Step 1 of the configuration flow, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Execution Place:</strong> Enter the city where this agreement is legally signed (e.g., Bengaluru).</li>
+              <li><strong>Execution Date:</strong> Click the calendar icon to select your exact signing date.</li>
+              <li><strong>Execution Month &amp; Year:</strong> Auto-filled based on the date selected above.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save these details and proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Technology Transfer Agreement/Technology Transfer Agreement - 4.jpg" alt="Step 4: Agreement Details — place and execution date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Party Details (Step 2 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the transferor and transferee legal information:</strong> Step 2 gathers details for both entities:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Transferor Name:</strong> Enter the full registered name of the entity transferring the technology.</li>
+              <li><strong>Transferor Incorporation Details:</strong> Specify the statutory framework (e.g., Companies Act, 2013).</li>
+              <li><strong>Transferor CIN/Registration No.:</strong> Enter the Corporate Identification Number (CIN) or registration details.</li>
+              <li><strong>Transferor Registered Office:</strong> Provide the complete registered physical office address.</li>
+              <li><strong>Transferee Name (Company):</strong> Enter the legal name of the company acquiring or licensing the technology.</li>
+              <li><strong>Transferee CIN:</strong> Enter the acquiring company&apos;s Corporate Identification Number.</li>
+              <li><strong>Transferee Registered Office:</strong> Enter the registered physical address of the transferee company.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save these details and proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Technology Transfer Agreement/Technology Transfer Agreement - 5.jpg" alt="Step 5: Party Details — Transferor and Transferee statutory information" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Scope of Technology (Step 3 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure the intellectual property scope and grant type:</strong> Step 3 defines what technical assets are included:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Transferee&apos;s Business Operations:</strong> Specify the business domain where the technology will be applied (e.g., Fintech, Healthcare). This should match your company&apos;s primary industry.</li>
+              <li><strong>Technology Description (Schedule A):</strong> Provide a detailed description of all IP, source code, designs, and technical documentation being transferred. List repositories, patent numbers, or asset lists.</li>
+              <li><strong>Field of Use (Schedule B):</strong> Define specific business industries or technical applications for this transfer/license (e.g., &quot;for consumer electronics only&quot;).</li>
+              <li><strong>Territory (Schedule C):</strong> Specify the geographic territory where the transferee can utilize the technology (e.g., &quot;India&quot; or &quot;Worldwide&quot;).</li>
+              <li><strong>Grant Type:</strong> Select the legal nature of the transfer: choose <em>Outright Transfer / Assignment</em> (full transfer of ownership rights) or <em>Licensing</em> (retaining background ownership while granting a right to use).</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save scope parameters.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Technology Transfer Agreement/Technology Transfer Agreement - 6.jpg" alt="Step 6: Scope of Technology — Schedules A, B, C and grant type" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Delivery &amp; Support (Step 4 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define delivery timeline and technical training parameters:</strong> Step 4 establishes how the technology will be handed over:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Delivery Timeline (Days):</strong> Enter the number of days after the Effective Date within which the technology must be delivered (e.g., 15).</li>
+              <li><strong>Training Provided (Person-Days):</strong> Enter the total number of training days for onboarding staff (e.g., 10 person-days).</li>
+              <li><strong>Training Location:</strong> Select where the training will take place (e.g., Transferor&apos;s premises, Transferee&apos;s premises, or Remote).</li>
+              <li><strong>Technical Support Period (Months):</strong> Specify the post-delivery support and bug-resolution duration (e.g., 12 months).</li>
+              <li><strong>Source Code Escrow Agent (Name):</strong> Provide the name of a neutral escrow agent if source code is being held in escrow to protect the transferee in case of transferor insolvency or breach.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save delivery parameters.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Technology Transfer Agreement/Technology Transfer Agreement - 7.jpg" alt="Step 7: Delivery &amp; Support — timelines, training, and support" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Consideration (Step 5 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure fees, royalties, and payment milestones:</strong> Step 5 outlines the financial structures of the transaction:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Lump-Sum Technology Fee (INR):</strong> Enter the main transfer fee amount (e.g., 5,00,000).</li>
+              <li><strong>Lump-Sum Technology Fee in Words:</strong> Enter the amount in words (e.g., Rupees Five Lakh Only).</li>
+              <li><strong>Royalty Percentage (%):</strong> Specify the percentage of net sales paid to the transferor (e.g., 5).</li>
+              <li><strong>Royalty Payment Schedule:</strong> Select the payout frequency (e.g., Monthly, Quarterly, Annually).</li>
+              <li><strong>Liability Cap Basis:</strong> Specify the limitation of liability (e.g., &quot;total Consideration paid in the preceding 12 months&quot;).</li>
+              <li><strong>Milestone Configuration:</strong> Define specific milestone descriptions, percentages, and corresponding amounts (e.g., Milestone 1: Successful completion of technology integration - 40% - INR 2,00,000). Ensure all milestones are configured correctly.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Technology Transfer Agreement/Technology Transfer Agreement - 8.jpg" alt="Step 8: Consideration — fees, royalties, and milestones" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 9 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">9</span>
+              <strong className="text-base text-brown-900">Legal &amp; General (Step 6 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure term, termination, and arbitration clauses:</strong> Step 6 sets the overall legal envelope:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Agreement Term (Years):</strong> Enter the total duration of the agreement (e.g., 7).</li>
+              <li><strong>Breach Cure Period (Days):</strong> Specify the time allowed to rectify defaults before termination (e.g., 45 days).</li>
+              <li><strong>Number of Arbitrators:</strong> Select 1 or 3 arbitrators for dispute resolution (1 is standard for cost efficiency).</li>
+              <li><strong>Seat of Arbitration (City):</strong> Specify the legal seat of arbitration (e.g., Mumbai).</li>
+              <li><strong>Post-term Confidentiality Duration:</strong> Select the survival period for confidentiality covenants from the dropdown (e.g., 5 Years is standard).</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save and proceed to the final step.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Technology Transfer Agreement/Technology Transfer Agreement - 9.jpg" alt="Step 9: Legal &amp; General — term, arbitration seat, and cure period" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 10 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Final Review &amp; Field Placement (Step 7 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Perform final checks and execute the agreement:</strong> Step 7 shows the full assembled draft:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Switch Review Mode:</strong> Toggle between <em>Document</em> and <em>Terms</em> views to read raw clauses.</li>
+              <li><strong>Drag &amp; Drop Interactive Fields:</strong> Drag <em>Signature</em>, <em>Date</em>, <em>Text</em>, or <em>Stamp</em> blocks onto the signature lines of both parties.</li>
+              <li><strong>Automate Corporate Branding:</strong> Toggle the <em>Use Company Letterhead</em> setting ON to automatically apply your corporate design.</li>
+              <li><strong>Execute &amp; Share:</strong> Click the <em>Shared</em> button to dispatch the document to the counterparty. Track real-time progress until execution is complete (<em>Signed</em> state).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Technology Transfer Agreement/Technology Transfer Agreement - 10.jpg" alt="Step 10: Final document review, interactive field dragging, and letterhead options" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Warning: Outright Transfer vs. Licensing
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Selecting the correct <strong>Grant Type</strong> in Step 3 is critical. An <strong>Outright Transfer / Assignment</strong> completely and permanently divests the Transferor of all intellectual property ownership rights (patents, copyrights, designs, know-how) and transfers them to the Transferee. In contrast, <strong>Licensing</strong> retains the core background ownership with the Transferor while merely granting a limited, revocable or irrevocable right to use the technology. Furthermore, under Indian tax law, a technology transfer triggers specific tax obligations: payments for technical know-how or royalty are subject to <strong>Tax Deducted at Source (TDS) under Section 194J</strong> (typically at 10%), and the transaction attracts <strong>GST (usually at 18%)</strong> under the classification of licensing or transfer of intellectual property rights. Ensure your accounting team accounts for these statutory withholdings.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Be Highly Specific in Schedules A &amp; B
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            The legal strength of a Technology Transfer Agreement lies entirely in the clarity of the descriptions. Avoid generic descriptions in <strong>Schedule A (Technology Description)</strong> like &quot;all software code and documentation.&quot; Instead, list specific codebase URLs, patent application numbers, schematic PDF names, hardware specifications, and API documentation files. Similarly, if there is pre-existing background IP that is NOT meant to be transferred, explicitly exclude it by listing it in your terms to avoid accidental IP disputes or claims.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "how-to-create-software-license-agreement",
+    title: "How to Draft a Software License Agreement",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "9 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Software License Agreement grants a licensee the right to use proprietary software under defined conditions, setting out service level agreements (SLAs), support options, financial terms, and liability limits. This step-by-step visual guide walks you through drafting and executing a Software License Agreement on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Protect Your IP — Agreement Type</p>
+          <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Protect Your IP</strong> category on the Founding Legals Agreements page, alongside the Non-Compete Agreement, Mutual Non-Disclosure Agreement (NDA), IP Assignment Agreement, Technology Transfer Agreement, and Trademark License Agreement.</p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Understanding the Software License Agreement</h3>
+          <p className="text-brown-700 leading-relaxed">
+            A Software License Agreement (SLA) is a legally binding contract between a software provider (Licensor) and an end-user or business client (Licensee). Unlike custom software development where ownership is transferred, a software license grants a limited, non-exclusive, and non-transferable right to use the software while the Licensor retains all core intellectual property ownership. This agreement regulates scope of use, licensing fees, support metrics (service level agreements or SLAs), maintenance timelines, governing jurisdiction, and dispute resolution parameters.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Drafting a Software License Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Locate and Select Software License Agreement</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the module:</strong> Click on <em>Agreements</em> in the left-side navigation panel of the dashboard. Scroll to the <em>Protect Your IP</em> category and locate the <em>Software License Agreement</em> card. This agreement permits licensing proprietary software, defining usage rights, restrictions, SLAs, and liability limits. Click <em>+ Create</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Software License Agreement/Software License Agreement - 1.png" alt="Step 1: Locate Software License Agreement and click + Create" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient (Licensee / Counterparty)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Assign the counterparty:</strong> The <em>Select Recipient</em> panel slides out from the right side of the page. Select an existing team member or corporate contact from the list, or click <em>+ Add new recipient</em> to register a new user. Choosing a recipient is mandatory to proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Software License Agreement/Software License Agreement - 2.png" alt="Step 2: Select or register the recipient contact" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Select Agreement Terms Baseline</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select default or custom terms:</strong> The <em>Choose Agreement Terms</em> panel will appear. You can pick:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals standard terms:</strong> Pre-populates the form with legally vetted, ready-to-use templates that protect your proprietary code, enforce standard limits of liability, and outline warranty disclaimers.</li>
+              <li><strong>Custom terms:</strong> Pick this option to write, import, or paste your own custom clauses from scratch.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Select your terms baseline and click <em>Confirm</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Software License Agreement/Software License Agreement - 3.png" alt="Step 3: Choose default standard terms or custom terms" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Agreement Details (Step 1 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Specify the signing parameters and execution terms:</strong> Under Step 1 of the configuration flow, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Execution Place (City):</strong> Enter the city where this agreement is legally signed (e.g., Chennai).</li>
+              <li><strong>Execution Date:</strong> Click the calendar icon to select your exact signing date.</li>
+              <li><strong>Execution Month &amp; Year:</strong> Auto-filled based on the date selected above.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Monitor your credit balance in the upper right. Click <em>Next Step</em> to save these details and proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Software License Agreement/Software License Agreement - 4.jpg" alt="Step 4: Agreement Details — place and execution date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Party Details - Licensor Information (Step 2 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the Licensor legal corporate details:</strong> In Step 2, provide the information for the company transferring the software rights:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Licensor Full Legal Name:</strong> Enter the full registered corporate name of the Licensor entity (your company).</li>
+              <li><strong>Licensor Entity Type:</strong> Select the legal entity structure (e.g. Private Limited Company, Partnership, LLP).</li>
+              <li><strong>Licensor Jurisdiction:</strong> Enter the state of incorporation (e.g., Karnataka).</li>
+              <li><strong>Licensor Principal Address:</strong> Enter the complete physical registered office address.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Software License Agreement/Software License Agreement - 5.jpg" alt="Step 5: Party Details — Licensor corporate information" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Party Details - Licensee Information (Step 2 of 7 Continued)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the Licensee contact and statutory details:</strong> Scroll down to complete the counterparty details:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Licensee Full Legal Name:</strong> Enter the full legal name of the entity receiving the license.</li>
+              <li><strong>Licensee Entity Type:</strong> Select the other party&apos;s business type (e.g., pvt_ltd_shares).</li>
+              <li><strong>Licensee Jurisdiction:</strong> Enter the licensee&apos;s registered state of incorporation.</li>
+              <li><strong>Licensee Principal Address:</strong> Enter the complete registered physical address of the licensee.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Ensure all required fields (indicated by a red asterisk) are completed carefully. Click <em>Next Step</em> to save and proceed to the software scope.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Software License Agreement/Software License Agreement - 6.jpg" alt="Step 6: Party Details — Licensee corporate information" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Software &amp; Scope Configuration (Step 3 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define the software asset and license grant boundaries:</strong> In Step 3, you will configure:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Licensed Software Description:</strong> State the exact name, version, and component modules of the software package.</li>
+              <li><strong>License Type:</strong> Select the structure (e.g., User-based, Server-based, Site license, Enterprise-wide).</li>
+              <li><strong>Scope of Use / Authorized Users:</strong> Detail who is permitted to access the software (e.g., employees, contractors, third-party agents).</li>
+              <li><strong>Usage Restrictions:</strong> Enforce restrictions against reverse engineering, renting, sublicensing, or copying the source code.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to proceed to the financials step.
+            </p>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Financials &amp; Duration (Step 4 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure fees, maintenance, and renewal terms:</strong> Step 4 establishes the commercial and duration metrics:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Initial License / Implementation Fee (INR):</strong> Enter the one-time initial cost of the software license (e.g., 5,00,000).</li>
+              <li><strong>Initial License Fee in Words:</strong> Automatically auto-fills based on the number input above (e.g., Rupees Five Lakh Only).</li>
+              <li><strong>Annual Maintenance / Support Fee (INR):</strong> Define the optional annual support or maintenance fees (e.g., 50,000).</li>
+              <li><strong>Annual Maintenance Fee in Words:</strong> Automatically auto-fills based on your number.</li>
+              <li><strong>Initial Term (Years):</strong> Define the contract duration in years (e.g., 1 or more).</li>
+              <li><strong>Renewal Notice Period (Days):</strong> Set the notice period required to prevent auto-renewal (e.g., 60 days).</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Review all filled values for accuracy. Click <em>Next Step</em> to save and continue.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Software License Agreement/Software License Agreement - 7.jpg" alt="Step 8: Financials &amp; Duration — fees, maintenance, and terms" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 9 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">9</span>
+              <strong className="text-base text-brown-900">SLA &amp; Support Metrics (Step 5 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Establish support metrics and response thresholds:</strong> Step 5 outlines the service level agreements:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Target Uptime Percentage:</strong> Enter the absolute minimum availability commitment for the software (e.g., 99.9%).</li>
+              <li><strong>Support Hours:</strong> Specify the daily and weekly availability window for technical helpdesk coverage (e.g., 24/7/365).</li>
+              <li><strong>P1 Critical Response Time (Hours):</strong> Specify the committed maximum hours for Priority 1 (critical outage) tickets (e.g., 1 hour).</li>
+              <li><strong>Planned Maintenance Window (Hours/Month):</strong> Specify the maximum permitted monthly maintenance downtime hours (e.g., 4).</li>
+              <li><strong>Source Code Escrow Agent:</strong> Enter the name of the neutral third-party escrow agent holding source code (e.g., Software Escrow India Pvt. Ltd.) to protect the licensee if the licensor ceases support.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Software License Agreement/Software License Agreement - 8.jpg" alt="Step 9: SLA &amp; Support — uptime commitments and support hours" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 10 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">10</span>
+              <strong className="text-base text-brown-900">Legal &amp; Governance (Step 6 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define the legal jurisdiction, arbitration rules, and default cure terms:</strong> Step 6 sets the governance framework:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Governing Law (State):</strong> Enter the legal jurisdiction whose laws will interpret the agreement (e.g., Laws of India).</li>
+              <li><strong>Seat of Arbitration (City):</strong> Enter the physical location (city) where all formal arbitration proceedings are conducted (e.g., New Delhi).</li>
+              <li><strong>Arbitration Rules:</strong> Select the rules governing the arbitration process (e.g., SIAC, AAA, ICC, or Arbitration &amp; Conciliation Act 1996).</li>
+              <li><strong>Breach Cure Period (Days):</strong> Enter the number of days a defaulting party has to fix a material breach before termination can be initiated (e.g., 30 days).</li>
+              <li><strong>Confidentiality Period Post-Term (Years):</strong> Define the survival period of non-disclosure terms after contract expiry (e.g., 5 years is the advised standard).</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save details and continue to additional terms.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Software License Agreement/Software License Agreement - 9.jpg" alt="Step 10: Legal &amp; Governance — governing laws, arbitration seat, and cure periods" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 11 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Final Review &amp; Field Placement (Step 7 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Check details, position fields, and execute the license:</strong> Step 7 presents the final draft template:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Verify variables:</strong> Check variables like Governing Law (India), Seat of Arbitration (New Delhi or SIAC), Breach Cure Period (30 days), and post-term Confidentiality (5 years) inside the document preview.</li>
+              <li><strong>Add Fields:</strong> Drag and drop the interactive blocks (<em>Signature</em>, <em>Date</em>, <em>Text</em>, <em>Stamp</em>) onto the document pages.</li>
+              <li><strong>Letterhead &amp; Watermarks:</strong> Toggle <em>Use Company Letterhead</em> or <em>Logo Watermark</em> in the right-hand panel settings.</li>
+              <li><strong>Finalize:</strong> Click <em>Shared</em> to send to the counterparty or click <em>Generate final agreement</em> once all fields are signed.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Software License Agreement/Software License Agreement - 10.jpg" alt="Step 11: Final review, field placement, and letterhead toggles" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Warning: GST Treatment &amp; Withholding Taxes
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under Indian tax laws, licensing of software is categorized as a <strong>&quot;supply of services&quot;</strong> and attracts <strong>GST at 18%</strong> (applicable on both outright licenses and SaaS subscription models). Furthermore, software license fees, implementation fees, and annual maintenance/support fees (SLA fees) are subject to <strong>Tax Deducted at Source (TDS) under Section 194J</strong> of the Income Tax Act, 1961. The deductor is required to deduct TDS at 10% (for technical services or royalty) or 2% (for certain technical helpdesk support services). Failing to incorporate these statutory withholdings in invoice calculations can lead to interest penalties and audits.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Uptime Credits &amp; Escrow Triggers
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Avoid simple uptime commitments without clear remedies. A premium SLA must specify <strong>&quot;Uptime Credits&quot;</strong>, detailing that if the uptime drops below the target (e.g. 99.9%), the licensee receives a pro-rata credit against the next month&apos;s invoice rather than treating it as an immediate contract breach. Additionally, if you use a <strong>Source Code Escrow Agent</strong>, ensure that the release triggers are extremely narrow—limited to insolvency, bankruptcy, or failure of the licensor to maintain the software for more than 30 consecutive days.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "how-to-create-trademark-license-agreement",
+    title: "How to Draft a Trademark License Agreement",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "9 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Trademark License Agreement allows a trademark owner (licensor) to grant another party (licensee) the right to use their registered brand name, logo, or trademark for specific products and territories under strict quality control. This step-by-step visual guide walks you through drafting and executing a Trademark License Agreement on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Protect Your IP — Agreement Type</p>
+          <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Protect Your IP</strong> category on the Founding Legals Agreements page, alongside the Non-Compete Agreement, Mutual Non-Disclosure Agreement (NDA), IP Assignment Agreement, Technology Transfer Agreement, and Software License Agreement.</p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Understanding the Trademark License Agreement</h3>
+          <p className="text-brown-700 leading-relaxed">
+            A Trademark License Agreement (TLA) is a critical branding contract that permits a trademark owner (Licensor) to authorize another business or individual (Licensee) to use their registered trademarks, logos, and brand assets. In trademark law, maintaining the reputation and goodwill of a mark is paramount. Therefore, a trademark license must enforce strict quality control standards. Without these controls, the license is deemed a &quot;naked license&quot; which can invalidate the trademark registration itself. The agreement specifies the permitted product lines, territorial limits, royalty payouts, quality inspections, and post-termination sell-off protocols.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Drafting a Trademark License Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Locate and Select Trademark License Agreement</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the module:</strong> Click on <em>Agreements</em> in the left-side navigation panel of the dashboard. Scroll to the <em>Protect Your IP</em> category and locate the <em>Trademark License Agreement</em> card. This agreement permits authorizing another business to use your registered trademarks, brand names, and logos under controlled terms. Click <em>+ Create</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Trademark License Agreement/Trademark License Agreement- 1.png" alt="Step 1: Locate Trademark License Agreement and click + Create" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient (Licensee / Counterparty)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Assign the counterparty:</strong> The <em>Select Recipient</em> panel slides out from the right side of the page. Select an existing team member or corporate contact from the list, or click <em>+ Add new recipient</em> to register a new recipient.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Trademark License Agreement/Trademark License Agreement- 2.png" alt="Step 2: Select or register the licensee contact" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Select Agreement Terms Baseline</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select default or custom terms:</strong> The <em>Choose Agreement Terms</em> panel will appear. You can pick:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals standard terms:</strong> Pre-populates the form with legally vetted, ready-to-use templates that establish quality controls, specify royalty payments, and include mutual indemnification clauses.</li>
+              <li><strong>Custom terms:</strong> Pick this option to write, import, or paste your own custom trademark clauses.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Select your terms baseline and click <em>Confirm</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Trademark License Agreement/Trademark License Agreement- 3.png" alt="Step 3: Choose default standard terms or custom terms" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Agreement Details (Step 1 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Specify the signing parameters and execution terms:</strong> Under Step 1 of the configuration flow, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Execution Place (City):</strong> Enter the city where this agreement is legally executed (e.g., Bengaluru).</li>
+              <li><strong>Execution Date:</strong> Click the calendar icon to select your exact signing date.</li>
+              <li><strong>Execution Month &amp; Year:</strong> Auto-filled based on the date selected above.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Review everything carefully. Click <em>Next Step</em> to save these details and proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Trademark License Agreement/Trademark License Agreement- 4.jpg" alt="Step 4: Agreement Details — place and execution date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Party Details - Licensor Information (Step 2 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the Licensor legal corporate details:</strong> In Step 2, provide the information for the company owning the trademark:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Licensor Company Name (without Private Limited):</strong> Enter the registered corporate name of the Licensor entity (e.g. Founding Legals Services). Do not include suffixes like Private Limited.</li>
+              <li><strong>Licensor CIN:</strong> Enter the unique 21-digit Corporate Identification Number for the Indian company licensing the trademark.</li>
+              <li><strong>Licensor Registered Office Address:</strong> Enter the complete physical address registered with the Registrar of Companies (RoC) for official notices.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Trademark License Agreement/Trademark License Agreement- 5.jpg" alt="Step 5: Party Details — Licensor corporate information" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Party Details - Licensee Information (Step 3 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the Licensee contact and statutory details:</strong> Step 3 captures the business details of the entity receiving the brand license:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Licensee Company Name (without Private Limited):</strong> Enter the registered corporate name of the Licensee entity (e.g., Testing).</li>
+              <li><strong>Licensee CIN:</strong> Enter the licensee&apos;s unique 21-digit Corporate Identification Number.</li>
+              <li><strong>Licensee Registered Office Address:</strong> Enter the complete physical registered office address of the licensee.</li>
+              <li><strong>Authorised Signatory Name &amp; Designation:</strong> Enter the name and title (e.g., Founder / Counterparty) of the person executing the agreement.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Trademark License Agreement/Trademark License Agreement- 6.jpg" alt="Step 6: Party Details — Licensee corporate information" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Trademark &amp; Scope Configuration (Step 4 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define the trademark boundaries and product scope:</strong> Step 4 establishes the commercial and territorial scope of the trademark license:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Licensed Products:</strong> Detail exactly which goods or commercial services are permitted to use the trademark (e.g., Apparel, footwear, sporting goods, consulting services). Be highly specific.</li>
+              <li><strong>License Exclusivity:</strong> Select the level of market control the licensee gets (e.g., non-exclusive, sole, or exclusive).</li>
+              <li><strong>Territory:</strong> Specify the exact geographic area for operations (e.g., Karnataka State, India or North America).</li>
+              <li><strong>License Term (Years):</strong> Define the initial duration of the license in years (e.g., 5).</li>
+              <li><strong>Renewal Period (Years):</strong> Set the duration of successive automatic contract extensions (e.g., 1 or 2 years).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Trademark License Agreement/Trademark License Agreement- 7.jpg" alt="Step 7: Trademark &amp; Scope — products, exclusivity, and territory" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Fees &amp; Royalties (Step 5 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure license fees, royalties, and payment intervals:</strong> Step 5 regulates the commercial terms of the trademark use:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Upfront License Fee (INR):</strong> Enter the one-time fixed fee paid upon executing the license (e.g., 5,00,000).</li>
+              <li><strong>Upfront License Fee in Words:</strong> Automatically auto-fills based on the number input above (e.g., Rupees Five Lakh Only).</li>
+              <li><strong>Upfront Fee Payment Days:</strong> Specify the number of days after signing within which the licensee must pay the upfront fee (e.g., 7 days).</li>
+              <li><strong>Royalty Percentage (% of Net Sales):</strong> Enter the royalty percentage of net sales paid by the licensee (e.g., 5).</li>
+              <li><strong>Royalty Payment Frequency:</strong> Select the interval for calculations (e.g., Monthly, Quarterly, Semi-Annually, or Annually).</li>
+              <li><strong>Royalty Payment Due (Days after period end):</strong> Enter the grace period to remit royalties after each calculation period ends (e.g., 30 days).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Trademark License Agreement/Trademark License Agreement- 8.jpg" alt="Step 8: Fees &amp; Royalties — license fee and royalty calculations" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 9 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">9</span>
+              <strong className="text-base text-brown-900">Quality Control Standards (Step 6 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Establish trademark quality safeguards and audits:</strong> Step 6 ensures the licensor maintains branding oversight:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Inspection Notice Period (Days):</strong> Enter the number of days of advance notice the licensor must give before auditing the licensee&apos;s site or manufacturing facility (e.g., 7 days).</li>
+              <li><strong>Minimum Product Liability Insurance (INR):</strong> Specify the minimum insurance coverage the licensee must maintain to protect against consumer lawsuits regarding licensed products (e.g., 1,00,000).</li>
+              <li><strong>Force Majeure Notice Period (Days):</strong> Enter the timeframe to notify the other party of extraordinary events preventing contract performance (e.g., 7 days).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Trademark License Agreement/Trademark License Agreement- 9.jpg" alt="Step 9: Quality Control — inspections and liability insurance" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 10 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">10</span>
+              <strong className="text-base text-brown-900">Registered User &amp; Legal Governance (Step 7 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure trademark registry filings and dispute settings:</strong> Step 7 sets legal and statutory governance:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Form TM-U Filing Deadline (Days):</strong> Set the strict timeframe in days to record the licensee as a registered user under Section 49 of the Trade Marks Act (e.g., 45 days).</li>
+              <li><strong>Registration Cost Borne By:</strong> Choose which party covers government and legal fees for filing Form TM-U (e.g., Both Parties equally).</li>
+              <li><strong>Post-Termination Sell-Off Period (Days):</strong> Specify the grace period (in days) to clear existing branded inventory after contract expiration or termination (e.g., 60 days).</li>
+              <li><strong>Seat of Arbitration / Jurisdiction City:</strong> Choose the neutral town where all formal arbitration hearings are hosted (e.g., Bengaluru).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Trademark License Agreement/Trademark License Agreement- 10.jpg" alt="Step 10: Registered User &amp; Legal — registry filings and sell-off periods" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 11 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Final Review &amp; Field Placement (Step 8 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Check details, position fields, and execute the trademark license:</strong> Step 8 presents the final document layout:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Verify corporate details:</strong> Review the entity names, CIN details, licensed products, royalties, and seat of arbitration in the document viewer.</li>
+              <li><strong>Select Signatory:</strong> Drag and drop the <em>Signature</em>, <em>Date</em>, <em>Text</em>, or <em>Stamp</em> fields. Choose the correct legal representative (Licensor vs. Licensee) from the popup list to link the field.</li>
+              <li><strong>Apply Letterhead &amp; Watermarks:</strong> Toggle <em>Use Company Letterhead</em> or <em>Logo Watermark</em> to match your corporate branding.</li>
+              <li><strong>Execute:</strong> Click <em>Shared</em> to invite the counterparty or click <em>Signed</em> once all fields are executed.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Protect Your IP/Trademark License Agreement/Trademark License Agreement- 11.jpg" alt="Step 11: Final review, field placement, and signing assignments" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Warning: Form TM-U and Naked Licensing Risks
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under <strong>Sections 48 and 49 of the Trade Marks Act, 1999</strong>, registering a licensee as a <strong>&quot;Registered User&quot; using Form TM-U</strong> with the Trademark Registry is highly recommended. If you fail to record the licensee, their usage of your brand may not legally accrue to your benefit. This poses a risk in non-use cancellation actions, where a third party can apply to expunge your trademark for lack of direct usage. Furthermore, licensing a trademark without active and continuous quality control is treated as a <strong>&quot;naked license&quot; (naked licensing in gross)</strong> under Indian law. Naked licensing can lead to a court declaring that the trademark has lost its distinctiveness, effectively invalidating your brand registration.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Product Liability and Tax Allocation
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Since the licensee sells goods under your brand name, consumers may sue you for product defects under the Consumer Protection Act, 2019. Always require the licensee to maintain a <strong>Minimum Product Liability Insurance policy</strong> with the Licensor named as an additional insured. Additionally, remember that brand licensing royalties are subject to <strong>18% GST (HSN 99733)</strong> and the licensee must withhold <strong>10% TDS under Section 194J</strong> (Royalties) of the Income Tax Act. Specify in your terms whether fees are inclusive or exclusive of GST.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "how-to-create-shareholders-agreement",
+    title: "How to Draft a Shareholders' Agreement (SHA)",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "12 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Shareholders' Agreement (SHA) is a crucial investment contract that outlines the relationship between founders (promoters), investors, and the company. It regulates board representation, decision-making, share transfer restrictions (like ROFR, Tag-Along, and Drag-Along), and exit options. This step-by-step guide helps you draft an SHA on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Get Investment Ready — Agreement Type</p>
+          <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Get Investment Ready</strong> category on the Founding Legals Agreements page, alongside the Share Subscription Agreement (SSA) and the Convertible Note Agreement.</p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Understanding the Shareholders' Agreement (SHA)</h3>
+          <p className="text-brown-700 leading-relaxed">
+            A Shareholders' Agreement (SHA) is a foundational document executed when a startup raises venture funding. Unlike the Articles of Association (AoA) which is a public document, the SHA is a private contract that details the internal governance of the company, the board of directors' composition, veto rights over key business transactions (Reserved Matters), transfer of shares restrictions, and exit mechanics. It protects investors' capital through clauses like Liquidation Preference and Anti-Dilution, while binding the promoters to vesting schedules, non-compete terms, and key performance targets.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Drafting a Shareholders' Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Locate and Select Shareholders' Agreement (SHA)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the module:</strong> Click on <em>Agreements</em> in the left-side navigation panel of the dashboard. Scroll to the <em>Get Investment Ready</em> category and locate the <em>Shareholders' Agreement (SHA)</em> card. This agreement regulates rights, board compositions, and transfer covenants between founders and investors. Click <em>+ Create</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Shareholders' Agreement (SHA)/Shareholders' Agreement (SHA)- 1.png" alt="Step 1: Locate Shareholders' Agreement card and click + Create" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient (Investor / Counterparty)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Assign the investor/counterparty:</strong> The <em>Select Recipient</em> panel slides out from the right side. Select the investor's legal representative or lead fund manager from the contacts list, or click <em>+ Add new recipient</em> to record their details.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Shareholders' Agreement (SHA)/Shareholders' Agreement (SHA)- 2.png" alt="Step 2: Select the investor recipient" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Select Agreement Terms Baseline</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select default or custom terms:</strong> In the <em>Choose Agreement Terms</em> panel, you can pick:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals standard terms:</strong> Pre-populates the form with a comprehensive, VC-standard Shareholders' Agreement that covers board seats, veto rights, ROFR, tag-along/drag-drag rights, and leaver buyback pricing.</li>
+              <li><strong>Custom terms:</strong> Choose this option to upload or write your own custom investor clauses.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Make your choice and click <em>Confirm</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Shareholders' Agreement (SHA)/Shareholders' Agreement (SHA)- 3.png" alt="Step 3: Choose default standard investment terms or custom terms" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Agreement Details (Step 1 of 9)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Specify the signing parameters:</strong> Under Step 1, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Execution Place (City):</strong> Enter the specific city where the SHA is signed (e.g., Chennai or Bengaluru).</li>
+              <li><strong>Execution Date:</strong> Click the calendar icon to select the formal date when this agreement becomes active.</li>
+              <li><strong>Execution Month &amp; Year:</strong> Dynamically updates based on your selected execution date.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Shareholders' Agreement (SHA)/Shareholders' Agreement (SHA)- 4.jpg" alt="Step 4: Agreement Details — place and execution date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Company Details (Step 2 of 9)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the target company raising funds:</strong> In Step 2, provide the statutory corporate details for the company:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Company Name (without Private Limited):</strong> Enter the registered name of the startup entity.</li>
+              <li><strong>Company CIN:</strong> Enter the unique 21-digit Corporate Identification Number.</li>
+              <li><strong>Registered Office Address:</strong> Enter the complete physical address registered with the Registrar of Companies (RoC).</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to save company details.
+            </p>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Promoter Details (Step 3 of 9)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the founders/promoters information:</strong> Step 3 captures key founder data:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Promoter 1 Full Name:</strong> The official, definitive name of the founder as printed on their PAN or legal KYC ID (e.g., John Doe).</li>
+              <li><strong>Promoter 1 Parent's Name:</strong> Enter the father/mother's name for legal identification.</li>
+              <li><strong>Promoter 1 PAN:</strong> Enter the 10-character unique Indian Permanent Account Number.</li>
+              <li><strong>Promoter 1 Address:</strong> Enter the permanent residential address of the promoter.</li>
+              <li><strong>Additional Promoters:</strong> You can add up to three (3) co-founders by entering their corresponding names, PANs, and addresses. These fields are optional.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Shareholders' Agreement (SHA)/Shareholders' Agreement (SHA)- 5.jpg" alt="Step 6: Promoter Details — founders legal data and PANs" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Investor Details (Step 4 of 9)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the investing entity details:</strong> Step 4 captures investor data:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Investor Name:</strong> Precise, official legal name of the venture fund, corporate body, or individual investor (e.g., Lead VC Fund).</li>
+              <li><strong>Investor Incorporation Details:</strong> The specific corporate laws under which the investor is registered (e.g., Companies Act, 2013 or Delaware General Corporation Law). This is auto-filled for Indian investors.</li>
+              <li><strong>Investor Registration No.:</strong> Unique corporate registration number (CIN or equivalent).</li>
+              <li><strong>Investor Registered Office:</strong> Complete official registered address of the investing entity.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Shareholders' Agreement (SHA)/Shareholders' Agreement (SHA)- 6.jpg" alt="Step 7: Investor Details — VC fund or corporate investor data" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Investment &amp; Securities (Step 5 of 9)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure the funding parameters and CCPS mechanics:</strong> Step 5 outlines the primary funding details:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>SSA Date:</strong> The execution date of the associated Share Subscription Agreement (auto-filled, e.g. 12-06-2026).</li>
+              <li><strong>Number of CCPS Subscribed:</strong> Enter the quantity of Compulsorily Convertible Preference Shares issued in this round (e.g., 10).</li>
+              <li><strong>Premium Per CCPS (INR):</strong> The share premium charged over nominal face value (e.g., 1,00,000).</li>
+              <li><strong>Total Subscription Amount (INR):</strong> Automatically calculates: CCPS Count × (Face Value + Premium) (e.g., 10 × (10 + 1,00,000) = 1,000,100).</li>
+              <li><strong>Total Subscription in Words:</strong> Auto-filled based on the calculated amount above.</li>
+              <li><strong>Face Value Per Share (INR):</strong> The nominal par value of each preference share, standard for Indian startups (e.g., 10).</li>
+              <li><strong>Preference Dividend Rate (%):</strong> The annual dividend rate paid on CCPS. Can be token (e.g., 0.01% or 0.0001%) or fixed (e.g., 5%).</li>
+              <li><strong>QIPO Minimum Market Cap (INR):</strong> The valuation threshold required for a Qualified Initial Public Offering to activate investor exit clauses (e.g., 100 Crore or 1,00,00,00,000).</li>
+              <li><strong>Key Person(s) / Key Founders:</strong> Enter the vital stakeholders whose active involvement is legally tied to company operations. Synced from Promoter Details.</li>
+              <li><strong>Key Man Insurance Cover (INR):</strong> The aggregate insurance policy cover purchased by the company on the life of key founders to protect investor capital (e.g., 1,00,00,000).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Shareholders' Agreement (SHA)/Shareholders' Agreement (SHA)- 7.jpg" alt="Step 8: Investment &amp; Securities — CCPS details and Key Man Insurance" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 9 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">9</span>
+              <strong className="text-base text-brown-900">Capital Structure (Step 6 of 9)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Confirm pre-closing and post-closing shareholdings:</strong> Step 6 details the cap table structure:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Pre-Closing Capital Structure:</strong> Enter the exact number of equity shares held by Promoter 1, Promoter 2, and the existing ESOP Pool. The system dynamically auto-calculates individual percentages and Pre-Closing Total Shares.</li>
+              <li><strong>Post-Closing Capital Structure (Fully Diluted - FD):</strong> Auto-populated based on pre-closing data, investor CCPS details from Step 5, and any newly created ESOP pool size. Displays the diluted ownership percentage after investor entry.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Shareholders' Agreement (SHA)/Shareholders' Agreement (SHA)- 8.jpg" alt="Step 9: Capital Structure — pre-funding and post-funding diluted cap table" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 10 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">10</span>
+              <strong className="text-base text-brown-900">Governance &amp; Board Configuration (Step 7 of 9)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure board seats, quorum, and voting thresholds:</strong> Step 7 sets corporate governance rules:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Total Board Directors:</strong> Enter the total number of seats on the company&apos;s board of directors (e.g., 5).</li>
+              <li><strong>Promoter Directors:</strong> Enter the number of board seats held by the founders (e.g., 3).</li>
+              <li><strong>Investor Director(s):</strong> Enter the number of seats assigned to representatives nominated by the investors (e.g., 1).</li>
+              <li><strong>Independent Director(s):</strong> Enter the number of external, unbiased industry experts on the board (e.g., 1).</li>
+              <li><strong>Board Quorum:</strong> Set the minimum number of directors required to make board meeting decisions legally binding (e.g., 3).</li>
+              <li><strong>CCPS Voting Threshold for Reserved Matters (%):</strong> Set the major decision veto voting percentage. Important matters (like changes to cap table, mergers, or major hiring) require approval by this threshold (e.g., 75%).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Shareholders' Agreement (SHA)/Shareholders' Agreement (SHA)- 9.jpg" alt="Step 10: Governance &amp; Board — board seats and reserved matters thresholds" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 11 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">11</span>
+              <strong className="text-base text-brown-900">Transfer &amp; Exit Terms (Step 8 of 9)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Set share transfer restrictions, founder vesting, and exit timelines:</strong> Step 8 regulates liquidity and shares retention:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Promoter Lock-In (Years):</strong> The duration during which founders are prohibited from selling their shares (e.g., 5 years).</li>
+              <li><strong>ROFR Acceptance Period (Days):</strong> Number of days existing shareholders have to exercise their Right of First Refusal to purchase selling shareholders' shares (e.g., 45 days).</li>
+              <li><strong>Tag-Along Trigger (% of capital):</strong> The threshold share sale percentage that activates minority tag-along rights (e.g., 15%).</li>
+              <li><strong>Drag-Along Eligible After (Years) &amp; Drag-Along Voting Threshold (%):</strong> Set the timeframe (e.g., 5 years) and approval threshold (e.g., 80%) required to force all minority shareholders to sell.</li>
+              <li><strong>Drag-Along Min Return Floor Multiplier:</strong> The minimum return multiple (e.g., 1.5x) investors must receive to activate drag rights.</li>
+              <li><strong>Exit Timeline:</strong> The targets set for an investor exit event (e.g., 5-7 years).</li>
+              <li><strong>Exit Failure Trigger (Years) &amp; Exit Failure Trigger (Words):</strong> The threshold year (e.g. 8 years / Eight) that constitutes a failure to exit, allowing investors to demand share redemption.</li>
+              <li><strong>Promoter Non-Compete (Months post-exit):</strong> Post-employment restricted duration for founders (e.g., 18 months).</li>
+              <li><strong>Founder Vesting Period (Years) &amp; Vesting Cliff (Months):</strong> Standard equity lock parameters for founders (e.g., 4 years vesting with a 12-month cliff).</li>
+              <li><strong>Good Leaver Buyback Price:</strong> Select the price for unvested shares if a founder leaves under good terms (e.g. Fair Market Value).</li>
+              <li><strong>Bad Leaver Buyback Price:</strong> Select the buyback price if a founder is fired for cause (e.g., Cost Price or Nil).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Shareholders' Agreement (SHA)/Shareholders' Agreement (SHA)- 10.jpg" alt="Step 11: Transfer &amp; Exit — ROFR, drag/tag rights, and founder vesting" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 12 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Additional Terms &amp; Execution (Step 9 of 9)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Incorporate custom clauses and sign the agreement:</strong> In Step 9 and the document viewer:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Custom Clauses (Optional):</strong> Write any additional custom covenants or milestone rules not covered in the wizard. Click <em>Generate</em> to build the document.</li>
+              <li><strong>Verify Signatures &amp; Stamps:</strong> Admin stamp and signature are automatically applied. Drag and drop the <em>Signature</em>, <em>Date</em>, or <em>Stamp</em> fields for the recipient.</li>
+              <li><strong>Branding Toggles:</strong> Enable <em>Use Company Letterhead</em> or <em>Logo Watermark</em> to format the pages.</li>
+              <li><strong>Share:</strong> Click <em>Shared</em> to send the execution link to the investor&apos;s designated email.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Shareholders' Agreement (SHA)/Shareholders' Agreement (SHA)- 11.jpg" alt="Step 12a: Add custom clauses and click Generate" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+                <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Shareholders' Agreement (SHA)/Shareholders' Agreement (SHA)- 12.jpg" alt="Step 12b: Position signature blocks, letterhead, and share" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Notice: Articles of Association (AoA) Amendment and the VB Rangaraj Rule
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under Indian corporate law (specifically established by the landmark Supreme Court ruling in <strong>V.B. Rangaraj v. V.B. Gopalakrishnan</strong>), covenants and restrictions on share transfers contained in a Shareholders&apos; Agreement (such as ROFR, Tag-Along, and Drag-Along rights) are <strong>not legally binding on the company or its shareholders unless they are incorporated into the company&apos;s Articles of Association (AoA)</strong>. Executing an SHA alone is legally insufficient; the company must convene an Extraordinary General Meeting (EGM) of its members, pass a special resolution, and file <strong>Form MGT-14</strong> with the Registrar of Companies (RoC) to amend the Articles of Association to reflect the SHA clauses. Failing to do so makes the share transfer restrictions unenforceable against a third party purchasing company shares.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: CCPS Anti-Dilution &amp; Key Man Insurance
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Ensure your SHA clearly specifies the <strong>conversion ratio adjustment</strong> for Compulsorily Convertible Preference Shares (CCPS) to protect the investor against future down-rounds (Anti-Dilution protection). Furthermore, investors will typically insist that the company purchase a <strong>Key Man Insurance</strong> policy on the life of key founders (promoters), with the company named as the sole beneficiary. This ensures that if a founder dies or becomes incapacitated, the startup receives an insurance payout to cover recruitment costs or buy back shares, protecting the venture&apos;s survival.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "how-to-create-share-subscription-agreement",
+    title: "How to Draft a Share Subscription Agreement (SSA)",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "15 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Share Subscription Agreement (SSA) is a core investment contract used by startups to issue new shares or CCPS to investors. It sets out the investment amount, pricing, Conditions Precedent (CPs), Conditions Subsequent (CSs), and representations & warranties. This step-by-step visual guide walks you through drafting an SSA on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Get Investment Ready — Agreement Type</p>
+          <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Get Investment Ready</strong> category on the Founding Legals Agreements page, alongside the Shareholders' Agreement (SHA) and the Convertible Note Agreement.</p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Understanding the Share Subscription Agreement (SSA)</h3>
+          <p className="text-brown-700 leading-relaxed">
+            A Share Subscription Agreement (SSA) is the primary transaction document executed when a startup issues new equity shares or Compulsorily Convertible Preference Shares (CCPS) to an investor. The SSA details the investment size, share price, valuation parameters, representations and warranties (R&Ws) provided by the founders, indemnity limits, and Conditions Precedent (CPs) that must be fulfilled before the transaction closes. While the SSA regulates the actual issuance of shares and closing mechanics, the Shareholders' Agreement (SHA) regulates how the company will be governed post-closing.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Drafting a Share Subscription Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Locate and Select Share Subscription Agreement (SSA)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the module:</strong> Click on <em>Agreements</em> in the left-side navigation panel of the dashboard. Scroll to the <em>Get Investment Ready</em> category and locate the <em>Share Subscription Agreement (SSA)</em> card. This agreement regulates share pricing, closing deadlines, and investment declarations. Click <em>+ Create</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Share Subscription Agreement (SSA)/Share Subscription Agreement (SSA)- 1.png" alt="Step 1: Locate Share Subscription Agreement card and click + Create" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient (Investor / Counterparty)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Assign the investor/counterparty:</strong> The <em>Select Recipient</em> panel slides out from the right side. Select the investor's designated signatory or lead fund manager from the contacts list, or click <em>+ Add new recipient</em> to record their details.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Share Subscription Agreement (SSA)/Share Subscription Agreement (SSA)- 2.png" alt="Step 2: Select the investor recipient" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Select Agreement Terms Baseline</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select default or custom terms:</strong> In the <em>Choose Agreement Terms</em> panel, you can pick:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals standard terms:</strong> Pre-populates the form with a comprehensive, VC-standard Share Subscription Agreement that covers private placement rules, closing CPs, and detailed R&W/indemnity provisions.</li>
+              <li><strong>Custom terms:</strong> Choose this option to upload or write your own custom investment clauses.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Make your choice and click <em>Confirm</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Share Subscription Agreement (SSA)/Share Subscription Agreement (SSA)- 3.png" alt="Step 3: Choose default standard investment terms or custom terms" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Agreement Details (Step 1 of 12)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Specify the signing parameters:</strong> Under Step 1, enter the execution parameters:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Execution Place (City):</strong> Enter the specific city where the SSA is signed (e.g., Chennai or Bengaluru).</li>
+              <li><strong>Execution Date:</strong> Click the calendar icon to select the formal date when this agreement becomes active.</li>
+              <li><strong>Execution Month &amp; Year:</strong> Dynamically updates based on your selected execution date.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Next Step</em> to proceed.
+            </p>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Company Details &amp; Name Format (Step 2 of 12)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Provide target company corporate details:</strong> In Step 2, provide the statutory details of the startup raising capital:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Company Name:</strong> Input the official name of the company. Depending on the setup field, you may need to write the complete legal name including suffix (e.g., <em>ABC Innovations Private Limited</em>) or just the core brand name if a suffix option is enabled (e.g., <em>Founding Legals Services</em>).</li>
+              <li><strong>CIN (Corporate Identification Number):</strong> Enter the unique 21-digit alphanumeric code from your Certificate of Incorporation.</li>
+              <li><strong>Date of Incorporation:</strong> Click the calendar icon to select the exact date the company was registered with the MCA.</li>
+              <li><strong>Registered Office Address:</strong> Enter the full registered physical address where legal notices are served.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Share Subscription Agreement (SSA)/Share Subscription Agreement (SSA)- 4.jpg" alt="Step 5a: Company Details with complete legal name suffix" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+                <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Share Subscription Agreement (SSA)/ShareSubscription Agreement (SSA)- 5.jpg" alt="Step 5b: Company Details with core company name format" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Promoter Details (Step 3 of 12)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the founders/promoters information:</strong> Step 3 captures key founder data:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Promoter 1 Full Name:</strong> The official name of the primary founder as printed on their PAN or legal KYC ID (e.g., John Doe).</li>
+              <li><strong>Promoter 1 PAN:</strong> Enter the 10-character unique Indian Permanent Account Number.</li>
+              <li><strong>Promoter 1 Address:</strong> Enter the permanent residential address of the founder.</li>
+              <li><strong>Secondary Promoter(s):</strong> You can add up to three (3) co-founders by entering their names, PANs, and addresses. These fields are optional and can be left blank if there is only one promoter.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Share Subscription Agreement (SSA)/Share Subscription Agreement (SSA)- 6.jpg" alt="Step 6: Promoter Details — founders legal data and PANs" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Investor Details (Step 4 of 12)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the investing entity details:</strong> Step 4 captures investor data:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Investor Name:</strong> Precise, official legal name of the VC fund, corporate body, or individual investor (e.g., John Doe or ABC Ventures Pvt. Ltd.).</li>
+              <li><strong>Investor Registration No.:</strong> Unique corporate registration number (CIN, LEI, or equivalent registration ID).</li>
+              <li><strong>Investor Registered Office:</strong> Complete official registered address of the investing entity where notices are served.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Share Subscription Agreement (SSA)/Share Subscription Agreement (SSA)- 7.jpg" alt="Step 7: Investor Details — VC fund or individual investor data" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Subscription Terms &amp; Pricing (Step 5 of 12)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure preference shares subscription metrics:</strong> Step 5 outlines the primary pricing details:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Number of CCPS to Subscribe:</strong> Enter the quantity of Compulsorily Convertible Preference Shares issued in this round (e.g., 60).</li>
+              <li><strong>Face Value Per CCPS (INR):</strong> The nominal par value of each preference share (e.g., 10).</li>
+              <li><strong>Premium Per CCPS (INR):</strong> The share premium charged over par value (e.g., 1,000).</li>
+              <li><strong>Total CCPS Amount &amp; Total Subscription Amount (INR):</strong> Automatically calculates: CCPS Count × (Face Value + Premium) (e.g., 60 × (10 + 1,000) = 60,600).</li>
+              <li><strong>Subscription Amount in Words:</strong> Auto-filled based on the calculated amount above.</li>
+              <li><strong>Use of Funds Particulars:</strong> Describe the permitted business activities where the investment capital can be deployed (e.g., <em>Working capital, product development, hiring, expansion</em>).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Share Subscription Agreement (SSA)/Share Subscription Agreement (SSA)- 8.jpg" alt="Step 8: Subscription Terms &amp; Pricing — CCPS pricing and use of funds" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 9 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">9</span>
+              <strong className="text-base text-brown-900">Use of Funds Allocation (Step 6 of 12)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Specify funding distribution percentages:</strong> Step 6 allocates percentages to Schedule A:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Percentage Input Fields:</strong> Enter the percentage share of the investment allocated to <em>Working Capital</em> (e.g., 20), <em>Product Dev &amp; Tech</em> (e.g., 30), <em>Sales &amp; Marketing</em> (e.g., 25), and <em>Key Talent &amp; HR</em> (e.g., 15). Input whole numbers without the % sign.</li>
+              <li><strong>Calculated Allocation Fields (INR):</strong> Automatically calculates and displays the equivalent rupee amount for each category based on your input percentages.</li>
+              <li><strong>General Corporate Allocation:</strong> The system automatically calculates the remaining percentage (e.g., 10%) and amount to balance the allocation to exactly 100%.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Share Subscription Agreement (SSA)/Share Subscription Agreement (SSA)- 9.jpg" alt="Step 9: Use of Funds Allocation — category percentages and rupee auto-calculations" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 10 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">10</span>
+              <strong className="text-base text-brown-900">Capital Structure (Step 7 of 12)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Confirm pre-closing and post-closing shareholdings:</strong> Step 7 details the diluted cap table under Schedule D:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Pre-Closing Shares:</strong> Input the equity share quantities held by the promoters and ESOP pool. The system auto-calculates Pre-Closing % ownership and Pre-Closing Total Shares.</li>
+              <li><strong>Post-Closing Securities:</strong> Displays the diluted ownership percentage (Post-Closing % FD) after adding the investor&apos;s CCPS. Pre-closing inputs automatically carry over to post-closing promoter fields.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Share Subscription Agreement (SSA)/Share Subscription Agreement (SSA)- 10.jpg" alt="Step 10: Capital Structure — pre-funding and post-funding diluted cap table" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 11 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">11</span>
+              <strong className="text-base text-brown-900">Closing &amp; Conditions (Step 8 of 12)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define closing deadlines and corporate filing schedules:</strong> Step 8 sets transaction rules:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>CP Long-Stop Date:</strong> Select the absolute deadline (e.g., Jun 12, 2026) by which all Conditions Precedent must be satisfied or waived.</li>
+              <li><strong>Closing after CPs (Business Days):</strong> Specify the timeframe (e.g., 5 business days) for the investor to transfer subscription funds once CPs are met.</li>
+              <li><strong>PAS-3 Filing (Days after allotment):</strong> Timeframe to file the return of allotment with the RoC (standard is 30 days).</li>
+              <li><strong>FC-GPR Filing (Days after allotment):</strong> Filing deadline for foreign direct investment (FDI) reporting on the RBI FIRMS portal (within 30 days).</li>
+              <li><strong>MAC Assessment Period (Months):</strong> Period to assess if a Material Adverse Change has occurred post-signing (e.g., 6 months).</li>
+              <li><strong>Escrow Arrangement Required?:</strong> Choose if subscription money will be held in escrow until all closing conditions are met.</li>
+              <li><strong>Investor Classification:</strong> Select the regulatory category of the investor (e.g., <em>Resident Indian Individual</em>) for RBI compliance.</li>
+              <li><strong>Private Placement Offer Letter Date (Sec 42):</strong> Specify the date the board-approved Form PAS-4 offer letter was formally dispatched.</li>
+              <li><strong>Max Persons in Current Financial Year (Sec 42):</strong> Confirm compliance with the statutory private placement cap (maximum is 200 offerees).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Share Subscription Agreement (SSA)/Share Subscription Agreement (SSA)- 11.jpg" alt="Step 11: Closing &amp; Conditions — CP dates, PAS-3 timelines, and offeree count" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 12 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">12</span>
+              <strong className="text-base text-brown-900">Board &amp; FEMA Compliance (Step 9 of 12)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure nominee directors, promoter lock-in, and FDI route rules:</strong> Step 9 sets compliance limits:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Investor Nominee Directors (Post-Investment):</strong> The number of board seats assigned to the investor&apos;s nominees (e.g., 1).</li>
+              <li><strong>Total Board Size (Post-Investment):</strong> The total count of directors post-allotment (e.g., 5).</li>
+              <li><strong>Lock-In Period for Promoter Shares (Months):</strong> Duration promoters are prohibited from selling their shares (e.g., 12 months).</li>
+              <li><strong>Number of Promoter Shares Subject to Lock-In:</strong> The quantity of founder shares locked (e.g., 10).</li>
+              <li><strong>FDI Sector / Route:</strong> Specify the foreign direct investment approval route (e.g., <em>Automatic Route — 100% FDI Permitted</em>).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Share Subscription Agreement (SSA)/Share Subscription Agreement (SSA)- 12.jpg" alt="Step 12: Board &amp; FEMA Compliance — lock-ins, nominee directors, and FDI routes" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 13 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">13</span>
+              <strong className="text-base text-brown-900">Indemnity &amp; Warranty Limits (Step 10 of 12)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure indemnity claim thresholds and liability survival periods:</strong> Step 10 limits promoters' legal liability:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>De Minimis Threshold (INR):</strong> The minimum value required for a single claim before it is legally recognized (e.g., 5,000).</li>
+              <li><strong>Basket Claim Threshold (INR):</strong> The aggregate threshold that individual claims must reach before the investor can seek indemnity (e.g., 5,000).</li>
+              <li><strong>General R&amp;W Cap (% of Subscription Amount):</strong> The liability cap for representations &amp; warranties breaches (e.g., 500% or capped at 100% of the investment amount).</li>
+              <li><strong>General R&amp;W Survival (Months):</strong> The duration during which representations &amp; warranties remain active (e.g., 24 months).</li>
+              <li><strong>Tax R&amp;W Survival:</strong> The period during which tax claims can be brought (e.g., <em>Period of statutory limitation under IT Act, 1961 + 60 days</em>).</li>
+              <li><strong>Breach Cure Period (Days):</strong> The number of days the company has to resolve a covenant breach after receiving written notice (e.g., 15 days).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Share Subscription Agreement (SSA)/Share Subscription Agreement (SSA)- 13.jpg" alt="Step 13: Indemnity — De Minimis, Basket, R&amp;W caps, and survival periods" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 14 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">14</span>
+              <strong className="text-base text-brown-900">Governing Law &amp; Dispute Resolution (Step 11 of 12)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select legal jurisdiction and arbitration seat:</strong> Step 11 sets the dispute resolution framework:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Seat of Arbitration:</strong> The legal town/city where arbitration proceedings take place (e.g., <em>Bengaluru</em>).</li>
+              <li><strong>Number of Arbitrators:</strong> The size of the arbitration tribunal panel (e.g., 3).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Share Subscription Agreement (SSA)/Share Subscription Agreement (SSA)- 14.jpg" alt="Step 14: Governing Law &amp; Dispute — seat and number of arbitrators" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 15 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">15</span>
+              <strong className="text-base text-brown-900">Additional Terms &amp; Document Generation (Step 12 of 12)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Incorporate custom clauses and compile the agreement:</strong> In Step 12, enter special conditions:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Additional Terms / Custom Clauses (Optional):</strong> Copy-paste or type any custom covenants or milestone-based funding targets. Click <em>Generate</em> to build the document.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Share Subscription Agreement (SSA)/Share Subscription Agreement (SSA)- 15.jpg" alt="Step 15: Additional Terms — custom clauses text area and Generate action" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 16 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Document Viewer &amp; Signature Placement</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Position fields, apply company letterhead, and send for execution:</strong> On the final document screen:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Verify Signatures:</strong> Admin stamp/signature are pre-placed. Drag and drop the <em>Signature</em>, <em>Date</em>, or <em>Stamp</em> fields from the right panel to the investor signature block.</li>
+              <li><strong>Document Settings:</strong> Toggle <em>Use Company Letterhead</em> or <em>Logo Watermark</em>.</li>
+              <li><strong>Send:</strong> Click <em>SEND TO RECIPIENT</em> to share the document with the investor for e-signature.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Share Subscription Agreement (SSA)/Share Subscription Agreement (SSA)- 16.jpg" alt="Step 16: Document Viewer — letterhead, signature blocks, and Send To Recipient actions" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Notice: Section 42 Private Placement &amp; Return of Allotment (Form PAS-3)
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under <strong>Section 42 of the Companies Act, 2013</strong>, a company cannot offer shares via private placement to more than 200 offerees in a financial year. The subscription money must be received through bank transfer from the subscriber&apos;s bank account and must be kept in a separate bank account. The company must allot the securities within <strong>60 days</strong> of receipt of the subscription money. If it fails to do so, it must refund the money within 15 days, failing which it is liable to pay interest at <strong>12% per annum</strong>. Furthermore, once allotment is made, the company must file <strong>Form PAS-3 (Return of Allotment)</strong> with the Registrar of Companies (RoC) within <strong>30 days</strong> of allotment. The subscription money cannot be utilized by the company until Form PAS-3 is filed.
+          </p>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Foreign Investment Compliance: FEMA and Form FC-GPR
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            If the investor subscribing to the shares is a non-resident, the transaction must comply with the <strong>Foreign Exchange Management Act (FEMA)</strong> and RBI regulations. The company must file <strong>Form FC-GPR</strong> (Foreign Collaboration-General Permission Route) on the RBI&apos;s FIRMS portal within <strong>30 days of share allotment</strong>. The subscription price of the shares must not be less than the Fair Market Value (FMV) calculated using an internationally accepted pricing methodology (such as the DCF method) certified by a Chartered Accountant. Typographical errors in the investor's registration details or company name in the SSA can lead to RBI rejecting the FC-GPR filing, causing significant compliance bottlenecks.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Negotiation of Representations, Warranties, and Indemnity Caps
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Sellers (promoters) should negotiate a reasonable <strong>De Minimis</strong> threshold (e.g., 0.1% of investment value) and a <strong>Basket Claim</strong> threshold (e.g., 1% of investment value) to avoid being dragged into disputes over minor discrepancies. Furthermore, the overall liability cap for representations and warranties (R&amp;W) breaches should be limited to the total subscription amount actually received, with exceptions (uncapped liability) strictly restricted to fraud, willful concealment, or fundamental title breaches. Ensure the breach cure period is at least 15 to 30 days.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
     id: "step-by-step-guide-to-drafting-agreements",
     title: "Step-by-Step Guide: How to Draft and Execute Agreements",
     moduleId: "agreements",
