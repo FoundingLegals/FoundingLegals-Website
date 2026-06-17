@@ -3694,6 +3694,289 @@ export const HELP_ARTICLES: HelpArticle[] = [
     ),
   },
   {
+    id: "how-to-create-convertible-note-agreement",
+    title: "How to Draft a Convertible Note Agreement",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "12 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Convertible Note is a debt-equity hybrid instrument used by DPIIT-recognized startups to raise seed capital. It acts as a loan that converts into equity during a future qualified funding round. This step-by-step visual guide walks you through drafting a Convertible Note Agreement on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Get Investment Ready — Agreement Type</p>
+          <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Get Investment Ready</strong> category on the Founding Legals Agreements page, alongside the Shareholders' Agreement (SHA) and the Share Subscription Agreement (SSA).</p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Understanding the Convertible Note (CN)</h3>
+          <p className="text-brown-700 leading-relaxed">
+            A Convertible Note is a specialized debt instrument that behaves as a loan in the short term but converts into equity shares of the company upon the occurrence of a future funding round (referred to as the "Qualified Financing Round"). Unlike standard debt, it does not require valuation at the time of investment, making it a popular seed-funding tool. In India, Convertible Notes are strictly regulated under <strong>Rule 2(1)(c)(xvii) of the Companies (Acceptance of Deposits) Rules, 2014</strong>, which imposes two absolute statutory mandates:
+          </p>
+          <ul className="text-sm text-brown-700 leading-relaxed mt-2 pl-6 space-y-1.5 list-disc">
+            <li><strong>DPIIT Startup Recognition:</strong> Only startups formally recognized by the Department for Promotion of Industry and Internal Trade (DPIIT) are legally permitted to issue Convertible Notes. Non-recognized startups cannot issue this instrument.</li>
+            <li><strong>INR 25 Lakh Minimum Investment:</strong> The minimum investment amount by a single investor in a single tranche must be <strong>INR 25,000,000 (25 Lakhs)</strong> or more.</li>
+            <li><strong>Maturity Limit:</strong> The note must either convert or be repaid within a maximum period of <strong>10 years</strong> from the date of issue.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Drafting a Convertible Note Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Locate and Select Convertible Note Agreement</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the template:</strong> Navigate to the <em>Agreements</em> tab in the left-side navigation panel. Under the <em>Get Investment Ready</em> section, locate the <em>Convertible Note Agreement</em> card. Click <em>+ Create</em> to launch the configuration wizard.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Convertible Note Agreement/Convertible Note Agreement- 1.png" alt="Step 1: Click + Create on the Convertible Note Agreement card" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient (Investor)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select the noteholder:</strong> The <em>Select Recipient</em> panel slides out from the right. Select the investor's designated signatory or representative from your contact list, or click <em>+ Add new recipient</em> to record new contact details.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Convertible Note Agreement/Convertible Note Agreement- 2.png" alt="Step 2: Choose or add the investor recipient" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Select Agreement Terms Baseline</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select default or custom terms:</strong> In the <em>Choose Agreement Terms</em> window, choose:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals standard terms:</strong> Pre-populates a legally vetted template compliant with the Companies (Acceptance of Deposits) Rules, 2014, including standard conversion formulas.</li>
+              <li><strong>Custom terms:</strong> Choose this to import your own custom debt-equity structures.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Confirm</em> to lock in your choice.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Convertible Note Agreement/Convertible Note Agreement- 3.png" alt="Step 3: Select standard terms or custom terms and click Confirm" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Agreement Details (Step 1 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Set the signing place and date:</strong> Under Step 1, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Execution Place (City):</strong> Enter the city name where the agreement is formally signed (e.g., Bengaluru, Mumbai, or Delhi).</li>
+              <li><strong>Execution Date:</strong> Choose the effective date using the calendar picker. The system will auto-populate the corresponding month and year.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Convertible Note Agreement/Convertible Note Agreement- 4.jpg" alt="Step 4: Agreement Details — City place and calendar date selection" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Company Details &amp; DPIIT Recognition (Step 2 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter issuing company details:</strong> In Step 2, provide the corporate metadata:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Company Name:</strong> Input the official name of your company. Avoid suffix words like "Private Limited" if the field asks for name without suffix (e.g., <em>Founding Legals Services</em>).</li>
+              <li><strong>CIN:</strong> Enter your unique 21-digit Corporate Identification Number.</li>
+              <li><strong>DPIIT Recognition Number:</strong> Input your startup recognition certificate number (e.g., <em>DPIIT12345</em>). This field is mandatory as only recognized startups can issue Convertible Notes.</li>
+              <li><strong>Registered Office Address:</strong> Enter your full official address registered with the MCA.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Convertible Note Agreement/Convertible Note Agreement- 5.jpg" alt="Step 5: Company Details — CIN, registered office, and mandatory DPIIT Startup Recognition number" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Investor Details (Step 3 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter the investor information:</strong> Step 3 captures the subscriber's legal data:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Investor Name:</strong> Enter the full legal name of the investing individual or corporate fund entity (e.g., <em>John Doe</em>).</li>
+              <li><strong>Investor PAN / CIN:</strong> Enter the 10-character Permanent Account Number for individuals or the 21-character CIN for corporate entities.</li>
+              <li><strong>Investor Address:</strong> Complete official registered or residential address.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Convertible Note Agreement/Convertible Note Agreement- 6.jpg" alt="Step 6: Investor Details — investor name, PAN/CIN, and notice address" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Note Terms &amp; Conversion Parameters (Step 4 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure the debt terms and pricing:</strong> Step 4 dictates the key economics:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Principal Amount (INR, min 25L):</strong> Enter the total investment amount. The system will auto-convert this value into words. <em>Note: Entering an amount below 25 Lakhs (e.g., 5,00,000) is legally non-compliant under Rule 2(1)(c)(xvii).</em></li>
+              <li><strong>Interest Rate (% p.a. simple):</strong> The simple annual interest accrued on the note (e.g., 6%).</li>
+              <li><strong>Maturity Period (Years):</strong> The duration before the note must convert or be repaid (maximum is 10 years).</li>
+              <li><strong>Discount Rate (%):</strong> The conversion discount offered to the investor during the next round (e.g., 20%).</li>
+              <li><strong>Valuation Cap (INR):</strong> The maximum valuation at which the note converts into shares, protecting the investor against excessive dilution (e.g., 5,00,000,000).</li>
+              <li><strong>Qualified Financing Threshold (INR):</strong> The minimum capital amount (e.g., 5,00,000,000) the company must raise in a subsequent equity round to trigger automatic conversion.</li>
+              <li><strong>Pro-Rata Rights in Next Equity Round:</strong> Select if the noteholder will have rights to participate in future rounds to maintain their shareholding.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Convertible Note Agreement/Convertible Note Agreement- 7.jpg" alt="Step 7: Note Terms — principal amount (min 25L), interest, discount, and valuation cap" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Payment &amp; Repayment Schedules (Step 5 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Set the payment timelines and default penalty:</strong> In Step 5, configure:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Remittance Window (Days):</strong> The number of business days the investor has to wire the funds to the company after signing (standard is 10 days).</li>
+              <li><strong>Repayment Window on Maturity (Days):</strong> The grace period given to the company to repay the principal and interest if the note matures without conversion (standard is 30 days).</li>
+              <li><strong>Default Interest Rate (% p.a.):</strong> The penalty interest rate charged on delayed payments post grace period (standard is 15% to 18% p.a.).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Convertible Note Agreement/Convertible Note Agreement- 8.jpg" alt="Step 8: Payment &amp; Repayment — remittance timelines, maturity grace days, and default interest" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 9 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">9</span>
+              <strong className="text-base text-brown-900">Compliance &amp; Jurisdiction (Step 6 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure FEMA filing timelines and arbitration:</strong> In Step 6, set:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Form CN Filing (Days, for cross-border):</strong> If raising capital from a non-resident investor (FDI), enter the number of days to file Form CN with the RBI (via an AD bank) after receiving funds (standard is 45 days).</li>
+              <li><strong>Seat of Arbitration:</strong> The exclusive legal city where arbitration disputes are resolved (standard: <em>Bengaluru</em>).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Convertible Note Agreement/Convertible Note Agreement- 9.jpg" alt="Step 9: Compliance &amp; Jurisdiction — Form CN filing and seat of arbitration" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 10 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">10</span>
+              <strong className="text-base text-brown-900">Additional Terms &amp; Document Generation (Step 7 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Add custom covenants and draft the agreement:</strong> In Step 7, configure:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Additional Terms / Custom Clauses (Optional):</strong> Enter specific conditions or milestone targets (e.g., <em>Company must provide key person insurance reports</em>).</li>
+              <li><strong>Generate:</strong> Once all steps show a green checkmark, click <em>Generate</em> to compile your data.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Convertible Note Agreement/Convertible Note Agreement- 10.jpg" alt="Step 10: Additional Terms — custom clauses text area and compile action" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 11 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Document Review &amp; E-Sign Layout</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Verify clauses and position execution fields:</strong> In the document preview:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Review Recitals:</strong> Verify that the document correctly cites Rule 2(1)(c)(xvii) of the Companies (Acceptance of Deposits) Rules, 2014, and lists the principal, interest, and maturity period in the summary table.</li>
+              <li><strong>Drag-and-Drop Fields:</strong> Position the <em>Signature</em>, <em>Date</em>, and <em>Stamp</em> elements onto the parties' sign blocks.</li>
+              <li><strong>Execute:</strong> Toggle company letterhead or watermark, and click <em>Signed</em> or <em>Shared</em>.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Get Investment Ready/Convertible Note Agreement/Convertible Note Agreement- 11.png" alt="Step 11: Document Viewer — review recitals, drag-and-drop fields, and share for signature" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Notice: DPIIT Recognition &amp; The INR 25 Lakh Rule
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under <strong>Rule 2(1)(c)(xvii) of the Companies (Acceptance of Deposits) Rules, 2014</strong>, a company is prohibited from raising capital via Convertible Notes unless it is a registered startup recognized by the <strong>DPIIT</strong>. Any debt issued under a convertible note by a non-recognized company is considered an illegal deposit under Section 73 of the Companies Act, 2013, attracting severe financial penalties. Furthermore, the investment must be a minimum of <strong>INR 25,000,000 (25 Lakhs)</strong> in a single tranche from a single investor. Drafting a note for an amount below this threshold (such as 5 Lakhs) is legally invalid and violates deposit rules.
+          </p>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Foreign Investment Compliance: FEMA and Form CN
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            If the Convertible Note is issued to a non-resident investor (FDI), compliance with foreign exchange guidelines is mandatory. Under FEMA rules, the company must file <strong>Form CN</strong> (Convertible Note) along with a CA-certified valuation report on the RBI FIRMS portal within <strong>45 days</strong> of receipt of the subscription money. Failure to file Form CN within the statutory 45-day window constitutes a FEMA violation and will attract RBI compounding fees.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Negotiation of Valuation Caps and Discounts
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Noteholders assume higher risk by investing early in the startup's lifecycle. To compensate for this risk, they receive a <strong>Discount Rate</strong> (typically 15% to 25%) on conversion. Additionally, the <strong>Valuation Cap</strong> acts as an insurance policy for the investor: if the startup achieves a massive valuation in the next round, the investor converts their debt at the capped valuation, resulting in a higher shareholding than if they converted at the new round's price.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
     id: "step-by-step-guide-to-drafting-agreements",
     title: "Step-by-Step Guide: How to Draft and Execute Agreements",
     moduleId: "agreements",
