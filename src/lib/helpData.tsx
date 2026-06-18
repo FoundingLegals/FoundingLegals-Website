@@ -3977,6 +3977,2008 @@ export const HELP_ARTICLES: HelpArticle[] = [
     ),
   },
   {
+    id: "how-to-create-service-agreement",
+    title: "How to Draft a Service Agreement",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "12 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Service Agreement is a commercial contract defining the scope of work, deliverables, performance standards, payment terms, and intellectual property ownership between a service provider and a client. This step-by-step visual guide walks you through drafting a Service Agreement on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements — Agreement Type</p>
+          <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Commercial Agreements</strong> category on the Founding Legals Agreements page, which governs day-to-day business operations under Indian commercial law.</p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Understanding the Service Agreement</h3>
+          <p className="text-brown-700 leading-relaxed">
+            A Service Agreement is a foundational contract entered into between a service provider (a company or individual consultant) and a client. It outlines the specific services to be performed, milestones to be achieved, payment mechanisms, quality metrics (SLAs), and critical legal protections regarding liability limits and intellectual property. When drafting a Service Agreement under Indian commercial law, keep three vital areas in mind:
+          </p>
+          <ul className="text-sm text-brown-700 leading-relaxed mt-2 pl-6 space-y-1.5 list-disc">
+            <li><strong>GST and Tax Compliance:</strong> Services in India are subject to Goods and Services Tax (GST), typically at 18%. The agreement must accurately reflect the GSTIN of both parties. For services exported outside India (to foreign clients), the contract must satisfy the conditions of "Export of Services" under the Integrated GST (IGST) Act, 2017, to qualify as a zero-rated supply (requiring payment in convertible foreign exchange and filing a Letter of Undertaking (LUT) on the GST portal).</li>
+            <li><strong>IP Assignment (Section 17, Copyright Act, 1957):</strong> By default, the author of a work owns the IP. In a commercial service relationship, the agreement must include an explicit work-for-hire assignment clause stating that all rights, title, and interest in any intellectual property created during the services are transferred to the client upon payment.</li>
+            <li><strong>Limitation of Liability:</strong> Service providers should seek to cap their overall liability to the total fees received under the agreement, while clients will look to carve out exceptions (uncapped liability) for breaches of confidentiality, data protection, and IP infringement.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Drafting a Service Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Locate and Select Service Agreement</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the template:</strong> Go to the <em>Agreements</em> tab in the left sidebar. Scroll down to the <em>Commercial Agreements</em> category and locate the <em>Service Agreement</em> card. Click <em>+ Create</em> to open the drafting workspace.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Service Agreement/Service Agreement - 1.png" alt="Step 1: Click + Create on the Service Agreement card" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select the signee:</strong> The <em>Select Recipient</em> panel will open on the right. Select your client's authorized representative or contact from the list, or click <em>+ Add new recipient</em> to record their details.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Service Agreement/Service Agreement - 2.png" alt="Step 2: Choose the client recipient" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Select Agreement Terms Baseline</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Choose terms baseline:</strong> In the <em>Choose Agreement Terms</em> menu, choose:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals standard terms:</strong> Pre-populates the editor with standard commercial terms, including standard confidentiality and intellectual property assignment covenants.</li>
+              <li><strong>Custom terms:</strong> Choose this if you want to import your own custom service clauses.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Confirm</em> to proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Service Agreement/Service Agreement - 3.png" alt="Step 3: Choose standard or custom terms baseline" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Agreement Details (Step 1 of 5)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter signing place and date:</strong> In Step 1, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Execution Place (City):</strong> Enter the city where the contract is signed (e.g., <em>Bengaluru</em>). This determines the default local jurisdiction in stamp duty calculations.</li>
+              <li><strong>Execution Date:</strong> Select the effective start date. The corresponding month and year will be calculated automatically.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Service Agreement/Service Agreement - 4.jpg" alt="Step 4: Agreement Details — city place and effective calendar date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Party Details &amp; GSTIN Registration (Step 2 of 5)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Provide provider and client profiles:</strong> In Step 2, carefully enter details for both entities. To prevent contract disputes or tax delays, ensure these details match official corporate registration records:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Legal Names &amp; Constitutions:</strong> Enter the full corporate names and select the correct entity constitution (e.g., <em>Private Limited Company</em>, <em>Partnership</em>, <em>LLP</em>, or <em>Proprietorship</em>) for both the Service Provider and the Client.</li>
+              <li><strong>CIN / PAN / LLPIN:</strong> Provide the business registration number.</li>
+              <li><strong>Registered Office Addresses:</strong> Enter the official registered office address for both parties.</li>
+              <li><strong>GSTIN Numbers:</strong> Input the 15-character Goods and Services Tax Identification Number for both parties. If the client is a foreign entity or unregistered, leave this field blank.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Service Agreement/Service Agreement - 5.jpg" alt="Step 5: Party Details — enter provider and client registration and GSTIN numbers" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Service Details, Milestones, and SLA Covenants (Step 3 of 5)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define the scope of work and project timeline:</strong> Step 3 maps the core operational metrics:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Description of Services:</strong> Detail the tasks to be performed (e.g., <em>User Interface Design, API Development</em>). Avoid generic or ambiguous placeholders.</li>
+              <li><strong>Key Deliverables:</strong> List tangible items the provider must deliver (e.g., <em>source code, design wireframes, documentation</em>).</li>
+              <li><strong>Final Deployment Platform:</strong> Specify target environments (e.g., <em>AWS, Google Play Store, Client Server</em>).</li>
+              <li><strong>Project Dates:</strong> Set the official Project Start Date and Project End Date (must be after the start date).</li>
+              <li><strong>Total Project Duration (Weeks):</strong> Enter numerical duration in weeks.</li>
+              <li><strong>Milestone Descriptions &amp; Due Dates:</strong> Break down the project into up to three distinct phases (e.g., <em>Phase 1: Requirements Gathering, Phase 2: Alpha Build, Phase 3: Production Handover</em>) with independent deadlines.</li>
+              <li><strong>SLA / Performance Standards:</strong> State agreed quality metrics (e.g., <em>99.9% uptime, 24-hour response time</em>).</li>
+              <li><strong>Post-Delivery Warranty Period (Months):</strong> Specify the free bug-support duration (e.g., <em>3 months</em>).</li>
+              <li><strong>Acceptance Testing Window (Days):</strong> The review window the client has to test and either approve or reject deliverables (e.g., <em>14 days</em>).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Service Agreement/Service Agreement - 6.jpg" alt="Step 6: Service Details — scope, milestone timelines, SLAs, and warranty period" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Payment Terms, Notice Periods, and Liability Caps (Step 4 of 5)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure financial and dispute parameters:</strong> Step 4 governs monetary exchanges and default rules:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Service Fee (INR):</strong> Enter the total contract fee value (e.g., <em>2,00,000</em>). The system auto-calculates the words representation (e.g., <em>Rupees Two Lakh Only</em>).</li>
+              <li><strong>Payment Structure:</strong> Select invoicing frequency (e.g., <em>Monthly Retainer</em>, <em>Milestone-based</em>, or <em>On Completion</em>).</li>
+              <li><strong>Payment Due:</strong> Enter the payment window in days after invoice delivery (e.g., <em>15 days</em>).</li>
+              <li><strong>Late Payment Interest (% per month):</strong> The penalty interest charged on overdue payments (e.g., <em>2%</em>).</li>
+              <li><strong>Termination Notice (Days):</strong> Enter the written notice period required for termination without cause (e.g., <em>45 days</em>).</li>
+              <li><strong>Liability Cap:</strong> Choose the financial limit of liability (e.g., <em>Limited to total contract value</em>, <em>Limited to 12 months fees</em>, or <em>Unlimited</em>).</li>
+              <li><strong>Seat of Arbitration / Dispute Jurisdiction (City):</strong> Enter the city (e.g., <em>Bengaluru</em>) for dispute resolution.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Service Agreement/Service Agreement - 7.jpg" alt="Step 7: Payment &amp; Terms — service fee, late payment interest, termination notice, and liability cap" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Additional Terms &amp; Document Generation (Step 5 of 5)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Add custom covenants and finalize drafting:</strong> In Step 5, configure:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Additional Terms / Custom Clauses (Optional):</strong> Input specific covenants like non-compete rules, restrictive items, or custom conditions (e.g., <em>"Provider agrees not to solicit Client's employees for a period of 12 months post-termination."</em>).</li>
+              <li><strong>Generate:</strong> Once all 5 steps display a green checkmark, click <em>Generate</em> to build the draft.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Service Agreement/Service Agreement - 8.jpg" alt="Step 8: Additional Terms — add custom clauses and click Generate" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 9 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Document Review &amp; Execution</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Position execution fields and sign:</strong> On the document preview screen:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Review Scope &amp; Parties:</strong> Verify that the description of services, milestone schedule, GSTIN numbers, and registered addresses are correct.</li>
+              <li><strong>E-Sign Layout:</strong> Drag and drop the <em>Signature</em> and <em>Stamp</em> fields onto the sign block areas.</li>
+              <li><strong>Execution Cues:</strong> Toggle company letterhead and back watermark, then select <em>Signed</em> or <em>Shared</em> to route for signature.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Service Agreement/Service Agreement - 9.png" alt="Step 9: Document Viewer — position signatures, stamps, and execute" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Tax Compliance: GSTIN Entries and Exports
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Ensure both parties' <strong>GSTIN</strong> details are correct. In India, providing services without declaring correct GSTIN details can result in invoice mismatch under GSTR-1 filings, blocking the client from claiming Input Tax Credit (ITC). If the service provider is exporting services, ensure a valid <strong>Letter of Undertaking (LUT)</strong> is filed for the financial year. This is required under Integrated GST (IGST) rules to supply services without paying IGST upfront, provided payment is received in foreign exchange within 1 year of invoice date.
+          </p>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Notice: IP Assignment and Section 17
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under <strong>Section 17 of the Indian Copyright Act, 1957</strong>, the creator of a work is considered its first owner. If the Service Agreement does not include an explicit, written IP assignment clause, ownership of the software, designs, or documentation remains with the service provider even after the client pays for them. To prevent copyright ownership claims, the agreement must state that all intellectual property developed during the course of services is assigned to the client immediately upon creation.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Acceptance Testing and Warranty Windows
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            To prevent project scope creep, providers should set a reasonable <strong>Acceptance Testing Window</strong> (e.g., 7 to 14 days). If the client does not submit written bug reports within this window, the deliverables should be deemed accepted. The post-delivery warranty support should also be capped (e.g., 30 to 90 days), with any further modifications billed under separate Change Requests (CRs).
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "how-to-create-master-service-agreement",
+    title: "How to Draft a Master Service Agreement (MSA)",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "15 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Master Service Agreement (MSA) establishes the umbrella legal framework governing ongoing B2B transactions and services. Specific projects and pricing are subsequently detailed in Statements of Work (SOWs) governed by this agreement. This guide walks you through drafting an MSA on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements — Agreement Type</p>
+          <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Commercial Agreements</strong> category on the Founding Legals Agreements page, which governs day-to-day business operations under Indian commercial law.</p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Understanding the Master Service Agreement (MSA)</h3>
+          <p className="text-brown-700 leading-relaxed">
+            A Master Service Agreement (MSA) is an umbrella contract designed for long-term B2B relationships. Instead of negotiating a detailed agreement for every project, the parties execute one MSA that defines all overarching terms—such as IP ownership, confidentiality, insurance, indemnity, and dispute resolution. Each specific project is subsequently commissioned using a shorter <strong>Statement of Work (SOW)</strong> or <strong>Purchase Order (PO)</strong>, which incorporates the MSA's terms by reference. When drafting an MSA under Indian law, keep four critical legal aspects in mind:
+          </p>
+          <ul className="text-sm text-brown-700 leading-relaxed mt-2 pl-6 space-y-1.5 list-disc">
+            <li><strong>Non-Solicitation (Section 27, Indian Contract Act, 1872):</strong> Under Section 27, contracts in restraint of trade are void. However, non-solicitation covenants (preventing one party from hiring the other's employees or consultants) are generally enforceable in India if reasonable in duration (e.g., 12 to 24 months post-termination) and limited to direct project personnel.</li>
+            <li><strong>Liquidated Damages (Section 74, Indian Contract Act, 1872):</strong> To deter solicitation, MSAs commonly specify a liquidated damages penalty (e.g., 50% of the employee's annual CTC). Under Section 74, courts will award reasonable compensation up to the specified amount if it represents a genuine pre-estimate of loss rather than a penalty.</li>
+            <li><strong>Insurance Covenants:</strong> B2B customers often require service providers to maintain Professional Indemnity (errors &amp; omissions) and Public Liability insurance. These must be clearly specified in both figures and words.</li>
+            <li><strong>Dispute Resolution &amp; Arbitration Panels:</strong> For high-value agreements, parties often prefer a panel of three arbitrators over a sole arbitrator. To balance costs, the agreement can set a threshold (e.g., INR 10 Crores) below which a sole arbitrator is appointed, and above which a three-arbitrator panel is mandated.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Drafting a Master Service Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Locate and Select Master Service Agreement (MSA)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the template:</strong> Go to the <em>Agreements</em> tab in the left sidebar. Scroll down to the <em>Commercial Agreements</em> category and locate the <em>Master Service Agreement (MSA)</em> card. Click <em>+ Create</em> to open the workspace.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Master Service Agreement (MSA)/Master Service Agreement (MSA)  -  1.png" alt="Step 1: Click + Create on the MSA card" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select the signee:</strong> In the <em>Select Recipient</em> panel on the right, select your client's representative from your team/contact list, or click <em>+ Add new recipient</em> to record their details.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Master Service Agreement (MSA)/Master Service Agreement (MSA)  -  2.png" alt="Step 2: Choose the client recipient" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Select Agreement Terms Baseline</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Choose terms baseline:</strong> In the <em>Choose Agreement Terms</em> menu, choose:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals standard terms:</strong> Pre-populates the editor with standard umbrella clauses, standard B2B confidentiality, IP assignment, and liability limits.</li>
+              <li><strong>Custom terms:</strong> Choose this to import your own custom legal terms.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Confirm</em> to proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Master Service Agreement (MSA)/Master Service Agreement (MSA)  -  3.png" alt="Step 3: Choose standard or custom terms baseline" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Agreement Details (Step 1 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter signing place and date:</strong> In Step 1, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Execution Place (City):</strong> Enter the specific city where this MSA is legally executed (e.g., <em>Bengaluru</em>). This sets the local jurisdiction for stamp duty rules.</li>
+              <li><strong>Execution Date:</strong> Select the calendar date this agreement becomes active. Month and Year will auto-fill instantly.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Master Service Agreement (MSA)/Master Service Agreement (MSA)  -  4.jpg" alt="Step 4: Agreement Details — city and date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Service Provider Details (Step 2 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter provider registration details:</strong> In Step 2, enter the service provider's details. Ensure all names and registration details match official corporate filings exactly:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Service Provider Name:</strong> Enter your full, official corporate name (e.g., <em>Founding Legals Private Limited</em>). Avoid shorter trade names.</li>
+              <li><strong>Provider CIN / PAN:</strong> Input your unique 21-digit Corporate Identification Number (CIN) for companies, or Permanent Account Number (PAN) for partnerships/sole proprietorships.</li>
+              <li><strong>Provider GSTIN:</strong> Enter your 15-digit Goods and Services Tax Identification Number for B2B tax invoicing compliance (e.g., <em>22AAAAA0000A1Z5</em>).</li>
+              <li><strong>Provider Registered Office:</strong> Enter the official registered office address. Do not use post office boxes or unverified addresses.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Master Service Agreement (MSA)/Master Service Agreement (MSA)  -  5.jpg" alt="Step 5: Service Provider Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Client Details (Step 3 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter counterparty registration details:</strong> In Step 3, enter the client company's details:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Client Name:</strong> Enter the client's full, official corporate name.</li>
+              <li><strong>Client CIN / PAN:</strong> Input the client's registered CIN or PAN.</li>
+              <li><strong>Client GSTIN:</strong> Enter the client's 15-digit GSTIN. If the client is foreign or unregistered, leave this blank.</li>
+              <li><strong>Client Registered Office:</strong> Input the complete official address of the client company.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Master Service Agreement (MSA)/Master Service Agreement (MSA)  -  7.jpg" alt="Step 6: Client Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">MSA Lifecycle &amp; Term Covenants (Step 4 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Set contract lifecycle rules:</strong> In Step 4, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Initial Term (Years):</strong> Enter the primary lifecycle of the master agreement (e.g., <em>5</em> for a 5-year core contract).</li>
+              <li><strong>Renewal Term (Years):</strong> Set the duration for automatic extensions (e.g., <em>2</em> to extend by 2 years at a time).</li>
+              <li><strong>Non-Renewal Notice (Days):</strong> Number of days' notice required to prevent automatic extension (e.g., <em>60</em> days).</li>
+              <li><strong>Termination for Convenience Notice (Days):</strong> The notice period required to exit the agreement without cause (e.g., <em>60</em> days).</li>
+              <li><strong>Cure Period for Breach (Days):</strong> The time window allowed to remedy a contract breach after receiving written notice (e.g., <em>30</em> days).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Master Service Agreement (MSA)/Master Service Agreement (MSA)  -  8.jpg" alt="Step 7: MSA Terms — terms and notices" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Payment &amp; Invoicing Rules (Step 5 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define credit and audit rules:</strong> In Step 5, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Payment Net Terms (Days):</strong> The standard net payment terms allowed for invoices (e.g., <em>45</em> days).</li>
+              <li><strong>Audit Notice (Days):</strong> The notice period required before a party can conduct a financial or performance audit (e.g., <em>30</em> days).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Master Service Agreement (MSA)/Master Service Agreement (MSA)  -  9.jpg" alt="Step 8: Payment &amp; Invoicing" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 9 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">9</span>
+              <strong className="text-base text-brown-900">Personnel, Non-Solicitation, and Insurance (Step 6 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Set recruitment barriers and risk protection:</strong> Step 6 governs staffing protections and mandatory insurance:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Non-Solicitation Period (Months):</strong> Enter the duration in months post-termination during which hiring each other's personnel is restricted (e.g., <em>24</em> months).</li>
+              <li><strong>Liquidated Damages (% of CTC):</strong> Enter the penalty for breach as a percentage of the solicited employee's annual Cost-to-Company (e.g., <em>50</em>%).</li>
+              <li><strong>Confidentiality Survival (Years):</strong> Specify the years confidentiality obligations survive after the contract ends (e.g., <em>5</em> years).</li>
+              <li><strong>Professional Indemnity Insurance (INR):</strong> Enter the required coverage limit (e.g., <em>1,00,000,000</em> or 1 Crore). The system converts this to words (e.g., <em>Rupees One Crore Only</em>).</li>
+              <li><strong>Public Liability Insurance (INR):</strong> Enter the required coverage (e.g., <em>50,000,000</em> or 50 Lakhs). Auto-filled and converted to words (e.g., <em>Rupees Fifty Lakh Only</em>).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Master Service Agreement (MSA)/Master Service Agreement (MSA)  -  10.jpg" alt="Step 9: Personnel &amp; IP — non-solicitation, survival, and B2B insurance amounts" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 10 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">10</span>
+              <strong className="text-base text-brown-900">Liability Caps and Dispute Seat (Step 7 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Set liability ceilings and arbitration rules:</strong> In Step 7, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Liability Cap (Months):</strong> Limit your legal liability to a multiple of prior fees (e.g., <em>6</em> months, or 12 months for a full year's fees).</li>
+              <li><strong>Force Majeure Termination (Days):</strong> The number of days a force majeure event (e.g., natural disasters) must persist before either party can terminate (e.g., <em>90</em> days).</li>
+              <li><strong>Seat of Arbitration:</strong> The city where all official arbitration proceedings must be held (e.g., <em>Bengaluru</em>).</li>
+              <li><strong>Claim Value for 3 Arbitrators (INR Cr):</strong> The dispute value threshold in Crores (e.g., <em>10</em> Cr) that triggers a three-arbitrator panel instead of a sole arbitrator.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Master Service Agreement (MSA)/Master Service Agreement (MSA)  -  11.jpg" alt="Step 10: Legal &amp; Dispute — liability caps, force majeure, seat, and panel size threshold" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 11 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">11</span>
+              <strong className="text-base text-brown-900">Additional Terms &amp; Document Generation (Step 8 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Add custom clauses and compile:</strong> In Step 8, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Additional Terms / Custom Clauses (Optional):</strong> Enter specialized covenants, project-specific clauses, or custom SLAs (e.g., <em>"Provider agrees to maintain 99.9% system uptime as defined in Exhibit A."</em>).</li>
+              <li><strong>Generate:</strong> Once all 8 steps show green checkmarks, click <em>Generate</em> to build the draft.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Master Service Agreement (MSA)/Master Service Agreement (MSA)  -  12.jpg" alt="Step 11: Additional Terms — add custom clauses and click Generate" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 12 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Document Review &amp; Execution</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Position execution cues and sign:</strong> On the document preview screen:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Verify Boilerplates:</strong> Review the recitals, framework structure, liability limits, and dispute seats.</li>
+              <li><strong>E-Sign Layout:</strong> Drag and drop the <em>Signature</em> and <em>Stamp</em> fields onto the sign block areas.</li>
+              <li><strong>Execution:</strong> Toggle company letterhead and back watermark, and click <em>Signed</em> or <em>Shared</em>.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Master Service Agreement (MSA)/Master Service Agreement (MSA)  -  13.png" alt="Step 12: Document Viewer — position signatures, stamps, and execute" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Notice: Umbrella Framework Structure and SOWs
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            An MSA is an umbrella contract and does not contain pricing or project-specific deliverables on its own. For every new engagement under the MSA, parties must sign a <strong>Statement of Work (SOW)</strong> or issue a <strong>Purchase Order (PO)</strong>. Ensure each SOW/PO explicitly references the execution date of the MSA and states: <em>"This SOW is governed by the terms of the Master Service Agreement executed on [Date] between the Parties."</em>
+          </p>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Legal Warning: Enforceability of Non-Solicitation and Liquidated Damages
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under <strong>Section 27 of the Indian Contract Act, 1872</strong>, post-employment non-compete clauses are void. However, non-solicitation covenants (preventing B2B partners from poaching each other's staff) are generally enforceable if reasonable. To ensure compliance with <strong>Section 74 of the Contract Act</strong>, keep the liquidated damages percentage reasonable (e.g., 50% to 100% of annual CTC) so it is viewed as a genuine pre-estimate of loss, which is legally recoverable, rather than a punitive penalty, which courts may strike down.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Auditing Rights and Insurance Coverage
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Clients often demand broad audit rights to review the service provider's books, source code, and security procedures. Service providers should negotiate a reasonable <strong>Audit Notice</strong> window (e.g., 30 days) and limit audits to once per calendar year, at the client's sole expense, to minimize operational disruption. Furthermore, ensure the Professional Indemnity and Public Liability insurance limits set in this agreement match your actual active policy coverages.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "how-to-create-vendor-agreement",
+    title: "How to Draft a Vendor Agreement",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "12 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Vendor Agreement (or Supply Agreement) is a commercial contract governing the procurement of goods or services from a vendor. It defines scope, delivery terms, inspection windows, payment credits, and warranties. This step-by-step visual guide walks you through drafting a Vendor Agreement on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements — Agreement Type</p>
+          <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Commercial Agreements</strong> category on the Founding Legals Agreements page, which governs day-to-day business operations under Indian commercial law.</p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Understanding the Vendor Agreement</h3>
+          <p className="text-brown-700 leading-relaxed">
+            A Vendor Agreement is a binding contract executed between a purchaser (buyer) and a supplier (vendor) for the acquisition of goods, equipment, raw materials, or commercial services. It establishes key metrics around delivery logistics, quality inspections, payment terms, and warranty support. When drafting a Vendor Agreement under Indian law, three major compliance and legal considerations apply:
+          </p>
+          <ul className="text-sm text-brown-700 leading-relaxed mt-2 pl-6 space-y-1.5 list-disc">
+            <li><strong>MSMED Act, 2006 Compliance (Sections 15 &amp; 16):</strong> Under Section 15 of the Micro, Small and Medium Enterprises Development (MSMED) Act, 2006, payment terms for registered MSME vendors cannot exceed <strong>45 days</strong> from the date of acceptance. Under Section 16, failure to pay within this limit mandates compound interest at <strong>three times the RBI bank rate</strong>, which is a statutory penalty that cannot be contractually waived.</li>
+            <li><strong>Inspection &amp; Rejection (Sale of Goods Act, 1930):</strong> The buyer has a statutory right to inspect goods upon delivery before formal acceptance. Defining a clear, reasonable <strong>Inspection Window</strong> (e.g., 10 days) balances this right with the vendor's need for transaction finality and protects against late rejection claims.</li>
+            <li><strong>Delay Liquidated Damages (Section 74, Indian Contract Act, 1872):</strong> Late supply of critical business inputs can stop production. Defining a weekly delay penalty (e.g., 1% of the PO value per week of delay) encourages prompt delivery. To ensure court enforceability under Section 74, this must be capped (e.g., 15% of the PO value) as a genuine pre-estimate of loss.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Drafting a Vendor Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Locate and Select Vendor Agreement</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the template:</strong> Go to the <em>Agreements</em> tab in the left sidebar. Scroll down to the <em>Commercial Agreements</em> category and locate the <em>Vendor Agreement</em> card. Click <em>+ Create</em> to open the drafting workspace.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 1.png" alt="Step 1: Click + Create on the Vendor Agreement card" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select the signee:</strong> In the <em>Select Recipient</em> panel on the right, select the vendor's signing representative from your contact list, or click <em>+ Add new recipient</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 2.png" alt="Step 2: Choose the vendor recipient" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Select Agreement Terms Baseline</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Choose terms baseline:</strong> In the <em>Choose Agreement Terms</em> menu, select:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals standard terms:</strong> Pre-populates the editor with standard supply clauses, MSME compliance terms, and warranty obligations.</li>
+              <li><strong>Custom terms:</strong> Choose this to import your own custom legal terms.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Confirm</em> to proceed.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 3.png" alt="Step 3: Choose standard or custom terms baseline" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Agreement Details (Step 1 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter signing place and date:</strong> In Step 1, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Execution Place (City):</strong> Enter the specific city where this Vendor Agreement is legally signed (e.g., <em>Bengaluru</em>). This sets the local jurisdiction for stamp duty rules.</li>
+              <li><strong>Execution Date:</strong> Select the calendar date this agreement becomes active. Month and Year will auto-fill instantly.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 4.jpg" alt="Step 4: Agreement Details — city and date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Buyer Details (Step 2 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter purchaser registration details:</strong> In Step 2, enter the buyer company's details. Ensure all names and registration details match official corporate records exactly:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Buyer Name:</strong> Enter your full, official corporate name exactly as registered (e.g., <em>My Company Name</em>). Do not append Private Limited or LLP suffix as the editor adds it automatically.</li>
+              <li><strong>Buyer CIN:</strong> Input your unique 21-digit Corporate Identification Number (CIN) for companies.</li>
+              <li><strong>Buyer GSTIN:</strong> Enter your 15-digit Goods and Services Tax Identification Number for correct tax invoicing compliance.</li>
+              <li><strong>Buyer Registered Office:</strong> Enter the official registered office address including the Pincode.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 5.jpg" alt="Step 5: Buyer Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Vendor Details (Step 3 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter supplier registration details:</strong> In Step 3, enter the supplying vendor's registration details:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Vendor Name:</strong> Enter the vendor company's full, official name (e.g., <em>John Doe &amp; Sons</em>).</li>
+              <li><strong>Vendor CIN / PAN:</strong> Input the vendor's unique 21-digit CIN for corporations, or 10-character PAN number for partnerships/sole proprietorships.</li>
+              <li><strong>Vendor GSTIN:</strong> Enter the vendor's 15-digit GST registration number to prevent tax credit mismatches.</li>
+              <li><strong>Vendor Registered Office:</strong> Enter the official registered address of the vendor company including the building, street, and Pincode.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 6.jpg" alt="Step 6: Vendor Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Supply &amp; Delivery Logistics (Step 4 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Set delivery and inspection windows:</strong> In Step 4, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Description of Supplies (Goods/Services):</strong> Enter a clear and detailed description (e.g., <em>"API integration for payment gateway"</em> or <em>"100 units of custom brackets"</em>). Avoid vague terms.</li>
+              <li><strong>PO Acknowledgement Window (Business Days):</strong> The response time allowed for new POs (e.g., <em>5</em> days). Ensure this is realistic for the vendor.</li>
+              <li><strong>Place of Delivery:</strong> The specific location for goods arrival (e.g., <em>Vendor warehouse</em> or <em>Buyer HQ, Bengaluru</em>). Be exact.</li>
+              <li><strong>Inspection Window (Days):</strong> Number of days the buyer has to inspect before accepting or rejecting (e.g., <em>10</em> days).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 7.jpg" alt="Step 7: Supply &amp; Delivery — description and windows" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Pricing &amp; Payment (Step 5 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define credit and MSME limits:</strong> In Step 5, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Standard Payment Terms (Net Days):</strong> Specify default credit period allowed for vendor invoices (e.g., <em>30</em> days). Standard is often 30, 45, or 60.</li>
+              <li><strong>MSME Payment Terms (Max Days):</strong> Enter the maximum timeframe allowed (max 45 by law) you can legally accept to be paid. Must not exceed cap for legal compliance (e.g., <em>45</em> days).</li>
+              <li><strong>Late Payment Interest (% per month):</strong> Define the monthly penalty (%) applied to overdue undisputed invoices (e.g., <em>1.5</em>%). Standard is 1.5% to 2% monthly.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 8.jpg" alt="Step 8: Pricing &amp; Payment — standard and MSME compliance limits" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 9 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">9</span>
+              <strong className="text-base text-brown-900">Warranty &amp; Delay Penalties (Step 6 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Specify quality guarantee and delay damages:</strong> Step 6 governs product warranty support and late delivery penalties:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Warranty Period (Months):</strong> Specify duration in months the vendor guarantees supplies against defects (e.g., <em>24</em> months).</li>
+              <li><strong>Liquidated Damages per Week Delay (%):</strong> Define the weekly percentage penalty charged to the vendor for delayed deliveries (e.g., <em>1.0</em>%).</li>
+              <li><strong>LD Cap (% of PO value):</strong> Set the maximum cumulative cap on late delivery penalties for delayed deliveries (e.g., <em>15</em>%).</li>
+              <li><strong>Persistent Delay Threshold (Weeks):</strong> Define weeks a delivery can be late before the buyer can cancel the order (e.g., <em>6</em> weeks).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 9.jpg" alt="Step 9: Warranty &amp; Penalties — delay penalties, caps, and cancel thresholds" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 10 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">10</span>
+              <strong className="text-base text-brown-900">Legal Covenants &amp; Termination (Step 7 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure liability ceilings and exit terms:</strong> In Step 7, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Liability Cap (% of PO Value/Fees):</strong> Define the maximum legal liability limit for any financial claims, calculated as a percentage of the total purchase order value (e.g., <em>150</em>%).</li>
+              <li><strong>Agreement Expiry Date:</strong> Set the official calendar date when this overall Master Vendor Agreement automatically expires and terminates (e.g., <em>May 20, 2027</em>).</li>
+              <li><strong>Termination for Convenience (Days):</strong> Input the exact number of days of advance written notice required to cancel the agreement early without cause (e.g., <em>30</em> days).</li>
+              <li><strong>Seat of Arbitration:</strong> Specify the official legal city where formal arbitration proceedings must take place if a dispute cannot be resolved privately (e.g., <em>Bengaluru</em>).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 10.jpg" alt="Step 10: Legal &amp; Termination — caps, expiry date, notice, and seat" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 11 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">11</span>
+              <strong className="text-base text-brown-900">Additional Terms &amp; Document Generation (Step 8 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Add custom clauses and compile:</strong> In Step 8, enter any custom terms (such as specialized SLAs or testing parameters). Once all 8 steps show green checkmarks, click <em>Generate</em> to build the draft.
+            </p>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 12 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Document Review &amp; Execution</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Position execution cues and sign:</strong> On the document preview screen:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>E-Sign Layout:</strong> Drag and drop the <em>Signature</em> and <em>Stamp</em> fields onto the sign block areas.</li>
+              <li><strong>Execution:</strong> Toggle company letterhead or watermark, and click <em>Signed</em> or <em>Shared</em>.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 11.png" alt="Step 12: Document Viewer — position signatures, stamps, and execute" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Notice: MSMED Act, 2006 (Section 15 &amp; 16)
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            If your vendor is a registered Micro or Small Enterprise, Indian law mandates that payments must be made within <strong>45 days</strong> of acceptance under Section 15. Under Section 16, delay triggers statutory compound interest at <strong>three times the RBI bank rate</strong>. Any contract clause seeking to reduce or waive this statutory interest is invalid and unenforceable.
+          </p>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Legal Warning: Liquidated Damages and Caps (Section 74)
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Weekly liquidated damages for delayed delivery must be a genuine pre-estimate of loss under <strong>Section 74 of the Indian Contract Act, 1872</strong>. Keep the weekly percentage (e.g., 1.0%) and the overall cap (e.g., 10% to 15%) reasonable to prevent courts from classifying it as an unenforceable penalty.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Inspection &amp; Acceptance Windows
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Ensure the <strong>Inspection Window</strong> (e.g., 10 days) balances operational safety with project speed. A window that is too short may force the buyer to accept defective goods, while a window that is too long delays vendor payouts and harms vendor relationships.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "how-to-create-distribution-agreement",
+    title: "How to Draft a Distribution Agreement",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "12 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Distribution Agreement appoints a distributor to market, sell, and distribute products within a specified geographic territory. It establishes credit parameters, minimum purchase targets, and warranty covenants. This step-by-step visual guide walks you through drafting a Distribution Agreement on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements — Agreement Type</p>
+          <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Commercial Agreements</strong> category on the Founding Legals Agreements page, which governs day-to-day business operations under Indian commercial law.</p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Understanding the Distribution Agreement</h3>
+          <p className="text-brown-700 leading-relaxed">
+            A Distribution Agreement is a commercial contract under which a manufacturer or supplier ("Principal") appoints a distributor to sell and market their products within a defined territory. To structure a legally sound and commercially viable distribution network under Indian law, four key elements must be addressed:
+          </p>
+          <ul className="text-sm text-brown-700 leading-relaxed mt-2 pl-6 space-y-1.5 list-disc">
+            <li><strong>Competition Law &amp; Exclusivity (Section 3(4), Competition Act, 2002):</strong> Exclusive distribution arrangements are vertical agreements scrutinised under the Competition Act. They are prohibited if they cause an Appreciable Adverse Effect on Competition (AAEC) in India. Drafters must choose:
+              <ul className="pl-6 mt-1 space-y-1 list-circle text-brown-600">
+                <li><em>Exclusive:</em> The distributor is the sole seller in the territory, and the Principal cannot sell directly there.</li>
+                <li><em>Sole:</em> The Principal cannot appoint other distributors but reserves the right to sell directly.</li>
+                <li><em>Non-exclusive:</em> The Principal can appoint multiple distributors and sell directly.</li>
+              </ul>
+            </li>
+            <li><strong>Minimum Purchase Targets (MPT):</strong> Establishing annual or quarterly purchase targets protects the Principal from territory hoarding. Failing to meet the MPT Failure Threshold (e.g., 85% of target) should grant the Principal the right to either terminate the agreement or strip the distributor of exclusivity.</li>
+            <li><strong>Risk Transfer &amp; Incoterms (ICC 2020):</strong> Specifying the correct Incoterm (e.g., Ex Works (EXW), FOB, or CIF) is crucial to clarify when title and risk of loss pass from the Principal to the distributor, aligning with the Sale of Goods Act, 1930.</li>
+            <li><strong>Post-Termination Winding Up:</strong> Clear exit rules prevent disputes over remaining stock. Agreements must specify an Inventory Sell-Off Period (e.g., 90 days) or grant the Principal the option to repurchase stock at an Inventory Buy-Back Discount (e.g., 15%).</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Drafting a Distribution Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Locate and Select Distribution Agreement</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the template:</strong> Go to the <em>Agreements</em> tab in the left sidebar. Scroll to the <em>Commercial Agreements</em> section, locate the <em>Distribution Agreement</em> card, and click <em>+ Create</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 1.png" alt="Step 1: Click + Create on the Distribution Agreement card" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select the counterparty:</strong> In the <em>Select Recipient</em> panel on the right side of the screen, select the distributor's representative from the contacts list, or click <em>+ Add new recipient</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 2.png" alt="Step 2: Select the distributor recipient" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Select Agreement Terms Baseline</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Choose terms baseline:</strong> In the <em>Choose Agreement Terms</em> menu, select:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals standard terms:</strong> Pre-populates the editor with standard supply and territory rules, MPT clauses, and marketing obligations.</li>
+              <li><strong>Custom terms:</strong> Choose this option if you want to import your own custom legal template.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Confirm</em> to open the editor.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 3.png" alt="Step 3: Choose standard or custom baseline" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Agreement Details (Step 1 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter signing place and date:</strong> In Step 1, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Execution Place (City):</strong> Enter the city where this agreement is legally signed (e.g., <em>Bengaluru</em>). This sets the local jurisdiction for stamp duty rules.</li>
+              <li><strong>Execution Date:</strong> Select the calendar date this agreement becomes active. Month and Year will auto-fill.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 4.jpg" alt="Step 4: Agreement Details — city and date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Principal Details (Step 2 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter manufacturer registration details:</strong> In Step 2, enter the principal company's details. Ensure all names and registration details match official corporate filings:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Principal Name:</strong> Enter the official corporate name exactly as registered (e.g., <em>ABC Company</em>). Do not append Private Limited or LLP suffix as the editor adds it automatically.</li>
+              <li><strong>Principal CIN:</strong> Input the unique 21-digit Corporate Identification Number (CIN) for companies.</li>
+              <li><strong>Principal GSTIN:</strong> Enter the 15-digit Goods and Services Tax Identification Number for tax compliance.</li>
+              <li><strong>Principal Registered Office:</strong> Enter the complete registered office address including the Pincode.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 5.jpg" alt="Step 5: Principal Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Distributor Details (Step 3 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter distributor registration details:</strong> In Step 3, enter the distributor's registration details:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Distributor Name:</strong> Enter the distributor's full, official name (e.g., <em>John Doe LLC</em>).</li>
+              <li><strong>Distributor CIN / PAN:</strong> Input the distributor's unique 21-digit CIN for corporations, or 10-character PAN number for partnerships/sole proprietorships.</li>
+              <li><strong>Distributor GSTIN:</strong> Enter the distributor's 15-digit GST registration number to prevent credit mismatches.</li>
+              <li><strong>Distributor Registered Office:</strong> Enter the official registered address of the distributor company including the building, street, city, state, and ZIP code.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 6.jpg" alt="Step 6: Distributor Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Appointment &amp; Scope (Step 4 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure product line and exclusivity:</strong> In Step 4, specify:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Products to be Distributed:</strong> Enter specific details for products (e.g., <em>Consumer Electronics and Accessories</em>). Avoid vague listings.</li>
+              <li><strong>Territory:</strong> Define the geographic boundary (e.g., <em>South India</em>).</li>
+              <li><strong>Exclusivity Type:</strong> Select from the dropdown: <em>sole</em>, <em>exclusive</em>, or <em>non-exclusive</em> based on your commercial strategy.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 7.jpg" alt="Step 7: Appointment &amp; Scope — exclusivity and territory" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Term &amp; Pricing (Step 5 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Establish term limits and credit parameters:</strong> In Step 5, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Initial Term (Years):</strong> Duration of first term (e.g., <em>5</em> years).</li>
+              <li><strong>Renewal Term (Years):</strong> Duration of subsequent automated extensions in years (e.g., <em>2</em> years).</li>
+              <li><strong>Price Revision Notice (Days):</strong> Written notice required before price changes apply to new orders (e.g., <em>60</em> days).</li>
+              <li><strong>Payment Terms (Net Days):</strong> Default credit days allowed for distributor payments (e.g., <em>45</em> days).</li>
+              <li><strong>Credit Limit (INR) &amp; Credit Limit in Words:</strong> Max credit exposure allowed (e.g., <em>50,000,000</em> and <em>Rupees Fifty Lakh Only</em>).</li>
+              <li><strong>Security Amount (INR) &amp; Security Amount in Words:</strong> Security deposit details (e.g., <em>10,000,000</em> and <em>Rupees Ten Lakh Only</em>).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 8.jpg" alt="Step 8: Term &amp; Pricing — years, credit limit, and deposit" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 9 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">9</span>
+              <strong className="text-base text-brown-900">Marketing &amp; Purchase Targets (Step 6 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure targets and co-op spend:</strong> In Step 6, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>MPT Failure Threshold (%):</strong> The minimum target percentage (e.g., <em>85</em>%) the distributor must achieve. If the distributor falls below this, it constitutes a material breach.</li>
+              <li><strong>Min Marketing Spend (% of net sales):</strong> The percentage of net sales the distributor must spend on local marketing (e.g., <em>5</em>%).</li>
+              <li><strong>Co-op Marketing Contribution (%):</strong> The percentage the Principal will contribute to shared marketing campaigns (e.g., <em>50</em>%).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 9.jpg" alt="Step 9: Marketing &amp; Targets — purchase targets and co-op spend" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 10 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">10</span>
+              <strong className="text-base text-brown-900">Legal Covenants &amp; Termination (Step 7 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure exit terms and delivery logistics:</strong> In Step 7, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Termination for Convenience (Days):</strong> Written notice required to cancel the agreement early without cause (e.g., <em>60</em> days).</li>
+              <li><strong>Cure Period for Breach (Days):</strong> Grace period allowed to remedy breaches (e.g., <em>15</em> days).</li>
+              <li><strong>Inventory Sell-Off Period (Days):</strong> The period allowed to sell remaining stock post-termination (e.g., <em>90</em> days).</li>
+              <li><strong>Inventory Buy-Back Discount (%):</strong> Discount percentage if the Principal decides to repurchase remaining stock (e.g., <em>15</em>%).</li>
+              <li><strong>Delivery Incoterms (ICC 2020):</strong> Select the delivery rules from the dropdown (e.g., <em>Ex Works (EXW)</em>).</li>
+              <li><strong>Liability Cap:</strong> Maximum legal financial limit for claims (e.g., <em>Preceding 6 months purchases</em>).</li>
+              <li><strong>Seat &amp; Venue of Arbitration (City):</strong> Legal venue for dispute resolution (e.g., <em>Bengaluru</em>).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 10.jpg" alt="Step 10: Legal &amp; Termination — sell-off, buy-back discount, Incoterms, and arbitration" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 11 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">11</span>
+              <strong className="text-base text-brown-900">Additional Terms &amp; Document Generation (Step 8 of 8)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Add custom clauses and compile:</strong> In Step 8, enter any custom parameters (such as special marketing guidelines or product return procedures). Once all steps are complete, click <em>Generate</em> to build the draft.
+            </p>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 12 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Document Review &amp; Execution</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Position execution cues and sign:</strong> On the document preview screen:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>E-Sign Layout:</strong> Drag and drop the <em>Signature</em> and <em>Stamp</em> fields onto the sign block areas.</li>
+              <li><strong>Execution:</strong> Toggle company letterhead or watermark, and click <em>Signed</em> or <em>Shared</em>.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 11.png" alt="Step 12: Document Viewer — position signatures, stamps, and execute" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Notice: Section 3(4) of the Competition Act, 2002
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Exclusive distribution agreements can attract antitrust scrutiny under the Competition Act, 2002 if they cause an Appreciable Adverse Effect on Competition (AAEC) in India. If the Principal holds high market share, consider opting for a <strong>non-exclusive</strong> or <strong>sole</strong> distribution arrangement instead of absolute exclusivity to minimize legal risk.
+          </p>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Legal Warning: Minimum Purchase Targets (MPT)
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Failing to meet the Minimum Purchase Target (MPT) Failure Threshold (e.g., 85% of target) should grant the Principal the right to either terminate the agreement or strip the distributor of exclusivity. Ensure target adjustments for subsequent years are agreed in writing to prevent unilateral modification disputes.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: ICC 2020 Incoterms Risk Allocation
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Selecting <strong>Ex Works (EXW)</strong> places the risk and freight cost entirely on the distributor as soon as the products leave the Principal's factory. Ensure this Incoterm matches your company's transit insurance policy, particularly regarding who bears responsibility for damage during transit.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "how-to-create-joint-venture-agreement",
+    title: "How to Draft a Joint Venture Agreement",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "15 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Joint Venture Agreement governs the collaboration of two or more entities to establish a new joint business venture (JV Co). It defines funding contributions, equity share allocations, board representation, post-exit non-compete periods, and regulatory compliance (CCI & MCA). This step-by-step visual guide walks you through drafting a Joint Venture Agreement on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements — Agreement Type</p>
+          <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Commercial Agreements</strong> category on the Founding Legals Agreements page, which governs day-to-day business operations under Indian commercial law.</p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Understanding the Joint Venture Agreement</h3>
+          <p className="text-brown-700 leading-relaxed">
+            A Joint Venture (JV) Agreement is a foundational contract under which two or more independent businesses pool their resources, capital, and expertise to form a new legal entity (JV Co) or enter into a strategic alliance. To construct a legally compliant joint venture in India, partners must navigate four key regulatory and corporate framework requirements:
+          </p>
+          <ul className="text-sm text-brown-700 leading-relaxed mt-2 pl-6 space-y-1.5 list-disc">
+            <li><strong>CCI Merger Control (Section 5, Competition Act, 2002):</strong> Creating a Joint Venture constitutes a "combination" under the Competition Act. If the asset or turnover levels of the JV partners exceed the statutory limits, prior notification and approval from the Competition Commission of India (CCI) are mandatory, unless the JV qualifies for the <em>De Minimis</em> (Target Exemption).</li>
+            <li><strong>JV Co Incorporation (Companies Act, 2013):</strong> Incorporated JVs require forming a new company (usually a Private Limited Company) via the Ministry of Corporate Affairs (MCA) SPICe+ filing. The agreement must define the JV Co's Authorised Share Capital, which dictates the registration fees payable to the Registrar of Companies (RoC).</li>
+            <li><strong>Lock-In &amp; Transfer Restrictions (Section 27, Contract Act, 1872):</strong> To ensure commitment, partners typically agree to a Lock-In Period (e.g., 3 years) restricting share transfers. However, post-exit non-compete covenants must be drafted carefully. Under <strong>Section 27 of the Indian Contract Act, 1872</strong>, post-exit restraints are generally void unless they fall within narrow exceptions, such as the sale of goodwill.</li>
+            <li><strong>Arbitration Panels (Section 10, Arbitration &amp; Conciliation Act, 1996):</strong> To prevent deadlock in joint ventures, the dispute resolution clause must specify an odd number of arbitrators (typically 1 for smaller JVs and 3 for larger ones) as mandated by Section 10 of the Act. An even number of arbitrators is legally invalid.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Drafting a Joint Venture Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Locate and Select Joint Venture Agreement</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the template:</strong> Go to the <em>Agreements</em> tab in the left sidebar. Scroll to the <em>Commercial Agreements</em> section, locate the <em>Joint Venture Agreement</em> card, and click <em>+ Create</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 1.png" alt="Step 1: Click + Create on the Joint Venture Agreement card" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select the partner:</strong> In the <em>Select Recipient</em> panel on the right side of the screen, select the other JV partner's representative from the contacts list, or click <em>+ Add new recipient</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 2.png" alt="Step 2: Select the partner recipient" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Select Agreement Terms Baseline</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Choose terms baseline:</strong> In the <em>Choose Agreement Terms</em> menu, select:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals standard terms:</strong> Pre-populates the editor with standard joint venture formation covenants, share allocations, management governance, and deadlock provisions.</li>
+              <li><strong>Custom terms:</strong> Choose this option if you want to import your own custom JV templates.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Confirm</em> to open the editor.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 3.png" alt="Step 3: Choose standard or custom baseline" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Agreement Details (Step 1 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter signing place and date:</strong> In Step 1, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Execution Place (City):</strong> Enter the city where this agreement is executed (e.g., <em>Bengaluru</em>). This determines local stamp duty rates.</li>
+              <li><strong>Execution Date:</strong> Select the calendar date the agreement becomes active. Month and Year will auto-fill.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 4.jpg" alt="Step 4: Agreement Details — city and date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">JV Parties (Step 2 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter registration details for both partners:</strong> In Step 2, enter details for both JV Party 1 and JV Party 2:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>JV Party Names:</strong> Enter the official registered names of the collaborating entities (e.g., <em>Testing Private Limited</em> and <em>John Doe</em>).</li>
+              <li><strong>JV Party CINs:</strong> Enter the 21-digit Corporate Identification Numbers for corporate parties, or leave blank if a partner is an individual.</li>
+              <li><strong>JV Party Registered Offices:</strong> Complete registered addresses including Pin Codes for both parties.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 5.jpg" alt="Step 5: JV Parties details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">JV Co Formation (Step 3 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define the new JV entity vehicle:</strong> In Step 3, configure the target corporate vehicle:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Entity Type:</strong> Select the legal structure from the dropdown (e.g., <em>Private Limited Company</em> or <em>Limited Liability Partnership</em>).</li>
+              <li><strong>Proposed JV Co Name:</strong> Enter the desired corporate name for reservation (e.g., <em>Joint Ventures LLC</em>).</li>
+              <li><strong>JV Co Registered Office:</strong> Enter the proposed physical registered address for the new company.</li>
+              <li><strong>Nature of Business:</strong> Enter the core business purpose (e.g., <em>Development and commercialization of software solutions for the legal industry</em>).</li>
+              <li><strong>Authorised Capital / Total Contribution (INR):</strong> Enter the initial authorised share capital (e.g., <em>1,00,000,000</em>). The words will auto-calculate (e.g., <em>Rupees One Crore Only</em>).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 6.jpg" alt="Step 6: JV Co Formation" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Initial Contributions (Step 4 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure monetary and non-monetary inputs:</strong> In Step 4, allocate capital and equity percentages:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Contributions (INR):</strong> Enter the monetary cash contribution for Party 1 and Party 2 (e.g., <em>5,000,000</em>). The text descriptions will auto-fill.</li>
+              <li><strong>Assets/IP/Plant Descriptions:</strong> Describe tangible or intangible assets supplied by each party (e.g., <em>IP &amp; Cash</em> for Party 1, and <em>Plant &amp; Cash</em> for Party 2).</li>
+              <li><strong>Equity Share (%):</strong> Enter the percentage shareholding split (e.g., <em>50</em>% for each). Ensure the total equals 100%.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 7.jpg" alt="Step 7: Initial Contributions" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Governance &amp; Management (Step 5 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Establish board structures and restrictive covenants:</strong> In Step 5, input:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Board Size (Directors/Partners):</strong> The total number of board seats in the newly registered company (e.g., <em>4</em>).</li>
+              <li><strong>Lock-In Period (Years):</strong> Timeframe during which neither partner can transfer their equity (e.g., <em>3</em> years).</li>
+              <li><strong>Non-Compete Period Post-Exit (Months):</strong> Restricted duration for a partner to run competing businesses after exiting the JV (e.g., <em>24</em> months).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 8.jpg" alt="Step 8: Governance &amp; Management — board size, lock-in, and non-compete" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 9 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">9</span>
+              <strong className="text-base text-brown-900">Legal Covenants &amp; Disputes (Step 6 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure antitrust clearance and arbitration details:</strong> In Step 6, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>CCI Section 5 Prior Approval:</strong> Choose whether prior antitrust approval is needed. For standard startups, select <em>No, transaction falls below Section 5 thresholds (De Minimis / Target Exemption applies)</em>.</li>
+              <li><strong>Seat &amp; Venue of Arbitration (City):</strong> Select the city for arbitration proceedings (e.g., <em>Bengaluru</em>).</li>
+              <li><strong>Number of Arbitrators:</strong> Select the size of the arbitration panel (e.g., <em>3</em>). Must be an odd number to avoid deadlocks.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 9.jpg" alt="Step 9: Legal &amp; Dispute — CCI approval, venue, and arbitrator count" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 10 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">10</span>
+              <strong className="text-base text-brown-900">Additional Terms &amp; Document Generation (Step 7 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Add custom clauses and compile:</strong> In Step 7, insert any specific covenants, representations, or warranties unique to your partnership. Once all steps are complete, click <em>Generate</em> to build the draft.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 10.jpg" alt="Step 10: Additional Terms and click Generate" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 11 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Document Review &amp; Execution</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Review, brand, and execute the JV Agreement:</strong> In the final Document Review screen:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Final Review:</strong> Carefully check all deal terms, entity structures, and share allocations.</li>
+              <li><strong>Add Signatures &amp; Stamps:</strong> Drag and drop the <em>Signature</em>, <em>Date</em>, and <em>Stamp</em> fields from the panel onto the signing areas for both partners.</li>
+              <li><strong>Apply Branding:</strong> Toggle <em>Use Company Letterhead</em> or <em>Logo Watermark</em> for a professional finish.</li>
+              <li><strong>Execute:</strong> Click <em>Signed</em> or <em>Shared</em> to execute the legally binding agreement.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 11.jpg" alt="Step 11: Document Viewer — review, position signature cues, and execute" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Notice: CCI Section 5 Combinations
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Joint ventures exceeding statutory asset or turnover thresholds qualify as a "combination" under <strong>Section 5 of the Competition Act, 2002</strong>. These require mandatory, suspensory notifications to the Competition Commission of India (CCI) prior to execution. If your transaction exceeds the limits, do not execute the agreement until CCI clearance is received.
+          </p>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Legal Warning: Section 27 Restraint of Trade
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under <strong>Section 27 of the Indian Contract Act, 1872</strong>, post-exit non-compete restrictions are heavily scrutinized and generally held to be void. Ensure that any post-exit restrictions are reasonable in scope, geography, and duration, and are tied directly to the protection of proprietary IP or goodwill to improve enforceability.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Section 10 Odd Arbitrator Panels
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Section 10 of the Arbitration and Conciliation Act, 1996 prohibits an even number of arbitrators on a panel. Choosing <strong>3 arbitrators</strong> (where each party appoints one and the two appoint the third presiding arbitrator) is the standard best practice for joint ventures, ensuring deadlocks are resolved by an independent third party.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "how-to-create-franchise-agreement",
+    title: "How to Draft a Franchise Agreement",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "15 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Franchise Agreement details the operational relationship between a Franchisor (brand owner) and a Franchisee (operator). It specifies setup and ongoing royalty fees, brand and refurbishment compliance, territorial exclusivity, and tax withholding (TDS under Section 194J). This step-by-step visual guide walks you through drafting a Franchise Agreement on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements — Agreement Type</p>
+          <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Commercial Agreements</strong> category on the Founding Legals Agreements page, which governs day-to-day business operations under Indian commercial law.</p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Understanding the Franchise Agreement</h3>
+          <p className="text-brown-700 leading-relaxed">
+            A Franchise Agreement is a commercial contract under which the owner of a brand and business model (the Franchisor) grants another party (the Franchisee) the right to operate an outlet under their trademark. To structure a legally compliant franchise in India, parties must address four key legal and regulatory requirements:
+          </p>
+          <ul className="text-sm text-brown-700 leading-relaxed mt-2 pl-6 space-y-1.5 list-disc">
+            <li><strong>Trademark Licensing (Trade Marks Act, 1999):</strong> The core asset licensed is the Franchisor's intellectual property. Under <strong>Sections 48 and 49 of the Trade Marks Act, 1999</strong>, the parties should register the Franchisee as a "Registered User" with the Trademark Registry to protect the trademark's validity and prevent any claims of ownership or goodwill accretion by the Franchisee post-termination.</li>
+            <li><strong>Territorial Exclusivity (Competition Act, 2002):</strong> Restricting other outlets within an Exclusivity Radius (e.g., 3 km) constitutes an exclusive distribution / territorial restraint under <strong>Section 3(4) of the Competition Act, 2002</strong>. The radius must be commercially reasonable and must not cause an Appreciable Adverse Effect on Competition (AAEC).</li>
+            <li><strong>Withholding Tax on Royalties (Income Tax Act, 1961):</strong> Franchise fees and ongoing royalties (e.g., 6% of gross sales) represent payment for technical know-how or royalty under the Income Tax Act. Under <strong>Section 194J</strong>, the Franchisee is legally required to deduct Tax Deducted at Source (TDS) at the applicable rate (usually 10%) before making payments to the Franchisor.</li>
+            <li><strong>Refurbishment &amp; Brand Standards:</strong> Franchisors mandate periodic outlet renovations (e.g., every 5 years) to maintain uniform brand appearance. Refurbishment cycles must specify capital expenditure allocations clearly to prevent disputes when stores require hardware or aesthetic updates.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Drafting a Franchise Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Locate and Select Franchise Agreement</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the template:</strong> Navigate to the <em>Agreements</em> tab in the left sidebar. Scroll down to the <em>Commercial Agreements</em> section, locate the <em>Franchise Agreement</em> card, and click <em>+ Create</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 1.png" alt="Step 1: Click + Create on the Franchise Agreement card" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select the Franchisee:</strong> In the <em>Select Recipient</em> panel on the right sidebar, search for the Franchisee's representative or click <em>+ Add new recipient</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 2.png" alt="Step 2: Select the partner recipient" className="rounded-xl border border-[#D3D3D3] w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Select Agreement Terms Baseline</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Choose terms baseline:</strong> In the <em>Choose Agreement Terms</em> menu, select:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals standard terms:</strong> Pre-populates the editor with standard franchise operation covenants, intellectual property restrictions, royalty mechanisms, and audit rights.</li>
+              <li><strong>Custom terms:</strong> Choose this option to upload your own custom franchise template.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Confirm</em> to launch the editor.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 3.png" alt="Step 3: Choose standard or custom baseline" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Agreement Details (Step 1 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter signing place and date:</strong> In Step 1, input:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Execution Place (City):</strong> Enter the city where this agreement is executed (e.g., <em>Bengaluru</em>). This determines the jurisdiction and local stamp duty requirements.</li>
+              <li><strong>Execution Date:</strong> Select the calendar date the agreement takes effect. Month and Year will auto-fill.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 4.jpg" alt="Step 4: Agreement Details — city and date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Franchisor Details (Step 2 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Provide Franchisor legal details:</strong> In Step 2, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Franchisor Name:</strong> Enter the official corporate name of the brand owner (e.g., <em>Jupiter Hospitality Private Limited</em>).</li>
+              <li><strong>Franchisor CIN:</strong> Enter the 21-digit Corporate Identification Number.</li>
+              <li><strong>Franchisor Registered Office:</strong> Enter the official registered corporate address as recorded with the RoC.</li>
+              <li><strong>Brand Name:</strong> The public-facing name of your business model or commercial trademark licensed (e.g., <em>Founding Legals</em> or <em>Domino's</em>).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 5.jpg" alt="Step 5: Franchisor Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Franchisee Details (Step 3 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Provide Franchisee registration details:</strong> In Step 3, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Franchisee Name:</strong> Enter the official name of the operating company or individual (e.g., <em>John Doe</em>).</li>
+              <li><strong>Franchisee CIN/PAN:</strong> Enter the CIN for corporate operators, or the individual PAN.</li>
+              <li><strong>Franchisee GSTIN:</strong> The 15-digit GST registration number of the Franchisee.</li>
+              <li><strong>Franchisee Registered Office:</strong> Enter the physical registered office address.</li>
+              <li><strong>Franchise Outlet Address:</strong> The physical address where the franchise store or outlet will operate.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 6.jpg" alt="Step 6: Franchisee Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Fees &amp; Royalties (Step 4 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure initial fees and royalty splits:</strong> In Step 4, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Initial Franchise Fee (INR):</strong> The upfront fee paid by the Franchisee upon execution (e.g., <em>5,00,000</em>). The words description will auto-fill.</li>
+              <li><strong>Royalty (% of Gross Sales):</strong> The recurring payment calculated as a percentage of the Franchisee's gross monthly revenue (e.g., <em>6</em>%). Gross sales are pre-tax and pre-expense.</li>
+              <li><strong>Marketing Contribution (% of Gross Sales):</strong> A percentage of gross monthly sales contributed by the Franchisee to the national/global brand marketing fund (e.g., <em>3</em>%).</li>
+              <li><strong>Tech / Software Fee (INR/month):</strong> Monthly software license fee for accessing core POS or ordering tools (e.g., <em>10,000</em>).</li>
+              <li><strong>Late Payment Interest (% per month):</strong> The monthly penalty interest applied to delayed fee transfers (e.g., <em>2</em>%).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 7.jpg" alt="Step 7: Fees &amp; Royalties" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Term &amp; Renewal (Step 5 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Establish agreement duration and refurbishment standards:</strong> In Step 5, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Initial Term (Years):</strong> The primary duration of the franchise relationship before extensions (e.g., <em>5</em> years).</li>
+              <li><strong>Renewal Term (Years):</strong> The length of each optional extension period (e.g., <em>5</em> years).</li>
+              <li><strong>Renewal Notice Period (Days):</strong> The mandatory lead time required for the Franchisee to notify the Franchisor of their intent to renew (e.g., <em>180</em> days).</li>
+              <li><strong>Refurbishment Cycle (Years):</strong> The mandated interval within which the Franchisee must renovate the physical storefront to maintain brand guidelines (e.g., <em>5</em> years).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 8.jpg" alt="Step 8: Term &amp; Renewal — terms and refurbishment requirements" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 9 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">9</span>
+              <strong className="text-base text-brown-900">Legal Covenants &amp; Disputes (Step 6 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define market boundaries and dispute resolution:</strong> In Step 6, input:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Exclusivity Radius (km):</strong> Banning other outlets of the same brand within a set physical radius around the storefront to preserve local market share (e.g., <em>3</em> km).</li>
+              <li><strong>Seat of Arbitration:</strong> The mutually agreed-upon city (e.g., <em>Bengaluru</em>) that will have judicial jurisdiction over arbitration hearings.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 9.jpg" alt="Step 9: Legal &amp; Dispute — exclusivity and arbitration seat" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 10 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">10</span>
+              <strong className="text-base text-brown-900">Additional Terms &amp; Document Generation (Step 7 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Add custom operational rules and compile:</strong> In Step 7, enter any custom clauses (e.g., requiring the Franchisee to source all ingredients/packaging exclusively from authorized regional vendors). Once verified, click <em>Generate</em> to compile the agreement.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 10.jpg" alt="Step 10: Additional Terms and click Generate" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 11 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Document Review &amp; Execution</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Execute the Franchise Agreement:</strong> In the final Document Review screen:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Document Preview:</strong> Verify that all key variables (Effective Date, Initial Fee, Royalty %, Exclusivity Radius) are accurately merged into the agreement text.</li>
+              <li><strong>Interactive Signing Tools:</strong> Drag-and-drop the <em>Signature</em>, <em>Date</em>, and <em>Stamp</em> fields from the panel onto the signing blocks.</li>
+              <li><strong>Document Branding Settings:</strong> Toggle <em>Use Company Letterhead</em> or <em>Logo Watermark</em>.</li>
+              <li><strong>Execution:</strong> Click <em>Signed / Send</em> to execute and route the agreement to the counterparty, or <em>Download</em> to obtain an offline PDF copy.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 11.jpg" alt="Step 11: Final review and execution panel" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Notice: Trade Marks Act Registered User Rules
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Failing to register the Franchisee as a "Registered User" with the Trademark Registry under <strong>Section 48 of the Trade Marks Act, 1999</strong> can expose the Franchisor to risks of trademark dilution or franchise claims over brand ownership. Always file the registered user application (Form TM-U) within the statutory timelines post-execution.
+          </p>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Legal Warning: Section 194J TDS Withholding
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Franchise royalties and software fees are classified as payments for technical services or royalty under <strong>Section 194J of the Income Tax Act, 1961</strong>. The Franchisee must deduct Tax Deducted at Source (TDS) at the standard rate (typically 10%) prior to remittance. Inadequate deduction can lead to interest penalties and disallowance of expenditures for the Franchisee.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Refurbishment Capital Expenditures
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Refurbishment requirements (e.g., every 5 years) are a major source of franchisee friction. Clearly define that refurbishment costs are fully borne by the Franchisee, but set up a reserve fund mechanism (e.g., reserving 1-2% of monthly sales in a separate capital expenditure account) from Year 1 to ensure funds are available when the cycle triggers.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "how-to-create-supply-agreement",
+    title: "How to Draft a Supply Agreement",
+    moduleId: "agreements",
+    moduleName: "Agreements",
+    readingTime: "15 minutes",
+    lastUpdated: "June 2026",
+    summary: "A Supply Agreement specifies the purchase and distribution terms between a Supplier (manufacturer) and a Buyer (purchaser). It covers standard lead times, MOQ requirements, price adjustment indexations, Incoterms risk transfer, and liquidated damages caps for delays. This step-by-step visual guide walks you through drafting a Supply Agreement on Founding Legals.",
+    content: (
+      <div className="space-y-6">
+        <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements — Agreement Type</p>
+          <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Commercial Agreements</strong> category on the Founding Legals Agreements page, which governs day-to-day business operations under Indian commercial law.</p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-3">Understanding the Supply Agreement</h3>
+          <p className="text-brown-700 leading-relaxed">
+            A Supply Agreement governs the commercial relationship under which a manufacturer or seller (the Supplier) produces and delivers goods to a purchaser (the Buyer). To ensure risk mitigation and statutory compliance under Indian law, three main legal areas must be addressed:
+          </p>
+          <ul className="text-sm text-brown-700 leading-relaxed mt-2 pl-6 space-y-1.5 list-disc">
+            <li><strong>Liquidated Damages for Delayed Delivery (Sections 73 &amp; 74, Indian Contract Act, 1872):</strong> To address supply-chain disruptions caused by late shipments, buyers require clear liquidated damages (e.g., 1% of the order value per week of delay). Under <strong>Section 74 of the Indian Contract Act, 1872</strong>, these pre-estimated damages must represent a genuine, reasonable forecast of actual loss rather than a penalty. Establishing a liability cap (e.g., 5% of order value) protects the supplier against infinite escalation.</li>
+            <li><strong>Risk Allocation &amp; Delivery (Sale of Goods Act, 1930):</strong> By default, under <strong>Section 26 of the Sale of Goods Act, 1930</strong>, risk remains with the seller until ownership transfers to the buyer. Using standardized <strong>ICC Incoterms 2020</strong> (e.g., EXW or FOB) overrides this default rule, clearly defining the exact physical point where risk of loss, insurance liability, and transport costs transfer from the Supplier to the Buyer.</li>
+            <li><strong>GST Compliance &amp; Input Tax Credit (CGST Act, 2017):</strong> Buyers cannot claim Input Tax Credit (ITC) unless the Supplier pays the corresponding tax to the government and files their GSTR-1. Ensure the agreement verifies the Supplier's GSTIN and holds the Supplier liable for any interest or tax loss resulting from their failure to upload tax invoices.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold text-brown-900 mb-6">Step-by-Step Guide to Drafting a Supply Agreement</h3>
+
+          {/* Step 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">1</span>
+              <strong className="text-base text-brown-900">Locate and Select Supply Agreement</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Access the template:</strong> Navigate to the <em>Agreements</em> tab in the left sidebar. Scroll down to the <em>Commercial Agreements</em> section, locate the <em>Supply Agreement</em> card, and click <em>+ Create</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Supply Agreement/Supply Agreement - 1.png" alt="Step 1: Click + Create on the Supply Agreement card" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">2</span>
+              <strong className="text-base text-brown-900">Select Recipient</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Select the counterparty:</strong> In the <em>Select Recipient</em> panel on the right sidebar, search for the counterparty's representative or click <em>+ Add new recipient</em>.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Supply Agreement/Supply Agreement - 2.png" alt="Step 2: Select the partner recipient" className="rounded-xl border border-[#D3D3D3] w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">3</span>
+              <strong className="text-base text-brown-900">Select Agreement Terms Baseline</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Choose terms baseline:</strong> In the <em>Choose Agreement Terms</em> menu, select:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Founding Legals standard terms:</strong> Pre-populates the editor with standard manufacturing and supply covenants, product specifications, delivery procedures, and audit clauses.</li>
+              <li><strong>Custom terms:</strong> Choose this option to upload your own custom supply template.</li>
+            </ul>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10 mt-2">
+              Click <em>Confirm</em> to launch the editor.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Supply Agreement/Supply Agreement - 3.png" alt="Step 3: Choose standard or custom baseline" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 4 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">4</span>
+              <strong className="text-base text-brown-900">Agreement Details (Step 1 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Enter signing place and date:</strong> In Step 1, input:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Execution Place (City):</strong> Enter the geographical city where this agreement is executed (e.g., <em>Chennai</em>). This determines the jurisdiction and local stamp duty requirements.</li>
+              <li><strong>Execution Date:</strong> Select the calendar date the agreement takes effect. Month and Year will auto-fill.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Supply Agreement/Supply Agreement - 4.jpg" alt="Step 4: Agreement Details — city and date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 5 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">5</span>
+              <strong className="text-base text-brown-900">Supplier Details (Step 2 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Provide Supplier legal details:</strong> In Step 2, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Supplier Name:</strong> Enter the official legal corporate name of the supplying entity or individual (e.g., <em>John Doe</em>).</li>
+              <li><strong>Supplier CIN/PAN:</strong> Enter the 21-digit Corporate Identification Number for companies, or the individual PAN.</li>
+              <li><strong>Supplier GSTIN:</strong> Enter the 15-digit GSTIN, ensuring the first two digits match the state code.</li>
+              <li><strong>Supplier Registered Office:</strong> Enter the official physical address registered with the RoC.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Supply Agreement/Supply Agreement - 5.jpg" alt="Step 5: Supplier Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 6 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">6</span>
+              <strong className="text-base text-brown-900">Buyer Details (Step 3 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Provide Buyer registration details:</strong> In Step 3, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Buyer Name:</strong> Enter the official corporate name of the purchasing entity, excluding suffixes like 'Private Limited' or 'Pvt. Ltd.' (e.g., <em>Testing</em>).</li>
+              <li><strong>Buyer CIN:</strong> Enter the 21-digit Corporate Identification Number.</li>
+              <li><strong>Buyer GSTIN:</strong> The 15-digit GST identification number of the Buyer.</li>
+              <li><strong>Buyer Registered Office:</strong> Enter the registered corporate headquarters address.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Supply Agreement/Supply Agreement - 6.jpg" alt="Step 6: Buyer Details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 7 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">7</span>
+              <strong className="text-base text-brown-900">Supply &amp; Logistics (Step 4 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure logistics and delivery parameters:</strong> In Step 4, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Description of Goods:</strong> Detailed technical specifications, grades, or categories of materials to be supplied (e.g., <em>Raw Aluminum Ingots and Castings</em>). Avoid generic terms.</li>
+              <li><strong>Incoterms (Version 2020):</strong> Select the standardized international shipping rule from the dropdown (e.g., <em>EXW (Incoterms 2020)</em>). Selecting EXW transfers all risks and costs to the Buyer at the Supplier's factory floor.</li>
+              <li><strong>Minimum Order Quantity (MOQ):</strong> The lowest quantity or weight required for each separate purchase order (e.g., <em>10 Metric Tons</em>).</li>
+              <li><strong>Standard Lead Time (Days):</strong> The turnaround window allocated to the Supplier to manufacture, pack, and prepare goods for dispatch (e.g., <em>45</em> days).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Supply Agreement/Supply Agreement - 7.jpg" alt="Step 7: Supply &amp; Logistics details" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 8 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">8</span>
+              <strong className="text-base text-brown-900">Pricing &amp; Payment (Step 5 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Define payment timelines and indexation:</strong> In Step 5, enter:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Price Validity Period (Months):</strong> The initial period during which wholesale prices are locked (e.g., <em>12</em> months).</li>
+              <li><strong>Price Index for Adjustment:</strong> The public index (e.g., <em>RBI WPI Index</em>) used to adjust pricing post-validity to protect against raw material cost variations.</li>
+              <li><strong>Payment Terms (Net Days):</strong> The standard net days allowed to pay invoices (e.g., <em>60</em> days).</li>
+              <li><strong>Late Payment Interest (% per month):</strong> The monthly penalty interest rate for overdue invoices (e.g., <em>2</em>%).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Supply Agreement/Supply Agreement - 8.jpg" alt="Step 8: Pricing &amp; Payment options" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 9 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">9</span>
+              <strong className="text-base text-brown-900">Legal &amp; Termination (Step 6 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Configure delay penalties and exit structures:</strong> In Step 6, input:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Liquidated Damages (% per week):</strong> The weekly penalty rate applied to the Supplier for delayed shipments (e.g., <em>1</em>%).</li>
+              <li><strong>Liquidated Damages Cap (%):</strong> The maximum cumulative cap on delay penalties (e.g., <em>5</em>%).</li>
+              <li><strong>Termination for Convenience (Days):</strong> The notice window required for either party to exit the agreement without cause (e.g., <em>60</em> days).</li>
+              <li><strong>Seat &amp; Venue of Arbitration (City):</strong> The city designated as the legal seat for arbitration proceedings (e.g., <em>Bengaluru</em>).</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Supply Agreement/Supply Agreement - 9.jpg" alt="Step 9: Legal &amp; Termination settings" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 10 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">10</span>
+              <strong className="text-base text-brown-900">Additional Terms &amp; Document Generation (Step 7 of 7)</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Add custom covenants and compile:</strong> In Step 7, enter any custom parameters (e.g., requiring the Supplier to maintain an emergency buffer stock equal to 15% of the Buyer's average monthly volume). Click <em>Generate</em> to compile the draft.
+            </p>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Supply Agreement/Supply Agreement - 10.jpg" alt="Step 10: Additional Terms and click Generate" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+
+          <div className="border-t border-brown-100 my-6" />
+
+          {/* Step 11 */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 mb-2">
+              <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#5C6F2D] text-white text-sm font-bold flex items-center justify-center">✓</span>
+              <strong className="text-base text-brown-900">Document Review &amp; Execution</strong>
+            </div>
+            <p className="text-sm text-brown-600 leading-relaxed pl-10">
+              <strong>Execute the Supply Agreement:</strong> In the final Document Review screen:
+            </p>
+            <ul className="text-sm text-brown-600 leading-relaxed pl-16 space-y-1.5 list-disc">
+              <li><strong>Document Preview:</strong> Scroll through the main canvas to verify that all variables (Effective Date, MOQ, Incoterms, Liquidated Damages) are accurately merged.</li>
+              <li><strong>Interactive Signing Tools:</strong> Drag-and-drop the <em>Signature</em>, <em>Date</em>, and <em>Stamp</em> fields from the panel onto the signing block.</li>
+              <li><strong>Document Settings:</strong> Toggle <em>Use Company Letterhead</em> or <em>Logo Watermark</em>.</li>
+              <li><strong>Execution:</strong> Click <em>Signed / Send</em> to execute and route the agreement to the counterparty, or <em>Download</em> to save an offline copy.</li>
+            </ul>
+            <div className="mt-4 max-w-2xl pl-10">
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Supply Agreement/Supply Agreement - 11.jpg" alt="Step 11: Final review and execution panel" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Statutory Notice: Indian Contract Act Liquidated Damages Enforceability
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under <strong>Section 74 of the Indian Contract Act, 1872</strong>, if a contract specifies a liquidated damages rate for delay (e.g., 1% per week), the courts will only award reasonable compensation up to that limit. To prevent the clause from being struck down as a penalty, ensure the rate represents a genuine, pre-estimated economic loss associated with delivery delays.
+          </p>
+        </div>
+
+        <div className="bg-[#FFF9F6] border border-[#F5C2B8] p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#CD412B] font-semibold mb-2">
+            <span>⚠️</span> Legal Warning: GST Input Tax Credit Match Rules
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            Under the <strong>CGST Act, 2017</strong>, the Buyer cannot claim Input Tax Credit (ITC) if the Supplier defaults on GST payments or invoice uploads. To mitigate this risk, verify that the Supplier's GSTIN is active, and ensure that the agreement holds the Supplier liable to indemnify the Buyer for any interest or lost tax credit.
+          </p>
+        </div>
+
+        <div className="bg-blue-50/50 border border-blue-100 p-5 rounded-2xl">
+          <div className="flex gap-2.5 text-[#3d4eac] font-semibold mb-2">
+            <span>💡</span> Pro-Tip: Lead Time Buffer Allocations
+          </div>
+          <p className="text-sm text-brown-700 leading-relaxed">
+            When negotiating <strong>Standard Lead Time</strong> (e.g., 45 days), Suppliers should factor in raw material shortages, custom delays, or seasonal logistics disruptions. Add a 5–7 day grace or cure window in the agreement to prevent immediate default or liquidated damages triggers for minor delays.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
     id: "step-by-step-guide-to-drafting-agreements",
     title: "Step-by-Step Guide: How to Draft and Execute Agreements",
     moduleId: "agreements",
