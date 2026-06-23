@@ -4542,7 +4542,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
     content: (
       <div className="space-y-6">
         <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
-          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements — Agreement Type</p>
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements - Agreement Type</p>
           <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Commercial Agreements</strong> category on the Founding Legals Agreements page, which governs day-to-day business operations under Indian commercial law.</p>
         </div>
 
@@ -4630,7 +4630,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Execution Date:</strong> Select the calendar date this agreement becomes active. Month and Year will auto-fill instantly.</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 4.jpg" alt="Step 4: Agreement Details — city and date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 4.jpg" alt="Step 4: Agreement Details - City and Date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 
@@ -4696,7 +4696,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Inspection Window (Days):</strong> Number of days the buyer has to inspect before accepting or rejecting (e.g., <em>10</em> days).</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 7.jpg" alt="Step 7: Supply &amp; Delivery — description and windows" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 7.jpg" alt="Step 7: Supply &amp; Delivery - Description and Windows" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 
@@ -4717,7 +4717,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Late Payment Interest (% per month):</strong> Define the monthly penalty (%) applied to overdue undisputed invoices (e.g., <em>1.5</em>%). Standard is 1.5% to 2% monthly.</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 8.jpg" alt="Step 8: Pricing &amp; Payment — standard and MSME compliance limits" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 8.jpg" alt="Step 8: Pricing &amp; Payment - Standard and MSME Compliance Limits" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 
@@ -4739,7 +4739,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Persistent Delay Threshold (Weeks):</strong> Define weeks a delivery can be late before the buyer can cancel the order (e.g., <em>6</em> weeks).</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 9.jpg" alt="Step 9: Warranty &amp; Penalties — delay penalties, caps, and cancel thresholds" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 9.jpg" alt="Step 9: Warranty &amp; Penalties - Delay Penalties, Caps, and Cancel Thresholds" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 
@@ -4761,7 +4761,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Seat of Arbitration:</strong> Specify the official legal city where formal arbitration proceedings must take place if a dispute cannot be resolved privately (e.g., <em>Bengaluru</em>).</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 10.jpg" alt="Step 10: Legal &amp; Termination — caps, expiry date, notice, and seat" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 10.jpg" alt="Step 10: Legal &amp; Termination - Caps, Expiry Date, Notice, and Seat" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 
@@ -4794,7 +4794,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Execution:</strong> Toggle company letterhead or watermark, and click <em>Signed</em> or <em>Shared</em>.</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 11.png" alt="Step 12: Document Viewer — position signatures, stamps, and execute" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Vendor Agreement/Vendor Agreement - 11.png" alt="Step 12: Document Viewer - Position Signatures, Stamps, and Execute" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
         </div>
@@ -4839,7 +4839,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
     content: (
       <div className="space-y-6">
         <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
-          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements — Agreement Type</p>
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements - Agreement Type</p>
           <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Commercial Agreements</strong> category on the Founding Legals Agreements page, which governs day-to-day business operations under Indian commercial law.</p>
         </div>
 
@@ -4934,7 +4934,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Execution Date:</strong> Select the calendar date this agreement becomes active. Month and Year will auto-fill.</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 4.jpg" alt="Step 4: Agreement Details — city and date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 4.jpg" alt="Step 4: Agreement Details - City and Date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 
@@ -4999,7 +4999,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Exclusivity Type:</strong> Select from the dropdown: <em>sole</em>, <em>exclusive</em>, or <em>non-exclusive</em> based on your commercial strategy.</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 7.jpg" alt="Step 7: Appointment &amp; Scope — exclusivity and territory" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 7.jpg" alt="Step 7: Appointment &amp; Scope - Exclusivity and Territory" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 
@@ -5023,7 +5023,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Security Amount (INR) &amp; Security Amount in Words:</strong> Security deposit details (e.g., <em>10,000,000</em> and <em>Rupees Ten Lakh Only</em>).</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 8.jpg" alt="Step 8: Term &amp; Pricing — years, credit limit, and deposit" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 8.jpg" alt="Step 8: Term &amp; Pricing - Years, Credit Limit, and Deposit" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 
@@ -5044,7 +5044,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Co-op Marketing Contribution (%):</strong> The percentage the Principal will contribute to shared marketing campaigns (e.g., <em>50</em>%).</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 9.jpg" alt="Step 9: Marketing &amp; Targets — purchase targets and co-op spend" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 9.jpg" alt="Step 9: Marketing &amp; Targets - Purchase Targets and Co-op Spend" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 
@@ -5069,7 +5069,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Seat &amp; Venue of Arbitration (City):</strong> Legal venue for dispute resolution (e.g., <em>Bengaluru</em>).</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 10.jpg" alt="Step 10: Legal &amp; Termination — sell-off, buy-back discount, Incoterms, and arbitration" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 10.jpg" alt="Step 10: Legal &amp; Termination - Sell-off, Buy-back Discount, Incoterms, and Arbitration" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 
@@ -5102,7 +5102,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Execution:</strong> Toggle company letterhead or watermark, and click <em>Signed</em> or <em>Shared</em>.</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 11.png" alt="Step 12: Document Viewer — position signatures, stamps, and execute" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Distribution Agreement/Distribution Agreement - 11.png" alt="Step 12: Document Viewer - Position Signatures, Stamps, and Execute" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
         </div>
@@ -5147,7 +5147,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
     content: (
       <div className="space-y-6">
         <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
-          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements — Agreement Type</p>
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements - Agreement Type</p>
           <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Commercial Agreements</strong> category on the Founding Legals Agreements page, which governs day-to-day business operations under Indian commercial law.</p>
         </div>
 
@@ -5236,7 +5236,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Execution Date:</strong> Select the calendar date the agreement becomes active. Month and Year will auto-fill.</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 4.jpg" alt="Step 4: Agreement Details — city and date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 4.jpg" alt="Step 4: Agreement Details - City and Date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 
@@ -5322,7 +5322,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Non-Compete Period Post-Exit (Months):</strong> Restricted duration for a partner to run competing businesses after exiting the JV (e.g., <em>24</em> months).</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 8.jpg" alt="Step 8: Governance &amp; Management — board size, lock-in, and non-compete" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 8.jpg" alt="Step 8: Governance &amp; Management - Board Size, Lock-in, and Non-compete" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 
@@ -5343,7 +5343,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Number of Arbitrators:</strong> Select the size of the arbitration panel (e.g., <em>3</em>). Must be an odd number to avoid deadlocks.</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 9.jpg" alt="Step 9: Legal &amp; Dispute — CCI approval, venue, and arbitrator count" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 9.jpg" alt="Step 9: Legal &amp; Dispute - CCI Approval, Venue, and Arbitrator Count" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 
@@ -5381,7 +5381,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Execute:</strong> Click <em>Signed</em> or <em>Shared</em> to execute the legally binding agreement.</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 11.jpg" alt="Step 11: Document Viewer — review, position signature cues, and execute" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Joint Venture Agreement/Joint Venture Agreement - 11.jpg" alt="Step 11: Document Viewer - Review, Position Signatures, and Execute" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
         </div>
@@ -5426,7 +5426,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
     content: (
       <div className="space-y-6">
         <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
-          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements — Agreement Type</p>
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements - Agreement Type</p>
           <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Commercial Agreements</strong> category on the Founding Legals Agreements page, which governs day-to-day business operations under Indian commercial law.</p>
         </div>
 
@@ -5515,7 +5515,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Execution Date:</strong> Select the calendar date the agreement takes effect. Month and Year will auto-fill.</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 4.jpg" alt="Step 4: Agreement Details — city and date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 4.jpg" alt="Step 4: Agreement Details - City and Date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 
@@ -5605,7 +5605,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Refurbishment Cycle (Years):</strong> The mandated interval within which the Franchisee must renovate the physical storefront to maintain brand guidelines (e.g., <em>5</em> years).</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 8.jpg" alt="Step 8: Term &amp; Renewal — terms and refurbishment requirements" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 8.jpg" alt="Step 8: Term &amp; Renewal - Terms and Refurbishment Requirements" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 
@@ -5625,7 +5625,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Seat of Arbitration:</strong> The mutually agreed-upon city (e.g., <em>Bengaluru</em>) that will have judicial jurisdiction over arbitration hearings.</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 9.jpg" alt="Step 9: Legal &amp; Dispute — exclusivity and arbitration seat" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Franchise Agreement/Franchise Agreement - 9.jpg" alt="Step 9: Legal &amp; Dispute - Exclusivity and Arbitration Seat" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 
@@ -5708,7 +5708,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
     content: (
       <div className="space-y-6">
         <div className="bg-[#F5F7F0] border border-[#C5D09A] px-5 py-3 rounded-xl mb-2">
-          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements — Agreement Type</p>
+          <p className="text-xs font-semibold text-[#5C6F2D] uppercase tracking-wide">Commercial Agreements - Agreement Type</p>
           <p className="text-sm text-brown-600 mt-0.5">This agreement falls under the <strong>Commercial Agreements</strong> category on the Founding Legals Agreements page, which governs day-to-day business operations under Indian commercial law.</p>
         </div>
 
@@ -5796,7 +5796,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
               <li><strong>Execution Date:</strong> Select the calendar date the agreement takes effect. Month and Year will auto-fill.</li>
             </ul>
             <div className="mt-4 max-w-2xl pl-10">
-              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Supply Agreement/Supply Agreement - 4.jpg" alt="Step 4: Agreement Details — city and date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
+              <img src="/Help Center Guide/Aggrements drafting help images/Commercial Agreements/Supply Agreement/Supply Agreement - 4.jpg" alt="Step 4: Agreement Details - City and Date" className="rounded-xl border border-brown-200 w-full shadow-sm" />
             </div>
           </div>
 

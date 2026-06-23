@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { HELP_ARTICLES, HELP_MODULES } from "@/lib/helpData";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import HelpCredit from "@/components/HelpCredit";
 import { Clock, Calendar, HelpCircle, Presentation, PieChart, FileText, Wallet, BookOpen, Users, Settings, ChevronDown, ChevronRight } from "lucide-react";
 
 interface ArticlePageProps {
@@ -42,6 +43,9 @@ export async function generateMetadata({ params }: ArticlePageProps) {
   return {
     title: `${article.title} | Help Center & Legal Database`,
     description: article.summary,
+    authors: [{ name: "Manoj Kumar Thota" }],
+    creator: "Manoj Kumar Thota",
+    publisher: "Founding Legals",
   };
 }
 
@@ -62,6 +66,31 @@ export default async function HelpArticlePage({ params }: ArticlePageProps) {
 
   return (
     <main className="min-h-screen bg-[#FAF9F6] pt-[70px] sm:pt-[82px] flex flex-col justify-between text-[#2b2723]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": article.title,
+            "description": article.summary,
+            "dateModified": article.lastUpdated,
+            "author": {
+              "@type": "Person",
+              "name": "Manoj Kumar Thota"
+            },
+            "creator": {
+              "@type": "Person",
+              "name": "Manoj Kumar Thota"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Founding Legals",
+              "logo": "https://foundinglegals.com/logo.png"
+            }
+          }),
+        }}
+      />
       <Header />
 
       {/* Breadcrumbs: standard navigation */}
@@ -170,9 +199,18 @@ export default async function HelpArticlePage({ params }: ArticlePageProps) {
 
             {/* Article Header */}
             <header className="mb-8">
-              <h2 className="text-3xl sm:text-4.5xl font-serif font-bold text-brown-900 leading-tight">
+              <h2 className="text-3xl sm:text-4.5xl font-serif font-bold text-brown-900 leading-tight mb-4">
                 {article.title}
               </h2>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-sm text-brown-600 border-b border-[#e5ddd4]/60 pb-4">
+                <div>
+                  By <span className="font-semibold text-brown-900">Manoj Kumar Thota</span> | Founding Legals
+                </div>
+                <div className="hidden sm:block text-[#e5ddd4]">•</div>
+                <div>
+                  Published in <span className="font-semibold text-[#5C6F2D]">Help Center</span>
+                </div>
+              </div>
             </header>
 
             {/* Quick Summary Callout */}
@@ -186,10 +224,42 @@ export default async function HelpArticlePage({ params }: ArticlePageProps) {
             </div>
 
             {/* Rich TSX Content */}
-            <div className="text-sm sm:text-base text-brown-800 space-y-6 leading-[1.8] font-sans prose prose-brown max-w-none">
+            <div className="text-sm sm:text-base text-brown-800 space-y-6 leading-[1.8] font-sans prose prose-brown max-w-none mb-10">
               {article.content}
             </div>
+
+            {/* Bottom of article & About the author */}
+            <div className="border-t border-[#e5ddd4] pt-8 mt-10 space-y-6">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-[#FAF9F6] border border-[#e5ddd4]/80 rounded-2xl p-5">
+                <div className="text-left">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-[#5C6F2D] mb-1">
+                    Quality Assurance
+                  </p>
+                  <h4 className="text-base font-bold text-brown-900">
+                    Reviewed by Manoj Kumar Thota
+                  </h4>
+                  <p className="text-xs sm:text-sm text-brown-500 font-medium mt-0.5">
+                    Founder / Developed  Founding Legals
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#5C6F2D]/10 rounded-full text-[#5C6F2D] text-xs font-semibold">
+                  Verified Creator
+                </span>
+              </div>
+
+              <div className="bg-[#FAF9F6] border border-[#e5ddd4]/80 rounded-2xl p-5">
+                <h5 className="text-sm font-bold text-brown-900 mb-2">About the Author</h5>
+                <p className="text-sm text-brown-600 leading-relaxed m-0 font-sans">
+                  Manoj Kumar Thota is the creator behind Founding Legals 
+                </p>
+              </div>
+            </div>
           </article>
+        </div>
+
+        {/* Credit Section */}
+        <div className="w-full mt-10">
+          <HelpCredit />
         </div>
       </div>
 

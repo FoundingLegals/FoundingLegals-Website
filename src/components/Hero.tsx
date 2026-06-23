@@ -218,7 +218,7 @@ export default function Hero() {
             >
               Start Your Journey
             </a>
-            <WatchDemoButton videoId="lfrcHLXDpjg" />
+            <WatchDemoButton videoId="GUiMPZboyu0" />
           </div>
         </div>
       </div>

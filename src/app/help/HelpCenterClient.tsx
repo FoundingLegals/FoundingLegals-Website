@@ -21,6 +21,7 @@ import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { HELP_ARTICLES, HELP_MODULES } from "@/lib/helpData";
+import HelpCredit from "@/components/HelpCredit";
 
 // ─── Icon mapper ──────────────────────────────────────────────────────────────
 const getModuleIcon = (iconName: string, className = "w-8 h-8") => {
@@ -241,6 +242,29 @@ export default function HelpCenterClient({
   if (!selectedModule) {
     return (
       <main style={{ minHeight: "100vh", background: "#f0f2f5", paddingTop: "70px", display: "flex", flexDirection: "column", color: "#2b2723" }}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Help Center & Legal Database | Founding Legals",
+              "description": "Explore Founding Legals' flagship legal and compliance database. Developed by Manoj Kumar Thota.",
+              "author": {
+                "@type": "Person",
+                "name": "Manoj Kumar Thota"
+              },
+              "creator": {
+                "@type": "Person",
+                "name": "Manoj Kumar Thota"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Founding Legals"
+              }
+            }),
+          }}
+        />
         <Header />
         {heroBanner}
 
@@ -313,6 +337,11 @@ export default function HelpCenterClient({
               </button>
             ))}
           </div>
+
+          {/* Credit Section */}
+          <div style={{ marginTop: "48px" }}>
+            <HelpCredit />
+          </div>
         </div>
 
         <style>{`
@@ -340,6 +369,29 @@ export default function HelpCenterClient({
   // ════════════════════════════════════════════════════════════════════════════
   return (
     <main style={{ minHeight: "100vh", background: "#f0f2f5", paddingTop: "70px", display: "flex", flexDirection: "column", color: "#2b2723" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": `${activeModule?.name || "Category"} | Help Center | Founding Legals`,
+            "description": `Explore help articles on ${activeModule?.name || "Category"}. Developed by Manoj Kumar Thota.`,
+            "author": {
+              "@type": "Person",
+              "name": "Manoj Kumar Thota"
+            },
+            "creator": {
+              "@type": "Person",
+              "name": "Manoj Kumar Thota"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Founding Legals"
+            }
+          }),
+        }}
+      />
       <Header />
 
       {/* Breadcrumb: exactly like image 5 */}
@@ -506,6 +558,11 @@ export default function HelpCenterClient({
             )}
           </div>
         </div>
+      </div>
+
+      {/* Credit Section */}
+      <div style={{ maxWidth: "1100px", width: "100%", margin: "0 auto", padding: "0 20px 48px" }}>
+        <HelpCredit />
       </div>
 
       <style>{`

@@ -24,6 +24,9 @@ export async function generateMetadata({ params }: CategoryPageProps) {
   return {
     title: `${moduleInfo.name} | Help Center & Legal Database`,
     description: `Explore detailed statutory legal articles, MCA forms, and compliance guides on ${moduleInfo.name} for Indian founders and startups.`,
+    authors: [{ name: "Manoj Kumar Thota" }],
+    creator: "Manoj Kumar Thota",
+    publisher: "Founding Legals",
   };
 }
 
