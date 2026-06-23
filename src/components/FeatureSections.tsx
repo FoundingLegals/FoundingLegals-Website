@@ -244,7 +244,7 @@ export function RaiseSection() {
           {/* Left    interactive visual */}
           <div className="reveal-left order-2 lg:order-1">
             <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-14/10 sm:aspect-16/10 flex items-center justify-center">
+              <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-[1522/1080] flex items-center justify-center">
                 {/* Ready for Raise video */}
                 <video
                   src="/videos/raise.mp4"
@@ -255,7 +255,7 @@ export function RaiseSection() {
                   disablePictureInPicture
                   controlsList="nodownload nofullscreen noremoteplayback"
                   onContextMenu={(e) => e.preventDefault()}
-                  className="absolute inset-0 w-full h-full object-cover object-center"
+                  className="absolute inset-0 w-full h-full object-cover object-center rounded-xl scale-[1.02]"
                   style={{ backgroundColor: "white", userSelect: "none" }}
                 />
               </div>
