@@ -333,7 +333,7 @@ export default function Pricing() {
                   {/* CTA Button */}
                   <a
                     href={
-                      tier.custom ? "/contact" : "https://app.foundinglegals.com/sign-up"
+                      tier.custom ? "/contact" : "/start"
                     }
                     target={tier.openInNewTab ? "_blank" : undefined}
                     rel={tier.openInNewTab ? "noopener noreferrer" : undefined}

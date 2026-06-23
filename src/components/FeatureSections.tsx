@@ -383,7 +383,9 @@ export function IntelligenceSection() {
                 not the portal.
               </p>
               <a
-                href="https://app.foundinglegals.com/sign-up"
+                href="/start"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-3.5 bg-olive-600 text-lime-bg font-medium rounded-full hover:bg-olive-800 transition-all text-base"
               >
                 Start Free

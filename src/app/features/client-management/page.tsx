@@ -188,7 +188,7 @@ export default function ClientManagementPage() {
 
               <div className="hero-animate hero-animate-delay-4 flex flex-wrap gap-4">
                 <a
-                  href="https://app.foundinglegals.com/sign-up"
+                  href="/start"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-7 py-3.5 bg-olive-600 text-lime-bg font-semibold rounded-full hover:bg-olive-700 hover:scale-[1.02] transition-all duration-300 shadow-md shadow-olive-900/20 text-[15px]"
@@ -528,7 +528,7 @@ export default function ClientManagementPage() {
 
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                href="https://app.foundinglegals.com/sign-up"
+                href="/start"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white text-olive-700 font-bold rounded-full hover:bg-lime-bg transition-all duration-300 text-[16px] shadow-lg"

@@ -14,10 +14,12 @@ export default function Possibilities() {
               Made for the founder who wears every hat.
             </h2>
             <p className="text-base sm:text-lg text-brown-500 leading-relaxed mb-10 max-w-md">
-              If you are running a team of 5 to 50, you should not need to worry about complex spreadsheets or expensive professional fees just to stay in good standing. We streamline all of that, so there is no need for expensive legal or accounting expertise anymore.
+              If you are running a team of 1 to 50, you should not need to worry about complex spreadsheets or expensive professional fees just to stay in good standing. We streamline all of that, so there is no need for expensive legal or accounting expertise anymore.
             </p>
             <a
-              href={process.env.NEXT_PUBLIC_APP_URL || "#"}
+              href="/start"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-olive-600 text-white font-medium rounded-full hover:bg-olive-700 transition-all text-base"
             >
               Start Free
