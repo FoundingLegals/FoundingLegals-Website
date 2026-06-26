@@ -41,15 +41,18 @@ export function StartSection() {
           {/* Left    document visual (contract screenshot style) */}
           <div className="reveal-left">
             <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
-              <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-14/10 sm:aspect-16/10 flex items-center justify-center">
+              <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-[1522/1080] flex items-center justify-center">
                 <video
                   src="/videos/start.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                  style={{ backgroundColor: "white" }}
+                  disablePictureInPicture
+                  controlsList="nodownload nofullscreen noremoteplayback"
+                  onContextMenu={(e) => e.preventDefault()}
+                  className="absolute inset-0 w-full h-full object-cover object-center rounded-xl scale-[1.02]"
+                  style={{ backgroundColor: "white", userSelect: "none" }}
                 />
               </div>
             </div>
