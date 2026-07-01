@@ -114,7 +114,7 @@ const TIERS: Tier[] = [
 const FAQS = [
   {
     q: "What is the difference between Monthly and Annual Early Bird pricing?",
-    a: "Our Monthly Plans carry a promotional 25% Early Bird discount that is active now. Our Annual Plans lock in a Permanent Early Bird rate forever - your price will never increase as we ship new features, making annual billing the smartest long-term choice.",
+    a: "Our Monthly Plans carry a promotional 20% Early Bird discount that is active now. Our Annual Plans lock in a 33% Permanent Early Bird rate forever - your price will never increase as we ship new features, making annual billing the smartest long-term choice.",
   },
   {
     q: "What happens after the 14-day free trial?",
@@ -287,7 +287,7 @@ export default function Pricing() {
                               tier.highlight ? "text-olive-200" : "text-brown-400"
                             }`}
                           >
-                            /mo
+                            /mo + GST
                           </span>
                         </div>
 
@@ -295,11 +295,11 @@ export default function Pricing() {
                         <div>
                           {annual ? (
                             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9px] font-extrabold bg-lime-bg text-olive-800 uppercase tracking-wider">
-                              🐦 Permanent Early Bird
+                              🐦 33% Permanent Early Bird
                             </span>
                           ) : (
                             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9px] font-extrabold bg-amber-100 text-amber-800 border border-amber-200 uppercase tracking-wider">
-                              ⚡ 25% Early Bird Active
+                              ⚡ 20% Early Bird Active
                             </span>
                           )}
                         </div>
