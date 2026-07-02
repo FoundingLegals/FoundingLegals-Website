@@ -5,35 +5,14 @@ import { HELP_ARTICLES, HELP_MODULES } from "@/lib/helpData";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HelpCredit from "@/components/HelpCredit";
-import { Clock, Calendar, HelpCircle, Presentation, PieChart, FileText, Wallet, BookOpen, Users, Settings, ChevronDown, ChevronRight } from "lucide-react";
+import HelpSidebar from "@/components/HelpSidebar";
+import { Clock, Calendar } from "lucide-react";
 
 interface ArticlePageProps {
   params: Promise<{
     articleId: string;
   }>;
 }
-
-// Icon mapper for modules
-const getModuleIcon = (iconName: string, className = "w-5 h-5") => {
-  switch (iconName) {
-    case "Presentation":
-      return <Presentation className={className} />;
-    case "PieChart":
-      return <PieChart className={className} />;
-    case "FileText":
-      return <FileText className={className} />;
-    case "Wallet":
-      return <Wallet className={className} />;
-    case "BookOpen":
-      return <BookOpen className={className} />;
-    case "Users":
-      return <Users className={className} />;
-    case "Settings":
-      return <Settings className={className} />;
-    default:
-      return <HelpCircle className={className} />;
-  }
-};
 
 export async function generateMetadata({ params }: ArticlePageProps) {
   const resolvedParams = await params;
@@ -94,7 +73,7 @@ export default async function HelpArticlePage({ params }: ArticlePageProps) {
       <Header />
 
       {/* Breadcrumbs: standard navigation */}
-      <div className="bg-[#FAF9F6] border-b border-[#e5ddd4]/55">
+      <div className="sticky top-[68px] sm:top-[78px] z-40 bg-[#FAF9F6] border-b border-[#e5ddd4]/55">
         <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
           <nav className="flex items-center gap-2 text-[13px] text-brown-500">
             <Link href="/help" className="text-[#5C6F2D] hover:underline font-semibold">
@@ -116,56 +95,8 @@ export default async function HelpArticlePage({ params }: ArticlePageProps) {
       <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
           {/* Unified Sidebar Navigation */}
-          <aside className="w-full lg:w-64 shrink-0 lg:sticky lg:top-[100px]">
-            {/* Category Navigation List */}
-            <nav className="space-y-1 mb-6">
-              {HELP_MODULES.map((mod) => {
-                const isActive = article.moduleId === mod.id;
-                const siblings = HELP_ARTICLES.filter((art) => art.moduleId === mod.id);
-                return (
-                  <div key={mod.id} className="flex flex-col">
-                    {/* Category Item */}
-                    <Link
-                      href={`/help/${mod.id}`}
-                      className={`flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm transition-colors font-semibold ${
-                        isActive
-                          ? "bg-[#F1F3EB] text-[#5C6F2D]"
-                          : "hover:bg-[#F1F3EB] hover:text-[#5C6F2D] text-brown-600"
-                      }`}
-                    >
-                      <span className="line-clamp-1">{mod.name}</span>
-                      {isActive ? (
-                        <ChevronDown className="w-4 h-4 text-[#5C6F2D] shrink-0 ml-2" />
-                      ) : (
-                        <ChevronRight className="w-4 h-4 text-[#9e9890] shrink-0 ml-2" />
-                      )}
-                    </Link>
-
-                    {/* Sibling Articles (if active category) */}
-                    {isActive && (
-                      <div className="pl-4 mt-1.5 space-y-1 border-l-2 border-[#5C6F2D]/20 ml-3.5">
-                        {siblings.map((art) => {
-                          const isCurrentArticle = art.id === article.id;
-                          return (
-                            <Link
-                              key={art.id}
-                              href={`/help/article/${art.id}`}
-                              className={`block text-xs py-2 px-3 rounded-md transition-all leading-normal ${
-                                isCurrentArticle
-                                  ? "bg-[#5C6F2D]/10 text-[#5C6F2D] font-bold"
-                                  : "text-brown-500 hover:bg-[#F1F3EB]/50 hover:text-[#5C6F2D]"
-                              }`}
-                            >
-                              {art.title}
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </nav>
+          <aside className="w-full lg:w-64 shrink-0 lg:sticky lg:top-[135px] lg:max-h-[calc(100vh-165px)] lg:overflow-y-auto no-scrollbar">
+            <HelpSidebar activeArticleId={article.id} activeModuleId={article.moduleId} />
 
             {/* Article Meta Card */}
             <div className="bg-white border border-[#e5ddd4] rounded-2xl p-5 shadow-sm space-y-3.5">

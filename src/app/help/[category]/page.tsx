@@ -1,6 +1,6 @@
 import HelpCenterClient from "../HelpCenterClient";
-import { HELP_MODULES } from "@/lib/helpData";
-import { notFound } from "next/navigation";
+import { HELP_MODULES, HELP_ARTICLES } from "@/lib/helpData";
+import { notFound, redirect } from "next/navigation";
 
 interface CategoryPageProps {
   params: Promise<{
@@ -97,6 +97,12 @@ export default async function CategoryHelpPage({ params }: CategoryPageProps) {
   const moduleInfo = findModule(resolvedParams.category);
   if (!moduleInfo) {
     notFound();
+  }
+
+  // Find the first article of this category and redirect directly to it
+  const firstArticle = HELP_ARTICLES.find((art) => art.moduleId === moduleInfo.id);
+  if (firstArticle) {
+    redirect(`/help/article/${firstArticle.id}`);
   }
 
   return <HelpCenterClient initialModuleId={moduleInfo.id} />;

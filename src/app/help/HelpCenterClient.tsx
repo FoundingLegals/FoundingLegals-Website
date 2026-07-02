@@ -22,6 +22,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { HELP_ARTICLES, HELP_MODULES } from "@/lib/helpData";
 import HelpCredit from "@/components/HelpCredit";
+import HelpSidebar from "@/components/HelpSidebar";
 
 // ─── Icon mapper ──────────────────────────────────────────────────────────────
 const getModuleIcon = (iconName: string, className = "w-8 h-8") => {
@@ -99,12 +100,17 @@ export default function HelpCenterClient({
   }, [initialModuleId]);
 
   const handleSelectModule = (moduleId: string | null) => {
-    setSelectedModule(moduleId);
     setSearchQuery("");
     setIsCategoryDropdownOpen(false);
     if (moduleId) {
-      router.push(`/help/${moduleId}`);
+      const firstArticle = HELP_ARTICLES.find((art) => art.moduleId === moduleId);
+      if (firstArticle) {
+        router.push(`/help/article/${firstArticle.id}`);
+      } else {
+        router.push(`/help/${moduleId}`);
+      }
     } else {
+      setSelectedModule(null);
       router.push("/help");
     }
   };
@@ -421,89 +427,9 @@ export default function HelpCenterClient({
 
         {/* ── Left Sidebar ─────────────────────────────────────────────────── */}
         <aside style={{ width: "260px", flexShrink: 0 }} className="help-detail-sidebar">
-          <nav style={{ position: "sticky", top: "100px" }}>
-            {HELP_MODULES.map((mod) => {
-              const isActive = selectedModule === mod.id;
-              return (
-                <div key={mod.id} style={{ marginBottom: "4px" }}>
-                  <button
-                    onClick={() => handleSelectModule(mod.id)}
-                    style={{
-                      width: "100%",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      padding: "12px 14px",
-                      background: isActive ? "#F1F3EB" : "none",
-                      border: "none",
-                      borderRadius: "6px",
-                      cursor: "pointer",
-                      textAlign: "left",
-                      fontSize: "14px",
-                      fontWeight: isActive ? 700 : 500,
-                      color: isActive ? "#5C6F2D" : "#4a4a6a",
-                      transition: "background 0.15s, color 0.15s",
-                    }}
-                    onMouseEnter={(e) => {
-                      if (!isActive) {
-                        (e.currentTarget as HTMLButtonElement).style.background = "#F1F3EB";
-                        (e.currentTarget as HTMLButtonElement).style.color = "#5C6F2D";
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!isActive) {
-                        (e.currentTarget as HTMLButtonElement).style.background = "none";
-                        (e.currentTarget as HTMLButtonElement).style.color = "#4a4a6a";
-                      }
-                    }}
-                  >
-                    <span style={{ lineHeight: 1.35 }}>{mod.name}</span>
-                    <ChevronDown
-                      style={{
-                        width: "16px",
-                        height: "16px",
-                        color: isActive ? "#5C6F2D" : "#b0b0c0",
-                        transform: isActive ? "rotate(180deg)" : "rotate(0deg)",
-                        transition: "transform 0.2s ease",
-                      }}
-                    />
-                  </button>
-
-                  {/* Accordion / Dropdown Topics inside Sidebar */}
-                  {isActive && (
-                    <div style={{ paddingLeft: "16px", marginTop: "4px", display: "flex", flexDirection: "column", gap: "2px" }}>
-                      {categoryArticles.map((art) => (
-                        <Link
-                          key={art.id}
-                          href={`/help/article/${art.id}`}
-                          style={{
-                            display: "block",
-                            fontSize: "13px",
-                            color: "#5a5a72",
-                            textDecoration: "none",
-                            padding: "6px 10px",
-                            borderRadius: "4px",
-                            lineHeight: "1.4",
-                            transition: "all 0.15s",
-                          }}
-                          onMouseEnter={(e) => {
-                            (e.currentTarget as HTMLAnchorElement).style.background = "#F1F3EB";
-                            (e.currentTarget as HTMLAnchorElement).style.color = "#5C6F2D";
-                          }}
-                          onMouseLeave={(e) => {
-                            (e.currentTarget as HTMLAnchorElement).style.background = "none";
-                            (e.currentTarget as HTMLAnchorElement).style.color = "#5a5a72";
-                          }}
-                        >
-                          {art.title}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </nav>
+          <div style={{ position: "sticky", top: "100px", maxHeight: "calc(100vh - 140px)", overflowY: "auto" }} className="no-scrollbar">
+            <HelpSidebar activeModuleId={selectedModule} />
+          </div>
         </aside>
 
         {/* ── Right Content ─────────────────────────────────────────────────── */}
