@@ -69,20 +69,46 @@ export default function NameRegistrationLayout() {
     <div className="min-h-screen bg-white font-sans text-[#2c2925] selection:bg-olive-600 selection:text-white">
       
       {/* ── TOP HEADER SECTION ── */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-[120px] pb-6">
-        <h1 className="font-serif text-[26px] sm:text-[36px] md:text-[50px] font-medium text-[#1A1917] leading-[1.2] md:leading-[1.1] mb-6">
-          Company Registration in India - Online Incorporation Process Explained
-        </h1>
-        
-        <div className="text-[15px] md:text-[16px] text-brown-600 leading-relaxed space-y-4 max-w-5xl">
-          <p>
-            Company Registration is the first step to formalise your business as a legal entity before launching its core operations. This crucial step offers you legal rights, protection, and a solid foundation.
-          </p>
-          <p>
-            From choosing the right company type to adhering to regulatory requirements, the way you navigate through the registration process will set the tone for the success story of your startup. Before we delve deeper into the process, let's explore the different types of business structures in India.
-          </p>
+      <section className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-[120px] pb-10">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-20">
+
+          {/* LEFT: Text */}
+          <div className="flex-1 min-w-0">
+            <h1 className="font-serif text-[28px] sm:text-[38px] md:text-[48px] font-medium text-[#1A1917] leading-[1.15] mb-6">
+              Launch Your Startup with a Legally Registered Business
+            </h1>
+
+            <div className="text-[15px] md:text-[16px] text-[#5C5954] leading-relaxed space-y-3 max-w-xl">
+              <p>
+                Start your business with confidence. We handle the entire incorporation process—from name approval and documentation to MCA filing and company registration so you can focus on building your startup.
+              </p>
+            </div>
+
+            <div className="mt-8">
+              <button
+                onClick={() => openModal("Company Registration")}
+                className="bg-olive-700 hover:bg-olive-800 text-white font-semibold text-[14px] px-8 py-3.5 rounded-xl transition-all cursor-pointer shadow-sm active:scale-95"
+              >
+                Start Your Journey
+              </button>
+            </div>
+          </div>
+
+          {/* RIGHT: Hero Image */}
+          <div className="hidden lg:block lg:w-[420px] xl:w-[460px] shrink-0">
+            <div className="w-full h-[380px] xl:h-[420px] rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+              <img
+                src="/company-registration-hero.png"
+                alt="Company Registration in India – Founding Legals"
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+          </div>
+
         </div>
       </section>
+
+
 
       {/* ── COMPANY TYPE CARDS SECTION (full-width, above two-column) ── */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 pb-10">

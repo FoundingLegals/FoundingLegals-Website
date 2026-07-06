@@ -125,18 +125,42 @@ export default function CompanyIncorporationLayout() {
     <div className="min-h-screen bg-white font-sans text-[#2c2925] selection:bg-olive-600 selection:text-white">
       
       {/* ── TOP HEADER SECTION ── */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-[120px] pb-6">
-        <h1 className="font-serif text-[26px] sm:text-[36px] md:text-[50px] font-medium text-[#1A1917] leading-[1.2] md:leading-[1.1] mb-6">
-          Private Limited Company Registration in India
-        </h1>
-        
-        <div className="text-[15px] md:text-[16px] text-brown-600 leading-relaxed space-y-4 max-w-5xl">
-          <p>
-            A <strong>Private Limited Company (Pvt Ltd)</strong> is one of the most popular business structures in India, especially for startups and growing businesses. It offers limited liability, a separate legal identity, and the ability to raise funding from investors. It is mandatory to have a minimum of two directors and two shareholders. These directors and shareholders can either be the same or different individuals, with at least one director being an Indian Resident.
-          </p>
-          <p>
-            All companies in India, including Private Limited Companies, are regulated by the <strong>Ministry of Corporate Affairs (MCA)</strong>. The MCA enforces the Companies Act, 2013, through bodies like the Registrar of Companies (ROC), which handles company registration, compliance, and filings.
-          </p>
+      <section className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-[120px] pb-10">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-20">
+
+          {/* LEFT: Text */}
+          <div className="flex-1 min-w-0">
+            <h1 className="font-serif text-[28px] sm:text-[38px] md:text-[48px] font-medium text-[#1A1917] leading-[1.15] mb-6">
+              Launch Your Startup with a Legally Registered Business
+            </h1>
+
+            <div className="text-[15px] md:text-[16px] text-[#5C5954] leading-relaxed space-y-3 max-w-xl">
+              <p>
+                Start your business with confidence. We handle the entire incorporation process—from name approval and documentation to MCA filing and company registration so you can focus on building your startup.
+              </p>
+            </div>
+
+            <div className="mt-8">
+              <button
+                onClick={() => openModal("Pvt Ltd Company Incorporation")}
+                className="bg-olive-700 hover:bg-olive-800 text-white font-semibold text-[14px] px-8 py-3.5 rounded-xl transition-all cursor-pointer shadow-sm active:scale-95"
+              >
+                Start Your Journey
+              </button>
+            </div>
+          </div>
+
+          {/* RIGHT: Hero Image */}
+          <div className="hidden lg:block lg:w-[420px] xl:w-[460px] shrink-0">
+            <div className="w-full h-[380px] xl:h-[420px] rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
+              <img
+                src="/company-registration-hero.png"
+                alt="Company Registration in India – Founding Legals"
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+          </div>
+
         </div>
       </section>
 
