@@ -31,7 +31,7 @@ const TIERS: Tier[] = [
     monthly: 789,
     monthlyRegular: 999,
     annual: 7890,
-    annualRegular: 9990,
+    annualRegular: 11988,
     ctaText: "Start 14-Day Free Trial",
     ctaSubtext: "14-day free trial - No credit card needed",
     openInNewTab: true,
@@ -52,7 +52,7 @@ const TIERS: Tier[] = [
     monthly: 1139,
     monthlyRegular: 1425,
     annual: 11390,
-    annualRegular: 14250,
+    annualRegular: 17100,
     highlight: true,
     ctaText: "Proceed with Seed",
     ctaSubtext: "",
@@ -74,7 +74,7 @@ const TIERS: Tier[] = [
     monthly: 1499,
     monthlyRegular: 1875,
     annual: 14990,
-    annualRegular: 18750,
+    annualRegular: 22500,
     ctaText: "Proceed with Series-A",
     ctaSubtext: "",
     openInNewTab: true,
@@ -199,14 +199,14 @@ export default function Pricing() {
                 tier.monthly === null || tier.annual === null
                   ? null
                   : annual
-                  ? Math.round(tier.annual / 12)
+                  ? tier.annual
                   : tier.monthly;
 
               const regularPrice =
                 tier.monthlyRegular === null || tier.annualRegular === null
                   ? null
                   : annual
-                  ? Math.round(tier.annualRegular / 12)
+                  ? tier.annualRegular
                   : tier.monthlyRegular;
 
               const annualSaving =
@@ -287,7 +287,7 @@ export default function Pricing() {
                               tier.highlight ? "text-olive-200" : "text-brown-400"
                             }`}
                           >
-                            /mo + GST
+                            {annual ? "/year + GST" : "/mo + GST"}
                           </span>
                         </div>
 

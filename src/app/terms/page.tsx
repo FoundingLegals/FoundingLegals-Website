@@ -20,7 +20,7 @@ const sections = [
           These Terms &amp; Conditions (&ldquo;Terms&rdquo;) form a binding
           legal agreement between you (&ldquo;you&rdquo;, &ldquo;User&rdquo;)
           and{" "}
-          <strong>Arvya Tech Pvt. Ltd.</strong> (CIN:{" "}
+          <strong>Arvya Tech Pvt. Ltd.</strong> (CIN:{" "} 
           <strong>U62011AP2025PTC121416</strong>), a company incorporated under
           the Companies Act, 2013, having its registered office at{" "}
           <strong>

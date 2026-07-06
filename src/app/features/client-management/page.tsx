@@ -194,7 +194,7 @@ export default function ClientManagementPage() {
                   className="inline-flex items-center gap-2 px-7 py-3.5 bg-olive-600 text-lime-bg font-semibold rounded-full hover:bg-olive-700 hover:scale-[1.02] transition-all duration-300 shadow-md shadow-olive-900/20 text-[15px]"
                 >
                   Start Free
-                  <ArrowRight className="w-4 h-4" />
+                   
                 </a>
                 <a
                   href="#features"
@@ -534,7 +534,7 @@ export default function ClientManagementPage() {
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white text-olive-700 font-bold rounded-full hover:bg-lime-bg transition-all duration-300 text-[16px] shadow-lg"
               >
                 Start Free: No credit card
-                <ArrowRight className="w-4 h-4" />
+                 
               </a>
             </div>
 

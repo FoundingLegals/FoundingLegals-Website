@@ -60,7 +60,7 @@ export const services: ServicePattern[] = [
     ctaDescription: "Start the name reservation process today and take the first step toward launching your startup."
   },
   {
-    title: "Company Incorporation",
+    title: "Private Limited Company Registration",
     slug: "company-incorporation",
     heroCategory: "Start",
     heroTitle: "Incorporate Your Startup the Right Way",
@@ -92,6 +92,74 @@ export const services: ServicePattern[] = [
     ],
     ctaTitle: "Launch your company today",
     ctaDescription: "Join hundreds of founders who trust Founding Legals to build their legal foundation."
+  },
+  {
+    title: "Limited Liability Partnership Registration",
+    slug: "llp-registration",
+    heroCategory: "Start",
+    heroTitle: "Limited Liability Partnership Registration in India",
+    heroDescription: "Combine the flexibility of a partnership with the limited liability protection of a company. Easy documentation and low compliance.",
+    heroImage: "/startup-start-hero.png",
+    featuresTitle: "The smartest way to incorporate your LLP",
+    features: [
+      {
+        title: "End-to-End Filing",
+        description: "We handle the entire process from RUN name reservation to FiLLiP incorporation and Form 3 agreement submission.",
+        iconName: "FileSignature"
+      },
+      {
+        title: "Digital Signatures (DSC)",
+        description: "Procurement of Class-3 DSCs for all proposed designated partners is included in the package.",
+        iconName: "Shield"
+      },
+      {
+        title: "LLP Agreement Drafting",
+        description: "Expertly drafted LLP Agreement tailored to your partner terms, profit-sharing ratio, and capital contribution.",
+        iconName: "Briefcase"
+      }
+    ],
+    benefitsTitle: "Why partners choose LLP",
+    benefits: [
+      "Limited Liability. Partners are not personally liable for the debts or obligations of the LLP.",
+      "Operational Flexibility. Manage your business directly as defined under the mutual terms of the LLP Agreement.",
+      "Lower Compliance. Fewer administrative restrictions and filings compared to private limited companies."
+    ],
+    ctaTitle: "Register your LLP today",
+    ctaDescription: "Get started with the most affordable and structured partnership form in India."
+  },
+  {
+    title: "One Person Company Registration",
+    slug: "opc-registration",
+    heroCategory: "Start",
+    heroTitle: "One Person Company Registration in India",
+    heroDescription: "Incorporate as a solo founder with limited liability protection and full operational control. Simplicity of a proprietorship with company benefits.",
+    heroImage: "/startup-start-hero.png",
+    featuresTitle: "The smartest way to incorporate your OPC",
+    features: [
+      {
+        title: "Single Founder Ownership",
+        description: "You have 100% ownership and full management control of the company operations.",
+        iconName: "User"
+      },
+      {
+        title: "Digital Signatures (DSC)",
+        description: "Procurement of Class-3 DSCs for the director and nominee is included in the package.",
+        iconName: "Shield"
+      },
+      {
+        title: "End-to-End Filing",
+        description: "We handle name reservation, nominee consent processing, and SPICe+ form submissions.",
+        iconName: "FileSignature"
+      }
+    ],
+    benefitsTitle: "Why founders choose OPC",
+    benefits: [
+      "Limited Liability. Keep your personal assets safe from business obligations and debts.",
+      "Corporate Credibility. Establish trust with banks, suppliers, and institutional customers easily.",
+      "Perpetual Succession. Clear successor framework via mandatory nominee consent records."
+    ],
+    ctaTitle: "Register your OPC today",
+    ctaDescription: "Join solo founders leveraging limited liability to build their business."
   },
   {
     title: "Bank Opening",

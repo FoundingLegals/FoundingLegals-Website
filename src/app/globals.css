@@ -86,7 +86,6 @@ body {
     transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
-
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
@@ -116,7 +115,6 @@ body {
     transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
-
 .reveal-right.visible {
   opacity: 1;
   transform: translateX(0);
@@ -131,7 +129,6 @@ body {
     transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
-
 .reveal-scale.visible {
   opacity: 1;
   transform: scale(1);
@@ -237,7 +234,6 @@ body {
     transform: scale(1.04) translate(4px, -1px);
   }
 }
-
 .forest-parallax-back {
   animation: forest-bg-drift 40s ease-in-out infinite;
 }

@@ -171,7 +171,7 @@ export default function CertificationsPage() {
                   className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-olive-600 text-white text-[15px] font-semibold rounded-lg hover:bg-olive-700 transition-colors shadow-sm"
                 >
                   Apply for DPIIT Recognition
-                  <ArrowRight className="w-4 h-4" />
+                   
                 </a>
                 <a
                   href="#eligibility"
@@ -332,7 +332,7 @@ export default function CertificationsPage() {
                       className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-[#2b2723] text-[15px] font-semibold rounded-lg hover:bg-cream transition-colors shadow-sm"
                     >
                       Get started
-                      <ArrowRight className="w-4 h-4" />
+                       
                     </a>
                     <a
                       href="/services"

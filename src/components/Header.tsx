@@ -35,11 +35,7 @@ const sections = [
     description: "Launch your company and get investment ready",
     icon: Rocket,
     items: [
-      { name: "Name Registration", href: "/services/name-registration" },
-      {
-        name: "Company Incorporation",
-        href: "/services/company-incorporation",
-      },
+      { name: " Company  Registration", href: "/services/name-registration" },
       { name: "Bank Opening", href: "/services/bank-opening" },
       { name: "DPIIT Certification", href: "/services/certifications" },
       {
@@ -86,6 +82,7 @@ const sections = [
 ];
 
 export default function Header() {
+  const appUrl = (process.env.NEXT_PUBLIC_APP_URL || "https://app.foundinglegals.com/").replace(/\/$/, "");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
@@ -288,7 +285,7 @@ export default function Header() {
               <Sparkles className="absolute -top-[5px] -right-[5px] w-4 h-4 text-[#D4AF37] fill-[#D4AF37] rotate-12 drop-shadow-md animate-[pulse_2s_ease-in-out_infinite]" />
             </div>
             <a
-              href="https://app.foundinglegals.com/sign-in"
+              href={`${appUrl}/sign-in`}
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-[8px] bg-white/80 backdrop-blur-sm border border-brown-200/60 text-brown-900 text-[13px] font-semibold rounded-full hover:bg-white hover:border-brown-300 hover:shadow-sm transition-all duration-300"
@@ -417,7 +414,7 @@ export default function Header() {
                 <Sparkles className="absolute -top-[6px] -right-[2px] w-[18px] h-[18px] text-[#D4AF37] fill-[#D4AF37] rotate-12 drop-shadow-md animate-[pulse_2s_ease-in-out_infinite]" />
               </div>
               <a
-                href="https://app.foundinglegals.com/sign-in"
+                href={`${appUrl}/sign-in`}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsMobileOpen(false)}
