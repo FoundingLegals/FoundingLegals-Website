@@ -12,13 +12,55 @@ const TOC_ITEMS = [
   { id: "startup-capital", label: "Startup Capital India" },
   { id: "registration-process", label: "Registration Process" },
   { id: "registration-cost", label: "Cost of Company Registration" },
-  { id: "compliance-requirements", label: "Compliances & Requirements" }
+  { id: "compliance-requirements", label: "Compliances & Requirements" },
+  { id: "faqs", label: "Frequently Asked Questions" }
+];
+
+// --- FAQ ITEMS ---
+const FAQ_ITEMS = [
+  {
+    question: "Why is company registration important in India?",
+    answer: "Company registration gives your business a distinct legal identity separate from its owners, protects personal assets via limited liability, builds trust with customers and partners, makes it easier to raise capital from investors, and ensures complete compliance with Indian laws."
+  },
+  {
+    question: "How much does it cost to register a company?",
+    answer: "The professional service fee at Founding Legals is just ₹1,499. The total cost, including government filing fees, state stamp duties, and Digital Signature Certificates (DSC), typically ranges from ₹8,000 to ₹20,000 depending on the type of entity, authorised capital, and state of incorporation."
+  },
+  {
+    question: "How long does it take to register a company?",
+    answer: "The online incorporation process in India generally takes 7 to 10 working days. This timeline depends on the promptness of document submissions and MCA/ROC processing times."
+  },
+  {
+    question: "How can I verify the registration status of my company?",
+    answer: "You can verify the status of any registered company on the official Ministry of Corporate Affairs (MCA) website under the 'MCA Services' tab by entering the company name or its Corporate Identification Number (CIN)."
+  },
+  {
+    question: "Is a Current Bank Account necessary after Registration?",
+    answer: "Yes, once the Certificate of Incorporation (COI) is issued, it is legally mandatory to open a dedicated current bank account in the company's name for all business transactions."
+  },
+  {
+    question: "Is GST registration mandatory for Company registration?",
+    answer: "No, GST registration is not mandatory at the time of incorporation. However, it becomes mandatory if your annual turnover crosses the threshold limit (₹40 lakhs for goods, ₹20 lakhs for services) or if you engage in interstate sales or e-commerce."
+  },
+  {
+    question: "Can NRIs or foreign national or foreign entities register a company in India?",
+    answer: "Yes, NRIs, foreign nationals, and foreign entities can register a company in India and hold shares under the Foreign Direct Investment (FDI) guidelines. However, at least one director of the company must be a resident of India."
+  },
+  {
+    question: "Can I change Company details after Registration?",
+    answer: "Yes, company details such as the company name, registered office address, directors, and authorised capital can be altered after registration by filing the relevant amendment forms with the ROC."
+  },
+  {
+    question: "Can I convert one business structure into another?",
+    answer: "Yes, you can convert one business structure into another (e.g., Sole Proprietorship to Private Limited Company, or LLP to Private Limited Company) by following the prescribed transition procedures and filing the necessary conversion forms with the MCA."
+  }
 ];
 
 export default function NameRegistrationLayout() {
   const [activeSection, setActiveSection] = useState("formation-types");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("");
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [modalState, handleModalSubmit] = useForm("xqeyrnpp");
 
   // Track active section on scroll
@@ -75,12 +117,12 @@ export default function NameRegistrationLayout() {
           {/* LEFT: Text */}
           <div className="flex-1 min-w-0">
             <h1 className="font-serif text-[28px] sm:text-[38px] md:text-[48px] font-medium text-[#1A1917] leading-[1.15] mb-6">
-              Launch Your Startup with a Legally Registered Business
+              Incorporate Your Business with Confidence
             </h1>
 
             <div className="text-[15px] md:text-[16px] text-[#5C5954] leading-relaxed space-y-3 max-w-xl">
               <p>
-                Start your business with confidence. We handle the entire incorporation process—from name approval and documentation to MCA filing and company registration so you can focus on building your startup.
+                We manage the entire registration process—from name approval and documentation drafting to MCA filing—ensuring complete regulatory compliance for your startup.
               </p>
             </div>
 
@@ -89,7 +131,7 @@ export default function NameRegistrationLayout() {
                 onClick={() => openModal("Company Registration")}
                 className="bg-olive-700 hover:bg-olive-800 text-white font-semibold text-[14px] px-8 py-3.5 rounded-xl transition-all cursor-pointer shadow-sm active:scale-95"
               >
-                Start Your Journey
+                Register Your Company
               </button>
             </div>
           </div>
@@ -128,20 +170,20 @@ export default function NameRegistrationLayout() {
             onClick={() => scrollToSection("structure-selection")}
             className="text-[11px] font-bold text-olive-700 uppercase tracking-widest hover:text-olive-800 transition-colors shrink-0 cursor-pointer"
           >
-            Find your Company Type
+             
           </button>
         </div>
 
         <div className="grid sm:grid-cols-3 gap-5">
           {/* Card 1: Pvt Ltd */}
-          <div className="bg-[#FAF9F6] border border-gray-200/70 rounded-2xl p-6 flex flex-col justify-between hover:shadow-md hover:border-olive-200 transition-all duration-200">
+          <div className="bg-gradient-to-br from-[#EAF1E5] to-[#F3F7F0] border border-olive-300/80 rounded-2xl p-6 flex flex-col justify-between shadow-[0_8px_30px_rgb(92,111,45,0.02)] hover:shadow-xl hover:border-olive-500 hover:-translate-y-1 transition-all duration-300">
             <div>
               <h3 className="font-serif text-[16px] sm:text-[18px] font-bold text-[#1A1917] leading-tight mb-1">Private Limited Company</h3>
               <span className="text-xs text-gray-400 font-sans font-medium block mb-3">(Pvt. Ltd.)</span>
               <p className="font-serif text-[22px] font-bold text-olive-700 mb-5">
                 ₹1,499 <span className="text-xs font-sans text-gray-400 font-normal">+ Govt. Fee</span>
               </p>
-              <div className="border-t border-gray-200/60 pt-4 mb-6">
+              <div className="border-t border-olive-200/50 pt-4 mb-6">
                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-3">BEST SUITED FOR</span>
                 <ul className="space-y-2.5 text-[12.5px] text-[#555]">
                   {["Service-based businesses","Businesses looking to issue shares","Businesses seeking investment through equity-based funding"].map((pt,i) => (
@@ -150,21 +192,21 @@ export default function NameRegistrationLayout() {
                 </ul>
               </div>
             </div>
-            <div className="flex gap-2.5 mt-auto pt-4 border-t border-gray-200/60">
-              <a href="/services/company-incorporation" className="flex-1 text-center py-2.5 border border-olive-600 hover:bg-olive-50 text-olive-600 font-bold text-[11px] rounded-full transition-all cursor-pointer">Learn More</a>
+            <div className="flex gap-2.5 mt-auto pt-4 border-t border-olive-200/50">
+              <a href="/services/company-incorporation#documents-required" className="flex-1 text-center py-2.5 border border-olive-600 hover:bg-olive-50 text-olive-600 font-bold text-[11px] rounded-full transition-all cursor-pointer">Learn More</a>
               <button onClick={() => openModal("Private Limited Company Registration")} className="flex-1 text-center py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[11px] rounded-full transition-all cursor-pointer shadow-xs">Register Pvt.Ltd  </button>
             </div>
           </div>
 
           {/* Card 2: LLP */}
-          <div className="bg-[#FAF9F6] border border-gray-200/70 rounded-2xl p-6 flex flex-col justify-between hover:shadow-md hover:border-olive-200 transition-all duration-200">
+          <div className="bg-gradient-to-br from-[#E2EAE0] to-[#ECF2EC] border border-olive-200/60 rounded-2xl p-6 flex flex-col justify-between shadow-[0_8px_30px_rgb(92,111,45,0.02)] hover:shadow-xl hover:border-olive-400 hover:-translate-y-1 transition-all duration-300">
             <div>
               <h3 className="font-serif text-[16px] sm:text-[18px] font-bold text-[#1A1917] leading-tight mb-1">Limited Liability Partnership</h3>
               <span className="text-xs text-gray-400 font-sans font-medium block mb-3">(LLP)</span>
               <p className="font-serif text-[22px] font-bold text-olive-700 mb-5">
                 ₹1,499 <span className="text-xs font-sans text-gray-400 font-normal">+ Govt. Fee</span>
               </p>
-              <div className="border-t border-gray-200/60 pt-4 mb-6">
+              <div className="border-t border-olive-200/40 pt-4 mb-6">
                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-3">BEST SUITED FOR</span>
                 <ul className="space-y-2.5 text-[12.5px] text-[#555]">
                   {["Professional services","Firms seeking any capital contribution from Partners","Firms sharing resources with limited liability"].map((pt,i) => (
@@ -173,22 +215,21 @@ export default function NameRegistrationLayout() {
                 </ul>
               </div>
             </div>
-            <div className="flex gap-2.5 mt-auto pt-4 border-t border-gray-200/60">
-              <a href="/services/llp-registration" className="flex-1 text-center py-2.5 border border-olive-600 hover:bg-olive-50 text-olive-600 font-bold text-[11px] rounded-full transition-all cursor-pointer">Learn More</a>
+            <div className="flex gap-2.5 mt-auto pt-4 border-t border-olive-200/40">
+              <a href="/services/llp-registration#documents-required" className="flex-1 text-center py-2.5 border border-olive-600 hover:bg-olive-50 text-olive-600 font-bold text-[11px] rounded-full transition-all cursor-pointer">Learn More</a>
               <button onClick={() => openModal("Limited Liability Partnership (LLP) Registration")} className="flex-1 text-center py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[11px] rounded-full transition-all cursor-pointer shadow-xs">Register LLP  </button>
-
             </div>
           </div>
 
           {/* Card 3: OPC */}
-          <div className="bg-[#FAF9F6] border border-gray-200/70 rounded-2xl p-6 flex flex-col justify-between hover:shadow-md hover:border-olive-200 transition-all duration-200">
+          <div className="bg-gradient-to-br from-[#EDF1E7] to-[#F6F8F3] border border-olive-200/60 rounded-2xl p-6 flex flex-col justify-between shadow-[0_8px_30px_rgb(92,111,45,0.02)] hover:shadow-xl hover:border-olive-400 hover:-translate-y-1 transition-all duration-300">
             <div>
               <h3 className="font-serif text-[16px] sm:text-[18px] font-bold text-[#1A1917] leading-tight mb-1">One Person Company</h3>
               <span className="text-xs text-gray-400 font-sans font-medium block mb-3">(OPC)</span>
               <p className="font-serif text-[22px] font-bold text-olive-700 mb-5">
                 ₹1,499 <span className="text-xs font-sans text-gray-400 font-normal">+ Govt. Fee</span>
               </p>
-              <div className="border-t border-gray-200/60 pt-4 mb-6">
+              <div className="border-t border-olive-200/40 pt-4 mb-6">
                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-3">BEST SUITED FOR</span>
                 <ul className="space-y-2.5 text-[12.5px] text-[#555]">
                   {["Freelancers, Small-scale businesses","Businesses looking for minimal compliance","Businesses looking for single-ownership"].map((pt,i) => (
@@ -197,8 +238,8 @@ export default function NameRegistrationLayout() {
                 </ul>
               </div>
             </div>
-            <div className="flex gap-2.5 mt-auto pt-4 border-t border-gray-200/60">
-              <a href="/services/opc-registration" className="flex-1 text-center py-2.5 border border-olive-600 hover:bg-olive-50 text-olive-600 font-bold text-[11px] rounded-full transition-all cursor-pointer">Learn More</a>
+            <div className="flex gap-2.5 mt-auto pt-4 border-t border-olive-200/40">
+              <a href="/services/opc-registration#documents-required" className="flex-1 text-center py-2.5 border border-olive-600 hover:bg-olive-50 text-olive-600 font-bold text-[11px] rounded-full transition-all cursor-pointer">Learn More</a>
                <button onClick={() => openModal("One Person Company (OPC) Registration")} className="flex-1 text-center py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[11px] rounded-full transition-all cursor-pointer shadow-xs">Register OPC  </button>
             </div>
           </div>
@@ -250,7 +291,7 @@ export default function NameRegistrationLayout() {
             {/* Section 1: Company Formation Types — other types */}
             <article id="formation-types" className="scroll-mt-28 space-y-8">
               <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                Company Formation Types
+                Different Types of Company Formations to Choose From
               </h2>
 
               {/* Public Limited */}
@@ -347,8 +388,14 @@ export default function NameRegistrationLayout() {
                 Company Registration Process
               </h2>
               <p className="text-[15px] text-[#555] leading-relaxed">
-                Company Registration is a crucial milestone for every business. It legitimizes your business and lays the foundation for its operations under the legal and regulatory framework. There are several steps to ensure a seamless and legally compliant incorporation process (for Private Limited Company, Limited Liability Partnership, or One Person Company):
+                Company Registration is a crucial milestone for every business. It legitimizes your business and lays the foundation for its operations under the legal and regulatory framework. There are several steps to ensure a seamless and legally compliant incorporation process:
               </p>
+              <p className="text-[14.5px] text-gray-400 font-semibold italic">
+                (Private Limited Company or Limited Liability Partnership or One Person Company)-
+              </p>
+              <h4 className="font-serif text-[16.5px] font-bold text-[#1A1917] mt-3">
+                Steps for Company Incorporation in India
+              </h4>
 
               <div className="space-y-4">
                 {[
@@ -411,7 +458,7 @@ export default function NameRegistrationLayout() {
                 Recommended Capital Required to Start a Business in India
               </h2>
               <p className="text-[15px] text-[#555] leading-relaxed">
-                The company's capital structure depends on Authorized Capital, Paid-up Capital, and general Capital Requirements. These are the minimum and recommended contributions required to start:
+                The company's capital structure depends on- Authorized Capital/Paid-up Capital/Capital Requirements. These are the minimum/recommended contributions required to start a business.
               </p>
 
               <div className="overflow-x-auto border border-gray-200 rounded-2xl shadow-xs">
@@ -477,7 +524,7 @@ export default function NameRegistrationLayout() {
                 <h4 className="font-serif text-[16px] font-bold text-[#1A1917]">What is included in our package?</h4>
                 <div className="grid sm:grid-cols-2 gap-3 text-[13.5px] text-[#444]">
                   {[
-                    " Company  Registration",
+                    "Company Name Registration",
                     "2 Digital Signature Certificates",
                     "2 Directors’ Identification Numbers",
                     "Certificate of Incorporation",
@@ -508,6 +555,9 @@ export default function NameRegistrationLayout() {
                 <p>
                   We have tailored our services to meet the needs of visionary entrepreneurs seeking to establish and legitimize their business ventures. It's with this vision in mind that we offer registration options for One Person Companies (OPC), Private Limited Companies (Pvt), and Limited Liability Partnerships (LLP).
                 </p>
+                <p>
+                  This comprehensive approach considers the growth and evolution of the business, ensuring that the chosen company structure aligns harmoniously with its present and future requisites.
+                </p>
               </div>
 
               <div className="overflow-x-auto border border-gray-200 rounded-2xl shadow-xs">
@@ -534,6 +584,9 @@ export default function NameRegistrationLayout() {
                   </tbody>
                 </table>
               </div>
+              <p className="text-[14.5px] text-[#555] mt-4 font-sans">
+                Eager to learn more? Reach out to us at <a href="mailto:info@foundinglegals.com" className="text-olive-600 font-semibold hover:underline">info@foundinglegals.com</a> for more details.
+              </p>
             </article>
 
             {/* Section 7: Compliances & Requirements */}
@@ -580,6 +633,48 @@ export default function NameRegistrationLayout() {
                     </div>
                   </div>
                 ))}
+              </div>
+              <p className="text-[14.5px] text-[#555] leading-relaxed mt-6">
+                These are just a few general compliance requirements that companies must follow. Depending on the specific activities and sector of the company, there might be additional industry-specific compliances to consider as well. It is important to stay informed and updated about the evolving legal and regulatory requirements.
+              </p>
+            </article>
+
+            {/* Section 8: FAQ Accordion */}
+            <article id="faqs" className="scroll-mt-28 space-y-6">
+              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
+                Frequently Asked Questions
+              </h2>
+              
+              <div className="space-y-3">
+                {FAQ_ITEMS.map((faq, index) => {
+                  const isOpen = openFaqIndex === index;
+                  return (
+                    <div
+                      key={index}
+                      className="border border-gray-200 rounded-2xl overflow-hidden transition-all bg-white shadow-xs"
+                    >
+                      <button
+                        onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                        className="w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-gray-50/50"
+                      >
+                        <span className="font-serif text-[15px] font-semibold text-[#1A1917] pr-4">
+                          {faq.question}
+                        </span>
+                        <ChevronDown
+                          className={`w-4 h-4 text-gray-400 transition-transform duration-300 shrink-0 ${
+                            isOpen ? "rotate-180 text-olive-600" : ""
+                          }`}
+                        />
+                      </button>
+                      
+                      {isOpen && (
+                        <div className="px-5 pb-5 text-[14px] text-[#555] leading-relaxed border-t border-gray-100 pt-4 bg-gray-50/20">
+                          {faq.answer}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </article>
 
