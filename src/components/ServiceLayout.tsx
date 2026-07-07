@@ -223,16 +223,16 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
         <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-16 md:gap-24 items-center">
           <div>
             <h2 className="text-[38px] sm:text-[46px] font-serif font-medium text-[#2b2723] leading-[1.15] mb-6">
-              Uncover opportunities<br />hiding in plain sight
+              {service.ctaButtonText ? service.ctaTitle : <>Uncover opportunities<br />hiding in plain sight</>}
             </h2>
             <p className="text-[18px] text-[#4d4b47] leading-[1.6] mb-10 max-w-md font-light">
-              {service.ctaDescription} {service.title} ensures you never miss a strategic advantage, putting your founder team at the center of enterprise strategy.
+              {service.ctaButtonText ? service.ctaDescription : `${service.ctaDescription} {service.title} ensures you never miss a strategic advantage, putting your founder team at the center of enterprise strategy.`}
             </p>
             <a
               href="/services"
               className="inline-flex items-center justify-center px-7 py-3 bg-[#5A7338] text-white text-[15px] font-semibold rounded-lg hover:bg-[#4A5D2A] transition-colors shadow-sm"
             >
-              Opt Service
+              {service.ctaButtonText || "Opt Service"}
             </a>
           </div>
           <div className="w-full flex justify-end">
@@ -293,9 +293,14 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
       {/* 4. CARDS GRID SECTION (Screenshot 4) */}
       <section className="px-6 md:px-16 lg:px-28 py-24 md:py-36 bg-[#F6F4F0]">
         <div className="max-w-[1400px] mx-auto text-center">
-          <h2 className="text-[36px] sm:text-[42px] font-serif font-medium text-[#2b2723] mb-16">
+          <h2 className={`text-[36px] sm:text-[42px] font-serif font-medium text-[#2b2723] ${service.featuresSubtitle ? 'mb-4' : 'mb-16'}`}>
             {"Built for trust, flexibility, and speed"}
           </h2>
+          {service.featuresSubtitle && (
+            <p className="text-[17px] text-[#6b6965] font-light max-w-2xl mx-auto mb-16">
+              {service.featuresSubtitle}
+            </p>
+          )}
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
             {service.features.map((feature, idx) => {
@@ -311,8 +316,15 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                     {feature.description}
                   </p>
 
-                  <div className="mt-12 text-[#5A7338]">
-                    <Icon className="w-9 h-9" strokeWidth={2} />
+                  <div className="mt-12 flex items-center justify-between">
+                    {service.slug === "client-management" || service.slug === "team-management" ? (
+                      <span className="text-sm font-semibold text-[#5A7338] group-hover:underline flex items-center gap-1">
+                        Learn more <span className="text-lg">→</span>
+                      </span>
+                    ) : (
+                      <div />
+                    )}
+                    <Icon className="w-9 h-9 text-[#5A7338]" strokeWidth={2} />
                   </div>
                 </div>
               );

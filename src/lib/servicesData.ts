@@ -21,6 +21,8 @@ export type ServicePattern = {
   benefits: string[];
   ctaTitle: string;
   ctaDescription: string;
+  ctaButtonText?: string;
+  featuresSubtitle?: string;
 };
 
 export const services: ServicePattern[] = [
@@ -300,38 +302,116 @@ export const services: ServicePattern[] = [
     ctaDescription: "Ensure your company is 100% compliant with our essential checkup."
   },
   {
-    title: "Client Invoice",
-    slug: "client-invoice",
+    title: "Client Management",
+    slug: "client-management",
     heroCategory: "Compliance",
-    heroTitle: "Smart, Compliant Invoicing",
-    heroDescription: "Generate professional, GST-compliant e-invoices instantly. Manage receivables, track payments, and sync directly with your filings.",
+    heroTitle: "Simplify Client Management and Invoicing",
+    heroDescription: "Manage your clients, create invoices, track payments, and keep your business organized all in one place.",
     heroImage: "/startup-compliance-hero.png",
-    featuresTitle: "Invoicing built for accuracy",
+    featuresTitle: "Everything You Need to Manage Your Clients",
+    featuresSubtitle: "Everything you need to manage clients, create GST-compliant invoices, and track payments from a single dashboard.",
     features: [
       {
-        title: "Custom Branded Invoices",
-        description: "Create beautiful, professional invoices that reflect your brand and include all legal requirements.",
+        title: "Customer Onboarding",
+        description: "Add and manage customer details, billing information, and transaction history in one place.",
+        iconName: "Users"
+      },
+      {
+        title: "Create Invoice",
+        description: "Generate GST compliant invoices with automatic tax calculations in just a few clicks.",
+        iconName: "Receipt"
+      },
+      {
+        title: "Review Invoice",
+        description: "Preview invoices with company and GST details before sending.",
+        iconName: "Eye"
+      },
+      {
+        title: "Record Payment",
+        description: "Record received payments and automatically update invoice status.",
+        iconName: "CheckCircle"
+      },
+      {
+        title: "Payment Details",
+        description: "Keep track of customer payments with the amount, date, and payment method.",
+        iconName: "CreditCard"
+      },
+      {
+        title: "Invoice History",
+        description: "Track invoice activities, communication logs, and payment history from one timeline.",
+        iconName: "Clock"
+      },
+      {
+        title: "Payment Receipt",
+        description: "Automatically generate branded payment receipts and download them as PDFs.",
+        iconName: "FileText"
+      }
+    ],
+    benefitsTitle: "Why Startups choose Client Management & Invoicing?",
+    benefits: [
+      "Manage Clients. Organize all your clients in one place. Centralized Dashboard: Access clients, invoices, and payments from one workspace.",
+      "Create Invoice. Generate professional, GST-compliant invoices in minutes with automatic tax calculations to reduce billing errors.",
+      "Receive Payments. Track payments and get paid faster. Monitor pending and completed payments, and generate instant receipts with one click."
+    ],
+    ctaTitle: "Focus on Growing Your Business",
+    ctaDescription: "Stay organized, save time, and focus on expanding your business with confidence.",
+    ctaButtonText: "Explore"
+  },
+  {
+    title: "Team Management",
+    slug: "team-management",
+    heroCategory: "Compliance",
+    heroTitle: "Organize and Manage Your Growing Team",
+    heroDescription: "All your headcount, monthly payslips, employee contracts, and ESOP tracking in one place. Streamline hiring and focus on expanding your business.",
+    heroImage: "/startup-compliance-hero.png",
+    featuresTitle: "Everything You Need to Manage Your Team",
+    featuresSubtitle: "Everything you need to onboard employees, generate payslips, manage ESOPs, and organize teams from a single dashboard.",
+    features: [
+      {
+        title: "Employee Onboarding",
+        description: "Store and manage personal, bank, PAN, Aadhaar, and professional details of your entire team in one secure repository.",
+        iconName: "Users"
+      },
+      {
+        title: "Hiring Agreements",
+        description: "Generate lawyer-reviewed offer letters, employment contracts, and consultant agreements in just a few clicks.",
         iconName: "FileText"
       },
       {
-        title: "E-Invoicing Ready",
-        description: "Automatically generate IRN and QR codes compliant with the latest government e-invoicing mandates.",
-        iconName: "Rocket"
+        title: "ESOP Tracking",
+        description: "Monitor equity allocations, vesting schedules, and options pool status for your team members.",
+        iconName: "Sparkles"
       },
       {
-        title: "Auto-Reconciliation",
-        description: "Invoices sync directly with our GST filing system, eliminating manual data entry errors.",
-        iconName: "LineChart"
+        title: "Payslips & Compensation",
+        description: "Automatically generate monthly payslips, track salary structures, bonuses, and allowances for your entire workforce.",
+        iconName: "CreditCard"
+      },
+      {
+        title: "Role & Team Structures",
+        description: "Organize your workforce into departments, sub-teams, and reportees with custom permission levels.",
+        iconName: "Briefcase"
+      },
+      {
+        title: "E-Signed Contracts",
+        description: "Send offer letters and agreements for Aadhaar-based e-signatures directly from the platform.",
+        iconName: "FileSignature"
+      },
+      {
+        title: "Onboarding Timelines",
+        description: "Track employee journeys from offer initiation to document verification and final onboarding completion.",
+        iconName: "Clock"
       }
     ],
-    benefitsTitle: "Better cash flow management",
+    benefitsTitle: "Why Startups choose Team Management?",
     benefits: [
-      "Accelerated Receivables. Get paid 2x faster with integrated payment links and automated friendly reminders.",
-      "E-Way Bill Sync. Automatically trigger e-way bill generation for physical goods delivery alongside your compliant invoice.",
-      "Data Integrity. Eliminate reconciliation errors by syncing your sales data directly with your monthly GST returns."
+      "Organized Headcount. Centralize all employee records, contact info, and role details in one secure workspace.",
+      "Compliant Contracts. Generate and e-sign legally binding offer letters and employment agreements verified by top advocates.",
+      "ESOP Clarity. Track vesting milestones and option pools transparently to build trust and align incentives."
     ],
-    ctaTitle: "Upgrade your invoicing",
-    ctaDescription: "Start sending legally compliant invoices in minutes."
+    ctaTitle: "Focus on Growing Your Business",
+    ctaDescription: "Stay organized, save time, and focus on expanding your business with confidence.",
+    ctaButtonText: "Explore"
   },
   {
     title: "Spend Analysis",
