@@ -127,6 +127,10 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     );
   }
 
+  if (!service) {
+    return notFound();
+  }
+
   return (
     <>
       <Header />
