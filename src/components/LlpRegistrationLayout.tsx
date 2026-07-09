@@ -150,7 +150,7 @@ export default function LlpRegistrationLayout() {
   };
 
   return (
-    <div className="min-h-screen bg-white font-sans text-[#2c2925] selection:bg-olive-600 selection:text-white">
+    <div className="min-h-screen bg-white font-sans text-[#2c2925]">
       
       {/* ── TOP HEADER SECTION ── */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-[120px] pb-6">

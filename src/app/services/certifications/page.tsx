@@ -130,7 +130,7 @@ export default function CertificationsPage() {
   return (
     <>
       <Header />
-      <main className="bg-[#F6F4F0] selection:bg-[#5C6E33] selection:text-white text-[#2c2b29]">
+      <main className="bg-[#F6F4F0] text-[#2c2b29]">
         {/* HERO */}
         <section className="relative overflow-hidden border-b border-[#E5E1D6]">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(90,115,56,0.10),transparent_60%)]" />

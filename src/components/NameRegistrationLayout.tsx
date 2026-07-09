@@ -108,7 +108,7 @@ export default function NameRegistrationLayout() {
   };
 
   return (
-    <div className="min-h-screen bg-white font-sans text-[#2c2925] selection:bg-olive-600 selection:text-white">
+    <div className="min-h-screen bg-white font-sans text-[#2c2925]">
       
       {/* ── TOP HEADER SECTION ── */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-[120px] pb-10">
@@ -116,13 +116,18 @@ export default function NameRegistrationLayout() {
 
           {/* LEFT: Text */}
           <div className="flex-1 min-w-0">
-            <h1 className="font-serif text-[28px] sm:text-[38px] md:text-[48px] font-medium text-[#1A1917] leading-[1.15] mb-6">
-              Incorporate Your Business with Confidence
+            <h1 className="font-serif text-[28px] sm:text-[38px] md:text-[48px] font-medium text-[#1A1917] leading-[1.15] mb-4">
+              Make it official.<br />Get incorporated
             </h1>
+
+            <div className="flex items-baseline gap-2 mb-6">
+              <span className="text-[20px] sm:text-[24px] font-serif font-bold text-olive-700">in just ₹1,499</span>
+              <span className="text-[13px] sm:text-[14px] text-gray-400 font-sans">+ Govt Fee</span>
+            </div>
 
             <div className="text-[15px] md:text-[16px] text-[#5C5954] leading-relaxed space-y-3 max-w-xl">
               <p>
-                We manage the entire registration process—from name approval and documentation drafting to MCA filing—ensuring complete regulatory compliance for your startup.
+                Make your business ready to scale. Become an incorporated company through Founding Legals.
               </p>
             </div>
 
@@ -156,22 +161,22 @@ export default function NameRegistrationLayout() {
       <section className="max-w-7xl mx-auto px-6 md:px-12 pb-10">
         <div className="border-t border-gray-200 mb-8" />
 
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
           <div>
             <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[28px] font-semibold text-[#1A1917] leading-snug">
               Different Types of Company Formations to Choose From
             </h2>
-            <p className="text-[14px] text-[#5C5954] mt-1">
+            <p className="text-[14px] text-brown-500 mt-1">
               Choose from the most popular{" "}
               <span className="text-olive-600 font-semibold">company types</span>
             </p>
           </div>
-          <button
-            onClick={() => scrollToSection("structure-selection")}
-            className="text-[11px] font-bold text-olive-700 uppercase tracking-widest hover:text-olive-800 transition-colors shrink-0 cursor-pointer"
+          <a
+            href="/services/which-company-type-to-register"
+            className="text-[13px] font-bold text-olive-700 hover:text-olive-900 transition-colors shrink-0 flex items-center gap-1 cursor-pointer"
           >
-             
-          </button>
+            Find your Company Type <ArrowRight className="w-3.5 h-3.5" />
+          </a>
         </div>
 
         <div className="grid sm:grid-cols-3 gap-5">
@@ -308,6 +313,7 @@ export default function NameRegistrationLayout() {
                 <p className="text-[14.5px] text-[#555] leading-relaxed">
                   Sole Proprietorship is a type of business structure that involves a single owner who is personally liable for all the business's debts and obligations as there is no separate legal entity. It's ideal for small businesses and freelancers due to its minimal compliance requirements.
                 </p>
+                <a href="/services/sole-proprietorship-registration" className="text-xs font-bold text-olive-600 hover:text-olive-750 hover:underline inline-flex items-center gap-1">Learn more &rarr;</a>
               </div>
 
               {/* Partnership Firm */}
@@ -316,6 +322,7 @@ export default function NameRegistrationLayout() {
                 <p className="text-[14.5px] text-[#555] leading-relaxed">
                   Governed by the Indian Partnership Act 1932, a Partnership is a collaborative business structure involving two or more individuals who jointly share responsibilities, profits, and liabilities. This structure suits professional services and small businesses and is often guarded by a well-drafted Partnership agreement.
                 </p>
+                <a href="/services/partnership-firm-registration" className="text-xs font-bold text-olive-600 hover:text-olive-750 hover:underline inline-flex items-center gap-1">Learn more &rarr;</a>
               </div>
 
               {/* Section 8 Company */}

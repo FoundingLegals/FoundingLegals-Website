@@ -175,7 +175,7 @@ function FlowchartGraphic({ title }: { title: string }) {
 
 export default function ServiceLayout({ service }: { service: ServicePattern }) {
   return (
-    <div className="min-h-screen bg-[#F6F4F0] selection:bg-[#5C6E33] selection:text-white font-sans text-[#2c2b29]">
+    <div className="min-h-screen bg-[#F6F4F0] font-sans text-[#2c2b29]">
       {/* 1. HERO SECTION (Screenshot 1) */}
       <section className="relative w-full overflow-hidden flex flex-col md:flex-row items-center border-b border-[#E5E1D6]">
         {/* Left Text Box */}
