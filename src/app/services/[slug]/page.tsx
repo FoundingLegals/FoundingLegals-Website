@@ -8,6 +8,7 @@ import OpcRegistrationLayout from "@/components/OpcRegistrationLayout";
 import WhichCompanyTypeLayout from "@/components/WhichCompanyTypeLayout";
 import PartnershipRegistrationLayout from "@/components/PartnershipRegistrationLayout";
 import SoleProprietorshipRegistrationLayout from "@/components/SoleProprietorshipRegistrationLayout";
+import AgreementsLayout from "@/components/AgreementsLayout";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -121,6 +122,19 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <Header />
         <main>
           <OpcRegistrationLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // Agreements Directory layout
+  if (resolvedParams.slug === "agreements") {
+    return (
+      <>
+        <Header />
+        <main>
+          <AgreementsLayout />
         </main>
         <Footer />
       </>

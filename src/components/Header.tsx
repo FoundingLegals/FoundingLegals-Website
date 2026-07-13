@@ -9,9 +9,7 @@ import {
   FileText,
   Building2,
   CreditCard,
-  Award,
   Receipt,
-  Sparkles,
   BarChart3,
   ShieldCheck,
   FolderOpen,
@@ -35,13 +33,15 @@ const sections = [
     description: "Launch your company and get investment ready",
     icon: Rocket,
     items: [
-      { name: " Company  Registration", href: "/services/name-registration" },
+      { name: "Company Registration", href: "/services/name-registration" },
       { name: "Bank Opening", href: "/services/bank-opening" },
       { name: "DPIIT Certification", href: "/services/certifications" },
       {
         name: "GST Filing & Taxation",
         href: "/services/gst-filing-and-taxation",
       },
+      { name: "Client Management", href: "/services/client-management" },
+      { name: "Team Management", href: "/services/team-management" },
     ],
   },
   {
@@ -53,10 +53,9 @@ const sections = [
         name: "Essential Startup Approach",
         href: "/services/essential-startup-approach",
       },
-      { name: "Client Management", href: "/services/client-management" },
-      { name: "Team Management", href: "/services/team-management" },
       { name: "Spend Analysis", href: "/services/spend-analysis" },
       { name: "Document Management", href: "/services/document-management" },
+      { name: "Legal Agreements", href: "/services/agreements" },
     ],
   },
   {
@@ -208,13 +207,19 @@ export default function Header() {
             {/* Static nav items */}
             <a
               href="/pricing"
-              className="px-4 py-[7px] text-[13px] font-medium text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
+              className="px-4 py-[7px] text-[13px] font-semibold text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
             >
               Pricing
             </a>
             <a
+              href="/services"
+              className="px-4 py-[7px] text-[13px] font-semibold text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
+            >
+              Services
+            </a>
+            <a
               href="/contact"
-              className="px-4 py-[7px] text-[13px] font-medium text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
+              className="px-4 py-[7px] text-[13px] font-semibold text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
             >
               Contact
             </a>
@@ -227,7 +232,7 @@ export default function Header() {
             >
               <button
                 suppressHydrationWarning
-                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-medium rounded-full transition-all duration-200 ${companyOpen
+                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-semibold rounded-full transition-all duration-200 ${companyOpen
                     ? "bg-[#F0EBDF] text-[#33312c]"
                     : "text-brown-600 hover:bg-cream hover:text-brown-800"
                   }`}
@@ -247,21 +252,21 @@ export default function Header() {
                   <div className="absolute left-1/2 -translate-x-1/2 top-[52px] bg-[#f5f1e6] rounded-[20px] shadow-[0_12px_40px_rgba(43,39,35,0.08)] animate-dropdown flex items-center gap-1 px-2 py-2">
                     <a
                       href="/company/about-us"
-                      className="px-4 py-2 text-[13px] font-medium text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap"
+                      className="px-4 py-2 text-[13px] font-semibold text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap"
                     >
                       About us
                     </a>
                     <div className="w-px h-5 bg-brown-200/50" />
                     <a
                       href="/company/careers"
-                      className="px-4 py-2 text-[13px] font-medium text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap"
+                      className="px-4 py-2 text-[13px] font-semibold text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap"
                     >
                       Careers
                     </a>
                     <div className="w-px h-5 bg-brown-200/50" />
                     <a
                       href="/company/partnership"
-                      className="px-4 py-2 text-[13px] font-medium text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap flex items-center gap-1.5"
+                      className="px-4 py-2 text-[13px] font-semibold text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap flex items-center gap-1.5"
                     >
                       <Handshake className="w-3.5 h-3.5" />
                       Partnership
@@ -274,17 +279,14 @@ export default function Header() {
 
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-2">
-            <div className="relative inline-block">
-              <a
-                href="/start"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block px-6 py-[8px] bg-olive-600 text-white text-[13px] font-semibold rounded-l-full rounded-br-full rounded-tr-xl hover:bg-olive-700 hover:scale-[1.03] shadow-sm hover:shadow-md transition-all duration-300"
-              >
-                Start Free
-              </a>
-              <Sparkles className="absolute -top-[5px] -right-[5px] w-4 h-4 text-[#D4AF37] fill-[#D4AF37] rotate-12 drop-shadow-md animate-[pulse_2s_ease-in-out_infinite]" />
-            </div>
+            <a
+              href={`${appUrl}/sign-up`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-[8px] bg-gradient-to-r from-olive-600/15 to-olive-700/25 backdrop-blur-sm border border-olive-600/35 text-olive-800 hover:from-olive-600 hover:to-olive-800 hover:text-white hover:border-olive-700 text-[13px] font-semibold rounded-full hover:shadow-md hover:scale-[1.02] transition-all duration-300"
+            >
+              Sign Up
+            </a>
             <a
               href={`${appUrl}/sign-in`}
               target="_blank"
@@ -393,6 +395,13 @@ export default function Header() {
                 Pricing
               </a>
               <a
+                href="/services"
+                onClick={() => setIsMobileOpen(false)}
+                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
+              >
+                Services
+              </a>
+              <a
                 href="/contact"
                 onClick={() => setIsMobileOpen(false)}
                 className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
@@ -402,18 +411,15 @@ export default function Header() {
             </div>
 
             <div className="mt-6 flex flex-col gap-3">
-              <div className="relative inline-block w-full">
-                <a
-                  href="/start"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsMobileOpen(false)}
-                  className="block w-full text-center px-4 py-3 bg-olive-600 text-white text-[14px] font-semibold rounded-l-full rounded-br-full rounded-tr-xl hover:bg-olive-700 shadow-sm transition-all duration-300"
-                >
-                  Start Free
-                </a>
-                <Sparkles className="absolute -top-[6px] -right-[2px] w-[18px] h-[18px] text-[#D4AF37] fill-[#D4AF37] rotate-12 drop-shadow-md animate-[pulse_2s_ease-in-out_infinite]" />
-              </div>
+              <a
+                href={`${appUrl}/sign-up`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMobileOpen(false)}
+                className="block w-full text-center px-4 py-3 bg-gradient-to-r from-olive-600/15 to-olive-700/25 backdrop-blur-sm border border-olive-600/35 text-olive-800 hover:from-olive-600 hover:to-olive-800 hover:text-white hover:border-olive-700 text-[14px] font-semibold rounded-full hover:shadow-md transition-all duration-300"
+              >
+                Sign Up
+              </a>
               <a
                 href={`${appUrl}/sign-in`}
                 target="_blank"
