@@ -23,10 +23,18 @@ import {
   Rocket,
   ClipboardCheck,
   Handshake,
+  User,
+  Users,
+  Award,
+  Briefcase,
+  Scroll,
+  ArrowRight,
+  Sparkles,
+  Video,
+  Check,
 } from "lucide-react";
 
-/* ── Menu data ── */
-
+/* ── Menu data (For Founders Dropdown - UNTOUCHED) ── */
 const sections = [
   {
     title: "Start",
@@ -81,13 +89,65 @@ const sections = [
   },
 ];
 
+/* ── New Services Dropdown Data ── */
+const INCORPORATION_SERVICES = [
+  { name: "Private Limited Company", href: "/services/company-incorporation" },
+  { name: "LLP Registration", href: "/services/llp-registration" },
+  { name: "One Person Company", href: "/services/opc-registration" },
+];
+
+const COMPLIANCE_SERVICES = [
+  { name: "Founders' Agreement", href: "/services/agreements" },
+  { name: "Shareholders' Agreement (SHA)", href: "/services/agreements" },
+  { name: "Share Subscription Agreement (SSA)", href: "/services/agreements" },
+  { name: "SAFE / iSAFE Agreement", href: "/services/agreements" },
+  { name: "Convertible Note Agreement", href: "/services/agreements" },
+  { name: "Term Sheet", href: "/services/agreements" },
+  { name: "Employment Agreement", href: "/services/agreements" },
+  { name: "Consultancy Agreement", href: "/services/agreements" },
+  { name: "Offer Letter", href: "/services/agreements" },
+  { name: "Internship Offer Letter", href: "/services/agreements" },
+  { name: "Non-Compete Agreement", href: "/services/agreements" },
+  { name: "Service Agreement", href: "/services/agreements" },
+  { name: "Master Service Agreement (MSA)", href: "/services/agreements" },
+  { name: "Vendor Agreement", href: "/services/agreements" },
+  { name: "Supply Agreement", href: "/services/agreements" },
+  { name: "Distribution Agreement", href: "/services/agreements" },
+  { name: "Franchise Agreement", href: "/services/agreements" },
+  { name: "IP Assignment Agreement", href: "/services/agreements" },
+  { name: "Technology Transfer Agreement", href: "/services/agreements" },
+  { name: "Trademark License Agreement", href: "/services/agreements" },
+  { name: "Non-Disclosure Agreement (NDA)", href: "/services/agreements" },
+];
+
+const INVESTMENT_READINESS_SERVICES = [
+  { name: "Launch", href: "/services/pitch-to-investors" },
+  { name: "Investor Ready", href: "/services/pitch-to-investors" },
+  { name: "Fundraising Accelerator", href: "/services/pitch-to-investors" },
+  { name: "Capital Raise Complete", href: "/services/pitch-to-investors" },
+  { name: "Video Pitch", href: "/services/pitch-to-investors" },
+  { name: "Financial Model", href: "/services/finance-for-fundraising" },
+  { name: "Angel Investor Data", href: "/services/find-investors" },
+];
+
 export default function Header() {
   const appUrl = (process.env.NEXT_PUBLIC_APP_URL || "https://app.foundinglegals.com/").replace(/\/$/, "");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  
+  // States for For Founders Menu
   const [megaOpen, setMegaOpen] = useState(false);
+  
+  // States for Services Dropdown Menu
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [activeServiceCategory, setActiveServiceCategory] = useState("incorporation");
+
+  // State for Company Dropdown
   const [companyOpen, setCompanyOpen] = useState(false);
+  
+  // State for mobile open sections
   const [openSections, setOpenSections] = useState<string[]>([]);
+  const [mobileActiveSub, setMobileActiveSub] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -117,10 +177,11 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4">
       {/* Floating pill nav */}
       <nav
-        className={`relative z-50 max-w-7xl mx-auto rounded-full transition-all duration-500 ease-out ${isScrolled || isMobileOpen
+        className={`relative z-50 max-w-7xl mx-auto rounded-full transition-all duration-500 ease-out ${
+          isScrolled || isMobileOpen
             ? "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(43,39,35,0.1)]"
             : "bg-white shadow-[0_1px_12px_rgba(43,39,35,0.06)]"
-          }`}
+        }`}
       >
         <div className="flex items-center justify-between h-[56px] sm:h-[62px] px-6 lg:px-8">
           {/* Logo */}
@@ -134,7 +195,8 @@ export default function Header() {
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
-            {/* For Founders    mega dropdown trigger */}
+            
+            {/* 1. For Founders Mega Dropdown (UNTOUCHED) */}
             <div
               className="relative"
               onMouseEnter={() => setMegaOpen(true)}
@@ -142,31 +204,25 @@ export default function Header() {
             >
               <button
                 suppressHydrationWarning
-                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-semibold rounded-full transition-all duration-200 ${megaOpen
+                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-semibold rounded-full transition-all duration-200 ${
+                  megaOpen
                     ? "bg-cream-dark text-brown-900"
                     : "text-olive-700 hover:bg-cream hover:text-brown-900"
-                  }`}
+                }`}
               >
                 For Founders
                 <ChevronDown
-                  className={`w-3 h-3 transition-transform duration-200 ${megaOpen ? "rotate-180" : ""
-                    }`}
+                  className={`w-3 h-3 transition-transform duration-200 ${megaOpen ? "rotate-180" : ""}`}
                 />
               </button>
 
-              {/* Mega dropdown panel */}
               {megaOpen && (
                 <>
-                  {/* Invisible hover bridge */}
                   <div className="absolute top-full left-0 right-0 h-4" />
                   <div className="fixed left-1/2 -translate-x-1/2 top-[74px] w-full max-w-[860px] bg-white rounded-2xl shadow-[0_12px_40px_rgba(43,39,35,0.12)] border border-brown-100/40 animate-dropdown">
                     <div className="grid grid-cols-3 divide-x divide-brown-100/50 p-8 gap-0">
                       {sections.map((section) => (
-                        <div
-                          key={section.title}
-                          className="px-6 first:pl-0 last:pr-0"
-                        >
-                          {/* Section header */}
+                        <div key={section.title} className="px-6 first:pl-0 last:pr-0">
                           <div className="flex items-center gap-2.5 mb-2">
                             <div className="w-8 h-8 rounded-lg bg-olive-600/10 flex items-center justify-center">
                               <section.icon className="w-4 h-4 text-olive-600" />
@@ -179,7 +235,6 @@ export default function Header() {
                             {section.description}
                           </p>
 
-                          {/* Links */}
                           <div className="space-y-0.5">
                             {section.items.map((item) => (
                               <a
@@ -204,18 +259,142 @@ export default function Header() {
               )}
             </div>
 
+            {/* 2. Custom Services Dropdown (RegisterKaro Layout style) */}
+            <div
+              className="relative"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <button
+                suppressHydrationWarning
+                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-semibold rounded-full transition-all duration-200 ${
+                  servicesOpen
+                    ? "bg-cream-dark text-brown-900"
+                    : "text-olive-700 hover:bg-cream hover:text-brown-900"
+                }`}
+              >
+                Services
+                <ChevronDown
+                  className={`w-3 h-3 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              {servicesOpen && (
+                <>
+                  <div className="absolute top-full left-0 right-0 h-4" />
+                  <div className="fixed left-1/2 -translate-x-1/2 top-[74px] w-full max-w-[1140px] bg-white rounded-3xl shadow-[0_16px_48px_rgba(43,39,35,0.14)] border border-brown-100/40 overflow-hidden animate-dropdown grid grid-cols-12">
+                    
+                    {/* Left Pane (Categories List) */}
+                    <div className="col-span-3 bg-gray-50/80 border-r border-brown-100/40 p-4 space-y-1.5 flex flex-col justify-start">
+                      <button
+                        onMouseEnter={() => setActiveServiceCategory("incorporation")}
+                        className={`w-full text-left px-4 py-3 rounded-xl text-[13px] font-bold transition-all ${
+                          activeServiceCategory === "incorporation"
+                            ? "bg-[#5C6F2D] text-white shadow-sm"
+                            : "text-brown-700 hover:bg-brown-100/30"
+                        }`}
+                      >
+                        Company Incorporation
+                      </button>
+
+                      <button
+                        onMouseEnter={() => setActiveServiceCategory("compliance")}
+                        className={`w-full text-left px-4 py-3 rounded-xl text-[13px] font-bold transition-all ${
+                          activeServiceCategory === "compliance"
+                            ? "bg-[#5C6F2D] text-white shadow-sm"
+                            : "text-brown-700 hover:bg-brown-100/30"
+                        }`}
+                      >
+                        Company Legal Compliance
+                      </button>
+
+                      <button
+                        onMouseEnter={() => setActiveServiceCategory("readiness")}
+                        className={`w-full text-left px-4 py-3 rounded-xl text-[13px] font-bold transition-all ${
+                          activeServiceCategory === "readiness"
+                            ? "bg-[#5C6F2D] text-white shadow-sm"
+                            : "text-brown-700 hover:bg-brown-100/30"
+                        }`}
+                      >
+                        Investment Readiness
+                      </button>
+                    </div>
+
+                    {/* Right Pane (Dynamic Contents) */}
+                    <div className="col-span-9 p-6 max-h-[460px] overflow-y-auto bg-white text-left">
+                      
+                      {/* Sub-Pane 1: Incorporation */}
+                      {activeServiceCategory === "incorporation" && (
+                        <div className="space-y-4">
+                          <h4 className="text-[12px] font-bold uppercase tracking-wider text-[#5C6F2D] border-b border-brown-100/40 pb-2">
+                            Company Incorporation Services
+                          </h4>
+                          <div className="grid grid-cols-3 gap-y-3.5 gap-x-6">
+                            {INCORPORATION_SERVICES.map((s) => (
+                              <a
+                                key={s.name}
+                                href={s.href}
+                                className="text-[13px] font-medium text-brown-600 hover:text-olive-700 transition-colors leading-tight py-1"
+                              >
+                                {s.name}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Sub-Pane 2: Compliance (Agreements & Contracts) */}
+                      {activeServiceCategory === "compliance" && (
+                        <div className="space-y-4">
+                          <h4 className="text-[12px] font-bold uppercase tracking-wider text-[#5C6F2D] border-b border-brown-100/40 pb-2">
+                            Agreements & Legal Contracts
+                          </h4>
+                          <div className="grid grid-cols-3 gap-y-3.5 gap-x-6">
+                            {COMPLIANCE_SERVICES.map((s) => (
+                              <a
+                                key={s.name}
+                                href={s.href}
+                                className="text-[13px] font-medium text-brown-600 hover:text-olive-700 transition-colors leading-tight py-1"
+                              >
+                                {s.name}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Sub-Pane 3: Investment Readiness (Launch, Investor Ready, Accelerator, etc.) */}
+                      {activeServiceCategory === "readiness" && (
+                        <div className="space-y-4">
+                          <h4 className="text-[12px] font-bold uppercase tracking-wider text-[#5C6F2D] border-b border-brown-100/40 pb-2">
+                            Investment Readiness Services
+                          </h4>
+                          <div className="grid grid-cols-3 gap-y-3.5 gap-x-6">
+                            {INVESTMENT_READINESS_SERVICES.map((s) => (
+                              <a
+                                key={s.name}
+                                href={s.href}
+                                className="text-[13px] font-medium text-brown-600 hover:text-olive-700 transition-colors leading-tight py-1"
+                              >
+                                {s.name}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+
             {/* Static nav items */}
             <a
               href="/pricing"
               className="px-4 py-[7px] text-[13px] font-semibold text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
             >
               Pricing
-            </a>
-            <a
-              href="/services"
-              className="px-4 py-[7px] text-[13px] font-semibold text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
-            >
-              Services
             </a>
             <a
               href="/contact"
@@ -232,22 +411,21 @@ export default function Header() {
             >
               <button
                 suppressHydrationWarning
-                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-semibold rounded-full transition-all duration-200 ${companyOpen
+                className={`flex items-center gap-1.5 px-4 py-[7px] text-[13px] font-semibold rounded-full transition-all duration-200 ${
+                  companyOpen
                     ? "bg-[#F0EBDF] text-[#33312c]"
                     : "text-brown-600 hover:bg-cream hover:text-brown-800"
-                  }`}
+                }`}
               >
                 Company
                 <ChevronDown
-                  className={`w-3 h-3 transition-transform duration-200 ${companyOpen ? "rotate-180" : ""
-                    }`}
+                  className={`w-3 h-3 transition-transform duration-200 ${companyOpen ? "rotate-180" : ""}`}
                 />
               </button>
 
               {/* Mega dropdown panel */}
               {companyOpen && (
                 <>
-                  {/* Invisible hover bridge */}
                   <div className="absolute top-full left-0 right-0 h-4" />
                   <div className="absolute left-1/2 -translate-x-1/2 top-[52px] bg-[#f5f1e6] rounded-[20px] shadow-[0_12px_40px_rgba(43,39,35,0.08)] animate-dropdown flex items-center gap-1 px-2 py-2">
                     <a
@@ -304,12 +482,14 @@ export default function Header() {
             aria-label="Toggle menu"
           >
             <X
-              className={`absolute w-[18px] h-[18px] text-brown-700 transition-all duration-300 ${isMobileOpen ? "rotate-0 opacity-100 scale-100" : "-rotate-90 opacity-0 scale-50"
-                }`}
+              className={`absolute w-[18px] h-[18px] text-brown-700 transition-all duration-300 ${
+                isMobileOpen ? "rotate-0 opacity-100 scale-100" : "-rotate-90 opacity-0 scale-50"
+              }`}
             />
             <Menu
-              className={`absolute w-[18px] h-[18px] text-brown-700 transition-all duration-300 ${isMobileOpen ? "rotate-90 opacity-0 scale-50" : "rotate-0 opacity-100 scale-100"
-                }`}
+              className={`absolute w-[18px] h-[18px] text-brown-700 transition-all duration-300 ${
+                isMobileOpen ? "rotate-90 opacity-0 scale-50" : "rotate-0 opacity-100 scale-100"
+              }`}
             />
           </button>
         </div>
@@ -319,53 +499,159 @@ export default function Header() {
       {isMobileOpen && (
         <div className="fixed inset-0 z-40 bg-[#fcfbf9] lg:hidden overflow-y-auto pt-[80px] sm:pt-[96px] pb-10">
           <div className="px-4">
-            <div className="space-y-3">
-              {sections.map((section) => {
-                const isOpen = openSections.includes(section.title);
-                return (
-                  <div key={section.title} className="bg-white rounded-2xl border border-brown-100/60 overflow-hidden shadow-sm">
-                    <button
-                      onClick={() => toggleSection(section.title)}
-                      className="w-full flex items-center justify-between p-4"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-xl bg-olive-600/10 flex items-center justify-center">
-                          <section.icon className="w-4 h-4 text-olive-600" />
-                        </div>
-                        <span className="text-[14px] font-bold text-brown-900 tracking-wide uppercase text-left">
-                          {section.title}
-                        </span>
-                      </div>
-                      <ChevronDown
-                        className={`w-4 h-4 text-brown-500 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-                      />
-                    </button>
-                    {isOpen && (
-                      <div className="px-4 pb-4 space-y-1">
-                        <div className="border-t border-brown-100/40 mb-2" />
-                        {section.items.map((item) => (
-                          <a
-                            key={item.name}
-                            href={item.href}
-                            onClick={() => setIsMobileOpen(false)}
-                            className="flex items-center py-2.5 px-2 rounded-lg text-[13px] font-medium text-brown-600 hover:text-brown-900 hover:bg-cream transition-colors"
-                          >
-                            {item.name}
-                            {"isNew" in item && item.isNew && (
-                              <span className="ml-2 text-[9px] font-bold uppercase tracking-widest bg-lime-bg text-olive-700 px-1.5 py-0.5 rounded-full">
-                                New
-                              </span>
-                            )}
-                          </a>
-                        ))}
-                      </div>
-                    )}
+            
+            {/* Accordion List */}
+            <div className="space-y-3 text-left">
+              
+              {/* MOBILE - For Founders Accordion (UNTOUCHED) */}
+              <div className="bg-white rounded-2xl border border-brown-100/60 overflow-hidden shadow-sm">
+                <button
+                  onClick={() => toggleSection("founders")}
+                  className="w-full flex items-center justify-between p-4"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-xl bg-olive-600/10 flex items-center justify-center">
+                      <Rocket className="w-4 h-4 text-olive-600" />
+                    </div>
+                    <span className="text-[14px] font-bold text-brown-900 uppercase tracking-wide">
+                      For Founders
+                    </span>
                   </div>
-                );
-              })}
+                  <ChevronDown
+                    className={`w-4 h-4 text-brown-500 transition-transform duration-300 ${
+                      openSections.includes("founders") ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openSections.includes("founders") && (
+                  <div className="px-4 pb-4 space-y-3">
+                    {sections.map((sec) => (
+                      <div key={sec.title} className="space-y-1">
+                        <span className="text-[11px] font-bold text-brown-400 uppercase tracking-wider">{sec.title}</span>
+                        <div className="pl-2 space-y-1">
+                          {sec.items.map((item) => (
+                            <a
+                              key={item.name}
+                              href={item.href}
+                              onClick={() => setIsMobileOpen(false)}
+                              className="block py-1.5 text-[13px] font-medium text-brown-600 hover:text-brown-900"
+                            >
+                              {item.name}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* MOBILE - Custom Services Accordion */}
+              <div className="bg-white rounded-2xl border border-brown-100/60 overflow-hidden shadow-sm">
+                <button
+                  onClick={() => toggleSection("services")}
+                  className="w-full flex items-center justify-between p-4"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-xl bg-olive-600/10 flex items-center justify-center">
+                      <Building2 className="w-4 h-4 text-olive-600" />
+                    </div>
+                    <span className="text-[14px] font-bold text-brown-900 uppercase tracking-wide">
+                      Services
+                    </span>
+                  </div>
+                  <ChevronDown
+                    className={`w-4 h-4 text-brown-500 transition-transform duration-300 ${
+                      openSections.includes("services") ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openSections.includes("services") && (
+                  <div className="px-4 pb-4 space-y-3.5">
+                    
+                    {/* Mobile Category 1 */}
+                    <div className="space-y-2">
+                      <button
+                        onClick={() => setMobileActiveSub(mobileActiveSub === "incorp" ? null : "incorp")}
+                        className="w-full flex items-center justify-between text-[12.5px] font-bold text-brown-800 border-b border-brown-100/40 pb-1"
+                      >
+                        <span>Company Incorporation</span>
+                        <ChevronDown className={`w-3.5 h-3.5 text-brown-500 transition-transform ${mobileActiveSub === "incorp" ? "rotate-180" : ""}`} />
+                      </button>
+                      {mobileActiveSub === "incorp" && (
+                        <div className="pl-3 space-y-2">
+                          {INCORPORATION_SERVICES.map((item) => (
+                            <a
+                              key={item.name}
+                              href={item.href}
+                              onClick={() => setIsMobileOpen(false)}
+                              className="block py-1 text-[13px] font-medium text-brown-600"
+                            >
+                              {item.name}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Mobile Category 2 */}
+                    <div className="space-y-2">
+                      <button
+                        onClick={() => setMobileActiveSub(mobileActiveSub === "comp" ? null : "comp")}
+                        className="w-full flex items-center justify-between text-[12.5px] font-bold text-brown-800 border-b border-brown-100/40 pb-1"
+                      >
+                        <span>Company Legal Compliance</span>
+                        <ChevronDown className={`w-3.5 h-3.5 text-brown-500 transition-transform ${mobileActiveSub === "comp" ? "rotate-180" : ""}`} />
+                      </button>
+                      {mobileActiveSub === "comp" && (
+                        <div className="pl-3 space-y-2 max-h-[200px] overflow-y-auto">
+                          {COMPLIANCE_SERVICES.map((item) => (
+                            <a
+                              key={item.name}
+                              href={item.href}
+                              onClick={() => setIsMobileOpen(false)}
+                              className="block py-1 text-[13px] font-medium text-brown-600"
+                            >
+                              {item.name}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Mobile Category 3 */}
+                    <div className="space-y-2">
+                      <button
+                        onClick={() => setMobileActiveSub(mobileActiveSub === "ready" ? null : "ready")}
+                        className="w-full flex items-center justify-between text-[12.5px] font-bold text-brown-800 border-b border-brown-100/40 pb-1"
+                      >
+                        <span>Investment Readiness</span>
+                        <ChevronDown className={`w-3.5 h-3.5 text-brown-500 transition-transform ${mobileActiveSub === "ready" ? "rotate-180" : ""}`} />
+                      </button>
+                      {mobileActiveSub === "ready" && (
+                        <div className="pl-3 space-y-2">
+                          {INVESTMENT_READINESS_SERVICES.map((item) => (
+                            <a
+                              key={item.name}
+                              href={item.href}
+                              onClick={() => setIsMobileOpen(false)}
+                              className="block py-1 text-[13px] font-medium text-brown-600"
+                            >
+                              {item.name}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                  </div>
+                )}
+              </div>
+
             </div>
 
-            <div className="mt-6 pt-4 border-t border-brown-200/50 px-2 space-y-1">
+            {/* Other Mobile Nav Items */}
+            <div className="mt-6 pt-4 border-t border-brown-200/50 px-2 space-y-1 text-left">
               <a
                 href="/company/about-us"
                 onClick={() => setIsMobileOpen(false)}
@@ -393,13 +679,6 @@ export default function Header() {
                 className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Pricing
-              </a>
-              <a
-                href="/services"
-                onClick={() => setIsMobileOpen(false)}
-                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
-              >
-                Services
               </a>
               <a
                 href="/contact"
@@ -430,6 +709,7 @@ export default function Header() {
                 Log in
               </a>
             </div>
+
           </div>
         </div>
       )}

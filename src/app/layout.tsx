@@ -3,6 +3,7 @@ import "./globals.css";
 import LoadingOverlay from "@/components/LoadingOverlay";
 import CookieBanner from "@/components/CookieBanner";
 import ScrollToTop from "@/components/ScrollToTop";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
   title:
@@ -38,6 +39,7 @@ export default function RootLayout({
         <LoadingOverlay />
         {children}
         <CookieBanner />
+        <WhatsAppButton />
       </body>
     </html>
   );

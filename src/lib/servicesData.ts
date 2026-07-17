@@ -486,7 +486,7 @@ export const services: ServicePattern[] = [
     slug: "document-management",
     heroCategory: "Compliance",
     heroTitle: "Your Startup's Secure Legal Data Room",
-    heroDescription: "Investors spend weeks in due diligence because founders can't locate their incorporation documents, share certificates, board resolutions, or signed agreements. Our Document Management module organises, stores, and version-controls every critical document your startup will ever generate — making you audit-ready and investor-ready at all times.",
+    heroDescription: "Investors spend weeks in due diligence because founders can't locate their incorporation documents, share certificates, board resolutions, or signed agreements. Our Document Management module organises, stores, and version-controls every critical document your startup will  you audit-ready and investor-ready at all times.",
     heroImage: "/startup-compliance-hero.png",
     featuresTitle: "Organised, secured, always accessible",
     features: [

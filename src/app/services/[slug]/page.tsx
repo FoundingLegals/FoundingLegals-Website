@@ -9,6 +9,7 @@ import WhichCompanyTypeLayout from "@/components/WhichCompanyTypeLayout";
 import PartnershipRegistrationLayout from "@/components/PartnershipRegistrationLayout";
 import SoleProprietorshipRegistrationLayout from "@/components/SoleProprietorshipRegistrationLayout";
 import AgreementsLayout from "@/components/AgreementsLayout";
+import InvestmentReadinessLayout from "@/components/InvestmentReadinessLayout";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -135,6 +136,23 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <Header />
         <main>
           <AgreementsLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // Investment Readiness Layout
+  if (
+    resolvedParams.slug === "pitch-to-investors" ||
+    resolvedParams.slug === "finance-for-fundraising" ||
+    resolvedParams.slug === "find-investors"
+  ) {
+    return (
+      <>
+        <Header />
+        <main>
+          <InvestmentReadinessLayout />
         </main>
         <Footer />
       </>

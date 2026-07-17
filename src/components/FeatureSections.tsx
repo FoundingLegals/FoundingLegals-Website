@@ -83,7 +83,7 @@ export function StartSection() {
                     Incorporation in 7 days
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Name, SPICe+, DIN, DSC, PAN and TAN     filed for you
+                    Name, SPICe+, DIN, DSC, PAN and TAN — filed for you
                     with live status updates.
                   </p>
                 </div>
@@ -198,7 +198,7 @@ export function ComplianceSection() {
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
                     Filings, agreements and resolutions in one folder.
-                    When diligence calls, you share a link     not a
+                    When diligence calls, you share a link — not a
                     last-minute scramble.
                   </p>
                 </div>
@@ -291,7 +291,7 @@ export function RaiseSection() {
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
                     Cap table, deck and key documents in one shareable
-                    space     reusable round after round.
+                    space — reusable round after round.
                   </p>
                 </div>
               </div>
@@ -306,7 +306,7 @@ export function RaiseSection() {
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
                     Term sheets, SHA, SSA, board approvals, share
-                    allotments     one timeline, zero handover gaps.
+                    allotments — one timeline, zero handover gaps.
                   </p>
                 </div>
               </div>
@@ -321,7 +321,7 @@ export function RaiseSection() {
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
                     Every term sheet comes with footnotes from Indian
-                    advocates     so you understand what you&apos;re signing.
+                    advocates — so you understand what you&apos;re signing.
                   </p>
                 </div>
               </div>
@@ -335,7 +335,7 @@ export function RaiseSection() {
                     Encrypted IP &amp; governance vault
                   </h3>
                   <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Trademarks, IP assignments and board records    
+                    Trademarks, IP assignments and board records —
                     versioned, encrypted, ready when DD starts.
                   </p>
                 </div>
@@ -382,7 +382,7 @@ export function IntelligenceSection() {
               </h2>
               <p className="text-base sm:text-lg text-brown-500 leading-relaxed mb-10 max-w-lg">
                 Every filing, board meeting and certification on one
-                timeline     with reminders calibrated to your team,
+                timeline — with reminders calibrated to your team,
                 not the portal.
               </p>
               <a
