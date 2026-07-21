@@ -25,7 +25,7 @@ const STRUCTURES = [
     id: "pvt-ltd",
     name: "Private Limited Company",
     abbreviation: "Pvt. Ltd.",
-    cost: "₹1,499 + Govt. Fee",
+    cost: "Starts at ₹1,999 + Govt. Fee",
     icon: Building2,
     colorClass: "from-[#EAF1E5] to-[#F3F7F0] border-olive-350",
     learnMoreUrl: "/services/company-incorporation",
@@ -39,7 +39,7 @@ const STRUCTURES = [
     id: "llp",
     name: "Limited Liability Partnership",
     abbreviation: "LLP",
-    cost: "₹1,499 + Govt. Fee",
+    cost: "Starts at ₹1,999 + Govt. Fee",
     icon: Briefcase,
     colorClass: "from-[#E2EAE0] to-[#ECF2EC] border-olive-200",
     learnMoreUrl: "/services/llp-registration",
@@ -53,7 +53,7 @@ const STRUCTURES = [
     id: "opc",
     name: "One Person Company",
     abbreviation: "OPC",
-    cost: "₹1,499 + Govt. Fee",
+    cost: "Starts at ₹1,999 + Govt. Fee",
     icon: User,
     colorClass: "from-[#EDF1E7] to-[#F6F8F3] border-olive-200",
     learnMoreUrl: "/services/opc-registration",
@@ -97,9 +97,9 @@ const STRUCTURES = [
 const COMPARISON_ROWS = [
   {
     label: "Registration Costs",
-    pvtLtd: "₹1,499 + Govt. Fee",
-    llp: "₹1,499 + Govt. Fee",
-    opc: "₹1,499 + Govt. Fee",
+    pvtLtd: "Starts at ₹1,999 + Govt. Fee",
+    llp: "Starts at ₹1,999 + Govt. Fee",
+    opc: "Starts at ₹1,999 + Govt. Fee",
     partnership: "No Formal Registration Required",
     proprietorship: "No Formal Registration Required",
     hasLinks: true
@@ -615,7 +615,7 @@ export default function WhichCompanyTypeLayout() {
               Hassle free company registration through Founding Legals
             </span>
             <h3 className="font-serif text-[28px] sm:text-[36px] md:text-[44px] font-semibold leading-tight">
-              in just ₹1,499 <span className="text-[18px] sm:text-[22px] font-sans font-light opacity-80">+ Govt. Fee</span>
+              starts at ₹1,999 <span className="text-[18px] sm:text-[22px] font-sans font-light opacity-80">+ Govt. Fee</span>
             </h3>
             <p className="text-[14px] sm:text-[15.5px] text-olive-100 leading-relaxed max-w-xl mx-auto">
               Make your business ready to scale. Become an incorporated company through Founding Legals.

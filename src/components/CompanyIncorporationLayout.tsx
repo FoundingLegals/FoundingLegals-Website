@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Check, X, Send, ArrowRight, ChevronDown, HelpCircle } from "lucide-react";
+import { Check, X, Send, ArrowRight, ChevronDown, HelpCircle, Star } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
 
 // --- TABLE OF CONTENT ITEMS ---
@@ -46,7 +46,7 @@ const FAQ_ITEMS = [
   },
   {
     question: "What are the cost and fees, including pvt. ltd. company registration govt fees?",
-    answer: "The government fee depends on the company's authorized capital and state of registration. Our professional drafting fee starts at ₹1,499. The overall cost including state stamp duty, DSC, and filing fee typically ranges from ₹8,000 to ₹20,000."
+    answer: "The government fee depends on the company's authorized capital and state of registration. Our professional drafting fee starts at ₹1,999. The overall cost including state stamp duty, DSC, and filing fee typically ranges from ₹8,000 to ₹25,000."
   },
   {
     question: "What is a Corporate Identity Number (CIN)?",
@@ -67,6 +67,101 @@ const FAQ_ITEMS = [
   {
     question: "What are the requirements for Annual Compliance for a Private Limited Company?",
     answer: "Annual compliance includes holding an Annual General Meeting (AGM), appointing a statutory auditor, filing AOC-4 (financial statements), MGT-7 (annual return), DIR-3 KYC for directors, and filing corporate income tax returns (ITR-6)."
+  }
+];
+
+// --- INCORPORATION PRICING PLANS DATA ---
+const ALL_FEATURES = [
+  "Company name help",
+  "SPICe+ form in 2-3 working days",
+  "Company PAN + TAN",
+  "MOA + AOA",
+  "PF and ESIC registration",
+  "Incorporation certificate in 10-12 days",
+  "DSC preparation in 3-4 days",
+  "DIN for directors",
+  "Expert assisted process",
+  "INC 20A / Business commencement certificate",
+  "MSME Registration",
+  "Startup India Registration",
+  "Digital signature certificate",
+  "Company DSC",
+  "Trademark Registration",
+  "Pitch Deck"
+];
+
+const INCORPORATION_PLANS = [
+  {
+    name: "BASIC",
+    price: "₹1,999",
+    feeSubtext: "+ Govt Fees",
+    description: "Essential company registration and incorporation kit.",
+    badge: "Essential Setup",
+    badgeStyles: "bg-gray-100 text-gray-700 border border-gray-200/50",
+    serviceName: "Pvt Ltd Company Incorporation - BASIC Plan (₹1,999 + Govt Fees)",
+    included: [
+      "Company name help",
+      "SPICe+ form in 2-3 working days",
+      "Company PAN + TAN",
+      "MOA + AOA",
+      "PF and ESIC registration",
+      "Incorporation certificate in 10-12 days",
+      "DSC preparation in 3-4 days",
+      "DIN for directors",
+      "Expert assisted process",
+      "INC 20A / Business commencement certificate"
+    ]
+  },
+  {
+    name: "STANDARD",
+    price: "₹6,999",
+    feeSubtext: "+ Govt Fees",
+    description: "Standard package including government registration and acceleration programs.",
+    badge: "Most Popular",
+    badgeStyles: "bg-olive-100 text-olive-800 border border-olive-200/50",
+    isPopular: true,
+    serviceName: "Pvt Ltd Company Incorporation - STANDARD Plan (₹6,999 + Govt Fees)",
+    included: [
+      "Company name help",
+      "SPICe+ form in 2-3 working days",
+      "Company PAN + TAN",
+      "MOA + AOA",
+      "PF and ESIC registration",
+      "Incorporation certificate in 10-12 days",
+      "DSC preparation in 3-4 days",
+      "DIN for directors",
+      "Expert assisted process",
+      "INC 20A / Business commencement certificate",
+      "MSME Registration",
+      "Startup India Registration"
+    ]
+  },
+  {
+    name: "PREMIUM",
+    price: "₹8,999",
+    feeSubtext: "+ Govt Fees",
+    description: "Comprehensive package including trademarks, physical DSCs and investor decks.",
+    badge: "Best Value",
+    badgeStyles: "bg-brown-100 text-brown-900 border border-brown-200/30",
+    serviceName: "Pvt Ltd Company Incorporation - PREMIUM Plan (₹8,999 + Govt Fees)",
+    included: [
+      "Company name help",
+      "SPICe+ form in 2-3 working days",
+      "Company PAN + TAN",
+      "MOA + AOA",
+      "PF and ESIC registration",
+      "Incorporation certificate in 10-12 days",
+      "DSC preparation in 3-4 days",
+      "DIN for directors",
+      "Expert assisted process",
+      "INC 20A / Business commencement certificate",
+      "MSME Registration",
+      "Startup India Registration",
+      "Digital signature certificate",
+      "Company DSC",
+      "Trademark Registration",
+      "Pitch Deck"
+    ]
   }
 ];
 
@@ -124,8 +219,160 @@ export default function CompanyIncorporationLayout() {
   return (
     <div className="min-h-screen bg-white font-sans text-[#2c2925]">
       
+      {/* ── TOP HEADER SECTION ── */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-[120px] pb-6">
+        {/* Pricing details on the top of the hero section */}
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="text-[11px] font-bold text-olive-700 tracking-widest uppercase bg-olive-50 px-4 py-1.5 rounded-full border border-olive-200/40 inline-flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-olive-650 animate-pulse" />
+            Starting at ₹1,999 + Govt Fees
+          </span>
+          <span className="text-[11px] font-bold text-brown-600 tracking-widest uppercase bg-[#FAF9F6] px-4 py-1.5 rounded-full border border-brown-200/30 inline-block">
+            Fast Track 10-12 Days Process
+          </span>
+        </div>
+
+        <h1 className="font-serif text-[26px] sm:text-[36px] md:text-[50px] font-medium text-[#1A1917] leading-[1.2] md:leading-[1.1] mb-6">
+          Private Limited Company Registration in India
+        </h1>
+        
+        <div className="text-[15px] md:text-[16px] text-brown-605 leading-relaxed space-y-4 max-w-5xl mb-8">
+          <p>
+            A <strong>Private Limited Company (Pvt. Ltd.)</strong> is the most popular business structure in India, especially for startups and fast-growing businesses. It offers limited liability protection to its shareholders, maintains a separate legal identity from its owners, and is highly preferred by venture capital and angel investors.
+          </p>
+          <p>
+            With perpetual existence and the ability to easily transfer shares and raise equity capital, establishing a Private Limited Company is the gold standard for scaling your venture.
+          </p>
+          <p>
+            Private Limited Companies in India are regulated by the <strong>Ministry of Corporate Affairs (MCA)</strong> under the Companies Act, 2013. The Registrar of Companies (ROC) oversees the incorporation process and compliance filings.
+          </p>
+        </div>
+
+        {/* Pricing Cards Grid directly at the top of the page */}
+        <div className="space-y-6 pt-4 mb-10 border-b border-gray-100 pb-12">
+          <div className="text-center md:text-left">
+            <h3 className="font-serif text-[20px] md:text-[24px] font-semibold text-[#1A1917] mb-2">
+              Choose the Best Pvt Ltd Company Registration Plan
+            </h3>
+            <p className="text-[13px] text-gray-500 max-w-xl">
+              Select the plan that fits your business needs. All plans include standard drafting, filings, and support.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 items-stretch pt-2">
+            {INCORPORATION_PLANS.map((plan) => {
+              const isPopular = plan.isPopular;
+              return (
+                <div
+                  key={plan.name}
+                  className={`group relative rounded-3xl p-6 flex flex-col justify-between transition-all duration-500 overflow-hidden transform hover:-translate-y-1.5 ${
+                    isPopular
+                      ? "bg-[#5B6836] text-white border-2 border-[#5B6836] shadow-xl hover:shadow-[0_20px_40px_rgba(91,104,54,0.25)]"
+                      : "bg-[#F8FAF4] text-[#2A3416] border border-[#D5DFBE]/70 shadow-xs hover:shadow-md hover:border-[#B4C599]"
+                  }`}
+                >
+                  {/* Subtle curved light reflection overlay for the popular card */}
+                  {isPopular && (
+                    <div className="absolute -top-16 -right-16 w-48 h-48 bg-white/5 rounded-full pointer-events-none blur-xl group-hover:scale-110 transition-transform duration-700" />
+                  )}
+
+                  <div>
+                    {/* Plan Badge */}
+                    {plan.badge && (
+                      <div className="mb-4 flex items-center justify-between">
+                        <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-300 group-hover:scale-105 ${
+                          isPopular
+                            ? "bg-[#E2E9C8] text-[#344015]"
+                            : "bg-[#E6ECDB] text-[#4F5D30] border border-[#D5DFBE]"
+                        }`}>
+                          {isPopular && <Star className="w-3 h-3 fill-[#344015] animate-pulse" />}
+                          {plan.badge}
+                        </span>
+                      </div>
+                    )}
+
+                    {/* Price */}
+                    <div className="mb-4 flex items-baseline gap-1.5">
+                      <span className={`text-[32px] font-bold font-serif tracking-tight transition-all duration-300 ${
+                        isPopular ? "text-white" : "text-[#2A3416]"
+                      }`}>
+                        {plan.price}
+                      </span>
+                      <span className={`text-[12px] font-normal ${
+                        isPopular ? "text-white/70" : "text-gray-400"
+                      }`}>
+                        {plan.feeSubtext}
+                      </span>
+                    </div>
+
+                    <h4 className={`font-serif text-[19px] font-bold mb-1.5 ${
+                      isPopular ? "text-white" : "text-[#2A3416]"
+                    }`}>
+                      {plan.name}
+                    </h4>
+                    <p className={`text-[11.5px] leading-relaxed mb-6 pb-4 border-b transition-all duration-300 ${
+                      isPopular
+                        ? "text-white/85 border-white/10"
+                        : "text-gray-500 border-[#CBD7B5]/40"
+                    }`}>
+                      {plan.description}
+                    </p>
+
+                    {/* Features */}
+                    <ul className="space-y-3 mb-8">
+                      {ALL_FEATURES.map((feature, fIdx) => {
+                        const isIncluded = plan.included.includes(feature);
+                        return (
+                          <li
+                            key={fIdx}
+                            className="flex items-start gap-2.5 text-[12px] leading-snug"
+                          >
+                            {isIncluded ? (
+                              <Check className={`w-4 h-4 shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 ${
+                                isPopular ? "text-[#E2E9C8]" : "text-olive-650"
+                              }`} />
+                            ) : (
+                              <X className={`w-4 h-4 shrink-0 mt-0.5 ${
+                                isPopular ? "text-white/20" : "text-gray-300"
+                              }`} />
+                            )}
+                            <span className={`transition-all duration-300 ${
+                              isIncluded
+                                ? isPopular
+                                  ? "text-white font-medium"
+                                  : "text-[#2A3416] font-medium"
+                                : isPopular
+                                ? "text-white/30 font-light line-through"
+                                : "text-gray-400 font-light line-through"
+                            }`}>
+                              {feature}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+
+                  <button
+                    onClick={() => openModal(plan.serviceName)}
+                    className={`w-full py-3 rounded-full font-bold text-[12px] transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-1.5 shadow-sm transform group-hover:scale-[1.02] active:scale-[0.98] ${
+                      isPopular
+                        ? "bg-[#E2E9C8] hover:bg-[#D5DFB7] text-[#344015] font-semibold"
+                        : "bg-white hover:bg-[#FDFDFD] text-[#2A3416] border border-[#CBD7B5] hover:border-[#B4C599]"
+                    }`}
+                  >
+                    <span>Opt &amp; Register</span>
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* ── TWO-COLUMN ARTICLE LAYOUT ── */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-[120px] pb-24">
+      <section className="max-w-7xl mx-auto px-6 md:px-12 pb-24">
         <div className="grid lg:grid-cols-[300px_1fr] gap-12 items-start pt-6 border-t border-gray-100">
           
           {/* LEFT COLUMN: Table of Contents */}
@@ -153,9 +400,9 @@ export default function CompanyIncorporationLayout() {
 
             <div className="bg-[#FAF9F6] rounded-2xl border border-gray-200/60 p-5 text-center">
               <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Founding Legals Price</p>
-              <p className="text-[20px] font-serif font-bold text-olive-700 mb-3">₹1,499 <span className="text-xs text-gray-400 font-sans font-normal">+ Govt fee</span></p>
+              <p className="text-[18px] font-serif font-bold text-olive-700 mb-3">Starts at ₹1,999 <span className="text-xs text-gray-400 font-sans font-normal block mt-0.5">+ Govt fee</span></p>
               <button
-                onClick={() => openModal("Pvt Ltd Company Incorporation")}
+                onClick={() => openModal("Pvt Ltd Company Incorporation - BASIC Plan (₹1,999 + Govt Fees)")}
                 className="w-full text-center py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[12px] rounded-full transition-all shadow-sm cursor-pointer"
               >
                 Register Now
@@ -452,7 +699,7 @@ export default function CompanyIncorporationLayout() {
                   The cost of Pvt. Ltd. company registration online can vary based on several factors, including the jurisdiction in which you're registering, professional fees, and any additional services you might opt for.
                 </p>
                 <p className="mb-4">
-                  For a company with 2 Directors, Authorised capital up to ₹1 lakh, and standard incorporation, the total estimated cost usually falls between <strong>₹8,000 to ₹20,000</strong> (including pvt ltd company registration govt fees, DSC, and professional fees).
+                  For a company with 2 Directors, Authorised capital up to ₹1 lakh, and standard incorporation, the total estimated cost usually falls between <strong>₹8,000 to ₹25,000</strong> (including pvt ltd company registration govt fees, DSC, and professional fees).
                 </p>
               </div>
             </article>
@@ -540,11 +787,11 @@ export default function CompanyIncorporationLayout() {
                     <div>
                       <p className="text-[10px] text-brown-400 font-bold uppercase tracking-wider mb-1">REGISTRATION COST</p>
                       <p className="font-serif text-[22px] font-bold text-olive-700">
-                        ₹1,499 <span className="text-xs font-sans text-brown-400 font-normal">+ actual government state fees</span>
+                        Starts at ₹1,999 <span className="text-xs font-sans text-brown-400 font-normal block mt-0.5">+ actual government state fees</span>
                       </p>
                     </div>
                     <button
-                      onClick={() => openModal("Pvt Ltd Company Incorporation Full Registration Package")}
+                      onClick={() => openModal("Pvt Ltd Company Incorporation - BASIC Plan (₹1,999 + Govt Fees)")}
                       className="px-6 py-3 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[13px] rounded-full transition-all cursor-pointer shadow-md flex items-center gap-2 shrink-0"
                     >
                       Register your Business

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Check, X, Send, ArrowRight, ChevronDown, Search } from "lucide-react";
+import { Check, X, Send, ArrowRight, ChevronDown, Search, Star } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
 
 // --- TABLE OF CONTENT ITEMS ---
@@ -24,7 +24,7 @@ const FAQ_ITEMS = [
   },
   {
     question: "How much does it cost to register a company?",
-    answer: "The professional service fee at Founding Legals is just ₹1,499. The total cost, including government filing fees, state stamp duties, and Digital Signature Certificates (DSC), typically ranges from ₹8,000 to ₹20,000 depending on the type of entity, authorised capital, and state of incorporation."
+    answer: "The professional service fee at Founding Legals starts at ₹1,999. The total cost, including government filing fees, state stamp duties, and Digital Signature Certificates (DSC), typically ranges from ₹8,000 to ₹25,000 depending on the type of entity, authorised capital, and state of incorporation."
   },
   {
     question: "How long does it take to register a company?",
@@ -53,6 +53,101 @@ const FAQ_ITEMS = [
   {
     question: "Can I convert one business structure into another?",
     answer: "Yes, you can convert one business structure into another (e.g., Sole Proprietorship to Private Limited Company, or LLP to Private Limited Company) by following the prescribed transition procedures and filing the necessary conversion forms with the MCA."
+  }
+];
+
+// --- INCORPORATION PRICING PLANS DATA ---
+const ALL_FEATURES = [
+  "Company name help",
+  "SPICe+ form in 2-3 working days",
+  "Company PAN + TAN",
+  "MOA + AOA",
+  "PF and ESIC registration",
+  "Incorporation certificate in 10-12 days",
+  "DSC preparation in 3-4 days",
+  "DIN for directors",
+  "Expert assisted process",
+  "INC 20A / Business commencement certificate",
+  "MSME Registration",
+  "Startup India Registration",
+  "Digital signature certificate",
+  "Company DSC",
+  "Trademark Registration",
+  "Pitch Deck"
+];
+
+const INCORPORATION_PLANS = [
+  {
+    name: "BASIC",
+    price: "₹1,999",
+    feeSubtext: "+ Govt Fees",
+    description: "Essential company registration and incorporation kit.",
+    badge: "Essential Setup",
+    badgeStyles: "bg-gray-100 text-gray-700 border border-gray-200/50",
+    serviceName: "Pvt Ltd Company Incorporation - BASIC Plan (₹1,999 + Govt Fees)",
+    included: [
+      "Company name help",
+      "SPICe+ form in 2-3 working days",
+      "Company PAN + TAN",
+      "MOA + AOA",
+      "PF and ESIC registration",
+      "Incorporation certificate in 10-12 days",
+      "DSC preparation in 3-4 days",
+      "DIN for directors",
+      "Expert assisted process",
+      "INC 20A / Business commencement certificate"
+    ]
+  },
+  {
+    name: "STANDARD",
+    price: "₹6,999",
+    feeSubtext: "+ Govt Fees",
+    description: "Standard package including government registration and acceleration programs.",
+    badge: "Most Popular",
+    badgeStyles: "bg-olive-100 text-olive-800 border border-olive-200/50",
+    isPopular: true,
+    serviceName: "Pvt Ltd Company Incorporation - STANDARD Plan (₹6,999 + Govt Fees)",
+    included: [
+      "Company name help",
+      "SPICe+ form in 2-3 working days",
+      "Company PAN + TAN",
+      "MOA + AOA",
+      "PF and ESIC registration",
+      "Incorporation certificate in 10-12 days",
+      "DSC preparation in 3-4 days",
+      "DIN for directors",
+      "Expert assisted process",
+      "INC 20A / Business commencement certificate",
+      "MSME Registration",
+      "Startup India Registration"
+    ]
+  },
+  {
+    name: "PREMIUM",
+    price: "₹8,999",
+    feeSubtext: "+ Govt Fees",
+    description: "Comprehensive package including trademarks, physical DSCs and investor decks.",
+    badge: "Best Value",
+    badgeStyles: "bg-brown-100 text-brown-900 border border-brown-200/30",
+    serviceName: "Pvt Ltd Company Incorporation - PREMIUM Plan (₹8,999 + Govt Fees)",
+    included: [
+      "Company name help",
+      "SPICe+ form in 2-3 working days",
+      "Company PAN + TAN",
+      "MOA + AOA",
+      "PF and ESIC registration",
+      "Incorporation certificate in 10-12 days",
+      "DSC preparation in 3-4 days",
+      "DIN for directors",
+      "Expert assisted process",
+      "INC 20A / Business commencement certificate",
+      "MSME Registration",
+      "Startup India Registration",
+      "Digital signature certificate",
+      "Company DSC",
+      "Trademark Registration",
+      "Pitch Deck"
+    ]
   }
 ];
 
@@ -121,7 +216,7 @@ export default function NameRegistrationLayout() {
             </h1>
 
             <div className="flex items-baseline gap-2 mb-6">
-              <span className="text-[20px] sm:text-[24px] font-serif font-bold text-olive-700">in just ₹1,499</span>
+              <span className="text-[20px] sm:text-[24px] font-serif font-bold text-olive-700">Starts at ₹1,999</span>
               <span className="text-[13px] sm:text-[14px] text-gray-400 font-sans">+ Govt Fee</span>
             </div>
 
@@ -161,92 +256,124 @@ export default function NameRegistrationLayout() {
       <section className="max-w-7xl mx-auto px-6 md:px-12 pb-10">
         <div className="border-t border-gray-200 mb-8" />
 
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
-          <div>
-            <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[28px] font-semibold text-[#1A1917] leading-snug">
-              Different Types of Company Formations to Choose From
+        <div className="space-y-6 pt-4 mb-10 pb-4">
+          <div className="text-center sm:text-left">
+            <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[28px] font-semibold text-[#1A1917] mb-2">
+              Choose the Best Pvt Ltd Company Registration Plan
             </h2>
-            <p className="text-[14px] text-brown-500 mt-1">
-              Choose from the most popular{" "}
-              <span className="text-olive-600 font-semibold">company types</span>
+            <p className="text-[13px] text-gray-500 max-w-xl">
+              Select the plan that fits your business needs. All plans include standard drafting, filings, and support.
             </p>
           </div>
-          <a
-            href="/services/which-company-type-to-register"
-            className="text-[13px] font-bold text-olive-700 hover:text-olive-900 transition-colors shrink-0 flex items-center gap-1 cursor-pointer"
-          >
-            Find your Company Type <ArrowRight className="w-3.5 h-3.5" />
-          </a>
-        </div>
 
-        <div className="grid sm:grid-cols-3 gap-5">
-          {/* Card 1: Pvt Ltd */}
-          <div className="bg-gradient-to-br from-[#EAF1E5] to-[#F3F7F0] border border-olive-300/80 rounded-2xl p-6 flex flex-col justify-between shadow-[0_8px_30px_rgb(92,111,45,0.02)] hover:shadow-xl hover:border-olive-500 hover:-translate-y-1 transition-all duration-300">
-            <div>
-              <h3 className="font-serif text-[16px] sm:text-[18px] font-bold text-[#1A1917] leading-tight mb-1">Private Limited Company</h3>
-              <span className="text-xs text-gray-400 font-sans font-medium block mb-3">(Pvt. Ltd.)</span>
-              <p className="font-serif text-[22px] font-bold text-olive-700 mb-5">
-                ₹1,499 <span className="text-xs font-sans text-gray-400 font-normal">+ Govt. Fee</span>
-              </p>
-              <div className="border-t border-olive-200/50 pt-4 mb-6">
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-3">BEST SUITED FOR</span>
-                <ul className="space-y-2.5 text-[12.5px] text-[#555]">
-                  {["Service-based businesses","Businesses looking to issue shares","Businesses seeking investment through equity-based funding"].map((pt,i) => (
-                    <li key={i} className="flex items-start gap-2"><Check className="w-4 h-4 text-olive-600 shrink-0 mt-0.5" /><span>{pt}</span></li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="flex gap-2.5 mt-auto pt-4 border-t border-olive-200/50">
-              <a href="/services/company-incorporation#documents-required" className="flex-1 text-center py-2.5 border border-olive-600 hover:bg-olive-50 text-olive-600 font-bold text-[11px] rounded-full transition-all cursor-pointer">Learn More</a>
-              <button onClick={() => openModal("Private Limited Company Registration")} className="flex-1 text-center py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[11px] rounded-full transition-all cursor-pointer shadow-xs">Register Pvt.Ltd  </button>
-            </div>
-          </div>
+          <div className="grid md:grid-cols-3 gap-6 items-stretch pt-2">
+            {INCORPORATION_PLANS.map((plan) => {
+              const isPopular = plan.isPopular;
+              return (
+                <div
+                  key={plan.name}
+                  className={`group relative rounded-3xl p-6 flex flex-col justify-between transition-all duration-500 overflow-hidden transform hover:-translate-y-1.5 ${
+                    isPopular
+                      ? "bg-[#5B6836] text-white border-2 border-[#5B6836] shadow-xl hover:shadow-[0_20px_40px_rgba(91,104,54,0.25)]"
+                      : "bg-[#F8FAF4] text-[#2A3416] border border-[#D5DFBE]/70 shadow-xs hover:shadow-md hover:border-[#B4C599]"
+                  }`}
+                >
+                  {/* Subtle curved light reflection overlay for the popular card */}
+                  {isPopular && (
+                    <div className="absolute -top-16 -right-16 w-48 h-48 bg-white/5 rounded-full pointer-events-none blur-xl group-hover:scale-110 transition-transform duration-700" />
+                  )}
 
-          {/* Card 2: LLP */}
-          <div className="bg-gradient-to-br from-[#E2EAE0] to-[#ECF2EC] border border-olive-200/60 rounded-2xl p-6 flex flex-col justify-between shadow-[0_8px_30px_rgb(92,111,45,0.02)] hover:shadow-xl hover:border-olive-400 hover:-translate-y-1 transition-all duration-300">
-            <div>
-              <h3 className="font-serif text-[16px] sm:text-[18px] font-bold text-[#1A1917] leading-tight mb-1">Limited Liability Partnership</h3>
-              <span className="text-xs text-gray-400 font-sans font-medium block mb-3">(LLP)</span>
-              <p className="font-serif text-[22px] font-bold text-olive-700 mb-5">
-                ₹1,499 <span className="text-xs font-sans text-gray-400 font-normal">+ Govt. Fee</span>
-              </p>
-              <div className="border-t border-olive-200/40 pt-4 mb-6">
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-3">BEST SUITED FOR</span>
-                <ul className="space-y-2.5 text-[12.5px] text-[#555]">
-                  {["Professional services","Firms seeking any capital contribution from Partners","Firms sharing resources with limited liability"].map((pt,i) => (
-                    <li key={i} className="flex items-start gap-2"><Check className="w-4 h-4 text-olive-600 shrink-0 mt-0.5" /><span>{pt}</span></li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="flex gap-2.5 mt-auto pt-4 border-t border-olive-200/40">
-              <a href="/services/llp-registration#documents-required" className="flex-1 text-center py-2.5 border border-olive-600 hover:bg-olive-50 text-olive-600 font-bold text-[11px] rounded-full transition-all cursor-pointer">Learn More</a>
-              <button onClick={() => openModal("Limited Liability Partnership (LLP) Registration")} className="flex-1 text-center py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[11px] rounded-full transition-all cursor-pointer shadow-xs">Register LLP  </button>
-            </div>
-          </div>
+                  <div>
+                    {/* Plan Badge */}
+                    {plan.badge && (
+                      <div className="mb-4 flex items-center justify-between">
+                        <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-300 group-hover:scale-105 ${
+                          isPopular
+                            ? "bg-[#E2E9C8] text-[#344015]"
+                            : "bg-[#E6ECDB] text-[#4F5D30] border border-[#D5DFBE]"
+                        }`}>
+                          {isPopular && <Star className="w-3 h-3 fill-[#344015] animate-pulse" />}
+                          {plan.badge}
+                        </span>
+                      </div>
+                    )}
 
-          {/* Card 3: OPC */}
-          <div className="bg-gradient-to-br from-[#EDF1E7] to-[#F6F8F3] border border-olive-200/60 rounded-2xl p-6 flex flex-col justify-between shadow-[0_8px_30px_rgb(92,111,45,0.02)] hover:shadow-xl hover:border-olive-400 hover:-translate-y-1 transition-all duration-300">
-            <div>
-              <h3 className="font-serif text-[16px] sm:text-[18px] font-bold text-[#1A1917] leading-tight mb-1">One Person Company</h3>
-              <span className="text-xs text-gray-400 font-sans font-medium block mb-3">(OPC)</span>
-              <p className="font-serif text-[22px] font-bold text-olive-700 mb-5">
-                ₹1,499 <span className="text-xs font-sans text-gray-400 font-normal">+ Govt. Fee</span>
-              </p>
-              <div className="border-t border-olive-200/40 pt-4 mb-6">
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-3">BEST SUITED FOR</span>
-                <ul className="space-y-2.5 text-[12.5px] text-[#555]">
-                  {["Freelancers, Small-scale businesses","Businesses looking for minimal compliance","Businesses looking for single-ownership"].map((pt,i) => (
-                    <li key={i} className="flex items-start gap-2"><Check className="w-4 h-4 text-olive-600 shrink-0 mt-0.5" /><span>{pt}</span></li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div className="flex gap-2.5 mt-auto pt-4 border-t border-olive-200/40">
-              <a href="/services/opc-registration#documents-required" className="flex-1 text-center py-2.5 border border-olive-600 hover:bg-olive-50 text-olive-600 font-bold text-[11px] rounded-full transition-all cursor-pointer">Learn More</a>
-               <button onClick={() => openModal("One Person Company (OPC) Registration")} className="flex-1 text-center py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[11px] rounded-full transition-all cursor-pointer shadow-xs">Register OPC  </button>
-            </div>
+                    {/* Price */}
+                    <div className="mb-4 flex items-baseline gap-1.5">
+                      <span className={`text-[32px] font-bold font-serif tracking-tight transition-all duration-300 ${
+                        isPopular ? "text-white" : "text-[#2A3416]"
+                      }`}>
+                        {plan.price}
+                      </span>
+                      <span className={`text-[12px] font-normal ${
+                        isPopular ? "text-white/70" : "text-gray-400"
+                      }`}>
+                        {plan.feeSubtext}
+                      </span>
+                    </div>
+
+                    <h3 className={`font-serif text-[19px] font-bold mb-1.5 ${
+                      isPopular ? "text-white" : "text-[#2A3416]"
+                    }`}>
+                      {plan.name}
+                    </h3>
+                    <p className={`text-[11.5px] leading-relaxed mb-6 pb-4 border-b transition-all duration-300 ${
+                      isPopular
+                        ? "text-white/85 border-white/10"
+                        : "text-gray-550 border-[#CBD7B5]/40"
+                    }`}>
+                      {plan.description}
+                    </p>
+
+                    {/* Features */}
+                    <ul className="space-y-3 mb-8">
+                      {ALL_FEATURES.map((feature, fIdx) => {
+                        const isIncluded = plan.included.includes(feature);
+                        return (
+                          <li
+                            key={fIdx}
+                            className="flex items-start gap-2.5 text-[12px] leading-snug"
+                          >
+                            {isIncluded ? (
+                              <Check className={`w-4 h-4 shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 ${
+                                isPopular ? "text-[#E2E9C8]" : "text-olive-650"
+                              }`} />
+                            ) : (
+                              <X className={`w-4 h-4 shrink-0 mt-0.5 ${
+                                isPopular ? "text-white/20" : "text-gray-300"
+                              }`} />
+                            )}
+                            <span className={`transition-all duration-300 ${
+                              isIncluded
+                                ? isPopular
+                                  ? "text-white font-medium"
+                                  : "text-[#2A3416] font-medium"
+                                : isPopular
+                                ? "text-white/30 font-light line-through"
+                                : "text-gray-400 font-light line-through"
+                            }`}>
+                              {feature}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+
+                  <button
+                    onClick={() => openModal(plan.serviceName)}
+                    className={`w-full py-3 rounded-full font-bold text-[12px] transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-1.5 shadow-sm transform group-hover:scale-[1.02] active:scale-[0.98] ${
+                      isPopular
+                        ? "bg-[#E2E9C8] hover:bg-[#D5DFB7] text-[#344015] font-semibold"
+                        : "bg-white hover:bg-[#FDFDFD] text-[#2A3416] border border-[#CBD7B5] hover:border-[#B4C599]"
+                    }`}
+                  >
+                    <span>Opt &amp; Register</span>
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </button>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -280,7 +407,7 @@ export default function NameRegistrationLayout() {
 
             <div className="bg-[#FAF9F6] rounded-2xl border border-gray-200/60 p-5 text-center">
               <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Founding Legals Price</p>
-              <p className="text-[20px] font-serif font-bold text-olive-700 mb-3">₹1,499 <span className="text-xs text-gray-400 font-sans font-normal">+ Govt fee</span></p>
+              <p className="text-[18px] font-serif font-bold text-olive-700 mb-3">Starts at ₹1,999 <span className="text-xs text-gray-400 font-sans font-normal block mt-0.5">+ Govt fee</span></p>
               <button
                 onClick={() => openModal("Company Registration package")}
                 className="w-full text-center py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[12px] rounded-full transition-all shadow-sm cursor-pointer"
@@ -578,15 +705,15 @@ export default function NameRegistrationLayout() {
                   <tbody className="divide-y divide-gray-200 text-[#444]">
                     <tr>
                       <td className="p-4 font-semibold text-gray-800">Private Limited</td>
-                      <td className="p-4">₹1,499 + Govt. fee</td>
+                      <td className="p-4">Starts at ₹1,999 + Govt. fee</td>
                     </tr>
                     <tr>
                       <td className="p-4 font-semibold text-gray-800">LLP</td>
-                      <td className="p-4">₹1,499 + Govt. fee</td>
+                      <td className="p-4">Starts at ₹1,999 + Govt. fee</td>
                     </tr>
                     <tr>
                       <td className="p-4 font-semibold text-gray-800">OPC</td>
-                      <td className="p-4">₹1,499 + Govt. fee</td>
+                      <td className="p-4">Starts at ₹1,999 + Govt. fee</td>
                     </tr>
                   </tbody>
                 </table>

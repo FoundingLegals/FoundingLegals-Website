@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Check, X, Send, ArrowRight, ChevronDown, HelpCircle, Search } from "lucide-react";
+import { Check, X, Send, ArrowRight, ChevronDown, HelpCircle, Search, Star } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
 
 // --- TABLE OF CONTENT ITEMS ---
@@ -98,6 +98,101 @@ const FAQ_ITEMS = [
   }
 ];
 
+// --- LLP PRICING PLANS DATA ---
+const ALL_LLP_FEATURES = [
+  "LLP name help",
+  "LLP name reservation (RUN-LLP)",
+  "Partnership PAN + TAN",
+  "LLP Agreement drafting",
+  "PF and ESIC registration",
+  "Incorporation certificate in 10-12 days",
+  "DSC preparation in 3-4 days",
+  "DPIN for partners",
+  "Expert assisted process",
+  "Commencement certificate assistance",
+  "MSME Registration",
+  "Startup India Registration",
+  "Digital signature certificate",
+  "Partners DSC",
+  "Trademark Registration",
+  "Pitch Deck"
+];
+
+const LLP_PLANS = [
+  {
+    name: "BASIC",
+    price: "₹1,999",
+    feeSubtext: "+ Govt Fees",
+    description: "Essential LLP registration and partnership setup kit.",
+    badge: "Essential Setup",
+    badgeStyles: "bg-gray-100 text-gray-700 border border-gray-200/50",
+    serviceName: "LLP Registration - BASIC Plan (₹1,999 + Govt Fees)",
+    included: [
+      "LLP name help",
+      "LLP name reservation (RUN-LLP)",
+      "Partnership PAN + TAN",
+      "LLP Agreement drafting",
+      "PF and ESIC registration",
+      "Incorporation certificate in 10-12 days",
+      "DSC preparation in 3-4 days",
+      "DPIN for partners",
+      "Expert assisted process",
+      "Commencement certificate assistance"
+    ]
+  },
+  {
+    name: "STANDARD",
+    price: "₹6,999",
+    feeSubtext: "+ Govt Fees",
+    description: "Standard LLP package including government registration and acceleration programs.",
+    badge: "Most Popular",
+    badgeStyles: "bg-olive-100 text-olive-800 border border-olive-200/50",
+    isPopular: true,
+    serviceName: "LLP Registration - STANDARD Plan (₹6,999 + Govt Fees)",
+    included: [
+      "LLP name help",
+      "LLP name reservation (RUN-LLP)",
+      "Partnership PAN + TAN",
+      "LLP Agreement drafting",
+      "PF and ESIC registration",
+      "Incorporation certificate in 10-12 days",
+      "DSC preparation in 3-4 days",
+      "DPIN for partners",
+      "Expert assisted process",
+      "Commencement certificate assistance",
+      "MSME Registration",
+      "Startup India Registration"
+    ]
+  },
+  {
+    name: "PREMIUM",
+    price: "₹8,999",
+    feeSubtext: "+ Govt Fees",
+    description: "Comprehensive LLP package including trademarks, physical DSCs and investor decks.",
+    badge: "Best Value",
+    badgeStyles: "bg-brown-100 text-brown-900 border border-brown-200/30",
+    serviceName: "LLP Registration - PREMIUM Plan (₹8,999 + Govt Fees)",
+    included: [
+      "LLP name help",
+      "LLP name reservation (RUN-LLP)",
+      "Partnership PAN + TAN",
+      "LLP Agreement drafting",
+      "PF and ESIC registration",
+      "Incorporation certificate in 10-12 days",
+      "DSC preparation in 3-4 days",
+      "DPIN for partners",
+      "Expert assisted process",
+      "Commencement certificate assistance",
+      "MSME Registration",
+      "Startup India Registration",
+      "Digital signature certificate",
+      "Partners DSC",
+      "Trademark Registration",
+      "Pitch Deck"
+    ]
+  }
+];
+
 export default function LlpRegistrationLayout() {
   const [activeSection, setActiveSection] = useState("documents-required");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -154,6 +249,17 @@ export default function LlpRegistrationLayout() {
       
       {/* ── TOP HEADER SECTION ── */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-[120px] pb-6">
+        {/* Pricing details on the top of the hero section */}
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="text-[11px] font-bold text-olive-700 tracking-widest uppercase bg-olive-50 px-4 py-1.5 rounded-full border border-olive-200/40 inline-flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-olive-650 animate-pulse" />
+            Starting at ₹1,999 + Govt Fees
+          </span>
+          <span className="text-[11px] font-bold text-brown-600 tracking-widest uppercase bg-[#FAF9F6] px-4 py-1.5 rounded-full border border-brown-200/30 inline-block">
+            Fast Track 10-12 Days Process
+          </span>
+        </div>
+
         <h1 className="font-serif text-[26px] sm:text-[36px] md:text-[50px] font-medium text-[#1A1917] leading-[1.2] md:leading-[1.1] mb-6">
           Limited Liability Partnership Registration in India
         </h1>
@@ -168,6 +274,144 @@ export default function LlpRegistrationLayout() {
           <p>
             LLPs in India are regulated by the <strong>Ministry of Corporate Affairs (MCA)</strong> under the LLP Act, 2008. The Registrar of Companies (ROC) oversees the registration of LLPs, compliance filings, and governance.
           </p>
+        </div>
+
+        <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
+          <button
+            onClick={() => openModal("Limited Liability Partnership (LLP) Registration")}
+            className="px-6 py-3.5 bg-olive-600 hover:bg-olive-705 text-white font-bold text-[13px] rounded-full transition-all cursor-pointer shadow-md flex items-center gap-2 shrink-0"
+          >
+            Register your LLP
+          </button>
+          <div className="text-[12.5px] text-gray-500">
+            Professional fee starts at <strong className="text-olive-750 font-bold">₹1,999</strong> + actual government state fees.
+          </div>
+        </div>
+      </section>
+
+      {/* ── LLP PRICING CARDS SECTION (full-width, above two-column) ── */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 pb-10">
+        <div className="border-t border-gray-200 mb-8" />
+
+        <div className="space-y-6 pt-4 mb-10 pb-4">
+          <div className="text-center sm:text-left">
+            <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[28px] font-semibold text-[#1A1917] mb-2">
+              Choose the Best LLP Company Registration Plan
+            </h2>
+            <p className="text-[13px] text-gray-500 max-w-xl">
+              Select the plan that fits your business needs. All plans include standard drafting, filings, and support.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 items-stretch pt-2">
+            {LLP_PLANS.map((plan) => {
+              const isPopular = plan.isPopular;
+              return (
+                <div
+                  key={plan.name}
+                  className={`group relative rounded-3xl p-6 flex flex-col justify-between transition-all duration-500 overflow-hidden transform hover:-translate-y-1.5 ${
+                    isPopular
+                      ? "bg-[#5B6836] text-white border-2 border-[#5B6836] shadow-xl hover:shadow-[0_20px_40px_rgba(91,104,54,0.25)]"
+                      : "bg-[#F8FAF4] text-[#2A3416] border border-[#D5DFBE]/70 shadow-xs hover:shadow-md hover:border-[#B4C599]"
+                  }`}
+                >
+                  {/* Subtle curved light reflection overlay for the popular card */}
+                  {isPopular && (
+                    <div className="absolute -top-16 -right-16 w-48 h-48 bg-white/5 rounded-full pointer-events-none blur-xl group-hover:scale-110 transition-transform duration-700" />
+                  )}
+
+                  <div>
+                    {/* Plan Badge */}
+                    {plan.badge && (
+                      <div className="mb-4 flex items-center justify-between">
+                        <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-300 group-hover:scale-105 ${
+                          isPopular
+                            ? "bg-[#E2E9C8] text-[#344015]"
+                            : "bg-[#E6ECDB] text-[#4F5D30] border border-[#D5DFBE]"
+                        }`}>
+                          {isPopular && <Star className="w-3 h-3 fill-[#344015] animate-pulse" />}
+                          {plan.badge}
+                        </span>
+                      </div>
+                    )}
+
+                    {/* Price */}
+                    <div className="mb-4 flex items-baseline gap-1.5">
+                      <span className={`text-[32px] font-bold font-serif tracking-tight transition-all duration-300 ${
+                        isPopular ? "text-white" : "text-[#2A3416]"
+                      }`}>
+                        {plan.price}
+                      </span>
+                      <span className={`text-[12px] font-normal ${
+                        isPopular ? "text-white/70" : "text-gray-400"
+                      }`}>
+                        {plan.feeSubtext}
+                      </span>
+                    </div>
+
+                    <h3 className={`font-serif text-[19px] font-bold mb-1.5 ${
+                      isPopular ? "text-white" : "text-[#2A3416]"
+                    }`}>
+                      {plan.name}
+                    </h3>
+                    <p className={`text-[11.5px] leading-relaxed mb-6 pb-4 border-b transition-all duration-300 ${
+                      isPopular
+                        ? "text-white/85 border-white/10"
+                        : "text-gray-550 border-[#CBD7B5]/40"
+                    }`}>
+                      {plan.description}
+                    </p>
+
+                    {/* Features */}
+                    <ul className="space-y-3 mb-8">
+                      {ALL_LLP_FEATURES.map((feature, fIdx) => {
+                        const isIncluded = plan.included.includes(feature);
+                        return (
+                          <li
+                            key={fIdx}
+                            className="flex items-start gap-2.5 text-[12px] leading-snug"
+                          >
+                            {isIncluded ? (
+                              <Check className={`w-4 h-4 shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 ${
+                                isPopular ? "text-[#E2E9C8]" : "text-olive-650"
+                              }`} />
+                            ) : (
+                              <X className={`w-4 h-4 shrink-0 mt-0.5 ${
+                                isPopular ? "text-white/20" : "text-gray-300"
+                              }`} />
+                            )}
+                            <span className={`transition-all duration-300 ${
+                              isIncluded
+                                ? isPopular
+                                  ? "text-white font-medium"
+                                  : "text-[#2A3416] font-medium"
+                                : isPopular
+                                ? "text-white/30 font-light line-through"
+                                : "text-gray-400 font-light line-through"
+                            }`}>
+                              {feature}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+
+                  <button
+                    onClick={() => openModal(plan.serviceName)}
+                    className={`w-full py-3 rounded-full font-bold text-[12px] transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-1.5 shadow-sm transform group-hover:scale-[1.02] active:scale-[0.98] ${
+                      isPopular
+                        ? "bg-[#E2E9C8] hover:bg-[#D5DFB7] text-[#344015] font-semibold"
+                        : "bg-white hover:bg-[#FDFDFD] text-[#2A3416] border border-[#CBD7B5] hover:border-[#B4C599]"
+                    }`}
+                  >
+                    <span>Opt &amp; Register</span>
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </button>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -207,7 +451,7 @@ export default function LlpRegistrationLayout() {
                 Let our legal experts handle name reservation, drafting and MCA submission.
               </p>
               <p className="font-serif text-base font-bold text-olive-700 mb-4">
-                in just ₹1,499 <span className="text-[10px] font-sans text-gray-400 font-normal">+ Govt Fee</span>
+                Starts at ₹1,999 <span className="text-[10px] font-sans text-gray-400 font-normal block mt-0.5">+ Govt Fee</span>
               </p>
               <button
                 onClick={() => openModal("Limited Liability Partnership (LLP) Registration")}
@@ -413,9 +657,9 @@ export default function LlpRegistrationLayout() {
                       <td className="p-4">Allotted automatically with registration</td>
                     </tr>
                     <tr>
-                      <td className="p-4 font-semibold text-brown-900">Professional fees</td>
-                      <td className="p-4">4,000–10,000</td>
-                      <td className="p-4">If using a consultant</td>
+                      <td className="p-4 font-semibold text-brown-900">Professional fees (Founding Legals)</td>
+                      <td className="p-4">Starts at ₹1,999</td>
+                      <td className="p-4">Transparent professional fee</td>
                     </tr>
                     <tr>
                       <td className="p-4 font-semibold text-brown-900">Miscellaneous expenses</td>
@@ -424,7 +668,7 @@ export default function LlpRegistrationLayout() {
                     </tr>
                     <tr className="bg-olive-50/20 font-bold text-olive-800">
                       <td className="p-4">Total Indicative Cost</td>
-                      <td className="p-4">7,500 – 15,000+</td>
+                      <td className="p-4">5,500 – 10,000+</td>
                       <td className="p-4">Actual cost varies by state/provider</td>
                     </tr>
                   </tbody>
@@ -441,7 +685,7 @@ export default function LlpRegistrationLayout() {
                   </p>
                 </div>
                 <div className="shrink-0 text-right sm:text-right">
-                  <p className="font-serif text-lg font-bold text-olive-700">₹1,499 + Govt. Fee</p>
+                  <p className="font-serif text-lg font-bold text-olive-700">Starts at ₹1,999 + Govt. Fee</p>
                 </div>
               </div>
             </article>
@@ -596,7 +840,7 @@ export default function LlpRegistrationLayout() {
                     <div>
                       <p className="text-[10px] text-brown-400 font-bold uppercase tracking-wider mb-1">REGISTRATION COST</p>
                       <p className="font-serif text-[22px] font-bold text-olive-700">
-                        ₹1,499 <span className="text-xs font-sans text-brown-400 font-normal">+ Govt Fee</span>
+                        Starts at ₹1,999 <span className="text-xs font-sans text-brown-400 font-normal block mt-0.5">+ Govt Fee</span>
                       </p>
                     </div>
                     <button

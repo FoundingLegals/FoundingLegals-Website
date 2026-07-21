@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Check, X, Send, ArrowRight, ChevronDown, HelpCircle, Search } from "lucide-react";
+import { Check, X, Send, ArrowRight, ChevronDown, HelpCircle, Search, Star } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
 
 // --- TABLE OF CONTENT ITEMS ---
@@ -97,6 +97,101 @@ const FAQ_ITEMS = [
   }
 ];
 
+// --- OPC PRICING PLANS DATA ---
+const ALL_OPC_FEATURES = [
+  "Company name help",
+  "SPICe+ form in 2-3 working days",
+  "Company PAN + TAN",
+  "MOA + AOA drafting",
+  "PF and ESIC registration",
+  "Incorporation certificate in 10-12 days",
+  "DSC preparation in 3-4 days",
+  "DIN for Director & Nominee",
+  "Expert assisted process",
+  "INC 20A / Business commencement certificate",
+  "MSME Registration",
+  "Startup India Registration",
+  "Digital signature certificate",
+  "Director DSC",
+  "Trademark Registration",
+  "Pitch Deck"
+];
+
+const OPC_PLANS = [
+  {
+    name: "BASIC",
+    price: "₹1,999",
+    feeSubtext: "+ Govt Fees",
+    description: "Essential OPC registration and nominee setup kit.",
+    badge: "Essential Setup",
+    badgeStyles: "bg-gray-100 text-gray-700 border border-gray-200/50",
+    serviceName: "OPC Registration - BASIC Plan (₹1,999 + Govt Fees)",
+    included: [
+      "Company name help",
+      "SPICe+ form in 2-3 working days",
+      "Company PAN + TAN",
+      "MOA + AOA drafting",
+      "PF and ESIC registration",
+      "Incorporation certificate in 10-12 days",
+      "DSC preparation in 3-4 days",
+      "DIN for Director & Nominee",
+      "Expert assisted process",
+      "INC 20A / Business commencement certificate"
+    ]
+  },
+  {
+    name: "STANDARD",
+    price: "₹6,999",
+    feeSubtext: "+ Govt Fees",
+    description: "Standard OPC package including government registration and acceleration programs.",
+    badge: "Most Popular",
+    badgeStyles: "bg-olive-100 text-olive-800 border border-olive-200/50",
+    isPopular: true,
+    serviceName: "OPC Registration - STANDARD Plan (₹6,999 + Govt Fees)",
+    included: [
+      "Company name help",
+      "SPICe+ form in 2-3 working days",
+      "Company PAN + TAN",
+      "MOA + AOA drafting",
+      "PF and ESIC registration",
+      "Incorporation certificate in 10-12 days",
+      "DSC preparation in 3-4 days",
+      "DIN for Director & Nominee",
+      "Expert assisted process",
+      "INC 20A / Business commencement certificate",
+      "MSME Registration",
+      "Startup India Registration"
+    ]
+  },
+  {
+    name: "PREMIUM",
+    price: "₹8,999",
+    feeSubtext: "+ Govt Fees",
+    description: "Comprehensive OPC package including trademarks, physical DSCs and investor decks.",
+    badge: "Best Value",
+    badgeStyles: "bg-brown-100 text-brown-900 border border-brown-200/30",
+    serviceName: "OPC Registration - PREMIUM Plan (₹8,999 + Govt Fees)",
+    included: [
+      "Company name help",
+      "SPICe+ form in 2-3 working days",
+      "Company PAN + TAN",
+      "MOA + AOA drafting",
+      "PF and ESIC registration",
+      "Incorporation certificate in 10-12 days",
+      "DSC preparation in 3-4 days",
+      "DIN for Director & Nominee",
+      "Expert assisted process",
+      "INC 20A / Business commencement certificate",
+      "MSME Registration",
+      "Startup India Registration",
+      "Digital signature certificate",
+      "Director DSC",
+      "Trademark Registration",
+      "Pitch Deck"
+    ]
+  }
+];
+
 export default function OpcRegistrationLayout() {
   const [activeSection, setActiveSection] = useState("documents-required");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -153,6 +248,17 @@ export default function OpcRegistrationLayout() {
       
       {/* ── TOP HEADER SECTION ── */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-[120px] pb-6">
+        {/* Pricing details on the top of the hero section */}
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="text-[11px] font-bold text-olive-700 tracking-widest uppercase bg-olive-50 px-4 py-1.5 rounded-full border border-olive-200/40 inline-flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-olive-650 animate-pulse" />
+            Starting at ₹1,999 + Govt Fees
+          </span>
+          <span className="text-[11px] font-bold text-brown-600 tracking-widest uppercase bg-[#FAF9F6] px-4 py-1.5 rounded-full border border-brown-200/30 inline-block">
+            Fast Track 10-12 Days Process
+          </span>
+        </div>
+
         <h1 className="font-serif text-[26px] sm:text-[36px] md:text-[50px] font-medium text-[#1A1917] leading-[1.2] md:leading-[1.1] mb-6">
           One Person Company (OPC) Registration in India
         </h1>
@@ -164,6 +270,144 @@ export default function OpcRegistrationLayout() {
           <p>
             Under the Companies Act, 2013, an OPC is a company formed by one person as a member and shareholder, with a mandatory nominee. It enjoys separate legal identity, perpetual succession, and limited liability—just like any other company, but with far fewer compliance requirements. This makes One Person Company (OPC) registration a popular choice for entrepreneurs seeking flexibility and formal business recognition.
           </p>
+        </div>
+
+        <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
+          <button
+            onClick={() => openModal("One Person Company (OPC) Registration")}
+            className="px-6 py-3.5 bg-olive-600 hover:bg-olive-705 text-white font-bold text-[13px] rounded-full transition-all cursor-pointer shadow-md flex items-center gap-2 shrink-0"
+          >
+            Register your OPC
+          </button>
+          <div className="text-[12.5px] text-gray-500">
+            Professional fee starts at <strong className="text-olive-750 font-bold">₹1,999</strong> + actual government state fees.
+          </div>
+        </div>
+      </section>
+
+      {/* ── OPC PRICING CARDS SECTION (full-width, above two-column) ── */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 pb-10">
+        <div className="border-t border-gray-200 mb-8" />
+
+        <div className="space-y-6 pt-4 mb-10 pb-4">
+          <div className="text-center sm:text-left">
+            <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[28px] font-semibold text-[#1A1917] mb-2">
+              Choose the Best OPC Company Registration Plan
+            </h2>
+            <p className="text-[13px] text-gray-500 max-w-xl">
+              Select the plan that fits your business needs. All plans include standard drafting, filings, and support.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 items-stretch pt-2">
+            {OPC_PLANS.map((plan) => {
+              const isPopular = plan.isPopular;
+              return (
+                <div
+                  key={plan.name}
+                  className={`group relative rounded-3xl p-6 flex flex-col justify-between transition-all duration-500 overflow-hidden transform hover:-translate-y-1.5 ${
+                    isPopular
+                      ? "bg-[#5B6836] text-white border-2 border-[#5B6836] shadow-xl hover:shadow-[0_20px_40px_rgba(91,104,54,0.25)]"
+                      : "bg-[#F8FAF4] text-[#2A3416] border border-[#D5DFBE]/70 shadow-xs hover:shadow-md hover:border-[#B4C599]"
+                  }`}
+                >
+                  {/* Subtle curved light reflection overlay for the popular card */}
+                  {isPopular && (
+                    <div className="absolute -top-16 -right-16 w-48 h-48 bg-white/5 rounded-full pointer-events-none blur-xl group-hover:scale-110 transition-transform duration-700" />
+                  )}
+
+                  <div>
+                    {/* Plan Badge */}
+                    {plan.badge && (
+                      <div className="mb-4 flex items-center justify-between">
+                        <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-300 group-hover:scale-105 ${
+                          isPopular
+                            ? "bg-[#E2E9C8] text-[#344015]"
+                            : "bg-[#E6ECDB] text-[#4F5D30] border border-[#D5DFBE]"
+                        }`}>
+                          {isPopular && <Star className="w-3 h-3 fill-[#344015] animate-pulse" />}
+                          {plan.badge}
+                        </span>
+                      </div>
+                    )}
+
+                    {/* Price */}
+                    <div className="mb-4 flex items-baseline gap-1.5">
+                      <span className={`text-[32px] font-bold font-serif tracking-tight transition-all duration-300 ${
+                        isPopular ? "text-white" : "text-[#2A3416]"
+                      }`}>
+                        {plan.price}
+                      </span>
+                      <span className={`text-[12px] font-normal ${
+                        isPopular ? "text-white/70" : "text-gray-400"
+                      }`}>
+                        {plan.feeSubtext}
+                      </span>
+                    </div>
+
+                    <h3 className={`font-serif text-[19px] font-bold mb-1.5 ${
+                      isPopular ? "text-white" : "text-[#2A3416]"
+                    }`}>
+                      {plan.name}
+                    </h3>
+                    <p className={`text-[11.5px] leading-relaxed mb-6 pb-4 border-b transition-all duration-300 ${
+                      isPopular
+                        ? "text-white/85 border-white/10"
+                        : "text-gray-550 border-[#CBD7B5]/40"
+                    }`}>
+                      {plan.description}
+                    </p>
+
+                    {/* Features */}
+                    <ul className="space-y-3 mb-8">
+                      {ALL_OPC_FEATURES.map((feature, fIdx) => {
+                        const isIncluded = plan.included.includes(feature);
+                        return (
+                          <li
+                            key={fIdx}
+                            className="flex items-start gap-2.5 text-[12px] leading-snug"
+                          >
+                            {isIncluded ? (
+                              <Check className={`w-4 h-4 shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 ${
+                                isPopular ? "text-[#E2E9C8]" : "text-olive-650"
+                              }`} />
+                            ) : (
+                              <X className={`w-4 h-4 shrink-0 mt-0.5 ${
+                                isPopular ? "text-white/20" : "text-gray-300"
+                              }`} />
+                            )}
+                            <span className={`transition-all duration-300 ${
+                              isIncluded
+                                ? isPopular
+                                  ? "text-white font-medium"
+                                  : "text-[#2A3416] font-medium"
+                                : isPopular
+                                ? "text-white/30 font-light line-through"
+                                : "text-gray-400 font-light line-through"
+                            }`}>
+                              {feature}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+
+                  <button
+                    onClick={() => openModal(plan.serviceName)}
+                    className={`w-full py-3 rounded-full font-bold text-[12px] transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-1.5 shadow-sm transform group-hover:scale-[1.02] active:scale-[0.98] ${
+                      isPopular
+                        ? "bg-[#E2E9C8] hover:bg-[#D5DFB7] text-[#344015] font-semibold"
+                        : "bg-white hover:bg-[#FDFDFD] text-[#2A3416] border border-[#CBD7B5] hover:border-[#B4C599]"
+                    }`}
+                  >
+                    <span>Opt &amp; Register</span>
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </button>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -203,7 +447,7 @@ export default function OpcRegistrationLayout() {
                 Let our legal experts handle your DSC, nominee consent, and SPICe+ forms.
               </p>
               <p className="font-serif text-base font-bold text-olive-700 mb-4">
-                in just ₹1,499 <span className="text-[10px] font-sans text-gray-400 font-normal">+ Govt Fee</span>
+                Starts at ₹1,999 <span className="text-[10px] font-sans text-gray-400 font-normal block mt-0.5">+ Govt Fee</span>
               </p>
               <button
                 onClick={() => openModal("One Person Company (OPC) Registration")}
@@ -374,7 +618,7 @@ export default function OpcRegistrationLayout() {
                   <p className="text-xs text-brown-600">Secure your Certificate of Incorporation, DSC, and DIN hassle-free.</p>
                 </div>
                 <div className="flex items-center gap-4 shrink-0">
-                  <p className="font-serif text-lg font-bold text-olive-700">₹1,499 <span className="text-[10px] font-sans text-gray-400 font-normal">+ Govt Fee</span></p>
+                  <p className="font-serif text-lg font-bold text-olive-700">Starts at ₹1,999 <span className="text-[10px] font-sans text-gray-400 font-normal block mt-0.5">+ Govt Fee</span></p>
                   <button
                     onClick={() => openModal("One Person Company (OPC) Registration")}
                     className="px-5 py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[12px] rounded-full transition-all cursor-pointer"
@@ -431,9 +675,9 @@ export default function OpcRegistrationLayout() {
                       <td className="p-4">Minimal, processed along with incorporation.</td>
                     </tr>
                     <tr>
-                      <td className="p-4 font-semibold text-brown-900">Professional / service provider fees</td>
-                      <td className="p-4">4,000 – 10,000</td>
-                      <td className="p-4">Depends on CA/CS/consultant and scope of support.</td>
+                      <td className="p-4 font-semibold text-brown-900">Professional fees (Founding Legals)</td>
+                      <td className="p-4">Starts at ₹1,999</td>
+                      <td className="p-4">Transparent professional fee</td>
                     </tr>
                     <tr>
                       <td className="p-4 font-semibold text-brown-900">Misc. expenses (notary, printing, etc.)</td>
@@ -442,7 +686,7 @@ export default function OpcRegistrationLayout() {
                     </tr>
                     <tr className="bg-olive-50/20 font-bold text-olive-800">
                       <td className="p-4">Total Indicative Cost</td>
-                      <td className="p-4">9,000 – 20,000+</td>
+                      <td className="p-4">6,500 – 15,000+</td>
                       <td className="p-4">Actual cost varies by state, capital, and provider.</td>
                     </tr>
                   </tbody>
@@ -451,7 +695,7 @@ export default function OpcRegistrationLayout() {
 
               <div className="bg-olive-50/40 p-5 rounded-2xl border border-olive-100 space-y-3">
                 <p className="text-[13.5px] text-brown-800">
-                  With <strong>Founding Legals</strong>, the Cost of registration of a One Person Company is just <strong>₹1,499 + Govt. Fee</strong>.
+                  With <strong>Founding Legals</strong>, the Cost of registration of a One Person Company starts at <strong>₹1,999 + Govt. Fee</strong>.
                 </p>
                 <div className="grid sm:grid-cols-2 gap-2 text-[12.5px] text-brown-600 pl-4 list-disc">
                   <div className="flex items-center gap-2">
@@ -488,7 +732,7 @@ export default function OpcRegistrationLayout() {
                   <p className="text-xs text-brown-600">Secure your Certificate of Incorporation, DSC, and DIN hassle-free.</p>
                 </div>
                 <div className="flex items-center gap-4 shrink-0">
-                  <p className="font-serif text-lg font-bold text-olive-700">₹1,499 <span className="text-[10px] font-sans text-gray-400 font-normal">+ Govt Fee</span></p>
+                  <p className="font-serif text-lg font-bold text-olive-700">Starts at ₹1,999 <span className="text-[10px] font-sans text-gray-400 font-normal block mt-0.5">+ Govt Fee</span></p>
                   <button
                     onClick={() => openModal("One Person Company (OPC) Registration")}
                     className="px-5 py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[12px] rounded-full transition-all cursor-pointer"
@@ -657,7 +901,7 @@ export default function OpcRegistrationLayout() {
                   <p className="text-xs text-brown-600">Secure your Certificate of Incorporation, DSC, and DIN hassle-free.</p>
                 </div>
                 <div className="flex items-center gap-4 shrink-0">
-                  <p className="font-serif text-lg font-bold text-olive-700">₹1,499 <span className="text-[10px] font-sans text-gray-400 font-normal">+ Govt Fee</span></p>
+                  <p className="font-serif text-lg font-bold text-olive-700">Starts at ₹1,999 <span className="text-[10px] font-sans text-gray-400 font-normal block mt-0.5">+ Govt Fee</span></p>
                   <button
                     onClick={() => openModal("One Person Company (OPC) Registration")}
                     className="px-5 py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[12px] rounded-full transition-all cursor-pointer"
@@ -800,7 +1044,7 @@ export default function OpcRegistrationLayout() {
                   <p className="text-xs text-brown-600">Secure your Certificate of Incorporation, DSC, and DIN hassle-free.</p>
                 </div>
                 <div className="flex items-center gap-4 shrink-0">
-                  <p className="font-serif text-lg font-bold text-olive-700">₹1,499 <span className="text-[10px] font-sans text-gray-400 font-normal">+ Govt Fee</span></p>
+                  <p className="font-serif text-lg font-bold text-olive-700">Starts at ₹1,999 <span className="text-[10px] font-sans text-gray-400 font-normal block mt-0.5">+ Govt Fee</span></p>
                   <button
                     onClick={() => openModal("One Person Company (OPC) Registration")}
                     className="px-5 py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[12px] rounded-full transition-all cursor-pointer"
@@ -831,7 +1075,7 @@ export default function OpcRegistrationLayout() {
                     <div>
                       <p className="text-[10px] text-brown-400 font-bold uppercase tracking-wider mb-1">REGISTRATION COST</p>
                       <p className="font-serif text-[22px] font-bold text-olive-700">
-                        ₹1,499 <span className="text-xs font-sans text-brown-400 font-normal">+ Govt Fee</span>
+                        Starts at ₹1,999 <span className="text-xs font-sans text-brown-400 font-normal block mt-0.5">+ Govt Fee</span>
                       </p>
                     </div>
                     <button
