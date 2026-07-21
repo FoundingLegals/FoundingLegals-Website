@@ -92,8 +92,6 @@ const sections = [
 /* ── New Services Dropdown Data ── */
 const INCORPORATION_SERVICES = [
   { name: "Private Limited Company", href: "/services/company-incorporation" },
-  { name: "LLP Registration", href: "/services/llp-registration" },
-  { name: "One Person Company", href: "/services/opc-registration" },
 ];
 
 const COMPLIANCE_SERVICES = [

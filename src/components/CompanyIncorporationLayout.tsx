@@ -221,31 +221,58 @@ export default function CompanyIncorporationLayout() {
       
       {/* ── TOP HEADER SECTION ── */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-[120px] pb-6">
-        {/* Pricing details on the top of the hero section */}
-        <div className="flex flex-wrap items-center gap-3 mb-6">
-          <span className="text-[11px] font-bold text-olive-700 tracking-widest uppercase bg-olive-50 px-4 py-1.5 rounded-full border border-olive-200/40 inline-flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-olive-650 animate-pulse" />
-            Starting at ₹1,999 + Govt Fees
-          </span>
-          <span className="text-[11px] font-bold text-brown-600 tracking-widest uppercase bg-[#FAF9F6] px-4 py-1.5 rounded-full border border-brown-200/30 inline-block">
-            Fast Track 10-12 Days Process
-          </span>
-        </div>
+        <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-14 mb-10">
 
-        <h1 className="font-serif text-[26px] sm:text-[36px] md:text-[50px] font-medium text-[#1A1917] leading-[1.2] md:leading-[1.1] mb-6">
-          Private Limited Company Registration in India
-        </h1>
-        
-        <div className="text-[15px] md:text-[16px] text-brown-605 leading-relaxed space-y-4 max-w-5xl mb-8">
-          <p>
-            A <strong>Private Limited Company (Pvt. Ltd.)</strong> is the most popular business structure in India, especially for startups and fast-growing businesses. It offers limited liability protection to its shareholders, maintains a separate legal identity from its owners, and is highly preferred by venture capital and angel investors.
-          </p>
-          <p>
-            With perpetual existence and the ability to easily transfer shares and raise equity capital, establishing a Private Limited Company is the gold standard for scaling your venture.
-          </p>
-          <p>
-            Private Limited Companies in India are regulated by the <strong>Ministry of Corporate Affairs (MCA)</strong> under the Companies Act, 2013. The Registrar of Companies (ROC) oversees the incorporation process and compliance filings.
-          </p>
+          {/* LEFT: Text Content */}
+          <div className="flex-1 min-w-0">
+            {/* Pricing details on the top of the hero section */}
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <span className="text-[11px] font-bold text-olive-700 tracking-widest uppercase bg-olive-50 px-4 py-1.5 rounded-full border border-olive-200/40 inline-flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-olive-650 animate-pulse" />
+                Starting at ₹1,999 + Govt Fees
+              </span>
+              <span className="text-[11px] font-bold text-brown-600 tracking-widest uppercase bg-[#FAF9F6] px-4 py-1.5 rounded-full border border-brown-200/30 inline-block">
+                Fast Track 10-12 Days Process
+              </span>
+            </div>
+
+            <h1 className="font-serif text-[26px] sm:text-[36px] md:text-[46px] lg:text-[48px] font-medium text-[#1A1917] leading-[1.2] md:leading-[1.1] mb-6">
+              Private Limited Company Registration in India
+            </h1>
+            
+            <div className="text-[15px] md:text-[16px] text-brown-605 leading-relaxed space-y-4 mb-8">
+              <p>
+                A <strong>Private Limited Company (Pvt. Ltd.)</strong> is the most popular business structure in India, especially for startups and fast-growing businesses. It offers limited liability protection to its shareholders, maintains a separate legal identity from its owners, and is highly preferred by venture capital and angel investors.
+              </p>
+              <p>
+                With perpetual existence and the ability to easily transfer shares and raise equity capital, establishing a Private Limited Company is the gold standard for scaling your venture.
+              </p>
+              <p>
+                Private Limited Companies in India are regulated by the <strong>Ministry of Corporate Affairs (MCA)</strong> under the Companies Act, 2013. The Registrar of Companies (ROC) oversees the incorporation process and compliance filings.
+              </p>
+            </div>
+
+            <div className="mt-6">
+              <button
+                onClick={() => openModal("Pvt Ltd Company Incorporation - BASIC Plan (₹1,999 + Govt Fees)")}
+                className="bg-[#48532B] hover:bg-olive-800 text-white font-semibold text-[14px] px-8 py-3.5 rounded-xl transition-all cursor-pointer shadow-sm active:scale-95"
+              >
+                Register Your Company
+              </button>
+            </div>
+          </div>
+
+          {/* RIGHT: Hero Image */}
+          <div className="w-full lg:w-[440px] xl:w-[480px] shrink-0">
+            <div className="w-full h-[320px] sm:h-[380px] lg:h-[400px] xl:h-[440px] rounded-[32px] overflow-hidden shadow-2xl border border-gray-100 bg-gray-50 relative">
+              <img
+                src="/company-registration-hero.png"
+                alt="Private Limited Company Registration in India"
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+          </div>
+
         </div>
 
         {/* Pricing Cards Grid directly at the top of the page */}
