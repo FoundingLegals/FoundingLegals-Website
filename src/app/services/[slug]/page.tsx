@@ -170,6 +170,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     return <NewServicePageLayout page={newPage} />;
   }
 
+  // Guard: service must be defined for the generic ServiceLayout
   if (!service) {
     return notFound();
   }
