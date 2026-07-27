@@ -461,25 +461,25 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
           </div>
 
           {/* Value banner */}
-          <div className="mt-8 bg-[#2b2723] rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="mt-8 bg-white border border-[#E5E1D6] rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
             <div>
-              <div className="text-[11px] font-extrabold uppercase tracking-widest text-olive-400 mb-2">All-Access Platform Membership</div>
-              <div className="text-[20px] font-bold text-white leading-tight">
+              <div className="text-[11px] font-extrabold uppercase tracking-widest text-[#5A7338] mb-2">All-Access Platform Membership</div>
+              <div className="text-[20px] font-bold text-[#2b2723] leading-tight">
                 Get every legal & compliance service at member rates<br />
-                <span className="text-[#a39e98] text-[15px] font-light">Starting at just ₹658/month for your entire startup.</span>
+                <span className="text-[#6b6965] text-[15px] font-light">Starting at just ₹658/month for your entire startup.</span>
               </div>
             </div>
             <div className="flex flex-col gap-3 shrink-0">
               <Link
                 href="/start"
-                className="inline-flex items-center gap-2 px-7 py-3 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13px] font-bold rounded-full transition-all whitespace-nowrap"
+                className="inline-flex items-center gap-2 px-7 py-3 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13px] font-bold rounded-full transition-all whitespace-nowrap shadow-sm"
               >
                 Start 14-Day Free Trial
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/pricing"
-                className="text-[12px] text-[#a39e98] hover:text-white font-medium text-center transition-colors"
+                className="text-[12px] text-[#6b6965] hover:text-[#2b2723] font-medium text-center transition-colors"
               >
                 View all membership plans →
               </Link>
@@ -549,30 +549,30 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
       </section>
 
       {/* ── 7. FINAL CTA ─────────────────────────────────────────── */}
-      <section className="py-24 px-6 sm:px-12 lg:px-24 bg-[#2b2723]">
+      <section className="py-24 px-6 sm:px-12 lg:px-24 bg-[#FAF9F6] border-t border-[#E5E1D6]">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="text-[11px] font-extrabold uppercase tracking-widest text-olive-400 mb-5">
+          <div className="text-[11px] font-extrabold uppercase tracking-widest text-[#5A7338] mb-5">
             Ready to get started?
           </div>
-          <h2 className="font-serif text-[32px] sm:text-[44px] font-medium text-white leading-[1.1] mb-5">
+          <h2 className="font-serif text-[32px] sm:text-[44px] font-medium text-[#2b2723] leading-[1.1] mb-5">
             {service.heroTitle}
             <br />
-            <span className="text-olive-400 italic">at 50% of market rate.</span>
+            <span className="text-[#5A7338] italic">at 50% of market rate.</span>
           </h2>
-          <p className="text-[16px] text-[#a39e98] font-light max-w-xl mx-auto mb-10">
+          <p className="text-[16px] text-[#6b6965] font-light max-w-xl mx-auto mb-10">
             ₹658 a month. CA-managed execution. One login for every legal and compliance service your startup needs.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/start"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[15px] font-bold rounded-full transition-all shadow-lg shadow-olive-900/30"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[15px] font-bold rounded-full transition-all shadow-md"
             >
               Start 14-Day Free Trial
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/15 text-white text-[15px] font-medium rounded-full border border-white/15 transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-[#F6F4F0] text-[#2b2723] text-[15px] font-medium rounded-full border border-[#E5E1D6] transition-all shadow-sm"
             >
               Browse all services
             </Link>

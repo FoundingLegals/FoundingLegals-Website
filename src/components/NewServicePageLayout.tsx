@@ -336,25 +336,25 @@ export default function NewServicePageLayout({ page }: Props) {
             </div>
 
             {/* Value banner */}
-            <div className="mt-8 bg-[#2b2723] rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="mt-8 bg-white border border-[#E5E1D6] rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
               <div>
-                <div className="text-[11px] font-extrabold uppercase tracking-widest text-olive-400 mb-2">All-Inclusive Subscription Option</div>
-                <div className="text-[20px] font-bold text-white leading-tight">
+                <div className="text-[11px] font-extrabold uppercase tracking-widest text-[#5A7338] mb-2">All-Inclusive Subscription Option</div>
+                <div className="text-[20px] font-bold text-[#2b2723] leading-tight">
                   Enjoy all compliance & legal services under one plan<br />
-                  <span className="text-[#a39e98] text-[15px] font-light">Only ₹658 / month for full platform access & 50% discount on execution.</span>
+                  <span className="text-[#6b6965] text-[15px] font-light">Only ₹658 / month for full platform access & 50% discount on execution.</span>
                 </div>
               </div>
               <div className="flex flex-col gap-3 shrink-0">
                 <Link
                   href="/start"
-                  className="inline-flex items-center gap-2 px-7 py-3 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13px] font-bold rounded-full transition-all whitespace-nowrap"
+                  className="inline-flex items-center gap-2 px-7 py-3 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13px] font-bold rounded-full transition-all whitespace-nowrap shadow-sm"
                 >
                   Start 14-Day Free Trial
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/pricing"
-                  className="text-[12px] text-[#a39e98] hover:text-white font-medium text-center transition-colors"
+                  className="text-[12px] text-[#6b6965] hover:text-[#2b2723] font-medium text-center transition-colors"
                 >
                   View all membership plans →
                 </Link>
