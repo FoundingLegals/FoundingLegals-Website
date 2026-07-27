@@ -57,7 +57,7 @@ export default function ServicesPage() {
   const [state, handleSubmit] = useForm("xqeyrnpp");
   const [selectedService, setSelectedService] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  
+
   // Navigation / Tabs state
   const [activeTool, setActiveTool] = useState<"directory" | "comparison" | "calculator">("directory");
   const [activeCategory, setActiveCategory] = useState("all");
@@ -90,8 +90,8 @@ export default function ServicesPage() {
   // Filter services by search query AND category
   const filteredServices = services.filter((s) => {
     const matchesCategory = activeCategory === "all" || s.heroCategory.toLowerCase() === activeCategory.toLowerCase();
-    const matchesSearch = s.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          s.heroDescription.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      s.heroDescription.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -145,12 +145,12 @@ export default function ServicesPage() {
             <Sparkles className="w-4 h-4 text-[#D4AF37] fill-[#D4AF37]" />
             Founding Legals Services Suite
           </span>
-          
+
           <h1 className="text-[44px] sm:text-[60px] font-serif font-medium text-brown-900 leading-[1.1] mb-6">
             Architect your legal foundation <br />
             <span className="italic text-olive-700">with absolute precision.</span>
           </h1>
-          
+
           <p className="text-lg sm:text-[20px] text-brown-600 leading-relaxed max-w-2xl mx-auto font-light mb-12">
             Explore our expert-led services or compare entity structures using our interactive toolkits.
           </p>
@@ -159,17 +159,15 @@ export default function ServicesPage() {
           <div className="inline-flex p-1.5 bg-[#f0ebe1]/60 backdrop-blur-md border border-[#e5e1d6] rounded-full max-w-[420px] w-full mx-auto">
             <button
               onClick={() => setActiveTool("directory")}
-              className={`flex-1 py-3 px-6 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
-                activeTool === "directory" ? "bg-[#5A7338] text-white shadow-sm" : "text-brown-700 hover:text-brown-900"
-              }`}
+              className={`flex-1 py-3 px-6 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${activeTool === "directory" ? "bg-[#5A7338] text-white shadow-sm" : "text-brown-700 hover:text-brown-900"
+                }`}
             >
               Services Directory
             </button>
             <button
               onClick={() => setActiveTool("comparison")}
-              className={`flex-1 py-3 px-6 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
-                activeTool === "comparison" ? "bg-[#5A7338] text-white shadow-sm" : "text-brown-700 hover:text-brown-900"
-              }`}
+              className={`flex-1 py-3 px-6 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${activeTool === "comparison" ? "bg-[#5A7338] text-white shadow-sm" : "text-brown-700 hover:text-brown-900"
+                }`}
             >
               Entity Comparison
             </button>
@@ -180,7 +178,7 @@ export default function ServicesPage() {
       {/* Tool Content Area */}
       <section className="py-20 px-6 sm:px-12 lg:px-24 bg-[#FDFCF9]">
         <div className="max-w-7xl mx-auto">
-          
+
           {/* TOOL 1: SERVICES DIRECTORY */}
           {activeTool === "directory" && (
             <div>
@@ -191,11 +189,10 @@ export default function ServicesPage() {
                     <button
                       key={cat}
                       onClick={() => setActiveCategory(cat)}
-                      className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
-                        activeCategory === cat
+                      className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${activeCategory === cat
                           ? "bg-[#5A7338] text-white shadow-sm"
                           : "bg-[#FAF9F6] border border-brown-200/50 text-brown-700 hover:bg-white hover:text-brown-900"
-                      }`}
+                        }`}
                     >
                       {cat === "all" ? "All categories" : cat}
                     </button>
@@ -235,11 +232,11 @@ export default function ServicesPage() {
                               {service.heroCategory}
                             </span>
                           </div>
-                          
+
                           <h3 className="text-[20px] font-serif font-semibold text-[#3a3732] mb-3 group-hover:text-[#2b2723] transition-colors">
                             {service.title}
                           </h3>
-                          
+
                           <p className="text-[13px] text-[#6b6965] leading-[1.6] font-light mb-6">
                             {service.heroDescription}
                           </p>
@@ -281,7 +278,7 @@ export default function ServicesPage() {
                 <div className="text-center py-20 bg-[#FAF9F6] border border-dashed border-brown-200 rounded-[32px]">
                   <HelpCircle className="w-12 h-12 text-brown-300 mx-auto mb-4" />
                   <p className="text-brown-600 font-serif text-lg">No services found matching your query.</p>
-                  <button 
+                  <button
                     onClick={() => { setSearchQuery(""); setActiveCategory("all"); }}
                     className="text-sm text-olive-600 font-semibold mt-3 hover:underline cursor-pointer"
                   >
@@ -344,7 +341,7 @@ export default function ServicesPage() {
                   </tr>
                 </tbody>
               </table>
-              
+
               <div className="mt-8 p-6 bg-olive-50/50 border border-olive-100 rounded-[20px] flex gap-3 text-left">
                 <Info className="w-5 h-5 text-olive-700 mt-0.5 shrink-0" />
                 <p className="text-xs text-olive-800 leading-relaxed">
@@ -368,12 +365,12 @@ export default function ServicesPage() {
                 <Calendar className="w-4 h-4" />
                 Schedule a Consultation
               </div>
-              
+
               <h2 className="text-[40px] sm:text-[48px] font-serif font-medium text-brown-900 leading-[1.1] mb-6 text-left">
                 Still unsure about your legal needs? <br />
                 <span className="italic text-olive-700">Let's talk.</span>
               </h2>
-              
+
               <p className="text-[17px] text-brown-600 leading-relaxed max-w-lg font-light mb-12 text-left">
                 Get custom advice on your business structure, tax liabilities, fundraising plans, or any contract queries.
               </p>
@@ -405,7 +402,7 @@ export default function ServicesPage() {
           {/* Form */}
           <div className="bg-white rounded-[32px] p-8 sm:p-12 border border-brown-100 shadow-[0_20px_60px_rgba(43,39,35,0.05)]">
             <h3 className="text-[28px] font-serif font-semibold text-brown-900 mb-8 tracking-tight text-left">Request Custom Service</h3>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
@@ -461,7 +458,7 @@ export default function ServicesPage() {
               <div className="relative">
                 <label className="block text-[11px] font-bold text-brown-400 uppercase tracking-[0.15em] mb-3 text-left">Desired Legal Support</label>
                 <input type="hidden" name="service" value={selectedService} required />
-                
+
                 <button
                   type="button"
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}

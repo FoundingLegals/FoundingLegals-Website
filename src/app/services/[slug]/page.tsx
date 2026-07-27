@@ -1,4 +1,5 @@
 import { services } from "@/lib/servicesData";
+import { getNewServicePage, newServiceSlugs } from "@/lib/newServicesData";
 import { notFound } from "next/navigation";
 import ServiceLayout from "@/components/ServiceLayout";
 import NameRegistrationLayout from "@/components/NameRegistrationLayout";
@@ -10,6 +11,7 @@ import PartnershipRegistrationLayout from "@/components/PartnershipRegistrationL
 import SoleProprietorshipRegistrationLayout from "@/components/SoleProprietorshipRegistrationLayout";
 import AgreementsLayout from "@/components/AgreementsLayout";
 import InvestmentReadinessLayout from "@/components/InvestmentReadinessLayout";
+import NewServicePageLayout from "@/components/NewServicePageLayout";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -22,6 +24,8 @@ export function generateStaticParams() {
   params.push({ slug: "which-company-type-to-register" });
   params.push({ slug: "partnership-firm-registration" });
   params.push({ slug: "sole-proprietorship-registration" });
+  // ── New service & category pages ──
+  newServiceSlugs.forEach((slug) => params.push({ slug }));
   return params;
 }
 
@@ -33,7 +37,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     !service && 
     resolvedParams.slug !== "which-company-type-to-register" && 
     resolvedParams.slug !== "partnership-firm-registration" &&
-    resolvedParams.slug !== "sole-proprietorship-registration"
+    resolvedParams.slug !== "sole-proprietorship-registration" &&
+    !newServiceSlugs.includes(resolvedParams.slug)
   ) {
     return notFound();
   }
@@ -157,6 +162,12 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <Footer />
       </>
     );
+  }
+
+  // ── New service & category pages (15 pages) ──
+  const newPage = getNewServicePage(resolvedParams.slug);
+  if (newPage) {
+    return <NewServicePageLayout page={newPage} />;
   }
 
   if (!service) {

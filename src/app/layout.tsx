@@ -33,6 +33,26 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (sessionStorage.getItem("hasSeenFoundingLegalsSplash") === "true") {
+                  document.documentElement.classList.add("splash-seen");
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              .splash-seen #loading-overlay {
+                display: none !important;
+              }
+            `,
+          }}
+        />
       </head>
       <body className="antialiased bg-cream" suppressHydrationWarning>
         <ScrollToTop />

@@ -46,56 +46,54 @@ export default function InvestmentReadinessLayout() {
     {
       name: "Launch",
       price: "₹6,999",
-      description: "Perfect for first-time founders seeking a solid starting point.",
+      description: "Perfect for first-time founders looking to present their startup professionally to investors, incubators, and accelerators. We create a clear, visually appealing, and investor-ready pitch deck tailored to your business idea. Ideal for founders who need a strong first version of their pitch deck to communicate their vision, business model, market opportunity, and growth potential effectively.",
       features: [
         { text: "Custom investor pitch deck.", isNew: true },
-        { text: "2 revisions", isNew: true },
-        { text: "Professional design.", isNew: true },
-        { text: "Editable PPT & PDF.", isNew: true },
+        { text: "Up to 2 revisions.", isNew: true },
+        { text: "Professional & modern design.", isNew: true },
+        { text: "Fully editable PPT & high-quality PDF.", isNew: true },
         { text: "Basic charts, icons & graphics.", isNew: true }
       ]
     },
     {
       name: "Investor Ready",
       price: "₹12,999",
-      description: "Comprehensive package to refine your narrative and financials.",
+      description: "Get a professionally designed investor-ready pitch deck with a financial model, advanced charts, animations, premium slide design, editable PPT & PDF files, and up to 5 revisions. Ideal for startups preparing for seed funding, angel investors, VC meetings, and accelerator applications.",
       features: [
         { text: "Everything in Launch.", isInherited: true },
         { text: "Premium Pitch Deck.", isNew: true },
-        { text: "Premium design.", isNew: true },
-        { text: "Financial model.", isNew: true },
+        { text: "Premium slide design.", isNew: true },
+        { text: "Dynamic financial model.", isNew: true },
         { text: "Advanced charts & animations.", isNew: true },
-        { text: "5 revisions.", isNew: true }
+        { text: "Up to 5 revisions.", isNew: true }
       ]
     },
     {
       name: "Fundraising Accelerator",
       price: "₹18,999",
       badge: "Most Popular",
-      description: "End-to-end kit built for aggressive outreach and strategic placement.",
+      description: "Get a complete investor fundraising package with a premium pitch deck, SWOT analysis, P&L projections, unlimited revisions, executive summary, investor outreach templates, LinkedIn messaging templates, and a fundraising guidance session. Ideal for startups preparing for seed funding, angel investors, venture capital meetings, and accelerator applications.",
       features: [
         { text: "Everything in Investor Ready.", isInherited: true },
-        { text: "Premium Pitch Deck + SWOT Analysis, P&L Projections.", isNew: true },
+        { text: "SWOT analysis & P&L projections.", isNew: true },
         { text: "Unlimited revisions.", isNew: true },
-        { text: "One-page executive summary.", isNew: true },
-        { text: "Investor email templates.", isNew: true },
-        { text: "LinkedIn outreach templates.", isNew: true },
-        { text: "Fundraising guidance session.", isNew: true },
-        { text: "Fundraising strategy & outreach playbook.", isNew: true }
+        { text: "One-page Executive Summary.", isNew: true },
+        { text: "Investor email outreach templates.", isNew: true },
+        { text: "LinkedIn messaging templates.", isNew: true },
+        { text: "Fundraising guidance session.", isNew: true }
       ]
     },
     {
       name: "Capital Raise Complete",
       price: "₹24,999",
       badge: "Best Value",
-      description: "All-inclusive suite with active data access and high-priority support.",
+      description: "Get a complete investor fundraising toolkit with a premium pitch deck, financial projections, SWOT analysis, investor outreach templates, a verified angel investor database, priority support, priority delivery, and a personalized investor readiness review or mock Q&A session. Ideal for startups preparing for seed funding, angel investors, venture capital meetings, and accelerator applications.",
       features: [
         { text: "Everything in Fundraising Accelerator.", isInherited: true },
-        { text: "Complete fundraising toolkit.", isNew: true },
-        { text: "15,000+ verified angel investor database.", isNew: true },
-        { text: "Priority support.", isNew: true },
-        { text: "Priority delivery.", isNew: true },
-        { text: "30-min 1:1 investor readiness review or Mock Q&A session.", isNew: true }
+        { text: "Complete investor fundraising toolkit.", isNew: true },
+        { text: "Verified angel investor database.", isNew: true },
+        { text: "Personalized readiness review / mock Q&A.", isNew: true },
+        { text: "Priority support & priority delivery.", isNew: true }
       ]
     }
   ];

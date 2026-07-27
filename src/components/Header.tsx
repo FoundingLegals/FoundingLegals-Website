@@ -89,43 +89,96 @@ const sections = [
   },
 ];
 
-/* ── New Services Dropdown Data ── */
-const INCORPORATION_SERVICES = [
-  { name: "Private Limited Company", href: "/services/company-incorporation" },
-];
-
-const COMPLIANCE_SERVICES = [
-  { name: "Founders' Agreement", href: "/services/agreements" },
-  { name: "Shareholders' Agreement (SHA)", href: "/services/agreements" },
-  { name: "Share Subscription Agreement (SSA)", href: "/services/agreements" },
-  { name: "SAFE / iSAFE Agreement", href: "/services/agreements" },
-  { name: "Convertible Note Agreement", href: "/services/agreements" },
-  { name: "Term Sheet", href: "/services/agreements" },
-  { name: "Employment Agreement", href: "/services/agreements" },
-  { name: "Consultancy Agreement", href: "/services/agreements" },
-  { name: "Offer Letter", href: "/services/agreements" },
-  { name: "Internship Offer Letter", href: "/services/agreements" },
-  { name: "Non-Compete Agreement", href: "/services/agreements" },
-  { name: "Service Agreement", href: "/services/agreements" },
-  { name: "Master Service Agreement (MSA)", href: "/services/agreements" },
-  { name: "Vendor Agreement", href: "/services/agreements" },
-  { name: "Supply Agreement", href: "/services/agreements" },
-  { name: "Distribution Agreement", href: "/services/agreements" },
-  { name: "Franchise Agreement", href: "/services/agreements" },
-  { name: "IP Assignment Agreement", href: "/services/agreements" },
-  { name: "Technology Transfer Agreement", href: "/services/agreements" },
-  { name: "Trademark License Agreement", href: "/services/agreements" },
-  { name: "Non-Disclosure Agreement (NDA)", href: "/services/agreements" },
-];
-
-const INVESTMENT_READINESS_SERVICES = [
-  { name: "Launch", href: "/services/pitch-to-investors" },
-  { name: "Investor Ready", href: "/services/pitch-to-investors" },
-  { name: "Fundraising Accelerator", href: "/services/pitch-to-investors" },
-  { name: "Capital Raise Complete", href: "/services/pitch-to-investors" },
-  { name: "Video Pitch", href: "/services/pitch-to-investors" },
-  { name: "Financial Model", href: "/services/finance-for-fundraising" },
-  { name: "Angel Investor Data", href: "/services/find-investors" },
+/* ── SERVICE CATEGORIES & ITEMS (Updated to match requested list) ── */
+const SERVICE_CATEGORIES = [
+  {
+    id: "incorporation",
+    name: "Business Incorporation",
+    fullName: "Business Incorporation & Entity Registration",
+    services: [
+      { name: "Pvt Ltd Company Incorporation", href: "/services/company-incorporation" },
+      { name: "Public Limited Company Incorporation", href: "/services/company-incorporation" },
+      { name: "LLP Registration", href: "/services/llp-registration" },
+      { name: "Partnership Firm Registration", href: "/services/partnership-firm-registration" },
+      { name: "Solo Proprietorship Registration", href: "/services/sole-proprietorship-registration" },
+    ]
+  },
+  {
+    id: "licenses",
+    name: "Licenses & Registrations",
+    fullName: "Licenses & Registrations",
+    services: [
+      { name: "GST Registration", href: "/services/gst-filing-and-taxation" },
+      { name: "UDYAM / MSME Registration", href: "/services/certifications" },
+      { name: "FSSAI Food License (Central)", href: "/services/gst-filing-and-taxation" },
+      { name: "FSSAI Food License (State)", href: "/services/gst-filing-and-taxation" },
+      { name: "IEC (Import Export Code)", href: "/services/gst-filing-and-taxation" },
+      { name: "Labour License", href: "/services/gst-filing-and-taxation" },
+      { name: "Professional Tax Registration", href: "/services/gst-filing-and-taxation" },
+    ]
+  },
+  {
+    id: "ip_services",
+    name: "Intellectual Property (IP)",
+    fullName: "Intellectual Property (IP) Services",
+    services: [
+      { name: "Trademark Registration", href: "/services/ip-protection" },
+    ]
+  },
+  {
+    id: "gst_compliance",
+    name: "GST & Indirect Tax",
+    fullName: "GST & Indirect Tax Compliance",
+    services: [
+      { name: "Monthly GST Return Filing", href: "/services/gst-filing-and-taxation" },
+      { name: "Quarterly GST Return Filing", href: "/services/gst-filing-and-taxation" },
+      { name: "Annual GST Return (GSTR-9)", href: "/services/gst-filing-and-taxation" },
+      { name: "TDS Return Filing", href: "/services/gst-filing-and-taxation" },
+      { name: "Professional Tax Return Filing", href: "/services/gst-filing-and-taxation" },
+    ]
+  },
+  {
+    id: "income_tax",
+    name: "Income Tax & Advisory",
+    fullName: "Income Tax Filing & Advisory",
+    services: [
+      { name: "Salary ITR Filing", href: "/services/gst-filing-and-taxation" },
+      { name: "Business ITR Filing", href: "/services/gst-filing-and-taxation" },
+      { name: "ITR-3 Filing (Professional/Business)", href: "/services/gst-filing-and-taxation" },
+      { name: "ITR-4 Filing (Presumptive)", href: "/services/gst-filing-and-taxation" },
+      { name: "ITR-5 Filing (LLPs/Partnerships)", href: "/services/gst-filing-and-taxation" },
+      { name: "ITR-6 Filing (Companies)", href: "/services/gst-filing-and-taxation" },
+      { name: "ITR-7 Filing (Trusts/NGOs)", href: "/services/gst-filing-and-taxation" },
+    ]
+  },
+  {
+    id: "audit_services",
+    name: "Audit & Attestation",
+    fullName: "Audit & Attestation Services",
+    services: [
+      { name: "GST Audit Execution (GSTR-9C)", href: "/services/gst-filing-and-taxation" },
+      { name: "Tax Audit Execution", href: "/services/gst-filing-and-taxation" },
+    ]
+  },
+  {
+    id: "financial_services",
+    name: "Financial & Investment",
+    fullName: "Financial & Investment Services",
+    services: [
+      { name: "Loan Project Report Preparation", href: "/services/finance-for-fundraising" },
+    ]
+  },
+  {
+    id: "investment_ready",
+    name: "Investment Ready Services",
+    fullName: "Investment Ready Services",
+    services: [
+      { name: "Launch", href: "/services/pitch-to-investors" },
+      { name: "Investor Ready", href: "/services/pitch-to-investors" },
+      { name: "Fundraising Accelerator", href: "/services/pitch-to-investors" },
+      { name: "Capital Raise Complete", href: "/services/pitch-to-investors" },
+    ]
+  }
 ];
 
 export default function Header() {
@@ -283,105 +336,47 @@ export default function Header() {
                   <div className="fixed left-1/2 -translate-x-1/2 top-[74px] w-full max-w-[1140px] bg-white rounded-3xl shadow-[0_16px_48px_rgba(43,39,35,0.14)] border border-brown-100/40 overflow-hidden animate-dropdown grid grid-cols-12">
                     
                     {/* Left Pane (Categories List) */}
-                    <div className="col-span-3 bg-gray-50/80 border-r border-brown-100/40 p-4 space-y-1.5 flex flex-col justify-start">
-                      <button
-                        onMouseEnter={() => setActiveServiceCategory("incorporation")}
-                        className={`w-full text-left px-4 py-3 rounded-xl text-[13px] font-bold transition-all ${
-                          activeServiceCategory === "incorporation"
-                            ? "bg-[#5C6F2D] text-white shadow-sm"
-                            : "text-brown-700 hover:bg-brown-100/30"
-                        }`}
-                      >
-                        Company Incorporation
-                      </button>
-
-                      <button
-                        onMouseEnter={() => setActiveServiceCategory("compliance")}
-                        className={`w-full text-left px-4 py-3 rounded-xl text-[13px] font-bold transition-all ${
-                          activeServiceCategory === "compliance"
-                            ? "bg-[#5C6F2D] text-white shadow-sm"
-                            : "text-brown-700 hover:bg-brown-100/30"
-                        }`}
-                      >
-                        Company Legal Compliance
-                      </button>
-
-                      <button
-                        onMouseEnter={() => setActiveServiceCategory("readiness")}
-                        className={`w-full text-left px-4 py-3 rounded-xl text-[13px] font-bold transition-all ${
-                          activeServiceCategory === "readiness"
-                            ? "bg-[#5C6F2D] text-white shadow-sm"
-                            : "text-brown-700 hover:bg-brown-100/30"
-                        }`}
-                      >
-                        Investment Readiness
-                      </button>
+                    <div className="col-span-4 bg-[#FAF9F6] border-r border-brown-100/40 p-4 space-y-1 flex flex-col justify-start max-h-[460px] overflow-y-auto">
+                      {SERVICE_CATEGORIES.map((category) => (
+                        <button
+                          key={category.id}
+                          onMouseEnter={() => setActiveServiceCategory(category.id)}
+                          className={`w-full text-left px-4 py-2.5 rounded-xl text-[12.5px] font-bold transition-all leading-snug ${
+                            activeServiceCategory === category.id
+                              ? "bg-[#5C6F2D] text-white shadow-sm"
+                              : "text-brown-700 hover:bg-brown-100/30"
+                          }`}
+                        >
+                          {category.name}
+                        </button>
+                      ))}
                     </div>
 
                     {/* Right Pane (Dynamic Contents) */}
-                    <div className="col-span-9 p-6 max-h-[460px] overflow-y-auto bg-white text-left">
-                      
-                      {/* Sub-Pane 1: Incorporation */}
-                      {activeServiceCategory === "incorporation" && (
-                        <div className="space-y-4">
-                          <h4 className="text-[12px] font-bold uppercase tracking-wider text-[#5C6F2D] border-b border-brown-100/40 pb-2">
-                            Company Incorporation Services
-                          </h4>
-                          <div className="grid grid-cols-3 gap-y-3.5 gap-x-6">
-                            {INCORPORATION_SERVICES.map((s) => (
-                              <a
-                                key={s.name}
-                                href={s.href}
-                                className="text-[13px] font-medium text-brown-600 hover:text-olive-700 transition-colors leading-tight py-1"
-                              >
-                                {s.name}
-                              </a>
-                            ))}
+                    <div className="col-span-8 p-6 max-h-[460px] overflow-y-auto bg-white text-left">
+                      {SERVICE_CATEGORIES.map((category) => {
+                        if (activeServiceCategory !== category.id) return null;
+                        return (
+                          <div key={category.id} className="space-y-4">
+                            <h4 className="text-[12px] font-bold uppercase tracking-wider text-[#5C6F2D] border-b border-brown-100/40 pb-2">
+                              {category.fullName}
+                            </h4>
+                            <div className="grid grid-cols-2 gap-y-3.5 gap-x-6">
+                              {category.services.map((s) => (
+                                <a
+                                  key={s.name}
+                                  href={s.href}
+                                  className="text-[13px] font-medium text-brown-600 hover:text-olive-700 transition-colors leading-tight py-1"
+                                >
+                                  {s.name}
+                                </a>
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      )}
-
-                      {/* Sub-Pane 2: Compliance (Agreements & Contracts) */}
-                      {activeServiceCategory === "compliance" && (
-                        <div className="space-y-4">
-                          <h4 className="text-[12px] font-bold uppercase tracking-wider text-[#5C6F2D] border-b border-brown-100/40 pb-2">
-                            Agreements & Legal Contracts
-                          </h4>
-                          <div className="grid grid-cols-3 gap-y-3.5 gap-x-6">
-                            {COMPLIANCE_SERVICES.map((s) => (
-                              <a
-                                key={s.name}
-                                href={s.href}
-                                className="text-[13px] font-medium text-brown-600 hover:text-olive-700 transition-colors leading-tight py-1"
-                              >
-                                {s.name}
-                              </a>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Sub-Pane 3: Investment Readiness (Launch, Investor Ready, Accelerator, etc.) */}
-                      {activeServiceCategory === "readiness" && (
-                        <div className="space-y-4">
-                          <h4 className="text-[12px] font-bold uppercase tracking-wider text-[#5C6F2D] border-b border-brown-100/40 pb-2">
-                            Investment Readiness Services
-                          </h4>
-                          <div className="grid grid-cols-3 gap-y-3.5 gap-x-6">
-                            {INVESTMENT_READINESS_SERVICES.map((s) => (
-                              <a
-                                key={s.name}
-                                href={s.href}
-                                className="text-[13px] font-medium text-brown-600 hover:text-olive-700 transition-colors leading-tight py-1"
-                              >
-                                {s.name}
-                              </a>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
+                        );
+                      })}
                     </div>
+
                   </div>
                 </>
               )}
@@ -566,82 +561,31 @@ export default function Header() {
                 </button>
                 {openSections.includes("services") && (
                   <div className="px-4 pb-4 space-y-3.5">
-                    
-                    {/* Mobile Category 1 */}
-                    <div className="space-y-2">
-                      <button
-                        onClick={() => setMobileActiveSub(mobileActiveSub === "incorp" ? null : "incorp")}
-                        className="w-full flex items-center justify-between text-[12.5px] font-bold text-brown-800 border-b border-brown-100/40 pb-1"
-                      >
-                        <span>Company Incorporation</span>
-                        <ChevronDown className={`w-3.5 h-3.5 text-brown-500 transition-transform ${mobileActiveSub === "incorp" ? "rotate-180" : ""}`} />
-                      </button>
-                      {mobileActiveSub === "incorp" && (
-                        <div className="pl-3 space-y-2">
-                          {INCORPORATION_SERVICES.map((item) => (
-                            <a
-                              key={item.name}
-                              href={item.href}
-                              onClick={() => setIsMobileOpen(false)}
-                              className="block py-1 text-[13px] font-medium text-brown-600"
-                            >
-                              {item.name}
-                            </a>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Mobile Category 2 */}
-                    <div className="space-y-2">
-                      <button
-                        onClick={() => setMobileActiveSub(mobileActiveSub === "comp" ? null : "comp")}
-                        className="w-full flex items-center justify-between text-[12.5px] font-bold text-brown-800 border-b border-brown-100/40 pb-1"
-                      >
-                        <span>Company Legal Compliance</span>
-                        <ChevronDown className={`w-3.5 h-3.5 text-brown-500 transition-transform ${mobileActiveSub === "comp" ? "rotate-180" : ""}`} />
-                      </button>
-                      {mobileActiveSub === "comp" && (
-                        <div className="pl-3 space-y-2 max-h-[200px] overflow-y-auto">
-                          {COMPLIANCE_SERVICES.map((item) => (
-                            <a
-                              key={item.name}
-                              href={item.href}
-                              onClick={() => setIsMobileOpen(false)}
-                              className="block py-1 text-[13px] font-medium text-brown-600"
-                            >
-                              {item.name}
-                            </a>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Mobile Category 3 */}
-                    <div className="space-y-2">
-                      <button
-                        onClick={() => setMobileActiveSub(mobileActiveSub === "ready" ? null : "ready")}
-                        className="w-full flex items-center justify-between text-[12.5px] font-bold text-brown-800 border-b border-brown-100/40 pb-1"
-                      >
-                        <span>Investment Readiness</span>
-                        <ChevronDown className={`w-3.5 h-3.5 text-brown-500 transition-transform ${mobileActiveSub === "ready" ? "rotate-180" : ""}`} />
-                      </button>
-                      {mobileActiveSub === "ready" && (
-                        <div className="pl-3 space-y-2">
-                          {INVESTMENT_READINESS_SERVICES.map((item) => (
-                            <a
-                              key={item.name}
-                              href={item.href}
-                              onClick={() => setIsMobileOpen(false)}
-                              className="block py-1 text-[13px] font-medium text-brown-600"
-                            >
-                              {item.name}
-                            </a>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
+                    {SERVICE_CATEGORIES.map((category) => (
+                      <div key={category.id} className="space-y-2">
+                        <button
+                          onClick={() => setMobileActiveSub(mobileActiveSub === category.id ? null : category.id)}
+                          className="w-full flex items-center justify-between text-[12.5px] font-bold text-brown-800 border-b border-brown-100/40 pb-1 text-left"
+                        >
+                          <span>{category.fullName}</span>
+                          <ChevronDown className={`w-3.5 h-3.5 text-brown-500 shrink-0 transition-transform ${mobileActiveSub === category.id ? "rotate-180" : ""}`} />
+                        </button>
+                        {mobileActiveSub === category.id && (
+                          <div className="pl-3 space-y-2 max-h-[250px] overflow-y-auto">
+                            {category.services.map((item) => (
+                              <a
+                                key={item.name}
+                                href={item.href}
+                                onClick={() => setIsMobileOpen(false)}
+                                className="block py-1 text-[13px] font-medium text-brown-600"
+                              >
+                                {item.name}
+                              </a>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>

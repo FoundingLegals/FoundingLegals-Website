@@ -5,18 +5,18 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const LoadingOverlay = () => {
-  // Initialize to false to prevent flashing on internal navigation
-  const [isVisible, setIsVisible] = useState(false);
-  const [shouldRender, setShouldRender] = useState(false);
+  // Start as true to match SSR rendering and prevent flash of content on first load
+  const [isVisible, setIsVisible] = useState(true);
+  const [shouldRender, setShouldRender] = useState(true);
 
   useEffect(() => {
     // Check if user has already seen the splash screen in this session
     const hasSeenSplash = sessionStorage.getItem("hasSeenFoundingLegalsSplash");
 
-    if (!hasSeenSplash) {
-      setIsVisible(true);
-      setShouldRender(true);
-
+    if (hasSeenSplash) {
+      setIsVisible(false);
+      setShouldRender(false);
+    } else {
       const timer = setTimeout(() => {
         setIsVisible(false);
         sessionStorage.setItem("hasSeenFoundingLegalsSplash", "true");
