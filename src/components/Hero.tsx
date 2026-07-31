@@ -203,13 +203,16 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 min-h-svh flex items-center pt-44 lg:pt-32 pb-20">
         <div className="max-w-[680px]">
           <h1 className="hero-animate font-serif text-[38px] sm:text-[52px] lg:text-[64px] font-medium text-brown-900 leading-[1.05] tracking-[-0.02em] mb-6">
-            India&apos;s First Founder Centric Platform
+            Raise Faster. Stay Compliant. Build Smarter.
           </h1>
-          <p className="hero-animate hero-animate-delay-2 text-[16px] sm:text-[18px] text-brown-600 leading-relaxed mb-6 sm:mb-8 max-w-[540px]">
-                Built for founders who move fast.
+          <p className="hero-animate hero-animate-delay-2 text-[16px] sm:text-[18px] text-brown-600 leading-relaxed mb-6 sm:mb-8 max-w-[580px]">
+            Everything founders need from incorporation to investor introductions.
           </p>
           <div className="hero-animate hero-animate-delay-2 mb-8 sm:mb-10">
-            <LawyerTrustBadge />
+            <LawyerTrustBadge
+              headline="2000+ Indian Investors pool access."
+              subtext="Verified investor network & legal experts"
+            />
           </div>
           <div className="hero-animate hero-animate-delay-3 flex flex-wrap items-center gap-3 sm:gap-4">
             <a

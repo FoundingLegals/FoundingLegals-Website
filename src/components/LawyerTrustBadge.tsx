@@ -25,8 +25,8 @@ const defaultLawyers: Lawyer[] = [
 export default function LawyerTrustBadge({
   lawyers = defaultLawyers,
   totalCount = 10,
-  headline = "Authorised by 10+ Verified Lawyers",
-  subtext = "Drafts reviewed by real legal experts",
+  headline = "2000+ Indian Investors pool access.",
+  subtext = "Verified investor network & legal experts",
   rating = 5,
 }: LawyerTrustBadgeProps) {
   const remaining = Math.max(totalCount - lawyers.length, 0);
