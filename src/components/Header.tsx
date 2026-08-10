@@ -258,7 +258,7 @@ export default function Header() {
             
             {/* 1. For Founders Mega Dropdown (UNTOUCHED) */}
             <div
-              className="relative"
+              className="relative py-2"
               onMouseEnter={() => setMegaOpen(true)}
               onMouseLeave={() => setMegaOpen(false)}
             >
@@ -278,8 +278,8 @@ export default function Header() {
 
               {megaOpen && (
                 <>
-                  <div className="absolute top-full left-0 right-0 h-4" />
-                  <div className="fixed left-1/2 -translate-x-1/2 top-[74px] w-full max-w-[860px] bg-white rounded-2xl shadow-[0_12px_40px_rgba(43,39,35,0.12)] border border-brown-100/40 animate-dropdown">
+                  <div className="absolute -bottom-6 -left-12 -right-12 h-8 z-50" />
+                  <div className="fixed left-1/2 -translate-x-1/2 top-[66px] w-full max-w-[860px] bg-white rounded-2xl shadow-[0_12px_40px_rgba(43,39,35,0.12)] border border-brown-100/40 animate-dropdown z-50">
                     <div className="grid grid-cols-3 divide-x divide-brown-100/50 p-8 gap-0">
                       {sections.map((section) => (
                         <div key={section.title} className="px-6 first:pl-0 last:pr-0">
@@ -321,7 +321,7 @@ export default function Header() {
 
             {/* 2. Custom Services Dropdown (RegisterKaro Layout style) */}
             <div
-              className="relative"
+              className="relative py-2"
               onMouseEnter={() => setServicesOpen(true)}
               onMouseLeave={() => setServicesOpen(false)}
             >
@@ -341,8 +341,8 @@ export default function Header() {
 
               {servicesOpen && (
                 <>
-                  <div className="absolute top-full left-0 right-0 h-4" />
-                  <div className="fixed left-1/2 -translate-x-1/2 top-[74px] w-full max-w-[1140px] bg-white rounded-3xl shadow-[0_16px_48px_rgba(43,39,35,0.14)] border border-brown-100/40 overflow-hidden animate-dropdown grid grid-cols-12">
+                  <div className="absolute -bottom-6 -left-12 -right-12 h-8 z-50" />
+                  <div className="fixed left-1/2 -translate-x-1/2 top-[66px] w-full max-w-[1140px] bg-white rounded-3xl shadow-[0_16px_48px_rgba(43,39,35,0.14)] border border-brown-100/40 overflow-hidden animate-dropdown grid grid-cols-12 z-50">
                     
                     {/* Left Pane (Categories List) */}
                     <div className="col-span-4 bg-[#FAF9F6] border-r border-brown-100/40 p-4 space-y-1 flex flex-col justify-start max-h-[460px] overflow-y-auto">
@@ -407,7 +407,7 @@ export default function Header() {
 
             {/* Company Dropdown */}
             <div
-              className="relative"
+              className="relative py-2"
               onMouseEnter={() => setCompanyOpen(true)}
               onMouseLeave={() => setCompanyOpen(false)}
             >
@@ -428,8 +428,8 @@ export default function Header() {
               {/* Mega dropdown panel */}
               {companyOpen && (
                 <>
-                  <div className="absolute top-full left-0 right-0 h-4" />
-                  <div className="absolute left-1/2 -translate-x-1/2 top-[52px] bg-[#f5f1e6] rounded-[20px] shadow-[0_12px_40px_rgba(43,39,35,0.08)] animate-dropdown flex items-center gap-1 px-2 py-2">
+                  <div className="absolute -bottom-5 -left-8 -right-8 h-6 z-50" />
+                  <div className="absolute left-1/2 -translate-x-1/2 top-[46px] bg-[#f5f1e6] rounded-[20px] shadow-[0_12px_40px_rgba(43,39,35,0.08)] animate-dropdown flex items-center gap-1 px-2 py-2 z-50">
                     <a
                       href="/company/about-us"
                       className="px-4 py-2 text-[13px] font-semibold text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap"
