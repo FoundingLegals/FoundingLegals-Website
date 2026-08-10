@@ -9,6 +9,7 @@ import OpcRegistrationLayout from "@/components/OpcRegistrationLayout";
 import WhichCompanyTypeLayout from "@/components/WhichCompanyTypeLayout";
 import PartnershipRegistrationLayout from "@/components/PartnershipRegistrationLayout";
 import SoleProprietorshipRegistrationLayout from "@/components/SoleProprietorshipRegistrationLayout";
+import PublicLimitedRegistrationLayout from "@/components/PublicLimitedRegistrationLayout";
 import AgreementsLayout from "@/components/AgreementsLayout";
 import InvestmentReadinessLayout from "@/components/InvestmentReadinessLayout";
 import NewServicePageLayout from "@/components/NewServicePageLayout";
@@ -24,6 +25,7 @@ export function generateStaticParams() {
   params.push({ slug: "which-company-type-to-register" });
   params.push({ slug: "partnership-firm-registration" });
   params.push({ slug: "sole-proprietorship-registration" });
+  params.push({ slug: "public-limited-company" });
   // ── New service & category pages ──
   newServiceSlugs.forEach((slug) => params.push({ slug }));
   return params;
@@ -38,6 +40,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     resolvedParams.slug !== "which-company-type-to-register" && 
     resolvedParams.slug !== "partnership-firm-registration" &&
     resolvedParams.slug !== "sole-proprietorship-registration" &&
+    resolvedParams.slug !== "public-limited-company" &&
     !newServiceSlugs.includes(resolvedParams.slug)
   ) {
     return notFound();
@@ -76,6 +79,19 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <Header />
         <main>
           <SoleProprietorshipRegistrationLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // Public Limited Company Incorporation Layout
+  if (resolvedParams.slug === "public-limited-company") {
+    return (
+      <>
+        <Header />
+        <main>
+          <PublicLimitedRegistrationLayout />
         </main>
         <Footer />
       </>

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Check, X, Send, ArrowRight, ChevronDown, Star, ShieldCheck, UserCheck, FileText } from "lucide-react";
+import { Check, X, Send, ArrowRight, ChevronDown, Search, Star, ShieldCheck, Building2, FileText, Award } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
 
 // --- SECTION TABS ---
@@ -11,7 +11,7 @@ const TABS = [
   { id: "benefits", label: "Benefits" },
   { id: "process-documents", label: "Process & Documents" },
   { id: "fees", label: "Fees" },
-  { id: "checklist", label: "Checklist" },
+  { id: "compliances", label: "Compliances" },
   { id: "why-foundinglegals", label: "Why FoundingLegals" },
   { id: "faqs", label: "FAQ's" }
 ];
@@ -19,95 +19,130 @@ const TABS = [
 // --- FAQ ITEMS ---
 const FAQ_ITEMS = [
   {
-    question: "Is formal government registration mandatory for a Sole Proprietorship?",
-    answer: "No single central registration certificate exists specifically for a Sole Proprietorship in India. However, to open a business Current Bank Account and legally trade, you must obtain government entity proofs such as GST Registration, MSME (Udyam) Registration, or a Shop & Establishment License."
+    question: "What is a Public Limited Company?",
+    answer: "A Public Limited Company (PLC) is a corporate business structure registered under the Indian Companies Act, 2013. It is owned by shareholders, offers limited liability protection, and has the legal authority to issue shares and raise capital from the general public or institutional investors."
   },
   {
-    question: "Can I open a Current Bank Account for my Sole Proprietorship?",
-    answer: "Yes. Banks require at least two government registration certificates in the firm's trade name (e.g. GST Certificate and Udyam Registration Certificate) along with the proprietor's PAN card and office address proof."
+    question: "What is the minimum requirement of directors and shareholders for a Public Limited Company?",
+    answer: "A Public Limited Company requires a minimum of 7 shareholders (with no maximum limit) and a minimum of 3 directors (at least one must be a resident of India)."
   },
   {
-    question: "Can I choose any name for my Sole Proprietorship?",
-    answer: "Yes, you can choose any unique business name provided it does not infringe on registered trademarks or contain restricted words (such as 'National', 'Government', or 'Crown')."
+    question: "Is there a minimum paid-up capital requirement for a Public Limited Company?",
+    answer: "Under current MCA regulations, the mandatory minimum paid-up capital requirement of ₹5 Lakhs has been removed. However, substantial capital is recommended based on your business operations."
   },
   {
-    question: "How is a Sole Proprietorship taxed in India?",
-    answer: "A Sole Proprietorship is not taxed as a separate corporate entity. The income of the proprietorship is treated as the personal income of the proprietor and taxed according to individual income tax slab rates."
+    question: "Can a Public Limited Company issue shares to the public immediately after incorporation?",
+    answer: "After receiving the Certificate of Incorporation and filing Form INC-20A (Commencement of Business), a Public Limited Company can issue shares privately. To make an Initial Public Offering (IPO) on stock exchanges (BSE/NSE), it must comply with SEBI ICDR regulations."
   },
   {
-    question: "Can I convert my Sole Proprietorship into a Private Limited Company or LLP later?",
-    answer: "Yes, as your business grows, you can easily convert your Sole Proprietorship into an LLP or Private Limited Company by executing an asset transfer agreement and completing MCA incorporation."
+    question: "What is the difference between a Private Limited Company and a Public Limited Company?",
+    answer: "A Private Limited Company restricts share transferability and caps members at 200 without public fundraising. A Public Limited Company allows freely transferable shares, uncapped shareholders, and public capital raising."
   },
   {
-    question: "How long does Sole Proprietorship setup take with FoundingLegals?",
-    answer: "FoundingLegals completes MSME (Udyam) registration, GST registration, and bank account documentation in just 3 to 5 working days."
+    question: "Is it mandatory to appoint a Company Secretary (CS) in a Public Limited Company?",
+    answer: "Yes, under Section 203 of the Companies Act, 2013, every Public Limited Company having a paid-up share capital of ₹10 Crore or more must appoint a whole-time Company Secretary."
+  },
+  {
+    question: "How long does it take to register a Public Limited Company with FoundingLegals?",
+    answer: "With complete documents and prompt client responses, FoundingLegals completes Public Limited Company incorporation in 10 to 14 working days."
+  },
+  {
+    question: "What tax rate applies to a Public Limited Company in India?",
+    answer: "Domestic Public Limited Companies in India are taxed at a concessional corporate income tax rate of 22% (plus applicable surcharge and 4% health & education cess) under Section 115BAA of the Income Tax Act."
   }
 ];
 
 // --- PRICING PLANS DATA ---
-const ALL_PROPRIETORSHIP_FEATURES = [
-  "MSME / Udyam Registration Certificate",
-  "GST Registration Filing",
-  "Current Bank Account Assistance",
-  "Shop & Establishment License Guidance",
-  "CA Consultation & Tax Advice",
+const ALL_PUBLIC_FEATURES = [
+  "Company Name Approval (RUN/SPICe+ Part A)",
+  "DSC for 3 Directors",
+  "DIN Allotment for 3 Directors",
+  "Drafting MOA & AOA",
+  "SPICe+ Part B Filing with MCA CRC",
+  "Certificate of Incorporation (COI)",
+  "Corporate PAN + TAN",
+  "AGILE-PRO-S (GST/EPFO/ESIC/Bank Account)",
+  "Commencement of Business Filing (INC-20A)",
+  "Dedicated Corporate CS Manager",
+  "Share Certificate Templates",
+  "Statutory Register Setup",
   "Trademark Class Search & Filing",
-  "Invoice & Billing Templates"
+  "Investor Pitch Deck Assistance"
 ];
 
-const PROPRIETORSHIP_PLANS = [
+const PUBLIC_PLANS = [
   {
     name: "BASIC",
-    price: "₹999",
-    feeSubtext: "+ Govt Fee",
-    description: "Essential MSME registration and current bank account kit.",
-    badge: "Essential Setup",
+    price: "₹14,999",
+    feeSubtext: "+ Govt Stamp Duty",
+    description: "Standard incorporation kit for 7 shareholders and 3 directors.",
+    badge: "Essential Package",
     badgeStyles: "bg-gray-100 text-gray-700 border border-gray-200/50",
-    serviceName: "Sole Proprietorship - BASIC Plan (₹999 + Govt Fee)",
+    serviceName: "Public Limited Company - BASIC Plan (₹14,999 + Stamp Duty)",
     included: [
-      "MSME / Udyam Registration Certificate",
-      "Current Bank Account Assistance",
-      "Invoice & Billing Templates"
+      "Company Name Approval (RUN/SPICe+ Part A)",
+      "DSC for 3 Directors",
+      "DIN Allotment for 3 Directors",
+      "Drafting MOA & AOA",
+      "SPICe+ Part B Filing with MCA CRC",
+      "Certificate of Incorporation (COI)",
+      "Corporate PAN + TAN",
+      "AGILE-PRO-S (GST/EPFO/ESIC/Bank Account)",
+      "Dedicated Corporate CS Manager"
     ]
   },
   {
     name: "STANDARD",
-    price: "₹2,499",
-    feeSubtext: "+ Govt Fee",
-    description: "Complete GST registration, Udyam certificate, and bank setup.",
+    price: "₹24,999",
+    feeSubtext: "+ Govt Stamp Duty",
+    description: "Complete incorporation package with INC-20A and statutory registers.",
     badge: "Most Popular",
     badgeStyles: "bg-olive-100 text-olive-800 border border-olive-200/50",
     isPopular: true,
-    serviceName: "Sole Proprietorship - STANDARD Plan (₹2,499 + Govt Fee)",
+    serviceName: "Public Limited Company - STANDARD Plan (₹24,999 + Stamp Duty)",
     included: [
-      "MSME / Udyam Registration Certificate",
-      "GST Registration Filing",
-      "Current Bank Account Assistance",
-      "Shop & Establishment License Guidance",
-      "Invoice & Billing Templates"
+      "Company Name Approval (RUN/SPICe+ Part A)",
+      "DSC for 3 Directors",
+      "DIN Allotment for 3 Directors",
+      "Drafting MOA & AOA",
+      "SPICe+ Part B Filing with MCA CRC",
+      "Certificate of Incorporation (COI)",
+      "Corporate PAN + TAN",
+      "AGILE-PRO-S (GST/EPFO/ESIC/Bank Account)",
+      "Commencement of Business Filing (INC-20A)",
+      "Dedicated Corporate CS Manager",
+      "Share Certificate Templates",
+      "Statutory Register Setup"
     ]
   },
   {
     name: "PREMIUM",
-    price: "₹4,999",
-    feeSubtext: "+ Govt Fee",
-    description: "All-inclusive setup with trademark filing and CA consultation.",
+    price: "₹34,999",
+    feeSubtext: "+ Govt Stamp Duty",
+    description: "All-inclusive corporate launch pad with trademark filing and investor support.",
     badge: "Best Value",
     badgeStyles: "bg-brown-100 text-brown-900 border border-brown-200/30",
-    serviceName: "Sole Proprietorship - PREMIUM Plan (₹4,999 + Govt Fee)",
+    serviceName: "Public Limited Company - PREMIUM Plan (₹34,999 + Stamp Duty)",
     included: [
-      "MSME / Udyam Registration Certificate",
-      "GST Registration Filing",
-      "Current Bank Account Assistance",
-      "Shop & Establishment License Guidance",
-      "CA Consultation & Tax Advice",
+      "Company Name Approval (RUN/SPICe+ Part A)",
+      "DSC for 3 Directors",
+      "DIN Allotment for 3 Directors",
+      "Drafting MOA & AOA",
+      "SPICe+ Part B Filing with MCA CRC",
+      "Certificate of Incorporation (COI)",
+      "Corporate PAN + TAN",
+      "AGILE-PRO-S (GST/EPFO/ESIC/Bank Account)",
+      "Commencement of Business Filing (INC-20A)",
+      "Dedicated Corporate CS Manager",
+      "Share Certificate Templates",
+      "Statutory Register Setup",
       "Trademark Class Search & Filing",
-      "Invoice & Billing Templates"
+      "Investor Pitch Deck Assistance"
     ]
   }
 ];
 
-export default function SoleProprietorshipRegistrationLayout() {
+export default function PublicLimitedRegistrationLayout() {
   const [activeTab, setActiveTab] = useState("overview");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("");
@@ -166,35 +201,35 @@ export default function SoleProprietorshipRegistrationLayout() {
         <div className="flex flex-wrap items-center gap-3 mb-6">
           <span className="text-[11px] font-bold text-olive-700 tracking-widest uppercase bg-olive-50 px-4 py-1.5 rounded-full border border-olive-200/40 inline-flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-olive-650 animate-pulse" />
-            Starts at ₹999 + Govt Fee
+            Starts at ₹14,999 + Stamp Duty
           </span>
           <span className="text-[11px] font-bold text-brown-600 tracking-widest uppercase bg-[#FAF9F6] px-4 py-1.5 rounded-full border border-brown-200/30 inline-block">
-            Fast 3-5 Days Setup
+            Fast Track 10-14 Days MCA Process
           </span>
         </div>
 
         <h1 className="font-serif text-[26px] sm:text-[36px] md:text-[50px] font-medium text-[#1A1917] leading-[1.2] md:leading-[1.1] mb-6">
-          Sole Proprietorship Registration in India
+          Public Limited Company Registration in India
         </h1>
         
         <div className="text-[15px] md:text-[16px] text-brown-600 leading-relaxed space-y-4 max-w-5xl">
           <p>
-            A <strong>Sole Proprietorship</strong> is the simplest and most common business model in India for individual entrepreneurs, freelancers, traders, and small business owners. Owned and managed by a single individual, it requires minimal regulatory compliance and offers complete operational control.
+            A <strong>Public Limited Company (PLC)</strong> is the premier corporate structure in India designed for enterprises planning large-scale operations, public equity fundraising, or stock exchange listing (BSE/NSE). Governed by the <strong>Ministry of Corporate Affairs (MCA)</strong> under the Companies Act, 2013, a Public Limited Company provides uncapped member capacity and free transferability of shares.
           </p>
           <p>
-            FoundingLegals helps individual business owners obtain official government registrations—including <strong>MSME / Udyam Registration</strong>, <strong>GST Registration</strong>, and <strong>Shop &amp; Establishment Licensing</strong>—enabling you to open a business Current Bank Account effortlessly.
+            FoundingLegals provides end-to-end CA/CS corporate legal support—from name reservation via SPICe+ Part A to custom MOA/AOA drafting, director DIN/DSC issuance, and Certificate of Incorporation procurement.
           </p>
         </div>
 
         <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
           <button
-            onClick={() => openModal("Sole Proprietorship Registration")}
+            onClick={() => openModal("Public Limited Company Registration")}
             className="px-6 py-3.5 bg-olive-600 hover:bg-olive-705 text-white font-bold text-[13px] rounded-full transition-all cursor-pointer shadow-md flex items-center gap-2 shrink-0"
           >
-            Register Sole Proprietorship
+            Register Public Limited Company
           </button>
           <div className="text-[12.5px] text-gray-500">
-            Professional fee starts at <strong className="text-olive-750 font-bold">₹999</strong> + actual government fees.
+            Professional fee starts at <strong className="text-olive-750 font-bold">₹14,999</strong> + actual state stamp duty.
           </div>
         </div>
       </section>
@@ -206,15 +241,15 @@ export default function SoleProprietorshipRegistrationLayout() {
         <div className="space-y-6 pt-4 mb-10 pb-4">
           <div className="text-center sm:text-left">
             <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[28px] font-semibold text-[#1A1917] mb-2">
-              Select Your Sole Proprietorship Package
+              Select Your Public Limited Incorporation Plan
             </h2>
             <p className="text-[13px] text-gray-500 max-w-xl">
-              Transparent packages designed to establish your business identity and bank account.
+              Transparent, CA-managed corporate setup packages with complete MCA filing support.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 items-stretch pt-2">
-            {PROPRIETORSHIP_PLANS.map((plan) => {
+            {PUBLIC_PLANS.map((plan) => {
               const isPopular = plan.isPopular;
               return (
                 <div
@@ -270,7 +305,7 @@ export default function SoleProprietorshipRegistrationLayout() {
                     </p>
 
                     <ul className="space-y-3 mb-8">
-                      {ALL_PROPRIETORSHIP_FEATURES.map((feature, fIdx) => {
+                      {ALL_PUBLIC_FEATURES.map((feature, fIdx) => {
                         const isIncluded = plan.included.includes(feature);
                         return (
                           <li key={fIdx} className="flex items-start gap-2.5 text-[12px] leading-snug">
@@ -347,35 +382,35 @@ export default function SoleProprietorshipRegistrationLayout() {
               Overview
             </h2>
             <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
-              A Sole Proprietorship is an unincorporated business structure owned and operated by one person. Under Indian tax laws, the business and the owner are treated as a single legal entity. It is ideal for small business owners, micro-enterprises, consultants, and shopkeepers seeking immediate commercial launch with minimal overhead.
+              A Public Limited Company (PLC) is a separate legal entity registered under the Companies Act, 2013. It offers limited liability protection to its members and possesses perpetual succession. Unlike Private Limited Companies, a Public Limited Company can raise equity capital from the public, list its securities on recognized Indian stock exchanges (BSE/NSE), and accept unlimited shareholders.
             </p>
             <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
-              While there is no separate MCA charter for a proprietorship, Indian commercial banks require two valid government registration certificates to open a business Current Account under RBI Know Your Customer (KYC) guidelines. FoundingLegals secures your <strong>Udyam (MSME) Certificate</strong> and <strong>GST Registration</strong> to fulfill all banking and legal requirements.
+              FoundingLegals provides CA/CS expert guidance throughout the incorporation lifecycle. We manage company name reservation (SPICe+ Part A), director DIN/DSC registration, Memorandum of Association (MOA) and Articles of Association (AOA) drafting, SPICe+ Part B MCA filing, PAN, TAN, and Certificate of Incorporation issuance.
             </p>
 
             <div className="pt-4 grid sm:grid-cols-2 gap-4">
               <div className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
-                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(a) Complete Operational Control</h4>
+                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(a) Public Equity Fundraising</h4>
                 <p className="text-[13px] text-[#6B6965] font-light leading-relaxed">
-                  The sole proprietor enjoys 100% decision-making authority and retains all business profits.
+                  Authorized to raise capital via public share offerings, debentures, and institutional investors.
                 </p>
               </div>
               <div className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
-                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(b) Quick &amp; Low-Cost Setup</h4>
+                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(b) Freely Transferable Shares</h4>
                 <p className="text-[13px] text-[#6B6965] font-light leading-relaxed">
-                  Lowest formation cost with no complex Articles of Association or mandatory corporate board meetings.
+                  Shareholders can buy, sell, or transfer shares freely without company-level restrictions.
                 </p>
               </div>
               <div className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
-                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(c) Taxed Under Individual Slabs</h4>
+                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(c) Separate Corporate Legal Entity</h4>
                 <p className="text-[13px] text-[#6B6965] font-light leading-relaxed">
-                  Business income is filed under individual Income Tax Returns (ITR-3 / ITR-4) with slab-rate benefits.
+                  Perpetual succession ensures the company&apos;s existence remains independent of shareholder changes.
                 </p>
               </div>
               <div className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
-                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(d) Easy Business Dissolution</h4>
+                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(d) Uncapped Shareholder Capacity</h4>
                 <p className="text-[13px] text-[#6B6965] font-light leading-relaxed">
-                  Can be closed or converted into an LLP / Pvt Ltd at any time with minimal formality.
+                  Requires a minimum of 7 shareholders with no maximum limit on member capacity.
                 </p>
               </div>
             </div>
@@ -384,14 +419,18 @@ export default function SoleProprietorshipRegistrationLayout() {
           {/* Section 2: Eligibility */}
           <article id="eligibility" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
             <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
-              Eligibility Criteria for Sole Proprietorship
+              Eligibility Criteria for Public Limited Incorporation
             </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              To incorporate a Public Limited Company on the MCA portal, the following statutory requirements must be satisfied:
+            </p>
             <div className="space-y-4">
               {[
-                { title: "Single Indian Resident Citizen", desc: "Must be a single individual who is a resident Indian citizen above 18 years of age." },
-                { title: "Valid Personal PAN & Aadhaar", desc: "The proprietor must possess an active personal PAN card and Aadhaar card linked with an active mobile number." },
-                { title: "Business Name Choice", desc: "A unique trade name that does not infringe on existing corporate names or registered trademarks." },
-                { title: "Commercial or Residential Address", desc: "Valid physical office or residential premises address in India with a recent electricity bill and NOC." }
+                { title: "Minimum 7 Shareholders", desc: "Requires at least 7 shareholders (individuals or body corporates) to subscribe to the Memorandum of Association (MOA)." },
+                { title: "Minimum 3 Directors", desc: "Requires at least 3 directors (individuals). At least one director must be a resident of India (stayed ≥ 120 days in India during the financial year)." },
+                { title: "Digital Signature Certificate (DSC) & DIN", desc: "Class-3 Digital Signature Certificates and Director Identification Numbers (DIN) are mandatory for all directors." },
+                { title: "Company Name Ending in 'Limited'", desc: "The proposed corporate name must end with the suffix 'Limited' and comply with MCA Naming Guidelines." },
+                { title: "Registered Office Address", desc: "Must possess a valid physical commercial or registered address in India supported by a utility bill and owner NOC." }
               ].map((req, idx) => (
                 <div key={idx} className="flex gap-4 p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl items-start">
                   <div className="w-8 h-8 rounded-full bg-[#5A7338]/10 border border-[#5A7338]/20 text-[#5A7338] font-bold flex items-center justify-center shrink-0 mt-0.5 text-[13px]">
@@ -409,31 +448,31 @@ export default function SoleProprietorshipRegistrationLayout() {
           {/* Section 3: Benefits */}
           <article id="benefits" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
             <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
-              Benefits of Sole Proprietorship Setup
+              Benefits of Registering a Public Limited Company
             </h2>
             <div className="grid sm:grid-cols-2 gap-5">
               <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
-                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">1. Minimum Government Compliance</h3>
+                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">1. Ability to Raise Capital via Public Offering</h3>
                 <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">
-                  No mandatory annual ROC filings, board resolutions, or public financial disclosures.
+                  Only Public Limited Companies can issue initial public offerings (IPO), rights issues, or debentures to secure large-scale equity financing.
                 </p>
               </div>
               <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
-                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">2. Full Business Confidentiality</h3>
+                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">2. Enhanced Corporate Brand Prestige</h3>
                 <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">
-                  Financial records and business strategies remain private to the proprietor without public inspection access.
+                  Public Limited Companies carry high regulatory transparency, building immense trust with banks, financial institutions, vendor partners, and investors.
                 </p>
               </div>
               <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
-                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">3. Direct Tax Benefits &amp; Presumptive Tax</h3>
+                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">3. Uncapped Member Growth</h3>
                 <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">
-                  Eligible for Section 44AD / 44ADA presumptive taxation schemes, reducing accounting and auditing burdens.
+                  No ceiling on the number of members allows widespread public shareholder participation and employee stock ownership plans (ESOPs).
                 </p>
               </div>
               <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
-                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">4. Priority MSME Scheme Benefits</h3>
+                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">4. Limited Personal Asset Risk</h3>
                 <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">
-                  Access to collateral-free bank loans (CGTMSE), lower interest rates, and MSME government subsidies.
+                  Shareholders&apos; personal financial liability is strictly capped at the nominal value of shares subscribed.
                 </p>
               </div>
             </div>
@@ -442,42 +481,42 @@ export default function SoleProprietorshipRegistrationLayout() {
           {/* Section 4: Process & Documents */}
           <article id="process-documents" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
             <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
-              Step-by-Step Registration Process &amp; Required Documents
+              Step-by-Step Incorporation Process &amp; Document Checklist
             </h2>
             <div className="space-y-4">
               <div className="p-5 border border-[#E5E1D6] rounded-2xl bg-[#FAF9F6]">
-                <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-1">Step 1: Trade Name Selection &amp; Aadhaar Linkage</h4>
-                <p className="text-[13.5px] text-[#6B6965] font-light">Finalize unique business name and verify proprietor Aadhaar OTP authentication.</p>
+                <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-1">Step 1: Obtain Digital Signatures (DSC) &amp; DIN</h4>
+                <p className="text-[13.5px] text-[#6B6965] font-light">Class-3 DSC obtained for all 3 proposed directors to sign electronic e-forms on MCA portal.</p>
               </div>
               <div className="p-5 border border-[#E5E1D6] rounded-2xl bg-[#FAF9F6]">
-                <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-1">Step 2: MSME / Udyam Registration Certificate</h4>
-                <p className="text-[13.5px] text-[#6B6965] font-light">Obtain lifetime MSME (Udyam) Registration Certificate from the Ministry of MSME.</p>
+                <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-1">Step 2: Name Reservation (SPICe+ Part A / RUN)</h4>
+                <p className="text-[13.5px] text-[#6B6965] font-light">Submit up to 2 unique names ending in &apos;Limited&apos; for MCA CRC approval.</p>
               </div>
               <div className="p-5 border border-[#E5E1D6] rounded-2xl bg-[#FAF9F6]">
-                <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-1">Step 3: GST Registration Application</h4>
-                <p className="text-[13.5px] text-[#6B6965] font-light">Submit Form GST REG-01 on the GST portal to obtain 15-digit GSTIN for your trade name.</p>
+                <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-1">Step 3: Drafting Charter Documents (MOA &amp; AOA)</h4>
+                <p className="text-[13.5px] text-[#6B6965] font-light">Draft e-MOA (INC-33) and e-AOA (INC-34) with main business objects and internal governance clauses.</p>
               </div>
               <div className="p-5 border border-[#E5E1D6] rounded-2xl bg-[#FAF9F6]">
-                <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-1">Step 4: Current Bank Account Opening</h4>
-                <p className="text-[13.5px] text-[#6B6965] font-light">Submit Udyam &amp; GST certificates to your preferred bank to open a dedicated Current Account.</p>
+                <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-1">Step 4: SPICe+ Part B Submission &amp; COI Issuance</h4>
+                <p className="text-[13.5px] text-[#6B6965] font-light">Submit integration form with PAN, TAN, AGILE-PRO-S to receive Certificate of Incorporation with 21-digit CIN.</p>
               </div>
             </div>
 
             <div className="pt-4 grid sm:grid-cols-2 gap-6">
               <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
-                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">Proprietor Personal Documents</h4>
+                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">Documents for Directors &amp; Shareholders</h4>
                 <ul className="space-y-2 text-[13.5px] text-[#4A4642]">
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> PAN Card of Proprietor (Mandatory)</li>
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Aadhaar Card (Linked with active mobile)</li>
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Cancelled Cheque / Bank Statement</li>
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Passport-size photograph</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> PAN Card of all 7 shareholders &amp; 3 directors</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Passport / Voter ID / Aadhaar / Driving License</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Bank Statement / Utility Bill (&lt; 2 months old)</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Passport-size photographs</li>
                 </ul>
               </div>
               <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
-                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">Business Address Proof</h4>
+                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">Registered Office Premises Proof</h4>
                 <ul className="space-y-2 text-[13.5px] text-[#4A4642]">
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Electricity or Water Bill (&lt; 30 days old)</li>
-                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Rent Agreement / Ownership Tax Receipt</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Electricity / Gas / Water Bill (&lt; 30 days old)</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Rent Agreement / Lease Deed / Tax Receipt</li>
                   <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> No Objection Certificate (NOC) from property owner</li>
                 </ul>
               </div>
@@ -485,11 +524,11 @@ export default function SoleProprietorshipRegistrationLayout() {
           </article>
 
           {/* Section 5: Fees */}
-          <article id="fees" className="scroll-mt-36 bg-[#FAF9F6] border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+          <article id="fees" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
             <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
-              Sole Proprietorship Registration Fee Breakdown
+              Public Limited Company Registration Fee Breakdown
             </h2>
-            <div className="overflow-x-auto border border-[#E5E1D6] rounded-2xl bg-white">
+            <div className="overflow-x-auto border border-[#E5E1D6] rounded-2xl">
               <table className="w-full text-left border-collapse text-[13.5px]">
                 <thead>
                   <tr className="bg-[#FAF9F6] border-b border-[#E5E1D6] text-[#1A1917] font-serif font-semibold">
@@ -500,51 +539,59 @@ export default function SoleProprietorshipRegistrationLayout() {
                 </thead>
                 <tbody className="divide-y divide-[#E5E1D6] text-[#4A4642]">
                   <tr>
-                    <td className="p-4 font-semibold text-[#1A1917]">MSME / Udyam Registration</td>
-                    <td className="p-4">Included</td>
-                    <td className="p-4">Government portal filing</td>
+                    <td className="p-4 font-semibold text-[#1A1917]">Name Reservation (RUN / SPICe+ Part A)</td>
+                    <td className="p-4">₹1,000</td>
+                    <td className="p-4">MCA Fee for 2 proposed names</td>
                   </tr>
                   <tr>
-                    <td className="p-4 font-semibold text-[#1A1917]">GST Registration Filing</td>
-                    <td className="p-4">Included in Standard Plan</td>
-                    <td className="p-4">Filing &amp; GSTIN ARN generation</td>
+                    <td className="p-4 font-semibold text-[#1A1917]">DSC for 3 Directors</td>
+                    <td className="p-4">₹3,000 – ₹4,500</td>
+                    <td className="p-4">Class-3 Digital Signature Certificates</td>
                   </tr>
                   <tr>
-                    <td className="p-4 font-semibold text-[#1A1917]">Current Bank Account Support</td>
+                    <td className="p-4 font-semibold text-[#1A1917]">State Stamp Duty (MOA &amp; AOA)</td>
+                    <td className="p-4">Varies by State</td>
+                    <td className="p-4">Based on authorized capital contribution</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-semibold text-[#1A1917]">PAN + TAN + AGILE-PRO-S</td>
                     <td className="p-4">Included</td>
-                    <td className="p-4">Bank resolution &amp; KYC documentation support</td>
+                    <td className="p-4">Issued automatically with incorporation</td>
                   </tr>
                   <tr>
                     <td className="p-4 font-semibold text-[#1A1917]">FoundingLegals Professional Fee</td>
-                    <td className="p-4">Starts at ₹999</td>
-                    <td className="p-4">Complete setup &amp; documentation support</td>
+                    <td className="p-4">Starts at ₹14,999</td>
+                    <td className="p-4">Full CA/CS corporate execution &amp; MOA/AOA drafting</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </article>
 
-          {/* Section 6: Checklist */}
-          <article id="checklist" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+          {/* Section 6: Compliances */}
+          <article id="compliances" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
             <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
-              Setup Checklist
+              Post-Incorporation Annual Regulatory Compliances
             </h2>
-            <div className="grid sm:grid-cols-2 gap-6">
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              Public Limited Companies carry strict regulatory oversight under the MCA:
+            </p>
+            <div className="grid sm:grid-cols-2 gap-5">
               <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
-                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">Pre-Filing Requirements</h4>
-                <ul className="space-y-2.5 text-[13.5px] text-[#4A4642]">
-                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Select trade name for business</li>
-                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Verify PAN and Aadhaar mobile linking</li>
-                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Obtain electricity bill &amp; landlord NOC</li>
-                </ul>
+                <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-2">Commencement of Business (INC-20A)</h4>
+                <p className="text-[13px] text-[#6B6965] font-light">Must file Form INC-20A within 180 days of incorporation showing capital deposit into bank account.</p>
               </div>
               <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
-                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">Post-Filing Tasks</h4>
-                <ul className="space-y-2.5 text-[13.5px] text-[#4A4642]">
-                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Download Udyam &amp; GST certificates</li>
-                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Open Current Bank Account in trade name</li>
-                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Maintain GST return filings &amp; annual ITR</li>
-                </ul>
+                <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-2">Mandatory Board Meetings</h4>
+                <p className="text-[13px] text-[#6B6965] font-light">Must hold minimum 4 board meetings annually with a maximum gap of 120 days between two consecutive meetings.</p>
+              </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-2">Annual General Meeting (AGM)</h4>
+                <p className="text-[13px] text-[#6B6965] font-light">Must convene an AGM every financial year within 6 months of financial year end.</p>
+              </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-2">MCA Annual Filings (AOC-4 &amp; MGT-7)</h4>
+                <p className="text-[13px] text-[#6B6965] font-light">File Form AOC-4 (Financial Statements) &amp; Form MGT-7 (Annual Return) with MCA CRC.</p>
               </div>
             </div>
           </article>
@@ -552,14 +599,14 @@ export default function SoleProprietorshipRegistrationLayout() {
           {/* Section 7: Why FoundingLegals */}
           <article id="why-foundinglegals" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
             <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
-              Why FoundingLegals for Sole Proprietorship?
+              Why FoundingLegals for Public Limited Incorporation?
             </h2>
             <div className="grid sm:grid-cols-2 gap-5">
               {[
-                { title: "1. Rapid 3–5 Days Turnaround", desc: "Instant Udyam & GST application filings for quick bank account activation." },
-                { title: "2. 100% Upfront Fixed Pricing", desc: "No surprise fees. Clear packages starting at ₹999." },
-                { title: "3. Guaranteed Bank KYC Compliance", desc: "We provide dual government certificates required by major banks for current account opening." },
-                { title: "4. Future Conversion Guidance", desc: "Seamless guidance when you are ready to convert into a Private Limited Company or LLP." }
+                { title: "1. Senior CA & CS Advisory", desc: "Our experienced corporate secretarial team handles complex MOA/AOA clauses and capital structure planning." },
+                { title: "2. 100% Upfront Fixed Pricing", desc: "Clear itemized professional quotes starting at ₹14,999 with zero hidden charges." },
+                { title: "3. Fast 10-14 Days Timeline", desc: "Dedicated submission managers ensure zero MCA form resubmission queries." },
+                { title: "4. Full CS Retainership & Compliance", desc: "Complete post-incorporation CS retainership for INC-20A, board resolutions, and annual MCA filings." }
               ].map((item, idx) => (
                 <div key={idx} className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
                   <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-2">{item.title}</h4>
@@ -610,7 +657,7 @@ export default function SoleProprietorshipRegistrationLayout() {
           <div className="bg-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl relative border border-gray-100 flex flex-col max-h-[90vh]">
             <div className="bg-[#FAF9F6] p-6 border-b border-gray-150 relative">
               <span className="text-[9px] font-bold text-olive-700 tracking-widest uppercase block mb-1">
-                SOLE PROPRIETORSHIP REGISTRATION
+                PUBLIC LIMITED INCORPORATION
               </span>
               <h3 className="font-serif text-lg font-bold text-brown-900 pr-8">
                 {selectedService}
@@ -634,7 +681,7 @@ export default function SoleProprietorshipRegistrationLayout() {
                   </div>
                   <h4 className="font-serif text-lg font-bold text-brown-900">Application Submitted!</h4>
                   <p className="text-sm text-brown-500 max-w-sm mx-auto leading-relaxed">
-                    Thank you. A legal registration specialist from our team will contact you within 24 hours to begin your Udyam and GST filing.
+                    Thank you. A senior corporate secretary from our team will contact you within 24 hours to begin your Public Limited Company filing.
                   </p>
                   <button
                     onClick={() => {
@@ -659,7 +706,7 @@ export default function SoleProprietorshipRegistrationLayout() {
                       type="text"
                       name="name"
                       required
-                      placeholder="e.g. Suresh Patel"
+                      placeholder="e.g. Vikramaditya Singh"
                       className="w-full px-4 py-2.5 bg-[#FAF9F6] border border-gray-200/80 rounded-xl text-sm focus:outline-none focus:border-olive-600 transition-colors"
                     />
                   </div>
@@ -673,7 +720,7 @@ export default function SoleProprietorshipRegistrationLayout() {
                       type="email"
                       name="email"
                       required
-                      placeholder="suresh@example.com"
+                      placeholder="vikram@example.com"
                       className="w-full px-4 py-2.5 bg-[#FAF9F6] border border-gray-200/80 rounded-xl text-sm focus:outline-none focus:border-olive-600 transition-colors"
                     />
                     <ValidationError prefix="Email" field="email" errors={modalState.errors} className="text-xs text-red-500 mt-1" />
@@ -702,7 +749,7 @@ export default function SoleProprietorshipRegistrationLayout() {
                       type="text"
                       name="city"
                       required
-                      placeholder="e.g. Ahmedabad"
+                      placeholder="e.g. Mumbai"
                       className="w-full px-4 py-2.5 bg-[#FAF9F6] border border-gray-200/80 rounded-xl text-sm focus:outline-none focus:border-olive-600 transition-colors"
                     />
                   </div>

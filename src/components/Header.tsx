@@ -97,7 +97,7 @@ const SERVICE_CATEGORIES = [
     fullName: "Business Incorporation & Entity Registration",
     services: [
       { name: "Pvt Ltd Company Incorporation", href: "/services/company-incorporation" },
-      { name: "Public Limited Company Incorporation", href: "/services/company-incorporation" },
+      { name: "Public Limited Company Incorporation", href: "/services/public-limited-company" },
       { name: "LLP Registration", href: "/services/llp-registration" },
       { name: "Partnership Firm Registration", href: "/services/partnership-firm-registration" },
       { name: "Solo Proprietorship Registration", href: "/services/sole-proprietorship-registration" },
@@ -158,6 +158,15 @@ const SERVICE_CATEGORIES = [
     services: [
       { name: "GST Audit Execution (GSTR-9C)", href: "/services/gst-filing-and-taxation" },
       { name: "Tax Audit Execution", href: "/services/gst-filing-and-taxation" },
+    ]
+  },
+  {
+    id: "certifications_filings",
+    name: "Certifications & Filings",
+    fullName: "Certifications & Filings",
+    services: [
+      { name: "ROC Annual Compliance Filing", href: "/services/certifications" },
+      { name: "ISO Certification", href: "/services/certifications" },
     ]
   },
   {

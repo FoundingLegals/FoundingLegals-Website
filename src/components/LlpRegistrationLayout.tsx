@@ -4,18 +4,16 @@ import React, { useState, useEffect } from "react";
 import { Check, X, Send, ArrowRight, ChevronDown, HelpCircle, Search, Star } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
 
-// --- TABLE OF CONTENT ITEMS ---
-const TOC_ITEMS = [
-  { id: "documents-required", label: "Documents required for LLP Registration" },
-  { id: "registration-process", label: "LLP Registration Process: Step-by-Step Guide" },
-  { id: "registration-time", label: "LLP Company Registration Time" },
-  { id: "registration-fees", label: "Limited Liability Partnership (LLP) Registration Fees" },
-  { id: "compliance-incorporation", label: "Compliance for LLP incorporation" },
-  { id: "avoid-penalties", label: "7 Essential Steps to Avoid Penalties During LLP Registration" },
-  { id: "benefits", label: "Benefits of LLP Registration" },
-  { id: "checklist", label: "Checklist for the LLP incorporation procedure" },
-  { id: "register-fl", label: "Make Your LLP Official. Start with Founding Legals" },
-  { id: "faqs", label: "Frequently Asked Questions" }
+// --- SECTION TABS ---
+const TABS = [
+  { id: "overview", label: "Overview" },
+  { id: "eligibility", label: "Eligibility" },
+  { id: "benefits", label: "Benefits" },
+  { id: "documents", label: "Documents" },
+  { id: "fees", label: "Fees" },
+  { id: "checklist", label: "Checklist" },
+  { id: "why-foundinglegals", label: "Why FoundingLegals" },
+  { id: "faqs", label: "FAQ's" }
 ];
 
 // --- FAQ ITEMS ---
@@ -194,7 +192,7 @@ const LLP_PLANS = [
 ];
 
 export default function LlpRegistrationLayout() {
-  const [activeSection, setActiveSection] = useState("documents-required");
+  const [activeTab, setActiveTab] = useState("overview");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -203,15 +201,15 @@ export default function LlpRegistrationLayout() {
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 220;
+      const scrollPosition = window.scrollY + 180;
 
-      for (const item of TOC_ITEMS) {
+      for (const item of TABS) {
         const el = document.getElementById(item.id);
         if (el) {
           const top = el.offsetTop;
           const height = el.offsetHeight;
           if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(item.id);
+            setActiveTab(item.id);
             break;
           }
         }
@@ -227,10 +225,11 @@ export default function LlpRegistrationLayout() {
     setIsModalOpen(true);
   };
 
-  const scrollToSection = (id: string) => {
+  const handleTabClick = (id: string) => {
+    setActiveTab(id);
     const el = document.getElementById(id);
     if (el) {
-      const offset = 120;
+      const offset = 140;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = el.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -240,7 +239,6 @@ export default function LlpRegistrationLayout() {
         top: offsetPosition,
         behavior: "smooth"
       });
-      setActiveSection(id);
     }
   };
 
@@ -415,478 +413,329 @@ export default function LlpRegistrationLayout() {
         </div>
       </section>
 
-      {/* ── TWO-COLUMN ARTICLE LAYOUT ── */}
+      {/* ── STICKY TAB NAVIGATION & DETAILED SECTIONS ── */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 pb-24">
-        <div className="grid lg:grid-cols-[300px_1fr] gap-12 items-start pt-6 border-t border-gray-100">
-          
-          {/* LEFT COLUMN: Table of Contents */}
-          <aside className="hidden lg:flex lg:sticky lg:top-28 flex-col gap-6">
-            <div>
-              <h3 className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-4">
-                Table of Content
-              </h3>
-              <nav className="flex flex-col gap-1 border-l border-gray-100">
-                {TOC_ITEMS.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`pl-4 py-2 text-[13px] font-medium text-left border-l-2 transition-all cursor-pointer ${
-                      activeSection === item.id
-                        ? "border-olive-600 text-olive-600 bg-olive-50/50"
-                        : "border-transparent text-brown-500 hover:text-brown-900 hover:border-gray-300"
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </nav>
-            </div>
-
-            {/* Quick Registration CTA in Sidebar */}
-            <div className="bg-[#FAF9F6] border border-gray-200/60 p-5 rounded-2xl">
-              <h4 className="font-serif text-sm font-bold text-brown-900 mb-1">
-                Register your LLP
-              </h4>
-              <p className="text-[12px] text-brown-500 mb-4">
-                Let our legal experts handle name reservation, drafting and MCA submission.
-              </p>
-              <p className="font-serif text-base font-bold text-olive-700 mb-4">
-                Starts at ₹1,999 <span className="text-[10px] font-sans text-gray-400 font-normal block mt-0.5">+ Govt Fee</span>
-              </p>
-              <button
-                onClick={() => openModal("Limited Liability Partnership (LLP) Registration")}
-                className="w-full text-center py-2 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[12px] rounded-full transition-all cursor-pointer"
-              >
-                Register your Business
-              </button>
-            </div>
-          </aside>
-
-          {/* RIGHT COLUMN: Content */}
-          <div className="space-y-16 lg:pl-4">
-            
-            {/* 1. Documents Required */}
-            <article id="documents-required" className="scroll-mt-28 space-y-8">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                Documents Required for LLP Registration
-              </h2>
-
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-serif text-[17px] sm:text-[20px] font-semibold text-[#1A1917] mb-3">1. Identity and address proof of partners</h3>
-                  <ul className="space-y-2.5 text-[14.5px] text-[#555] list-disc pl-5">
-                    <li><strong>PAN Card:</strong> Mandatory for all Indian partners.</li>
-                    <li><strong>Aadhaar Card:</strong> Essential for identity matching.</li>
-                    <li><strong>Passport / Voter ID / Driving Licence:</strong> For secondary photo identity validation.</li>
-                    <li><strong>Latest utility bill or recent bank statement:</strong> Serves as proof of address (must not be older than 30 days).</li>
-                    <li><strong>Passport-size photograph:</strong> Of each proposed designated partner.</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="font-serif text-[17px] sm:text-[20px] font-semibold text-[#1A1917] mb-3">2. Proof of registered office</h3>
-                  <ul className="space-y-2.5 text-[14.5px] text-[#555] list-disc pl-5">
-                    <li><strong>Latest electricity or water bill:</strong> Must not be older than 30 days.</li>
-                    <li><strong>Property tax receipt:</strong> If available for the registered address.</li>
-                    <li><strong>Rent agreement or lease deed:</strong> If the premises are rented for business.</li>
-                    <li><strong>No Objection Certificate (NOC):</strong> Form from the owner, permitting use of the address as the LLP's registered office.</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="font-serif text-[17px] sm:text-[20px] font-semibold text-[#1A1917] mb-3">3. LLP Agreement</h3>
-                  <ul className="space-y-2.5 text-[14.5px] text-[#555] list-disc pl-5">
-                    <li>Defines partners' mutual rights, duties, capital contribution, and profit-sharing ratio.</li>
-                    <li>Must be executed on stamp paper of appropriate value and filed with the MCA within 30 days after incorporation.</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="font-serif text-[17px] sm:text-[20px] font-semibold text-[#1A1917] mb-3">4. Partners' Consent & Declarations</h3>
-                  <ul className="space-y-2.5 text-[14.5px] text-[#555] list-disc pl-5">
-                    <li><strong>Form DIR-9:</strong> Declaration from partners that they are not disqualified from forming or managing an LLP.</li>
-                    <li><strong>Consent Letters:</strong> Official consent from designated partners agreeing to act in their respective roles.</li>
-                  </ul>
-                </div>
-              </div>
-            </article>
-
-            {/* 2. Registration Process */}
-            <article id="registration-process" className="scroll-mt-28 space-y-8">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                LLP Registration Process: Step-by-Step Guide
-              </h2>
-              <p className="text-[14.5px] text-[#555] leading-relaxed">
-                The incorporation process of a Limited Liability Partnership (LLP) involves several key steps to establish the entity as a legally recognised business structure.
-              </p>
-
-              <div className="space-y-6">
-                <div className="p-5 border border-gray-100 rounded-2xl bg-[#FAF9F6] space-y-3">
-                  <h4 className="font-serif text-[15px] sm:text-[16px] font-bold text-brown-900">Step 1: Obtain a Digital Signature Certificate (DSC)</h4>
-                  <p className="text-[13.5px] text-[#555]">
-                    Get a Class 3 DSC for all proposed designated partners from a government-recognised Certifying Authority. Complete Aadhaar e-KYC or submit PAN, identity proof, and address proof.
-                  </p>
-                </div>
-
-                <div className="p-5 border border-gray-100 rounded-2xl bg-[#FAF9F6] space-y-3">
-                  <h4 className="font-serif text-[15px] sm:text-[16px] font-bold text-brown-900">Step 2: Apply for Name Approval</h4>
-                  <p className="text-[13.5px] text-[#555]">
-                    Reserve the LLP's name using the LLP-RUN form (Limited Liability Partnership - Reserve Unique Name) on the MCA Portal. The Central Registration Centre (CRC) serves as the approving authority, and you can submit up to two proposed names.
-                  </p>
-                </div>
-
-                <div className="p-5 border border-gray-100 rounded-2xl bg-[#FAF9F6] space-y-3">
-                  <h4 className="font-serif text-[15px] sm:text-[16px] font-bold text-brown-900">Step 3: File FiLLiP for LLP Registration</h4>
-                  <p className="text-[13.5px] text-[#555] mb-2">
-                    Fill out the FiLLiP (Form for Incorporation of Limited Liability Partnership) and submit it to the Registrar. Attach required documents like subscriber sheet, Form 9 consent, proof of registered office and owner NOC.
-                  </p>
-                  <div className="flex gap-4">
-                    <a
-                      href="https://www.mca.gov.in"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-bold text-olive-600 hover:text-olive-700 underline"
-                    >
-                      View FiLLiP Link
-                    </a>
-                  </div>
-                </div>
-
-                <div className="p-5 border border-gray-100 rounded-2xl bg-[#FAF9F6] space-y-3">
-                  <h4 className="font-serif text-[15px] sm:text-[16px] font-bold text-brown-900">Step 4: Submit LLP Agreement</h4>
-                  <p className="text-[13.5px] text-[#555]">
-                    File the LLP Agreement using Form 3 on the MCA portal within 30 days of the LLP being registered. The agreement governs the mutual rights and responsibilities of the partners.
-                  </p>
-                </div>
-              </div>
-
-              {/* MCA Name Check Banner */}
-              <div className="bg-olive-50/60 border border-olive-100 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
-                    <Search className="w-6 h-6 text-olive-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">Searching for a company name?</h4>
-                    <p className="text-[12.5px] text-brown-600">Check company name availability using our powerful name search tool.</p>
-                  </div>
-                </div>
-                <a
-                  href="https://www.mca.gov.in/content/mca/global/en/mca/fo-llp-services/company-llp-name-search.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[12px] rounded-full transition-all shrink-0 cursor-pointer text-center"
+        {/* Sticky Horizontal Navigation Bar */}
+        <div className="sticky top-20 z-30 mb-10 bg-white/95 backdrop-blur-md rounded-2xl border border-[#E5E1D6] p-2 shadow-sm">
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar scroll-smooth py-1 px-1">
+            {TABS.map((tab) => {
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => handleTabClick(tab.id)}
+                  className={`px-5 py-2.5 rounded-xl text-[13.5px] font-medium whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? "bg-[#EBF3FF] text-[#1E3A8A] border border-[#BFDBFE] font-bold shadow-xs"
+                      : "text-[#5C5954] hover:text-[#1A1917] hover:bg-gray-50 border border-transparent"
+                  }`}
                 >
-                  Check Name Availability
-                </a>
-              </div>
-            </article>
-
-            {/* 3. Registration Time */}
-            <article id="registration-time" className="scroll-mt-28 space-y-6">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                LLP Company Registration Time
-              </h2>
-              <p className="text-[14.5px] text-[#555] leading-relaxed">
-                Registering an LLP in India generally takes <strong>7–15 working days</strong>, depending on how quickly documents are submitted and approvals are received from the MCA:
-              </p>
-              
-              <ul className="space-y-3 text-[14px] text-[#555] list-disc pl-5">
-                <li><strong>Obtaining DSC:</strong> 1–3 days</li>
-                <li><strong>Name reservation approval (RUN-LLP):</strong> 1–3 days</li>
-                <li><strong>Preparation & submission of FiLLiP forms:</strong> 2–4 days</li>
-                <li><strong>ROC Approval & Certificate of Incorporation issue:</strong> 2–3 days</li>
-                <li><strong>Filing LLP Agreement (Form 3):</strong> Within 30 days after incorporation</li>
-              </ul>
-
-              <div className="p-5 bg-red-50/40 border border-red-100 rounded-2xl">
-                <h4 className="font-serif text-[14px] font-bold text-red-800 mb-2">Factors That Can Delay Registration</h4>
-                <ul className="grid sm:grid-cols-2 gap-2 text-[12.5px] text-red-700/80 list-disc pl-4">
-                  <li>Incomplete or incorrect documents</li>
-                  <li>Name approval rejections</li>
-                  <li>Delayed response to clarifications</li>
-                  <li>MCA website/server downtime</li>
-                  <li>Jurisdictional processing speeds</li>
-                </ul>
-              </div>
-            </article>
-
-            {/* 4. Registration Fees */}
-            <article id="registration-fees" className="scroll-mt-28 space-y-6">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                Limited Liability Partnership (LLP) Registration Fees
-              </h2>
-              <p className="text-[14.5px] text-[#555] leading-relaxed">
-                The government cost for LLP registration depends mainly on the size of your capital contribution and applicable state stamp duty. Below is an example LLP registration fee structure for Karnataka with up to ₹1 lakh capital and two partners:
-              </p>
-
-              {/* Fee Table */}
-              <div className="overflow-x-auto border border-gray-200/80 rounded-2xl">
-                <table className="w-full text-left border-collapse text-[13.5px]">
-                  <thead>
-                    <tr className="bg-[#FAF9F6] border-b border-gray-200 text-brown-900 font-serif font-semibold">
-                      <th className="p-4">Fee Component</th>
-                      <th className="p-4">Approximate Amount (₹)</th>
-                      <th className="p-4">Notes</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-100 text-[#555]">
-                    <tr>
-                      <td className="p-4 font-semibold text-brown-900">Government filing fee (FiLLiP)</td>
-                      <td className="p-4">500–1,000</td>
-                      <td className="p-4">For capital up to ₹1 lakh</td>
-                    </tr>
-                    <tr>
-                      <td className="p-4 font-semibold text-brown-900">Stamp duty on LLP Agreement</td>
-                      <td className="p-4">1,000–2,000</td>
-                      <td className="p-4">State-wise, often ₹1,000 in Karnataka</td>
-                    </tr>
-                    <tr>
-                      <td className="p-4 font-semibold text-brown-900">Digital Signature (DSC, per person)</td>
-                      <td className="p-4">800–1,500</td>
-                      <td className="p-4">Per partner, varies by provider</td>
-                    </tr>
-                    <tr>
-                      <td className="p-4 font-semibold text-brown-900">Name reservation (RUN-LLP)</td>
-                      <td className="p-4">200</td>
-                      <td className="p-4">Flat government fee</td>
-                    </tr>
-                    <tr>
-                      <td className="p-4 font-semibold text-brown-900">PAN and TAN (via FiLLiP)</td>
-                      <td className="p-4">Included</td>
-                      <td className="p-4">Allotted automatically with registration</td>
-                    </tr>
-                    <tr>
-                      <td className="p-4 font-semibold text-brown-900">Professional fees (Founding Legals)</td>
-                      <td className="p-4">Starts at ₹1,999</td>
-                      <td className="p-4">Transparent professional fee</td>
-                    </tr>
-                    <tr>
-                      <td className="p-4 font-semibold text-brown-900">Miscellaneous expenses</td>
-                      <td className="p-4">500–1,000</td>
-                      <td className="p-4">Courier, notary, etc.</td>
-                    </tr>
-                    <tr className="bg-olive-50/20 font-bold text-olive-800">
-                      <td className="p-4">Total Indicative Cost</td>
-                      <td className="p-4">5,500 – 10,000+</td>
-                      <td className="p-4">Actual cost varies by state/provider</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div className="bg-olive-50/40 p-5 rounded-2xl border border-olive-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div>
-                  <h4 className="font-serif text-sm font-bold text-brown-900 mb-1">
-                    Founding Legals LLP Package
-                  </h4>
-                  <p className="text-[13px] text-brown-600">
-                    Get end-to-end registration services, DSC, name reservation, agreement drafting, and portal filings.
-                  </p>
-                </div>
-                <div className="shrink-0 text-right sm:text-right">
-                  <p className="font-serif text-lg font-bold text-olive-700">Starts at ₹1,999 + Govt. Fee</p>
-                </div>
-              </div>
-            </article>
-
-            {/* 5. Compliance for LLP Incorporation */}
-            <article id="compliance-incorporation" className="scroll-mt-28 space-y-8">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                Compliance for LLP Incorporation
-              </h2>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                {/* For Partners card */}
-                <div className="bg-[#FAF9F6] p-6 rounded-2xl border border-gray-200/50 space-y-4">
-                  <h3 className="font-serif text-[17px] font-bold text-brown-900 border-b border-gray-200/60 pb-2">For Partners</h3>
-                  <ul className="space-y-2 text-[13.5px] text-[#555] list-disc pl-4">
-                    <li>Minimum two partners required to form an LLP.</li>
-                    <li>No upper limit on the maximum number of partners.</li>
-                    <li>Partners must deposit contributions as agreed.</li>
-                  </ul>
-                </div>
-
-                {/* For LLP card */}
-                <div className="bg-[#FAF9F6] p-6 rounded-2xl border border-gray-200/50 space-y-4">
-                  <h3 className="font-serif text-[17px] font-bold text-brown-900 border-b border-gray-200/60 pb-2">For a Limited Liability Partnership</h3>
-                  <ul className="space-y-2 text-[13.5px] text-[#555] list-disc pl-4">
-                    <li>File an LLP agreement within 30 days of incorporation to avoid a Rs 100/day penalty.</li>
-                    <li>File DIR3 for DIN allotment if needed.</li>
-                    <li>File Form 11 (Annual Return) & Form 8 (Solvency Statement) annually.</li>
-                    <li>File ITR-5 Income Tax Return annually.</li>
-                    <li>Register for GST since it is a legal requirement.</li>
-                    <li>Audit accounts through a CA if turnover &gt; ₹40 Lakhs or contribution &gt; ₹25 Lakhs.</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Capital & Tax Details */}
-              <div className="grid sm:grid-cols-2 gap-6 pt-4">
-                <div className="space-y-2">
-                  <h4 className="font-serif text-[15px] font-bold text-brown-900">Minimum Capital Requirement</h4>
-                  <p className="text-[13.5px] text-[#555] leading-relaxed">
-                    There is no minimum capital requirement to register an LLP. Partners can mutually determine the capital amount. An initial capital of ₹10,000 serves as a practical starting point.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="font-serif text-[15px] font-bold text-brown-900">Tax Rates</h4>
-                  <p className="text-[13.5px] text-[#555] leading-relaxed">
-                    LLPs are liable to pay income tax at a standard fixed rate of 30%. A surcharge of 12% is applied if taxable income exceeds ₹1 Crore. A 4% Health and Education cess is also levied.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            {/* 6. Avoid Penalties */}
-            <article id="avoid-penalties" className="scroll-mt-28 space-y-8">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                7 Essential Steps to Avoid Penalties During LLP Registration
-              </h2>
-              <p className="text-[14.5px] text-[#555] leading-relaxed">
-                Registering an LLP is simpler than forming a company, but missing key steps can still lead to delays, resubmissions, or penalties from the MCA.
-              </p>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-                {[
-                  { title: "1. Submit Accurate Partner Documents", desc: "Ensure PAN, Aadhaar, address proofs, and photos are clean, updated, and fully consistent." },
-                  { title: "2. Provide a Valid Registered Office Proof", desc: "Electricity bills, Rent Agreements, and owner NOCs must be recent and correctly formatted." },
-                  { title: "3. File Partner Declarations Correctly", desc: "Submit proper DIR-9 declarations. Missing or incorrect details may result in penalties." },
-                  { title: "4. Draft a Proper LLP Agreement Within 30 Days", desc: "Must be filed with MCA within 30 days. Delayed filing attracts a daily penalty of ₹100." },
-                  { title: "5. Ensure Name Approval Matches Object & Trademark Rules", desc: "Choose a name that aligns with guidelines, objects, and trademark availability." },
-                  { title: "6. Verify DSC & Partner Details Before Filing", desc: "Ensure DSCs of designated partners are active and correctly mapped to prevent form resubmissions." },
-                  { title: "7. Maintain Accurate Capital Details", desc: "Your LLP agreement and incorporation form must match exactly in capital amount and profit ratio." }
-                ].map((step, idx) => (
-                  <div key={idx} className="bg-olive-50/30 p-5 rounded-2xl border border-olive-100/50 space-y-2">
-                    <h4 className="font-serif text-[14px] font-bold text-olive-800">{step.title}</h4>
-                    <p className="text-[12.5px] text-brown-600 leading-relaxed">{step.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </article>
-
-            {/* 7. Benefits of LLP */}
-            <article id="benefits" className="scroll-mt-28 space-y-8">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                Benefits of LLP Registration
-              </h2>
-
-              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-                {[
-                  { title: "Limited Liability", desc: "Liability is limited to partners' contributions. Personal assets are protected." },
-                  { title: "Separate Legal Entity", desc: "The LLP is a separate legal entity responsible for managing its own assets & liabilities." },
-                  { title: "Simpler Process & Less Compliance", desc: "Forming and managing costs less with fewer restrictions than a company." },
-                  { title: "No Minimum Capital", desc: "No minimum paid-up capital requirement before incorporation." },
-                  { title: "Perpetual Succession", desc: "LLP existence is unaffected by partner death, retirement, or insolvency." },
-                  { title: "No Partner Limit", desc: "No maximum limit on the number of partners who can operate under one LLP." }
-                ].map((b, idx) => (
-                  <div key={idx} className="p-5 border border-gray-150 rounded-2xl space-y-3 hover:border-olive-200 transition-all duration-200">
-                    <div className="w-8 h-8 bg-olive-50 rounded-full flex items-center justify-center">
-                      <Check className="w-4 h-4 text-olive-600" />
-                    </div>
-                    <h4 className="font-serif text-[14px] font-bold text-brown-900">{b.title}</h4>
-                    <p className="text-[12.5px] text-brown-500 leading-relaxed">{b.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </article>
-
-            {/* 8. Checklist */}
-            <article id="checklist" className="scroll-mt-28 space-y-8">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                Checklist for the LLP Incorporation Procedure
-              </h2>
-
-              <div className="bg-[#FAF9F6] border border-gray-200/50 rounded-2xl p-6 md:p-8">
-                <ul className="grid sm:grid-cols-2 gap-4 text-[14px] text-brown-700">
-                  {[
-                    "Get DSC for all the Partners.",
-                    "Reserve an LLP's name using the LLP-RUN form.",
-                    "Fill out the FiLLiP and apply.",
-                    "Get an Incorporation Certificate.",
-                    "Obtain PAN & TAN.",
-                    "Draft the LLP Agreement.",
-                    "Get a Current bank account for your LLP.",
-                    "Be compliant with the monthly or annual regulations."
-                  ].map((item, idx) => (
-                    <li key={idx} className="flex items-center gap-3">
-                      <div className="w-5 h-5 bg-olive-600 rounded-full flex items-center justify-center shrink-0">
-                        <Check className="w-3.5 h-3.5 text-white" />
-                      </div>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-
-            {/* 9. Register with FL */}
-            <article id="register-fl" className="scroll-mt-28">
-              <div className="bg-white text-brown-900 rounded-[28px] p-8 md:p-12 relative overflow-hidden shadow-sm border border-brown-100">
-                <div className="relative z-10 max-w-3xl space-y-6">
-                  <div>
-                    <span className="inline-block text-[10px] font-bold text-olive-700 tracking-widest uppercase bg-olive-50 px-3 py-1 rounded-full mb-4 border border-olive-200/50">
-                      GET INCORPORATED
-                    </span>
-                    <h2 className="font-serif text-[24px] sm:text-[32px] md:text-[38px] font-medium leading-tight mb-4 text-brown-900">
-                      Make Your LLP Official. Start with Founding Legals
-                    </h2>
-                    <p className="text-[13.5px] sm:text-[14.5px] text-brown-600 leading-relaxed">
-                      Turning your partnership into a legally recognised LLP shouldn't feel complicated. With Founding Legals, you get a guided, end-to-end experience that streamlines the process of documentation, filings, and compliance.
-                    </p>
-                  </div>
-                  
-                  <div className="pt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-6 border-t border-brown-100">
-                    <div>
-                      <p className="text-[10px] text-brown-400 font-bold uppercase tracking-wider mb-1">REGISTRATION COST</p>
-                      <p className="font-serif text-[22px] font-bold text-olive-700">
-                        Starts at ₹1,999 <span className="text-xs font-sans text-brown-400 font-normal block mt-0.5">+ Govt Fee</span>
-                      </p>
-                    </div>
-                    <button
-                      onClick={() => openModal("Limited Liability Partnership (LLP) Registration")}
-                      className="px-6 py-3 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[13px] rounded-full transition-all cursor-pointer shadow-md flex items-center gap-2 shrink-0"
-                    >
-                      Register your Business
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            {/* 10. FAQs */}
-            <article id="faqs" className="scroll-mt-28 space-y-8">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                Frequently Asked Questions
-              </h2>
-
-              <div className="space-y-3.5">
-                {FAQ_ITEMS.map((faq, idx) => {
-                  const isOpen = openFaqIndex === idx;
-                  return (
-                    <div
-                      key={idx}
-                      className="border border-gray-150 rounded-2xl overflow-hidden bg-white transition-all duration-200"
-                    >
-                      <button
-                        onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-                        className="w-full flex items-center justify-between p-5 text-left font-serif text-[15px] sm:text-[16px] font-semibold text-brown-900 hover:bg-[#FAF9F6] transition-colors cursor-pointer"
-                      >
-                        <span>{faq.question}</span>
-                        <ChevronDown className={`w-4 h-4 text-olive-600 transition-transform shrink-0 ml-4 ${isOpen ? "rotate-180" : ""}`} />
-                      </button>
-                      {isOpen && (
-                        <div className="p-5 pt-0 border-t border-gray-50 text-[14px] text-brown-600 leading-relaxed bg-[#FAF9F6]/20">
-                          {faq.answer}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </article>
-
+                  {tab.label}
+                </button>
+              );
+            })}
           </div>
+        </div>
+
+        {/* Tab Content Sections */}
+        <div className="space-y-12">
+
+          {/* Section 1: Overview */}
+          <article id="overview" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Overview
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              A Limited Liability Partnership (LLP) is a hybrid business structure that combines the benefits of a conventional partnership with the limited liability protection of a corporation. Formed and registered under the Limited Liability Partnership Act, 2008, an LLP offers partners the flexibility of organizing internal management based on mutual agreement while safeguarding personal assets against business debts and liabilities.
+            </p>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              FoundingLegals simplifies the entire process by providing comprehensive end-to-end support for LLP registration, legal documentation, and regulatory compliance in India. Our expert CA and CS team handles LLP name reservation, FiLLiP form filings, custom LLP agreement drafting, and Certificate of Incorporation issuance with 100% pricing transparency.
+            </p>
+
+            <div className="pt-4 grid sm:grid-cols-2 gap-4">
+              <div className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(a) Hybrid Entity Structure</h4>
+                <p className="text-[13px] text-[#6B6965] font-light leading-relaxed">
+                  Combines organizational flexibility of traditional partnerships with corporate limited liability protection.
+                </p>
+              </div>
+              <div className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(b) Limited Personal Liability</h4>
+                <p className="text-[13px] text-[#6B6965] font-light leading-relaxed">
+                  Partners&apos; personal assets are protected. Liability is limited strictly to their agreed capital contribution.
+                </p>
+              </div>
+              <div className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(c) Separate Legal Existence</h4>
+                <p className="text-[13px] text-[#6B6965] font-light leading-relaxed">
+                  Perpetual succession ensures the LLP continues as an independent legal entity regardless of partner changes.
+                </p>
+              </div>
+              <div className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(d) Lower Compliance Burden</h4>
+                <p className="text-[13px] text-[#6B6965] font-light leading-relaxed">
+                  No mandatory statutory audit unless turnover exceeds ₹40 Lakhs or contribution exceeds ₹25 Lakhs.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          {/* Section 2: Eligibility */}
+          <article id="eligibility" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Eligibility Criteria for LLP Registration in India
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              Before initiating LLP incorporation on the MCA portal, ensure the following eligibility parameters are satisfied:
+            </p>
+            <div className="space-y-4">
+              {[
+                { title: "Minimum 2 Partners & No Upper Limit", desc: "A minimum of 2 partners (individuals or body corporates) is required. Unlike Private Limited Companies, there is no maximum limit on the number of partners." },
+                { title: "At Least 2 Designated Partners", desc: "At least 2 individual partners must be assigned as Designated Partners, with at least one being a resident of India (stayed ≥ 120 days in India during the financial year)." },
+                { title: "Digital Signature Certificate (DSC)", desc: "Class-3 DSC is mandatory for all proposed designated partners to digitally sign electronic e-forms and FiLLiP submissions." },
+                { title: "Registered Address in India", desc: "Must possess a valid physical commercial or residential office address in India with a recent utility bill and landlord No Objection Certificate (NOC)." },
+                { title: "No Minimum Capital Requirement", desc: "There is no minimum statutory capital limit required by the MCA. Partners can decide any initial capital contribution (e.g., ₹10,000)." },
+              ].map((req, idx) => (
+                <div key={idx} className="flex gap-4 p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl items-start">
+                  <div className="w-8 h-8 rounded-full bg-[#5A7338]/10 border border-[#5A7338]/20 text-[#5A7338] font-bold flex items-center justify-center shrink-0 mt-0.5 text-[13px]">
+                    {idx + 1}
+                  </div>
+                  <div>
+                    <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-1">{req.title}</h4>
+                    <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">{req.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </article>
+
+          {/* Section 3: Benefits */}
+          <article id="benefits" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Benefits of Registering a Limited Liability Partnership (LLP)
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              Key commercial advantages of choosing an LLP entity structure:
+            </p>
+            <div className="grid sm:grid-cols-2 gap-5">
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">1. Limited Liability Protection</h3>
+                <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">
+                  Partners are protected against personal liability for company obligations. No partner is held liable for another partner&apos;s independent misconduct or negligence.
+                </p>
+              </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">2. Low Compliance Costs</h3>
+                <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">
+                  Lower recurring maintenance fees and simplified filing requirements. Mandatory CA audit applies only if turnover exceeds ₹40 Lakhs or capital contribution exceeds ₹25 Lakhs.
+                </p>
+              </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">3. Internal Governance Flexibility</h3>
+                <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">
+                  Partners can freely draft their custom LLP Agreement to govern decision-making, profit sharing, management roles, and admission/exit of partners.
+                </p>
+              </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">4. No Dividend Distribution Tax</h3>
+                <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">
+                  Profits distributed to partners are free from Dividend Distribution Tax (DDT), reducing tax cascade for active firm partners.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          {/* Section 4: Documents */}
+          <article id="documents" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Documents Required for LLP Registration
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              Essential partner identity, address, and premises documents for online filing:
+            </p>
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">For Indian Designated Partners</h4>
+                <ul className="space-y-2 text-[13.5px] text-[#4A4642]">
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>PAN Card</strong> (Mandatory for Indian partners)</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>Identity Proof:</strong> Aadhaar / Passport / Voter ID / Driving License</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>Address Proof:</strong> Recent Bank Statement / Utility Bill (&lt; 30 days old)</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Passport-size photographs</li>
+                </ul>
+              </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">For Foreign Partners / NRIs</h4>
+                <ul className="space-y-2 text-[13.5px] text-[#4A4642]">
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>Passport:</strong> Mandatory (apostilled/notarized in home country)</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>Address Proof:</strong> Driver&apos;s License / Residence Card / Bank statement</li>
+                </ul>
+              </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">Registered Office Premises Proof</h4>
+                <ul className="space-y-2 text-[13.5px] text-[#4A4642]">
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>Utility Bill:</strong> Electricity or Water bill (&lt; 30 days old)</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>Proof of Right:</strong> Rent Agreement or Ownership Deed</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>NOC:</strong> Signed No Objection Certificate from owner</li>
+                </ul>
+              </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">LLP Charter &amp; Form Submissions</h4>
+                <ul className="space-y-2 text-[13.5px] text-[#4A4642]">
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>FiLLiP Form:</strong> Main incorporation form with MCA</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>Form 3:</strong> LLP Agreement filing (within 30 days of COI)</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>Form DIR-9 &amp; Form 9:</strong> Partner declarations &amp; consents</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          {/* Section 5: Fees */}
+          <article id="fees" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Limited Liability Partnership (LLP) Registration Fees &amp; Breakdown
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              Clear, transparent cost overview for registering an LLP in India:
+            </p>
+            <div className="overflow-x-auto border border-[#E5E1D6] rounded-2xl">
+              <table className="w-full text-left border-collapse text-[13.5px]">
+                <thead>
+                  <tr className="bg-[#FAF9F6] border-b border-[#E5E1D6] text-[#1A1917] font-serif font-semibold">
+                    <th className="p-4">Fee Component</th>
+                    <th className="p-4">Approximate Amount (₹)</th>
+                    <th className="p-4">Notes</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-[#E5E1D6] text-[#4A4642]">
+                  <tr>
+                    <td className="p-4 font-semibold text-[#1A1917]">Name Reservation (RUN-LLP)</td>
+                    <td className="p-4">₹200</td>
+                    <td className="p-4">MCA portal fee for 2 proposed names</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-semibold text-[#1A1917]">FiLLiP Incorporation Form</td>
+                    <td className="p-4">₹500 – ₹1,000</td>
+                    <td className="p-4">Based on capital contribution up to ₹1 Lakh</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-semibold text-[#1A1917]">Stamp Duty on LLP Agreement</td>
+                    <td className="p-4">₹1,000 – ₹2,000</td>
+                    <td className="p-4">State-wise statutory stamp duty (e.g. Karnataka / Maharashtra)</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-semibold text-[#1A1917]">Class-3 DSC (2 Partners)</td>
+                    <td className="p-4">₹1,500 – ₹2,000</td>
+                    <td className="p-4">Digital Signature Certificates for designated partners</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-semibold text-[#1A1917]">PAN &amp; TAN Allotment</td>
+                    <td className="p-4">Included</td>
+                    <td className="p-4">Issued automatically with Certificate of Incorporation</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-semibold text-[#1A1917]">FoundingLegals Professional Fee</td>
+                    <td className="p-4">Starts at ₹1,999</td>
+                    <td className="p-4">Complete drafting, CA review, &amp; MCA filing assistance</td>
+                  </tr>
+                  <tr className="bg-olive-50/40 font-bold text-olive-800">
+                    <td className="p-4">Total Indicative Cost</td>
+                    <td className="p-4">₹5,500 – ₹8,500</td>
+                    <td className="p-4">Statutory state stamp duty charged at actuals</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          {/* Section 6: Checklist */}
+          <article id="checklist" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Pre &amp; Post-Registration Checklist for LLP Incorporation
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              Step-by-step checklist to ensure 100% seamless compliance:
+            </p>
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">Pre-Filing Requirements</h4>
+                <ul className="space-y-2.5 text-[13.5px] text-[#4A4642]">
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Minimum 2 partners identified (at least 1 Indian resident)</li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Class-3 DSC obtained for designated partners</li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Unique LLP name reserved via RUN-LLP form</li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Partner identity &amp; registered office utility bill + NOC ready</li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Custom LLP Agreement drafted with profit-sharing ratios</li>
+                </ul>
+              </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">Post-Filing Compliances</h4>
+                <ul className="space-y-2.5 text-[13.5px] text-[#4A4642]">
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Certificate of Incorporation received with 7-digit LLPIN</li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> File Form 3 (LLP Agreement) with MCA within 30 days</li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Open LLP current bank account &amp; deposit partner capital</li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Annual Return (Form 11) filed before May 30 annually</li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Solvency Statement (Form 8) filed before October 30</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          {/* Section 7: Why FoundingLegals */}
+          <article id="why-foundinglegals" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Why FoundingLegals for LLP Registration?
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              FoundingLegals provides CA-managed incorporation services designed for speed, affordability, and regulatory peace of mind:
+            </p>
+            <div className="grid sm:grid-cols-2 gap-5">
+              {[
+                { title: "1. Qualified CA & CS Execution", desc: "Every document review, name approval reservation, and FiLLiP filing is handled by qualified Chartered Accountants." },
+                { title: "2. Fast 7–10 Days Turnaround", desc: "Streamlined submission workflows to secure name reservation and Certificate of Incorporation in record time." },
+                { title: "3. 100% Upfront Fixed Pricing", desc: "CA-managed incorporation services at fixed member rates starting at ₹1,999 with 100% fee transparency." },
+                { title: "4. Custom LLP Agreement Drafting", desc: "We draft tailored partnership agreements covering capital contributions, management roles, profit splits, and exit clauses." },
+                { title: "5. Lifetime Vault Storage & Alerts", desc: "Store all incorporation certificates, LLPIN, PAN, and TAN securely in your digital vault with automated filing reminders." },
+                { title: "6. Bank Account & Tax Setup Assistance", desc: "Post-registration support for business bank account opening, GST registration, and annual filing compliance." }
+              ].map((item, idx) => (
+                <div key={idx} className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                  <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-2">{item.title}</h4>
+                  <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+
+          {/* Section 8: FAQ's */}
+          <article id="faqs" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-3">
+              {FAQ_ITEMS.map((faq, index) => {
+                const isOpen = openFaqIndex === index;
+                return (
+                  <div key={index} className="border border-[#E5E1D6] rounded-2xl overflow-hidden transition-all bg-[#FAF9F6]">
+                    <button
+                      onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                      className="w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-gray-50/50"
+                    >
+                      <span className="font-serif text-[15px] font-semibold text-[#1A1917] pr-4">
+                        {faq.question}
+                      </span>
+                      <ChevronDown
+                        className={`w-4 h-4 text-gray-500 transition-transform duration-300 shrink-0 ${isOpen ? "rotate-180 text-[#5A7338]" : ""}`}
+                      />
+                    </button>
+                    {isOpen && (
+                      <div className="px-5 pb-5 text-[14px] text-[#4A4642] leading-relaxed border-t border-[#E5E1D6] pt-4 bg-white font-light">
+                        {faq.answer}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </article>
+
         </div>
       </section>
 

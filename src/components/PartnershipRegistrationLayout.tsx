@@ -1,54 +1,121 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Check, X, Send, ArrowRight, ChevronDown, HelpCircle, Star, ShieldCheck } from "lucide-react";
+import { Check, X, Send, ArrowRight, ChevronDown, Star, ShieldCheck, FileText, Building2 } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
 
-// --- TABLE OF CONTENT ITEMS ---
-const TOC_ITEMS = [
-  { id: "documents-required", label: "Documents required for registration" },
-  { id: "incorporation-process", label: "Incorporation Process" },
-  { id: "compliances-requirements", label: "Compliances & Requirements" },
-  { id: "advantages-disadvantages", label: "Advantages & Disadvantages" },
-  { id: "registration-number", label: "Registration Number" },
-  { id: "registration-time", label: "Registration Time" },
-  { id: "registration-fees", label: "Fees" },
-  { id: "checklist", label: "Checklist for Registration" },
-  { id: "faqs", label: "Frequently Asked Questions" }
+// --- SECTION TABS ---
+const TABS = [
+  { id: "overview", label: "Overview" },
+  { id: "eligibility", label: "Eligibility" },
+  { id: "benefits", label: "Benefits" },
+  { id: "process-documents", label: "Process & Documents" },
+  { id: "fees", label: "Fees" },
+  { id: "checklist", label: "Checklist" },
+  { id: "why-foundinglegals", label: "Why FoundingLegals" },
+  { id: "faqs", label: "FAQ's" }
 ];
-
-
 
 // --- FAQ ITEMS ---
 const FAQ_ITEMS = [
   {
-    question: "Do I have to register my partnership firm?",
-    answer: "No, under the Indian Partnership Act 1932, registering a partnership firm is not mandatory. However, registering provides legal advantages, such as the ability to file lawsuits against third parties or other partners in the firm's name."
+    question: "Is Partnership Firm Registration mandatory in India?",
+    answer: "Registration under the Indian Partnership Act, 1932 is optional but highly recommended. An unregistered partnership firm cannot enforce contractual rights in court against third parties or co-partners."
   },
   {
-    question: "How do I choose a unique name for my Partnership Firm?",
-    answer: "The name should be unique and not violate trademarks. It should not contain restricted words like 'National', 'Empire', or 'Crown' without permission, and must not imply government approval or patronage."
+    question: "What is a Partnership Deed?",
+    answer: "A Partnership Deed is a written legal instrument executed on stamp paper by all partners. It details partner names, business objectives, capital contributions, profit-sharing ratios, interest on capital, and dispute resolution rules."
   },
   {
-    question: "What is the validity of the certificate of registration for my partnership firm?",
-    answer: "A Partnership Firm registration certificate is valid for the entire lifetime of the partnership, as long as the firm is not dissolved or wound up by the partners."
+    question: "How long does it take to register a Partnership Firm with FoundingLegals?",
+    answer: "Drafting the Partnership Deed and executing stamp duty takes 2 to 3 days. Full registration with the Registrar of Firms (ROF) typically takes 7 to 10 working days depending on state processing timelines."
   },
   {
-    question: "How can I check if my firm has been officially registered?",
-    answer: "You can verify the registration status by checking with the Registrar of Firms (RoF) in the respective state where the application was submitted."
+    question: "Can a Partnership Firm open a Current Bank Account?",
+    answer: "Yes. Once the Partnership Deed is executed and a firm-level PAN card is issued by NSDL/UTIITSL, you can open a Current Bank Account in the firm's name."
   },
   {
-    question: "When should I register as a Limited Liability Partnership (LLP) instead of a partnership?",
-    answer: "You should choose an LLP if you want to protect your personal assets (limited liability) and want the partnership to have a separate legal identity. Traditional partnerships carry unlimited personal liability for all partners."
+    question: "What is the maximum number of partners allowed in a Partnership Firm?",
+    answer: "Under Rule 10 of the Companies (Miscellaneous) Rules, 2014, the maximum number of partners permitted in a traditional partnership firm is 50."
   },
   {
-    question: "Can I convert my partnership firm to a LLP?",
-    answer: "Yes, an existing partnership firm can be converted into an LLP by complying with the provisions of Chapter X of the LLP Act 2008 and filing Form 17 with the MCA."
+    question: "How is a Partnership Firm taxed in India?",
+    answer: "A Partnership Firm is taxed as an independent entity at a flat income tax rate of 30% (plus applicable surcharge and 4% Health & Education Cess)."
+  }
+];
+
+// --- PRICING PLANS DATA ---
+const ALL_PARTNERSHIP_FEATURES = [
+  "Partnership Deed Drafting",
+  "Stamp Duty & Notarization Support",
+  "Firm PAN & TAN Allotment",
+  "Registrar of Firms (ROF) Application",
+  "ROF Form A & Form B Filing",
+  "Current Bank Account Assistance",
+  "MSME / Udyam Registration",
+  "GST Registration Filing",
+  "Trademark Class Search & Registration"
+];
+
+const PARTNERSHIP_PLANS = [
+  {
+    name: "BASIC",
+    price: "₹1,999",
+    feeSubtext: "+ Stamp Duty",
+    description: "Essential partnership deed drafting and PAN/TAN kit.",
+    badge: "Essential Package",
+    badgeStyles: "bg-gray-100 text-gray-700 border border-gray-200/50",
+    serviceName: "Partnership Firm - BASIC Plan (₹1,999 + Stamp Duty)",
+    included: [
+      "Partnership Deed Drafting",
+      "Stamp Duty & Notarization Support",
+      "Firm PAN & TAN Allotment",
+      "Current Bank Account Assistance"
+    ]
+  },
+  {
+    name: "STANDARD",
+    price: "₹4,999",
+    feeSubtext: "+ Stamp Duty",
+    description: "Complete ROF state registration and MSME setup package.",
+    badge: "Most Popular",
+    badgeStyles: "bg-olive-100 text-olive-800 border border-olive-200/50",
+    isPopular: true,
+    serviceName: "Partnership Firm - STANDARD Plan (₹4,999 + Stamp Duty)",
+    included: [
+      "Partnership Deed Drafting",
+      "Stamp Duty & Notarization Support",
+      "Firm PAN & TAN Allotment",
+      "Registrar of Firms (ROF) Application",
+      "ROF Form A & Form B Filing",
+      "Current Bank Account Assistance",
+      "MSME / Udyam Registration"
+    ]
+  },
+  {
+    name: "PREMIUM",
+    price: "₹6,999",
+    feeSubtext: "+ Stamp Duty",
+    description: "All-inclusive registration, GST, and trademark protection package.",
+    badge: "Best Value",
+    badgeStyles: "bg-brown-100 text-brown-900 border border-brown-200/30",
+    serviceName: "Partnership Firm - PREMIUM Plan (₹6,999 + Stamp Duty)",
+    included: [
+      "Partnership Deed Drafting",
+      "Stamp Duty & Notarization Support",
+      "Firm PAN & TAN Allotment",
+      "Registrar of Firms (ROF) Application",
+      "ROF Form A & Form B Filing",
+      "Current Bank Account Assistance",
+      "MSME / Udyam Registration",
+      "GST Registration Filing",
+      "Trademark Class Search & Registration"
+    ]
   }
 ];
 
 export default function PartnershipRegistrationLayout() {
-  const [activeSection, setActiveSection] = useState("documents-required");
+  const [activeTab, setActiveTab] = useState("overview");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -57,15 +124,15 @@ export default function PartnershipRegistrationLayout() {
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 220;
+      const scrollPosition = window.scrollY + 180;
 
-      for (const item of TOC_ITEMS) {
+      for (const item of TABS) {
         const el = document.getElementById(item.id);
         if (el) {
           const top = el.offsetTop;
           const height = el.offsetHeight;
           if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(item.id);
+            setActiveTab(item.id);
             break;
           }
         }
@@ -76,551 +143,604 @@ export default function PartnershipRegistrationLayout() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 100;
-      window.scrollTo({ top, behavior: "smooth" });
-      setActiveSection(id);
-    }
-  };
-
   const openModal = (serviceName: string) => {
     setSelectedService(serviceName);
     setIsModalOpen(true);
   };
 
+  const handleTabClick = (id: string) => {
+    setActiveTab(id);
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = 140;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = el.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-white font-sans text-brown-900">
+    <div className="min-h-screen bg-white font-sans text-[#2c2925]">
       
-      {/* ── HERO SECTION ── */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#F5F0EB] to-white pt-28 md:pt-[130px] pb-16 px-6 md:px-12 border-b border-brown-100/30">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
-          
-          {/* Left Column: Title and Intro */}
-          <div className="lg:col-span-7 space-y-6">
-            <span className="text-[11px] font-bold text-olive-700 tracking-widest uppercase bg-olive-50/80 px-4 py-1.5 rounded-full border border-olive-200/40 inline-block">
-              Partnership Firms
-            </span>
-            <h1 className="font-serif text-[38px] sm:text-[48px] md:text-[56px] font-semibold text-[#1A1917] leading-[1.1] tracking-tight">
-              Hassle Free Company Registrations with <span className="text-olive-600 italic">Founding Legals</span>
-            </h1>
-            <p className="text-[16px] text-brown-600 font-medium">
-              With ₹0 hidden charges. Get incorporated cleanly and confidently.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <button
-                onClick={() => openModal("Partnership Registration Package")}
-                className="bg-olive-600 hover:bg-olive-700 text-white font-semibold text-[14px] px-8 py-3.5 rounded-xl transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95 text-center"
-              >
-                Register your business
-              </button>
-            </div>
-          </div>
-
-          {/* Right Column: What's Included Card */}
-          <div className="lg:col-span-5 bg-white border border-olive-200/50 rounded-3xl p-6 md:p-8 shadow-md">
-            <h3 className="font-serif text-[18px] font-bold text-brown-900 mb-5 pb-3 border-b border-gray-100 flex items-center gap-2">
-              <Star className="w-5 h-5 text-olive-600 fill-olive-600" /> What’s Included?
-            </h3>
-            
-            <ul className="space-y-3 text-[13px] text-brown-700">
-              {[
-                { title: "Registration in 7-10 Business Days", sub: "Excluding Government Approval time" },
-                { title: "Company PAN and TAN" },
-                { title: "Company Name Approval" },
-                { title: "MOA & AOA" },
-                { title: "Incorporation Certificate" },
-                { title: "DSC Tokens" },
-                { title: "DSC Support & Shipping" },
-                { title: "Digital Signature Certificate" },
-                { title: "Director’s Identification Number (DIN)" }
-              ].map((item, idx) => (
-                <li key={idx} className="flex items-start gap-2.5">
-                  <Check className="w-4 h-4 text-olive-600 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-semibold text-brown-900">{item.title}</span>
-                    {item.sub && <span className="block text-[11px] text-brown-400 font-medium">{item.sub}</span>}
-                  </div>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-5 pt-4 border-t border-gray-100 text-center">
-              <p className="text-[11.5px] text-olive-700 font-semibold bg-olive-50/60 py-2 rounded-xl border border-olive-100/50">
-                ★ Up to 60% off on Payroll! Plans start at just ₹1499/mo
-              </p>
-              <span className="text-[10px] text-brown-400 font-medium block mt-2">*Excluding Government Approval time</span>
-            </div>
-          </div>
-
+      {/* ── HERO HEADER SECTION ── */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-[120px] pb-6">
+        <div className="flex flex-wrap items-center gap-3 mb-6">
+          <span className="text-[11px] font-bold text-olive-700 tracking-widest uppercase bg-olive-50 px-4 py-1.5 rounded-full border border-olive-200/40 inline-flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-olive-650 animate-pulse" />
+            Starts at ₹1,999 + Stamp Duty
+          </span>
+          <span className="text-[11px] font-bold text-brown-600 tracking-widest uppercase bg-[#FAF9F6] px-4 py-1.5 rounded-full border border-brown-200/30 inline-block">
+            Fast Track 7-10 Days Registration
+          </span>
         </div>
 
-        {/* Decorative background shapes */}
-        <div className="absolute top-1/2 left-0 w-72 h-72 bg-olive-50 rounded-full blur-3xl opacity-50 -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-        <div className="absolute top-1/3 right-0 w-80 h-80 bg-[#F5F2EB] rounded-full blur-3xl opacity-60 -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <h1 className="font-serif text-[26px] sm:text-[36px] md:text-[50px] font-medium text-[#1A1917] leading-[1.2] md:leading-[1.1] mb-6">
+          Partnership Firm Registration in India
+        </h1>
+        
+        <div className="text-[15px] md:text-[16px] text-brown-600 leading-relaxed space-y-4 max-w-5xl">
+          <p>
+            A <strong>Partnership Firm</strong> is a popular business structure governed by the <strong>Indian Partnership Act, 1932</strong>. It is formed when two or more individuals agree to share the profits and responsibilities of a business venture under a mutual agreement known as a <strong>Partnership Deed</strong>.
+          </p>
+          <p>
+            FoundingLegals provides CA/CS expert legal assistance to draft custom partnership deeds, execute non-judicial stamp duty, obtain firm-level PAN & TAN, and submit formal registration filings with the Registrar of Firms (ROF) in your respective state.
+          </p>
+        </div>
+
+        <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
+          <button
+            onClick={() => openModal("Partnership Firm Registration")}
+            className="px-6 py-3.5 bg-olive-600 hover:bg-olive-705 text-white font-bold text-[13px] rounded-full transition-all cursor-pointer shadow-md flex items-center gap-2 shrink-0"
+          >
+            Register Partnership Firm
+          </button>
+          <div className="text-[12.5px] text-gray-500">
+            Professional fee starts at <strong className="text-olive-750 font-bold">₹1,999</strong> + state stamp duty.
+          </div>
+        </div>
       </section>
 
-      {/* ── TWO-COLUMN ARTICLE LAYOUT ── */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 py-20">
-        <div className="grid lg:grid-cols-[300px_1fr] gap-12 items-start">
-          
-          {/* LEFT COLUMN: Table of Contents */}
-          <aside className="hidden lg:flex lg:sticky lg:top-28 flex-col gap-6">
-            <div>
-              <h3 className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-4">
-                TABLE OF CONTENT
-              </h3>
-              <nav className="flex flex-col gap-1.5">
-                {TOC_ITEMS.map((item) => (
+      {/* ── PRICING PLANS SECTION ── */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 pb-10">
+        <div className="border-t border-gray-200 mb-8" />
+
+        <div className="space-y-6 pt-4 mb-10 pb-4">
+          <div className="text-center sm:text-left">
+            <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[28px] font-semibold text-[#1A1917] mb-2">
+              Select Your Partnership Registration Plan
+            </h2>
+            <p className="text-[13px] text-gray-500 max-w-xl">
+              Transparent packages covering legal deed drafting, PAN, TAN, and Registrar of Firms (ROF) filing.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 items-stretch pt-2">
+            {PARTNERSHIP_PLANS.map((plan) => {
+              const isPopular = plan.isPopular;
+              return (
+                <div
+                  key={plan.name}
+                  className={`group relative rounded-3xl p-6 flex flex-col justify-between transition-all duration-500 overflow-hidden transform hover:-translate-y-1.5 ${
+                    isPopular
+                      ? "bg-[#5B6836] text-white border-2 border-[#5B6836] shadow-xl hover:shadow-[0_20px_40px_rgba(91,104,54,0.25)]"
+                      : "bg-[#F8FAF4] text-[#2A3416] border border-[#D5DFBE]/70 shadow-xs hover:shadow-md hover:border-[#B4C599]"
+                  }`}
+                >
+                  {isPopular && (
+                    <div className="absolute -top-16 -right-16 w-48 h-48 bg-white/5 rounded-full pointer-events-none blur-xl group-hover:scale-110 transition-transform duration-700" />
+                  )}
+
+                  <div>
+                    {plan.badge && (
+                      <div className="mb-4 flex items-center justify-between">
+                        <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-300 group-hover:scale-105 ${
+                          isPopular
+                            ? "bg-[#E2E9C8] text-[#344015]"
+                            : "bg-[#E6ECDB] text-[#4F5D30] border border-[#D5DFBE]"
+                        }`}>
+                          {isPopular && <Star className="w-3 h-3 fill-[#344015] animate-pulse" />}
+                          {plan.badge}
+                        </span>
+                      </div>
+                    )}
+
+                    <div className="mb-4 flex items-baseline gap-1.5">
+                      <span className={`text-[32px] font-bold font-serif tracking-tight transition-all duration-300 ${
+                        isPopular ? "text-white" : "text-[#2A3416]"
+                      }`}>
+                        {plan.price}
+                      </span>
+                      <span className={`text-[12px] font-normal ${
+                        isPopular ? "text-white/70" : "text-gray-400"
+                      }`}>
+                        {plan.feeSubtext}
+                      </span>
+                    </div>
+
+                    <h3 className={`font-serif text-[19px] font-bold mb-1.5 ${
+                      isPopular ? "text-white" : "text-[#2A3416]"
+                    }`}>
+                      {plan.name}
+                    </h3>
+                    <p className={`text-[11.5px] leading-relaxed mb-6 pb-4 border-b transition-all duration-300 ${
+                      isPopular
+                        ? "text-white/85 border-white/10"
+                        : "text-gray-550 border-[#CBD7B5]/40"
+                    }`}>
+                      {plan.description}
+                    </p>
+
+                    <ul className="space-y-3 mb-8">
+                      {ALL_PARTNERSHIP_FEATURES.map((feature, fIdx) => {
+                        const isIncluded = plan.included.includes(feature);
+                        return (
+                          <li key={fIdx} className="flex items-start gap-2.5 text-[12px] leading-snug">
+                            {isIncluded ? (
+                              <Check className={`w-4 h-4 shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110 ${
+                                isPopular ? "text-[#E2E9C8]" : "text-olive-650"
+                              }`} />
+                            ) : (
+                              <X className={`w-4 h-4 shrink-0 mt-0.5 ${
+                                isPopular ? "text-white/20" : "text-gray-300"
+                              }`} />
+                            )}
+                            <span className={`transition-all duration-300 ${
+                              isIncluded
+                                ? isPopular ? "text-white font-medium" : "text-[#2A3416] font-medium"
+                                : isPopular ? "text-white/30 font-light line-through" : "text-gray-400 font-light line-through"
+                            }`}>
+                              {feature}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+
                   <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`text-left py-2 rounded text-[13.5px] transition-all duration-150 leading-relaxed ${
-                      activeSection === item.id
-                        ? "bg-olive-50/60 text-olive-700 border-l-4 border-olive-600 font-semibold pl-3"
-                        : "text-[#5C5954] hover:text-[#1A1917] border-l-4 border-transparent pl-3"
+                    onClick={() => openModal(plan.serviceName)}
+                    className={`w-full py-3 rounded-full font-bold text-[12px] transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-1.5 shadow-sm transform group-hover:scale-[1.02] active:scale-[0.98] ${
+                      isPopular
+                        ? "bg-[#E2E9C8] hover:bg-[#D5DFB7] text-[#344015] font-semibold"
+                        : "bg-white hover:bg-[#FDFDFD] text-[#2A3416] border border-[#CBD7B5] hover:border-[#B4C599]"
                     }`}
                   >
-                    {item.label}
+                    <span>Opt &amp; Register</span>
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
-                ))}
-              </nav>
-            </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-            <div className="bg-[#FAF9F6] rounded-2xl border border-gray-250 p-5 text-center">
-              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Founding Legals Partnership</p>
-              <p className="text-[18px] font-serif font-bold text-olive-700 mb-3">Manual Drafting & Support</p>
-              <button
-                onClick={() => openModal("Partnership Consultation Package")}
-                className="w-full text-center py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[12px] rounded-full transition-all shadow-sm cursor-pointer"
-              >
-                Inquire and Get Started
-              </button>
-            </div>
-          </aside>
+      {/* ── STICKY TAB NAVIGATION & DETAILED SECTIONS ── */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 pb-24">
+        {/* Sticky Tab Bar */}
+        <div className="sticky top-20 z-30 mb-10 bg-white/95 backdrop-blur-md rounded-2xl border border-[#E5E1D6] p-2 shadow-sm">
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar scroll-smooth py-1 px-1">
+            {TABS.map((tab) => {
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => handleTabClick(tab.id)}
+                  className={`px-5 py-2.5 rounded-xl text-[13.5px] font-medium whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? "bg-[#EBF3FF] text-[#1E3A8A] border border-[#BFDBFE] font-bold shadow-xs"
+                      : "text-[#5C5954] hover:text-[#1A1917] hover:bg-gray-50 border border-transparent"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
-          {/* RIGHT COLUMN: Content */}
-          <div className="space-y-16 lg:pl-4">
-            
-            {/* Header Content */}
+        {/* Tab Sections */}
+        <div className="space-y-12">
+
+          {/* Section 1: Overview */}
+          <article id="overview" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Overview
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              A Partnership Firm is an agreement between two or more individuals to join forces and operate a lawful commercial enterprise. Regulated by the Indian Partnership Act, 1932, a partnership firm allows entrepreneurs to pool financial resources, operational expertise, and managerial responsibility without complex corporate formalities.
+            </p>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              Although registration with the Registrar of Firms (ROF) is optional under Indian law, obtaining formal registration confers major legal advantages—including the right to sue third parties in the firm&apos;s name and file legal recovery claims. FoundingLegals handles drafting, notarization, stamp duty execution, and ROF state submissions seamlessly.
+            </p>
+
+            <div className="pt-4 grid sm:grid-cols-2 gap-4">
+              <div className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(a) Simple Formation</h4>
+                <p className="text-[13px] text-[#6B6965] font-light leading-relaxed">
+                  Requires minimum 2 partners and can be set up quickly with minimal initial capital requirements.
+                </p>
+              </div>
+              <div className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(b) Customized Partnership Deed</h4>
+                <p className="text-[13px] text-[#6B6965] font-light leading-relaxed">
+                  Complete flexibility to specify capital contribution, profit splits, salary, interest, and exit terms.
+                </p>
+              </div>
+              <div className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(c) Independent Firm PAN</h4>
+                <p className="text-[13px] text-[#6B6965] font-light leading-relaxed">
+                  Issued a dedicated firm-level PAN card for opening current bank accounts and tax filings.
+                </p>
+              </div>
+              <div className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(d) Low Compliance Overhead</h4>
+                <p className="text-[13px] text-[#6B6965] font-light leading-relaxed">
+                  No mandatory annual MCA filings or statutory board meeting mandates.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          {/* Section 2: Eligibility */}
+          <article id="eligibility" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Eligibility Criteria for Partnership Firm Registration
+            </h2>
             <div className="space-y-4">
-              <h2 className="font-serif text-[24px] sm:text-[32px] md:text-[38px] font-semibold text-brown-900 leading-tight">
-                Partnership Firm Registration in India
-              </h2>
-              <p className="text-[14.5px] text-brown-650 leading-relaxed">
-                A partnership is a type of business structure in which two or more individuals or entities collaborate in terms of resources, skills, and capital to operate a business together. Indian Partnership Act 1932 is the governing law that regulates partnership firms in India. It is a popular choice for small businesses, professional practices (e.g., law firms, medical practices), and service-based businesses due to its flexibility and relatively simple formation process.
-              </p>
+              {[
+                { title: "Minimum 2 Partners & Maximum 50", desc: "Requires at least 2 partners who are legally competent to contract (major of age, sound mind). Maximum capacity is capped at 50 partners." },
+                { title: "Lawful Business Purpose", desc: "The agreement must be formed to execute a legal commercial or professional business activity aimed at making a profit." },
+                { title: "Unique Firm Name", desc: "The proposed name must not conflict with active registered trademarks or existing corporate entities in India." },
+                { title: "Registered Business Premises", desc: "Must possess a physical office address in India with a recent utility bill and landlord NOC." },
+                { title: "Partnership Deed Execution", desc: "Execution of a written Partnership Deed on non-judicial stamp paper of appropriate state value." }
+              ].map((req, idx) => (
+                <div key={idx} className="flex gap-4 p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl items-start">
+                  <div className="w-8 h-8 rounded-full bg-[#5A7338]/10 border border-[#5A7338]/20 text-[#5A7338] font-bold flex items-center justify-center shrink-0 mt-0.5 text-[13px]">
+                    {idx + 1}
+                  </div>
+                  <div>
+                    <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-1">{req.title}</h4>
+                    <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">{req.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </article>
+
+          {/* Section 3: Benefits */}
+          <article id="benefits" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Benefits of Registering a Partnership Firm
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-5">
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">1. Enforcement of Legal Rights</h3>
+                <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">
+                  Registered partnership firms have full legal standing to file civil lawsuits against defaulting clients, suppliers, or co-partners for breach of contract.
+                </p>
+              </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">2. Shared Financial & Managerial Risk</h3>
+                <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">
+                  Capital contributions and operational workload are distributed among partners, providing resilience and combined skills.
+                </p>
+              </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">3. Flexible Profit-Sharing & Terms</h3>
+                <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">
+                  Partners can freely define profit ratios, interest on capital, partner salaries, and management roles inside the deed.
+                </p>
+              </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">4. Easy Conversion to LLP or Pvt Ltd</h3>
+                <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">
+                  Registered partnership firms can easily convert into a Limited Liability Partnership (LLP) or Private Limited Company as operations scale.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          {/* Section 4: Process & Documents */}
+          <article id="process-documents" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Step-by-Step Registration Process &amp; Required Documents
+            </h2>
+            <div className="space-y-4">
+              <div className="p-5 border border-[#E5E1D6] rounded-2xl bg-[#FAF9F6]">
+                <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-1">Step 1: Drafting the Partnership Deed</h4>
+                <p className="text-[13.5px] text-[#6B6965] font-light">Draft customized clauses specifying firm name, partner details, profit ratios, and operational terms.</p>
+              </div>
+              <div className="p-5 border border-[#E5E1D6] rounded-2xl bg-[#FAF9F6]">
+                <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-1">Step 2: Non-Judicial Stamp Duty Execution</h4>
+                <p className="text-[13.5px] text-[#6B6965] font-light">Print the deed on non-judicial stamp paper of prescribed state value and execute signatures with notary attestation.</p>
+              </div>
+              <div className="p-5 border border-[#E5E1D6] rounded-2xl bg-[#FAF9F6]">
+                <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-1">Step 3: Firm PAN &amp; TAN Allotment</h4>
+                <p className="text-[13.5px] text-[#6B6965] font-light">Apply for firm-level PAN and TAN cards using Form 49A with NSDL/UTIITSL.</p>
+              </div>
+              <div className="p-5 border border-[#E5E1D6] rounded-2xl bg-[#FAF9F6]">
+                <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-1">Step 4: Registrar of Firms (ROF) Filing</h4>
+                <p className="text-[13.5px] text-[#6B6965] font-light">Submit Form A / Form 1 to the Registrar of Firms with certified deed copy and office address proof to receive the Registration Certificate.</p>
+              </div>
             </div>
 
-            {/* Note on MCA & Rize */}
-            <div className="bg-amber-50/80 border border-amber-250 rounded-2xl p-5 text-[13.5px] text-amber-900 leading-relaxed">
-              <strong className="block text-amber-950 font-serif mb-1">⚠️ Important Compliance Note:</strong>
-              Please note that Partnerships do not have an official registration with the Ministry of Corporate Affairs (MCA). As a result, Founding Legals does not provide direct online automated registration services for Partnerships. Our automated portal offerings are limited to Private Limited Companies, Limited Liability Partnerships (LLPs), and One Person Companies (OPCs). However, our compliance team is happy to manually assist you with drafting deeds and obtaining local registrations.
-            </div>
-
-            {/* Section 1: Documents Required */}
-            <article id="documents-required" className="scroll-mt-28 space-y-6">
-              <h3 className="font-serif text-[20px] sm:text-[24px] font-semibold text-brown-900 pb-2 border-b border-gray-150">
-                Documents Required to Register a Partnership Firm
-              </h3>
-              
-              <div className="space-y-5 text-[14.5px] text-brown-750">
-                <div>
-                  <h4 className="font-bold text-brown-900 mb-1">1. Identity Proof and Address Proof of Partners</h4>
-                  <ul className="list-disc pl-5 space-y-1">
-                    <li>Passport / Aadhar card / Voter ID / Driver's License of Partners</li>
-                    <li>PAN card (Mandatory)</li>
-                    <li>Utility bills or Bank Statements as address proof</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-bold text-brown-900 mb-1">2. Proof of Registered Office</h4>
-                  <ul className="list-disc pl-5 space-y-1">
-                    <li><strong>Ownership of Property:</strong> You can provide proof of ownership, such as an electricity bill or corporation tax receipt dated no more than 30 days old.</li>
-                    <li><strong>Right to Use the Property:</strong> You can demonstrate your right to use the property by presenting a rental agreement or a No Objection Certificate (NOC) from the property owner.</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-bold text-brown-900 mb-1">3. Partnership Deed</h4>
-                  <p className="leading-relaxed">
-                    A partnership deed is a crucial agreement that outlines the rights, responsibilities, profit-sharing, and other obligations of the partners. While it can be recorded verbally, it is highly advisable to formalize a written partnership deed with the Registrar of Firms.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="font-bold text-brown-900 mb-1">4. Affidavit</h4>
-                  <p className="leading-relaxed">
-                    An affidavit ensuring all the submitted documents are accurate, true, and legally valid.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            {/* Section 2: Incorporation Process */}
-            <article id="incorporation-process" className="scroll-mt-28 space-y-4">
-              <h3 className="font-serif text-[20px] sm:text-[24px] font-semibold text-brown-900 pb-2 border-b border-gray-150">
-                Partnership Firm Registration Process
-              </h3>
-              <p className="text-[14.5px] text-brown-750 leading-relaxed">
-                Since a partnership isn't considered a separate legal entity, it may not require formal registration to begin. However, you can still register your business and get a certificate by taking the following steps:
-              </p>
-              <ol className="list-decimal pl-5 space-y-3.5 text-[14.5px] text-brown-750">
-                <li><strong>Choose the name of the business:</strong> Establish a unique name that doesn't violate active trademarks.</li>
-                <li><strong>Apply to the “Registrar of Firms” through Form A:</strong> Fill out the registrar application.</li>
-                <li><strong>Attach the required documents:</strong> Include identity and address proofs, specimen of Affidavit, etc.</li>
-                <li><strong>Attach the duly signed copy of the Partnership Deed:</strong> Needs to be signed by all partners.</li>
-                <li><strong>Pay the Fees and submit the form:</strong> Complete the registrar processing payment.</li>
-                <li><strong>Get the Registration Certificate:</strong> Once approved, your firm is registered and a certificate is issued.</li>
-                <li><strong>Open a bank account:</strong> Set up a current account in the name of your business.</li>
-                <li><strong>Obtain PAN and TAN:</strong> Secure tax identification numbers from the Income Tax Authority.</li>
-              </ol>
-            </article>
-
-            {/* Section 3: Compliances & Requirements */}
-            <article id="compliances-requirements" className="scroll-mt-28 space-y-5">
-              <h3 className="font-serif text-[20px] sm:text-[24px] font-semibold text-brown-900 pb-2 border-b border-gray-150">
-                Compliances for a Partnership Firm Registration
-              </h3>
-              
-              <div className="space-y-4 text-[14.5px] text-brown-750">
-                <div>
-                  <h4 className="font-bold text-brown-900 mb-1">For Partners</h4>
-                  <p className="leading-relaxed">
-                    A partnership typically requires a minimum of two partners to be formed. The suggested number of partners cannot be more than 50 for any Partnership firm.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="font-bold text-brown-900 mb-1">For Partnership Firm</h4>
-                  <ul className="list-disc pl-5 space-y-1">
-                    <li>File the Income Tax Return through ITR-5, irrespective of revenue or loss.</li>
-                    <li>File quarterly TDS returns, if applicable.</li>
-                    <li>In case of a GST registration, file GST returns every month and quarter as per the scheme under which you have registered.</li>
-                    <li>Obtain a Tax Audit if the annual turnover exceeds Rs. 1 Crore.</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-bold text-brown-900 mb-1">Minimum Capital Requirement</h4>
-                  <p className="leading-relaxed">
-                    A partnership firm has no minimum capital requirement mandated by law. The capital invested in a partnership is typically determined by mutual agreement among the partners and is specified in the Partnership Deed.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="font-bold text-brown-900 mb-1">Tax Rates</h4>
-                  <p className="leading-relaxed">
-                    For the Assessment Year 2023-24, a Partnership Firm is taxable at 30%. A surcharge of 12% is levied on the amount of income tax if the total income exceeds ₹ 1 Crore. Health & Education cess at 4% is applied on the amount of income tax plus surcharge.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            {/* Section 4: Advantages & Disadvantages */}
-            <article id="advantages-disadvantages" className="scroll-mt-28 space-y-6">
-              <h3 className="font-serif text-[20px] sm:text-[24px] font-semibold text-brown-900 pb-2 border-b border-gray-150">
-                Advantages and Disadvantages of Partnership Registration
-              </h3>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-[#FAF9F6] border border-olive-200/40 p-5 rounded-2xl space-y-3">
-                  <h4 className="font-bold text-olive-800 text-[15px] flex items-center gap-2">
-                    <Check className="w-4 h-4 text-olive-650" /> Advantages
-                  </h4>
-                  <ul className="space-y-2 text-[13.5px] text-brown-700 list-disc pl-4.5">
-                    <li><strong>Easy Registration process:</strong> Simple documentation and registration steps with the Registrar of Firms.</li>
-                    <li><strong>Less compliance:</strong> Far fewer regulations compared to Private Limited Companies or LLPs.</li>
-                    <li><strong>Cost-efficiency:</strong> Setup registration and stamping fees are cheaper than other options.</li>
-                    <li><strong>Sharing of ownership:</strong> Joint liabilities help split operational duties and risks.</li>
-                  </ul>
-                </div>
-
-                <div className="bg-[#FAF9F6] border border-red-200/40 p-5 rounded-2xl space-y-3">
-                  <h4 className="font-bold text-red-800 text-[15px] flex items-center gap-2">
-                    <span className="text-red-650 font-serif">⚠️</span> Disadvantages
-                  </h4>
-                  <ul className="space-y-2 text-[13.5px] text-brown-700 list-disc pl-4.5">
-                    <li><strong>Unlimited Liabilities:</strong> Partners bear unlimited liability; personal assets can be used to recover debts.</li>
-                    <li><strong>Raising funds:</strong> Lack of share capital makes equity fundraising from VCs virtually impossible.</li>
-                  </ul>
-                </div>
-              </div>
-            </article>
-
-            {/* Section 5: Registration Number */}
-            <article id="registration-number" className="scroll-mt-28 space-y-3">
-              <h3 className="font-serif text-[20px] sm:text-[24px] font-semibold text-brown-900 pb-2 border-b border-gray-150">
-                Registration Number for a Partnership Firm
-              </h3>
-              <p className="text-[14.5px] text-brown-750 leading-relaxed">
-                Following the approval of Form A and the Partnership Deed by the Registrar of Firms (RoF), you will receive a Certificate of Registration. This registration certificate includes unique details such as the Firm's name, Registration Number, Date of Registration, and the State jurisdiction where the firm has been registered.
-              </p>
-            </article>
-
-            {/* Section 6: Registration Time */}
-            <article id="registration-time" className="scroll-mt-28 space-y-4">
-              <h3 className="font-serif text-[20px] sm:text-[24px] font-semibold text-brown-900 pb-2 border-b border-gray-150">
-                Partnership Firm Registration Time
-              </h3>
-              <p className="text-[14.5px] text-brown-750 leading-relaxed">
-                Excluding Government Approval time, it takes approximately <strong>7-10 days</strong> to register a Partnership Firm with the Registrar of Firms. However, the duration may vary depending on local state office backlogs.
-              </p>
-              
-              <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-[13.5px] space-y-1.5">
-                <span className="font-bold text-brown-800">Things that Delay a Registration Process:</span>
-                <ul className="list-disc pl-5 text-brown-600 space-y-0.5">
-                  <li>Documents that are incomplete or contain errors.</li>
-                  <li>Discrepancies found within the Partnership Deed.</li>
-                  <li>Extra regulatory clearances or local zone permits.</li>
-                  <li>Delays during the verification procedure by state authorities.</li>
+            <div className="pt-4 grid sm:grid-cols-2 gap-6">
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">Documents for Partners</h4>
+                <ul className="space-y-2 text-[13.5px] text-[#4A4642]">
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> PAN Card of all partners (Mandatory)</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Aadhaar Card / Passport / Voter ID</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Recent Bank Statement / Utility Bill (&lt; 30 days)</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Passport-size photographs</li>
                 </ul>
               </div>
-            </article>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">Registered Office Premises Proof</h4>
+                <ul className="space-y-2 text-[13.5px] text-[#4A4642]">
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Electricity or Water Bill (&lt; 30 days old)</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Rent Agreement / Lease Deed / Ownership Tax Receipt</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Signed No Objection Certificate (NOC) from landlord</li>
+                </ul>
+              </div>
+            </div>
+          </article>
 
-            {/* Section 7: Fees */}
-            <article id="registration-fees" className="scroll-mt-28 space-y-3">
-              <h3 className="font-serif text-[20px] sm:text-[24px] font-semibold text-brown-900 pb-2 border-b border-gray-150">
-                Partnership Firm Registration Fees
-              </h3>
-              <p className="text-[14.5px] text-brown-750 leading-relaxed">
-                The Partnership registration fees vary significantly from one state to another, primarily due to differences in compliance requirements and stamp duty rates. Generally, registration fees for a Partnership Firm range from <strong>Rs. 500 to Rs. 3,000</strong>.
-              </p>
-              <p className="text-[13.5px] text-brown-600">
-                *The stamp duty is determined based on the capital contributed by the partners and the specific rules of the state.
-              </p>
-            </article>
+          {/* Section 5: Fees */}
+          <article id="fees" className="scroll-mt-36 bg-[#FAF9F6] border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Partnership Registration Fee Breakdown
+            </h2>
+            <div className="overflow-x-auto border border-[#E5E1D6] rounded-2xl bg-white">
+              <table className="w-full text-left border-collapse text-[13.5px]">
+                <thead>
+                  <tr className="bg-[#FAF9F6] border-b border-[#E5E1D6] text-[#1A1917] font-serif font-semibold">
+                    <th className="p-4">Fee Component</th>
+                    <th className="p-4">Amount (₹)</th>
+                    <th className="p-4">Details</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-[#E5E1D6] text-[#4A4642]">
+                  <tr>
+                    <td className="p-4 font-semibold text-[#1A1917]">Partnership Deed Drafting</td>
+                    <td className="p-4">Included</td>
+                    <td className="p-4">Tailored deed drafted by legal experts</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-semibold text-[#1A1917]">Non-Judicial Stamp Duty</td>
+                    <td className="p-4">₹500 – ₹2,000</td>
+                    <td className="p-4">State-wise stamp duty based on capital</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-semibold text-[#1A1917]">Firm PAN &amp; TAN Cards</td>
+                    <td className="p-4">₹150 – ₹300</td>
+                    <td className="p-4">Government processing fee</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-semibold text-[#1A1917]">Registrar of Firms (ROF) Application</td>
+                    <td className="p-4">State Fee</td>
+                    <td className="p-4">State-specific ROF filing fee</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-semibold text-[#1A1917]">FoundingLegals Professional Fee</td>
+                    <td className="p-4">Starts at ₹1,999</td>
+                    <td className="p-4">Complete drafting, notarization, &amp; filing assistance</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
 
-            {/* Section 8: Checklist */}
-            <article id="checklist" className="scroll-mt-28 space-y-4">
-              <h3 className="font-serif text-[20px] sm:text-[24px] font-semibold text-brown-900 pb-2 border-b border-gray-150">
-                Checklist for Registration
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-3 text-[13.5px] text-brown-700">
-                {[
-                  "Select a unique name for your business.",
-                  "Draft a compliant Partnership Deed.",
-                  "Apply for Registration with the Registrar of Firms (RoF).",
-                  "Acquire the Certificate of Registration.",
-                  "Apply and acquire PAN and TAN for the Firm.",
-                  "Set up a current account in the firm's name.",
-                  "Stay updated with tax and compliances."
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-2 bg-[#FAF9F6] border border-brown-100/50 px-4 py-3 rounded-xl">
-                    <Check className="w-4 h-4 text-olive-650 shrink-0" />
-                    <span>{item}</span>
+          {/* Section 6: Checklist */}
+          <article id="checklist" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Pre &amp; Post-Registration Checklist
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">Pre-Registration Checklist</h4>
+                <ul className="space-y-2.5 text-[13.5px] text-[#4A4642]">
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Select unique firm name</li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Draft Partnership Deed with capital contributions &amp; profit splits</li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Execute stamp paper notarization</li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Collect PAN, Aadhaar, and office utility bill</li>
+                </ul>
+              </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">Post-Registration Checklist</h4>
+                <ul className="space-y-2.5 text-[13.5px] text-[#4A4642]">
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Receive ROF Registration Certificate</li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Receive firm PAN &amp; TAN cards</li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Open Current Bank Account in firm name</li>
+                  <li className="flex items-start gap-2"><Check className="w-4 h-4 text-[#5A7338] shrink-0 mt-0.5" /> Apply for GST &amp; MSME (Udyam) registration</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          {/* Section 7: Why FoundingLegals */}
+          <article id="why-foundinglegals" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Why FoundingLegals for Partnership Firm Registration?
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-5">
+              {[
+                { title: "1. Tailored Legal Deed Drafting", desc: "Expert lawyers draft custom partnership deeds covering all operational contingencies, capital splits, and dispute resolution." },
+                { title: "2. Fast 7–10 Days Processing", desc: "Fast-track execution from stamp paper purchase to ROF filing." },
+                { title: "3. Transparent Flat Fee", desc: "No hidden charges. Clear professional fee starting at ₹1,999." },
+                { title: "4. End-to-End Tax & Bank Support", desc: "Assistance with firm PAN, TAN, current bank account opening, and MSME/GST registrations." }
+              ].map((item, idx) => (
+                <div key={idx} className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                  <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-2">{item.title}</h4>
+                  <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+
+          {/* Section 8: FAQ's */}
+          <article id="faqs" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-3">
+              {FAQ_ITEMS.map((faq, index) => {
+                const isOpen = openFaqIndex === index;
+                return (
+                  <div key={index} className="border border-[#E5E1D6] rounded-2xl overflow-hidden transition-all bg-[#FAF9F6]">
+                    <button
+                      onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                      className="w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-gray-50/50"
+                    >
+                      <span className="font-serif text-[15px] font-semibold text-[#1A1917] pr-4">
+                        {faq.question}
+                      </span>
+                      <ChevronDown
+                        className={`w-4 h-4 text-gray-500 transition-transform duration-300 shrink-0 ${isOpen ? "rotate-180 text-[#5A7338]" : ""}`}
+                      />
+                    </button>
+                    {isOpen && (
+                      <div className="px-5 pb-5 text-[14px] text-[#4A4642] leading-relaxed border-t border-[#E5E1D6] pt-4 bg-white font-light">
+                        {faq.answer}
+                      </div>
+                    )}
                   </div>
-                ))}
-              </div>
-            </article>
+                );
+              })}
+            </div>
+          </article>
 
-            {/* Section 9: FAQs */}
-            <article id="faqs" className="scroll-mt-28 space-y-6">
-              <h3 className="font-serif text-[20px] sm:text-[24px] font-semibold text-brown-900 pb-2 border-b border-gray-150">
-                Frequently Asked Questions
-              </h3>
-              
-              <div className="space-y-3">
-                {FAQ_ITEMS.map((faq, idx) => {
-                  const isOpen = openFaqIndex === idx;
-                  return (
-                    <div key={idx} className="border border-brown-200/40 rounded-2xl overflow-hidden">
-                      <button
-                        onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-                        className="w-full flex items-center justify-between p-4.5 text-left bg-white hover:bg-cream-light/20 transition-colors"
-                      >
-                        <span className="font-serif font-bold text-[14.5px] text-brown-900">{faq.question}</span>
-                        <ChevronDown className={`w-4 h-4 text-brown-500 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
-                      </button>
-                      
-                      {isOpen && (
-                        <div className="p-4.5 bg-gray-50/50 border-t border-brown-100/30 text-[13.5px] text-brown-650 leading-relaxed">
-                          {faq.answer}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </article>
-
-          </div>
         </div>
       </section>
 
-      {/* ── FOOTER CALL-TO-ACTION BANNER ── */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 pb-24 pt-8">
-        <div className="bg-gradient-to-br from-olive-600 to-olive-800 text-white rounded-3xl p-8 md:p-14 text-center space-y-6 shadow-xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-black/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="max-w-2xl mx-auto space-y-4 relative z-10">
-            <span className="text-[10px] font-bold uppercase tracking-widest bg-white/10 px-4 py-1.5 rounded-full inline-block">
-              Hassle free company registration through Founding Legals
-            </span>
-            <h3 className="font-serif text-[28px] sm:text-[36px] md:text-[44px] font-semibold leading-tight">
-              Draft & Register Your Partnership
-            </h3>
-            <p className="text-[14px] sm:text-[15.5px] text-olive-100 leading-relaxed max-w-xl mx-auto">
-              Get premium compliance advising, deed drafting support, and registration advice from experts.
-            </p>
-            <div className="pt-4">
+      {/* ── FORMSPREE MODAL ── */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/55 backdrop-blur-xs animate-fadeIn">
+          <div className="bg-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl relative border border-gray-100 flex flex-col max-h-[90vh]">
+            <div className="bg-[#FAF9F6] p-6 border-b border-gray-150 relative">
+              <span className="text-[9px] font-bold text-olive-700 tracking-widest uppercase block mb-1">
+                PARTNERSHIP FIRM REGISTRATION
+              </span>
+              <h3 className="font-serif text-lg font-bold text-brown-900 pr-8">
+                {selectedService}
+              </h3>
               <button
-                onClick={() => openModal("Partnership Registration Inquiry")}
-                className="px-8 py-3.5 bg-white hover:bg-cream text-olive-800 font-bold text-[13px] rounded-xl transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95"
+                onClick={() => {
+                  setIsModalOpen(false);
+                  modalState.succeeded = false;
+                }}
+                className="absolute top-6 right-6 text-brown-400 hover:text-brown-900 cursor-pointer transition-colors"
               >
-                Inquire about Partnership setup
+                <X className="w-5 h-5" />
               </button>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ── OPT SERVICE MODAL ── */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-          {/* Backdrop */}
-          <div
-            onClick={() => setIsModalOpen(false)}
-            className="absolute inset-0 bg-brown-900/60 backdrop-blur-xs"
-          />
-
-          {/* Modal Box */}
-          <div className="bg-white rounded-3xl overflow-hidden shadow-2xl max-w-lg w-full relative z-10 animate-scale-up border border-brown-100">
-            {/* Close Button */}
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-all"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            {/* Modal Content */}
-            {modalState.succeeded ? (
-              <div className="p-8 text-center flex flex-col items-center justify-center min-h-[350px]">
-                <div className="w-16 h-16 bg-olive-50 rounded-full flex items-center justify-center mb-6 border border-olive-100">
-                  <Check className="w-8 h-8 text-olive-600 stroke-[3]" />
-                </div>
-                <h3 className="font-serif text-[24px] font-semibold text-brown-900 mb-3">Enquiry Received!</h3>
-                <p className="text-[14px] text-gray-600 leading-relaxed max-w-sm mx-auto mb-6">
-                  Thank you for inquiring about <strong className="text-olive-700">{selectedService}</strong>. A Founding Legals specialist will reach out shortly to assist you.
-                </p>
-                <button
-                  onClick={() => {
-                    setIsModalOpen(false);
-                    window.location.reload();
-                  }}
-                  className="px-6 py-2.5 rounded-full bg-olive-600 hover:bg-olive-700 text-white font-bold text-[13px] transition-all"
-                >
-                  Close Window
-                </button>
-              </div>
-            ) : (
-              <div>
-                {/* Header */}
-                <div className="bg-olive-600 p-6 text-white">
-                  <h3 className="font-serif text-[20px] font-semibold mb-1">Enquiry Form</h3>
-                  <p className="text-[12px] text-olive-100">
-                    Provide your details to speak with a partnership registration specialist.
+            <div className="p-6 overflow-y-auto">
+              {modalState.succeeded ? (
+                <div className="py-8 text-center space-y-4">
+                  <div className="w-14 h-14 bg-olive-50 rounded-full flex items-center justify-center mx-auto">
+                    <Check className="w-7 h-7 text-olive-600" />
+                  </div>
+                  <h4 className="font-serif text-lg font-bold text-brown-900">Application Submitted!</h4>
+                  <p className="text-sm text-brown-500 max-w-sm mx-auto leading-relaxed">
+                    Thank you. A legal expert from our team will contact you within 24 hours to draft your Partnership Deed and process filing.
                   </p>
+                  <button
+                    onClick={() => {
+                      setIsModalOpen(false);
+                      modalState.succeeded = false;
+                    }}
+                    className="mt-6 px-6 py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[12px] rounded-full transition-all cursor-pointer"
+                  >
+                    Close Window
+                  </button>
                 </div>
+              ) : (
+                <form onSubmit={handleModalSubmit} className="space-y-4">
+                  <input type="hidden" name="service" value={selectedService} />
 
-                {/* Form Body */}
-                <form onSubmit={handleModalSubmit} className="p-6 space-y-4 bg-white">
                   <div>
-                    <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
+                    <label htmlFor="modal-name" className="block text-[11px] font-bold text-brown-500 uppercase tracking-wider mb-1.5">
                       Full Name
                     </label>
                     <input
+                      id="modal-name"
                       type="text"
                       name="name"
                       required
-                      placeholder="e.g. Arjun Mehta"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-800 bg-[#FAF9F6] focus:outline-none focus:border-olive-500 placeholder:text-gray-300"
+                      placeholder="e.g. Rajesh Kumar"
+                      className="w-full px-4 py-2.5 bg-[#FAF9F6] border border-gray-200/80 rounded-xl text-sm focus:outline-none focus:border-olive-600 transition-colors"
                     />
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                        Work Email
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        required
-                        placeholder="arjun@startup.com"
-                        className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-800 bg-[#FAF9F6] focus:outline-none focus:border-olive-500 placeholder:text-gray-300"
-                      />
-                      <ValidationError prefix="Email" field="email" errors={modalState.errors} className="text-xs text-red-500 mt-1" />
-                    </div>
-
-                    <div>
-                      <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                        Mobile Number
-                      </label>
-                      <div className="flex gap-2">
-                        <span className="flex items-center px-3 border border-gray-200 rounded-xl bg-[#FAF9F6] text-[13px] text-gray-500 flex-shrink-0">
-                          +91
-                        </span>
-                        <input
-                          type="tel"
-                          name="mobile"
-                          required
-                          placeholder="98765 43210"
-                          className="flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-800 bg-[#FAF9F6] focus:outline-none focus:border-olive-500 placeholder:text-gray-300"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
                   <div>
-                    <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                      Selected Service
+                    <label htmlFor="modal-email" className="block text-[11px] font-bold text-brown-500 uppercase tracking-wider mb-1.5">
+                      Email Address
                     </label>
                     <input
-                      type="text"
-                      name="service"
-                      readOnly
-                      value={selectedService}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-600 bg-gray-50 font-medium cursor-not-allowed focus:outline-none"
+                      id="modal-email"
+                      type="email"
+                      name="email"
+                      required
+                      placeholder="rajesh@example.com"
+                      className="w-full px-4 py-2.5 bg-[#FAF9F6] border border-gray-200/80 rounded-xl text-sm focus:outline-none focus:border-olive-600 transition-colors"
+                    />
+                    <ValidationError prefix="Email" field="email" errors={modalState.errors} className="text-xs text-red-500 mt-1" />
+                  </div>
+
+                  <div>
+                    <label htmlFor="modal-phone" className="block text-[11px] font-bold text-brown-500 uppercase tracking-wider mb-1.5">
+                      Phone Number
+                    </label>
+                    <input
+                      id="modal-phone"
+                      type="tel"
+                      name="phone"
+                      required
+                      placeholder="+91 98765 43210"
+                      className="w-full px-4 py-2.5 bg-[#FAF9F6] border border-gray-200/80 rounded-xl text-sm focus:outline-none focus:border-olive-600 transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                      Special Requirements (Optional)
+                    <label htmlFor="modal-city" className="block text-[11px] font-bold text-brown-500 uppercase tracking-wider mb-1.5">
+                      City of Business
                     </label>
-                    <textarea
-                      name="message"
-                      rows={3}
-                      placeholder="Tell us about your business goals or structure preference..."
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-800 bg-[#FAF9F6] focus:outline-none focus:border-olive-500 placeholder:text-gray-300 resize-none"
+                    <input
+                      id="modal-city"
+                      type="text"
+                      name="city"
+                      required
+                      placeholder="e.g. Delhi"
+                      className="w-full px-4 py-2.5 bg-[#FAF9F6] border border-gray-200/80 rounded-xl text-sm focus:outline-none focus:border-olive-600 transition-colors"
                     />
                   </div>
 
-                  <button
-                    type="submit"
-                    disabled={modalState.submitting}
-                    className="w-full py-3.5 rounded-full bg-olive-600 hover:bg-olive-700 text-white font-bold text-[14px] transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2 disabled:opacity-75 disabled:cursor-not-allowed"
-                  >
-                    {modalState.submitting ? (
-                      <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    ) : (
-                      <>
-                        <Send className="w-4 h-4" />
-                        Send Form & Opt Service
-                      </>
-                    )}
-                  </button>
-                  <p className="text-[11px] text-gray-400 text-center leading-relaxed">
-                    We guarantee 100% confidentiality. Your data is protected by industry standard encryption.
-                  </p>
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      disabled={modalState.submitting}
+                      className="w-full py-3 bg-olive-600 hover:bg-olive-700 disabled:bg-gray-300 text-white font-bold text-[12px] rounded-full transition-all cursor-pointer flex items-center justify-center gap-2 shadow-md shadow-olive-600/10"
+                    >
+                      {modalState.submitting ? (
+                        <span>Submitting...</span>
+                      ) : (
+                        <>
+                          <span>Submit Application</span>
+                          <Send className="w-3.5 h-3.5" />
+                        </>
+                      )}
+                    </button>
+                  </div>
                 </form>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       )}

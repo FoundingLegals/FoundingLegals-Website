@@ -5,17 +5,16 @@ import Image from "next/image";
 import { Check, X, Send, ArrowRight, ChevronDown, HelpCircle, Star } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
 
-// --- TABLE OF CONTENT ITEMS ---
-const TOC_ITEMS = [
-  { id: "documents-required", label: "Documents required for a Private Limited Company Registration" },
-  { id: "incorporation-process", label: "Private Limited Company Incorporation Process" },
-  { id: "avoid-penalties", label: "7 Key Steps to Avoid Penalties During Private Limited Company Registration" },
-  { id: "benefits", label: "Benefits of a Private Limited Company" },
-  { id: "time-cost-fees", label: "Time, Cost, and Fees for registration of Private Limited Company" },
-  { id: "registration-number", label: "What is a Private Limited Company Registration Number?" },
-  { id: "checklist", label: "Checklist to register a Private Limited Company in India" },
-  { id: "register-fl", label: "Register your Private Limited Company with Founding Legals" },
-  { id: "faqs", label: "Frequently Asked Questions" }
+// --- SECTION TABS ---
+const TABS = [
+  { id: "overview", label: "Overview" },
+  { id: "types", label: "Types" },
+  { id: "requirements", label: "Requirements" },
+  { id: "process", label: "Process" },
+  { id: "documents", label: "Documents" },
+  { id: "compliance-calendar", label: "Compliance Calendar" },
+  { id: "why-foundinglegals", label: "Why FoundingLegals" },
+  { id: "faqs", label: "FAQ's" }
 ];
 
 // --- FAQ ITEMS ---
@@ -166,7 +165,7 @@ const INCORPORATION_PLANS = [
 ];
 
 export default function CompanyIncorporationLayout() {
-  const [activeSection, setActiveSection] = useState("documents-required");
+  const [activeTab, setActiveTab] = useState("overview");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -175,15 +174,15 @@ export default function CompanyIncorporationLayout() {
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 220;
+      const scrollPosition = window.scrollY + 180;
 
-      for (const item of TOC_ITEMS) {
+      for (const item of TABS) {
         const el = document.getElementById(item.id);
         if (el) {
           const top = el.offsetTop;
           const height = el.offsetHeight;
           if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(item.id);
+            setActiveTab(item.id);
             break;
           }
         }
@@ -199,10 +198,11 @@ export default function CompanyIncorporationLayout() {
     setIsModalOpen(true);
   };
 
-  const scrollToSection = (id: string) => {
+  const handleTabClick = (id: string) => {
+    setActiveTab(id);
     const el = document.getElementById(id);
     if (el) {
-      const offset = 120;
+      const offset = 140;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = el.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -212,7 +212,6 @@ export default function CompanyIncorporationLayout() {
         top: offsetPosition,
         behavior: "smooth"
       });
-      setActiveSection(id);
     }
   };
 
@@ -398,476 +397,308 @@ export default function CompanyIncorporationLayout() {
         </div>
       </section>
 
-      {/* ── TWO-COLUMN ARTICLE LAYOUT ── */}
+      {/* ── STICKY TAB NAVIGATION & DETAILED SECTIONS ── */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 pb-24">
-        <div className="grid lg:grid-cols-[300px_1fr] gap-12 items-start pt-6 border-t border-gray-100">
-          
-          {/* LEFT COLUMN: Table of Contents */}
-          <aside className="hidden lg:flex lg:sticky lg:top-28 flex-col gap-6">
-            <div>
-              <h3 className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-4">
-                TABLE OF CONTENT
-              </h3>
-              <nav className="flex flex-col gap-1.5">
-                {TOC_ITEMS.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`text-left py-2 rounded text-[13.5px] transition-all duration-150 leading-relaxed ${
-                      activeSection === item.id
-                        ? "bg-olive-50/60 text-olive-700 border-l-4 border-olive-600 font-semibold pl-3"
-                        : "text-[#5C5954] hover:text-[#1A1917] border-l-4 border-transparent pl-3"
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </nav>
-            </div>
+        {/* Sticky Horizontal Navigation Bar */}
+        <div className="sticky top-20 z-30 mb-10 bg-white/95 backdrop-blur-md rounded-2xl border border-[#E5E1D6] p-2 shadow-sm">
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar scroll-smooth py-1 px-1">
+            {TABS.map((tab) => {
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => handleTabClick(tab.id)}
+                  className={`px-5 py-2.5 rounded-xl text-[13.5px] font-medium whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? "bg-[#EBF3FF] text-[#1E3A8A] border border-[#BFDBFE] font-bold shadow-xs"
+                      : "text-[#5C5954] hover:text-[#1A1917] hover:bg-gray-50 border border-transparent"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
 
-            <div className="bg-[#FAF9F6] rounded-2xl border border-gray-200/60 p-5 text-center">
-              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Founding Legals Price</p>
-              <p className="text-[18px] font-serif font-bold text-olive-700 mb-3">Starts at ₹1,999 <span className="text-xs text-gray-400 font-sans font-normal block mt-0.5">+ Govt fee</span></p>
-              <button
-                onClick={() => openModal("Pvt Ltd Company Incorporation - BASIC Plan (₹1,999 + Govt Fees)")}
-                className="w-full text-center py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[12px] rounded-full transition-all shadow-sm cursor-pointer"
-              >
-                Register Now
-              </button>
-            </div>
-          </aside>
+        {/* Tab Content Sections */}
+        <div className="space-y-12">
 
-          {/* RIGHT COLUMN: Article content sections */}
-          <div className="space-y-16 lg:pl-4">
-            
-            {/* Section 1: Documents Required */}
-            <article id="documents-required" className="scroll-mt-28 space-y-6">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                Documents required for a Private Limited Company Registration
-              </h2>
+          {/* Section 1: Overview */}
+          <article id="overview" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Overview
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              Private limited company registration in India provides limited liability, legal independence, and access to tax benefits. Governed by the Companies Act, 2013, it requires a DSC, DIN, and documents like ID and address proof. The SPICe+ form enables combined application for name approval, incorporation, PAN, TAN, and GST. Once approved by the RoC, you receive a Certificate of Incorporation, allowing the company to operate legally, own assets, and sign contracts. Compliance tasks like annual returns and financial reporting are mandatory post-registration.
+            </p>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              FoundingLegals streamlines the entire process by providing comprehensive end-to-end support for private limited company registration, legal documentation, and regulatory compliance. Our expert team ensures every step is handled efficiently and accurately, while maintaining complete transparency in pricing with no hidden costs.
+            </p>
 
-              <div className="space-y-6 text-[15px] text-[#444] leading-relaxed">
-                <div>
-                  <h4 className="font-semibold text-[15px] sm:text-lg text-[#1A1917] mb-2">1. Identity Proof and Address Proof of Directors & Shareholders</h4>
-                  <p className="text-gray-500 mb-2">Identity proof (any one for each):</p>
-                  <ul className="list-disc pl-6 mb-4 space-y-1">
-                    <li>PAN Card (mandatory for Indian nationals)</li>
-                    <li>Passport</li>
-                    <li>Voter ID</li>
-                    <li>Driving Licence</li>
-                  </ul>
-                  
-                  <p className="text-gray-500 mb-2">Address proof (any one for each – recent):</p>
-                  <ul className="list-disc pl-6 mb-4 space-y-1">
-                    <li>Aadhaar Card</li>
-                    <li>Latest Utility Bill (electricity, water, gas)</li>
-                    <li>Recent Bank Statement</li>
-                  </ul>
-
-                  <p className="text-gray-500 mb-2">Other:</p>
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li>Passport-size photographs of all directors</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-[15px] sm:text-lg text-[#1A1917] mb-2">2. Proof of Registered Office</h4>
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li><strong>Electricity Bill</strong> (not older than 30 days): For ownership proof</li>
-                    <li><strong>Property Tax Receipt</strong>: For ownership proof</li>
-                    <li><strong>Rent Agreement</strong> (If the office is rented)</li>
-                    <li><strong>No Objection Certificate (NOC)</strong> from the Property Owner – Authorising use of premises as the registered office</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-[15px] sm:text-lg text-[#1A1917] mb-2">3. Memorandum of Association (MOA)</h4>
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li>Defines the primary objectives, business activities, and scope of the company.</li>
-                    <li>Mandatory for incorporation and submitted in <strong>e-MOA format</strong> during registration.</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-[15px] sm:text-lg text-[#1A1917] mb-2">4. Articles of Association (AOA)</h4>
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li>Specifies internal rules, governance structure, shareholder rights, and operational framework.</li>
-                    <li>Submitted along with the MOA in <strong>e-AOA format</strong>.</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-[15px] sm:text-lg text-[#1A1917] mb-2">5. Declaration & Consent of Proposed Directors</h4>
-                  <ul className="list-disc pl-6 space-y-1.5">
-                    <li><strong>Form INC-9:</strong> A self-declaration by directors and subscribers confirming they are not convicted, and the information provided is correct.</li>
-                    <li><strong>Form DIR-2:</strong> A written consent from each director agreeing to act as a director in the company is required for pvt. ltd. company registration in India.</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-[15px] sm:text-lg text-[#1A1917] mb-2">6. Digital Signatures (DSC) and DIN</h4>
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li>Class‑3 Digital Signature Certificate required for all proposed directors to sign e‑forms.</li>
-                    <li>Director Identification Number (DIN) for each director, generated/validated during the SPICe+ process.</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-[15px] sm:text-lg text-[#1A1917] mb-2">7. Company name & share details</h4>
-                  <ul className="list-disc pl-6 space-y-1">
-                    <li>Proposed company name and brief objects (for SPICe+ Part A name approval).</li>
-                    <li>Shareholding pattern and subscription details (number of shares and amount to be subscribed by each shareholder).</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Callout Info Strip */}
-              <div className="p-6 bg-olive-50 rounded-2xl border border-olive-100/50">
-                <h4 className="font-serif text-[16px] font-bold text-olive-800 mb-1">At a Glance: New firms registration up by 29% in May 2025</h4>
-                <p className="text-[13.5px] text-[#555] leading-relaxed">
-                  India experienced a 29% year-on-year increase in new company registrations in May 2025, totaling 20,718, with active firms reaching a record 1.89 million. The surge is attributed to business-friendly reforms and reduced regulatory hurdles, with Maharashtra leading in state-wise registrations.
+            <div className="pt-4 grid sm:grid-cols-2 gap-4">
+              <div className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(a) Members &amp; Directors</h4>
+                <p className="text-[13px] text-[#6B6965] font-light leading-relaxed">
+                  Requires a minimum of 2 directors and 2 shareholders (up to maximum 200 members). At least one director must be an Indian resident.
                 </p>
               </div>
-            </article>
-
-            {/* Section 2: Incorporation Process */}
-            <article id="incorporation-process" className="scroll-mt-28 space-y-6">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                Private Limited Company Incorporation Process
-              </h2>
-
-              <div className="space-y-6 text-[15px] text-[#444] leading-relaxed">
-                <div>
-                  <h4 className="font-semibold text-lg text-[#1A1917] mb-2">For Directors</h4>
-                  <p>
-                    A minimum of two directors and two shareholders are required to incorporate a private limited company (Pvt. Ltd.). These directors and shareholders can either be the same or different individuals, with at least one director being an Indian Resident. The maximum number of shareholders is limited to 200 under the Companies Act 2013.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-lg text-[#1A1917] mb-2">For a Private Limited Company Compliance Steps</h4>
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>Board Meetings:</strong> Hold the First Meeting of the Board of Directors within 30 days of the Incorporation of the Company. It is compulsory to host four meetings in a year with a gap not more than 120 days.</li>
-                    <li><strong>Annual General Meeting (AGM):</strong> Hold an Annual General Meeting every year, on or before September 30th, during business hours and in the registered office.</li>
-                    <li><strong>Auditor appointment:</strong> Appoint the company's first auditor within 30 days of incorporation, who will serve until the end of the first AGM.</li>
-                    <li><strong>Filing of ADT-1 Form:</strong> File Form ADT-1 within 15 days of the appointment of the subsequent auditor.</li>
-                    <li><strong>Filing of Annual Return:</strong> File Annual Returns (AOC 4 and MGT 7) within 30 and 60 days of holding the AGM, respectively.</li>
-                    <li><strong>Filing of Income Tax Return:</strong> File Form ITR-6 for Income Tax Return annually.</li>
-                    <li><strong>Filing of DIR-3 KYC:</strong> File Form DIR-3 KYC to disclose details of the Directors.</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-lg text-[#1A1917] mb-2">Minimum Capital Requirement for Pvt. Ltd. Company</h4>
-                  <p className="mb-3">
-                    There is no minimum capital requirement to register a Private Limited Company. However, a Private Limited Company has a minimum of 2 shareholders, and each shareholder has to have at least one share. So the company's minimum authorised and paid-up capital is at least Rs 2. This is subject to the requirements of the current account.
-                  </p>
-                  <p className="mb-3">
-                    It's commonly advised to set the authorised capital at ₹1,00,000 (One Lakh), which serves as an initial estimate of the maximum investment that the company could potentially receive from its shareholders.
-                  </p>
-                  <p className="text-xs text-gray-500 italic">
-                    Earlier, the Companies Act 2013 mandated a minimum capital of ₹1,00,000 (Rs. One Lakh) in order to incorporate a private limited company. However, the Amendment Act in 2015 repealed the provision.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-lg text-[#1A1917] mb-2">Tax Rates for Pvt. Ltd. Company</h4>
-                  <p className="mb-2">The basic tax rate for all domestic companies, excluding Surcharge and Cess:</p>
-                  <ul className="list-disc pl-6 mb-4 space-y-1">
-                    <li>Total Turnover or Gross Receipts during the previous year 2020-21 does not exceed ₹ 400 crores: <strong>25%</strong></li>
-                    <li>If opted for Section 115BA: <strong>25%</strong></li>
-                    <li>If opted for Section 115BAA: <strong>22%</strong></li>
-                    <li>If opted for Section 115BAB: <strong>15%</strong></li>
-                  </ul>
-                  <p className="mb-2">A surcharge is an additional charge levied for income tax calculated as per applicable rates:</p>
-                  <ul className="list-disc pl-6 mb-4 space-y-1">
-                    <li>Taxable income above ₹1 Crore - Up to ₹10 Crore: <strong>7%</strong></li>
-                    <li>Taxable income above ₹10 Crore: <strong>12%</strong></li>
-                  </ul>
-                  <p>A health and Education cess of 4% shall also be levied on the amount of income tax plus surcharge (if any).</p>
-                  <p className="text-xs text-gray-500 mt-2 font-medium">Note: The above tax rate is for AY 2025-26.</p>
-                </div>
+              <div className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(b) Limited Liability</h4>
+                <p className="text-[13px] text-[#6B6965] font-light leading-relaxed">
+                  Shareholders’ personal assets are protected. Liability is limited strictly to unpaid share capital.
+                </p>
               </div>
-            </article>
+              <div className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(c) Separate Legal Entity</h4>
+                <p className="text-[13px] text-[#6B6965] font-light leading-relaxed">
+                  Perpetual succession ensures the company legal existence continues independently of member or ownership changes.
+                </p>
+              </div>
+              <div className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">(d) Transferability &amp; Public Prohibition</h4>
+                <p className="text-[13px] text-[#6B6965] font-light leading-relaxed">
+                  Restricts public transfer of shares and prohibits public invitations for shares or public deposits.
+                </p>
+              </div>
+            </div>
+          </article>
 
-            {/* Section 3: Avoid Penalties */}
-            <article id="avoid-penalties" className="scroll-mt-28 space-y-6">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                7 Key Steps to Avoid Penalties During Private Limited Company Registration
-              </h2>
-              <p className="text-[15px] text-[#555] leading-relaxed">
-                Once your Private Limited Company is incorporated, staying compliant is critical. Missing even small filings can result in hefty penalties, director disqualification, and notices from the ROC. Here are the essential steps to stay penalty-free:
-              </p>
+          {/* Section 2: Types */}
+          <article id="types" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Types of Private Limited Company (Pvt. Ltd.)
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              Depending on ownership structure, member liability, and business goals, private limited entities in India fall into the following types:
+            </p>
+            <div className="grid sm:grid-cols-2 gap-5">
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#5A7338] bg-olive-50 px-2.5 py-1 rounded-md mb-3 inline-block">Most Popular</span>
+                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">Company Limited by Shares</h3>
+                <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">
+                  The liability of members is limited strictly to the unpaid face value of shares held by them. This is the standard structure chosen by 99% of startups and equity-funded entities in India.
+                </p>
+              </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#6B6965] bg-gray-100 px-2.5 py-1 rounded-md mb-3 inline-block">Special Purpose</span>
+                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">Company Limited by Guarantee</h3>
+                <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">
+                  Members guarantee to contribute a fixed sum towards company assets in the event of winding up. Commonly used by trade associations and non-profit institutions.
+                </p>
+              </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#6B6965] bg-gray-100 px-2.5 py-1 rounded-md mb-3 inline-block">Rare</span>
+                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">Unlimited Company</h3>
+                <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">
+                  Members have unlimited personal liability for the company debts and liabilities. Rarely incorporated in modern commercial practice.
+                </p>
+              </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#5A7338] bg-olive-50 px-2.5 py-1 rounded-md mb-3 inline-block">Solo Founder</span>
+                <h3 className="font-serif text-[18px] font-bold text-[#1A1917] mb-2">One Person Company (OPC)</h3>
+                <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">
+                  Enables a single promoter to incorporate a private limited structure with corporate limited liability while maintaining full sole-proprietor control.
+                </p>
+              </div>
+            </div>
+          </article>
 
-              <div className="space-y-4">
-                {[
-                  {
-                    num: "1",
-                    title: "File Your AGM & Annual Returns on Time (AOC-4 & MGT-7A/MGT-7)",
-                    desc: "Every company must hold an Annual General Meeting (AGM) and file AOC-4 (financial statements) and MGT-7/MGT-7A (annual return). Late filing can incur a penalty of ₹100 per day per form, with no upper limit."
-                  },
-                  {
-                    num: "2",
-                    title: "Maintain Statutory Registers & Minutes",
-                    desc: "Keep updated registers like: Register of Members, Register of Directors & KMP, and Share transfer register."
-                  },
-                  {
-                    num: "3",
-                    title: "Appoint an Auditor Within 30 Days (Form ADT-1)",
-                    desc: "Every Pvt Ltd company must appoint a statutory auditor within 30 days of incorporation. Non-appointment results in ROC intervention and penalties."
-                  },
-                  {
-                    num: "4",
-                    title: "Deposit Share Capital and Issue Share Certificates",
-                    desc: "Directors must deposit the subscribed capital into the company bank account and issue share certificates within 60 days. Delay attracts penalties under the Companies Act and can trigger compliance red flags."
-                  },
-                  {
-                    num: "5",
-                    title: "Maintain Proper Accounting & GST Compliance",
-                    desc: "Keep accurate books of accounts and comply with GST requirements, such as: GST registration (if applicable), Monthly/quarterly GST filings, and Reconciling GSTR-2B/3B."
-                  },
-                  {
-                    num: "6",
-                    title: "File Director KYC Every Year (Form DIR-3 KYC)",
-                    desc: "All directors must update their KYC details annually. Missing KYC leads to a ₹5,000 penalty per director and their DIN becoming inactive."
-                  },
-                  {
-                    num: "7",
-                    title: "Keep Registered Office Proof Updated",
-                    desc: "Any change must be reported in Form INC-22. Failing to update your address means you'll miss ROC communications, which may escalate into penalties for non-response."
-                  }
-                ].map((step) => (
-                  <div key={step.num} className="flex gap-4 p-5 bg-[#FAF9F6] border border-gray-200/60 rounded-2xl">
-                    <div className="w-8 h-8 rounded-full bg-olive-50 border border-olive-200 text-olive-700 font-bold flex items-center justify-center shrink-0">
-                      {step.num}
-                    </div>
-                    <div>
-                      <h4 className="font-serif text-[15px] font-semibold text-[#1A1917] mb-1">{step.title}</h4>
-                      <p className="text-[13px] text-[#555] leading-relaxed">{step.desc}</p>
-                    </div>
+          {/* Section 3: Requirements */}
+          <article id="requirements" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Requirements for Private Limited Company Registration
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              To register a Private Limited Company under MCA rules, ensure the following eligibility parameters are satisfied:
+            </p>
+            <div className="space-y-4">
+              {[
+                { title: "Minimum 2 Directors & 2 Shareholders", desc: "A minimum of 2 individuals are required (directors and shareholders can be the same). At least one director must be an Indian resident." },
+                { title: "Digital Signature Certificate (DSC) & DIN", desc: "Class-3 DSC is mandatory for all proposed directors to sign electronic e-MOA, e-AOA, and SPICe+ forms. Director Identification Numbers (DIN) are allocated during incorporation." },
+                { title: "Registered Address in India", desc: "Must possess a valid registered office address in India supported by a recent utility bill (electricity/gas/water bill within 30 days) and landlord NOC." },
+                { title: "Unique Company Name", desc: "The proposed name must be unique, business-descriptive, compliant with MCA naming guidelines, and clear of conflicting registered trademarks." },
+                { title: "No Minimum Paid-up Capital Requirement", desc: "The Companies Act 2015 amendment removed mandatory minimum capital. You can incorporate with ₹1 paid-up capital (₹1,00,000 authorized capital recommended)." },
+              ].map((req, idx) => (
+                <div key={idx} className="flex gap-4 p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl items-start">
+                  <div className="w-8 h-8 rounded-full bg-[#5A7338]/10 border border-[#5A7338]/20 text-[#5A7338] font-bold flex items-center justify-center shrink-0 mt-0.5 text-[13px]">
+                    {idx + 1}
                   </div>
-                ))}
-              </div>
-            </article>
-
-            {/* Section 4: Benefits */}
-            <article id="benefits" className="scroll-mt-28 space-y-6">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                Benefits of a Private Limited Company
-              </h2>
-
-              <div className="grid sm:grid-cols-2 gap-5 text-[15px]">
-                {[
-                  {
-                    title: "1. Limited Liability",
-                    desc: "As a shareholder, you do not have any personal liability and need not pay for the company’s liability out of your assets."
-                  },
-                  {
-                    title: "2. Separate Legal Entity",
-                    desc: "A private limited company becomes a separate legal entity after being incorporated. The company is then responsible for managing its assets, liabilities, debtors, and creditors."
-                  },
-                  {
-                    title: "3. Perpetual Succession",
-                    desc: "A company, being a separate legal entity, is unaffected by the death or cessation of any member but continues to exist irrespective of the changes in membership or ownership."
-                  },
-                  {
-                    title: "4. Funding & Foreign Investment",
-                    desc: "Attracting funds is relatively easy for Private limited companies as one can raise funds through equity and debt, thus setting up an optimal capital structure. For companies looking for investment abroad, you can also receive direct foreign investment."
-                  },
-                  {
-                    title: "5. Tax Benefits",
-                    desc: "Private limited companies might be eligible for certain tax benefits or incentives provided by the government. These incentives could sometimes include deductions, exemptions, or lower tax rates."
-                  }
-                ].map((ben, bi) => (
-                  <div key={bi} className="bg-white border border-gray-200 p-5 rounded-2xl shadow-xs flex items-start gap-3">
-                    <Check className="w-5 h-5 text-olive-600 shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-serif text-[15px] font-bold text-[#1A1917] mb-1">{ben.title}</h4>
-                      <p className="text-[12.5px] text-[#555] leading-relaxed">{ben.desc}</p>
-                    </div>
+                  <div>
+                    <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-1">{req.title}</h4>
+                    <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">{req.desc}</p>
                   </div>
-                ))}
-              </div>
-            </article>
+                </div>
+              ))}
+            </div>
+          </article>
 
-            {/* Section 5: Time, Cost, Fees */}
-            <article id="time-cost-fees" className="scroll-mt-28 space-y-6">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                Time, Cost, and Fees for registration of Private Limited Company
-              </h2>
-              <p className="text-[15px] text-[#555] leading-relaxed">
-                Registering a Private Limited Company in India usually takes about <strong>7–10 working days</strong>, depending on how quickly documents are prepared and approved by the MCA.
-              </p>
+          {/* Section 4: Process */}
+          <article id="process" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Step-by-Step Private Limited Company Registration Process
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              FoundingLegals guides you through every stage of the SPICe+ incorporation workflow:
+            </p>
+            <div className="space-y-4">
+              {[
+                { n: "01", title: "Obtain Digital Signature Certificate (DSC)", desc: "All proposed directors obtain Class-3 Digital Signatures for electronic filing authentication." },
+                { n: "02", title: "Apply for Director Identification Number (DIN)", desc: "Each director receives a unique DIN integrated within the SPICe+ form application." },
+                { n: "03", title: "Name Approval via SPICe+ Part A", desc: "Reserve your company name by submitting 2 unique proposed names to the MCA RUN / SPICe+ Part A." },
+                { n: "04", title: "Draft Incorporation Documents (e-MOA & e-AOA)", desc: "Prepare Memorandum of Association (objects clause), Articles of Association (governance), INC-9 self-declarations, and DIR-2 director consent." },
+                { n: "05", title: "File SPICe+ Part B & AGILE-PRO-S", desc: "Complete main incorporation filing for simultaneous PAN, TAN, EPFO, ESIC, Professional Tax, and Corporate Bank Account allocation." },
+                { n: "06", title: "RoC Verification & Certificate of Incorporation", desc: "The Registrar of Companies verifies submissions and issues the official Certificate of Incorporation (COI) with 21-digit CIN." },
+                { n: "07", title: "Post-Registration Setup & Form INC-20A", desc: "Open bank account, deposit share capital, appoint statutory auditor (Form ADT-1), and file Form INC-20A within 180 days." },
+              ].map((step) => (
+                <div key={step.n} className="flex gap-5 p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl items-start">
+                  <div className="w-10 h-10 rounded-2xl bg-[#2B2723] text-white font-bold flex items-center justify-center shrink-0 text-[13px]">
+                    {step.n}
+                  </div>
+                  <div>
+                    <h4 className="font-serif text-[16px] font-bold text-[#1A1917] mb-1">{step.title}</h4>
+                    <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </article>
 
-              <div className="border border-gray-200 rounded-2xl p-5 bg-[#FAF9F6] space-y-3">
-                <h4 className="font-serif text-base font-bold text-[#1A1917]">Things that Delay a Registration Process</h4>
-                <ul className="grid sm:grid-cols-2 gap-4 text-[13.5px] text-[#555]">
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-olive-500 mt-1.5 shrink-0" />
-                    <span><strong>Incomplete Documentation or Errors:</strong> Unclear scans or spelling mismatches.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-olive-500 mt-1.5 shrink-0" />
-                    <span><strong>Name Approval Issues:</strong> Similarity to existing trademarks or active companies.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-olive-500 mt-1.5 shrink-0" />
-                    <span><strong>MCA Server Glitches:</strong> Occasional downtime or high application queues.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-olive-500 mt-1.5 shrink-0" />
-                    <span><strong>Jurisdiction Workload:</strong> Processing speeds of the state ROC office.</span>
-                  </li>
+          {/* Section 5: Documents */}
+          <article id="documents" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Documents Required for Private Limited Company Registration
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              All documents must be self-attested and clearly scanned.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">For Indian Directors &amp; Shareholders</h4>
+                <ul className="space-y-2 text-[13.5px] text-[#4A4642]">
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>PAN Card</strong> (Mandatory for Indian nationals)</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>Identity Proof:</strong> Passport / Aadhaar / Voter ID / Driving License</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>Address Proof:</strong> Bank statement or utility bill (&lt; 2 months old)</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> Passport-size photographs</li>
                 </ul>
               </div>
-
-              <div className="bg-[#FAF9F6] p-6 rounded-2xl border border-gray-200 text-[14px] text-[#555] leading-relaxed">
-                <p className="mb-3">
-                  The cost of Pvt. Ltd. company registration online can vary based on several factors, including the jurisdiction in which you're registering, professional fees, and any additional services you might opt for.
-                </p>
-                <p className="mb-4">
-                  For a company with 2 Directors, Authorised capital up to ₹1 lakh, and standard incorporation, the total estimated cost usually falls between <strong>₹8,000 to ₹25,000</strong> (including pvt ltd company registration govt fees, DSC, and professional fees).
-                </p>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">For Foreign Nationals / NRIs</h4>
+                <ul className="space-y-2 text-[13.5px] text-[#4A4642]">
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>Passport:</strong> Mandatory (notarized/apostilled in home country)</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>Address Proof:</strong> Driving License / Residence Card / Bank statement</li>
+                </ul>
               </div>
-            </article>
-
-            {/* Section 6: CIN */}
-            <article id="registration-number" className="scroll-mt-28 space-y-6">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                What is a Private Limited Company Registration Number?
-              </h2>
-              <p className="text-[15px] text-[#555] leading-relaxed">
-                The Private Limited Company Registration Number, also known as the <strong>Corporate Identification Number (CIN)</strong>, is a unique 21-digit alphanumeric code assigned to a private limited company upon its registration with the Registrar of Companies (ROC). This number serves as a distinct identifier for the company and contains information about its registration details, including the state where it's registered and the type of company structure.
-              </p>
-
-              <div className="bg-[#FAF9F6] border border-gray-200 rounded-3xl p-6">
-                <div className="text-center pb-4 border-b border-gray-200/60 mb-4">
-                  <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest block mb-1">Example CIN</span>
-                  <span className="font-serif text-2xl font-bold text-olive-700 tracking-wider">U72200KA2013PTC097389</span>
-                </div>
-
-                <div className="text-[13.5px] text-[#555] space-y-3 leading-relaxed">
-                  <p>The CIN can be broken down into:</p>
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>The first letter indicates the listing status of the company. Unlisted companies have a CIN that starts with the letter <strong>"U"</strong>, while listed companies commence with the letter <strong>"L"</strong>.</li>
-                    <li>The next series of five numbers serves to classify the economic activity of a company, indicating the specific industry to which the company pertains.</li>
-                    <li>The following two letters signify the Indian state in which the company is registered. Here, it implies Karnataka.</li>
-                    <li>The succeeding four numbers denote the year of incorporation of the company, i.e., <strong>2013</strong>.</li>
-                    <li>The subsequent three letters designate the classification of the company. <strong>PTC</strong> stands for Private Limited Company.</li>
-                    <li>The last six-digit numbers signify the unique registration number issued by the relevant Registrar of Companies (ROC).</li>
-                  </ul>
-                </div>
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">Registered Office Proof</h4>
+                <ul className="space-y-2 text-[13.5px] text-[#4A4642]">
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>Utility Bill:</strong> Electricity or Gas bill (&lt; 30 days old)</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>Proof of Rights:</strong> Rental Agreement / Property Sale Deed</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>NOC:</strong> No Objection Certificate from landlord</li>
+                </ul>
               </div>
-            </article>
-
-            {/* Section 7: Checklist */}
-            <article id="checklist" className="scroll-mt-28 space-y-6">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                Checklist to register a Private Limited Company in India
-              </h2>
-              <p className="text-[15px] text-[#555]">
-                A concise checklist to help you navigate the Private Limited Registration Process:
-              </p>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-                {[
-                  "Get DSC for all designated Directors.",
-                  "Draft the e-Memorandum of Association & e-Articles of Association.",
-                  "Approval of Company Name, a unique and compliant name.",
-                  "Apply through SPICe+.",
-                  "Submit documents & pay fees.",
-                  "Get Certificate of Incorporation.",
-                  "Obtain PAN & TAN.",
-                  "A Company bank account, Proof of the company's registered office.",
-                  "Stay up-to-date with Compliance."
-                ].map((item, index) => (
-                  <div key={index} className="flex gap-3 items-start p-4 bg-white border border-gray-200 rounded-xl shadow-xs">
-                    <span className="w-5 h-5 rounded-full bg-olive-50 text-olive-700 text-xs font-semibold flex items-center justify-center shrink-0 mt-0.5">
-                      {index + 1}
-                    </span>
-                    <span className="text-[13.5px] text-[#444] leading-normal">{item}</span>
-                  </div>
-                ))}
+              <div className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-3">Company Charter &amp; Statutory Consent</h4>
+                <ul className="space-y-2 text-[13.5px] text-[#4A4642]">
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>e-MOA &amp; e-AOA:</strong> Main objects and governance rules</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>Form INC-9:</strong> Self-declaration of directors &amp; subscribers</li>
+                  <li className="flex items-center gap-2"><Check className="w-4 h-4 text-[#5A7338]" /> <strong>Form DIR-2:</strong> Written consent to act as director</li>
+                </ul>
               </div>
-            </article>
+            </div>
+          </article>
 
-            {/* Section 8: Register with Founding Legals */}
-            <article id="register-fl" className="scroll-mt-28">
-              <div className="bg-white text-brown-900 rounded-[28px] p-8 md:p-12 relative overflow-hidden shadow-sm border border-brown-100">
-                <div className="relative z-10 max-w-3xl space-y-6">
+          {/* Section 6: Compliance Calendar */}
+          <article id="compliance-calendar" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Compliance Calendar for Companies: INC-20A, MGT-7, AOC-4 &amp; DIR-3 KYC
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              Mandatory annual filings and timelines regulated by the Ministry of Corporate Affairs (MCA):
+            </p>
+            <div className="space-y-3">
+              {[
+                { form: "Form INC-20A", title: "Declaration of Commencement of Business", due: "Within 180 days of incorporation", desc: "Mandatory declaration confirming deposit of share capital into company bank account." },
+                { form: "Form ADT-1", title: "Appointment of First Statutory Auditor", due: "Within 30 days of incorporation", desc: "Appointment of CA auditor to conduct mandatory annual audit until first AGM." },
+                { form: "Form DIR-3 KYC", title: "Annual Director KYC Verification", due: "On or before September 30 annually", desc: "Mandatory annual director contact and identity verification. Delay incurs ₹5,000 penalty." },
+                { form: "Form AOC-4", title: "Filing of Financial Statements & Balance Sheet", due: "Within 30 days of AGM", desc: "Filing of audited balance sheet, P&L statement, and auditor report with ROC." },
+                { form: "Form MGT-7 / 7A", title: "Filing of Annual Return", due: "Within 60 days of AGM", desc: "Detailed disclosure of shareholding pattern, directors, and statutory registers." },
+                { form: "Form ITR-6", title: "Corporate Income Tax Return", due: "On or before October 31 annually", desc: "Annual income tax return filing under Section 139 of the Income Tax Act." },
+              ].map((item, i) => (
+                <div key={i} className="p-5 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
-                    <span className="inline-block text-[10px] font-bold text-olive-700 tracking-widest uppercase bg-olive-50 px-3 py-1 rounded-full mb-4 border border-olive-200/50">
-                      GET INCORPORATED
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#5A7338] bg-olive-50 px-2.5 py-0.5 rounded-md mb-1 inline-block">
+                      {item.form}
                     </span>
-                    <h2 className="font-serif text-[24px] sm:text-[32px] md:text-[38px] font-medium leading-tight mb-4 text-brown-900">
-                      Register your Private Limited Company with Founding Legals
-                    </h2>
-                    <p className="text-[13.5px] sm:text-[14.5px] text-brown-600 leading-relaxed mb-4">
-                      Founding Legals simplifies the entire journey of registering a Private Limited Company online by handling all the paperwork, filings, and registration steps end-to-end.
-                    </p>
-                    <p className="text-[13px] text-brown-500 leading-relaxed">
-                      From Day 1, Founding Legals guides you through every step: collecting your documents, securing your DSC, reserving your company name, drafting your MOA and AOA, and filing everything correctly with the MCA. You don’t need to chase CAs, coordinate documents, or worry about missing any step—everything is streamlined on one platform with expert support.
-                    </p>
+                    <h4 className="font-serif text-[16px] font-bold text-[#1A1917]">{item.title}</h4>
+                    <p className="text-[13px] text-[#6B6965] font-light mt-0.5">{item.desc}</p>
                   </div>
-                  
-                  <div className="pt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-6 border-t border-brown-100">
-                    <div>
-                      <p className="text-[10px] text-brown-400 font-bold uppercase tracking-wider mb-1">REGISTRATION COST</p>
-                      <p className="font-serif text-[22px] font-bold text-olive-700">
-                        Starts at ₹1,999 <span className="text-xs font-sans text-brown-400 font-normal block mt-0.5">+ actual government state fees</span>
-                      </p>
-                    </div>
-                    <button
-                      onClick={() => openModal("Pvt Ltd Company Incorporation - BASIC Plan (₹1,999 + Govt Fees)")}
-                      className="px-6 py-3 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[13px] rounded-full transition-all cursor-pointer shadow-md flex items-center gap-2 shrink-0"
-                    >
-                      Register your Business
-                    </button>
+                  <div className="shrink-0 text-right sm:border-l sm:border-[#E5E1D6] sm:pl-5">
+                    <span className="text-[11px] font-bold uppercase text-gray-400 block">Due Date</span>
+                    <span className="text-[13px] font-bold text-[#1A1917]">{item.due}</span>
                   </div>
                 </div>
-              </div>
-            </article>
+              ))}
+            </div>
+          </article>
 
-            {/* Section 9: FAQ Accordion */}
-            <article id="faqs" className="scroll-mt-28 space-y-6">
-              <h2 className="font-serif text-[20px] sm:text-[24px] md:text-[32px] font-semibold text-[#1A1917] leading-snug md:leading-tight">
-                Frequently Asked Questions
-              </h2>
-              
-              <div className="space-y-3">
-                {FAQ_ITEMS.map((faq, index) => {
-                  const isOpen = openFaqIndex === index;
-                  return (
-                    <div
-                      key={index}
-                      className="border border-gray-200 rounded-2xl overflow-hidden transition-all bg-white shadow-xs"
+          {/* Section 7: Why FoundingLegals */}
+          <article id="why-foundinglegals" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Why FoundingLegals for Private Limited Company Registration?
+            </h2>
+            <p className="text-[15px] sm:text-[16px] text-[#4A4642] leading-relaxed font-light">
+              Registering a Private Limited Company is a major step toward building a scalable business. FoundingLegals combines qualified CA execution with transparent pricing and long-term compliance support:
+            </p>
+            <div className="grid sm:grid-cols-2 gap-5">
+              {[
+                { title: "1. End-to-End Incorporation Support", desc: "From SPICe+ form filing to MCA approval, FoundingLegals handles the complete registration process, ensuring fast-track and hassle-free incorporation." },
+                { title: "2. Company Name & Address Proof Assistance", desc: "We help you select a unique, MCA-compliant name and guide you through preparing valid address proof like a rent agreement or utility bill." },
+                { title: "3. Transition from OPC/Proprietorship to Pvt Ltd", desc: "If you are operating as a sole proprietorship or OPC, we help you transition seamlessly to a private limited structure for investor readiness." },
+                { title: "4. Bank Account Setup & Capital Advisory", desc: "Post-registration, we assist with business bank account setup and advise on minimum paid-up and authorized capital structure based on your goals." },
+                { title: "5. Transparent Member Pricing (50% Off Market)", desc: "CA-managed incorporation services at fixed member rates starting at ₹1,999 with 100% fee transparency and zero hidden surprises." },
+                { title: "6. Lifetime Vault Storage & Compliance Tracking", desc: "Store all incorporation certificates, CIN, PAN, and TAN securely in your digital vault with automated annual filing reminders." }
+              ].map((item, idx) => (
+                <div key={idx} className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
+                  <h4 className="font-serif text-[17px] font-bold text-[#1A1917] mb-2">{item.title}</h4>
+                  <p className="text-[13.5px] text-[#6B6965] font-light leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+
+          {/* Section 8: FAQ's */}
+          <article id="faqs" className="scroll-mt-36 bg-white border border-[#E5E1D6] rounded-3xl p-8 sm:p-10 shadow-sm space-y-6">
+            <h2 className="font-serif text-[24px] sm:text-[32px] font-medium text-[#1A1917]">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-3">
+              {FAQ_ITEMS.map((faq, index) => {
+                const isOpen = openFaqIndex === index;
+                return (
+                  <div key={index} className="border border-[#E5E1D6] rounded-2xl overflow-hidden transition-all bg-[#FAF9F6]">
+                    <button
+                      onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                      className="w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-gray-50/50"
                     >
-                      <button
-                        onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                        className="w-full flex items-center justify-between p-5 text-left transition-colors hover:bg-gray-50/50"
-                      >
-                        <span className="font-serif text-[15px] font-semibold text-[#1A1917] pr-4">
-                          {faq.question}
-                        </span>
-                        <ChevronDown
-                          className={`w-4 h-4 text-gray-400 transition-transform duration-300 shrink-0 ${
-                            isOpen ? "rotate-180 text-olive-600" : ""
-                          }`}
-                        />
-                      </button>
-                      
-                      {isOpen && (
-                        <div className="px-5 pb-5 text-[14px] text-[#555] leading-relaxed border-t border-gray-100 pt-4 bg-gray-50/20">
-                          {faq.answer}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </article>
+                      <span className="font-serif text-[15px] font-semibold text-[#1A1917] pr-4">
+                        {faq.question}
+                      </span>
+                      <ChevronDown
+                        className={`w-4 h-4 text-gray-500 transition-transform duration-300 shrink-0 ${isOpen ? "rotate-180 text-[#5A7338]" : ""}`}
+                      />
+                    </button>
+                    {isOpen && (
+                      <div className="px-5 pb-5 text-[14px] text-[#4A4642] leading-relaxed border-t border-[#E5E1D6] pt-4 bg-white font-light">
+                        {faq.answer}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </article>
 
-          </div>
         </div>
       </section>
 
