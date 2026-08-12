@@ -187,6 +187,36 @@ const SERVICE_CATEGORIES = [
       { name: "Fundraising Accelerator", href: "/services/pitch-to-investors" },
       { name: "Capital Raise Complete", href: "/services/pitch-to-investors" },
     ]
+  },
+  {
+    id: "legal_agreements",
+    name: "Legal Agreements",
+    fullName: "Legal Agreements & Vetted Contracts",
+    services: [
+      { name: "Founders' Agreement", href: "/services/agreements?id=founders-agreement" },
+      { name: "Consultancy Agreement", href: "/services/agreements?id=consultancy-agreement" },
+      { name: "Offer Letter", href: "/services/agreements?id=offer-letter" },
+      { name: "Internship Agreement", href: "/services/agreements?id=internship-offer-letter" },
+      { name: "Service Certificate", href: "/services/agreements?id=service-certificate" },
+      { name: "Non-Compete Agreement", href: "/services/agreements?id=non-compete-agreement" },
+      { name: "Mutual NDA", href: "/services/agreements?id=non-disclosure-agreement" },
+      { name: "IP Assignment Agreement", href: "/services/agreements?id=ip-assignment-agreement" },
+      { name: "Technology Transfer Agreement", href: "/services/agreements?id=technology-transfer-agreement" },
+      { name: "Software License Agreement", href: "/services/agreements?id=software-license-agreement" },
+      { name: "Trademark License Agreement", href: "/services/agreements?id=trademark-license-agreement" },
+      { name: "Shareholders' Agreement (SHA)", href: "/services/agreements?id=shareholders-agreement" },
+      { name: "Share Subscription Agreement (SSA)", href: "/services/agreements?id=share-subscription-agreement" },
+      { name: "Convertible Note Agreement", href: "/services/agreements?id=convertible-note-agreement" },
+      { name: "Service Agreement", href: "/services/agreements?id=service-agreement" },
+      { name: "Master Service Agreement (MSA)", href: "/services/agreements?id=master-service-agreement" },
+      { name: "Vendor Agreement", href: "/services/agreements?id=vendor-agreement" },
+      { name: "Distribution Agreement", href: "/services/agreements?id=distribution-agreement" },
+      { name: "Joint Venture Agreement", href: "/services/agreements?id=joint-venture-agreement" },
+      { name: "Franchise Agreement", href: "/services/agreements?id=franchise-agreement" },
+      { name: "Supply Agreement", href: "/services/agreements?id=supply-agreement" },
+      { name: "Rental Agreement", href: "/services/agreements?id=rental-agreement" },
+      { name: "Commercial Rental Agreement", href: "/services/agreements?id=commercial-rental-agreement" },
+    ]
   }
 ];
 
@@ -279,7 +309,7 @@ export default function Header() {
               {megaOpen && (
                 <>
                   <div className="absolute -bottom-6 -left-12 -right-12 h-8 z-50" />
-                  <div className="fixed left-1/2 -translate-x-1/2 top-[66px] w-full max-w-[860px] bg-white rounded-2xl shadow-[0_12px_40px_rgba(43,39,35,0.12)] border border-brown-100/40 animate-dropdown z-50">
+                  <div className="fixed left-1/2 -translate-x-1/2 top-[84px] w-full max-w-[860px] bg-white rounded-2xl shadow-[0_12px_40px_rgba(43,39,35,0.12)] border border-brown-100/40 animate-dropdown z-50">
                     <div className="grid grid-cols-3 divide-x divide-brown-100/50 p-8 gap-0">
                       {sections.map((section) => (
                         <div key={section.title} className="px-6 first:pl-0 last:pr-0">
@@ -342,7 +372,7 @@ export default function Header() {
               {servicesOpen && (
                 <>
                   <div className="absolute -bottom-6 -left-12 -right-12 h-8 z-50" />
-                  <div className="fixed left-1/2 -translate-x-1/2 top-[66px] w-full max-w-[1140px] bg-white rounded-3xl shadow-[0_16px_48px_rgba(43,39,35,0.14)] border border-brown-100/40 overflow-hidden animate-dropdown grid grid-cols-12 z-50">
+                  <div className="fixed left-1/2 -translate-x-1/2 top-[84px] w-full max-w-[1140px] bg-white rounded-3xl shadow-[0_16px_48px_rgba(43,39,35,0.14)] border border-brown-100/40 overflow-hidden animate-dropdown grid grid-cols-12 z-50">
                     
                     {/* Left Pane (Categories List) */}
                     <div className="col-span-4 bg-[#FAF9F6] border-r border-brown-100/40 p-4 space-y-1 flex flex-col justify-start max-h-[460px] overflow-y-auto">

@@ -1,4 +1,4 @@
-export type AgreementCategory = "Equity & Corporate" | "HR & Employment" | "Commercial & Sales" | "IP & Licensing";
+export type AgreementCategory = "Equity & Corporate" | "HR & Employment" | "Commercial & Sales" | "IP & Licensing" | "Property & Rental";
 export type AgreementComplexity = "Low" | "Medium" | "High";
 
 export interface ComponentItem {
@@ -1375,5 +1375,569 @@ export const AGREEMENTS_DATABASE: AgreementDetail[] = [
     },
     complexity: "Low",
     requiredForFundraising: false
+  },
+  {
+    id: "service-certificate",
+    name: "Service Certificate",
+    category: "HR & Employment",
+    tagline: "Formal certificate acknowledging an employee's job role, total tenure, and successful completion of duties.",
+    overview: "A Service Certificate is a formal employment document issued by an employer to an employee upon completion of their tenure or resignation. It acknowledges the employee's role, duration of service, and successful performance of assigned responsibilities.",
+    whyImportant: [
+      "Employment Proof: Serves as official proof of past experience for future employers.",
+      "Regulatory Compliance: Fulfills statutory obligations under Indian Shops & Establishments Acts.",
+      "Clear Record: Prevents post-employment tenure or designation disputes."
+    ],
+    whenRequired: [
+      "When an employee resigns or completes their contract term.",
+      "During exit processing and full & final (F&F) settlement."
+    ],
+    components: [
+      { term: "Designation & Role", description: "Official job title held during tenure." },
+      { term: "Tenure Dates", description: "Exact date of joining and date of relief." },
+      { term: "Conduct & Character", description: "Standard affirmation of satisfactory performance." }
+    ],
+    whoNeedsIt: [
+      "HR departments issuing exit documentation.",
+      "Employees needing experience verification for future background checks."
+    ],
+    docsRequired: [
+      "Employee ID & Joining Records",
+      "Relieving & F&F Approval"
+    ],
+    comparison: {
+      title: "Service Certificate vs Relieving Letter",
+      versusName: "Relieving Letter",
+      table: [
+        { aspect: "Primary Focus", activeDoc: "Certifies job role, duration, and performance history.", versusDoc: "Confirms formal acceptance of resignation and release of duties." }
+      ]
+    },
+    procedure: [
+      "Step 1: Verify employee service records and F&F clearance.",
+      "Step 2: Generate certificate on company letterhead.",
+      "Step 3: Authorized HR/Director signature & official seal."
+    ],
+    costTable: [
+      { service: "Standard Template", desc: "Automated exit service certificate.", cost: "Free / Included" }
+    ],
+    termination: {
+      reasons: [
+        "Not Applicable: Issued upon exit."
+      ],
+      alternatives: [
+        "Re-issuance upon request."
+      ]
+    },
+    template: `SERVICE CERTIFICATE\n\nTO WHOMSOEVER IT MAY CONCERN\n\nThis is to certify that [Employee Name] was employed with [Company Name] from [Start Date] to [End Date] as [Designation].\n\nDuring their tenure with us, we found them to be industrious, sincere, and dedicated. We wish them all success in future endeavors.\n\nFor [Company Name]\n\nAuthorized Signatory`,
+    faqs: [
+      { q: "Is an employer legally required to issue a Service Certificate in India?", a: "Yes, under various state Shops and Commercial Establishments Acts, an employer is bound to provide a certificate of service upon request by a departing employee." }
+    ],
+    stampDuty: {
+      karnataka: "Not required; issued on company letterhead.",
+      maharashtra: "Not required.",
+      delhi: "Not required.",
+      general: "Printed on official corporate letterhead with company stamp."
+    },
+    complexity: "Low",
+    requiredForFundraising: false
+  },
+  {
+    id: "software-license-agreement",
+    name: "Software License Agreement",
+    category: "IP & Licensing",
+    tagline: "Grant license to use proprietary software, defining usage rights, restrictions, SLAs, and liability limits.",
+    overview: "A Software License Agreement is a legal contract governing the use or redistribution of proprietary software. It defines user access rights, restrictions against reverse engineering, subscription terms, SLA commitments, and liability caps.",
+    whyImportant: [
+      "IP Protection: Strictly forbids reverse engineering, copying, or sub-licensing source code.",
+      "Liability Shield: Caps damages from software bugs or operational downtime.",
+      "Revenue Enforcement: Sets user seat limits and recurring license fee schedules."
+    ],
+    whenRequired: [
+      "Licensing enterprise software or SaaS solutions to corporate clients.",
+      "Distributing desktop, mobile, or on-premise software products."
+    ],
+    components: [
+      { term: "License Grant", description: "Non-exclusive, non-transferable right to use software." },
+      { term: "Restrictions", description: "Prohibitions on decompilation, unauthorized distribution, or modification." },
+      { term: "Service Level Agreement (SLA)", description: "Uptime guarantees, maintenance windows, and support response times." }
+    ],
+    whoNeedsIt: [
+      "SaaS startups, software vendors, and digital product creators."
+    ],
+    docsRequired: [
+      "Software Specifications & User Tier List",
+      "Corporate Client Information"
+    ],
+    comparison: {
+      title: "Software License vs SaaS Terms of Service",
+      versusName: "SaaS Terms of Service",
+      table: [
+        { aspect: "Deployment", activeDoc: "Often includes on-premise or dedicated instance software deployments.", versusDoc: "Standard cloud web application access via browser." }
+      ]
+    },
+    procedure: [
+      "Step 1: Define licensing model (per seat, tier, or enterprise).",
+      "Step 2: Include SLA and liability caps.",
+      "Step 3: Execute agreement electronically or in writing."
+    ],
+    costTable: [
+      { service: "Enterprise License Drafting", desc: "Custom software license with SLA annexures.", cost: "₹7,500 – ₹15,000" }
+    ],
+    termination: {
+      reasons: [
+        "Non-payment of license fees.",
+        "Breach of license restrictions (e.g., piracy or reverse engineering)."
+      ],
+      alternatives: [
+        "Downgrade to lower tier or temporary suspension."
+      ]
+    },
+    template: `SOFTWARE LICENSE AGREEMENT\n\nLicensor grants Licensee a non-exclusive, non-transferable license to use [Software Name] for [Number] authorized users. Licensee shall not reverse-engineer, decompile, or redistribute the Software.\n\nIN WITNESS WHEREOF, the parties execute below.`,
+    faqs: [
+      { q: "What happens if a licensee reverse engineers the software?", a: "It constitutes a material breach and copyright infringement, entitling the licensor to immediate license revocation and court injunctions." }
+    ],
+    stampDuty: {
+      karnataka: "₹200 non-judicial stamp paper.",
+      maharashtra: "₹500 non-judicial stamp paper.",
+      delhi: "₹100 non-judicial stamp paper.",
+      general: "Executed on standard agreement stamp paper."
+    },
+    complexity: "Medium",
+    requiredForFundraising: false
+  },
+  {
+    id: "joint-venture-agreement",
+    name: "Joint Venture Agreement",
+    category: "Commercial & Sales",
+    tagline: "Create a joint venture company or partnership with defined contributions, board control, and share transfer rules.",
+    overview: "A Joint Venture (JV) Agreement governs a strategic business alliance between two or more companies pooling resources, technology, or capital for a specific commercial venture or new entity.",
+    whyImportant: [
+      "Governance & Control: Establishes board composition, voting rules, and management rights.",
+      "Profit & Risk Sharing: Details contribution proportions and dividend distribution.",
+      "Exit & Deadlock Resolution: Defines buyouts, drag-along rights, and exit mechanisms."
+    ],
+    whenRequired: [
+      "Partnering with an established player to enter new markets or sectors.",
+      "Forming a joint operating entity for shared technology or manufacturing."
+    ],
+    components: [
+      { term: "Equity & Contributions", description: "Capital, IP, or infrastructure committed by each partner." },
+      { term: "Management Board", description: "Representation and veto powers on the JV board." },
+      { term: "Deadlock Resolution", description: "Escalation procedures when partners disagree on key decisions." }
+    ],
+    whoNeedsIt: [
+      "Companies forming strategic partnerships, consortia, or co-owned entities."
+    ],
+    docsRequired: [
+      "Partner Corporate Entities' Incorporation Docs",
+      "Valuation & Contribution Schedules"
+    ],
+    comparison: {
+      title: "Joint Venture vs Strategic Partnership (MoU)",
+      versusName: "Memorandum of Understanding (MoU)",
+      table: [
+        { aspect: "Enforceability", activeDoc: "Exhaustive, legally binding contract creating shared liabilities.", versusDoc: "Preliminary non-binding statement of intent." }
+      ]
+    },
+    procedure: [
+      "Step 1: Execute MoU and conduct due diligence.",
+      "Step 2: Draft comprehensive JV Agreement.",
+      "Step 3: Incorporate JV entity and execute agreements."
+    ],
+    costTable: [
+      { service: "JV Agreement Drafting", desc: "Detailed multi-party joint venture contract.", cost: "₹20,000 – ₹45,000" }
+    ],
+    termination: {
+      reasons: [
+        "Achievement of JV objectives.",
+        "Unresolvable deadlock or material breach."
+      ],
+      alternatives: [
+        "Partner buyout or share transfer."
+      ]
+    },
+    template: `JOINT VENTURE AGREEMENT\n\nThis JV Agreement is executed between Party A [Entity] and Party B [Entity] to establish [JV Entity Name] with equity ratio [Ratio]. Board control and profit sharing shall be as outlined in Article 2.`,
+    faqs: [
+      { q: "Is an incorporated JV better than an contractual JV?", a: "Incorporated JVs (e.g., forming a new Pvt Ltd) provide limited liability protection and clearer governance under the Companies Act." }
+    ],
+    stampDuty: {
+      karnataka: "₹500 non-judicial stamp paper.",
+      maharashtra: "₹1,000 non-judicial stamp paper.",
+      delhi: "₹500 non-judicial stamp paper.",
+      general: "Higher denomination stamp duty applies."
+    },
+    complexity: "High",
+    requiredForFundraising: true
+  },
+  {
+    id: "rental-agreement",
+    name: "Rental Agreement",
+    category: "Property & Rental",
+    tagline: "Standard residential rent and leave & license agreement for housing, apartments, and residential properties.",
+    overview: "A Rental Agreement (or Leave & License Agreement) governs the temporary rental of residential premises between a landlord (Lessor) and tenant (Lessee) detailing monthly rent, security deposit, maintenance responsibilities, and lock-in period.",
+    whyImportant: [
+      "Legal Protection: Clearly defines landlord and tenant rights under Rent Control and Leave & License laws.",
+      "Financial Transparency: Specifies exact rent amount, due date, security deposit, and annual escalation percentage.",
+      "Proof of Address: Serves as valid official address proof for bank accounts, passport applications, and utility connections."
+    ],
+    whenRequired: [
+      "Renting a house, apartment, flat, or residential property.",
+      "Leasing residential premises to employees or executives."
+    ],
+    components: [
+      { term: "Monthly Rent & Due Date", description: "Fixed monthly rental fee, payment due date, and late payment interest." },
+      { term: "Security Deposit", description: "Interest-free refundable security deposit and deduction conditions." },
+      { term: "Lock-in Period & Notice", description: "Minimum occupancy tenure and notice period required for early termination." },
+      { term: "Maintenance & Utilities", description: "Electricity, water, society maintenance, and structural repair obligations." }
+    ],
+    whoNeedsIt: [
+      "Property owners renting out residential houses or flats.",
+      "Tenants seeking legally binding residential rent agreements."
+    ],
+    docsRequired: [
+      "Landlord & Tenant Aadhaar Card / Passport copies",
+      "Property Ownership Proof (Sale Deed / Electricity Bill)"
+    ],
+    comparison: {
+      title: "Rental Agreement vs Lease Agreement",
+      versusName: "Long-Term Lease Agreement",
+      table: [
+        { aspect: "Duration", activeDoc: "Typically 11 months under Leave & License.", versusDoc: "Multi-year lease (3 to 99 years) requiring mandatory registration." }
+      ]
+    },
+    procedure: [
+      "Step 1: Fill property address, rent amount, and security deposit details.",
+      "Step 2: Print on non-judicial stamp paper or execute e-stamp paper.",
+      "Step 3: Sign by Landlord, Tenant, and two witnesses."
+    ],
+    costTable: [
+      { service: "Residential Rental Agreement", desc: "11-month Leave & License draft.", cost: "Starting at ₹50" }
+    ],
+    termination: {
+      reasons: [
+        "Completion of 11-month tenure.",
+        "Non-payment of rent or breach of property usage terms."
+      ],
+      alternatives: [
+        "Renewal via mutual agreement."
+      ]
+    },
+    template: `RENTAL AGREEMENT\n\nThis Rental Agreement is made on [Date] between [Landlord Name] (Lessor) and [Tenant Name] (Lessee) for premises located at [Property Address].\n\n1. RENT: Lessee shall pay a monthly rent of Rs. [Amount] on or before the [Day] of each calendar month.\n2. DEPOSIT: Refundable security deposit of Rs. [Deposit Amount] received by Lessor.\n3. TENURE: Valid for 11 months starting from [Start Date] to [End Date].`,
+    faqs: [
+      { q: "Why is a rental agreement usually made for 11 months?", a: "Rent agreements under 11 months do not attract compulsory registration requirements under Section 17 of the Registration Act, 1908, saving registration fees." }
+    ],
+    stampDuty: {
+      karnataka: "₹100 or ₹200 non-judicial stamp paper.",
+      maharashtra: "0.25% of total rent + deposit amount under Leave & License.",
+      delhi: "2% of average annual rent.",
+      general: "Standard non-judicial stamp duty based on state rent laws."
+    },
+    complexity: "Low",
+    requiredForFundraising: false
+  },
+  {
+    id: "commercial-rental-agreement",
+    name: "Commercial Rental Agreement",
+    category: "Property & Rental",
+    tagline: "Commercial lease agreement for office spaces, retail shops, industrial warehouses, and co-working spaces.",
+    overview: "A Commercial Rental Agreement (or Commercial Lease Agreement) is a legally binding contract executed between a commercial property owner and a business tenant for leasing office space, retail outlets, industrial units, or warehouses.",
+    whyImportant: [
+      "Business Premises Continuity: Protects long-term commercial occupancy with defined lease terms and lock-in periods.",
+      "Commercial Use Rights: Outlines permitted business operations, signage rights, and subleasing restrictions.",
+      "GST & Tax Compliance: Valid tax invoice documentation for claiming Input Tax Credit (ITC) on commercial rent."
+    ],
+    whenRequired: [
+      "Renting an office building, retail showroom, commercial unit, or warehouse.",
+      "Setting up a startup headquarters or branch office."
+    ],
+    components: [
+      { term: "Base Rent & Escalation", description: "Base monthly commercial rent, GST applicability, and annual escalation percentage (e.g. 5-15% every 3 years)." },
+      { term: "Commercial Security Deposit", description: "Refundable security deposit equivalent to 3 to 6 months of rent." },
+      { term: "Fit-Out Period & Rent Free", description: "Rent-free interior setup period allowed before commercial operations begin." },
+      { term: "Signage & Alterations", description: "Permissions for company branding, facade signage, and interior modifications." }
+    ],
+    whoNeedsIt: [
+      "Startups and corporations leasing office spaces or retail outlets.",
+      "Commercial property owners renting out business real estate."
+    ],
+    docsRequired: [
+      "Company Incorporation Certificate & Board Resolution",
+      "Landlord Property Ownership Documents & Property Tax Receipts"
+    ],
+    comparison: {
+      title: "Commercial Lease vs Residential Rental",
+      versusName: "Residential Rental Agreement",
+      table: [
+        { aspect: "Taxation & Stamp Duty", activeDoc: "Attracts 18% GST and higher commercial stamp duty rates.", versusDoc: "GST exempt for residential tenancy." }
+      ]
+    },
+    procedure: [
+      "Step 1: Finalize commercial rent terms, fit-out duration, and lock-in period.",
+      "Step 2: Draft comprehensive Commercial Lease Agreement.",
+      "Step 3: Execute on appropriate state stamp paper and register if tenure exceeds 11 months."
+    ],
+    costTable: [
+      { service: "Commercial Lease Drafting", desc: "Detailed commercial rental & lease agreement.", cost: "Starting at ₹50" }
+    ],
+    termination: {
+      reasons: [
+        "Expiry of agreed commercial lease tenure.",
+        "Material breach of commercial covenants or non-payment."
+      ],
+      alternatives: [
+        "Lease extension option or assignment."
+      ]
+    },
+    template: `COMMERCIAL RENTAL AGREEMENT\n\nThis Commercial Lease Agreement is executed between [Lessor Company/Landlord] and [Lessee Startup/Company] for commercial premises at [Office Address].\n\n1. COMMERCIAL RENT: Monthly base rent of Rs. [Amount] plus applicable GST.\n2. LOCK-IN: Lock-in period of [Months] during which neither party may terminate.\n3. PERMITTED USE: Solely for commercial office and business operations.`,
+    faqs: [
+      { q: "Is registration mandatory for commercial lease agreements?", a: "Yes, commercial lease agreements for a period of 12 months or longer must be registered with the Sub-Registrar under Indian law." }
+    ],
+    stampDuty: {
+      karnataka: "0.5% to 1% of total rent & deposit based on lease tenure.",
+      maharashtra: "0.25% of total rent + deposit amount.",
+      delhi: "2% of total rent payable.",
+      general: "Commercial stamp duty rates vary by state laws."
+    },
+    complexity: "Medium",
+    requiredForFundraising: false
   }
 ];
+
+// ── SHOWCASE SECTIONS (Divided into 5 exact sections) ──
+export interface ShowcaseAgreementItem {
+  id: string;
+  name: string;
+  category: "Hire Someone" | "Protect Your IP" | "Get Investment Ready" | "Commercial Agreements" | "Property & Rental";
+  coins: number;
+  description: string;
+  previewImage: string;
+}
+
+export interface ShowcaseSection {
+  id: string;
+  title: string;
+  subtitle: string;
+  agreements: ShowcaseAgreementItem[];
+}
+
+export const SHOWCASE_SECTIONS: ShowcaseSection[] = [
+  {
+    id: "hire-someone",
+    title: "Hire Someone",
+    subtitle: "Employment, consultancy, and founder agreements compliant with Indian labour laws",
+    agreements: [
+      {
+        id: "founders-agreement",
+        name: "Founders' Agreement",
+        category: "Hire Someone",
+        coins: 5,
+        description: "An agreement between co-founders detailing individual roles, equity vesting schedules, intellectual property ownership, and exit rules.",
+        previewImage: "/agreements/founders-agreement-sample.svg"
+      },
+      {
+        id: "consultancy-agreement",
+        name: "Consultancy Agreement",
+        category: "Hire Someone",
+        coins: 5,
+        description: "Engage independent consultants or advisors with a clear scope of work, deliverables, and payment terms.",
+        previewImage: "/agreements/consultancy-agreement-sample.svg"
+      },
+      {
+        id: "offer-letter",
+        name: "Offer Letter",
+        category: "Hire Someone",
+        coins: 5,
+        description: "A formal job offer letter covering compensation structure, probation terms, notice periods, and joining checklists.",
+        previewImage: "/agreements/offer-letter-sample.svg"
+      },
+      {
+        id: "internship-offer-letter",
+        name: "Internship Agreement",
+        category: "Hire Someone",
+        coins: 5,
+        description: "An internship offer letter covering role details, duration, confidentiality, and stipend terms.",
+        previewImage: "/agreements/internship-offer-letter-sample.svg"
+      },
+      {
+        id: "service-certificate",
+        name: "Service Certificate",
+        category: "Hire Someone",
+        coins: 5,
+        description: "A formal certificate acknowledging an employee's job role, total tenure, and successful completion of duties.",
+        previewImage: "/agreements/service-certificate-sample.svg"
+      }
+    ]
+  },
+  {
+    id: "protect-ip",
+    title: "Protect Your IP",
+    subtitle: "Safeguard intellectual property with NDAs, IP assignments, and licensing agreements under Indian IP laws",
+    agreements: [
+      {
+        id: "non-compete-agreement",
+        name: "Non-Compete Agreement",
+        category: "Protect Your IP",
+        coins: 5,
+        description: "Prevent employees and business associates from working with competitors or soliciting your clients and team.",
+        previewImage: "/agreements/non-compete-agreement-sample.svg"
+      },
+      {
+        id: "non-disclosure-agreement",
+        name: "Mutual Non-Disclosure Agreement (NDA)",
+        category: "Protect Your IP",
+        coins: 5,
+        description: "Protect private business information shared between two parties by preventing unauthorized disclosure.",
+        previewImage: "/agreements/non-disclosure-agreement-sample.svg"
+      },
+      {
+        id: "ip-assignment-agreement",
+        name: "IP Assignment Agreement",
+        category: "Protect Your IP",
+        coins: 5,
+        description: "Transfer complete ownership of intellectual property rights, including patents, copyrights, and trademarks, from creator to company.",
+        previewImage: "/agreements/ip-assignment-agreement-sample.svg"
+      },
+      {
+        id: "technology-transfer-agreement",
+        name: "Technology Transfer Agreement",
+        category: "Protect Your IP",
+        coins: 5,
+        description: "Transfer or license technical know-how, designs, and proprietary information from one business to another.",
+        previewImage: "/agreements/technology-transfer-agreement-sample.svg"
+      },
+      {
+        id: "software-license-agreement",
+        name: "Software License Agreement",
+        category: "Protect Your IP",
+        coins: 5,
+        description: "Grant license to use proprietary software, defining usage rights, restrictions, service level agreements, and liability limits.",
+        previewImage: "/agreements/software-license-agreement-sample.svg"
+      },
+      {
+        id: "trademark-license-agreement",
+        name: "Trademark License Agreement",
+        category: "Protect Your IP",
+        coins: 5,
+        description: "Authorize another business to use your registered trademarks, brand names, and logos under controlled terms.",
+        previewImage: "/agreements/trademark-license-agreement-sample.svg"
+      }
+    ]
+  },
+  {
+    id: "investment-ready",
+    title: "Get Investment Ready",
+    subtitle: "Term sheets, shareholder agreements, and funding instruments for raising capital under Indian securities law",
+    agreements: [
+      {
+        id: "shareholders-agreement",
+        name: "Shareholders' Agreement (SHA)",
+        category: "Get Investment Ready",
+        coins: 5,
+        description: "An agreement governing shareholder rights and protections, detailing board control, share transfer restrictions, and exit options.",
+        previewImage: "/agreements/shareholders-agreement-sample.svg"
+      },
+      {
+        id: "share-subscription-agreement",
+        name: "Share Subscription Agreement (SSA)",
+        category: "Get Investment Ready",
+        coins: 5,
+        description: "An agreement for issuing new shares to investors, specifying payment terms, representations, warranties, and closing conditions.",
+        previewImage: "/agreements/share-subscription-agreement-sample.svg"
+      },
+      {
+        id: "convertible-note-agreement",
+        name: "Convertible Note Agreement",
+        category: "Get Investment Ready",
+        coins: 5,
+        description: "A debt agreement that converts into company shares at a future funding round, including valuation caps, discounts, and interest terms.",
+        previewImage: "/agreements/convertible-note-agreement-sample.svg"
+      }
+    ]
+  },
+  {
+    id: "commercial-agreements",
+    title: "Commercial Agreements",
+    subtitle: "Service, vendor, distribution, and partnership agreements for day-to-day business operations under Indian commercial law",
+    agreements: [
+      {
+        id: "service-agreement",
+        name: "Service Agreement",
+        category: "Commercial Agreements",
+        coins: 5,
+        description: "Define scope of work, service levels, payment terms, and legal liabilities between a service provider and a client.",
+        previewImage: "/agreements/service-agreement-sample.svg"
+      },
+      {
+        id: "master-service-agreement",
+        name: "Master Service Agreement (MSA)",
+        category: "Commercial Agreements",
+        coins: 5,
+        description: "A master agreement for ongoing client projects, setting general terms for service scope, intellectual property, liability, and confidentiality.",
+        previewImage: "/agreements/master-service-agreement-sample.svg"
+      },
+      {
+        id: "vendor-agreement",
+        name: "Vendor Agreement",
+        category: "Commercial Agreements",
+        coins: 5,
+        description: "Engage vendors or suppliers to provide goods or services with defined quality standards, delivery schedules, and payment terms.",
+        previewImage: "/agreements/vendor-agreement-sample.svg"
+      },
+      {
+        id: "distribution-agreement",
+        name: "Distribution Agreement",
+        category: "Commercial Agreements",
+        coins: 5,
+        description: "Appoint distributors to sell products in defined territories with clear pricing, minimum purchase targets, and trademark rules.",
+        previewImage: "/agreements/distribution-agreement-sample.svg"
+      },
+      {
+        id: "joint-venture-agreement",
+        name: "Joint Venture Agreement",
+        category: "Commercial Agreements",
+        coins: 5,
+        description: "Create a joint venture company or partnership with defined contributions, board control, decision-making rules, and share transfer restrictions.",
+        previewImage: "/agreements/joint-venture-agreement-sample.svg"
+      },
+      {
+        id: "franchise-agreement",
+        name: "Franchise Agreement",
+        category: "Commercial Agreements",
+        coins: 5,
+        description: "Grant franchise rights to run a business using your brand, specifying operational standards, royalties, and marketing terms.",
+        previewImage: "/agreements/franchise-agreement-sample.svg"
+      },
+      {
+        id: "supply-agreement",
+        name: "Supply Agreement",
+        category: "Commercial Agreements",
+        coins: 5,
+        description: "A contract for purchasing and supplying goods, including order forecasts, pricing adjustments, delivery timelines, and quality warranties.",
+        previewImage: "/agreements/supply-agreement-sample.svg"
+      }
+    ]
+  },
+  {
+    id: "property-rental",
+    title: "Property & Rental Agreements",
+    subtitle: "Residential and commercial lease agreements, rent contracts, and leave & license agreements under Indian Rent Control laws",
+    agreements: [
+      {
+        id: "rental-agreement",
+        name: "Rental Agreement",
+        category: "Property & Rental",
+        coins: 5,
+        description: "Standard residential rent and leave & license agreement for housing, apartments, and residential properties.",
+        previewImage: "/agreements/rental-agreement-sample.svg"
+      },
+      {
+        id: "commercial-rental-agreement",
+        name: "Commercial Rental Agreement",
+        category: "Property & Rental",
+        coins: 5,
+        description: "Commercial lease agreement for office spaces, retail shops, industrial warehouses, and co-working spaces.",
+        previewImage: "/agreements/commercial-rental-agreement-sample.svg"
+      }
+    ]
+  }
+];
+
