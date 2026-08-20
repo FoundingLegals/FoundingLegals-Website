@@ -193,11 +193,12 @@ const SERVICE_CATEGORIES = [
 ];
 
 /* ── SEGREGATED LEGAL SERVICES CATEGORIES ── */
-const LEGAL_SERVICES_CLUSTERS = [
+const LEGAL_SERVICE_CATEGORIES = [
   {
-    category: "Startup & Founders",
-    icon: Rocket,
-    items: [
+    id: "startup_founders",
+    name: "Startup & Founders",
+    fullName: "Startup & Founder Agreements",
+    services: [
       { name: "Founders' Agreement", href: "/services/LegalServices/agreements/founders-agreement" },
       { name: "Shareholders' Agreement (SHA)", href: "/services/LegalServices/agreements/shareholders-agreement" },
       { name: "Share Subscription Agreement (SSA)", href: "/services/LegalServices/agreements/share-subscription-agreement" },
@@ -205,9 +206,10 @@ const LEGAL_SERVICES_CLUSTERS = [
     ]
   },
   {
-    category: "Employment & HR",
-    icon: Users,
-    items: [
+    id: "employment_hr",
+    name: "Employment & HR",
+    fullName: "Employment & HR Agreements",
+    services: [
       { name: "Offer Letter", href: "/services/LegalServices/agreements/offer-letter" },
       { name: "Internship Agreement", href: "/services/LegalServices/agreements/internship-offer-letter" },
       { name: "Consultancy Agreement", href: "/services/LegalServices/agreements/consultancy-agreement" },
@@ -216,9 +218,10 @@ const LEGAL_SERVICES_CLUSTERS = [
     ]
   },
   {
-    category: "IP & Confidentiality",
-    icon: ShieldCheck,
-    items: [
+    id: "ip_confidentiality",
+    name: "IP & Confidentiality",
+    fullName: "Intellectual Property & Confidentiality",
+    services: [
       { name: "Mutual NDA", href: "/services/LegalServices/agreements/non-disclosure-agreement" },
       { name: "IP Assignment Agreement", href: "/services/LegalServices/agreements/ip-assignment-agreement" },
       { name: "Technology Transfer Agreement", href: "/services/LegalServices/agreements/technology-transfer-agreement" },
@@ -227,9 +230,10 @@ const LEGAL_SERVICES_CLUSTERS = [
     ]
   },
   {
-    category: "Commercial & Business",
-    icon: Briefcase,
-    items: [
+    id: "commercial_business",
+    name: "Commercial & Business",
+    fullName: "Commercial & Business Contracts",
+    services: [
       { name: "Service Agreement", href: "/services/LegalServices/agreements/service-agreement" },
       { name: "Master Service Agreement (MSA)", href: "/services/LegalServices/agreements/master-service-agreement" },
       { name: "Vendor Agreement", href: "/services/LegalServices/agreements/vendor-agreement" },
@@ -237,6 +241,13 @@ const LEGAL_SERVICES_CLUSTERS = [
       { name: "Joint Venture Agreement", href: "/services/LegalServices/agreements/joint-venture-agreement" },
       { name: "Franchise Agreement", href: "/services/LegalServices/agreements/franchise-agreement" },
       { name: "Supply Agreement", href: "/services/LegalServices/agreements/supply-agreement" },
+    ]
+  },
+  {
+    id: "property_rental",
+    name: "Property & Rental",
+    fullName: "Property & Rental Agreements",
+    services: [
       { name: "Rental Agreement", href: "/services/LegalServices/agreements/rental-agreement" },
       { name: "Commercial Rental Agreement", href: "/services/LegalServices/agreements/commercial-rental-agreement" },
     ]
@@ -257,6 +268,7 @@ export default function Header() {
 
   // State for Legal Services Dropdown
   const [legalServicesOpen, setLegalServicesOpen] = useState(false);
+  const [activeLegalCategory, setActiveLegalCategory] = useState("startup_founders");
 
   // State for Company Dropdown
   const [companyOpen, setCompanyOpen] = useState(false);
@@ -496,62 +508,68 @@ export default function Header() {
               </button>
 
               {legalServicesOpen && (
-                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1 w-full max-w-[1080px] z-50">
-                  <div className="bg-white rounded-3xl shadow-[0_16px_48px_rgba(43,39,35,0.14)] border border-brown-100/40 overflow-hidden animate-dropdown p-6">
-                    <div className="flex items-center justify-between border-b border-brown-100/50 pb-3 mb-5">
-                      <div className="flex items-center gap-2">
-                        <div className="w-7 h-7 rounded-lg bg-[#5C6F2D]/10 flex items-center justify-center">
-                          <Scale className="w-4 h-4 text-[#5C6F2D]" />
-                        </div>
-                        <div>
-                          <h3 className="text-[14px] font-bold text-brown-900 leading-none">Legal Services & Vetted Contracts</h3>
-                          <p className="text-[11px] text-brown-500 mt-0.5">Customizable, lawyer-approved contracts & agreements tailored for Indian startups</p>
-                        </div>
-                      </div>
-                      <a
-                        href="/services/LegalServices/agreements"
-                        className="inline-flex items-center gap-1 text-[12px] font-bold text-[#5C6F2D] hover:text-olive-800 hover:underline"
-                      >
-                        Explore All 20+ Agreements
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </a>
-                    </div>
-
-                    <div className="grid grid-cols-4 gap-6 text-left">
-                      {LEGAL_SERVICES_CLUSTERS.map((cluster) => (
-                        <div key={cluster.category} className="space-y-3">
-                          <div className="flex items-center gap-1.5 border-b border-brown-100/40 pb-2">
-                            <cluster.icon className="w-3.5 h-3.5 text-[#5C6F2D]" />
-                            <h4 className="text-[12px] font-bold text-brown-900 tracking-tight">
-                              {cluster.category}
-                            </h4>
-                          </div>
-                          <div className="space-y-1.5">
-                            {cluster.items.map((item) => (
-                              <a
-                                key={item.name}
-                                href={item.href}
-                                className="block text-[12px] font-medium text-brown-600 hover:text-[#5C6F2D] transition-colors leading-snug hover:translate-x-0.5 transform duration-150"
-                              >
-                                {item.name}
-                              </a>
-                            ))}
-                          </div>
-                        </div>
+                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1 w-full max-w-[1140px] z-50">
+                  <div className="bg-white rounded-3xl shadow-[0_16px_48px_rgba(43,39,35,0.14)] border border-brown-100/40 overflow-hidden animate-dropdown grid grid-cols-12">
+                    {/* Left Pane (Categories List) */}
+                    <div className="col-span-4 bg-[#FAF9F6] border-r border-brown-100/40 p-4 space-y-1 flex flex-col justify-start max-h-[460px] overflow-y-auto">
+                      {LEGAL_SERVICE_CATEGORIES.map((category) => (
+                        <button
+                          key={category.id}
+                          onMouseEnter={() => setActiveLegalCategory(category.id)}
+                          className={`w-full text-left px-4 py-2.5 rounded-xl text-[12.5px] font-bold transition-all leading-snug ${
+                            activeLegalCategory === category.id
+                              ? "bg-[#5C6F2D] text-white shadow-sm"
+                              : "text-brown-700 hover:bg-brown-100/30"
+                          }`}
+                        >
+                          {category.name}
+                        </button>
                       ))}
                     </div>
 
-                    <div className="mt-6 pt-4 border-t border-brown-100/50 bg-[#FAF9F6] -mx-6 -mb-6 px-6 py-3.5 flex items-center justify-between rounded-b-3xl">
-                      <div className="flex items-center gap-2 text-[12px] text-brown-700">
-                        <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-                        <span>Need a custom legal agreement tailored by senior advocate experts?</span>
+                    {/* Right Pane (Dynamic Contents) */}
+                    <div className="col-span-8 p-6 max-h-[460px] overflow-y-auto bg-white text-left flex flex-col justify-between">
+                      <div>
+                        {LEGAL_SERVICE_CATEGORIES.map((category) => {
+                          if (activeLegalCategory !== category.id) return null;
+                          return (
+                            <div key={category.id} className="space-y-4">
+                              <div className="flex items-center justify-between border-b border-brown-100/40 pb-2">
+                                <h4 className="text-[12px] font-bold uppercase tracking-wider text-[#5C6F2D]">
+                                  {category.fullName}
+                                </h4>
+                                <a
+                                  href="/services/LegalServices/agreements"
+                                  className="inline-flex items-center gap-1 text-[11.5px] font-bold text-[#5C6F2D] hover:underline"
+                                >
+                                  Explore All 20+ Agreements →
+                                </a>
+                              </div>
+                              <div className="grid grid-cols-2 gap-y-3.5 gap-x-6">
+                                {category.services.map((s) => (
+                                  <a
+                                    key={s.name}
+                                    href={s.href}
+                                    className="text-[12.5px] font-medium text-brown-600 hover:text-olive-700 transition-colors leading-tight py-1"
+                                  >
+                                    {s.name}
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
+                          );
+                        })}
                       </div>
-                      <a
-                        href="/contact"
-                        className="text-[12px] font-bold text-[#5C6F2D] hover:underline"
-                      >
-                        Request Custom Legal Drafting →
-                      </a>
+
+                      <div className="mt-6 pt-3 border-t border-brown-100/50 flex items-center justify-between text-[11.5px] text-brown-600">
+                        <span className="flex items-center gap-1.5">
+                          <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+                          Need a custom legal agreement tailored by senior advocate experts?
+                        </span>
+                        <a href="/contact" className="font-bold text-[#5C6F2D] hover:underline">
+                          Request Custom Legal Drafting →
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -775,23 +793,29 @@ export default function Header() {
                 </button>
                 {openSections.includes("legalservices") && (
                   <div className="px-4 pb-4 space-y-3.5">
-                    {LEGAL_SERVICES_CLUSTERS.map((cluster) => (
-                      <div key={cluster.category} className="space-y-2">
-                        <span className="block text-[12px] font-bold text-[#5C6F2D] border-b border-brown-100/40 pb-1 uppercase tracking-wider">
-                          {cluster.category}
-                        </span>
-                        <div className="pl-2 space-y-1.5">
-                          {cluster.items.map((item) => (
-                            <a
-                              key={item.name}
-                              href={item.href}
-                              onClick={() => setIsMobileOpen(false)}
-                              className="block py-0.5 text-[12.5px] font-medium text-brown-600 hover:text-brown-900"
-                            >
-                              {item.name}
-                            </a>
-                          ))}
-                        </div>
+                    {LEGAL_SERVICE_CATEGORIES.map((category) => (
+                      <div key={category.id} className="space-y-2">
+                        <button
+                          onClick={() => setMobileActiveSub(mobileActiveSub === category.id ? null : category.id)}
+                          className="w-full flex items-center justify-between text-[12.5px] font-bold text-brown-800 border-b border-brown-100/40 pb-1 text-left"
+                        >
+                          <span>{category.fullName}</span>
+                          <ChevronDown className={`w-3.5 h-3.5 text-brown-500 shrink-0 transition-transform ${mobileActiveSub === category.id ? "rotate-180" : ""}`} />
+                        </button>
+                        {mobileActiveSub === category.id && (
+                          <div className="pl-3 space-y-2 max-h-[250px] overflow-y-auto">
+                            {category.services.map((item) => (
+                              <a
+                                key={item.name}
+                                href={item.href}
+                                onClick={() => setIsMobileOpen(false)}
+                                className="block py-1 text-[13px] font-medium text-brown-600 hover:text-brown-900"
+                              >
+                                {item.name}
+                              </a>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
