@@ -16,6 +16,47 @@ import NewServicePageLayout from "@/components/NewServicePageLayout";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+const SLUG_ALIASES: Record<string, string> = {
+  // GST & Indirect Tax subservices & variants
+  "gstr9-annual-return": "gst-indirect-tax",
+  "tds-return-filing": "gst-indirect-tax",
+  "gst-registration": "gst-indirect-tax",
+  "iec-registration": "gst-indirect-tax",
+  "labour-license": "gst-indirect-tax",
+  "fssai-license": "gst-indirect-tax",
+  "fssai-state-license": "gst-indirect-tax",
+  "fssai-central-license": "gst-indirect-tax",
+  "professional-tax": "gst-indirect-tax",
+  "gst-monthly-returns": "gst-indirect-tax",
+  "gst-quarterly-returns": "gst-indirect-tax",
+
+  // Audit subservices
+  "gst-audit": "audit-attestation",
+  "tax-audit": "audit-attestation",
+
+  // Certifications subservices
+  "msme-registration": "certifications",
+  "dpiit-recognition": "certifications",
+
+  // Financial & Investment subservices
+  "loan-project-report": "financial-investment",
+
+  // IP subservices
+  "trademark-registration": "intellectual-property",
+
+  // Income tax variants
+  "income-tax-filing": "income-tax-advisory",
+
+  // Incorporation aliases
+  "pvt-ltd-incorporation": "company-incorporation",
+  "pvt-ltd-company-incorporation": "company-incorporation",
+  "llp-incorporation": "llp-registration",
+  "opc-incorporation": "opc-registration",
+  "partnership-registration": "partnership-firm-registration",
+  "sole-proprietorship": "sole-proprietorship-registration",
+  "public-limited-incorporation": "public-limited-company",
+};
+
 export function generateStaticParams() {
   const allSlugs = new Set<string>([
     ...services.map((s) => s.slug),
@@ -24,28 +65,39 @@ export function generateStaticParams() {
     "sole-proprietorship-registration",
     "public-limited-company",
     ...newServiceSlugs,
+    ...Object.keys(SLUG_ALIASES),
   ]);
 
   return Array.from(allSlugs).map((slug) => ({ slug }));
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-  const resolvedParams = await params;
-  const service = services.find((s) => s.slug === resolvedParams.slug);
+  const rawParams = await params;
+  let rawSlug = rawParams.slug || "";
+  
+  // Normalize string: decode URI, convert spaces/underscores to hyphens, lowercase
+  let slug = decodeURIComponent(rawSlug).toLowerCase().trim().replace(/[\s_]+/g, "-");
+
+  // If slug is an alias or subservice slug, resolve to target category/service slug
+  if (SLUG_ALIASES[slug]) {
+    slug = SLUG_ALIASES[slug];
+  }
+
+  const service = services.find((s) => s.slug === slug);
   
   if (
     !service && 
-    resolvedParams.slug !== "which-company-type-to-register" && 
-    resolvedParams.slug !== "partnership-firm-registration" &&
-    resolvedParams.slug !== "sole-proprietorship-registration" &&
-    resolvedParams.slug !== "public-limited-company" &&
-    !newServiceSlugs.includes(resolvedParams.slug)
+    slug !== "which-company-type-to-register" && 
+    slug !== "partnership-firm-registration" &&
+    slug !== "sole-proprietorship-registration" &&
+    slug !== "public-limited-company" &&
+    !newServiceSlugs.includes(slug)
   ) {
     return notFound();
   }
 
   // Which Company Type to Register Layout
-  if (resolvedParams.slug === "which-company-type-to-register") {
+  if (slug === "which-company-type-to-register") {
     return (
       <>
         <Header />
@@ -58,7 +110,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   // Partnership Firm Registration Layout
-  if (resolvedParams.slug === "partnership-firm-registration") {
+  if (slug === "partnership-firm-registration") {
     return (
       <>
         <Header />
@@ -71,7 +123,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   // Sole Proprietorship Firm Registration Layout
-  if (resolvedParams.slug === "sole-proprietorship-registration") {
+  if (slug === "sole-proprietorship-registration") {
     return (
       <>
         <Header />
@@ -84,7 +136,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   // Public Limited Company Incorporation Layout
-  if (resolvedParams.slug === "public-limited-company") {
+  if (slug === "public-limited-company") {
     return (
       <>
         <Header />
@@ -97,7 +149,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   // Name Registration gets the rich two-column layout
-  if (resolvedParams.slug === "name-registration") {
+  if (slug === "name-registration") {
     return (
       <>
         <Header />
@@ -110,7 +162,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   // Company Incorporation gets the rich article layout
-  if (resolvedParams.slug === "company-incorporation") {
+  if (slug === "company-incorporation") {
     return (
       <>
         <Header />
@@ -123,7 +175,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   // LLP Registration gets the rich LLP article layout
-  if (resolvedParams.slug === "llp-registration") {
+  if (slug === "llp-registration") {
     return (
       <>
         <Header />
@@ -136,7 +188,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   // OPC Registration gets the rich OPC article layout
-  if (resolvedParams.slug === "opc-registration") {
+  if (slug === "opc-registration") {
     return (
       <>
         <Header />
@@ -149,7 +201,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   // Agreements Directory layout
-  if (resolvedParams.slug === "agreements") {
+  if (slug === "agreements") {
     return (
       <>
         <Header />
@@ -163,9 +215,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   // Investment Readiness Layout
   if (
-    resolvedParams.slug === "pitch-to-investors" ||
-    resolvedParams.slug === "finance-for-fundraising" ||
-    resolvedParams.slug === "find-investors"
+    slug === "pitch-to-investors" ||
+    slug === "finance-for-fundraising" ||
+    slug === "find-investors"
   ) {
     return (
       <>
@@ -179,7 +231,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   // ── New service & category pages (15 pages) ──
-  const newPage = getNewServicePage(resolvedParams.slug);
+  const newPage = getNewServicePage(slug);
   if (newPage) {
     return <NewServicePageLayout page={newPage} />;
   }
