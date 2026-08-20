@@ -73,9 +73,19 @@ body {
   overflow-x: hidden;
 }
 
-/* ===========================
-   SMOOTH SCROLL ANIMATIONS
-   =========================== */
+/* Custom scrollbar utility to remove scrollbars / slide bars */
+.scrollbar-none,
+.no-scrollbar {
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
+}
+
+.scrollbar-none::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari and Opera */
+  width: 0 !important;
+  height: 0 !important;
+}
 
 /* Reveal on scroll    base state (invisible, shifted) */
 .reveal {

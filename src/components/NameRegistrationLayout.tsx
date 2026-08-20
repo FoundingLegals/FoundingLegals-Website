@@ -440,7 +440,7 @@ export default function NameRegistrationLayout() {
                 <p className="text-[14.5px] text-[#555] leading-relaxed">
                   Sole Proprietorship is a type of business structure that involves a single owner who is personally liable for all the business's debts and obligations as there is no separate legal entity. It's ideal for small businesses and freelancers due to its minimal compliance requirements.
                 </p>
-                <a href="/services/sole-proprietorship-registration" className="text-xs font-bold text-olive-600 hover:text-olive-750 hover:underline inline-flex items-center gap-1">Learn more &rarr;</a>
+                <a href="/services/CAservices/sole-proprietorship-registration" className="text-xs font-bold text-olive-600 hover:text-olive-750 hover:underline inline-flex items-center gap-1">Learn more &rarr;</a>
               </div>
 
               {/* Partnership Firm */}
@@ -449,7 +449,7 @@ export default function NameRegistrationLayout() {
                 <p className="text-[14.5px] text-[#555] leading-relaxed">
                   Governed by the Indian Partnership Act 1932, a Partnership is a collaborative business structure involving two or more individuals who jointly share responsibilities, profits, and liabilities. This structure suits professional services and small businesses and is often guarded by a well-drafted Partnership agreement.
                 </p>
-                <a href="/services/partnership-firm-registration" className="text-xs font-bold text-olive-600 hover:text-olive-750 hover:underline inline-flex items-center gap-1">Learn more &rarr;</a>
+                <a href="/services/CAservices/partnership-firm-registration" className="text-xs font-bold text-olive-600 hover:text-olive-750 hover:underline inline-flex items-center gap-1">Learn more &rarr;</a>
               </div>
 
               {/* Section 8 Company */}

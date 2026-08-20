@@ -28,7 +28,7 @@ const STRUCTURES = [
     cost: "Starts at ₹1,999 + Govt. Fee",
     icon: Building2,
     colorClass: "from-[#EAF1E5] to-[#F3F7F0] border-olive-350",
-    learnMoreUrl: "/services/company-incorporation",
+    learnMoreUrl: "/services/CAservices/company-incorporation",
     bestFor: [
       "Service-based businesses",
       "Businesses looking to issue shares",
@@ -42,7 +42,7 @@ const STRUCTURES = [
     cost: "Starts at ₹1,999 + Govt. Fee",
     icon: Briefcase,
     colorClass: "from-[#E2EAE0] to-[#ECF2EC] border-olive-200",
-    learnMoreUrl: "/services/llp-registration",
+    learnMoreUrl: "/services/CAservices/llp-registration",
     bestFor: [
       "Professional services",
       "Firms seeking any capital contribution from Partners",
@@ -56,7 +56,7 @@ const STRUCTURES = [
     cost: "Starts at ₹1,999 + Govt. Fee",
     icon: User,
     colorClass: "from-[#EDF1E7] to-[#F6F8F3] border-olive-200",
-    learnMoreUrl: "/services/opc-registration",
+    learnMoreUrl: "/services/CAservices/opc-registration",
     bestFor: [
       "Freelancers, Small-scale businesses",
       "Businesses looking for minimal compliance",
@@ -70,7 +70,7 @@ const STRUCTURES = [
     cost: "No Formal Registration Required",
     icon: Handshake,
     colorClass: "from-[#F5F2EB] to-[#FAF8F5] border-brown-200",
-    learnMoreUrl: "/services/partnership-firm-registration",
+    learnMoreUrl: "/services/CAservices/partnership-firm-registration",
     bestFor: [
       "Professional Services",
       "Home-based Services",
@@ -84,7 +84,7 @@ const STRUCTURES = [
     cost: "No Formal Registration Required",
     icon: FileText,
     colorClass: "from-[#F2EFEA] to-[#FAF7F3] border-brown-200",
-    learnMoreUrl: "/services/sole-proprietorship-registration",
+    learnMoreUrl: "/services/CAservices/sole-proprietorship-registration",
     bestFor: [
       "Freelancers & Solo Consultants",
       "Home-based Services",
@@ -520,7 +520,7 @@ export default function WhichCompanyTypeLayout() {
                     {row.hasLinks ? (
                       <div className="space-y-1.5">
                         <span className="font-serif font-semibold text-olive-750 block">{row.pvtLtd}</span>
-                        <a href="/services/company-incorporation" className="text-xs font-bold text-olive-650 hover:underline">Learn more</a>
+                        <a href="/services/CAservices/company-incorporation" className="text-xs font-bold text-olive-650 hover:underline">Learn more</a>
                       </div>
                     ) : (
                       row.pvtLtd
@@ -532,7 +532,7 @@ export default function WhichCompanyTypeLayout() {
                     {row.hasLinks ? (
                       <div className="space-y-1.5">
                         <span className="font-serif font-semibold text-olive-750 block">{row.llp}</span>
-                        <a href="/services/llp-registration" className="text-xs font-bold text-olive-650 hover:underline">Learn more</a>
+                        <a href="/services/CAservices/llp-registration" className="text-xs font-bold text-olive-650 hover:underline">Learn more</a>
                       </div>
                     ) : (
                       row.llp
@@ -544,7 +544,7 @@ export default function WhichCompanyTypeLayout() {
                     {row.hasLinks ? (
                       <div className="space-y-1.5">
                         <span className="font-serif font-semibold text-olive-750 block">{row.opc}</span>
-                        <a href="/services/opc-registration" className="text-xs font-bold text-olive-650 hover:underline">Learn more</a>
+                        <a href="/services/CAservices/opc-registration" className="text-xs font-bold text-olive-650 hover:underline">Learn more</a>
                       </div>
                     ) : (
                       row.opc
@@ -556,7 +556,7 @@ export default function WhichCompanyTypeLayout() {
                     {row.hasLinks ? (
                       <div className="space-y-1.5">
                         <span className="text-brown-500 block">{row.partnership}</span>
-                        <a href="/services/partnership-firm-registration" className="text-xs font-bold text-olive-650 hover:underline">Learn more</a>
+                        <a href="/services/CAservices/partnership-firm-registration" className="text-xs font-bold text-olive-650 hover:underline">Learn more</a>
                       </div>
                     ) : (
                       row.partnership
@@ -568,7 +568,7 @@ export default function WhichCompanyTypeLayout() {
                     {row.hasLinks ? (
                       <div className="space-y-1.5">
                         <span className="text-brown-500 block">{row.proprietorship}</span>
-                        <a href="/services/sole-proprietorship-registration" className="text-xs font-bold text-olive-650 hover:underline">Learn more</a>
+                        <a href="/services/CAservices/sole-proprietorship-registration" className="text-xs font-bold text-olive-650 hover:underline">Learn more</a>
                       </div>
                     ) : (
                       row.proprietorship

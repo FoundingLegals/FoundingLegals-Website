@@ -264,7 +264,11 @@ export default function ServicesPage() {
                             <ArrowRight className="w-3.5 h-3.5" />
                           </button>
                           <Link
-                            href={`/services/${service.slug}`}
+                            href={
+                              ["agreements", "ip-protection", "trademark-registration", "pitch-to-investors", "find-investors", "finance-for-fundraising", "raise-before-a-round", "do-a-funding-round", "legal-advice-for-a-round", "instant-investment", "document-management", "essential-startup-approach", "client-management", "team-management"].includes(service.slug)
+                                ? `/services/LegalServices/${service.slug}`
+                                : `/services/CAservices/${service.slug}`
+                            }
                             className="text-[11px] text-brown-400 hover:text-brown-700 transition-colors underline-offset-2 hover:underline"
                           >
                             Learn more

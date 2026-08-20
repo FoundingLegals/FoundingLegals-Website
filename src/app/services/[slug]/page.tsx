@@ -17,18 +17,16 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export function generateStaticParams() {
-  const params = services
-    .filter((s) => s.slug !== "certifications")
-    .map((s) => ({
-      slug: s.slug,
-    }));
-  params.push({ slug: "which-company-type-to-register" });
-  params.push({ slug: "partnership-firm-registration" });
-  params.push({ slug: "sole-proprietorship-registration" });
-  params.push({ slug: "public-limited-company" });
-  // ── New service & category pages ──
-  newServiceSlugs.forEach((slug) => params.push({ slug }));
-  return params;
+  const allSlugs = new Set<string>([
+    ...services.map((s) => s.slug),
+    "which-company-type-to-register",
+    "partnership-firm-registration",
+    "sole-proprietorship-registration",
+    "public-limited-company",
+    ...newServiceSlugs,
+  ]);
+
+  return Array.from(allSlugs).map((slug) => ({ slug }));
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {

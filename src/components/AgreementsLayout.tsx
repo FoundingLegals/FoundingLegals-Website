@@ -323,81 +323,85 @@ export default function AgreementsLayout() {
 
       {/* ── MODE 1: SINGLE AGREEMENT VIEW ── */}
       {viewMode === "single" && (
-        <section className="max-w-7xl mx-auto px-6 md:px-12 py-10 space-y-8 animate-fadeIn">
+        <section className="max-w-7xl mx-auto px-6 md:px-12 py-8 space-y-6 animate-fadeIn">
           
-          {/* Main Agreement Header & Hero Card (Static Card at Top) */}
-          <div className="bg-white border border-brown-200/60 rounded-3xl p-6 sm:p-8 shadow-sm space-y-5 text-left">
-            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-              <div className="space-y-3 max-w-3xl">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-[11px] font-bold text-[#5A7338] bg-olive-50 border border-olive-200/60 px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5">
-                    <FileText className="w-3.5 h-3.5" />
-                    {activeAgreement.category}
-                  </span>
-                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-[#E8F5E9] text-[#2E7D32] border border-[#A5D6A7] rounded-full text-xs font-bold shadow-2xs">
-                    Starting at ₹50
-                  </span>
+          {/* Combined Sticky Hero Card & Sub-tabs Header Container */}
+          <div className="sticky top-[66px] sm:top-[72px] z-30 space-y-3 bg-[#F5F0EB]/95 backdrop-blur-md pt-2 pb-3 -mx-2 px-2 transition-all">
+            
+            {/* Main Agreement Header & Hero Card */}
+            <div className="bg-white border border-brown-200/60 rounded-3xl p-5 sm:p-7 shadow-sm space-y-4 text-left transition-all">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="space-y-2 max-w-3xl">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-[11px] font-bold text-[#5A7338] bg-olive-50 border border-olive-200/60 px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5">
+                      <FileText className="w-3.5 h-3.5" />
+                      {activeAgreement.category}
+                    </span>
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-[#E8F5E9] text-[#2E7D32] border border-[#A5D6A7] rounded-full text-xs font-bold shadow-2xs">
+                      Starting at ₹50
+                    </span>
+                  </div>
+
+                  <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#1A1917] leading-tight">
+                    {activeAgreement.name}
+                  </h2>
+
+                  <p className="text-xs sm:text-sm text-brown-700 font-medium leading-relaxed italic">
+                    {activeAgreement.tagline}
+                  </p>
                 </div>
 
-                <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#1A1917] leading-tight">
-                  {activeAgreement.name}
-                </h2>
+                {/* Action Box */}
+                <div className="bg-[#FAF9F6] border border-brown-200/60 p-3.5 rounded-2xl flex flex-col items-center justify-center space-y-1.5 shrink-0 text-center md:w-60">
+                  <span className="text-[11px] text-brown-500 font-light">
+                    Ready to draft {activeAgreement.name}?
+                  </span>
+                  <span className="text-sm font-serif font-bold text-[#2E7D32]">
+                    Starting at ₹50
+                  </span>
+                  <button
+                    onClick={(e) => handleCreateAgreement(e, activeAgreement.id)}
+                    className="w-full py-2 px-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-xs font-bold rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm hover:shadow cursor-pointer active:scale-95"
+                  >
+                    <Plus className="w-4 h-4" />
+                    <span>Create Agreement</span>
+                  </button>
+                </div>
+              </div>
+            </div>
 
-                <p className="text-sm sm:text-base text-brown-700 font-medium leading-relaxed italic">
-                  {activeAgreement.tagline}
-                </p>
+            {/* Sub-tabs Navigation Bar (Scrollbar completely hidden) */}
+            <div className="bg-white/95 backdrop-blur-md border border-brown-200/80 p-2 sm:p-2.5 rounded-2xl shadow-sm transition-all flex items-center justify-between gap-3">
+              {/* Sub-tabs Pills */}
+              <div className="flex items-center gap-2 overflow-x-auto scrollbar-none no-scrollbar [::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] w-full">
+                {subTabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => handleScrollToSubTab(tab.id)}
+                    className={`py-1.5 px-3.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                      activeSubTab === tab.id
+                        ? "bg-[#5A7338] text-white shadow-sm"
+                        : "bg-[#FAF9F6] hover:bg-olive-50 text-brown-700 hover:text-[#5A7338] border border-brown-200/40"
+                    }`}
+                  >
+                    {tab.name}
+                  </button>
+                ))}
               </div>
 
-              {/* Action Box */}
-              <div className="bg-[#FAF9F6] border border-brown-200/60 p-4 rounded-2xl flex flex-col items-center justify-center space-y-2 shrink-0 text-center md:w-64">
-                <span className="text-xs text-brown-500 font-light">
-                  Ready to draft {activeAgreement.name}?
-                </span>
-                <span className="text-base font-serif font-bold text-[#2E7D32]">
-                  Starting at ₹50
+              {/* Mini CTA on sticky bar */}
+              <div className="hidden lg:flex items-center gap-3 shrink-0 pl-3 border-l border-brown-200/60">
+                <span className="text-xs font-bold text-brown-900 truncate max-w-[180px]">
+                  {activeAgreement.name}
                 </span>
                 <button
                   onClick={(e) => handleCreateAgreement(e, activeAgreement.id)}
-                  className="w-full py-2.5 px-4 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-xs font-bold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow cursor-pointer active:scale-95"
+                  className="py-1.5 px-3 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-xs font-bold rounded-lg transition-all flex items-center gap-1 shadow-xs cursor-pointer"
                 >
-                  <Plus className="w-4 h-4" />
-                  <span>+ Create Agreement</span>
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>Create</span>
                 </button>
               </div>
-            </div>
-          </div>
-
-          {/* Sticky Sub-tabs Navigation Bar (Positioned cleanly below site header at top-24) */}
-          <div className="sticky top-24 sm:top-28 z-30 bg-white/95 backdrop-blur-md border border-brown-200/80 p-2.5 sm:p-3 rounded-2xl shadow-md transition-all flex flex-col sm:flex-row items-center justify-between gap-3">
-            {/* Sub-tabs Pills */}
-            <div className="flex items-center gap-2 overflow-x-auto scrollbar-none w-full sm:w-auto">
-              {subTabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => handleScrollToSubTab(tab.id)}
-                  className={`py-2 px-3.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                    activeSubTab === tab.id
-                      ? "bg-[#5A7338] text-white shadow-sm"
-                      : "bg-[#FAF9F6] hover:bg-olive-50 text-brown-700 hover:text-[#5A7338] border border-brown-200/40"
-                  }`}
-                >
-                  {tab.name}
-                </button>
-              ))}
-            </div>
-
-            {/* Mini CTA on sticky bar */}
-            <div className="hidden lg:flex items-center gap-3 shrink-0 pl-3 border-l border-brown-200/60">
-              <span className="text-xs font-bold text-brown-900 truncate max-w-[180px]">
-                {activeAgreement.name}
-              </span>
-              <button
-                onClick={(e) => handleCreateAgreement(e, activeAgreement.id)}
-                className="py-1.5 px-3 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-xs font-bold rounded-lg transition-all flex items-center gap-1 shadow-xs cursor-pointer"
-              >
-                <Plus className="w-3.5 h-3.5" />
-                <span>+ Create</span>
-              </button>
             </div>
           </div>
 
@@ -405,7 +409,7 @@ export default function AgreementsLayout() {
           <div className="bg-white border border-brown-200/60 rounded-3xl p-6 sm:p-10 shadow-sm space-y-12 text-left">
             
             {/* Section 1: Overview & Purpose */}
-            <section id="overview" className="scroll-mt-44 sm:scroll-mt-48 space-y-8 pb-8">
+            <section id="overview" className="scroll-mt-64 sm:scroll-mt-72 space-y-8 pb-8">
                 <div className="space-y-3">
                   <h3 className="font-serif text-2xl font-bold text-brown-900 flex items-center gap-2">
                     <Info className="w-5 h-5 text-[#5A7338]" /> Overview & Purpose
@@ -483,7 +487,7 @@ export default function AgreementsLayout() {
               </section>
 
               {/* Section 2: Types & Scenarios */}
-              <section id="types" className="scroll-mt-44 sm:scroll-mt-48 space-y-6 pt-10 pb-8 border-t border-brown-200/60">
+              <section id="types" className="scroll-mt-64 sm:scroll-mt-72 space-y-6 pt-10 pb-8 border-t border-brown-200/60">
                 <div className="space-y-1">
                   <h3 className="font-serif text-2xl font-bold text-brown-900 flex items-center gap-2">
                     <FileSpreadsheet className="w-5 h-5 text-[#5A7338]" /> Types & Scenarios
@@ -547,7 +551,7 @@ export default function AgreementsLayout() {
               </section>
 
               {/* Section 3: Key Clauses & Exclusions */}
-              <section id="clauses" className="scroll-mt-44 sm:scroll-mt-48 space-y-6 pt-10 pb-8 border-t border-brown-200/60">
+              <section id="clauses" className="scroll-mt-64 sm:scroll-mt-72 space-y-6 pt-10 pb-8 border-t border-brown-200/60">
                 <div className="space-y-1">
                   <h3 className="font-serif text-2xl font-bold text-brown-900 flex items-center gap-2">
                     <CheckSquare className="w-5 h-5 text-[#5A7338]" /> Key Clauses & Exclusions
@@ -595,7 +599,7 @@ export default function AgreementsLayout() {
               </section>
 
               {/* Section 4: Legal Validity & Stamp Duty */}
-              <section id="enforceability" className="scroll-mt-44 sm:scroll-mt-48 space-y-6 pt-10 pb-8 border-t border-brown-200/60">
+              <section id="enforceability" className="scroll-mt-64 sm:scroll-mt-72 space-y-6 pt-10 pb-8 border-t border-brown-200/60">
                 <div className="space-y-1">
                   <h3 className="font-serif text-2xl font-bold text-brown-900 flex items-center gap-2">
                     <Scale className="w-5 h-5 text-[#5A7338]" /> Legal Validity & Stamp Duty
@@ -700,7 +704,7 @@ export default function AgreementsLayout() {
               </section>
 
               {/* Section 5: Sample Template — Zoomed-Out Full Document Card Preview */}
-              <section id="template" className="scroll-mt-44 sm:scroll-mt-48 space-y-6 pt-10 pb-8 border-t border-brown-200/60">
+              <section id="template" className="scroll-mt-64 sm:scroll-mt-72 space-y-6 pt-10 pb-8 border-t border-brown-200/60">
                 <div className="space-y-1">
                   <h3 className="font-serif text-2xl font-bold text-brown-900 flex items-center gap-2">
                     <FileText className="w-5 h-5 text-[#5A7338]" /> Sample Template
@@ -872,7 +876,7 @@ export default function AgreementsLayout() {
               </section>
 
               {/* Section 6: FAQs */}
-              <section id="faqs" className="scroll-mt-44 sm:scroll-mt-48 space-y-6 pt-10 pb-4 border-t border-brown-200/60">
+              <section id="faqs" className="scroll-mt-64 sm:scroll-mt-72 space-y-6 pt-10 pb-4 border-t border-brown-200/60">
                 <div className="flex items-center justify-between">
                   <h3 className="font-serif text-2xl font-bold text-brown-900 flex items-center gap-2">
                     <HelpCircle className="w-5 h-5 text-[#5A7338]" /> Frequently Asked Questions
@@ -1028,7 +1032,7 @@ export default function AgreementsLayout() {
             <div className="pt-4">
               <button
                 onClick={(e) => handleCreateAgreement(e)}
-                className="px-8 py-3.5 bg-white hover:bg-[#F5F2EB] text-olive-850 font-bold text-[13px] rounded-xl transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95"
+                className="px-8 py-3.5 bg-white hover:bg-[#F5F2EB] text-[#2B3616] font-bold text-[14px] rounded-full transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95 border border-white/80"
               >
                 Go to Application Dashboard
               </button>
