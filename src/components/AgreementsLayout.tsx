@@ -53,9 +53,11 @@ const getAgreementSampleImage = (id: string) => {
   return `/agreements/${id}-sample.svg`;
 };
 
-export default function AgreementsLayout() {
-  const [selectedAgreementId, setSelectedAgreementId] = useState<string>("founders-agreement");
-  const [viewMode, setViewMode] = useState<"showcase" | "single">("showcase");
+export default function AgreementsLayout({ initialAgreementId }: { initialAgreementId?: string }) {
+  const [selectedAgreementId, setSelectedAgreementId] = useState<string>(
+    initialAgreementId ? (ID_ALIASES[initialAgreementId] || initialAgreementId) : "founders-agreement"
+  );
+  const [viewMode, setViewMode] = useState<"showcase" | "single">(initialAgreementId ? "single" : "showcase");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   
@@ -128,17 +130,33 @@ export default function AgreementsLayout() {
     setIsPanning(false);
   }, []);
 
-  // Read URL query parameter "?id=..." on mount & route change
+  // Read URL query parameter "?id=..." or pathname on mount & route change
   useEffect(() => {
     if (typeof window !== "undefined") {
       const checkUrlParams = () => {
+        let urlId = initialAgreementId;
+
+        // Check path segment (e.g. /services/LegalServices/agreements/founders-agreement)
+        const pathSegments = window.location.pathname.split("/").filter(Boolean);
+        const lastSegment = pathSegments[pathSegments.length - 1];
+        const reservedSegments = new Set(["agreements", "LegalServices", "legal-services", "legalservices", "CAservices", "ca-services", "services"]);
+        
+        if (lastSegment && !reservedSegments.has(lastSegment)) {
+          urlId = lastSegment;
+        }
+
+        // Fallback to query parameter ?id=...
         const params = new URLSearchParams(window.location.search);
-        let urlId = params.get("id");
+        const queryId = params.get("id");
+        if (queryId) {
+          urlId = queryId;
+        }
+
         if (urlId) {
           if (ID_ALIASES[urlId]) {
             urlId = ID_ALIASES[urlId];
           }
-          const found = AGREEMENTS_DATABASE.find(a => a.id === urlId);
+          const found = AGREEMENTS_DATABASE.find((a) => a.id === urlId);
           if (found) {
             setSelectedAgreementId(found.id);
             setViewMode("single");
@@ -150,7 +168,7 @@ export default function AgreementsLayout() {
       window.addEventListener("popstate", checkUrlParams);
       return () => window.removeEventListener("popstate", checkUrlParams);
     }
-  }, []);
+  }, [initialAgreementId]);
 
   // Scroll Spy to automatically highlight sub-tab as user scrolls through sections
   useEffect(() => {
@@ -226,9 +244,9 @@ export default function AgreementsLayout() {
     setActiveSubTab("overview");
     setViewMode("single");
     
-    // Update URL query param without full page reload
+    // Update URL to clean directory path without full page reload
     if (typeof window !== "undefined" && window.history.pushState) {
-      const newUrl = `${window.location.pathname}?id=${targetId}`;
+      const newUrl = `/services/LegalServices/agreements/${targetId}`;
       window.history.pushState({ path: newUrl }, "", newUrl);
     }
     
@@ -240,7 +258,8 @@ export default function AgreementsLayout() {
   const handleBackToShowcase = () => {
     setViewMode("showcase");
     if (typeof window !== "undefined" && window.history.pushState) {
-      window.history.pushState({ path: window.location.pathname }, "", window.location.pathname);
+      const newUrl = `/services/LegalServices/agreements`;
+      window.history.pushState({ path: newUrl }, "", newUrl);
     }
   };
 

@@ -1,5 +1,6 @@
 import { services } from "@/lib/servicesData";
 import { getNewServicePage, newServiceSlugs } from "@/lib/newServicesData";
+import { AGREEMENTS_DATABASE } from "@/lib/agreementsData";
 import { notFound } from "next/navigation";
 import ServiceLayout from "@/components/ServiceLayout";
 import NameRegistrationLayout from "@/components/NameRegistrationLayout";
@@ -10,11 +11,19 @@ import WhichCompanyTypeLayout from "@/components/WhichCompanyTypeLayout";
 import PartnershipRegistrationLayout from "@/components/PartnershipRegistrationLayout";
 import SoleProprietorshipRegistrationLayout from "@/components/SoleProprietorshipRegistrationLayout";
 import PublicLimitedRegistrationLayout from "@/components/PublicLimitedRegistrationLayout";
+import TrademarkRegistrationLayout from "@/components/TrademarkRegistrationLayout";
 import AgreementsLayout from "@/components/AgreementsLayout";
 import InvestmentReadinessLayout from "@/components/InvestmentReadinessLayout";
 import NewServicePageLayout from "@/components/NewServicePageLayout";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+
+const AGREEMENT_SLUGS = new Set<string>([
+  ...AGREEMENTS_DATABASE.map((a) => a.id),
+  "mutual-nda",
+  "internship-agreement",
+  "software-license",
+]);
 
 const SLUG_ALIASES: Record<string, string> = {
   // GST & Indirect Tax subservices & variants
@@ -200,13 +209,24 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     );
   }
 
-  // Agreements Directory layout
-  if (slug === "agreements") {
+  // Trademark Registration & Intellectual Property Layout
+  if (slug === "trademark-registration" || slug === "intellectual-property") {
     return (
       <>
         <Header />
         <main>
-          <AgreementsLayout />
+          <TrademarkRegistrationLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  // Agreements Directory layout or Single Agreement view
+  if (slug === "agreements" || AGREEMENT_SLUGS.has(slug)) {
+    return (
+      <>
+        <Header />
+        <main>
+          <AgreementsLayout initialAgreementId={slug !== "agreements" ? slug : undefined} />
         </main>
         <Footer />
       </>

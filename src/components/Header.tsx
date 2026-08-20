@@ -198,47 +198,47 @@ const LEGAL_SERVICES_CLUSTERS = [
     category: "Startup & Founders",
     icon: Rocket,
     items: [
-      { name: "Founders' Agreement", href: "/services/LegalServices/agreements?id=founders-agreement" },
-      { name: "Shareholders' Agreement (SHA)", href: "/services/LegalServices/agreements?id=shareholders-agreement" },
-      { name: "Share Subscription Agreement (SSA)", href: "/services/LegalServices/agreements?id=share-subscription-agreement" },
-      { name: "Convertible Note Agreement", href: "/services/LegalServices/agreements?id=convertible-note-agreement" },
+      { name: "Founders' Agreement", href: "/services/LegalServices/agreements/founders-agreement" },
+      { name: "Shareholders' Agreement (SHA)", href: "/services/LegalServices/agreements/shareholders-agreement" },
+      { name: "Share Subscription Agreement (SSA)", href: "/services/LegalServices/agreements/share-subscription-agreement" },
+      { name: "Convertible Note Agreement", href: "/services/LegalServices/agreements/convertible-note-agreement" },
     ]
   },
   {
     category: "Employment & HR",
     icon: Users,
     items: [
-      { name: "Offer Letter", href: "/services/LegalServices/agreements?id=offer-letter" },
-      { name: "Internship Agreement", href: "/services/LegalServices/agreements?id=internship-offer-letter" },
-      { name: "Consultancy Agreement", href: "/services/LegalServices/agreements?id=consultancy-agreement" },
-      { name: "Service Certificate", href: "/services/LegalServices/agreements?id=service-certificate" },
-      { name: "Non-Compete Agreement", href: "/services/LegalServices/agreements?id=non-compete-agreement" },
+      { name: "Offer Letter", href: "/services/LegalServices/agreements/offer-letter" },
+      { name: "Internship Agreement", href: "/services/LegalServices/agreements/internship-offer-letter" },
+      { name: "Consultancy Agreement", href: "/services/LegalServices/agreements/consultancy-agreement" },
+      { name: "Service Certificate", href: "/services/LegalServices/agreements/service-certificate" },
+      { name: "Non-Compete Agreement", href: "/services/LegalServices/agreements/non-compete-agreement" },
     ]
   },
   {
     category: "IP & Confidentiality",
     icon: ShieldCheck,
     items: [
-      { name: "Mutual NDA", href: "/services/LegalServices/agreements?id=non-disclosure-agreement" },
-      { name: "IP Assignment Agreement", href: "/services/LegalServices/agreements?id=ip-assignment-agreement" },
-      { name: "Technology Transfer Agreement", href: "/services/LegalServices/agreements?id=technology-transfer-agreement" },
-      { name: "Software License Agreement", href: "/services/LegalServices/agreements?id=software-license-agreement" },
-      { name: "Trademark License Agreement", href: "/services/LegalServices/agreements?id=trademark-license-agreement" },
+      { name: "Mutual NDA", href: "/services/LegalServices/agreements/non-disclosure-agreement" },
+      { name: "IP Assignment Agreement", href: "/services/LegalServices/agreements/ip-assignment-agreement" },
+      { name: "Technology Transfer Agreement", href: "/services/LegalServices/agreements/technology-transfer-agreement" },
+      { name: "Software License Agreement", href: "/services/LegalServices/agreements/software-license-agreement" },
+      { name: "Trademark License Agreement", href: "/services/LegalServices/agreements/trademark-license-agreement" },
     ]
   },
   {
     category: "Commercial & Business",
     icon: Briefcase,
     items: [
-      { name: "Service Agreement", href: "/services/LegalServices/agreements?id=service-agreement" },
-      { name: "Master Service Agreement (MSA)", href: "/services/LegalServices/agreements?id=master-service-agreement" },
-      { name: "Vendor Agreement", href: "/services/LegalServices/agreements?id=vendor-agreement" },
-      { name: "Distribution Agreement", href: "/services/LegalServices/agreements?id=distribution-agreement" },
-      { name: "Joint Venture Agreement", href: "/services/LegalServices/agreements?id=joint-venture-agreement" },
-      { name: "Franchise Agreement", href: "/services/LegalServices/agreements?id=franchise-agreement" },
-      { name: "Supply Agreement", href: "/services/LegalServices/agreements?id=supply-agreement" },
-      { name: "Rental Agreement", href: "/services/LegalServices/agreements?id=rental-agreement" },
-      { name: "Commercial Rental Agreement", href: "/services/LegalServices/agreements?id=commercial-rental-agreement" },
+      { name: "Service Agreement", href: "/services/LegalServices/agreements/service-agreement" },
+      { name: "Master Service Agreement (MSA)", href: "/services/LegalServices/agreements/master-service-agreement" },
+      { name: "Vendor Agreement", href: "/services/LegalServices/agreements/vendor-agreement" },
+      { name: "Distribution Agreement", href: "/services/LegalServices/agreements/distribution-agreement" },
+      { name: "Joint Venture Agreement", href: "/services/LegalServices/agreements/joint-venture-agreement" },
+      { name: "Franchise Agreement", href: "/services/LegalServices/agreements/franchise-agreement" },
+      { name: "Supply Agreement", href: "/services/LegalServices/agreements/supply-agreement" },
+      { name: "Rental Agreement", href: "/services/LegalServices/agreements/rental-agreement" },
+      { name: "Commercial Rental Agreement", href: "/services/LegalServices/agreements/commercial-rental-agreement" },
     ]
   }
 ];
