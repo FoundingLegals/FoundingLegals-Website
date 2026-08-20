@@ -108,14 +108,14 @@ const SERVICE_CATEGORIES = [
     name: "Licenses & Registrations",
     fullName: "Licenses & Registrations",
     services: [
-      { name: "DPIIT / Startup India Registration", href: "/services/CAservices/certifications" },
-      { name: "GST Registration", href: "/services/CAservices/gst-filing-and-taxation" },
-      { name: "UDYAM / MSME Registration", href: "/services/CAservices/certifications" },
-      { name: "FSSAI Food License (Central)", href: "/services/CAservices/gst-filing-and-taxation" },
-      { name: "FSSAI Food License (State)", href: "/services/CAservices/gst-filing-and-taxation" },
-      { name: "IEC (Import Export Code)", href: "/services/CAservices/gst-filing-and-taxation" },
-      { name: "Labour License", href: "/services/CAservices/gst-filing-and-taxation" },
-      { name: "Professional Tax Registration", href: "/services/CAservices/gst-filing-and-taxation" },
+      { name: "DPIIT / Startup India Registration", href: "/services/CAservices/dpiit-recognition" },
+      { name: "GST Registration", href: "/services/CAservices/gst-registration" },
+      { name: "UDYAM / MSME Registration", href: "/services/CAservices/msme-registration" },
+      { name: "FSSAI Food License (Central)", href: "/services/CAservices/fssai-central-license" },
+      { name: "FSSAI Food License (State)", href: "/services/CAservices/fssai-state-license" },
+      { name: "IEC (Import Export Code)", href: "/services/CAservices/iec-registration" },
+      { name: "Labour License", href: "/services/CAservices/labour-license" },
+      { name: "Professional Tax Registration", href: "/services/CAservices/gst-indirect-tax" },
     ]
   },
   {
@@ -123,7 +123,7 @@ const SERVICE_CATEGORIES = [
     name: "Intellectual Property (IP)",
     fullName: "Intellectual Property (IP) Services",
     services: [
-      { name: "Trademark Registration", href: "/services/LegalServices/ip-protection" },
+      { name: "Trademark Registration", href: "/services/LegalServices/trademark-registration" },
     ]
   },
   {
@@ -131,11 +131,11 @@ const SERVICE_CATEGORIES = [
     name: "GST & Indirect Tax",
     fullName: "GST & Indirect Tax Compliance",
     services: [
-      { name: "Monthly GST Return Filing", href: "/services/CAservices/gst-filing-and-taxation" },
-      { name: "Quarterly GST Return Filing", href: "/services/CAservices/gst-filing-and-taxation" },
-      { name: "Annual GST Return (GSTR-9)", href: "/services/CAservices/gst-filing-and-taxation" },
-      { name: "TDS Return Filing", href: "/services/CAservices/gst-filing-and-taxation" },
-      { name: "Professional Tax Return Filing", href: "/services/CAservices/gst-filing-and-taxation" },
+      { name: "Monthly GST Return Filing", href: "/services/CAservices/gst-indirect-tax" },
+      { name: "Quarterly GST Return Filing", href: "/services/CAservices/gst-indirect-tax" },
+      { name: "Annual GST Return (GSTR-9)", href: "/services/CAservices/gstr9-annual-return" },
+      { name: "TDS Return Filing", href: "/services/CAservices/tds-return-filing" },
+      { name: "Professional Tax Return Filing", href: "/services/CAservices/gst-indirect-tax" },
     ]
   },
   {
@@ -143,13 +143,13 @@ const SERVICE_CATEGORIES = [
     name: "Income Tax & Advisory",
     fullName: "Income Tax Filing & Advisory",
     services: [
-      { name: "Salary ITR Filing", href: "/services/CAservices/gst-filing-and-taxation" },
-      { name: "Business ITR Filing", href: "/services/CAservices/gst-filing-and-taxation" },
-      { name: "ITR-3 Filing (Professional/Business)", href: "/services/CAservices/gst-filing-and-taxation" },
-      { name: "ITR-4 Filing (Presumptive)", href: "/services/CAservices/gst-filing-and-taxation" },
-      { name: "ITR-5 Filing (LLPs/Partnerships)", href: "/services/CAservices/gst-filing-and-taxation" },
-      { name: "ITR-6 Filing (Companies)", href: "/services/CAservices/gst-filing-and-taxation" },
-      { name: "ITR-7 Filing (Trusts/NGOs)", href: "/services/CAservices/gst-filing-and-taxation" },
+      { name: "Salary ITR Filing", href: "/services/CAservices/salary-itr-filing" },
+      { name: "Business ITR Filing", href: "/services/CAservices/business-itr-filing" },
+      { name: "ITR-3 Filing (Professional/Business)", href: "/services/CAservices/itr-3-filing" },
+      { name: "ITR-4 Filing (Presumptive)", href: "/services/CAservices/itr-4-filing" },
+      { name: "ITR-5 Filing (LLPs/Partnerships)", href: "/services/CAservices/itr-5-filing" },
+      { name: "ITR-6 Filing (Companies)", href: "/services/CAservices/itr-6-filing" },
+      { name: "ITR-7 Filing (Trusts/NGOs)", href: "/services/CAservices/itr-7-filing" },
     ]
   },
   {
@@ -157,8 +157,8 @@ const SERVICE_CATEGORIES = [
     name: "Audit & Attestation",
     fullName: "Audit & Attestation Services",
     services: [
-      { name: "GST Audit Execution (GSTR-9C)", href: "/services/CAservices/gst-filing-and-taxation" },
-      { name: "Tax Audit Execution", href: "/services/CAservices/gst-filing-and-taxation" },
+      { name: "GST Audit Execution (GSTR-9C)", href: "/services/CAservices/gst-audit" },
+      { name: "Tax Audit Execution", href: "/services/CAservices/tax-audit" },
     ]
   },
   {
@@ -166,7 +166,7 @@ const SERVICE_CATEGORIES = [
     name: "Certifications & Filings",
     fullName: "Certifications & Filings",
     services: [
-      { name: "DPIIT Startup India Certification", href: "/services/CAservices/certifications" },
+      { name: "DPIIT Startup India Certification", href: "/services/CAservices/dpiit-recognition" },
       { name: "ROC Annual Compliance Filing", href: "/services/CAservices/certifications" },
       { name: "ISO Certification", href: "/services/CAservices/certifications" },
     ]
@@ -176,7 +176,7 @@ const SERVICE_CATEGORIES = [
     name: "Financial & Investment",
     fullName: "Financial & Investment Services",
     services: [
-      { name: "Loan Project Report Preparation", href: "/services/LegalServices/finance-for-fundraising" },
+      { name: "Loan Project Report Preparation", href: "/services/CAservices/loan-project-report" },
     ]
   },
   {
