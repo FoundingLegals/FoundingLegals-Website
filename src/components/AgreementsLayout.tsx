@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useCallback, useEffect } from "react";
+import React, { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { 
   FileText, Shield, Briefcase, Handshake, Search, Scale, 
   ArrowRight, ArrowLeft, ShieldCheck, Check, Info, 
@@ -170,40 +170,75 @@ export default function AgreementsLayout({ initialAgreementId }: { initialAgreem
     }
   }, [initialAgreementId]);
 
-  // Scroll Spy to automatically highlight sub-tab as user scrolls through sections
+  const navRef = useRef<HTMLDivElement>(null);
+  const subTabsContainerRef = useRef<HTMLDivElement>(null);
+  const [isSticky, setIsSticky] = useState(false);
+
+  // Scroll tracking for sticky header, active tab highlighting & bottom of page detection
   useEffect(() => {
     if (viewMode !== "single") return;
 
-    const observerCallback: IntersectionObserverCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSubTab(entry.target.id as any);
+    const handleScroll = () => {
+      // 1. Update Sticky State
+      if (navRef.current) {
+        const rect = navRef.current.getBoundingClientRect();
+        setIsSticky(rect.top <= 80);
+      }
+
+      // 2. Bottom of page detection (especially FAQs)
+      const windowHeight = window.innerHeight;
+      const scrollY = window.scrollY;
+      const fullHeight = document.documentElement.scrollHeight;
+      if (windowHeight + scrollY >= fullHeight - 120) {
+        setActiveSubTab("faqs");
+        return;
+      }
+
+      // 3. Scroll position tracking for active sub-tab
+      const sectionIds = ["overview", "types", "clauses", "enforceability", "template", "faqs"];
+      const headerOffset = 270;
+
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= headerOffset + 40) {
+            setActiveSubTab(sectionIds[i] as any);
+            break;
+          }
         }
-      });
+      }
     };
 
-    const observerOptions: IntersectionObserverInit = {
-      root: null,
-      rootMargin: "-25% 0px -55% 0px",
-      threshold: 0.1,
-    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [viewMode]);
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    const sectionIds = ["overview", "types", "clauses", "enforceability", "template", "faqs"];
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, [viewMode, selectedAgreementId]);
+  // Auto-scroll active sub-tab pill into horizontal view
+  useEffect(() => {
+    if (viewMode === "single" && subTabsContainerRef.current) {
+      const activeBtn = subTabsContainerRef.current.querySelector<HTMLButtonElement>(`[data-tab-id="${activeSubTab}"]`);
+      if (activeBtn) {
+        activeBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      }
+    }
+  }, [activeSubTab, viewMode]);
 
   const handleScrollToSubTab = (tabId: string) => {
     setActiveSubTab(tabId as any);
     const element = document.getElementById(tabId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      const offset = 265;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     }
   };
 
@@ -344,82 +379,106 @@ export default function AgreementsLayout({ initialAgreementId }: { initialAgreem
       {viewMode === "single" && (
         <section className="max-w-7xl mx-auto px-6 md:px-12 py-8 space-y-6 animate-fadeIn">
           
-          {/* Combined Sticky Hero Card & Sub-tabs Header Container */}
-          <div className="sticky top-[66px] sm:top-[72px] z-30 space-y-3 bg-[#F5F0EB]/95 backdrop-blur-md pt-2 pb-3 -mx-2 px-2 transition-all">
-            
-            {/* Main Agreement Header & Hero Card */}
-            <div className="bg-white border border-brown-200/60 rounded-3xl p-5 sm:p-7 shadow-sm space-y-4 text-left transition-all">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div className="space-y-2 max-w-3xl">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-[11px] font-bold text-[#5A7338] bg-olive-50 border border-olive-200/60 px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5">
-                      <FileText className="w-3.5 h-3.5" />
-                      {activeAgreement.category}
-                    </span>
-                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-[#E8F5E9] text-[#2E7D32] border border-[#A5D6A7] rounded-full text-xs font-bold shadow-2xs">
-                      Starting at ₹50
-                    </span>
+          {/* Combined Sticky Agreement Hero Header & Sub-tabs Container */}
+          <div
+            ref={navRef}
+            className={`sticky top-[68px] sm:top-[74px] z-40 mb-8 -mx-6 md:-mx-12 px-6 md:px-12 py-2 space-y-3 transition-all duration-300 ${
+              isSticky ? "bg-[#FDFCF9] border-b border-brown-200/80 shadow-xs" : "bg-transparent"
+            }`}
+          >
+            {/* Top backdrop curtain mask activated ONLY when sticky */}
+            {isSticky && (
+              <div className="absolute -top-28 left-0 right-0 h-28 bg-[#FDFCF9] pointer-events-none" />
+            )}
+
+            <div className="max-w-7xl mx-auto relative z-10 space-y-3">
+              {/* Main Agreement Header & Hero Card */}
+              <div className={`bg-white border border-brown-200/60 rounded-3xl text-left transition-all duration-300 shadow-sm ${
+                isSticky ? "p-4 sm:p-5 shadow-md border-brown-200" : "p-5 sm:p-7"
+              }`}>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div className="space-y-1.5 max-w-3xl">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-[11px] font-bold text-[#5A7338] bg-olive-50 border border-olive-200/60 px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5">
+                        <FileText className="w-3.5 h-3.5" />
+                        {activeAgreement.category}
+                      </span>
+                      <span className="inline-flex items-center gap-1 px-3 py-1 bg-[#E8F5E9] text-[#2E7D32] border border-[#A5D6A7] rounded-full text-xs font-bold shadow-2xs">
+                        Starting at ₹50
+                      </span>
+                    </div>
+
+                    <h2 className={`font-serif font-bold text-[#1A1917] leading-tight transition-all duration-300 ${
+                      isSticky ? "text-xl sm:text-2xl" : "text-2xl sm:text-3xl"
+                    }`}>
+                      {activeAgreement.name}
+                    </h2>
+
+                    <p className={`text-xs sm:text-sm text-brown-700 font-medium leading-relaxed italic transition-all duration-300 ${
+                      isSticky ? "line-clamp-1 text-xs" : ""
+                    }`}>
+                      {activeAgreement.tagline}
+                    </p>
                   </div>
 
-                  <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#1A1917] leading-tight">
-                    {activeAgreement.name}
-                  </h2>
+                  {/* Action Box */}
+                  <div className={`bg-[#FAF9F6] border border-brown-200/60 rounded-2xl flex transition-all duration-300 ${
+                    isSticky
+                      ? "p-2.5 flex-row md:flex-col items-center justify-between gap-2 md:w-52"
+                      : "p-3.5 flex-col items-center justify-center space-y-1.5 shrink-0 text-center md:w-60"
+                  }`}>
+                    {!isSticky && (
+                      <span className="text-[11px] text-brown-500 font-light">
+                        Ready to draft {activeAgreement.name}?
+                      </span>
+                    )}
+                    <span className="text-sm font-serif font-bold text-[#2E7D32] shrink-0">
+                      Starting at ₹50
+                    </span>
+                    <button
+                      onClick={(e) => handleCreateAgreement(e, activeAgreement.id)}
+                      className="w-full py-2 px-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-xs font-bold rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm hover:shadow cursor-pointer active:scale-95"
+                    >
+                      <Plus className="w-4 h-4" />
+                      <span>Create Agreement</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
 
-                  <p className="text-xs sm:text-sm text-brown-700 font-medium leading-relaxed italic">
-                    {activeAgreement.tagline}
-                  </p>
+              {/* Sub-tabs Navigation Bar */}
+              <div className="bg-white border border-brown-200/80 p-2 sm:p-2.5 rounded-2xl shadow-xs transition-all flex items-center justify-between gap-3">
+                {/* Sub-tabs Pills */}
+                <div ref={subTabsContainerRef} className="flex items-center gap-2 overflow-x-auto scrollbar-none no-scrollbar [::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] w-full">
+                  {subTabs.map((tab) => (
+                    <button
+                      key={tab.id}
+                      data-tab-id={tab.id}
+                      onClick={() => handleScrollToSubTab(tab.id)}
+                      className={`py-1.5 px-3.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                        activeSubTab === tab.id
+                          ? "bg-[#5A7338] text-white shadow-sm"
+                          : "bg-[#FAF9F6] hover:bg-olive-50 text-brown-700 hover:text-[#5A7338] border border-brown-200/40"
+                      }`}
+                    >
+                      {tab.name}
+                    </button>
+                  ))}
                 </div>
 
-                {/* Action Box */}
-                <div className="bg-[#FAF9F6] border border-brown-200/60 p-3.5 rounded-2xl flex flex-col items-center justify-center space-y-1.5 shrink-0 text-center md:w-60">
-                  <span className="text-[11px] text-brown-500 font-light">
-                    Ready to draft {activeAgreement.name}?
-                  </span>
-                  <span className="text-sm font-serif font-bold text-[#2E7D32]">
-                    Starting at ₹50
+                {/* Mini CTA on sticky bar */}
+                <div className="hidden lg:flex items-center gap-3 shrink-0 pl-3 border-l border-brown-200/60">
+                  <span className="text-xs font-bold text-brown-900 truncate max-w-[180px]">
+                    {activeAgreement.name}
                   </span>
                   <button
                     onClick={(e) => handleCreateAgreement(e, activeAgreement.id)}
-                    className="w-full py-2 px-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-xs font-bold rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm hover:shadow cursor-pointer active:scale-95"
+                    className="py-1.5 px-3 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-xs font-bold rounded-lg transition-all flex items-center gap-1 shadow-xs cursor-pointer"
                   >
-                    <Plus className="w-4 h-4" />
-                    <span>Create Agreement</span>
+                    <Plus className="w-3.5 h-3.5" />
+                    <span>Create</span>
                   </button>
                 </div>
-              </div>
-            </div>
-
-            {/* Sub-tabs Navigation Bar (Scrollbar completely hidden) */}
-            <div className="bg-white/95 backdrop-blur-md border border-brown-200/80 p-2 sm:p-2.5 rounded-2xl shadow-sm transition-all flex items-center justify-between gap-3">
-              {/* Sub-tabs Pills */}
-              <div className="flex items-center gap-2 overflow-x-auto scrollbar-none no-scrollbar [::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] w-full">
-                {subTabs.map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => handleScrollToSubTab(tab.id)}
-                    className={`py-1.5 px-3.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                      activeSubTab === tab.id
-                        ? "bg-[#5A7338] text-white shadow-sm"
-                        : "bg-[#FAF9F6] hover:bg-olive-50 text-brown-700 hover:text-[#5A7338] border border-brown-200/40"
-                    }`}
-                  >
-                    {tab.name}
-                  </button>
-                ))}
-              </div>
-
-              {/* Mini CTA on sticky bar */}
-              <div className="hidden lg:flex items-center gap-3 shrink-0 pl-3 border-l border-brown-200/60">
-                <span className="text-xs font-bold text-brown-900 truncate max-w-[180px]">
-                  {activeAgreement.name}
-                </span>
-                <button
-                  onClick={(e) => handleCreateAgreement(e, activeAgreement.id)}
-                  className="py-1.5 px-3 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-xs font-bold rounded-lg transition-all flex items-center gap-1 shadow-xs cursor-pointer"
-                >
-                  <Plus className="w-3.5 h-3.5" />
-                  <span>Create</span>
-                </button>
               </div>
             </div>
           </div>
@@ -428,7 +487,7 @@ export default function AgreementsLayout({ initialAgreementId }: { initialAgreem
           <div className="bg-white border border-brown-200/60 rounded-3xl p-6 sm:p-10 shadow-sm space-y-12 text-left">
             
             {/* Section 1: Overview & Purpose */}
-            <section id="overview" className="scroll-mt-64 sm:scroll-mt-72 space-y-8 pb-8">
+            <section id="overview" className="scroll-mt-[270px] sm:scroll-mt-[280px] space-y-8 pb-8">
                 <div className="space-y-3">
                   <h3 className="font-serif text-2xl font-bold text-brown-900 flex items-center gap-2">
                     <Info className="w-5 h-5 text-[#5A7338]" /> Overview & Purpose
@@ -506,7 +565,7 @@ export default function AgreementsLayout({ initialAgreementId }: { initialAgreem
               </section>
 
               {/* Section 2: Types & Scenarios */}
-              <section id="types" className="scroll-mt-64 sm:scroll-mt-72 space-y-6 pt-10 pb-8 border-t border-brown-200/60">
+              <section id="types" className="scroll-mt-[270px] sm:scroll-mt-[280px] space-y-6 pt-10 pb-8 border-t border-brown-200/60">
                 <div className="space-y-1">
                   <h3 className="font-serif text-2xl font-bold text-brown-900 flex items-center gap-2">
                     <FileSpreadsheet className="w-5 h-5 text-[#5A7338]" /> Types & Scenarios
@@ -570,7 +629,7 @@ export default function AgreementsLayout({ initialAgreementId }: { initialAgreem
               </section>
 
               {/* Section 3: Key Clauses & Exclusions */}
-              <section id="clauses" className="scroll-mt-64 sm:scroll-mt-72 space-y-6 pt-10 pb-8 border-t border-brown-200/60">
+              <section id="clauses" className="scroll-mt-[270px] sm:scroll-mt-[280px] space-y-6 pt-10 pb-8 border-t border-brown-200/60">
                 <div className="space-y-1">
                   <h3 className="font-serif text-2xl font-bold text-brown-900 flex items-center gap-2">
                     <CheckSquare className="w-5 h-5 text-[#5A7338]" /> Key Clauses & Exclusions
@@ -618,7 +677,7 @@ export default function AgreementsLayout({ initialAgreementId }: { initialAgreem
               </section>
 
               {/* Section 4: Legal Validity & Stamp Duty */}
-              <section id="enforceability" className="scroll-mt-64 sm:scroll-mt-72 space-y-6 pt-10 pb-8 border-t border-brown-200/60">
+              <section id="enforceability" className="scroll-mt-[270px] sm:scroll-mt-[280px] space-y-6 pt-10 pb-8 border-t border-brown-200/60">
                 <div className="space-y-1">
                   <h3 className="font-serif text-2xl font-bold text-brown-900 flex items-center gap-2">
                     <Scale className="w-5 h-5 text-[#5A7338]" /> Legal Validity & Stamp Duty
@@ -723,7 +782,7 @@ export default function AgreementsLayout({ initialAgreementId }: { initialAgreem
               </section>
 
               {/* Section 5: Sample Template — Zoomed-Out Full Document Card Preview */}
-              <section id="template" className="scroll-mt-64 sm:scroll-mt-72 space-y-6 pt-10 pb-8 border-t border-brown-200/60">
+              <section id="template" className="scroll-mt-[270px] sm:scroll-mt-[280px] space-y-6 pt-10 pb-8 border-t border-brown-200/60">
                 <div className="space-y-1">
                   <h3 className="font-serif text-2xl font-bold text-brown-900 flex items-center gap-2">
                     <FileText className="w-5 h-5 text-[#5A7338]" /> Sample Template
@@ -895,7 +954,7 @@ export default function AgreementsLayout({ initialAgreementId }: { initialAgreem
               </section>
 
               {/* Section 6: FAQs */}
-              <section id="faqs" className="scroll-mt-64 sm:scroll-mt-72 space-y-6 pt-10 pb-4 border-t border-brown-200/60">
+              <section id="faqs" className="scroll-mt-[270px] sm:scroll-mt-[280px] space-y-6 pt-10 pb-4 border-t border-brown-200/60">
                 <div className="flex items-center justify-between">
                   <h3 className="font-serif text-2xl font-bold text-brown-900 flex items-center gap-2">
                     <HelpCircle className="w-5 h-5 text-[#5A7338]" /> Frequently Asked Questions

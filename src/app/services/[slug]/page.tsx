@@ -12,6 +12,14 @@ import PartnershipRegistrationLayout from "@/components/PartnershipRegistrationL
 import SoleProprietorshipRegistrationLayout from "@/components/SoleProprietorshipRegistrationLayout";
 import PublicLimitedRegistrationLayout from "@/components/PublicLimitedRegistrationLayout";
 import TrademarkRegistrationLayout from "@/components/TrademarkRegistrationLayout";
+import DpiitRegistrationLayout from "@/components/DpiitRegistrationLayout";
+import GstRegistrationLayout from "@/components/GstRegistrationLayout";
+import UdyamRegistrationLayout from "@/components/UdyamRegistrationLayout";
+import FssaiCentralRegistrationLayout from "@/components/FssaiCentralRegistrationLayout";
+import FssaiStateRegistrationLayout from "@/components/FssaiStateRegistrationLayout";
+import IecRegistrationLayout from "@/components/IecRegistrationLayout";
+import LabourLicenseRegistrationLayout from "@/components/LabourLicenseRegistrationLayout";
+import ProfessionalTaxRegistrationLayout from "@/components/ProfessionalTaxRegistrationLayout";
 import AgreementsLayout from "@/components/AgreementsLayout";
 import InvestmentReadinessLayout from "@/components/InvestmentReadinessLayout";
 import NewServicePageLayout from "@/components/NewServicePageLayout";
@@ -216,6 +224,110 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <Header />
         <main>
           <TrademarkRegistrationLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // DPIIT / Startup India Registration Layout
+  if (slug === "dpiit-registration" || slug === "dpiit-recognition" || slug === "dpiit-certification" || slug === "certifications") {
+    return (
+      <>
+        <Header />
+        <main>
+          <DpiitRegistrationLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // GST Registration & Indirect Tax Layout
+  if (slug === "gst-registration" || slug === "gst-indirect-tax" || slug === "gst-monthly-returns" || slug === "gst-quarterly-returns") {
+    return (
+      <>
+        <Header />
+        <main>
+          <GstRegistrationLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // UDYAM / MSME Registration Layout
+  if (slug === "msme-registration" || slug === "udyam-registration") {
+    return (
+      <>
+        <Header />
+        <main>
+          <UdyamRegistrationLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // FSSAI Central License Layout
+  if (slug === "fssai-central-license") {
+    return (
+      <>
+        <Header />
+        <main>
+          <FssaiCentralRegistrationLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // FSSAI State License Layout
+  if (slug === "fssai-state-license" || slug === "fssai-license") {
+    return (
+      <>
+        <Header />
+        <main>
+          <FssaiStateRegistrationLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // IEC (Import Export Code) Layout
+  if (slug === "iec-registration" || slug === "import-export-code") {
+    return (
+      <>
+        <Header />
+        <main>
+          <IecRegistrationLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // Labour License Layout
+  if (slug === "labour-license" || slug === "contract-labour-license") {
+    return (
+      <>
+        <Header />
+        <main>
+          <LabourLicenseRegistrationLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // Professional Tax Registration Layout
+  if (slug === "professional-tax-registration" || slug === "professional-tax") {
+    return (
+      <>
+        <Header />
+        <main>
+          <ProfessionalTaxRegistrationLayout />
         </main>
         <Footer />
       </>

@@ -283,6 +283,13 @@ export default function Header() {
     };
   }, [isMobileOpen]);
 
+  const closeAllDropdowns = () => {
+    setMegaOpen(false);
+    setServicesOpen(false);
+    setLegalServicesOpen(false);
+    setCompanyOpen(false);
+  };
+
   const toggleSection = (title: string) => {
     setOpenSections((prev) =>
       prev.includes(title) ? prev.filter((t) => t !== title) : [...prev, title]
@@ -310,12 +317,15 @@ export default function Header() {
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-0.5 sm:gap-1">
+          <div className="hidden lg:flex items-center h-full gap-0.5 sm:gap-1">
             
             {/* 1. For Founders Mega Dropdown */}
             <div
-              className="relative py-2"
-              onMouseEnter={() => setMegaOpen(true)}
+              className="h-full flex items-center"
+              onMouseEnter={() => {
+                closeAllDropdowns();
+                setMegaOpen(true);
+              }}
               onMouseLeave={() => setMegaOpen(false)}
             >
               <button
@@ -333,9 +343,8 @@ export default function Header() {
               </button>
 
               {megaOpen && (
-                <>
-                  <div className="absolute -bottom-6 -left-12 -right-12 h-8 z-50" />
-                  <div className="fixed left-1/2 -translate-x-1/2 top-[84px] w-full max-w-[860px] bg-white rounded-2xl shadow-[0_12px_40px_rgba(43,39,35,0.12)] border border-brown-100/40 animate-dropdown z-50">
+                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1 w-full max-w-[860px] z-50">
+                  <div className="bg-white rounded-2xl shadow-[0_12px_40px_rgba(43,39,35,0.12)] border border-brown-100/40 animate-dropdown">
                     <div className="grid grid-cols-3 divide-x divide-brown-100/50 p-8 gap-0">
                       {sections.map((section) => (
                         <div key={section.title} className="px-6 first:pl-0 last:pr-0">
@@ -371,14 +380,17 @@ export default function Header() {
                       ))}
                     </div>
                   </div>
-                </>
+                </div>
               )}
             </div>
 
             {/* 2. Custom CA Services Dropdown */}
             <div
-              className="relative py-2"
-              onMouseEnter={() => setServicesOpen(true)}
+              className="h-full flex items-center"
+              onMouseEnter={() => {
+                closeAllDropdowns();
+                setServicesOpen(true);
+              }}
               onMouseLeave={() => setServicesOpen(false)}
             >
               <button
@@ -396,10 +408,8 @@ export default function Header() {
               </button>
 
               {servicesOpen && (
-                <>
-                  <div className="absolute -bottom-6 -left-12 -right-12 h-8 z-50" />
-                  <div className="fixed left-1/2 -translate-x-1/2 top-[84px] w-full max-w-[1140px] bg-white rounded-3xl shadow-[0_16px_48px_rgba(43,39,35,0.14)] border border-brown-100/40 overflow-hidden animate-dropdown grid grid-cols-12 z-50">
-                    
+                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1 w-full max-w-[1140px] z-50">
+                  <div className="bg-white rounded-3xl shadow-[0_16px_48px_rgba(43,39,35,0.14)] border border-brown-100/40 overflow-hidden animate-dropdown grid grid-cols-12">
                     {/* Left Pane (Categories List) */}
                     <div className="col-span-4 bg-[#FAF9F6] border-r border-brown-100/40 p-4 space-y-1 flex flex-col justify-start max-h-[460px] overflow-y-auto">
                       {SERVICE_CATEGORIES.map((category) => (
@@ -441,21 +451,22 @@ export default function Header() {
                         );
                       })}
                     </div>
-
                   </div>
-                </>
+                </div>
               )}
             </div>
 
             {/* Static Pricing & Contact items */}
             <a
               href="/pricing"
+              onMouseEnter={closeAllDropdowns}
               className="px-3 py-[6px] text-[12.5px] font-semibold text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
             >
               Pricing
             </a>
             <a
               href="/contact"
+              onMouseEnter={closeAllDropdowns}
               className="px-3 py-[6px] text-[12.5px] font-semibold text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
             >
               Contact
@@ -463,8 +474,11 @@ export default function Header() {
 
             {/* 3. SEGREGATED LEGAL SERVICES DROPDOWN */}
             <div
-              className="relative py-2"
-              onMouseEnter={() => setLegalServicesOpen(true)}
+              className="h-full flex items-center"
+              onMouseEnter={() => {
+                closeAllDropdowns();
+                setLegalServicesOpen(true);
+              }}
               onMouseLeave={() => setLegalServicesOpen(false)}
             >
               <button
@@ -482,9 +496,8 @@ export default function Header() {
               </button>
 
               {legalServicesOpen && (
-                <>
-                  <div className="absolute -bottom-6 -left-12 -right-12 h-8 z-50" />
-                  <div className="fixed left-1/2 -translate-x-1/2 top-[84px] w-full max-w-[1080px] bg-white rounded-3xl shadow-[0_16px_48px_rgba(43,39,35,0.14)] border border-brown-100/40 overflow-hidden animate-dropdown p-6 z-50">
+                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1 w-full max-w-[1080px] z-50">
+                  <div className="bg-white rounded-3xl shadow-[0_16px_48px_rgba(43,39,35,0.14)] border border-brown-100/40 overflow-hidden animate-dropdown p-6">
                     <div className="flex items-center justify-between border-b border-brown-100/50 pb-3 mb-5">
                       <div className="flex items-center gap-2">
                         <div className="w-7 h-7 rounded-lg bg-[#5C6F2D]/10 flex items-center justify-center">
@@ -541,14 +554,17 @@ export default function Header() {
                       </a>
                     </div>
                   </div>
-                </>
+                </div>
               )}
             </div>
 
             {/* 4. Company Dropdown */}
             <div
-              className="relative py-2"
-              onMouseEnter={() => setCompanyOpen(true)}
+              className="relative h-full flex items-center"
+              onMouseEnter={() => {
+                closeAllDropdowns();
+                setCompanyOpen(true);
+              }}
               onMouseLeave={() => setCompanyOpen(false)}
             >
               <button
@@ -565,34 +581,32 @@ export default function Header() {
                 />
               </button>
 
-              {/* Mega dropdown panel */}
               {companyOpen && (
-                <>
-                  <div className="absolute -bottom-5 -left-8 -right-8 h-6 z-50" />
-                  <div className="absolute left-1/2 -translate-x-1/2 top-[46px] bg-[#f5f1e6] rounded-[20px] shadow-[0_12px_40px_rgba(43,39,35,0.08)] animate-dropdown flex items-center gap-1 px-2 py-2 z-50">
+                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1 z-50">
+                  <div className="bg-[#f5f1e6] rounded-[20px] shadow-[0_12px_40px_rgba(43,39,35,0.08)] border border-brown-200/50 animate-dropdown flex items-center gap-1 px-2.5 py-2">
                     <a
                       href="/company/about-us"
-                      className="px-4 py-2 text-[12.5px] font-semibold text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap"
+                      className="px-3.5 py-1.5 text-[12.5px] font-semibold text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap"
                     >
                       About us
                     </a>
-                    <div className="w-px h-5 bg-brown-200/50" />
+                    <div className="w-px h-4 bg-brown-300/40" />
                     <a
                       href="/company/careers"
-                      className="px-4 py-2 text-[12.5px] font-semibold text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap"
+                      className="px-3.5 py-1.5 text-[12.5px] font-semibold text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap"
                     >
                       Careers
                     </a>
-                    <div className="w-px h-5 bg-brown-200/50" />
+                    <div className="w-px h-4 bg-brown-300/40" />
                     <a
                       href="/company/partnership"
-                      className="px-4 py-2 text-[12.5px] font-semibold text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap flex items-center gap-1.5"
+                      className="px-3.5 py-1.5 text-[12.5px] font-semibold text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap flex items-center gap-1.5"
                     >
                       <Handshake className="w-3.5 h-3.5" />
                       Partnership
                     </a>
                   </div>
-                </>
+                </div>
               )}
             </div>
           </div>
