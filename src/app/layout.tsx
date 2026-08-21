@@ -6,6 +6,8 @@ import ScrollToTop from "@/components/ScrollToTop";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Chatbot from "@/components/Chatbot";
 
+import Script from "next/script";
+
 export const metadata: Metadata = {
   title:
     "FoundingLegals    Complete Startup Legal & Compliance Platform for India",
@@ -34,7 +36,9 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
-        <script
+        <Script
+          id="splash-screen-script"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               try {

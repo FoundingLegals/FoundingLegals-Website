@@ -17,6 +17,7 @@ import {
   Briefcase,
 } from "lucide-react";
 import Link from "next/link";
+import Script from "next/script";
 import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -248,7 +249,8 @@ export default function HelpCenterClient({
   if (!selectedModule) {
     return (
       <main style={{ minHeight: "100vh", background: "#f0f2f5", paddingTop: "70px", display: "flex", flexDirection: "column", color: "#2b2723" }}>
-        <script
+        <Script
+          id="help-center-home-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -375,7 +377,8 @@ export default function HelpCenterClient({
   // ════════════════════════════════════════════════════════════════════════════
   return (
     <main style={{ minHeight: "100vh", background: "#f0f2f5", paddingTop: "70px", display: "flex", flexDirection: "column", color: "#2b2723" }}>
-      <script
+      <Script
+        id="help-center-category-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({

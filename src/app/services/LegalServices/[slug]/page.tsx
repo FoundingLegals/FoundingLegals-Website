@@ -1,7 +1,4 @@
-import ServiceSlugPage, { generateStaticParams as getParams } from "../../[slug]/page";
+import ServiceSlugPage, { generateStaticParams } from "../../[slug]/page";
 
-export function generateStaticParams() {
-  return getParams();
-}
-
+export { generateStaticParams };
 export default ServiceSlugPage;

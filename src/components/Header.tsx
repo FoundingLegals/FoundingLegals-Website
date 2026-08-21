@@ -115,7 +115,7 @@ const SERVICE_CATEGORIES = [
       { name: "FSSAI Food License (State)", href: "/services/CAservices/fssai-state-license" },
       { name: "IEC (Import Export Code)", href: "/services/CAservices/iec-registration" },
       { name: "Labour License", href: "/services/CAservices/labour-license" },
-      { name: "Professional Tax Registration", href: "/services/CAservices/gst-indirect-tax" },
+      { name: "Professional Tax Registration", href: "/services/CAservices/professional-tax-registration" },
     ]
   },
   {
@@ -131,11 +131,12 @@ const SERVICE_CATEGORIES = [
     name: "GST & Indirect Tax",
     fullName: "GST & Indirect Tax Compliance",
     services: [
-      { name: "Monthly GST Return Filing", href: "/services/CAservices/gst-indirect-tax" },
-      { name: "Quarterly GST Return Filing", href: "/services/CAservices/gst-indirect-tax" },
+      { name: "Monthly GST Return Filing", href: "/services/CAservices/gst-monthly-returns" },
+      { name: "Quarterly GST Return Filing", href: "/services/CAservices/gst-quarterly-returns" },
       { name: "Annual GST Return (GSTR-9)", href: "/services/CAservices/gstr9-annual-return" },
+      { name: "GST Audit & Reconciliation (GSTR-9C)", href: "/services/CAservices/gstr9c-gst-audit" },
       { name: "TDS Return Filing", href: "/services/CAservices/tds-return-filing" },
-      { name: "Professional Tax Return Filing", href: "/services/CAservices/gst-indirect-tax" },
+      { name: "Professional Tax Return Filing", href: "/services/CAservices/professional-tax-return-filing" },
     ]
   },
   {
@@ -157,7 +158,8 @@ const SERVICE_CATEGORIES = [
     name: "Audit & Attestation",
     fullName: "Audit & Attestation Services",
     services: [
-      { name: "GST Audit Execution (GSTR-9C)", href: "/services/CAservices/gst-audit" },
+      { name: "Annual GST Return (GSTR-9)", href: "/services/CAservices/gstr9-annual-return" },
+      { name: "GST Audit Execution (GSTR-9C)", href: "/services/CAservices/gstr9c-gst-audit" },
       { name: "Tax Audit Execution", href: "/services/CAservices/tax-audit" },
     ]
   },

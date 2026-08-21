@@ -14,12 +14,19 @@ import PublicLimitedRegistrationLayout from "@/components/PublicLimitedRegistrat
 import TrademarkRegistrationLayout from "@/components/TrademarkRegistrationLayout";
 import DpiitRegistrationLayout from "@/components/DpiitRegistrationLayout";
 import GstRegistrationLayout from "@/components/GstRegistrationLayout";
+import GstIndirectTaxLayout from "@/components/GstIndirectTaxLayout";
 import UdyamRegistrationLayout from "@/components/UdyamRegistrationLayout";
 import FssaiCentralRegistrationLayout from "@/components/FssaiCentralRegistrationLayout";
 import FssaiStateRegistrationLayout from "@/components/FssaiStateRegistrationLayout";
 import IecRegistrationLayout from "@/components/IecRegistrationLayout";
 import LabourLicenseRegistrationLayout from "@/components/LabourLicenseRegistrationLayout";
 import ProfessionalTaxRegistrationLayout from "@/components/ProfessionalTaxRegistrationLayout";
+import GstMonthlyReturnsLayout from "@/components/GstMonthlyReturnsLayout";
+import GstQuarterlyReturnsLayout from "@/components/GstQuarterlyReturnsLayout";
+import Gstr9AnnualReturnLayout from "@/components/Gstr9AnnualReturnLayout";
+import Gstr9cAuditLayout from "@/components/Gstr9cAuditLayout";
+import TaxAuditExecutionLayout from "@/components/TaxAuditExecutionLayout";
+import TdsReturnFilingLayout from "@/components/TdsReturnFilingLayout";
 import AgreementsLayout from "@/components/AgreementsLayout";
 import InvestmentReadinessLayout from "@/components/InvestmentReadinessLayout";
 import NewServicePageLayout from "@/components/NewServicePageLayout";
@@ -35,21 +42,7 @@ const AGREEMENT_SLUGS = new Set<string>([
 
 const SLUG_ALIASES: Record<string, string> = {
   // GST & Indirect Tax subservices & variants
-  "gstr9-annual-return": "gst-indirect-tax",
-  "tds-return-filing": "gst-indirect-tax",
-  "gst-registration": "gst-indirect-tax",
-  "iec-registration": "gst-indirect-tax",
-  "labour-license": "gst-indirect-tax",
-  "fssai-license": "gst-indirect-tax",
-  "fssai-state-license": "gst-indirect-tax",
-  "fssai-central-license": "gst-indirect-tax",
-  "professional-tax": "gst-indirect-tax",
-  "gst-monthly-returns": "gst-indirect-tax",
-  "gst-quarterly-returns": "gst-indirect-tax",
-
-  // Audit subservices
-  "gst-audit": "audit-attestation",
-  "tax-audit": "audit-attestation",
+  "professional-tax": "professional-tax-return-filing",
 
   // Certifications subservices
   "msme-registration": "certifications",
@@ -78,11 +71,47 @@ export function generateStaticParams() {
   const allSlugs = new Set<string>([
     ...services.map((s) => s.slug),
     "which-company-type-to-register",
+    "company-incorporation",
+    "llp-registration",
+    "opc-registration",
     "partnership-firm-registration",
     "sole-proprietorship-registration",
     "public-limited-company",
+    "trademark-registration",
+    "dpiit-recognition",
+    "gst-registration",
+    "gst-indirect-tax",
+    "gst-monthly-returns",
+    "gst-quarterly-returns",
+    "gstr9-annual-return",
+    "gstr9c-gst-audit",
+    "gstr9c-audit",
+    "gst-audit",
+    "tax-audit",
+    "tax-audit-execution",
+    "tax audit",
+    "tax_audit",
+    "tax%20audit",
+    "tds-return-filing",
+    "professional-tax-registration",
+    "professional-tax-return-filing",
+    "professional-tax",
+    "msme-registration",
+    "udyam-registration",
+    "fssai-central-license",
+    "fssai-state-license",
+    "fssai-license",
+    "iec-registration",
+    "import-export-code",
+    "labour-license",
+    "contract-labour-license",
+    "agreements",
+    "investment-readiness",
+    "startup-investment-readiness",
     ...newServiceSlugs,
     ...Object.keys(SLUG_ALIASES),
+    ...Object.values(SLUG_ALIASES),
+    ...Array.from(AGREEMENT_SLUGS),
   ]);
 
   return Array.from(allSlugs).map((slug) => ({ slug }));
@@ -101,17 +130,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   const service = services.find((s) => s.slug === slug);
-  
-  if (
-    !service && 
-    slug !== "which-company-type-to-register" && 
-    slug !== "partnership-firm-registration" &&
-    slug !== "sole-proprietorship-registration" &&
-    slug !== "public-limited-company" &&
-    !newServiceSlugs.includes(slug)
-  ) {
-    return notFound();
-  }
 
   // Which Company Type to Register Layout
   if (slug === "which-company-type-to-register") {
@@ -243,8 +261,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     );
   }
 
-  // GST Registration & Indirect Tax Layout
-  if (slug === "gst-registration" || slug === "gst-indirect-tax" || slug === "gst-monthly-returns" || slug === "gst-quarterly-returns") {
+  // GST Registration Layout
+  if (slug === "gst-registration") {
     return (
       <>
         <Header />
@@ -256,73 +274,103 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     );
   }
 
-  // UDYAM / MSME Registration Layout
-  if (slug === "msme-registration" || slug === "udyam-registration") {
+  // Master GST & Indirect Tax Layout
+  if (slug === "gst-indirect-tax") {
     return (
       <>
         <Header />
         <main>
-          <UdyamRegistrationLayout />
+          <GstIndirectTaxLayout />
         </main>
         <Footer />
       </>
     );
   }
 
-  // FSSAI Central License Layout
-  if (slug === "fssai-central-license") {
+  // Monthly GST Return Filing Layout
+  if (slug === "gst-monthly-returns") {
     return (
       <>
         <Header />
         <main>
-          <FssaiCentralRegistrationLayout />
+          <GstMonthlyReturnsLayout />
         </main>
         <Footer />
       </>
     );
   }
 
-  // FSSAI State License Layout
-  if (slug === "fssai-state-license" || slug === "fssai-license") {
+  // Quarterly GST Return Filing (QRMP) Layout
+  if (slug === "gst-quarterly-returns") {
     return (
       <>
         <Header />
         <main>
-          <FssaiStateRegistrationLayout />
+          <GstQuarterlyReturnsLayout />
         </main>
         <Footer />
       </>
     );
   }
 
-  // IEC (Import Export Code) Layout
-  if (slug === "iec-registration" || slug === "import-export-code") {
+  // Annual GST Return (GSTR-9) Layout
+  if (slug === "gstr9-annual-return") {
     return (
       <>
         <Header />
         <main>
-          <IecRegistrationLayout />
+          <Gstr9AnnualReturnLayout />
         </main>
         <Footer />
       </>
     );
   }
 
-  // Labour License Layout
-  if (slug === "labour-license" || slug === "contract-labour-license") {
+  // CA-Certified GST Audit (GSTR-9C) Layout
+  if (slug === "gstr9c-gst-audit" || slug === "gstr9c-audit" || slug === "gst-audit") {
     return (
       <>
         <Header />
         <main>
-          <LabourLicenseRegistrationLayout />
+          <Gstr9cAuditLayout />
         </main>
         <Footer />
       </>
     );
   }
 
-  // Professional Tax Registration Layout
-  if (slug === "professional-tax-registration" || slug === "professional-tax") {
+  // Section 44AB Tax Audit Layout
+  if (slug === "tax-audit" || slug === "tax-audit-execution" || slug === "tax_audit") {
+    return (
+      <>
+        <Header />
+        <main>
+          <TaxAuditExecutionLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // TDS Return Filing Layout
+  if (slug === "tds-return-filing") {
+    return (
+      <>
+        <Header />
+        <main>
+          <TdsReturnFilingLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // Professional Tax Registration & Filing Layout
+  if (
+    slug === "professional-tax-registration" ||
+    slug === "professional-tax" ||
+    slug === "professional-tax-return-filing"
+  ) {
     return (
       <>
         <Header />
