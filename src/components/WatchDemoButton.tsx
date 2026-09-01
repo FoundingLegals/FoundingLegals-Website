@@ -9,6 +9,19 @@ type WatchDemoButtonProps = {
   title?: string;
 };
 
+function extractYoutubeId(input: string): string {
+  if (!input) return "";
+  const trimmed = input.trim();
+  if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) {
+    return trimmed;
+  }
+  const shortMatch = trimmed.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/);
+  if (shortMatch) return shortMatch[1];
+  const longMatch = trimmed.match(/[?&]v=([a-zA-Z0-9_-]{11})/) || trimmed.match(/embed\/([a-zA-Z0-9_-]{11})/);
+  if (longMatch) return longMatch[1];
+  return trimmed;
+}
+
 export default function WatchDemoButton({
   videoId,
   label = "Watch Demo",
@@ -18,6 +31,8 @@ export default function WatchDemoButton({
   const [mounted, setMounted] = useState(false);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const openerRef = useRef<HTMLButtonElement>(null);
+
+  const cleanVideoId = extractYoutubeId(videoId);
 
   useEffect(() => setMounted(true), []);
 
@@ -42,7 +57,7 @@ export default function WatchDemoButton({
   }, [isOpen]);
 
   const embedUrl =
-    `https://www.youtube-nocookie.com/embed/${videoId}` +
+    `https://www.youtube-nocookie.com/embed/${cleanVideoId}` +
     `?rel=0&modestbranding=1&autoplay=1`;
 
   return (
