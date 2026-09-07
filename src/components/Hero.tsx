@@ -210,8 +210,8 @@ export default function Hero() {
           </p>
           <div className="hero-animate hero-animate-delay-2 mb-8 sm:mb-10">
             <LawyerTrustBadge
-              headline="2000+ Indian Investors pool access."
-              subtext="Verified investor network & legal experts"
+              headline="3000+ Founders trust Founding Legals."
+              subtext="Verified founders & legal experts"
             />
           </div>
           <div className="hero-animate hero-animate-delay-3 flex flex-wrap items-center gap-3 sm:gap-4">

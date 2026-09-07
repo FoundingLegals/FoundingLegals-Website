@@ -25,8 +25,8 @@ const defaultLawyers: Lawyer[] = [
 export default function LawyerTrustBadge({
   lawyers = defaultLawyers,
   totalCount = 10,
-  headline = "2000+ Indian Investors pool access.",
-  subtext = "Verified investor network & legal experts",
+  headline = "3000+ Founders trust Founding Legals.",
+  subtext = "Verified founders & legal experts",
   rating = 5,
 }: LawyerTrustBadgeProps) {
   const remaining = Math.max(totalCount - lawyers.length, 0);
@@ -36,7 +36,7 @@ export default function LawyerTrustBadge({
       {/* Avatar stack */}
       <div
         className="flex -space-x-2.5"
-        aria-label={`${totalCount}+ verified lawyers`}
+        aria-label={`${totalCount}+ verified founders & legal experts`}
       >
         {lawyers.map((l, i) => (
           <div
