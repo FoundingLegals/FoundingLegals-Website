@@ -5,13 +5,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
-  Building2,
-  ShieldCheck,
-  FileText,
-  Shield,
-  TrendingUp,
   ArrowRight,
-  ArrowUpRight,
 } from "lucide-react";
 
 // Real Community Moments from Gallery
@@ -59,40 +53,6 @@ const TESTIMONIALS = [
     role: "Co-Founder",
     company: "PayFlow Technologies",
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200",
-  },
-];
-
-// 5 Core Help Areas
-const HELP_AREAS = [
-  {
-    title: "Start your company",
-    description: "Incorporation and the essential registrations needed to get your business started.",
-    icon: Building2,
-    href: "/start",
-  },
-  {
-    title: "Stay compliant",
-    description: "GST, ROC and other important compliance requirements, organised in one place.",
-    icon: ShieldCheck,
-    href: "/services",
-  },
-  {
-    title: "Manage agreements",
-    description: "Create, manage and keep track of the legal documents your business depends on.",
-    icon: FileText,
-    href: "/services",
-  },
-  {
-    title: "Protect what you're building",
-    description: "Support for intellectual property and the legal assets behind your business.",
-    icon: Shield,
-    href: "/services",
-  },
-  {
-    title: "Prepare for growth",
-    description: "Legal documentation and support for important business and fundraising milestones.",
-    icon: TrendingUp,
-    href: "/services",
   },
 ];
 
@@ -321,57 +281,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          6. WHAT WE HELP WITH
-      ───────────────────────────────────────────────────────────── */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto py-16 md:py-24">
-        <div className="max-w-2xl mb-12">
-          <div className="inline-flex items-center px-3 py-1 bg-[#E6EDC6] text-[#425227] text-[12px] font-bold uppercase tracking-wider rounded-md mb-4">
-            Services
-          </div>
-
-          <h2 className="text-[32px] sm:text-[42px] font-serif font-medium text-[#2B2723] leading-[1.18] mb-4">
-            What We Help With
-          </h2>
-
-          <div className="space-y-2 text-[15px] sm:text-[16px] text-[#524B44] leading-[1.7]">
-            <p>
-              Starting a company is only the beginning. As the business grows, the legal and compliance work grows with it.
-            </p>
-            <p className="font-medium text-[#2B2723]">
-              Founding Legals brings key business legal needs together, so founders have one place to manage them.
-            </p>
-          </div>
-        </div>
-
-        {/* 5 Clean Help Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {HELP_AREAS.map((item, idx) => (
-            <Link
-              key={idx}
-              href={item.href}
-              className="bg-white rounded-2xl p-6 sm:p-7 border border-[#EDE6DE] shadow-xs hover:border-[#5A6E3B]/50 hover:shadow-sm transition-all duration-200 flex flex-col justify-between group"
-            >
-              <div>
-                <div className="w-10 h-10 rounded-xl bg-[#F5F0EB] group-hover:bg-[#5A6E3B] text-[#5A6E3B] group-hover:text-white transition-colors flex items-center justify-center mb-5">
-                  <item.icon className="w-5 h-5" />
-                </div>
-
-                <h3 className="font-serif text-[18px] font-medium text-[#2B2723] mb-2 group-hover:text-[#5A6E3B] transition-colors flex items-center justify-between">
-                  <span>{item.title}</span>
-                  <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-[#5A6E3B]" />
-                </h3>
-
-                <p className="text-[13px] sm:text-[14px] text-[#65605B] leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
-          7. WHY FOUNDING LEGALS
+          6. WHY FOUNDING LEGALS
       ───────────────────────────────────────────────────────────── */}
       <section className="w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto py-12 md:py-16">
         <div className="bg-white rounded-[32px] sm:rounded-[40px] p-8 sm:p-12 lg:p-16 border border-[#EDE6DE] shadow-xs max-w-4xl mx-auto">
