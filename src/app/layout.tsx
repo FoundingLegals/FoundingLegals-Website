@@ -25,6 +25,8 @@ export const metadata: Metadata = {
   },
 };
 
+import CostEstimatorModal from "@/components/CostEstimatorModal";
+
 export default function RootLayout({
   children,
 }: {
@@ -64,6 +66,7 @@ export default function RootLayout({
         <ScrollToTop />
         <LoadingOverlay />
         {children}
+        <CostEstimatorModal />
         <CookieBanner />
         <WhatsAppButton />
         <Chatbot />

@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Check, X, Send, ArrowRight, ChevronDown, HelpCircle, Star } from "lucide-react";
+import { Check, X, Send, ArrowRight, ChevronDown, HelpCircle, Star, Calculator } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
+import { openCostEstimator } from "@/lib/pricingEngineData";
 
 // --- SECTION TABS ---
 const TABS = [
@@ -251,12 +252,20 @@ export default function CompanyIncorporationLayout() {
               </p>
             </div>
 
-            <div className="mt-6">
+            <div className="mt-6 flex flex-wrap items-center gap-3">
               <button
                 onClick={() => openModal("Pvt Ltd Company Incorporation - BASIC Plan (₹1,999 + Govt Fees)")}
                 className="bg-[#48532B] hover:bg-olive-800 text-white font-semibold text-[14px] px-8 py-3.5 rounded-xl transition-all cursor-pointer shadow-sm active:scale-95"
               >
                 Register Your Company
+              </button>
+              <button
+                type="button"
+                onClick={() => openCostEstimator({ entityType: "pvt_ltd" })}
+                className="bg-white hover:bg-brown-50 text-brown-900 border border-brown-300 font-semibold text-[14px] px-6 py-3.5 rounded-xl transition-all cursor-pointer shadow-2xs inline-flex items-center gap-2 active:scale-95"
+              >
+                <Calculator className="w-4 h-4 text-olive-700" />
+                <span>Estimate State Cost</span>
               </button>
             </div>
           </div>

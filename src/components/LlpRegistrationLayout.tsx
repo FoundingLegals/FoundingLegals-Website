@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Check, X, Send, ArrowRight, ChevronDown, HelpCircle, Search, Star } from "lucide-react";
+import { Check, X, Send, ArrowRight, ChevronDown, HelpCircle, Search, Star, Calculator } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
+import { openCostEstimator } from "@/lib/pricingEngineData";
 
 // --- SECTION TABS ---
 const TABS = [
@@ -274,12 +275,20 @@ export default function LlpRegistrationLayout() {
           </p>
         </div>
 
-        <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
+        <div className="mt-8 flex flex-wrap items-center gap-3">
           <button
             onClick={() => openModal("Limited Liability Partnership (LLP) Registration")}
             className="px-6 py-3.5 bg-olive-600 hover:bg-olive-705 text-white font-bold text-[13px] rounded-full transition-all cursor-pointer shadow-md flex items-center gap-2 shrink-0"
           >
             Register your LLP
+          </button>
+          <button
+            type="button"
+            onClick={() => openCostEstimator({ entityType: "llp" })}
+            className="px-5 py-3.5 bg-white hover:bg-brown-50 text-brown-900 border border-brown-300 font-semibold text-[13px] rounded-full transition-all cursor-pointer shadow-2xs flex items-center gap-2 shrink-0"
+          >
+            <Calculator className="w-4 h-4 text-olive-700" />
+            <span>Estimate LLP State Stamp Duty</span>
           </button>
           <div className="text-[12.5px] text-gray-500">
             Professional fee starts at <strong className="text-olive-750 font-bold">₹1,999</strong> + actual government state fees.

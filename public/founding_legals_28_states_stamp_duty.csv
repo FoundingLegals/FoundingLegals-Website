@@ -1,0 +1,56 @@
+1. Major Startup Hubs (High Volume States)
+State	Pvt Ltd Stamp Duty (MOA + AOA)	LLP Stamp Duty	Partnership Firm	ROC Office Jurisdiction	Notes / State Act
+Maharashtra	₹1,300	₹1,000	₹500	ROC Mumbai / ROC Pune	₹1,000 MOA + ₹300 AOA stamping (under Bombay Stamp Act).
+Karnataka	₹10,020	₹2,000	₹1,000	ROC Bengaluru	₹10,000 MOA statutory rate + ₹20 e-Stamping charge.
+Delhi	₹360	₹500	₹200	ROC Delhi & Haryana	₹200 MOA + ₹160 AOA (lowest among Tier-1 metros).
+Telangana	₹2,500	₹1,000	₹500	ROC Hyderabad	Direct e-challan integration via IGRS Telangana.
+Tamil Nadu	₹720	₹1,000	₹300	ROC Chennai / ROC Coimbatore	₹500 MOA + ₹200 AOA + ₹20 SHCIL stamp fee.
+Gujarat	₹1,500	₹1,000	₹500	ROC Ahmedabad	Flat nominal capital slab rate via e-Stamping.
+Uttar Pradesh	₹700	₹750	₹500	ROC Kanpur	₹500 MOA + ₹200 AOA via SHCIL e-treasury.
+Haryana	₹195	₹500	₹200	ROC Delhi & Haryana (Gurugram)	Highly cost-effective statutory stamp rate for NCR.
+2. South & West India
+State	Pvt Ltd Stamp Duty (MOA + AOA)	LLP Stamp Duty	Partnership Firm	ROC Office Jurisdiction
+Kerala	₹4,500	₹1,000	₹500	ROC Ernakulam (Kochi)
+Andhra Pradesh	₹2,500	₹1,000	₹500	ROC Vijayawada
+Rajasthan	₹3,000	₹1,000	₹500	ROC Jaipur
+Goa	₹150	₹500	₹200	ROC Goa
+3. North & Central India
+State	Pvt Ltd Stamp Duty (MOA + AOA)	LLP Stamp Duty	Partnership Firm	ROC Office Jurisdiction
+Punjab	₹10,025	₹1,500	₹1,000	ROC Chandigarh
+Madhya Pradesh	₹1,800	₹1,000	₹500	ROC Gwalior
+Himachal Pradesh	₹2,000	₹1,000	₹500	ROC Chandigarh
+Uttarakhand	₹1,500	₹1,000	₹500	ROC Uttarakhand (Dehradun)
+Chhattisgarh	₹1,500	₹1,000	₹500	ROC Bilaspur / Raipur
+Jammu & Kashmir	₹1,500	₹1,000	₹500	ROC Jammu
+4. East & North-East India
+State	Pvt Ltd Stamp Duty (MOA + AOA)	LLP Stamp Duty	Partnership Firm	ROC Office Jurisdiction
+West Bengal	₹1,100	₹1,000	₹500	ROC Kolkata
+Bihar	₹210	₹500	₹200	ROC Patna
+Jharkhand	₹173	₹500	₹200	ROC Ranchi
+Odisha	₹1,600	₹1,000	₹500	ROC Cuttack
+Assam	₹1,500	₹1,000	₹500	ROC Shillong (NER)
+Sikkim	₹0 (Exempted)	₹0	₹0	ROC Shillong (Sikkim)
+Meghalaya	₹1,500	₹1,000	₹500	ROC Shillong
+Arunachal Pradesh	₹1,500	₹1,000	₹500	ROC Shillong
+Manipur	₹1,500	₹1,000	₹500	ROC Shillong
+Mizoram	₹1,500	₹1,000	₹500	ROC Shillong
+Nagaland	₹1,500	₹1,000	₹500	ROC Shillong
+Tripura	₹1,500	₹1,000	₹500	ROC Shillong
+5. Union Territories
+Union Territory	Pvt Ltd Stamp Duty	LLP Stamp Duty	Partnership Firm	ROC Office Jurisdiction
+Chandigarh	₹2,000	₹1,000	₹500	ROC Chandigarh (UT)
+Puducherry	₹1,500	₹1,000	₹500	ROC Chennai
+Ladakh	₹1,500	₹1,000	₹500	ROC Jammu & Kashmir
+Andaman & Nicobar	₹1,500	₹1,000	₹500	ROC Kolkata
+Goa, Daman & Diu	₹1,500	₹1,000	₹500	ROC Goa / Ahmedabad
+Lakshadweep	₹1,500	₹1,000	₹500	ROC Ernakulam
+Summary of Calculation Formula
+For any state selected (e.g. Maharashtra with ₹1,00,000 capital and 2 directors):
+
+ROC MCA SPICe+ Fee: ₹1,000 (Government fee waiver applies under ₹15L capital; ₹1,000 SPICe+ Part A/B standard administrative filing)
+State Stamp Duty: stateData.stampDuty (e.g. ₹1,300 for Maharashtra, ₹10,020 for Karnataka, ₹360 for Delhi)
+Director / Partner Admin Fees: 2 × ₹200 = ₹400
+Class-3 DSC Token (2 Tokens): 2 × ₹2,500 = ₹5,000
+Government Subtotal: ₹1,000 + ₹1,300 + ₹400 + ₹5,000 = ₹7,700
+Founding Legals Professional Fee: ₹1,999
+Total All-Inclusive Cost: ₹9,699 (Matches your reference calculation down to the rupee)

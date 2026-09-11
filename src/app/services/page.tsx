@@ -8,10 +8,19 @@ import {
   Sparkles, CheckCircle2, Calendar, Mail, Phone, ChevronDown,
   Search, ShieldCheck, Scale, Building2, Award, Presentation, Zap,
   Landmark, Handshake, CreditCard, Receipt, BarChart3, FolderOpen,
-  User, Briefcase, Shield, TrendingUp, Info, HelpCircle, ArrowRight, Check, LogIn, Scroll
+  User, Briefcase, Shield, TrendingUp, Info, HelpCircle, ArrowRight, Check, LogIn, Scroll, Calculator, MapPin, TrendingDown
 } from "lucide-react";
 import { useState, useCallback } from "react";
 import Link from "next/link";
+import {
+  ALL_INDIAN_STATES,
+  TOP_STARTUP_STATES,
+  STATE_STAMP_DUTY_LOOKUP,
+  ENTITY_CONFIGS,
+  EntityTypeId,
+  calculateQuote,
+  openCostEstimator
+} from "@/lib/pricingEngineData";
 
 // ── Auth-aware redirect helper ─────────────────────────────────────────────
 // SuperTokens sets "sFrontToken" cookie when a session is active.
@@ -67,11 +76,8 @@ export default function ServicesPage() {
   const handleExploreClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     if (getHasSessionCookie()) {
-      // Returning user: the app's /dashboard route reads their role and dispatches
-      // them to the correct section (pitch, team, compliance, investor etc.)
       window.open(`${APP_URL}/dashboard`, "_blank", "noopener,noreferrer");
     } else {
-      // New user: redirect to sign-up and then land on /dashboard after auth
       window.open(
         `${APP_URL}/sign-up?redirectToPath=%2Fdashboard`,
         "_blank",
@@ -82,8 +88,10 @@ export default function ServicesPage() {
 
   // Calculator State
   const [selectedState, setSelectedState] = useState("Karnataka");
+  const [selectedEntity, setSelectedEntity] = useState<EntityTypeId>("pvt_ltd");
   const [authorizedCapital, setAuthorizedCapital] = useState(100000);
   const [numDirectors, setNumDirectors] = useState(2);
+  const [numDsc, setNumDsc] = useState(2);
 
   const categories = ["all", "Start", "Compliance", "Raise"];
 
@@ -95,25 +103,14 @@ export default function ServicesPage() {
     return matchesCategory && matchesSearch;
   });
 
-  // Calculator states data
-  const stateRates: Record<string, { stampDuty: number; stampDutyMultiplier: number }> = {
-    "Karnataka": { stampDuty: 1000, stampDutyMultiplier: 0.001 },
-    "Maharashtra": { stampDuty: 2000, stampDutyMultiplier: 0.0015 },
-    "Delhi": { stampDuty: 500, stampDutyMultiplier: 0.0005 },
-    "Tamil Nadu": { stampDuty: 1500, stampDutyMultiplier: 0.0012 },
-    "Telangana": { stampDuty: 1200, stampDutyMultiplier: 0.001 },
-    "Gujarat": { stampDuty: 1000, stampDutyMultiplier: 0.0008 },
-    "Uttar Pradesh": { stampDuty: 1500, stampDutyMultiplier: 0.001 },
-  };
-
-  // Calculator Logic
-  const calcDSC = numDirectors * 1500;
-  const rates = stateRates[selectedState] || { stampDuty: 1000, stampDutyMultiplier: 0.001 };
-  const calcStampDuty = rates.stampDuty + Math.floor(authorizedCapital * rates.stampDutyMultiplier);
-  const calcGovtFee = authorizedCapital > 1000000 ? 3000 : authorizedCapital > 500000 ? 1500 : 0;
-  const calcPanTan = 132;
-  const calcProfessional = 2999;
-  const calcTotal = calcDSC + calcStampDuty + calcGovtFee + calcPanTan + calcProfessional;
+  // Calculate live quote
+  const liveQuote = calculateQuote({
+    entityType: selectedEntity,
+    state: selectedState,
+    authorizedCapital,
+    numDirectors,
+    numDsc
+  });
 
   if (state.succeeded) {
     return (
@@ -152,24 +149,35 @@ export default function ServicesPage() {
           </h1>
 
           <p className="text-lg sm:text-[20px] text-brown-600 leading-relaxed max-w-2xl mx-auto font-light mb-12">
-            Explore our expert-led services or compare entity structures using our interactive toolkits.
+            Explore our expert-led services, compare entity structures, or estimate state-wise statutory incorporation costs across 28 Indian states.
           </p>
 
           {/* Immersive Tool Switcher */}
-          <div className="inline-flex p-1.5 bg-[#f0ebe1]/60 backdrop-blur-md border border-[#e5e1d6] rounded-full max-w-[420px] w-full mx-auto">
+          <div className="inline-flex p-1.5 bg-[#f0ebe1]/70 backdrop-blur-md border border-[#e5e1d6] rounded-full max-w-[620px] w-full mx-auto shadow-sm">
             <button
               onClick={() => setActiveTool("directory")}
-              className={`flex-1 py-3 px-6 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${activeTool === "directory" ? "bg-[#5A7338] text-white shadow-sm" : "text-brown-700 hover:text-brown-900"
-                }`}
+              className={`flex-1 py-3 px-4 sm:px-6 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                activeTool === "directory" ? "bg-[#5A7338] text-white shadow-sm" : "text-brown-700 hover:text-brown-900"
+              }`}
             >
               Services Directory
             </button>
             <button
               onClick={() => setActiveTool("comparison")}
-              className={`flex-1 py-3 px-6 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${activeTool === "comparison" ? "bg-[#5A7338] text-white shadow-sm" : "text-brown-700 hover:text-brown-900"
-                }`}
+              className={`flex-1 py-3 px-4 sm:px-6 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                activeTool === "comparison" ? "bg-[#5A7338] text-white shadow-sm" : "text-brown-700 hover:text-brown-900"
+              }`}
             >
               Entity Comparison
+            </button>
+            <button
+              onClick={() => setActiveTool("calculator")}
+              className={`flex-1 py-3 px-4 sm:px-6 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer flex items-center justify-center gap-1.5 ${
+                activeTool === "calculator" ? "bg-[#5A7338] text-white shadow-sm" : "text-brown-700 hover:text-brown-900"
+              }`}
+            >
+              <Calculator className="w-3.5 h-3.5 shrink-0" />
+              <span>28 States Cost</span>
             </button>
           </div>
         </div>
@@ -351,6 +359,186 @@ export default function ServicesPage() {
                 <p className="text-xs text-olive-800 leading-relaxed">
                   <strong>Senior Expert Tip:</strong> Institutional VCs require startups to incorporate as a <strong>Private Limited Company</strong> in order to issue equity and execute Share Subscription Agreements (SSA). If your immediate goal is to stay boot-strapped, an LLP offers lower compliance costs.
                 </p>
+              </div>
+            </div>
+          )}
+
+          {/* TOOL 3: 28 STATES COST ESTIMATOR */}
+          {activeTool === "calculator" && (
+            <div className="text-left space-y-8">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-brown-100">
+                <div>
+                  <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-brown-900">
+                    28 States Statutory Cost &amp; Stamp Duty Estimator
+                  </h2>
+                  <p className="text-sm text-brown-600 font-light mt-1">
+                    Calculate real-time MCA registration fees and state-specific stamp duty across all 28 Indian States &amp; UTs.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => openCostEstimator({ state: selectedState, entityType: selectedEntity })}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-olive-600 hover:bg-olive-700 text-white text-xs sm:text-sm font-semibold rounded-full shadow-sm hover:shadow-md transition-all cursor-pointer shrink-0"
+                >
+                  <Calculator className="w-4 h-4" />
+                  <span>Open Full Screen Estimator</span>
+                </button>
+              </div>
+
+              <div className="grid lg:grid-cols-12 gap-8 items-start">
+                {/* Inputs Column */}
+                <div className="lg:col-span-7 space-y-6">
+                  {/* State selection */}
+                  <div>
+                    <label className="text-xs font-bold uppercase tracking-wider text-brown-700 flex items-center gap-1.5 mb-2.5">
+                      <MapPin className="w-3.5 h-3.5 text-olive-700" />
+                      Select Incorporation State ({selectedState})
+                    </label>
+                    <div className="flex flex-wrap gap-1.5 mb-3">
+                      {TOP_STARTUP_STATES.map((st) => (
+                        <button
+                          key={st}
+                          type="button"
+                          onClick={() => setSelectedState(st)}
+                          className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                            selectedState === st
+                              ? "bg-olive-600 text-white shadow-xs"
+                              : "bg-white border border-brown-200 text-brown-700 hover:bg-olive-50"
+                          }`}
+                        >
+                          {st}
+                        </button>
+                      ))}
+                    </div>
+                    <select
+                      value={selectedState}
+                      onChange={(e) => setSelectedState(e.target.value)}
+                      className="w-full px-4 py-2.5 bg-white border border-brown-200 rounded-xl text-xs sm:text-sm font-medium text-brown-900 focus:outline-none focus:border-olive-500 shadow-xs"
+                    >
+                      {ALL_INDIAN_STATES.map((st) => (
+                        <option key={st} value={st}>
+                          {st} — Stamp Duty: ₹{STATE_STAMP_DUTY_LOOKUP[st]?.pvtLtdStampDuty.toLocaleString("en-IN")} ({STATE_STAMP_DUTY_LOOKUP[st]?.rocOffice || "ROC"})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Entity type */}
+                  <div>
+                    <label className="text-xs font-bold uppercase tracking-wider text-brown-700 flex items-center gap-1.5 mb-2.5">
+                      <Building2 className="w-3.5 h-3.5 text-olive-700" />
+                      Select Entity Type
+                    </label>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                      {[
+                        { id: "pvt_ltd", name: "Pvt Ltd Company" },
+                        { id: "llp", name: "LLP" },
+                        { id: "opc", name: "OPC" },
+                        { id: "partnership", name: "Partnership Firm" },
+                      ].map((item) => (
+                        <button
+                          key={item.id}
+                          type="button"
+                          onClick={() => setSelectedEntity(item.id as EntityTypeId)}
+                          className={`p-3 rounded-xl border text-xs font-bold transition-all text-center cursor-pointer ${
+                            selectedEntity === item.id
+                              ? "bg-olive-50 border-olive-600 text-olive-900 ring-2 ring-olive-600/20"
+                              : "bg-white border-brown-200 text-brown-700 hover:bg-brown-50"
+                          }`}
+                        >
+                          {item.name}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Capital presets */}
+                  <div className="bg-white p-5 rounded-2xl border border-brown-200 space-y-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs font-bold text-brown-800">Authorized Share Capital</span>
+                      <span className="text-sm font-bold text-olive-700 bg-olive-50 px-3 py-1 rounded-lg border border-olive-200">
+                        ₹{authorizedCapital.toLocaleString("en-IN")}
+                      </span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {[100000, 500000, 1000000, 1500000, 2500000, 5000000].map((cap) => (
+                        <button
+                          key={cap}
+                          type="button"
+                          onClick={() => setAuthorizedCapital(cap)}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer ${
+                            authorizedCapital === cap
+                              ? "bg-olive-600 text-white shadow-xs"
+                              : "bg-[#FAF9F6] border border-brown-200 text-brown-700"
+                          }`}
+                        >
+                          ₹{(cap / 100000).toFixed(cap % 100000 === 0 ? 0 : 1)} Lakh
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Estimate Receipt Column */}
+                <div className="lg:col-span-5 bg-white p-6 rounded-3xl border-2 border-olive-600/20 shadow-md space-y-4">
+                  <div className="flex items-center justify-between pb-3 border-b border-brown-100">
+                    <div className="flex items-center gap-2">
+                      <Receipt className="w-4 h-4 text-olive-700" />
+                      <h3 className="font-serif text-lg font-semibold text-brown-900">
+                        Live Cost Estimate
+                      </h3>
+                    </div>
+                    <span className="text-xs font-bold text-olive-800 bg-olive-50 px-2.5 py-0.5 rounded-full border border-olive-200">
+                      {liveQuote.selectedState}
+                    </span>
+                  </div>
+
+                  <div className="space-y-2 text-xs text-brown-700">
+                    <div className="flex justify-between py-1 border-b border-brown-50">
+                      <span className="text-brown-500">State Stamp Duty (MOA/AOA)</span>
+                      <span className="font-semibold text-brown-900">₹{liveQuote.stampDuty.toLocaleString("en-IN")}</span>
+                    </div>
+                    <div className="flex justify-between py-1 border-b border-brown-50">
+                      <span className="text-brown-500">MCA SPICe+ Name &amp; Filing</span>
+                      <span className="font-semibold text-brown-900">
+                        {liveQuote.govtIncorporationFee === 0 ? "₹1,000 (SPICe+ Exemption)" : `₹${(liveQuote.rocFees + liveQuote.govtIncorporationFee).toLocaleString("en-IN")}`}
+                      </span>
+                    </div>
+                    <div className="flex justify-between py-1 border-b border-brown-50">
+                      <span className="text-brown-500">Class-3 DSC ({numDsc} Tokens)</span>
+                      <span className="font-semibold text-brown-900">₹{liveQuote.dscFees.toLocaleString("en-IN")}</span>
+                    </div>
+                    <div className="flex justify-between py-1 border-b border-brown-50">
+                      <span className="text-brown-500">PAN, TAN &amp; Verification</span>
+                      <span className="font-semibold text-brown-900">₹{(liveQuote.panTanFee + liveQuote.directorFees).toLocaleString("en-IN")}</span>
+                    </div>
+                    <div className="flex justify-between py-1 bg-olive-50/60 px-2 rounded-lg border border-olive-100">
+                      <span className="font-bold text-olive-900">Founding Legals Member Fee</span>
+                      <span className="font-extrabold text-olive-900">₹{liveQuote.professionalFees.toLocaleString("en-IN")}</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-3 border-t-2 border-brown-200 bg-[#FAF9F6] p-3.5 rounded-xl">
+                    <div className="flex justify-between items-baseline mb-1">
+                      <span className="text-xs font-bold uppercase tracking-wider text-brown-500">Total All-Inclusive</span>
+                      <span className="text-2xl font-serif font-extrabold text-brown-900">
+                        ₹{liveQuote.totalCost.toLocaleString("en-IN")}
+                      </span>
+                    </div>
+                    <div className="text-right text-[11px] font-semibold text-olive-700">
+                      Save ₹{liveQuote.estimatedSavings.toLocaleString("en-IN")} vs Traditional CA (50%+ Off)
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => openCostEstimator({ state: selectedState, entityType: selectedEntity })}
+                    className="w-full py-3 bg-olive-600 hover:bg-olive-700 text-white rounded-xl font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <span>View 28 States Breakdown &amp; Start</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               </div>
             </div>
           )}
