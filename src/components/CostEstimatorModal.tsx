@@ -148,6 +148,22 @@ export default function CostEstimatorModal() {
     };
   }, [isOpen, openDropdown]);
 
+  // Auto-recalculate in real time whenever user changes any parameter
+  useEffect(() => {
+    const parsedCap = hasShareCapital === "no" ? 0 : Number(authorizedCapital) || 100000;
+    const parsedDir = Math.max(1, Number(numDirectors) || 1);
+    const parsedDsc = Math.max(0, Number(numDsc) || 0);
+
+    const newQuote = calculateQuote({
+      entityType,
+      state: selectedState,
+      authorizedCapital: parsedCap,
+      numDirectors: parsedDir,
+      numDsc: parsedDsc
+    });
+    setQuote(newQuote);
+  }, [entityType, selectedState, hasShareCapital, numDirectors, authorizedCapital, numDsc]);
+
   const handleCalculate = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     setOpenDropdown(null);

@@ -16,7 +16,7 @@ export const STATE_STAMP_DUTY_LOOKUP: Record<string, StateStampDuty> = {
     partnershipStampDuty: 500,
     rocOffice: "ROC Mumbai / ROC Pune",
     turnaroundDays: "5–8 Working Days",
-    notes: "MOA stamp duty is ₹1,000 + ₹300 AOA stamp duty. Surcharge applies above ₹10L capital."
+    notes: "MOA stamp duty is ₹1,000 + ₹300 AOA stamp duty under Bombay Stamp Act."
   },
   "Karnataka": {
     state: "Karnataka",
@@ -25,7 +25,7 @@ export const STATE_STAMP_DUTY_LOOKUP: Record<string, StateStampDuty> = {
     partnershipStampDuty: 1000,
     rocOffice: "ROC Bengaluru",
     turnaroundDays: "6–9 Working Days",
-    notes: "Karnataka mandates ₹10,000 MOA stamp duty + ₹20 electronic stamping fee."
+    notes: "Karnataka mandates ₹10,000 MOA statutory rate + ₹20 electronic stamping fee."
   },
   "Delhi": {
     state: "Delhi",
@@ -36,6 +36,15 @@ export const STATE_STAMP_DUTY_LOOKUP: Record<string, StateStampDuty> = {
     turnaroundDays: "4–7 Working Days",
     notes: "Lowest stamp duty structure in North India: ₹360 combined MOA & AOA stamping."
   },
+  "Telangana": {
+    state: "Telangana",
+    pvtLtdStampDuty: 1520,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Hyderabad",
+    turnaroundDays: "5–7 Working Days",
+    notes: "Direct electronic payment via IGRS Telangana portal."
+  },
   "Tamil Nadu": {
     state: "Tamil Nadu",
     pvtLtdStampDuty: 720,
@@ -45,18 +54,9 @@ export const STATE_STAMP_DUTY_LOOKUP: Record<string, StateStampDuty> = {
     turnaroundDays: "5–8 Working Days",
     notes: "State e-stamping integrated via StockHolding portal; ₹720 standard incorporation stamp."
   },
-  "Telangana": {
-    state: "Telangana",
-    pvtLtdStampDuty: 2500,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Hyderabad",
-    turnaroundDays: "5–7 Working Days",
-    notes: "Direct electronic payment via IGRS portal; fast-track incorporation hub."
-  },
   "Gujarat": {
     state: "Gujarat",
-    pvtLtdStampDuty: 1500,
+    pvtLtdStampDuty: 620,
     llpStampDuty: 1000,
     partnershipStampDuty: 500,
     rocOffice: "ROC Ahmedabad",
@@ -65,21 +65,57 @@ export const STATE_STAMP_DUTY_LOOKUP: Record<string, StateStampDuty> = {
   },
   "Uttar Pradesh": {
     state: "Uttar Pradesh",
-    pvtLtdStampDuty: 700,
+    pvtLtdStampDuty: 1010,
     llpStampDuty: 750,
     partnershipStampDuty: 500,
     rocOffice: "ROC Kanpur",
     turnaroundDays: "6–9 Working Days",
-    notes: "E-stamping via SHCIL; nominal registration charges on MSME & tech startups."
+    notes: "E-stamping via SHCIL; ₹1,010 standard statutory stamp duty."
   },
-  "West Bengal": {
-    state: "West Bengal",
-    pvtLtdStampDuty: 1100,
+  "Haryana": {
+    state: "Haryana",
+    pvtLtdStampDuty: 135,
+    llpStampDuty: 500,
+    partnershipStampDuty: 200,
+    rocOffice: "ROC Delhi & Haryana (Gurugram)",
+    turnaroundDays: "4–7 Working Days",
+    notes: "Extremely cost-effective statutory stamp duty of ₹135 for Gurugram startups."
+  },
+  "Kerala": {
+    state: "Kerala",
+    pvtLtdStampDuty: 3025,
     llpStampDuty: 1000,
     partnershipStampDuty: 500,
-    rocOffice: "ROC Kolkata",
-    turnaroundDays: "7–10 Working Days",
-    notes: "Combined MOA/AOA stamp paper rate of ₹1,100 for capital up to ₹15 Lakhs."
+    rocOffice: "ROC Ernakulam (Kochi)",
+    turnaroundDays: "6–9 Working Days",
+    notes: "Standard statutory stamp duty under Kerala Stamp Act."
+  },
+  "Andhra Pradesh": {
+    state: "Andhra Pradesh",
+    pvtLtdStampDuty: 1520,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Vijayawada",
+    turnaroundDays: "5–8 Working Days",
+    notes: "Fixed stamp duty with full online verification across IGRS Andhra."
+  },
+  "Rajasthan": {
+    state: "Rajasthan",
+    pvtLtdStampDuty: 5510,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Jaipur",
+    turnaroundDays: "6–9 Working Days",
+    notes: "State stamp duty payable via e-Gras Rajasthan treasury portal."
+  },
+  "Goa": {
+    state: "Goa",
+    pvtLtdStampDuty: 1200,
+    llpStampDuty: 500,
+    partnershipStampDuty: 200,
+    rocOffice: "ROC Goa",
+    turnaroundDays: "5–8 Working Days",
+    notes: "Statutory state rate under Goa Stamp Act."
   },
   "Punjab": {
     state: "Punjab",
@@ -90,68 +126,77 @@ export const STATE_STAMP_DUTY_LOOKUP: Record<string, StateStampDuty> = {
     turnaroundDays: "7–10 Working Days",
     notes: "Higher slab state stamp duty under Punjab Stamp Amendment Act."
   },
-  "Haryana": {
-    state: "Haryana",
-    pvtLtdStampDuty: 195,
-    llpStampDuty: 500,
-    partnershipStampDuty: 200,
-    rocOffice: "ROC Delhi & Haryana",
-    turnaroundDays: "4–7 Working Days",
-    notes: "Extremely cost-effective statutory stamp duty of ₹195 for Gurugram startups."
-  },
-  "Rajasthan": {
-    state: "Rajasthan",
-    pvtLtdStampDuty: 3000,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Jaipur",
-    turnaroundDays: "6–9 Working Days",
-    notes: "State stamp duty payable via e-Gras Rajasthan treasury portal."
-  },
-  "Kerala": {
-    state: "Kerala",
-    pvtLtdStampDuty: 4500,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Ernakulam (Kochi)",
-    turnaroundDays: "6–9 Working Days",
-    notes: "Standard stamp duty of ₹4,500 under Kerala Stamp Act for startup MOA/AOA."
-  },
-  "Andhra Pradesh": {
-    state: "Andhra Pradesh",
-    pvtLtdStampDuty: 2500,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Vijayawada",
-    turnaroundDays: "5–8 Working Days",
-    notes: "Fixed stamp duty with full online verification across IGRS Andhra."
-  },
   "Madhya Pradesh": {
     state: "Madhya Pradesh",
-    pvtLtdStampDuty: 1800,
+    pvtLtdStampDuty: 7550,
     llpStampDuty: 1000,
     partnershipStampDuty: 500,
     rocOffice: "ROC Gwalior",
     turnaroundDays: "6–9 Working Days",
-    notes: "E-stamping via Cyber Treasury MP; flat ₹1,800 stamp duty up to ₹15L capital."
+    notes: "E-stamping via Cyber Treasury MP; revised statutory incorporation slab."
+  },
+  "Himachal Pradesh": {
+    state: "Himachal Pradesh",
+    pvtLtdStampDuty: 123,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Chandigarh (HP Jurisdiction)",
+    turnaroundDays: "7–10 Working Days",
+    notes: "₹123 statutory stamp duty on incorporation."
+  },
+  "Uttarakhand": {
+    state: "Uttarakhand",
+    pvtLtdStampDuty: 1010,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Uttarakhand (Dehradun)",
+    turnaroundDays: "6–9 Working Days",
+    notes: "Standard statutory stamp duty on private company MOA/AOA."
+  },
+  "Chhattisgarh": {
+    state: "Chhattisgarh",
+    pvtLtdStampDuty: 1510,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Bilaspur / ROC Raipur",
+    turnaroundDays: "6–9 Working Days",
+    notes: "Standard stamp duty via Chhattisgarh e-challan system."
+  },
+  "Jammu and Kashmir": {
+    state: "Jammu and Kashmir",
+    pvtLtdStampDuty: 310,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Jammu & Kashmir (Jammu)",
+    turnaroundDays: "7–11 Working Days",
+    notes: "Special startup provisions with ₹310 standard stamp rate."
+  },
+  "Ladakh": {
+    state: "Ladakh",
+    pvtLtdStampDuty: 310,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Jammu & Kashmir",
+    turnaroundDays: "8–12 Working Days",
+    notes: "Processed under UT Ladakh jurisdiction."
+  },
+  "West Bengal": {
+    state: "West Bengal",
+    pvtLtdStampDuty: 370,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Kolkata",
+    turnaroundDays: "7–10 Working Days",
+    notes: "Combined MOA/AOA statutory stamp paper rate."
   },
   "Bihar": {
     state: "Bihar",
-    pvtLtdStampDuty: 210,
+    pvtLtdStampDuty: 1520,
     llpStampDuty: 500,
     partnershipStampDuty: 200,
     rocOffice: "ROC Patna",
     turnaroundDays: "6–9 Working Days",
-    notes: "Affordable state stamp duty of ₹210 on SPICe+ MoA/AoA filings."
-  },
-  "Odisha": {
-    state: "Odisha",
-    pvtLtdStampDuty: 1600,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Cuttack",
-    turnaroundDays: "6–9 Working Days",
-    notes: "Fixed MOA/AOA stamp paper rate of ₹1,600."
+    notes: "Statutory state stamp duty on SPICe+ MoA/AoA filings."
   },
   "Jharkhand": {
     state: "Jharkhand",
@@ -162,59 +207,23 @@ export const STATE_STAMP_DUTY_LOOKUP: Record<string, StateStampDuty> = {
     turnaroundDays: "6–9 Working Days",
     notes: "Low state stamp duty rate of ₹173 for incorporation documents."
   },
+  "Odisha": {
+    state: "Odisha",
+    pvtLtdStampDuty: 610,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Cuttack",
+    turnaroundDays: "6–9 Working Days",
+    notes: "Standard MOA/AOA stamp rate of ₹610."
+  },
   "Assam": {
     state: "Assam",
-    pvtLtdStampDuty: 1500,
+    pvtLtdStampDuty: 525,
     llpStampDuty: 1000,
     partnershipStampDuty: 500,
     rocOffice: "ROC Shillong (NER)",
     turnaroundDays: "7–11 Working Days",
-    notes: "Covers all northeastern regional ROC jurisdictions with ₹1,500 stamp duty."
-  },
-  "Chhattisgarh": {
-    state: "Chhattisgarh",
-    pvtLtdStampDuty: 1500,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Bilaspur / ROC Raipur",
-    turnaroundDays: "6–9 Working Days",
-    notes: "Standard stamp duty of ₹1,500 via Chhattisgarh e-challan system."
-  },
-  "Uttarakhand": {
-    state: "Uttarakhand",
-    pvtLtdStampDuty: 1500,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Uttarakhand (Dehradun)",
-    turnaroundDays: "6–9 Working Days",
-    notes: "Flat ₹1,500 stamp duty on private company MOA/AOA."
-  },
-  "Himachal Pradesh": {
-    state: "Himachal Pradesh",
-    pvtLtdStampDuty: 2000,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Chandigarh (HP Jurisdiction)",
-    turnaroundDays: "7–10 Working Days",
-    notes: "₹2,000 standard stamp duty on incorporation."
-  },
-  "Goa": {
-    state: "Goa",
-    pvtLtdStampDuty: 150,
-    llpStampDuty: 500,
-    partnershipStampDuty: 200,
-    rocOffice: "ROC Goa",
-    turnaroundDays: "5–8 Working Days",
-    notes: "One of the most affordable stamp duties in India at ₹150."
-  },
-  "Jammu and Kashmir": {
-    state: "Jammu and Kashmir",
-    pvtLtdStampDuty: 1500,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Jammu & Kashmir (Jammu)",
-    turnaroundDays: "7–11 Working Days",
-    notes: "Special startup provisions with ₹1,500 standard stamp paper rate."
+    notes: "Covers northeastern regional ROC jurisdictions."
   },
   "Sikkim": {
     state: "Sikkim",
@@ -225,90 +234,36 @@ export const STATE_STAMP_DUTY_LOOKUP: Record<string, StateStampDuty> = {
     turnaroundDays: "7–12 Working Days",
     notes: "Exempted state stamp duty on new company incorporations (₹0 stamp duty)."
   },
-  "Chandigarh": {
-    state: "Chandigarh",
-    pvtLtdStampDuty: 2000,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Chandigarh (UT)",
-    turnaroundDays: "5–8 Working Days",
-    notes: "Union Territory stamp rate under Chandigarh administration."
-  },
-  "Puducherry": {
-    state: "Puducherry",
-    pvtLtdStampDuty: 1500,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Chennai (Puducherry Jurisdiction)",
-    turnaroundDays: "6–9 Working Days",
-    notes: "Processed under ROC Chennai with ₹1,500 stamp duty."
-  },
-  "Andaman and Nicobar Islands": {
-    state: "Andaman and Nicobar Islands",
-    pvtLtdStampDuty: 1500,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Kolkata (A&N)",
-    turnaroundDays: "8–12 Working Days",
-    notes: "Processed via ROC Kolkata regional jurisdiction."
-  },
-  "Arunachal Pradesh": {
-    state: "Arunachal Pradesh",
-    pvtLtdStampDuty: 1500,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Shillong",
-    turnaroundDays: "7–11 Working Days",
-    notes: "North East Region ROC jurisdiction."
-  },
-  "Goa, Daman and Diu": {
-    state: "Goa, Daman and Diu",
-    pvtLtdStampDuty: 1500,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Goa / Ahmedabad",
-    turnaroundDays: "6–9 Working Days",
-    notes: "Union Territory administration rates."
-  },
-  "Ladakh": {
-    state: "Ladakh",
-    pvtLtdStampDuty: 1500,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Jammu & Kashmir",
-    turnaroundDays: "8–12 Working Days",
-    notes: "Processed under UT Ladakh jurisdiction."
-  },
-  "Lakshadweep": {
-    state: "Lakshadweep",
-    pvtLtdStampDuty: 1500,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Ernakulam (Lakshadweep)",
-    turnaroundDays: "8–12 Working Days",
-    notes: "Administered via ROC Ernakulam."
-  },
-  "Manipur": {
-    state: "Manipur",
-    pvtLtdStampDuty: 1500,
-    llpStampDuty: 1000,
-    partnershipStampDuty: 500,
-    rocOffice: "ROC Shillong",
-    turnaroundDays: "7–11 Working Days",
-    notes: "North East regional administration."
-  },
   "Meghalaya": {
     state: "Meghalaya",
-    pvtLtdStampDuty: 1500,
+    pvtLtdStampDuty: 410,
     llpStampDuty: 1000,
     partnershipStampDuty: 500,
     rocOffice: "ROC Shillong",
     turnaroundDays: "7–11 Working Days",
     notes: "Seat of ROC North East Region."
   },
+  "Arunachal Pradesh": {
+    state: "Arunachal Pradesh",
+    pvtLtdStampDuty: 710,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Shillong",
+    turnaroundDays: "7–11 Working Days",
+    notes: "North East Region ROC jurisdiction."
+  },
+  "Manipur": {
+    state: "Manipur",
+    pvtLtdStampDuty: 260,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Shillong",
+    turnaroundDays: "7–11 Working Days",
+    notes: "North East regional administration."
+  },
   "Mizoram": {
     state: "Mizoram",
-    pvtLtdStampDuty: 1500,
+    pvtLtdStampDuty: 260,
     llpStampDuty: 1000,
     partnershipStampDuty: 500,
     rocOffice: "ROC Shillong",
@@ -317,7 +272,7 @@ export const STATE_STAMP_DUTY_LOOKUP: Record<string, StateStampDuty> = {
   },
   "Nagaland": {
     state: "Nagaland",
-    pvtLtdStampDuty: 1500,
+    pvtLtdStampDuty: 260,
     llpStampDuty: 1000,
     partnershipStampDuty: 500,
     rocOffice: "ROC Shillong",
@@ -326,12 +281,93 @@ export const STATE_STAMP_DUTY_LOOKUP: Record<string, StateStampDuty> = {
   },
   "Tripura": {
     state: "Tripura",
-    pvtLtdStampDuty: 1500,
+    pvtLtdStampDuty: 260,
     llpStampDuty: 1000,
     partnershipStampDuty: 500,
     rocOffice: "ROC Shillong",
     turnaroundDays: "7–11 Working Days",
     notes: "North East Region administration."
+  },
+  "Chandigarh": {
+    state: "Chandigarh",
+    pvtLtdStampDuty: 1503,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Chandigarh (UT)",
+    turnaroundDays: "5–8 Working Days",
+    notes: "Union Territory stamp rate under Chandigarh administration."
+  },
+  "Puducherry": {
+    state: "Puducherry",
+    pvtLtdStampDuty: 510,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Chennai (Puducherry Jurisdiction)",
+    turnaroundDays: "6–9 Working Days",
+    notes: "Processed under ROC Chennai with ₹510 stamp duty."
+  },
+  "Andaman and Nicobar Islands": {
+    state: "Andaman and Nicobar Islands",
+    pvtLtdStampDuty: 520,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Kolkata (A&N)",
+    turnaroundDays: "8–12 Working Days",
+    notes: "Processed via ROC Kolkata regional jurisdiction."
+  },
+  "Daman and Diu": {
+    state: "Daman and Diu",
+    pvtLtdStampDuty: 1170,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Goa / Ahmedabad",
+    turnaroundDays: "6–9 Working Days",
+    notes: "Union Territory administration rate."
+  },
+  "Dadra and Nagar Haveli": {
+    state: "Dadra and Nagar Haveli",
+    pvtLtdStampDuty: 41,
+    llpStampDuty: 500,
+    partnershipStampDuty: 200,
+    rocOffice: "ROC Ahmedabad",
+    turnaroundDays: "6–9 Working Days",
+    notes: "Union Territory administration rate."
+  },
+  "Lakshadweep": {
+    state: "Lakshadweep",
+    pvtLtdStampDuty: 1525,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Ernakulam (Lakshadweep)",
+    turnaroundDays: "8–12 Working Days",
+    notes: "Administered via ROC Ernakulam."
+  },
+  "Jammu & Kashmir": {
+    state: "Jammu & Kashmir",
+    pvtLtdStampDuty: 310,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Jammu & Kashmir (Jammu)",
+    turnaroundDays: "7–11 Working Days",
+    notes: "Special startup provisions with ₹310 standard stamp rate."
+  },
+  "Andaman & Nicobar": {
+    state: "Andaman & Nicobar",
+    pvtLtdStampDuty: 520,
+    llpStampDuty: 1000,
+    partnershipStampDuty: 500,
+    rocOffice: "ROC Kolkata (A&N)",
+    turnaroundDays: "8–12 Working Days",
+    notes: "Processed via ROC Kolkata regional jurisdiction."
+  },
+  "Dadra & Nagar Haveli": {
+    state: "Dadra & Nagar Haveli",
+    pvtLtdStampDuty: 41,
+    llpStampDuty: 500,
+    partnershipStampDuty: 200,
+    rocOffice: "ROC Ahmedabad",
+    turnaroundDays: "6–9 Working Days",
+    notes: "Union Territory administration rate."
   },
   "Other States / Union Territories": {
     state: "Other States / Union Territories",
@@ -344,7 +380,45 @@ export const STATE_STAMP_DUTY_LOOKUP: Record<string, StateStampDuty> = {
   }
 };
 
-export const ALL_INDIAN_STATES = Object.keys(STATE_STAMP_DUTY_LOOKUP);
+export const ALL_INDIAN_STATES = [
+  "Maharashtra",
+  "Karnataka",
+  "Delhi",
+  "Telangana",
+  "Tamil Nadu",
+  "Gujarat",
+  "Uttar Pradesh",
+  "Haryana",
+  "Kerala",
+  "Andhra Pradesh",
+  "Rajasthan",
+  "Goa",
+  "Punjab",
+  "Madhya Pradesh",
+  "Himachal Pradesh",
+  "Uttarakhand",
+  "Chhattisgarh",
+  "Jammu & Kashmir",
+  "Ladakh",
+  "West Bengal",
+  "Bihar",
+  "Jharkhand",
+  "Odisha",
+  "Assam",
+  "Sikkim",
+  "Meghalaya",
+  "Arunachal Pradesh",
+  "Manipur",
+  "Mizoram",
+  "Nagaland",
+  "Tripura",
+  "Chandigarh",
+  "Puducherry",
+  "Andaman & Nicobar",
+  "Daman & Diu",
+  "Dadra & Nagar Haveli",
+  "Lakshadweep"
+];
 
 export const TOP_STARTUP_STATES = [
   "Karnataka",
@@ -698,7 +772,12 @@ export interface ItemizedQuote {
 
 export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
   const config = ENTITY_CONFIGS[params.entityType] || ENTITY_CONFIGS.pvt_ltd;
-  const stateData = STATE_STAMP_DUTY_LOOKUP[params.state] || STATE_STAMP_DUTY_LOOKUP["Maharashtra"];
+  const stateKey = params.state || "Maharashtra";
+  const stateData =
+    STATE_STAMP_DUTY_LOOKUP[stateKey] ||
+    STATE_STAMP_DUTY_LOOKUP[stateKey.replace("&", "and")] ||
+    STATE_STAMP_DUTY_LOOKUP[stateKey.replace("and", "&")] ||
+    STATE_STAMP_DUTY_LOOKUP["Maharashtra"];
 
   const numDsc = Math.max(0, params.numDsc ?? config.defaultDsc);
   const capital = params.authorizedCapital || config.defaultCapital;
