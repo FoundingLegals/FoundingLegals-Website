@@ -41,14 +41,14 @@ const ENTITY_DISPLAY_NAMES: Record<EntityTypeId, string> = {
 export default function CostEstimatorModal() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Form states
+  // Form input states (using strings for smooth typing and backspace handling)
   const [entityType, setEntityType] = useState<EntityTypeId>("pvt_ltd");
   const [lockedEntity, setLockedEntity] = useState<EntityTypeId | null>("pvt_ltd");
   const [selectedState, setSelectedState] = useState<string>("Maharashtra");
   const [hasShareCapital, setHasShareCapital] = useState<string>("yes");
-  const [numDirectors, setNumDirectors] = useState<number>(2);
-  const [authorizedCapital, setAuthorizedCapital] = useState<number>(100000);
-  const [numDsc, setNumDsc] = useState<number>(2);
+  const [numDirectors, setNumDirectors] = useState<string>("2");
+  const [authorizedCapital, setAuthorizedCapital] = useState<string>("100000");
+  const [numDsc, setNumDsc] = useState<string>("2");
 
   // Custom Dropdown Open States
   const [openDropdown, setOpenDropdown] = useState<"entity" | "state" | "capital" | null>(null);
@@ -100,9 +100,9 @@ export default function CostEstimatorModal() {
       setStateSearchQuery("");
 
       const conf = ENTITY_CONFIGS[targetEntity];
-      const directors = conf.defaultDirectors;
-      const dsc = conf.defaultDsc;
-      const capital = conf.defaultCapital;
+      const directors = String(conf.defaultDirectors);
+      const dsc = String(conf.defaultDsc);
+      const capital = String(conf.defaultCapital);
 
       setNumDirectors(directors);
       setNumDsc(dsc);
@@ -112,9 +112,9 @@ export default function CostEstimatorModal() {
       const newQuote = calculateQuote({
         entityType: targetEntity,
         state: targetState,
-        authorizedCapital: capital,
-        numDirectors: directors,
-        numDsc: dsc
+        authorizedCapital: conf.defaultCapital,
+        numDirectors: conf.defaultDirectors,
+        numDsc: conf.defaultDsc
       });
       setQuote(newQuote);
       setIsOpen(true);
@@ -151,12 +151,16 @@ export default function CostEstimatorModal() {
   const handleCalculate = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     setOpenDropdown(null);
+    const parsedCap = hasShareCapital === "no" ? 0 : Number(authorizedCapital) || 100000;
+    const parsedDir = Math.max(1, Number(numDirectors) || 1);
+    const parsedDsc = Math.max(0, Number(numDsc) || 0);
+
     const newQuote = calculateQuote({
       entityType,
       state: selectedState,
-      authorizedCapital: hasShareCapital === "no" ? 0 : Number(authorizedCapital) || 100000,
-      numDirectors: Number(numDirectors) || 1,
-      numDsc: Number(numDsc) || 0
+      authorizedCapital: parsedCap,
+      numDirectors: parsedDir,
+      numDsc: parsedDsc
     });
     setQuote(newQuote);
   };
@@ -170,9 +174,10 @@ export default function CostEstimatorModal() {
 
   // Format currency helpers
   const formatRs = (val: number) => `Rs ${val.toLocaleString("en-IN")}`;
-  const capitalInLakh = authorizedCapital >= 100000
-    ? `${(authorizedCapital / 100000).toFixed(authorizedCapital % 100000 === 0 ? 0 : 1)} lakh`
-    : `${authorizedCapital.toLocaleString("en-IN")}`;
+  const parsedCapNum = Number(authorizedCapital) || 0;
+  const capitalInLakh = parsedCapNum >= 100000
+    ? `${(parsedCapNum / 100000).toFixed(parsedCapNum % 100000 === 0 ? 0 : 1)} lakh`
+    : `${parsedCapNum.toLocaleString("en-IN")}`;
 
   // Filtered states for custom dropdown search
   const filteredStates = ALL_INDIAN_STATES.filter((st) =>
@@ -270,9 +275,9 @@ export default function CostEstimatorModal() {
                                 setEntityType(newType);
                                 const conf = ENTITY_CONFIGS[newType];
                                 if (conf) {
-                                  setNumDirectors(conf.defaultDirectors);
-                                  setNumDsc(conf.defaultDsc);
-                                  setAuthorizedCapital(conf.defaultCapital);
+                                  setNumDirectors(String(conf.defaultDirectors));
+                                  setNumDsc(String(conf.defaultDsc));
+                                  setAuthorizedCapital(String(conf.defaultCapital));
                                 }
                                 setOpenDropdown(null);
                               }}
@@ -411,11 +416,15 @@ export default function CostEstimatorModal() {
                     No. Of Directors
                   </label>
                   <input
-                    type="number"
-                    min={1}
-                    max={15}
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
                     value={numDirectors}
-                    onChange={(e) => setNumDirectors(Math.max(1, parseInt(e.target.value) || 1))}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/[^0-9]/g, "");
+                      setNumDirectors(val);
+                    }}
+                    placeholder="2"
                     className="w-full px-3.5 py-2.5 bg-[#FAF9F6] hover:bg-white border border-[#D5DFBE] hover:border-[#5A7338] rounded-xl text-xs sm:text-[13px] text-brown-900 font-semibold focus:outline-none focus:border-[#5A7338] focus:ring-2 focus:ring-[#5A7338]/20 shadow-2xs transition-all"
                   />
                 </div>
@@ -428,17 +437,21 @@ export default function CostEstimatorModal() {
                     Authorized Share Capital (Rs)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-olive-700">
+                    <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-olive-700 pointer-events-none select-none">
                       ₹
                     </span>
                     <input
-                      type="number"
-                      step={10000}
-                      min={0}
+                      type="text"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       disabled={hasShareCapital === "no"}
-                      value={hasShareCapital === "no" ? 0 : authorizedCapital}
-                      onChange={(e) => setAuthorizedCapital(Math.max(0, parseInt(e.target.value) || 0))}
-                      className="w-full pl-8 pr-3.5 py-2.5 bg-[#FAF9F6] hover:bg-white border border-[#D5DFBE] hover:border-[#5A7338] rounded-xl text-xs sm:text-[13px] text-brown-900 font-semibold focus:outline-none focus:border-[#5A7338] focus:ring-2 focus:ring-[#5A7338]/20 shadow-2xs disabled:bg-gray-100 transition-all"
+                      value={hasShareCapital === "no" ? "0" : authorizedCapital}
+                      onChange={(e) => {
+                        const val = e.target.value.replace(/[^0-9]/g, "");
+                        setAuthorizedCapital(val);
+                      }}
+                      placeholder="100000"
+                      className="w-full pl-8 pr-3.5 py-2.5 bg-[#FAF9F6] hover:bg-white border border-[#D5DFBE] hover:border-[#5A7338] rounded-xl text-xs sm:text-[13px] text-brown-900 font-semibold focus:outline-none focus:border-[#5A7338] focus:ring-2 focus:ring-[#5A7338]/20 shadow-2xs disabled:bg-gray-100 disabled:text-gray-400 transition-all"
                     />
                   </div>
                 </div>
@@ -448,11 +461,15 @@ export default function CostEstimatorModal() {
                     No. Of DSC Required
                   </label>
                   <input
-                    type="number"
-                    min={0}
-                    max={numDirectors}
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
                     value={numDsc}
-                    onChange={(e) => setNumDsc(Math.max(0, parseInt(e.target.value) || 0))}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/[^0-9]/g, "");
+                      setNumDsc(val);
+                    }}
+                    placeholder="2"
                     className="w-full px-3.5 py-2.5 bg-[#FAF9F6] hover:bg-white border border-[#D5DFBE] hover:border-[#5A7338] rounded-xl text-xs sm:text-[13px] text-brown-900 font-semibold focus:outline-none focus:border-[#5A7338] focus:ring-2 focus:ring-[#5A7338]/20 shadow-2xs transition-all"
                   />
                 </div>
@@ -524,7 +541,7 @@ export default function CostEstimatorModal() {
                         <span className="font-bold text-[#5A7338]">{formatRs(quote.stampDuty)}</span>
                       </div>
                       <div className="text-[10.5px] text-brown-500 font-light">
-                        {quote.selectedState} rate for authorised capital of ₹{authorizedCapital.toLocaleString("en-IN")}
+                        {quote.selectedState} rate for authorised capital of ₹{(Number(authorizedCapital) || 0).toLocaleString("en-IN")}
                       </div>
                       <div className="text-[10px] text-brown-400 font-light">
                         Authorised capital up to ₹{capitalInLakh}
@@ -542,7 +559,7 @@ export default function CostEstimatorModal() {
 
                   {/* DSC Fees */}
                   <div className="flex items-center justify-between py-1">
-                    <span className="text-brown-600">DSC Fees ({numDsc} × ₹2500)</span>
+                    <span className="text-brown-600">DSC Fees ({Number(numDsc) || 0} × ₹2500)</span>
                     <span className="font-semibold text-brown-900">
                       {formatRs(quote.dscFees)}
                     </span>
