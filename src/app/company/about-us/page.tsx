@@ -6,53 +6,76 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
   ArrowRight,
+  Building2,
+  FileText,
+  CalendarCheck2,
+  ShieldCheck,
+  TrendingUp,
+  Briefcase,
+  CheckCircle2,
 } from "lucide-react";
 
 // Real Community Moments from Gallery
 const COMMUNITY_MOMENTS = [
   {
-    title: "Founder Keynotes & Community Sessions",
+    title: "Founder Conversations",
+    description: "Direct sessions understanding what founders find difficult, slow, or confusing.",
     image: "/Gallery_images/IMG_1450 (1).png",
   },
   {
-    title: "Founder Discussions & Studio Podcasts",
+    title: "Startup Summits",
+    description: "Engaging with operators and emerging startups across the ecosystem.",
     image: "/Gallery_images/IMG_1331.png",
   },
   {
-    title: "University & Campus Startup Summits",
+    title: "Campus Initiatives",
+    description: "Introducing legal and business fundamentals to aspiring student entrepreneurs.",
     image: "/Gallery_images/IMG_2884.png",
   },
   {
-    title: "Mentoring Next-Generation Builders",
+    title: "Mentoring & Knowledge",
+    description: "Sharing practical perspectives while learning from next-gen business builders.",
     image: "/Gallery_images/IMG_2888.png",
   },
 ];
 
-// Clean, high-credibility testimonials
-const TESTIMONIALS = [
+// Platform Capabilities - Short, punchy, tangible
+const PLATFORM_CAPABILITIES = [
   {
-    quote:
-      "Incorporating our private limited company and setting up our founders' agreement took days instead of weeks. The entire process was seamless.",
-    author: "Ananya Roy",
-    role: "Co-Founder & CEO",
-    company: "DevStack Labs",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200",
+    title: "Incorporation & Setup",
+    description: "Private Limited, LLP, OPC, PAN/TAN, and foundational charter documents.",
+    icon: Building2,
+    badge: "Day 1",
   },
   {
-    quote:
-      "Filing GST returns and keeping up with quarterly ROC dates used to be painful. Founding Legals keeps everything organized with complete clarity.",
-    author: "Rohan Verma",
-    role: "Founder",
-    company: "Nourish Botanicals",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200",
+    title: "Agreements & Contracts",
+    description: "Founder agreements, ESOP pools, NDAs, and commercial contracts.",
+    icon: FileText,
+    badge: "Contracts",
   },
   {
-    quote:
-      "The agreement repository and investor term sheet preparation gave our angel investors immediate confidence during our early fundraise.",
-    author: "Vikramaditya Iyer",
-    role: "Co-Founder",
-    company: "PayFlow Technologies",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200",
+    title: "Compliance & Governance",
+    description: "Annual ROC filings, director KYC, statutory registers, and deadline alerts.",
+    icon: CalendarCheck2,
+    badge: "Filings",
+  },
+  {
+    title: "Intellectual Property",
+    description: "Trademark search, brand registration, and proprietary asset protection.",
+    icon: ShieldCheck,
+    badge: "Protection",
+  },
+  {
+    title: "Fundraising Readiness",
+    description: "Cap tables, term sheets, SHA drafting, and diligence-ready corporate data.",
+    icon: TrendingUp,
+    badge: "Capital",
+  },
+  {
+    title: "Business Services",
+    description: "GST, MSME/Udyam certificates, state licenses, and legal advisory.",
+    icon: Briefcase,
+    badge: "Operations",
   },
 ];
 
@@ -62,106 +85,87 @@ export default function AboutUsPage() {
       <Header />
 
       {/* ─────────────────────────────────────────────────────────────
-          1. HERO SECTION
+          1. HERO
       ───────────────────────────────────────────────────────────── */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto pt-6 sm:pt-10 pb-16 md:pb-24">
-        <div className="rounded-[32px] sm:rounded-[40px] overflow-hidden bg-[#5A6E3B] text-white shadow-[0_16px_48px_rgba(90,110,59,0.18)] flex flex-col lg:flex-row items-stretch">
+      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto pt-6 sm:pt-10 pb-10 md:pb-14">
+        <div className="rounded-[32px] sm:rounded-[36px] overflow-hidden bg-[#5A6E3B] text-white shadow-[0_16px_40px_rgba(90,110,59,0.18)] flex flex-col lg:flex-row items-stretch">
           
           {/* Left Text */}
-          <div className="w-full lg:w-[56%] p-8 sm:p-12 lg:p-16 xl:p-20 flex flex-col justify-center">
-            <h1 className="text-[34px] sm:text-[48px] lg:text-[56px] font-serif font-medium leading-[1.1] tracking-tight mb-6 text-white">
-              About Us
+          <div className="w-full lg:w-[56%] p-7 sm:p-10 lg:p-12 xl:p-14 flex flex-col justify-center">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/15 text-[#E8F5A3] text-[11px] font-bold uppercase tracking-wider rounded-md mb-5 w-fit backdrop-blur-xs">
+              About Founding Legals
+            </div>
+
+            <h1 className="text-[32px] sm:text-[42px] lg:text-[48px] font-serif font-medium leading-[1.15] tracking-tight mb-4 text-white">
+              Making the legal side of business easier to navigate.
             </h1>
 
-            <h2 className="text-[20px] sm:text-[24px] font-serif font-normal text-[#E8F5A3] leading-[1.3] mb-6">
-              Building a better way for founders to handle the legal side of business.
-            </h2>
+            <p className="text-white/90 text-[15px] sm:text-[17px] leading-[1.7] font-light max-w-xl mb-6">
+              Every business starts with a legal foundation. Founding Legals brings incorporation, agreements, compliance, and IP together into a single, technology-led platform  giving founders clarity without the administrative friction.
+            </p>
 
-            <div className="space-y-4 text-white/90 text-[15px] sm:text-[16px] leading-[1.75] font-light max-w-xl">
-              <p>
-                Starting a company is exciting. The legal and compliance work that comes with it usually isn&apos;t.
-              </p>
-              <p>
-                At Founding Legals, we&apos;re building a simpler way for Indian founders to take care of the important legal work that comes with starting and running a business. From incorporation and GST to agreements, compliance, intellectual property and fundraising documents, our aim is to make the process easier to understand and easier to manage.
-              </p>
-              <p className="text-white font-medium pt-1">
-                Because founders have better things to spend their time on than chasing documents, deadlines and paperwork.
-              </p>
+            {/* Quick Proof Chips */}
+            <div className="flex flex-wrap gap-2 text-[12px] text-white/90 font-medium">
+              <span className="inline-flex items-center gap-1.5 bg-black/15 px-3 py-1.5 rounded-lg">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#E8F5A3]" /> Built for Indian Founders
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-black/15 px-3 py-1.5 rounded-lg">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#E8F5A3]" /> 28 States Covered
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-black/15 px-3 py-1.5 rounded-lg">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#E8F5A3]" /> Technology-Led
+              </span>
             </div>
           </div>
 
-          {/* Right Visual Box - Real Team Photo */}
-          <div className="w-full lg:w-[44%] relative min-h-[420px] sm:min-h-[480px] lg:min-h-[560px] self-stretch overflow-hidden bg-[#4A5D2A]">
+          {/* Right Visual Box */}
+          <div className="w-full lg:w-[44%] relative min-h-[300px] sm:min-h-[380px] lg:min-h-[460px] self-stretch overflow-hidden bg-[#4A5D2A]">
             <img
               src="/Gallery_images/IMG_0726.png"
               alt="Founding Legals team at exhibition booth"
-              className="absolute inset-0 w-full h-full object-cover object-[center_20%] transition-transform duration-700 hover:scale-105"
+              className="absolute inset-0 w-full h-full object-cover object-[center_15%] transition-transform duration-700 hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
           </div>
         </div>
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          2. OUR VISION
+          2. THE REALITY & WHY WE EXIST
       ───────────────────────────────────────────────────────────── */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-[1000px] mx-auto py-12 md:py-20 text-center">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E6EDC6] text-[#425227] text-[12px] font-bold uppercase tracking-wider rounded-md mb-6">
-          Our Vision
-        </div>
-
-        <h2 className="text-[32px] sm:text-[44px] lg:text-[50px] font-serif font-medium text-[#2B2723] leading-[1.2] mb-6">
-          Give founders more time to build.
-        </h2>
-
-        <div className="space-y-4 text-[16px] sm:text-[18px] text-[#524B44] leading-[1.8] max-w-2xl mx-auto">
-          <p>
-            We started Founding Legals with a simple belief:{" "}
-            <span className="text-[#5A6E3B] font-semibold">
-              legal and compliance work should support a business, not slow it down.
-            </span>
-          </p>
-          <p>
-            Our goal is to make these processes simpler, more transparent and easier to manage, so founders can focus on what matters most — building their product, growing their team and moving their business forward.
-          </p>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
-          3. OUR STORY
-      ───────────────────────────────────────────────────────────── */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto py-12 md:py-20">
-        <div className="bg-white rounded-[32px] sm:rounded-[40px] overflow-hidden border border-[#EDE6DE] shadow-sm flex flex-col lg:flex-row items-stretch">
-          {/* Photo - Real Founder Consultation, Zoomed Out & Balanced */}
-          <div className="w-full lg:w-[48%] xl:w-[50%] relative min-h-[360px] sm:min-h-[440px] lg:min-h-[500px] overflow-hidden bg-[#F5F0EB]">
+      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto py-8 md:py-12">
+        <div className="bg-white rounded-[28px] sm:rounded-[32px] overflow-hidden border border-[#EDE6DE] shadow-xs flex flex-col lg:flex-row items-stretch">
+          
+          {/* Photo */}
+          <div className="w-full lg:w-[44%] relative min-h-[280px] sm:min-h-[340px] lg:min-h-[400px] overflow-hidden bg-[#F5F0EB]">
             <img
               src="/Gallery_images/IMG_0740.png"
-              alt="Founding Legals founder consulting with client at exhibition booth"
-              className="absolute inset-0 w-full h-full object-cover object-[30%_20%] sm:object-[center_20%] transition-transform duration-700 hover:scale-[1.02]"
+              alt="Founding Legals founder consulting with client"
+              className="absolute inset-0 w-full h-full object-cover object-[center_15%] transition-transform duration-700 hover:scale-[1.02]"
             />
           </div>
 
           {/* Narrative */}
-          <div className="w-full lg:w-[52%] xl:w-[50%] p-8 sm:p-10 lg:p-12 xl:p-14 flex flex-col justify-center">
-            <div className="inline-flex items-center px-3 py-1 bg-[#F5F0EB] text-[#5A6E3B] text-[12px] font-bold uppercase tracking-wider rounded-md mb-6 w-fit">
-              Our Story
+          <div className="w-full lg:w-[56%] p-6 sm:p-9 lg:p-11 flex flex-col justify-center">
+            <div className="inline-flex items-center px-2.5 py-0.5 bg-[#F5F0EB] text-[#5A6E3B] text-[11px] font-bold uppercase tracking-wider rounded-md mb-3 w-fit">
+              Why Founding Legals
             </div>
 
-            <div className="space-y-4 text-[15px] sm:text-[16px] text-[#524B44] leading-[1.8]">
-              <p>
-                Founding Legals came from seeing the same challenges faced by founders again and again.
-              </p>
-              <p>
-                Important documents were spread across different places. Compliance dates were easy to miss. Simple legal work could involve endless follow-ups. And for a founder trying to move quickly, even small things could take far more time and effort than they should.
-              </p>
-              <p className="text-[#2B2723] font-medium border-l-2 border-[#5A6E3B] pl-4 py-0.5">
-                We felt there had to be a better way.
-              </p>
-              <p>
-                So we started building Founding Legals — a platform that brings the essential legal and compliance needs of a business together in one place.
-              </p>
-              <p>
-                We’re still building, learning and improving every day. And a big part of that comes from speaking directly with founders and understanding what they actually need.
+            <h2 className="text-[26px] sm:text-[32px] font-serif font-medium text-[#2B2723] leading-snug mb-4">
+              Built around the realities of running a business.
+            </h2>
+
+            <p className="text-[15px] text-[#524B44] leading-[1.7] mb-4">
+              Legal and compliance work in India is essential, yet notoriously fragmented. A contract sits in one folder, compliance dates on a calendar, and state-level stamp duties require chasing multiple professionals.
+            </p>
+
+            <p className="text-[15px] text-[#524B44] leading-[1.7] mb-5">
+              Founding Legals unifies these services, documents, and workflows in one place.
+            </p>
+
+            {/* Punchline Card */}
+            <div className="border-l-3 border-[#5A6E3B] bg-[#FAF9F6] pl-4 py-2.5 rounded-r-xl">
+              <p className="text-[#2B2723] font-semibold text-[15px] sm:text-[16px]">
+                The objective is not to add another layer of complexity. It is to remove it.
               </p>
             </div>
           </div>
@@ -169,205 +173,163 @@ export default function AboutUsPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          4. GROWING WITH THE FOUNDER COMMUNITY & EVENT GALLERY
+          3. ONE PLATFORM: Compact 6-Card Grid
       ───────────────────────────────────────────────────────────── */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto py-16 md:py-24">
-        <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center px-3 py-1 bg-[#E6EDC6] text-[#425227] text-[12px] font-bold uppercase tracking-wider rounded-md mb-4">
-            Community
+      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto py-8 md:py-12">
+        <div className="max-w-2xl mb-8">
+          <div className="inline-flex items-center px-2.5 py-0.5 bg-[#E6EDC6] text-[#425227] text-[11px] font-bold uppercase tracking-wider rounded-md mb-3">
+            One Connected Platform
           </div>
 
-          <h2 className="text-[32px] sm:text-[42px] font-serif font-medium text-[#2B2723] leading-[1.18] mb-3">
-            Growing With the Founder Community
+          <h2 className="text-[28px] sm:text-[36px] font-serif font-medium text-[#2B2723] leading-tight mb-2">
+            One Platform for the Legal Needs of a Business
           </h2>
 
-          <h3 className="text-[19px] sm:text-[21px] font-serif text-[#5A6E3B] mb-5">
-            We believe the best products are built by listening.
-          </h3>
-
-          <div className="space-y-3 text-[15px] sm:text-[16px] text-[#524B44] leading-[1.75]">
-            <p>
-              A lot of what we learn happens outside the product — at founder meetups, startup events, college communities, business gatherings and conversations with entrepreneurs.
-            </p>
-            <p>
-              We meet people at different stages of their journey, hear about the challenges they’re dealing with and take those conversations back to our team.
-            </p>
-            <p className="font-medium text-[#2B2723]">
-              These moments are a big part of who we are and how Founding Legals continues to evolve.
-            </p>
-          </div>
-        </div>
-
-        {/* Gallery Intro & 4 Real Gallery Cards */}
-        <div className="pt-4">
-          <div className="mb-6">
-            <h4 className="text-[20px] font-serif font-medium text-[#2B2723] mb-1">
-              A few moments from our journey
-            </h4>
-            <p className="text-[14px] sm:text-[15px] text-[#65605B]">
-              From founder conversations and startup events to meeting aspiring entrepreneurs, these are some of the moments that have shaped our journey so far.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {COMMUNITY_MOMENTS.map((m, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-2xl overflow-hidden border border-[#EDE6DE] shadow-sm hover:shadow-md transition-all duration-300 group flex flex-col justify-between"
-              >
-                <div className="h-52 w-full overflow-hidden relative bg-[#F5F0EB]">
-                  <img
-                    src={m.image}
-                    alt={m.title}
-                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-4 flex-grow flex items-center">
-                  <p className="text-[14px] font-medium text-[#2B2723] leading-snug">
-                    {m.title}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
-          5. WHAT FOUNDERS SAY [TESTIMONIALS]
-      ───────────────────────────────────────────────────────────── */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto py-16 md:py-20 bg-[#F5F0EB]/50 rounded-[36px] border border-[#EDE6DE] my-8">
-        <div className="max-w-2xl mx-auto text-center mb-12">
-          <div className="inline-flex items-center px-3 py-1 bg-white text-[#425227] text-[12px] font-bold uppercase tracking-wider rounded-md mb-4 shadow-xs">
-            What Founders Say
-          </div>
-
-          <h3 className="text-[24px] sm:text-[30px] font-serif font-medium text-[#2B2723] mb-3">
-            We’re building this for founders, so their feedback matters.
-          </h3>
-
-          <p className="text-[14px] sm:text-[15px] text-[#65605B]">
-            The best way to understand whether we’re solving the right problems is to hear from the people using Founding Legals.
+          <p className="text-[15px] text-[#65605B]">
+            From incorporation to scale — manage the legal foundation behind your operations in one place.
           </p>
         </div>
 
-        {/* 3 Clean Testimonial Cards */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {TESTIMONIALS.map((t, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-2xl p-6 border border-[#E5DDD4] shadow-xs flex flex-col justify-between"
-            >
-              <p className="text-[14px] text-[#4B4843] leading-[1.7] italic mb-6">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-
-              <div className="flex items-center gap-3 pt-4 border-t border-[#F5F0EB]">
-                <img
-                  src={t.avatar}
-                  alt={t.author}
-                  className="w-10 h-10 rounded-full object-cover border border-[#D7CEC6]"
-                />
+        {/* 6 Grid Cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {PLATFORM_CAPABILITIES.map((cap, idx) => {
+            const IconComp = cap.icon;
+            return (
+              <div
+                key={idx}
+                className="bg-white rounded-2xl p-5 sm:p-6 border border-[#EDE6DE] shadow-xs hover:shadow-md hover:border-[#5A6E3B]/40 transition-all duration-300 group flex flex-col justify-between"
+              >
                 <div>
-                  <p className="text-[13px] font-bold text-[#2B2723]">{t.author}</p>
-                  <p className="text-[11px] text-[#7A756F]">
-                    {t.role}, <span className="text-[#5A6E3B] font-medium">{t.company}</span>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-[#F5F0EB] text-[#5A6E3B] flex items-center justify-center group-hover:bg-[#5A6E3B] group-hover:text-white transition-colors duration-300">
+                      <IconComp className="w-5 h-5" />
+                    </div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#7A756F] bg-[#FAF9F6] px-2 py-0.5 rounded border border-[#EDE6DE]">
+                      {cap.badge}
+                    </span>
+                  </div>
+
+                  <h3 className="text-[17px] font-serif font-medium text-[#2B2723] mb-1.5 group-hover:text-[#5A6E3B] transition-colors">
+                    {cap.title}
+                  </h3>
+
+                  <p className="text-[13px] sm:text-[14px] text-[#524B44] leading-[1.6]">
+                    {cap.description}
                   </p>
                 </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          4. COMMUNITY & JOURNEY (Photo Gallery)
+      ───────────────────────────────────────────────────────────── */}
+      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto py-8 md:py-12">
+        <div className="max-w-2xl mb-8">
+          <div className="inline-flex items-center px-2.5 py-0.5 bg-[#F5F0EB] text-[#5A6E3B] text-[11px] font-bold uppercase tracking-wider rounded-md mb-3">
+            Community & Listening
+          </div>
+
+          <h2 className="text-[28px] sm:text-[36px] font-serif font-medium text-[#2B2723] leading-tight mb-2">
+            Close to the Businesses We Serve
+          </h2>
+
+          <p className="text-[15px] text-[#65605B]">
+            Our product is shaped by hundreds of real conversations with founders, startup summits, and campus communities across India.
+          </p>
+        </div>
+
+        {/* 4 Community Photos - 4:3 Aspect Ratio for Full Uncropped Framing */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-8">
+          {COMMUNITY_MOMENTS.map((m, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-2xl overflow-hidden border border-[#EDE6DE] shadow-xs hover:shadow-md transition-all duration-300 group flex flex-col justify-between"
+            >
+              <div className="aspect-[4/3] w-full overflow-hidden relative bg-[#F5F0EB]">
+                <img
+                  src={m.image}
+                  alt={m.title}
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-4 sm:p-5 flex-grow flex flex-col justify-start">
+                <h3 className="text-[15px] font-serif font-medium text-[#2B2723] leading-snug mb-1.5">
+                  {m.title}
+                </h3>
+                <p className="text-[12px] sm:text-[13px] text-[#65605B] leading-[1.6]">
+                  {m.description}
+                </p>
               </div>
             </div>
           ))}
         </div>
-      </section>
 
-      {/* ─────────────────────────────────────────────────────────────
-          6. WHY FOUNDING LEGALS
-      ───────────────────────────────────────────────────────────── */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto py-12 md:py-16">
-        <div className="bg-white rounded-[32px] sm:rounded-[40px] p-8 sm:p-12 lg:p-16 border border-[#EDE6DE] shadow-xs max-w-4xl mx-auto">
-          <div className="inline-flex items-center px-3 py-1 bg-[#F5F0EB] text-[#5A6E3B] text-[12px] font-bold uppercase tracking-wider rounded-md mb-4">
-            Why Founding Legals
-          </div>
-
-          <h2 className="text-[28px] sm:text-[38px] font-serif font-medium text-[#2B2723] mb-6">
-            Built around the way founders actually work.
-          </h2>
-
-          <div className="space-y-4 text-[15px] sm:text-[16px] text-[#524B44] leading-[1.8]">
-            <p>
-              We know legal work can often feel complicated, time-consuming and difficult to navigate.
-            </p>
-            <p className="text-[#5A6E3B] font-semibold">
-              We’re trying to change that.
-            </p>
-            <p>
-              We keep the experience simple, explain things clearly and build around the way founders actually work.
-            </p>
-            <p className="text-[#2B2723] font-medium">
-              No unnecessary complexity. No endless back-and-forth. Just a more straightforward way to stay on top of the legal side of your business.
-            </p>
-          </div>
+        {/* Vision Statement Strip */}
+        <div className="bg-[#E6EDC6]/60 rounded-2xl p-5 sm:p-6 border border-[#D4E157]/40 text-center max-w-3xl mx-auto">
+          <p className="text-[15px] sm:text-[16px] text-[#3C481D] font-medium leading-relaxed">
+            &ldquo;When the legal fundamentals are in order, businesses can spend more of their attention on what comes next.&rdquo;
+          </p>
         </div>
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          8. BUILDING SOMETHING? & CAREERS
+          5. CALL TO ACTION & CAREERS
       ───────────────────────────────────────────────────────────── */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto py-12 md:py-20 space-y-8">
+      <section className="w-full px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto py-8 md:py-14 space-y-6">
         {/* Main CTA */}
-        <div className="bg-[#5A6E3B] text-white rounded-[32px] sm:rounded-[40px] p-10 sm:p-14 lg:p-16 text-center shadow-[0_16px_40px_rgba(90,110,59,0.18)]">
+        <div className="bg-[#5A6E3B] text-white rounded-[28px] sm:rounded-[36px] p-8 sm:p-12 lg:p-14 text-center shadow-[0_16px_40px_rgba(90,110,59,0.18)]">
           <div className="max-w-2xl mx-auto">
-            <h2 className="text-[32px] sm:text-[44px] font-serif font-medium text-white mb-2 leading-tight">
-              Building something?
+            <h2 className="text-[30px] sm:text-[40px] font-serif font-medium text-white mb-2 leading-tight">
+              Your Business. Your Next Chapter.
             </h2>
 
-            <h3 className="text-[20px] sm:text-[24px] font-serif text-[#E8F5A3] font-normal mb-5">
-              Let’s make the legal side a little easier.
-            </h3>
-
-            <p className="text-white/90 text-[15px] sm:text-[16px] leading-[1.7] font-light mb-8">
-              You focus on building your business. We’ll help you stay on top of the paperwork, agreements and compliance that come with it.
+            <p className="text-[18px] font-serif text-[#E8F5A3] font-normal mb-4">
+              Let the legal side be the part you manage with clarity.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+            <p className="text-white/90 text-[14px] sm:text-[15px] leading-[1.7] font-light mb-7 max-w-lg mx-auto">
+              Whether you are starting a company, managing an established business, or preparing for your next stage of growth, Founding Legals is your structured home for compliance and legal operations.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-5">
               <Link
                 href="/start"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 bg-white text-[#5A6E3B] text-[15px] font-bold rounded-xl hover:bg-[#E8F5A3] transition-all shadow-sm"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3 bg-white text-[#5A6E3B] text-[14px] font-bold rounded-xl hover:bg-[#E8F5A3] transition-all shadow-sm"
               >
                 <span>Get Started</span>
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Link>
-            </div>
 
-            <div className="text-white/85 text-[14px]">
-              <span>Have a question or want to know more? </span>
               <Link
                 href="/contact"
-                className="text-[#E8F5A3] font-semibold underline underline-offset-4 hover:text-white transition-colors"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3 bg-black/20 text-white text-[14px] font-bold rounded-xl hover:bg-black/30 transition-all border border-white/20"
               >
-                Talk to us
+                <span>Talk to Us</span>
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Want to build with us? (Careers) */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#EDE6DE] flex flex-col sm:flex-row items-center justify-between gap-6">
+        {/* Careers Card */}
+        <div className="bg-white rounded-2xl p-5 sm:p-6 border border-[#EDE6DE] flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs">
           <div className="text-center sm:text-left">
-            <h4 className="text-[18px] sm:text-[20px] font-serif font-medium text-[#2B2723] mb-1">
-              Want to build with us?
+            <h4 className="text-[16px] sm:text-[17px] font-serif font-medium text-[#2B2723] mb-1">
+              Help shape the future of business legal technology.
             </h4>
-            <p className="text-[14px] text-[#65605B]">
-              We’re always looking for people who want to help make business legal and compliance simpler for the next generation of Indian founders.
+            <p className="text-[13px] text-[#65605B]">
+              We’re looking for thoughtful builders who want to make running a business simpler in India.
             </p>
           </div>
 
           <Link
             href="/company/careers"
-            className="shrink-0 inline-flex items-center justify-center px-6 py-3 bg-[#5A6E3B] text-white text-[14px] font-bold rounded-xl hover:bg-[#4A5D2A] transition-all"
+            className="shrink-0 inline-flex items-center justify-center px-5 py-2.5 bg-[#5A6E3B] text-white text-[13px] font-bold rounded-xl hover:bg-[#4A5D2A] transition-all"
           >
             <span>Explore Careers</span>
-            <ArrowRight className="w-4 h-4 ml-1.5" />
+            <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
           </Link>
         </div>
       </section>
