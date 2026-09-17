@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
+import os from "os";
 import crypto from "crypto";
 
 export interface ClientFeedback {
@@ -51,7 +52,7 @@ const INITIAL_SEEDS: ClientFeedback[] = [
   },
 ];
 
-const DATA_DIR = path.join(process.cwd(), "src", "data");
+const DATA_DIR = path.join(os.tmpdir(), "foundinglegals_feedback_data");
 const DATA_FILE = path.join(DATA_DIR, "feedback.json");
 
 // Simple write queue to serialize file writes and prevent race conditions

@@ -1,5 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
+import os from "os";
 import crypto from "crypto";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
@@ -52,8 +53,8 @@ export async function saveUploadedFile(
     );
   }
 
-  // Directory resolution
-  const uploadDir = path.join(process.cwd(), "public", "uploads", "testimonials");
+  // Directory resolution (using os.tmpdir to prevent bundling 346MB public assets into lambdas)
+  const uploadDir = path.join(os.tmpdir(), "fl_uploads", "testimonials");
   await fs.mkdir(uploadDir, { recursive: true });
 
   const ext = EXTENSION_MAP[normalizedMime] || ".png";

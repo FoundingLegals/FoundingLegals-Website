@@ -55,7 +55,6 @@ export const CSV_HEADER = [
 ].map(escapeCsv).join(",") + "\n";
 
 let writeQueue = Promise.resolve();
-let resolvedDir: string | null = null;
 
 function escapeCsv(val: string | null | undefined): string {
   if (val === null || val === undefined) return '""';
@@ -106,41 +105,14 @@ export function isLegitimateLog(log: VisitorLog): boolean {
 }
 
 /**
- * Resolves a writable directory (uses /tmp on Vercel Serverless / AWS Lambda where /var/task is read-only)
+ * Resolves storage path using os.tmpdir() to eliminate whole-project NFT tracing and ensure writable storage
  */
 async function getStoragePaths() {
-  if (resolvedDir) {
-    return {
-      csv: path.join(resolvedDir, "visitor_logs.csv"),
-      json: path.join(resolvedDir, "visitor_logs.json"),
-    };
-  }
-
-  const localDir = path.join(process.cwd(), "src", "data");
-  let canWrite = false;
-  try {
-    await fs.mkdir(localDir, { recursive: true });
-    const probe = path.join(localDir, `.fl_write_test_${Date.now()}`);
-    await fs.writeFile(probe, "ok", "utf-8");
-    await fs.unlink(probe);
-    canWrite = true;
-    resolvedDir = localDir;
-  } catch {
-    canWrite = false;
-  }
-
-  if (!canWrite) {
-    // Vercel serverless writable folder
-    const tmpDir = path.join(os.tmpdir(), "foundinglegals_data");
-    await fs.mkdir(tmpDir, { recursive: true }).catch(() => {});
-    resolvedDir = tmpDir;
-  }
-
-  const targetDir = resolvedDir || path.join(os.tmpdir(), "foundinglegals_data");
-
+  const dataDir = path.join(os.tmpdir(), "foundinglegals_visitor_data");
+  await fs.mkdir(dataDir, { recursive: true }).catch(() => {});
   return {
-    csv: path.join(targetDir, "visitor_logs.csv"),
-    json: path.join(targetDir, "visitor_logs.json"),
+    csv: path.join(dataDir, "visitor_logs.csv"),
+    json: path.join(dataDir, "visitor_logs.json"),
   };
 }
 

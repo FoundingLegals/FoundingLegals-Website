@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  outputFileTracingExcludes: {
+    "*": ["./public/**/*"],
+  },
   experimental: {
     cpus: 2,
   },
