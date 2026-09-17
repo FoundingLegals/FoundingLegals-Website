@@ -1,16 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
-  SUPER_ADMIN_EMAIL,
-  SUPER_ADMIN_PASSWORD,
+  verifyAdminCredentials,
   signSession,
   COOKIE_NAME,
   AdminSession,
 } from "@/lib/adminAuth";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}));
-    const email = String(body.email || "").trim().toLowerCase();
+    const email = String(body.email || "").trim();
     const password = String(body.password || "").trim();
 
     if (!email || !password) {
@@ -20,10 +21,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (
-      email !== SUPER_ADMIN_EMAIL.toLowerCase() ||
-      password !== SUPER_ADMIN_PASSWORD
-    ) {
+    const verification = verifyAdminCredentials(email, password);
+
+    if (!verification.valid) {
       return NextResponse.json(
         { error: "Invalid Super Admin email or password." },
         { status: 401 }
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
     // 7 Days Session Expiry
     const exp = Date.now() + 7 * 24 * 60 * 60 * 1000;
     const sessionPayload: AdminSession = {
-      email: SUPER_ADMIN_EMAIL,
+      email: verification.email,
       role: "Super Admin",
       exp,
     };
@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
       {
         success: true,
         message: "Super Admin authenticated successfully.",
-        user: { email: SUPER_ADMIN_EMAIL, role: "Super Admin" },
+        user: { email: verification.email, role: "Super Admin" },
       },
       { status: 200 }
     );

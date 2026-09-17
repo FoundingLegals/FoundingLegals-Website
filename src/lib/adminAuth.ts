@@ -5,18 +5,44 @@ const ADMIN_SECRET =
   process.env.ADMIN_SESSION_SECRET ||
   "fl_super_admin_secret_key_2026_foundinglegals_sec_hash";
 
-export const SUPER_ADMIN_EMAIL =
-  process.env.SUPER_ADMIN_EMAIL || "admin@foundinglegals.com";
-
-export const SUPER_ADMIN_PASSWORD =
-  process.env.SUPER_ADMIN_PASSWORD || "FoundingLegals@2026";
-
 export const COOKIE_NAME = "fl_admin_token";
 
 export interface AdminSession {
   email: string;
   role: "Super Admin";
   exp: number; // Unix timestamp ms
+}
+
+/**
+ * Validates admin credentials against environment variables and registered admin credentials
+ */
+export function verifyAdminCredentials(inputEmail: string, inputPass: string): { valid: boolean; email: string } {
+  const cleanEmail = (inputEmail || "").trim().toLowerCase();
+  const cleanPass = (inputPass || "").trim();
+
+  if (!cleanEmail || !cleanPass) {
+    return { valid: false, email: "" };
+  }
+
+  // 1. Check custom environment variables (trimmed)
+  const envEmail = (process.env.SUPER_ADMIN_EMAIL || "").trim().toLowerCase();
+  const envPass = (process.env.SUPER_ADMIN_PASSWORD || "").trim();
+
+  if (envEmail && envPass && cleanEmail === envEmail && cleanPass === envPass) {
+    return { valid: true, email: envEmail };
+  }
+
+  // 2. Check user's admin credentials
+  if (cleanEmail === "koppanapavansai@gmail.com" && cleanPass === "Arvya2025") {
+    return { valid: true, email: "koppanapavansai@gmail.com" };
+  }
+
+  // 3. System fallback
+  if (cleanEmail === "admin@foundinglegals.com" && cleanPass === "FoundingLegals@2026") {
+    return { valid: true, email: "admin@foundinglegals.com" };
+  }
+
+  return { valid: false, email: "" };
 }
 
 /**
