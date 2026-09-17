@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Check,
   X,
   Send,
   ArrowRight,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Building2,
   Briefcase,
   User,
@@ -15,7 +17,8 @@ import {
   HelpCircle,
   Sparkles,
   ShieldCheck,
-  Award
+  Award,
+  Star
 } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
 
@@ -150,6 +153,35 @@ export default function WhichCompanyTypeLayout() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("");
   const [modalState, handleModalSubmit] = useForm("xqeyrnpp");
+
+  // Dynamic Testimonials state
+  const [testimonials, setTestimonials] = useState<any[]>([
+    {
+      id: "seed-dhaval-trivedi",
+      name: "Dhaval Trivedi",
+      companyName: "TBS Magazine",
+      designation: "Founder",
+      rating: 5,
+      testimonial:
+        "We would recommend Founding Legals incorporation services to any founder without a second doubt. The process was beyond efficient and show's Founding Legals founder's commitment and vision to truly help entrepreneur's and early stage startups to get them incorporated with ease. If you wanna get incorporated, pick them. Thanks for the help Founding Legals.",
+      photoUrl: null,
+      companyLogoUrl: null,
+    },
+  ]);
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+
+  useEffect(() => {
+    fetch("/api/testimonials")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setTestimonials(data);
+        }
+      })
+      .catch((err) => {
+        console.error("Error loading testimonials:", err);
+      });
+  }, []);
 
   // Quiz state
   const [showQuiz, setShowQuiz] = useState(false);
@@ -583,24 +615,107 @@ export default function WhichCompanyTypeLayout() {
 
       {/* ── TESTIMONIAL SECTION ── */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 py-12">
-        <div className="bg-[#FAF9F6] border border-brown-200/30 rounded-3xl p-8 md:p-12 max-w-4xl mx-auto relative">
+        <div className="bg-[#FAF9F6] border border-brown-200/30 rounded-3xl p-8 md:p-12 max-w-4xl mx-auto relative shadow-xs">
           <span className="text-[60px] font-serif text-olive-600/10 absolute top-4 left-6 leading-none pointer-events-none">“</span>
           
-          <div className="space-y-6 relative z-10">
-            <p className="font-serif text-[17px] sm:text-[20px] text-brown-800 leading-relaxed italic">
-              We would recommend Founding Legals incorporation services to any founder without a second doubt. The process was beyond efficient and show's Founding Legals founder's commitment and vision to truly help entrepreneur's and early stage startups to get them incorporated with ease. If you wanna get incorporated, pick them. Thanks for the help Founding Legals.
-            </p>
+          {(() => {
+            const current = testimonials[currentTestimonialIndex] || testimonials[0];
+            if (!current) return null;
 
-            <div className="flex items-center gap-4.5 pt-2">
-              <div className="w-12 h-12 bg-olive-600/10 rounded-full flex items-center justify-center font-serif text-[16px] font-bold text-olive-700">
-                DT
+            const initials = current.name
+              ? current.name
+                  .split(" ")
+                  .map((n: string) => n[0])
+                  .join("")
+                  .slice(0, 2)
+                  .toUpperCase()
+              : "FL";
+
+            return (
+              <div className="space-y-6 relative z-10">
+                {/* 1-5 Star Rating */}
+                <div className="flex items-center gap-1">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Star
+                      key={s}
+                      className={`w-4 h-4 ${
+                        s <= (current.rating || 5)
+                          ? "text-[#E6B800] fill-[#FFD700]"
+                          : "text-[#D7CEC6]"
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                <p className="font-serif text-[17px] sm:text-[20px] text-brown-800 leading-relaxed italic">
+                  {current.testimonial}
+                </p>
+
+                <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
+                  <div className="flex items-center gap-4.5">
+                    {current.photoUrl ? (
+                      <img
+                        src={current.photoUrl}
+                        alt={current.name}
+                        className="w-12 h-12 rounded-full object-cover border border-brown-200"
+                      />
+                    ) : (
+                      <div className="w-12 h-12 bg-olive-600/10 rounded-full flex items-center justify-center font-serif text-[16px] font-bold text-olive-700 border border-olive-600/20">
+                        {initials}
+                      </div>
+                    )}
+                    <div>
+                      <h4 className="font-bold text-[14px] text-brown-900">{current.name}</h4>
+                      <p className="text-[12px] text-brown-500">
+                        {current.designation ? `${current.designation}, ` : ""}{current.companyName}
+                      </p>
+                    </div>
+
+                    {current.companyLogoUrl && (
+                      <div className="ml-2 pl-4 border-l border-brown-200">
+                        <img
+                          src={current.companyLogoUrl}
+                          alt={`${current.companyName} logo`}
+                          className="h-7 max-w-[90px] object-contain"
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Navigation controls when multiple testimonials exist */}
+                  {testimonials.length > 1 && (
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() =>
+                          setCurrentTestimonialIndex((prev) =>
+                            prev === 0 ? testimonials.length - 1 : prev - 1
+                          )
+                        }
+                        className="w-8 h-8 rounded-full border border-brown-200 bg-white hover:bg-cream flex items-center justify-center text-brown-600 hover:text-brown-900 transition-colors cursor-pointer"
+                        aria-label="Previous testimonial"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+                      <span className="text-[12px] text-brown-500 font-medium">
+                        {currentTestimonialIndex + 1} / {testimonials.length}
+                      </span>
+                      <button
+                        onClick={() =>
+                          setCurrentTestimonialIndex((prev) =>
+                            prev === testimonials.length - 1 ? 0 : prev + 1
+                          )
+                        }
+                        className="w-8 h-8 rounded-full border border-brown-200 bg-white hover:bg-cream flex items-center justify-center text-brown-600 hover:text-brown-900 transition-colors cursor-pointer"
+                        aria-label="Next testimonial"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
-              <div>
-                <h4 className="font-bold text-[14px] text-brown-900">Dhaval Trivedi</h4>
-                <p className="text-[12px] text-brown-500">TBS Magazine</p>
-              </div>
-            </div>
-          </div>
+            );
+          })()}
         </div>
       </section>
 

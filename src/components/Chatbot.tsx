@@ -126,12 +126,19 @@ function MarkdownWrapper({ children }: { children: React.ReactNode }) {
   );
 }
 
+import { usePathname } from "next/navigation";
+
 export default function Chatbot() {
+  const pathname = usePathname();
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  if (pathname?.startsWith("/admin") || pathname?.startsWith("/analytics")) {
+    return null;
+  }
 
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([

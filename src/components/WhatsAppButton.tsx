@@ -1,8 +1,14 @@
 "use client";
 
 import React from "react";
+import { usePathname } from "next/navigation";
 
 export default function WhatsAppButton() {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/admin") || pathname?.startsWith("/analytics")) {
+    return null;
+  }
+
   const whatsappUrl = "https://api.whatsapp.com/send/?phone=%2B919791222557&text&type=phone_number&app_absent=0";
 
   return (
