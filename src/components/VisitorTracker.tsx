@@ -6,29 +6,40 @@ import { usePathname } from "next/navigation";
 const VISITOR_STORAGE_KEY = "fl_visitor_id";
 const SESSION_STORAGE_KEY = "fl_session_id";
 
+function generateCleanUuid(): string {
+  if (typeof crypto !== "undefined" && crypto.randomUUID) {
+    return crypto.randomUUID();
+  }
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
 function getOrCreateVisitorId(): string {
   try {
     let vid = localStorage.getItem(VISITOR_STORAGE_KEY);
-    if (!vid) {
-      vid = "vid_" + Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
+    if (!vid || vid.startsWith("vid_guest") || !vid.startsWith("usr_")) {
+      vid = "usr_" + generateCleanUuid();
       localStorage.setItem(VISITOR_STORAGE_KEY, vid);
     }
     return vid;
   } catch {
-    return "vid_guest";
+    return "usr_" + generateCleanUuid();
   }
 }
 
 function getOrCreateSessionId(): string {
   try {
     let sid = sessionStorage.getItem(SESSION_STORAGE_KEY);
-    if (!sid) {
-      sid = "sid_" + Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
+    if (!sid || sid.startsWith("sid_guest") || !sid.startsWith("ses_")) {
+      sid = "ses_" + generateCleanUuid();
       sessionStorage.setItem(SESSION_STORAGE_KEY, sid);
     }
     return sid;
   } catch {
-    return "sid_guest";
+    return "ses_" + generateCleanUuid();
   }
 }
 

@@ -12,6 +12,7 @@ import {
   Shield,
   Clock,
   Sparkles,
+  Trash2,
 } from "lucide-react";
 
 interface TimelinePoint {
@@ -47,6 +48,8 @@ interface ReferrerStat {
 interface VisitorEntry {
   id: string;
   timestamp_ist: string;
+  visitor_id?: string;
+  session_id?: string;
   city: string;
   region: string;
   country: string;
@@ -80,6 +83,8 @@ export default function AnalyticsDashboardPage() {
   const [activeTab, setActiveTab] = useState<"visitors" | "views" | "bounce">("visitors");
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
+  const [clearing, setClearing] = useState(false);
+
   const fetchStats = useCallback(async () => {
     try {
       const res = await fetch("/api/analytics/stats", { cache: "no-store" });
@@ -95,6 +100,23 @@ export default function AnalyticsDashboardPage() {
       setLoading(false);
     }
   }, []);
+
+  const handleClearLogs = async () => {
+    if (!confirm("Are you sure you want to reset all visitor logs and clear old test records?")) {
+      return;
+    }
+    setClearing(true);
+    try {
+      const res = await fetch("/api/admin/clear-logs", { method: "POST" });
+      if (res.ok) {
+        await fetchStats();
+      }
+    } catch (err) {
+      console.error("Failed to clear logs:", err);
+    } finally {
+      setClearing(false);
+    }
+  };
 
   useEffect(() => {
     fetchStats();
@@ -552,60 +574,84 @@ export default function AnalyticsDashboardPage() {
                 Live Visitor Stream (Real-Time Feed)
               </h3>
               <p className="text-xs text-gray-400 mt-0.5">
-                Every public page visit updates here and in the CSV automatically
+                Every genuine public visitor logged in real time with unique Visitor UUID, IP, and location
               </p>
             </div>
 
-            <a
-              href="/api/analytics/export"
-              download
-              className="inline-flex items-center gap-1.5 text-xs text-[#48532B] font-bold hover:underline"
-            >
-              <Download className="w-3.5 h-3.5" />
-              <span>Download Real-Time CSV ({data?.stats.totalViews || 0} rows)</span>
-            </a>
+            <div className="flex items-center gap-4">
+              <a
+                href="/api/analytics/export"
+                download
+                className="inline-flex items-center gap-1.5 text-xs text-[#48532B] font-bold hover:underline"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Download Real-Time CSV ({data?.stats.totalViews || 0} rows)</span>
+              </a>
+
+              <button
+                onClick={handleClearLogs}
+                disabled={clearing}
+                className="inline-flex items-center gap-1.5 text-xs text-rose-600 font-semibold hover:text-rose-800 transition-colors cursor-pointer border border-rose-200 hover:border-rose-300 bg-rose-50/60 px-2.5 py-1 rounded-lg"
+                title="Wipe historical/test logs to start fresh with 100% genuine live traffic"
+              >
+                <Trash2 className="w-3 h-3" />
+                <span>{clearing ? "Resetting..." : "Reset Logs"}</span>
+              </button>
+            </div>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead className="bg-[#FAF9F6] text-gray-500 border-b border-gray-200">
                 <tr>
-                  <th className="px-6 py-3 font-semibold">Timestamp (IST)</th>
-                  <th className="px-6 py-3 font-semibold">Place / Location</th>
-                  <th className="px-6 py-3 font-semibold">Page Visited</th>
-                  <th className="px-6 py-3 font-semibold">Device & OS</th>
-                  <th className="px-6 py-3 font-semibold">Referrer</th>
-                  <th className="px-6 py-3 font-semibold">IP Address</th>
+                  <th className="px-5 py-3 font-semibold">Timestamp (IST)</th>
+                  <th className="px-5 py-3 font-semibold">Visitor UUID (User ID)</th>
+                  <th className="px-5 py-3 font-semibold">Place / Location</th>
+                  <th className="px-5 py-3 font-semibold">Page Visited</th>
+                  <th className="px-5 py-3 font-semibold">Device & OS</th>
+                  <th className="px-5 py-3 font-semibold">Referrer</th>
+                  <th className="px-5 py-3 font-semibold">IP Address</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {(data?.recentLogs || []).length > 0 ? (
                   data?.recentLogs.map((log, i) => (
                     <tr key={i} className="hover:bg-gray-50/70 transition-colors">
-                      <td className="px-6 py-3 font-mono text-gray-600 whitespace-nowrap">
+                      <td className="px-5 py-3 font-mono text-gray-600 whitespace-nowrap">
                         {log.timestamp_ist}
                       </td>
-                      <td className="px-6 py-3 font-medium text-gray-900 whitespace-nowrap">
-                        {log.city}
+                      <td className="px-5 py-3 font-mono whitespace-nowrap">
+                        <span className="bg-stone-100 text-stone-800 px-2 py-0.5 rounded border border-stone-200 font-medium text-[11px]" title={log.visitor_id}>
+                          {log.visitor_id || "usr_anon"}
+                        </span>
                       </td>
-                      <td className="px-6 py-3 font-mono text-[#48532B] max-w-[240px] truncate font-medium">
+                      <td className="px-5 py-3 font-medium text-gray-900 whitespace-nowrap">
+                        <div>{log.city}</div>
+                        {log.region && log.region !== log.city && (
+                          <div className="text-[10px] text-gray-400 font-normal">{log.region}, {log.country}</div>
+                        )}
+                      </td>
+                      <td className="px-5 py-3 font-mono text-[#48532B] max-w-[240px] truncate font-medium">
                         {log.page}
                       </td>
-                      <td className="px-6 py-3 text-gray-600 whitespace-nowrap">
-                        {log.device} · {log.browser}
+                      <td className="px-5 py-3 text-gray-600 whitespace-nowrap">
+                        {log.device} · {log.browser} <span className="text-gray-400 text-[10px]">({log.os})</span>
                       </td>
-                      <td className="px-6 py-3 text-gray-500 truncate max-w-[160px]">
+                      <td className="px-5 py-3 text-gray-500 truncate max-w-[160px]">
                         {log.referrer}
                       </td>
-                      <td className="px-6 py-3 font-mono text-gray-400 whitespace-nowrap">
-                        {log.ip}
+                      <td className="px-5 py-3 font-mono whitespace-nowrap">
+                        <span className="bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded border border-emerald-200/80 font-medium text-[11px]">
+                          {log.ip}
+                        </span>
                       </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={6} className="px-6 py-8 text-center text-gray-400">
-                      No public visits recorded yet today. Visit any page on the website to see it log here!
+                    <td colSpan={7} className="px-6 py-12 text-center text-gray-400">
+                      <p className="font-semibold text-gray-600">No public visits recorded yet.</p>
+                      <p className="text-xs text-gray-400 mt-1">Open <a href="/" target="_blank" className="text-[#48532B] font-bold underline">Founding Legals</a> in an incognito tab or on your phone to watch genuine visits log here in real time!</p>
                     </td>
                   </tr>
                 )}

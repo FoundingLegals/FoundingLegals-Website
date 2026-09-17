@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { recordVisitorLog, VisitorLog } from "@/lib/db/visitorLogs";
+import { recordVisitorLog, VisitorLog, isLegitimateLog } from "@/lib/db/visitorLogs";
 import crypto from "crypto";
 
-// Simple in-memory cache for IP lookups to avoid repetitive external calls
+export const dynamic = "force-dynamic";
+
+// In-memory cache for IP lookups to avoid repetitive lookups
 const ipGeoCache = new Map<
   string,
   { city: string; region: string; country: string; country_code: string }
@@ -35,7 +37,6 @@ function parseUserAgent(ua: string) {
 
 function getFormattedIstTime(): string {
   const now = new Date();
-  // Formats in Asia/Kolkata (IST): YYYY-MM-DD HH:mm:ss
   const formatter = new Intl.DateTimeFormat("en-IN", {
     timeZone: "Asia/Kolkata",
     year: "numeric",
@@ -57,7 +58,7 @@ function getFormattedIstTime(): string {
 }
 
 async function resolveLocation(req: NextRequest, ip: string) {
-  // 1. Check edge platform headers (Vercel, Cloudflare, etc.)
+  // 1. Check edge platform headers (Vercel / Cloudflare)
   let rawCity = req.headers.get("x-vercel-ip-city") || req.headers.get("cf-ipcity");
   let rawRegion = req.headers.get("x-vercel-ip-country-region") || req.headers.get("cf-region-code");
   let rawCountry = req.headers.get("x-vercel-ip-country") || req.headers.get("cf-ipcountry");
@@ -71,7 +72,7 @@ async function resolveLocation(req: NextRequest, ip: string) {
   if (rawCity && rawCountry) {
     return {
       city: rawCity,
-      region: rawRegion || "Unknown Region",
+      region: rawRegion || "Region",
       country: rawCountry === "IN" ? "India" : rawCountry,
       country_code: rawCountry,
     };
@@ -82,7 +83,7 @@ async function resolveLocation(req: NextRequest, ip: string) {
     return ipGeoCache.get(ip)!;
   }
 
-  // 3. If local address, provide clean development identifier
+  // 3. Localhost identification
   const isLocal =
     !ip ||
     ip === "::1" ||
@@ -102,24 +103,24 @@ async function resolveLocation(req: NextRequest, ip: string) {
     return loc;
   }
 
-  // 4. Fallback lookup for public IPs via non-blocking lightweight lookup
+  // 4. Fallback lookup for public IPs via secure HTTPS ipwho.is
   try {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 1200);
 
-    const res = await fetch(`http://ip-api.com/json/${ip}?fields=status,country,countryCode,regionName,city`, {
+    const res = await fetch(`https://ipwho.is/${ip}`, {
       signal: controller.signal,
     });
     clearTimeout(timeoutId);
 
     if (res.ok) {
       const data = await res.json();
-      if (data && data.status === "success") {
+      if (data && data.success) {
         const loc = {
-          city: data.city || "Unknown City",
-          region: data.regionName || "Unknown Region",
-          country: data.country || "Unknown Country",
-          country_code: data.countryCode || "XX",
+          city: data.city || data.region || "Unknown City",
+          region: data.region || "Region",
+          country: data.country || "India",
+          country_code: data.country_code || "IN",
         };
         ipGeoCache.set(ip, loc);
         return loc;
@@ -130,8 +131,8 @@ async function resolveLocation(req: NextRequest, ip: string) {
   }
 
   return {
-    city: "Unknown City",
-    region: "Unknown Region",
+    city: "India Visitor",
+    region: "India",
     country: "India",
     country_code: "IN",
   };
@@ -143,16 +144,30 @@ export async function POST(req: NextRequest) {
     const page = String(body.page || "/").trim();
     const pageTitle = String(body.pageTitle || "Founding Legals").trim();
     const referrer = String(body.referrer || "Direct").trim();
-    const visitorId = String(body.visitorId || "anon_vid").trim();
-    const sessionId = String(body.sessionId || "anon_sid").trim();
 
-    // Extract IP
+    let visitorId = String(body.visitorId || "").trim();
+    if (!visitorId || visitorId === "anon_vid" || visitorId === "vid_guest") {
+      visitorId = "usr_" + crypto.randomUUID();
+    }
+
+    let sessionId = String(body.sessionId || "").trim();
+    if (!sessionId || sessionId === "anon_sid" || sessionId === "sid_guest") {
+      sessionId = "ses_" + crypto.randomUUID();
+    }
+
+    // Extract client IP
     const forwarded = req.headers.get("x-forwarded-for");
-    const ip =
+    let ip =
       (forwarded ? forwarded.split(",")[0].trim() : null) ||
       req.headers.get("x-real-ip") ||
+      req.headers.get("x-vercel-forwarded-for") ||
       req.headers.get("cf-connecting-ip") ||
+      req.headers.get("true-client-ip") ||
       "127.0.0.1";
+
+    if (ip.includes(":") && ip.includes(".")) {
+      ip = ip.split(":")[0];
+    }
 
     const userAgent = req.headers.get("user-agent") || "";
     const { device, browser, os } = parseUserAgent(userAgent);
@@ -178,7 +193,12 @@ export async function POST(req: NextRequest) {
       ip,
     };
 
-    // Real-time asynchronous write to CSV and JSON
+    // Filter out localhost dev calls so they NEVER pollute the real-time database
+    if (!isLegitimateLog(logEntry)) {
+      return NextResponse.json({ success: true, ignored: "localhost_dev" }, { status: 200 });
+    }
+
+    // Real-time asynchronous write to memory and persistent disk
     await recordVisitorLog(logEntry);
 
     return NextResponse.json({ success: true }, { status: 200 });
