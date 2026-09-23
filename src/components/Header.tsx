@@ -34,36 +34,29 @@ import {
   Check,
 } from "lucide-react";
 
-/* ── Menu data (For Founders Dropdown - UNTOUCHED) ── */
+/* ── Menu data (For Founders Dropdown - Product Platform Showcase) ── */
 const sections = [
   {
     title: "Start",
-    description: "Launch your company and get investment ready",
+    description: "Software tools to run and scale your operations",
     icon: Rocket,
     items: [
-      { name: "Company Registration", href: "/services/CAservices/name-registration" },
-      { name: "Bank Opening", href: "/services/CAservices/bank-opening" },
-      { name: "DPIIT Certification", href: "/services/CAservices/certifications" },
-      {
-        name: "GST Filing & Taxation",
-        href: "/services/CAservices/gst-filing-and-taxation",
-      },
       { name: "Client Management", href: "/services/LegalServices/client-management" },
       { name: "Team Management", href: "/services/LegalServices/team-management" },
+      { name: "Payroll Management", href: "/services/LegalServices/payroll-management", isNew: true },
+      { name: "Essential Startup Approach", href: "/services/LegalServices/essential-startup-approach" },
+      { name: "Investor Directory", href: "/services/LegalServices/investor-directory", isNew: true },
     ],
   },
   {
     title: "Compliance",
-    description: "Stay compliant and manage your filings",
+    description: "Operational governance & founder workspace",
     icon: ClipboardCheck,
     items: [
-      {
-        name: "Essential Startup Approach",
-        href: "/services/LegalServices/essential-startup-approach",
-      },
       { name: "Spend Analysis", href: "/services/CAservices/spend-analysis" },
       { name: "Document Management", href: "/services/LegalServices/document-management" },
-      { name: "Legal Agreements", href: "/services/LegalServices/agreements" },
+      { name: "Schemes & Grants", href: "/services/LegalServices/schemes-and-grants", isNew: true },
+      { name: "Marketplace", href: "/services/LegalServices/marketplace", isNew: true },
     ],
   },
   {

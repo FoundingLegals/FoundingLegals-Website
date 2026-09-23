@@ -8,6 +8,19 @@ import {
 import * as Icons from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import FounderPlanHighlight from "./FounderPlanHighlight";
+
+const PRODUCT_TOOL_SLUGS = new Set([
+  "client-management",
+  "team-management",
+  "payroll-management",
+  "schemes-and-grants",
+  "investor-directory",
+  "marketplace",
+  "spend-analysis",
+  "document-management",
+  "essential-startup-approach",
+]);
 
 // ── Market competitor pricing keyed by slug ──────────────────
 type PricingRow = { vendor: string; price: string; note?: string };
@@ -324,6 +337,11 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
           </div>
         </div>
       </section>
+
+      {/* ── 2.5 ANIMATED FOUNDER PLAN HIGHLIGHT FOR PRODUCT TOOLS ── */}
+      {PRODUCT_TOOL_SLUGS.has(service.slug) && (
+        <FounderPlanHighlight currentFeatureTitle={service.title} />
+      )}
 
       {/* ── 3. BENEFITS ─────────────────────────────────────────── */}
       <section className="py-20 px-6 sm:px-12 lg:px-24 bg-[#FAF9F6] border-b border-[#E5E1D6]">

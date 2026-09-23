@@ -789,5 +789,209 @@ export const services: ServicePattern[] = [
     ],
     ctaTitle: "Close your investment today",
     ctaDescription: "Have a committed investor? Generate the documents now and close before end of business."
+  },
+  {
+    title: "Payroll Management",
+    slug: "payroll-management",
+    heroCategory: "Start",
+    heroTitle: "Automate Payroll, Payslips, and Statutory Deductions",
+    heroDescription: "Run compliant monthly payroll in 2 minutes. Automatic salary structure calculation, instant PDF payslips, TDS, PF, and ESI deductions, and one-click bank disbursement files for your entire startup team.",
+    heroImage: "/startup-start-hero.png",
+    featuresTitle: "Everything You Need to Run Frictionless Startup Payroll",
+    featuresSubtitle: "From monthly gross-to-net calculations to automated tax deductions and employee self-service payslips.",
+    features: [
+      {
+        title: "1-Click Payroll Run",
+        description: "Process entire monthly payroll with automated calculations of basic, HRA, special allowances, and net pay in one click.",
+        iconName: "Zap"
+      },
+      {
+        title: "Automated Tax & TDS Deductions",
+        description: "Calculate TDS under old and new tax regimes, professional tax, and statutory deductions with zero spreadsheet errors.",
+        iconName: "Scale"
+      },
+      {
+        title: "Branded PDF Payslips",
+        description: "Automatically generate and email digital, company-branded payslips with secure employee download links.",
+        iconName: "FileText"
+      },
+      {
+        title: "Direct Bank Disbursement Files",
+        description: "Export bank-ready salary disbursement CSV files compatible with HDFC, ICICI, Axis, Kotak, and SBI corporate banking.",
+        iconName: "Coins"
+      },
+      {
+        title: "PF & ESIC Compliance Tracking",
+        description: "Compute employer and employee provident fund and ESIC contributions ready for monthly portal filings.",
+        iconName: "ShieldCheck"
+      },
+      {
+        title: "Reimbursements & Bonus Processing",
+        description: "Approve employee expense claims, track performance bonuses, and include one-off adjustments seamlessly.",
+        iconName: "Banknote"
+      }
+    ],
+    benefitsTitle: "Why Startups Choose Founding Legals Payroll?",
+    benefits: [
+      "Zero Calculation Errors. Replace brittle Excel spreadsheets with automated payroll formulas configured to Indian labor laws and tax slabs.",
+      "Save 15+ Hours Every Month. Automate pay calculations, payslip distribution, and bank file generation in under 2 minutes each month.",
+      "Complete Audit Readiness. Maintain an immutable payroll history and tax deduction register that makes quarterly TDS and annual audits painless."
+    ],
+    ctaTitle: "Simplify Your Startup Payroll Today",
+    ctaDescription: "Included with your Founding Legals platform membership at ₹789/month. Start your 14-day free trial.",
+    ctaButtonText: "Start 14-Day Free Trial"
+  },
+  {
+    title: "Schemes & Grants",
+    slug: "schemes-and-grants",
+    heroCategory: "Compliance",
+    heroTitle: "Discover and Secure Government Schemes & Startup Grants",
+    heroDescription: "Tap into government funding opportunities, DPIIT Startup India Seed Fund Scheme (SISFS up to ₹50 Lakhs), state innovation subsidies, and tax exemptions tailored for early-stage founders.",
+    heroImage: "/startup-compliance-hero.png",
+    featuresTitle: "Curated Government Grants and Subsidies for Startups",
+    featuresSubtitle: "Identify high-probability grants, verify eligibility criteria, and streamline your grant applications.",
+    features: [
+      {
+        title: "DPIIT Seed Fund Scheme (SISFS)",
+        description: "Access up to ₹20 Lakhs grant for proof of concept and up to ₹50 Lakhs debt/convertible debentures for commercialization.",
+        iconName: "Award"
+      },
+      {
+        title: "Eligibility Scorecard",
+        description: "Instant algorithm matches your sector, incorporation date, and stage with active central and state grant programs.",
+        iconName: "Search"
+      },
+      {
+        title: "Section 80-IAC Tax Exemption",
+        description: "Structured guidance to qualify for 3-year consecutive corporate tax holiday under Income Tax Act Section 80-IAC.",
+        iconName: "Shield"
+      },
+      {
+        title: "State Innovation Grants",
+        description: "Discover state-specific startup subsidies, patent fee reimbursements, and rental rebates across Karnataka, Maharashtra, Telangana, and Delhi.",
+        iconName: "Building2"
+      },
+      {
+        title: "Application Documentation Checklist",
+        description: "Pre-built templates for project pitch reports, fund utilization plans, and milestone forecasts required by incubators.",
+        iconName: "FileSignature"
+      },
+      {
+        title: "Grant Milestone Tracker",
+        description: "Monitor evaluation timelines, incubator committee review schedules, and fund tranche disbursements from one dashboard.",
+        iconName: "TrendingUp"
+      }
+    ],
+    benefitsTitle: "Why Leverage Startup India Schemes?",
+    benefits: [
+      "Non-Dilutive Capital. Secure critical early-stage capital without giving away company equity or taking on high-interest commercial debt.",
+      "State & Central Subsidies. Recover up to 80% of patent drafting costs and 50% of trademark filing fees through recognized government schemes.",
+      "Credibility & Validation. Holding a DPIIT-recognized seed fund grant enhances your profile with institutional angel networks and seed VCs."
+    ],
+    ctaTitle: "Unlock Government Grants for Your Startup",
+    ctaDescription: "Access our curated grant engine and application guidelines with your Founding Legals membership at ₹789/month.",
+    ctaButtonText: "Start 14-Day Free Trial"
+  },
+  {
+    title: "Investor Directory",
+    slug: "investor-directory",
+    heroCategory: "Start",
+    heroTitle: "Connect with 1,500+ Active Angel & Venture Capital Investors",
+    heroDescription: "Stop sending cold emails into black holes. Search our verified directory of active Indian and global angel investors, micro-VCs, and institutional funds filtered by sector, stage, and cheque size.",
+    heroImage: "/startup-start-hero.png",
+    featuresTitle: "Curated Investor Intelligence for Founders",
+    featuresSubtitle: "Filter by investment stage, sector thesis, recent portfolio deals, and direct contact avenues.",
+    features: [
+      {
+        title: "Filter by Sector & Stage",
+        description: "Instantly sort investors backing FinTech, SaaS, HealthTech, Consumer, AI, CleanTech, and B2B at Pre-Seed, Seed, and Pre-Series A.",
+        iconName: "Search"
+      },
+      {
+        title: "Verified Contact & LinkedIn Profiles",
+        description: "Access direct partner names, investment leads, LinkedIn profiles, and official pitch submission portals.",
+        iconName: "Users"
+      },
+      {
+        title: "Typical Cheque Sizes",
+        description: "Know exactly how much each fund writes — from ₹15 Lakh angel cheques to ₹10 Crore institutional seed rounds.",
+        iconName: "Coins"
+      },
+      {
+        title: "Portfolio Fit Analysis",
+        description: "Review active investments and track record to target investors who understand your market.",
+        iconName: "LineChart"
+      },
+      {
+        title: "Fundraising Pipeline CRM",
+        description: "Save shortlist investors, log conversation stages, track term sheet status, and manage your fundraising funnel.",
+        iconName: "Briefcase"
+      },
+      {
+        title: "Warm Introduction Playbooks",
+        description: "Access proven pitch email scripts, executive summaries, and deck sharing templates that get responses.",
+        iconName: "Presentation"
+      }
+    ],
+    benefitsTitle: "Why Use Founding Legals Investor Directory?",
+    benefits: [
+      "Save 40+ Hours of Prospecting. Eliminate manual LinkedIn scraping and outdated spreadsheets with continuously verified investor data.",
+      "Higher Conversion Rates. Target high-conviction investors whose active mandate matches your current stage and sector.",
+      "Complete Confidentiality. Research and organize your investor funnel privately within your secure Founding Legals workspace."
+    ],
+    ctaTitle: "Supercharge Your Fundraising Outreach",
+    ctaDescription: "Full directory access included with Founding Legals platform membership at ₹789/month. Start your 14-day free trial.",
+    ctaButtonText: "Start 14-Day Free Trial"
+  },
+  {
+    title: "Marketplace",
+    slug: "marketplace",
+    heroCategory: "Compliance",
+    heroTitle: "Exclusive Founder Perks & Deals Worth ₹15 Lakhs+",
+    heroDescription: "Cut your startup operating costs with pre-negotiated discounts on essential cloud infrastructure, payment gateways, developer tools, CRM, and productivity software.",
+    heroImage: "/startup-compliance-hero.png",
+    featuresTitle: "Everything You Need in Your Modern Startup Tech Stack",
+    featuresSubtitle: "Claim verified partner credits and exclusive founder rates across leading global tools.",
+    features: [
+      {
+        title: "Cloud Infrastructure Credits",
+        description: "Save thousands of dollars on AWS Activate, Google Cloud for Startups, and DigitalOcean credits.",
+        iconName: "Zap"
+      },
+      {
+        title: "Payment & Banking Privileges",
+        description: "Zero payment gateway integration fees and discounted transaction charges on leading payment platforms.",
+        iconName: "CreditCard"
+      },
+      {
+        title: "SaaS & Productivity Discounts",
+        description: "Up to 75% off on HubSpot, Notion, Slack, Google Workspace, and OpenAI API developer access.",
+        iconName: "Sparkles"
+      },
+      {
+        title: "Customer Support & CRM Tools",
+        description: "Special startup tiers on Intercom, Freshworks, and Zendesk to delight your early customers.",
+        iconName: "Users"
+      },
+      {
+        title: "Analytics & Growth Software",
+        description: "Free credits on Mixpanel, Segment, and Amplitude to understand user behavior and metrics.",
+        iconName: "LineChart"
+      },
+      {
+        title: "Instant Voucher Redemption",
+        description: "One-click credit claims and exclusive activation codes available directly inside your dashboard.",
+        iconName: "CheckCircle"
+      }
+    ],
+    benefitsTitle: "Why Access the Founding Legals Marketplace?",
+    benefits: [
+      "Extend Your Runway. Save over ₹15 Lakhs in software expenses during your critical first two years of building.",
+      "Top-Tier Tools on Day 1. Equip your small founding team with the exact enterprise-grade tooling used by unicorn startups.",
+      "Zero Hassle Approvals. Bypass long verification queues with pre-approved Founding Legals community access codes."
+    ],
+    ctaTitle: "Claim ₹15 Lakhs+ in Founder Perks",
+    ctaDescription: "Available to all active members on the Founding Legals Pre-Seed plan at ₹789/month. Start your 14-day free trial.",
+    ctaButtonText: "Start 14-Day Free Trial"
   }
 ];

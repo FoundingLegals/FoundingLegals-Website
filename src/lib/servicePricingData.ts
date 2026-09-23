@@ -70,10 +70,14 @@ export const SERVICE_PRICING: Record<string, ServicePrice> = {
 
   // Annual Compliance & Apps
   "essential-startup-approach": { price: "₹4,999", unit: "/year", note: "Full annual compliance · AOC-4, MGT-7, DIR-3 KYC & Minutes" },
-  "client-management": { price: "₹299", unit: "/month", note: "Client CRM, GST invoicing portal & payment receipts" },
-  "team-management": { price: "₹499", unit: "/month", note: "Headcount management, monthly payslips & ESOP portal" },
-  "spend-analysis": { price: "₹399", unit: "/month", note: "Bank feed expense categorisation & live burn rate dashboard" },
-  "document-management": { price: "₹299", unit: "/month", note: "AES-256 encrypted legal document vault & VC data room" },
+  "client-management": { price: "₹789", unit: "/month", note: "Included in Founding Legals Pre-Seed Plan · 14-day free trial" },
+  "team-management": { price: "₹789", unit: "/month", note: "Included in Founding Legals Pre-Seed Plan · Up to 5 team members" },
+  "payroll-management": { price: "₹789", unit: "/month", note: "Included in Founding Legals Pre-Seed Plan · Automated payslips & TDS" },
+  "spend-analysis": { price: "₹789", unit: "/month", note: "Included in Founding Legals Pre-Seed Plan · Real-time burn & runway tracking" },
+  "document-management": { price: "₹789", unit: "/month", note: "Included in Founding Legals Pre-Seed Plan · Encrypted vault & e-signs" },
+  "schemes-and-grants": { price: "₹789", unit: "/month", note: "Included in Founding Legals Pre-Seed Plan · DPIIT SISFS & grants engine" },
+  "investor-directory": { price: "₹789", unit: "/month", note: "Included in Founding Legals Pre-Seed Plan · 1,500+ curated investor contacts" },
+  "marketplace": { price: "₹789", unit: "/month", note: "Included in Founding Legals Pre-Seed Plan · ₹15L+ in AWS, Stripe & SaaS perks" },
   "agreements": { price: "₹299", unit: "/contract", note: "21 lawyer-drafted contracts, stamp duty guide & Aadhaar e-sign" },
   "business-incorporation": { price: "₹999", unit: " onwards", note: "Pvt Ltd, LLP, OPC & Proprietorship incorporation packages" },
   "licenses-registrations": { price: "₹499", unit: " onwards", note: "GST, MSME, FSSAI, IEC & Labour licenses" },
