@@ -471,23 +471,7 @@ export default function Header() {
               )}
             </div>
 
-            {/* Static Pricing & Contact items */}
-            <a
-              href="/pricing"
-              onMouseEnter={closeAllDropdowns}
-              className="px-3 py-[6px] text-[12.5px] font-semibold text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
-            >
-              Pricing
-            </a>
-            <a
-              href="/contact"
-              onMouseEnter={closeAllDropdowns}
-              className="px-3 py-[6px] text-[12.5px] font-semibold text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
-            >
-              Contact
-            </a>
-
-            {/* 3. SEGREGATED LEGAL SERVICES DROPDOWN */}
+            {/* 3. SEGREGATED LEGAL SERVICES DROPDOWN (Beside CA Services) */}
             <div
               className="h-full flex items-center"
               onMouseEnter={() => {
@@ -578,6 +562,22 @@ export default function Header() {
                 </div>
               )}
             </div>
+
+            {/* Static Pricing & Contact items */}
+            <a
+              href="/pricing"
+              onMouseEnter={closeAllDropdowns}
+              className="px-3 py-[6px] text-[12.5px] font-semibold text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
+            >
+              Pricing
+            </a>
+            <a
+              href="/contact"
+              onMouseEnter={closeAllDropdowns}
+              className="px-3 py-[6px] text-[12.5px] font-semibold text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
+            >
+              Contact
+            </a>
 
             {/* 4. Company Dropdown */}
             <div
