@@ -88,8 +88,8 @@ const ENTITY_TYPES = [
 const ELIGIBILITY_CRITERIA = [
   {
     number: "1",
-    title: "Annual Turnover (> ₹20 Crore)",
-    description: "Mandatory for any food business operator whose aggregate annual business turnover exceeds ₹20 Crore."
+    title: "Annual Turnover (> ₹50 Crore)",
+    description: "Mandatory for large food business operators whose aggregate annual business turnover exceeds ₹50 Crore under the revised 2026 framework."
   },
   {
     number: "2",

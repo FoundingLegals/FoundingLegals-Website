@@ -88,8 +88,8 @@ const ENTITY_TYPES = [
 const ELIGIBILITY_CRITERIA = [
   {
     number: "1",
-    title: "Annual Turnover (₹12 L to ₹20 Cr)",
-    description: "Food businesses whose aggregate annual turnover is above ₹12 Lakhs and up to ₹20 Crore per annum."
+    title: "Annual Turnover (₹1.5 Cr to ₹50 Cr)",
+    description: "Food businesses whose aggregate annual turnover is between ₹1.5 Crore and ₹50 Crore under the revised 2026 framework (or exceeding ₹12 Lakhs for restaurants/kitchens)."
   },
   {
     number: "2",

@@ -18,6 +18,7 @@ import GstIndirectTaxLayout from "@/components/GstIndirectTaxLayout";
 import UdyamRegistrationLayout from "@/components/UdyamRegistrationLayout";
 import FssaiCentralRegistrationLayout from "@/components/FssaiCentralRegistrationLayout";
 import FssaiStateRegistrationLayout from "@/components/FssaiStateRegistrationLayout";
+import FssaiRegistrationLayout from "@/components/FssaiRegistrationLayout";
 import IecRegistrationLayout from "@/components/IecRegistrationLayout";
 import LabourLicenseRegistrationLayout from "@/components/LabourLicenseRegistrationLayout";
 import ProfessionalTaxRegistrationLayout from "@/components/ProfessionalTaxRegistrationLayout";
@@ -44,9 +45,8 @@ const SLUG_ALIASES: Record<string, string> = {
   // GST & Indirect Tax subservices & variants
   "professional-tax": "professional-tax-return-filing",
 
-  // Certifications subservices
-  "msme-registration": "certifications",
-  "dpiit-recognition": "certifications",
+  // MSME / UDYAM alias
+  "msme-registration": "udyam-registration",
 
   // Financial & Investment subservices
   "loan-project-report": "financial-investment",
@@ -65,6 +65,24 @@ const SLUG_ALIASES: Record<string, string> = {
   "partnership-registration": "partnership-firm-registration",
   "sole-proprietorship": "sole-proprietorship-registration",
   "public-limited-incorporation": "public-limited-company",
+
+  // FSSAI aliases
+  "fssai-license": "fssai-registration",
+  "basic-fssai-license": "fssai-registration",
+  "food-license": "fssai-registration",
+  "fssai-basic-license": "fssai-registration",
+  "fssai-food-license": "fssai-registration",
+  "state-fssai-license": "fssai-state-license",
+  "central-fssai-license": "fssai-central-license",
+  "fssai-state-registration": "fssai-state-license",
+  "fssai-central-registration": "fssai-central-license",
+
+  // IEC and Labour aliases
+  "import-export-code": "iec-registration",
+  "import-export-license": "iec-registration",
+  "iec-code": "iec-registration",
+  "contract-labour-license": "labour-license",
+  "clra-license": "labour-license",
 };
 
 export function generateStaticParams() {
@@ -79,6 +97,8 @@ export function generateStaticParams() {
     "public-limited-company",
     "trademark-registration",
     "dpiit-recognition",
+    "dpiit-registration",
+    "dpiit-certification",
     "gst-registration",
     "gst-indirect-tax",
     "gst-monthly-returns",
@@ -101,6 +121,9 @@ export function generateStaticParams() {
     "fssai-central-license",
     "fssai-state-license",
     "fssai-license",
+    "fssai-registration",
+    "basic-fssai-license",
+    "food-license",
     "iec-registration",
     "import-export-code",
     "labour-license",
@@ -406,6 +429,112 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <Header />
         <main>
           <InvestmentReadinessLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // FSSAI State Food License Layout
+  if (
+    slug === "fssai-state-license" ||
+    slug === "fssai-state-registration" ||
+    slug === "state-fssai-license"
+  ) {
+    return (
+      <>
+        <Header />
+        <main>
+          <FssaiStateRegistrationLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // FSSAI Central Food License Layout
+  if (
+    slug === "fssai-central-license" ||
+    slug === "fssai-central-registration" ||
+    slug === "central-fssai-license"
+  ) {
+    return (
+      <>
+        <Header />
+        <main>
+          <FssaiCentralRegistrationLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // FSSAI Registration / Basic Food License Master Layout
+  if (
+    slug === "fssai-registration" ||
+    slug === "fssai-license" ||
+    slug === "basic-fssai-license" ||
+    slug === "food-license" ||
+    slug === "fssai-basic-license" ||
+    slug === "fssai-food-license"
+  ) {
+    return (
+      <>
+        <Header />
+        <main>
+          <FssaiRegistrationLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // IEC (Import Export Code) Layout
+  if (
+    slug === "iec-registration" ||
+    slug === "import-export-code" ||
+    slug === "iec-code" ||
+    slug === "import-export-license"
+  ) {
+    return (
+      <>
+        <Header />
+        <main>
+          <IecRegistrationLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // Labour License (CLRA) Layout
+  if (
+    slug === "labour-license" ||
+    slug === "contract-labour-license" ||
+    slug === "clra-license"
+  ) {
+    return (
+      <>
+        <Header />
+        <main>
+          <LabourLicenseRegistrationLayout />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  // UDYAM / MSME Registration Layout
+  if (
+    slug === "udyam-registration" ||
+    slug === "msme-registration" ||
+    slug === "udyam-certificate"
+  ) {
+    return (
+      <>
+        <Header />
+        <main>
+          <UdyamRegistrationLayout />
         </main>
         <Footer />
       </>
