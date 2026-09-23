@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Sparkles, ChevronDown, ShieldCheck } from "lucide-react";
+import { Check, Sparkles, ChevronDown, ShieldCheck, Building2, ArrowRight } from "lucide-react";
 import { useReveal } from "@/lib/useReveal";
 
 type Tier = {
@@ -142,23 +142,77 @@ export default function Pricing() {
   return (
     <div ref={sectionRef} className="font-sans text-brown-900 bg-cream">
       {/* - Hero - */}
-      <section className="pt-24 pb-16 lg:pb-20 text-center bg-cream">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-lime-bg rounded-full mb-6">
-            <span className="text-sm font-semibold text-olive-800 tracking-wide uppercase">
-              🐦 Early Bird Offer Active
+      <section className="pt-24 sm:pt-28 pb-12 sm:pb-16 text-center bg-cream relative overflow-hidden">
+        {/* Soft Ambient Radial Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#48532B]/5 blur-[120px] rounded-full pointer-events-none" />
+
+        <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
+          
+          {/* Top Announcement Pill */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#48532B]/20 shadow-sm mb-6 hover:border-[#48532B]/40 transition-all duration-300">
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#48532B] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#48532B]"></span>
+            </span>
+            <span className="text-xs font-bold uppercase tracking-wider text-[#48532B]">
+              Founder Launch Special
+            </span>
+            <span className="text-brown-300 font-light">•</span>
+            <span className="text-xs font-medium text-[#55524D]">
+              Complete MCA Approval & Dedicated CA Support
             </span>
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-brown-900 leading-[1.1] mb-6">
-            Simple pricing. Built for Indian founders.
+
+          {/* Grand Hero Headline with Animated ₹1,999 Highlight */}
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-[62px] font-normal text-[#1A1917] leading-[1.12] tracking-[-0.02em] mb-6">
+            Incorporate your company for{" "}
+            <span className="relative inline-flex items-center px-4 py-1.5 my-1 rounded-2xl bg-[#48532B] text-white font-sans font-extrabold text-3xl sm:text-4xl lg:text-[50px] shadow-lg shadow-[#48532B]/25 ring-4 ring-[#48532B]/15 animate-pulse tracking-tight">
+              ₹1,999 only
+            </span>
+            <span className="block mt-2 font-serif text-[#1A1917]">
+              Simple, transparent pricing to scale.
+            </span>
           </h1>
-          <p className="text-base sm:text-lg text-brown-500 leading-relaxed max-w-2xl mx-auto">
-            All plans include lawyer-reviewed templates, Aadhaar e-sign, team
-            management and a 14-day free trial. No credit card required to start.
+
+          <p className="text-base sm:text-lg text-[#55524D] leading-relaxed max-w-2xl mx-auto font-light mb-8">
+            Complete company registration (Pvt Ltd, LLP, OPC) with name approval, SPICe+ filing, PAN, TAN & bank opening. Run your business with lawyer-reviewed templates, e-sign, and a 14-day free trial.
           </p>
 
+          {/* Quick Action CTAs */}
+          <div className="flex flex-wrap items-center justify-center gap-3.5 mb-8">
+            <a
+              href="/services/CAservices/company-incorporation"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#48532B] hover:bg-[#394222] text-white text-sm font-bold rounded-full transition-all shadow-md hover:shadow-lg hover:scale-[1.02] cursor-pointer"
+            >
+              <span>Incorporate for ₹1,999</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href="#plans"
+              className="inline-flex items-center gap-2 px-6 py-3.5 bg-white hover:bg-cream text-[#1A1917] text-sm font-semibold rounded-full border border-brown-200/80 transition-all shadow-xs hover:shadow-sm"
+            >
+              <span>View Platform Plans ↓</span>
+            </a>
+          </div>
+
+          {/* Clean Trust Proofs */}
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-[#6B665F] font-medium mb-10 pt-4 border-t border-brown-200/50 max-w-xl mx-auto">
+            <span className="inline-flex items-center gap-1.5">
+              <Check className="w-3.5 h-3.5 text-[#48532B] stroke-[2.5]" />
+              MCA SPICe+ & DIN Filing
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Check className="w-3.5 h-3.5 text-[#48532B] stroke-[2.5]" />
+              Assigned Senior Chartered Accountant
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Check className="w-3.5 h-3.5 text-[#48532B] stroke-[2.5]" />
+              Zero Hidden Charges
+            </span>
+          </div>
+
           {/* Billing toggle */}
-          <div className="mt-10 inline-flex items-center bg-cream-dark rounded-full p-1.5 border border-brown-200 shadow-inner">
+          <div id="plans" className="mt-4 inline-flex items-center bg-cream-dark rounded-full p-1.5 border border-brown-200 shadow-inner scroll-mt-28">
             <button
               onClick={() => setAnnual(false)}
               className={`px-6 py-2.5 text-xs sm:text-[13px] font-bold rounded-full transition-all duration-200 ${

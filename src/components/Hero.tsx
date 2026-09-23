@@ -202,6 +202,20 @@ export default function Hero() {
       {/* ===== HERO CONTENT ===== */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 min-h-svh flex items-center pt-44 lg:pt-32 pb-20">
         <div className="max-w-[680px]">
+          {/* Incorporation Tagline Badge */}
+          <div className="hero-animate mb-5 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 backdrop-blur-sm border border-olive-600/30 shadow-sm">
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-olive-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-olive-600"></span>
+            </span>
+            <span className="text-xs sm:text-sm font-semibold text-brown-900">
+              Incorporate your company at just{" "}
+              <span className="px-2 py-0.5 rounded-md bg-[#48532B] text-white font-extrabold animate-pulse">
+                ₹1,999 only
+              </span>
+            </span>
+          </div>
+
           <h1 className="hero-animate font-serif text-[38px] sm:text-[52px] lg:text-[64px] font-medium text-brown-900 leading-[1.05] tracking-[-0.02em] mb-6">
             Raise Faster. Stay Compliant. Build Smarter.
           </h1>
