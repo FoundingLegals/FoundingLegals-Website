@@ -104,12 +104,19 @@ const SERVICE_CATEGORIES = [
       { name: "DPIIT / Startup India Registration", href: "/services/CAservices/dpiit-recognition" },
       { name: "GST Registration", href: "/services/CAservices/gst-registration" },
       { name: "UDYAM / MSME Registration", href: "/services/CAservices/msme-registration" },
-      { name: "FSSAI Registration (Food License)", href: "/services/CAservices/fssai-registration" },
-      { name: "FSSAI Food License (State)", href: "/services/CAservices/fssai-state-license" },
-      { name: "FSSAI Food License (Central)", href: "/services/CAservices/fssai-central-license" },
       { name: "IEC (Import Export Code)", href: "/services/CAservices/iec-registration" },
       { name: "Labour License", href: "/services/CAservices/labour-license" },
       { name: "Professional Tax Registration", href: "/services/CAservices/professional-tax-registration" },
+    ]
+  },
+  {
+    id: "fssai_registrations",
+    name: "FSSAI Registrations",
+    fullName: "FSSAI Registrations",
+    services: [
+      { name: "FSSAI Registration (Food License)", href: "/services/CAservices/fssai-registration" },
+      { name: "FSSAI Food License (State)", href: "/services/CAservices/fssai-state-license" },
+      { name: "FSSAI Food License (Central)", href: "/services/CAservices/fssai-central-license" },
     ]
   },
   {
