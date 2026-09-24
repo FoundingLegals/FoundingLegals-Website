@@ -45,7 +45,7 @@ const FAQ_ITEMS = [
   },
   {
     question: "How long does it take to register a Public Limited Company with FoundingLegals?",
-    answer: "With complete documents and prompt client responses, FoundingLegals completes Public Limited Company incorporation in 10 to 14 working days."
+    answer: "With complete documents and prompt client responses, FoundingLegals completes Public Limited Company incorporation in 7 to 15 working days."
   },
   {
     question: "What tax rate applies to a Public Limited Company in India?",
@@ -74,12 +74,12 @@ const ALL_PUBLIC_FEATURES = [
 const PUBLIC_PLANS = [
   {
     name: "BASIC",
-    price: "₹14,999",
+    price: "₹1,999",
     feeSubtext: "+ Govt Stamp Duty",
     description: "Standard incorporation kit for 7 shareholders and 3 directors.",
     badge: "Essential Package",
     badgeStyles: "bg-gray-100 text-gray-700 border border-gray-200/50",
-    serviceName: "Public Limited Company - BASIC Plan (₹14,999 + Stamp Duty)",
+    serviceName: "Public Limited Company - BASIC Plan (₹1,999 + Stamp Duty)",
     included: [
       "Company Name Approval (RUN/SPICe+ Part A)",
       "DSC for 3 Directors",
@@ -202,10 +202,10 @@ export default function PublicLimitedRegistrationLayout() {
         <div className="flex flex-wrap items-center gap-3 mb-6">
           <span className="text-[11px] font-bold text-olive-700 tracking-widest uppercase bg-olive-50 px-4 py-1.5 rounded-full border border-olive-200/40 inline-flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-olive-650 animate-pulse" />
-            Starts at ₹14,999 + Stamp Duty
+            Starts at ₹1,999 + Stamp Duty
           </span>
           <span className="text-[11px] font-bold text-brown-600 tracking-widest uppercase bg-[#FAF9F6] px-4 py-1.5 rounded-full border border-brown-200/30 inline-block">
-            Fast Track 10-14 Days MCA Process
+            Fast Track 7 to 15 Days MCA Process
           </span>
         </div>
 
@@ -238,7 +238,7 @@ export default function PublicLimitedRegistrationLayout() {
             <span>Estimate State Stamp Duty &amp; Cost</span>
           </button>
           <div className="text-[12.5px] text-gray-500">
-            Professional fee starts at <strong className="text-olive-750 font-bold">₹14,999</strong> + actual state stamp duty.
+            Professional fee starts at <strong className="text-olive-750 font-bold">₹1,999</strong> + actual state stamp duty.
           </div>
         </div>
       </section>
@@ -569,7 +569,7 @@ export default function PublicLimitedRegistrationLayout() {
                   </tr>
                   <tr>
                     <td className="p-4 font-semibold text-[#1A1917]">FoundingLegals Professional Fee</td>
-                    <td className="p-4">Starts at ₹14,999</td>
+                    <td className="p-4">Starts at ₹1,999</td>
                     <td className="p-4">Full CA/CS corporate execution &amp; MOA/AOA drafting</td>
                   </tr>
                 </tbody>
@@ -613,8 +613,8 @@ export default function PublicLimitedRegistrationLayout() {
             <div className="grid sm:grid-cols-2 gap-5">
               {[
                 { title: "1. Senior CA & CS Advisory", desc: "Our experienced corporate secretarial team handles complex MOA/AOA clauses and capital structure planning." },
-                { title: "2. 100% Upfront Fixed Pricing", desc: "Clear itemized professional quotes starting at ₹14,999 with zero hidden charges." },
-                { title: "3. Fast 10-14 Days Timeline", desc: "Dedicated submission managers ensure zero MCA form resubmission queries." },
+                { title: "2. 100% Upfront Fixed Pricing", desc: "Clear itemized professional quotes starting at ₹1,999 with zero hidden charges." },
+                { title: "3. Fast 7-15 Days Timeline", desc: "Dedicated submission managers ensure zero MCA form resubmission queries." },
                 { title: "4. Full CS Retainership & Compliance", desc: "Complete post-incorporation CS retainership for INC-20A, board resolutions, and annual MCA filings." }
               ].map((item, idx) => (
                 <div key={idx} className="p-6 bg-[#FAF9F6] border border-[#E5E1D6] rounded-2xl">
