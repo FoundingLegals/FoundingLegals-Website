@@ -224,7 +224,7 @@ export default function Hero() {
           </p>
           <div className="hero-animate hero-animate-delay-2 mb-8 sm:mb-10">
             <LawyerTrustBadge
-              headline="3000+ Founders trust Founding Legals."
+              headline="3000+ investor access"
               subtext="Verified founders & legal experts"
             />
           </div>
