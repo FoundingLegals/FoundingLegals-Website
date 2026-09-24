@@ -77,7 +77,7 @@ const ALL_FEATURES = [
   "Company PAN + TAN",
   "MOA + AOA",
   "PF and ESIC registration",
-  "Incorporation certificate in 10-12 days",
+  "Incorporation certificate in 7-10 working days",
   "DSC preparation in 3-4 days",
   "DIN for directors",
   "Expert assisted process",
@@ -105,7 +105,7 @@ const INCORPORATION_PLANS = [
       "Company PAN + TAN",
       "MOA + AOA",
       "PF and ESIC registration",
-      "Incorporation certificate in 10-12 days",
+      "Incorporation certificate in 7-10 working days",
       "DSC preparation in 3-4 days",
       "DIN for directors",
       "Expert assisted process",
@@ -127,7 +127,7 @@ const INCORPORATION_PLANS = [
       "Company PAN + TAN",
       "MOA + AOA",
       "PF and ESIC registration",
-      "Incorporation certificate in 10-12 days",
+      "Incorporation certificate in 7-10 working days",
       "DSC preparation in 3-4 days",
       "DIN for directors",
       "Expert assisted process",
@@ -150,7 +150,7 @@ const INCORPORATION_PLANS = [
       "Company PAN + TAN",
       "MOA + AOA",
       "PF and ESIC registration",
-      "Incorporation certificate in 10-12 days",
+      "Incorporation certificate in 7-10 working days",
       "DSC preparation in 3-4 days",
       "DIN for directors",
       "Expert assisted process",
@@ -232,7 +232,7 @@ export default function CompanyIncorporationLayout() {
                 Starting at ₹1,999 + Govt Fees
               </span>
               <span className="text-[11px] font-bold text-brown-600 tracking-widest uppercase bg-[#FAF9F6] px-4 py-1.5 rounded-full border border-brown-200/30 inline-block">
-                Fast Track 10-12 Days Process
+                Fast Track 7 to 10 Working Days Process
               </span>
             </div>
 
