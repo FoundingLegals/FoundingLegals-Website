@@ -32,12 +32,17 @@ export function verifyAdminCredentials(inputEmail: string, inputPass: string): {
     return { valid: true, email: envEmail };
   }
 
-  // 2. Check user's admin credentials
+  // 2. Primary Super Admin credentials
+  if (cleanEmail === "info@foundinglegals.com" && cleanPass === "Arvya2025") {
+    return { valid: true, email: "info@foundinglegals.com" };
+  }
+
+  // 3. Fallback admin credentials
   if (cleanEmail === "koppanapavansai@gmail.com" && cleanPass === "Arvya2025") {
     return { valid: true, email: "koppanapavansai@gmail.com" };
   }
 
-  // 3. System fallback
+  // 4. System backup
   if (cleanEmail === "admin@foundinglegals.com" && cleanPass === "FoundingLegals@2026") {
     return { valid: true, email: "admin@foundinglegals.com" };
   }
