@@ -11,6 +11,7 @@ import {
   ExternalLink,
   User,
   Radio,
+  ClipboardList,
 } from "lucide-react";
 
 export default function AdminLayout({
@@ -115,6 +116,18 @@ export default function AdminLayout({
               </Link>
 
               <Link
+                href="/admin/requests"
+                className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
+                  pathname === "/admin/requests"
+                    ? "bg-[#48532B] text-white shadow-xs"
+                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                }`}
+              >
+                <ClipboardList className="w-3.5 h-3.5" />
+                <span>Service Requests</span>
+              </Link>
+
+              <Link
                 href="/admin/feedback"
                 className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
                   pathname === "/admin/feedback"
@@ -187,6 +200,16 @@ export default function AdminLayout({
           }`}
         >
           Analytics & Graph
+        </Link>
+        <Link
+          href="/admin/requests"
+          className={`px-3 py-1.5 rounded-lg whitespace-nowrap font-bold ${
+            pathname === "/admin/requests"
+              ? "bg-[#48532B] text-white"
+              : "text-gray-600 bg-gray-100"
+          }`}
+        >
+          Service Requests
         </Link>
         <Link
           href="/admin/feedback"

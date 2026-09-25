@@ -124,9 +124,31 @@ export default function InvestmentReadinessLayout() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    window.open(APP_SIGNUP_URL, "_blank", "noopener,noreferrer");
+    setSubmitting(true);
+    try {
+      await fetch("/api/service-requests", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          mobile: formData.phone,
+          service: "Investment Readiness & Fundraising",
+          category: "Legal Services",
+          company: formData.startupName,
+          message: formData.briefDescription,
+        }),
+      });
+    } catch (err) {
+      console.warn("Investment readiness submission log:", err);
+    } finally {
+      setSubmitting(false);
+      window.open(APP_SIGNUP_URL, "_blank", "noopener,noreferrer");
+    }
   };
 
   const handleOptAndPay = (planName: string, type: "plan" | "addon" = "plan") => {

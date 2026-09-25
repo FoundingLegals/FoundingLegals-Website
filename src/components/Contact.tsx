@@ -121,22 +121,43 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div>
-                <label htmlFor="email" className="block text-xs font-bold text-brown-400 uppercase tracking-widest mb-2">Work Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-cream/20"
-                  placeholder="arjun@startup.com"
-                />
-                <ValidationError
-                  prefix="Email"
-                  field="email"
-                  errors={state.errors}
-                  className="text-xs text-red-500 mt-1"
-                />
+              <input type="hidden" name="service" value="Personal Demo & Startup Consultation" />
+
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="email" className="block text-xs font-bold text-brown-400 uppercase tracking-widest mb-2">Work Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-cream/20"
+                    placeholder="arjun@startup.com"
+                  />
+                  <ValidationError
+                    prefix="Email"
+                    field="email"
+                    errors={state.errors}
+                    className="text-xs text-red-500 mt-1"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="mobile" className="block text-xs font-bold text-brown-400 uppercase tracking-widest mb-2">Mobile / WhatsApp</label>
+                  <div className="flex gap-2">
+                    <span className="flex items-center px-3 border border-brown-100 rounded-xl bg-cream/30 text-xs font-bold text-brown-600 shrink-0">
+                      +91
+                    </span>
+                    <input
+                      type="tel"
+                      id="mobile"
+                      name="mobile"
+                      required
+                      placeholder="98765 43210"
+                      className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-cream/20"
+                    />
+                  </div>
+                </div>
               </div>
 
               <div>

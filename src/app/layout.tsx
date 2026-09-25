@@ -6,6 +6,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Chatbot from "@/components/Chatbot";
 import VisitorTracker from "@/components/VisitorTracker";
+import ServiceRequestTracker from "@/components/ServiceRequestTracker";
 import { Analytics } from "@vercel/analytics/next";
 
 import Script from "next/script";
@@ -72,6 +73,7 @@ export default function RootLayout({
         <WhatsAppButton />
         <Chatbot />
         <VisitorTracker />
+        <ServiceRequestTracker />
         <Analytics />
       </body>
     </html>

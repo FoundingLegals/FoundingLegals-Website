@@ -622,17 +622,36 @@ export default function ServicesPage() {
                 </div>
               </div>
 
-              <div>
-                <label htmlFor="email" className="block text-[11px] font-bold text-brown-400 uppercase tracking-[0.15em] mb-3 text-left">Work Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-5 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-[#FAF9F6] text-brown-900 placeholder-brown-300 text-left"
-                  placeholder="arjun@startup.com"
-                />
-                <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-[11px] mt-1.5" />
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="email" className="block text-[11px] font-bold text-brown-400 uppercase tracking-[0.15em] mb-3 text-left">Work Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    className="w-full px-5 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-[#FAF9F6] text-brown-900 placeholder-brown-300 text-left"
+                    placeholder="arjun@startup.com"
+                  />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-[11px] mt-1.5" />
+                </div>
+
+                <div>
+                  <label htmlFor="mobile" className="block text-[11px] font-bold text-brown-400 uppercase tracking-[0.15em] mb-3 text-left">Mobile / WhatsApp</label>
+                  <div className="flex gap-2">
+                    <span className="flex items-center px-3.5 border border-brown-100 rounded-xl bg-[#FAF9F6] text-xs font-bold text-brown-600 shrink-0">
+                      +91
+                    </span>
+                    <input
+                      type="tel"
+                      id="mobile"
+                      name="mobile"
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-brown-100 focus:outline-none focus:ring-2 focus:ring-olive-500/20 focus:border-olive-500 transition-all bg-[#FAF9F6] text-brown-900 placeholder-brown-300 text-left"
+                      placeholder="98765 43210"
+                    />
+                  </div>
+                </div>
               </div>
 
               <div>
