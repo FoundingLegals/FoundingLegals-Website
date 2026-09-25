@@ -1,6 +1,7 @@
 "use client";
 
 import { useReveal } from "@/lib/useReveal";
+import LazyVideo from "@/components/LazyVideo";
 
 export default function Possibilities() {
   const ref = useReveal();
@@ -28,7 +29,7 @@ export default function Possibilities() {
 
           <div className="reveal-right">
             <div className="w-full shadow-2xl overflow-hidden flex items-center justify-center">
-              <video
+              <LazyVideo
                 src="/videos/product-demo.mp4"
                 autoPlay
                 loop

@@ -1,15 +1,29 @@
 import type { Metadata } from "next";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import LoadingOverlay from "@/components/LoadingOverlay";
 import CookieBanner from "@/components/CookieBanner";
 import ScrollToTop from "@/components/ScrollToTop";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import Chatbot from "@/components/Chatbot";
 import VisitorTracker from "@/components/VisitorTracker";
 import ServiceRequestTracker from "@/components/ServiceRequestTracker";
+import ClientModals from "@/components/ClientModals";
 import { Analytics } from "@vercel/analytics/next";
-
 import Script from "next/script";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-serif",
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
 
 export const metadata: Metadata = {
   title:
@@ -27,20 +41,18 @@ export const metadata: Metadata = {
   },
 };
 
-import CostEstimatorModal from "@/components/CostEstimatorModal";
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`scroll-smooth ${inter.variable} ${playfair.variable}`}
+      suppressHydrationWarning
+    >
       <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
         <Script
           id="splash-screen-script"
           strategy="beforeInteractive"
@@ -64,14 +76,13 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased bg-cream" suppressHydrationWarning>
+      <body className="antialiased bg-cream font-sans" suppressHydrationWarning>
         <ScrollToTop />
         <LoadingOverlay />
         {children}
-        <CostEstimatorModal />
+        <ClientModals />
         <CookieBanner />
         <WhatsAppButton />
-        <Chatbot />
         <VisitorTracker />
         <ServiceRequestTracker />
         <Analytics />

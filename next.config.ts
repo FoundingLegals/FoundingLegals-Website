@@ -2,13 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    unoptimized: true,
-  },
-  outputFileTracingExcludes: {
-    "*": ["./public/**/*"],
+    formats: ["image/avif", "image/webp"],
   },
   experimental: {
-    cpus: 2,
+    optimizePackageImports: ["lucide-react", "framer-motion"],
   },
 };
 

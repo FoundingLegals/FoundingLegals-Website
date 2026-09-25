@@ -55,10 +55,10 @@ export default function FounderPlanHighlight({ currentFeatureTitle }: FounderPla
               <div>
                 <div className="text-xs font-semibold text-[#8C867A] uppercase tracking-wider">Founder Subscription</div>
                 <div className="flex items-baseline gap-2 mt-1">
-                  <span className="text-5xl sm:text-6xl font-serif font-bold text-[#1A1917] tracking-tight">₹789</span>
+                  <span className="text-5xl sm:text-6xl font-serif font-bold text-[#1A1917] tracking-tight">₹658</span>
                   <div className="text-left">
                     <span className="text-sm font-semibold text-[#6B665F] block">/month</span>
-                    <span className="text-[11px] text-[#48532B] font-bold bg-[#EAECE4] px-1.5 py-0.5 rounded">Save 21%</span>
+                    <span className="text-[11px] text-[#48532B] font-bold bg-[#EAECE4] px-1.5 py-0.5 rounded">Save 34%</span>
                   </div>
                 </div>
                 <div className="text-xs text-[#8C867A] mt-1">
@@ -152,7 +152,7 @@ export default function FounderPlanHighlight({ currentFeatureTitle }: FounderPla
                     <Check className="w-3 h-3 text-[#48532B] stroke-[2.5]" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-[#1A1917]">1,500+ Investor Directory</div>
+                    <div className="text-xs font-bold text-[#1A1917]">3,000+ Investor Directory</div>
                     <div className="text-[11px] text-[#6B665F] leading-snug mt-0.5">Verified Indian angel & VC funds filterable by sector</div>
                   </div>
                 </div>
@@ -162,8 +162,8 @@ export default function FounderPlanHighlight({ currentFeatureTitle }: FounderPla
                     <Check className="w-3 h-3 text-[#48532B] stroke-[2.5]" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-[#1A1917]">₹15L+ Marketplace Perks</div>
-                    <div className="text-[11px] text-[#6B665F] leading-snug mt-0.5">AWS credits, Stripe fees waiver, HubSpot discounts</div>
+                    <div className="text-xs font-bold text-[#1A1917]">Founder-to-Founder Marketplace</div>
+                    <div className="text-[11px] text-[#6B665F] leading-snug mt-0.5">Exclusive startup partner deals, founder perks & expert services</div>
                   </div>
                 </div>
 

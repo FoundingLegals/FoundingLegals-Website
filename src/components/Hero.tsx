@@ -1,12 +1,36 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import LawyerTrustBadge from "./LawyerTrustBadge";
 import WatchDemoButton from "./WatchDemoButton";
 
 export default function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    const el = heroRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsPaused(!entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative min-h-svh overflow-hidden bg-[#EDE5DA]">
+    <section
+      ref={heroRef}
+      className={`relative min-h-svh overflow-hidden bg-[#EDE5DA] ${
+        isPaused ? "hero-paused" : ""
+      }`}
+    >
 
       {/* ===== LAYER 0: SKY GRADIENT ===== */}
       <div className="absolute inset-0" style={{
@@ -47,10 +71,17 @@ export default function Hero() {
           0%, 100% { transform: rotate(0deg); }
           50% { transform: rotate(1.5deg); }
         }
-        .tree-1-anim { animation: sway 6s ease-in-out infinite; transform-origin: 853px 700px; }
-        .tree-2-anim { animation: sway 7s ease-in-out infinite 2s; transform-origin: 1052px 700px; }
-        .tree-3-anim { animation: sway 8s ease-in-out infinite 1s; transform-origin: 1242px 700px; }
-        .palm-anim { animation: sway 7s ease-in-out infinite 3s; transform-origin: 380px 700px; }
+        .tree-1-anim { animation: sway 6s ease-in-out infinite; transform-origin: 853px 700px; transform-box: fill-box; will-change: transform; }
+        .tree-2-anim { animation: sway 7s ease-in-out infinite 2s; transform-origin: 1052px 700px; transform-box: fill-box; will-change: transform; }
+        .tree-3-anim { animation: sway 8s ease-in-out infinite 1s; transform-origin: 1242px 700px; transform-box: fill-box; will-change: transform; }
+        .palm-anim { animation: sway 7s ease-in-out infinite 3s; transform-origin: 380px 700px; transform-box: fill-box; will-change: transform; }
+        .hero-paused .tree-1-anim,
+        .hero-paused .tree-2-anim,
+        .hero-paused .tree-3-anim,
+        .hero-paused .palm-anim,
+        .hero-paused .hero-scroll-bounce {
+          animation-play-state: paused !important;
+        }
       `}</style>
 
       {/* Tree 1    tall center-right */}
@@ -228,7 +259,7 @@ export default function Hero() {
       </div>
 
       {/* ===== SCROLL ARROW INDICATOR ===== */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 hero-scroll-bounce animate-bounce">
         <span className="text-[11px] font-medium tracking-widest uppercase text-brown-600/70">Scroll</span>
         <div className="w-9 h-9 rounded-full border-2 border-brown-400/50 flex items-center justify-center bg-white/30 backdrop-blur-sm shadow-sm">
           <ChevronDown className="w-4 h-4 text-brown-600" />

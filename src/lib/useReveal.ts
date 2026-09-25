@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-export function useReveal(threshold = 0.08) {
+export function useReveal(threshold = 0.05) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export function useReveal(threshold = 0.08) {
           }
         });
       },
-      { threshold, rootMargin: "0px 0px -60px 0px" }
+      { threshold, rootMargin: "0px 0px 80px 0px" }
     );
 
     // observe all animatable children

@@ -21,6 +21,7 @@ import {
   Plus,
 } from "lucide-react";
 import { useReveal } from "@/lib/useReveal";
+import LazyVideo from "@/components/LazyVideo";
 
 /* ============================================================
    FEATURE SECTION: START
@@ -42,7 +43,7 @@ export function StartSection() {
           <div className="reveal-left">
             <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
               <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-[1522/1080] flex items-center justify-center">
-                <video
+                <LazyVideo
                   src="/videos/start.mp4"
                   autoPlay
                   loop
@@ -210,7 +211,7 @@ export function ComplianceSection() {
           <div className="reveal-right">
             <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
               <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-14/10 sm:aspect-16/10 flex items-center justify-center">
-                <video
+                <LazyVideo
                   src="/videos/governance.mp4"
                   autoPlay
                   loop
@@ -249,7 +250,7 @@ export function RaiseSection() {
             <div className="bg-cream-dark rounded-2xl p-8 sm:p-10 relative overflow-hidden">
               <div className="bg-white rounded-xl shadow-sm overflow-hidden relative aspect-[1522/1080] flex items-center justify-center">
                 {/* Ready for Raise video */}
-                <video
+                <LazyVideo
                   src="/videos/raise.mp4"
                   autoPlay
                   loop

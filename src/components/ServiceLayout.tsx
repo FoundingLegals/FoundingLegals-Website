@@ -3,12 +3,21 @@
 import { ServicePattern } from "@/lib/servicesData";
 import {
   Check, ArrowRight, BarChart3, Shield, Users, Zap, Clock,
-  ChevronDown, FileText,
+  ChevronDown, FileText, CheckCircle2, CheckCircle, Search,
+  ShieldCheck, Rocket, Briefcase, Banknote, Scroll, Scale,
+  LineChart, FileSignature, Coins, TrendingUp, Eye, FileSearch,
+  Building2, Award, Presentation
 } from "lucide-react";
-import * as Icons from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import FounderPlanHighlight from "./FounderPlanHighlight";
+
+const ICON_MAP: Record<string, React.ElementType> = {
+  Search, ShieldCheck, CheckCircle, CheckCircle2, Rocket, Shield,
+  Briefcase, FileText, Banknote, Scroll, Scale, LineChart,
+  FileSignature, Coins, TrendingUp, Eye, FileSearch, Building2,
+  Award, Presentation, Zap, Users, Clock, BarChart3, Check
+};
 
 const PRODUCT_TOOL_SLUGS = new Set([
   "client-management",
@@ -319,8 +328,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {service.features.map((feature, idx) => {
-              const iconKey = feature.iconName as keyof typeof Icons;
-              const Icon = (Icons[iconKey] || Icons.CheckCircle2) as React.ElementType;
+              const Icon = (ICON_MAP[feature.iconName] || CheckCircle2) as React.ElementType;
               return (
                 <div
                   key={idx}
@@ -361,8 +369,14 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                       <Check className="w-3.5 h-3.5 text-[#5A7338] stroke-[2.5]" />
                     </div>
                     <div>
-                      <span className="text-[14px] font-bold text-[#2b2723]">{title}.</span>{" "}
-                      <span className="text-[14px] text-[#6b6965] font-light leading-relaxed">{desc}</span>
+                      {desc ? (
+                        <>
+                          <span className="text-[14px] font-bold text-[#2b2723]">{title}.</span>{" "}
+                          <span className="text-[14px] text-[#6b6965] font-light leading-relaxed">{desc}</span>
+                        </>
+                      ) : (
+                        <span className="text-[14px] text-[#2b2723] leading-relaxed font-normal">{benefit}</span>
+                      )}
                     </div>
                   </li>
                 );
@@ -506,16 +520,26 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
         </div>
       </section>
 
-      {/* ── 5. FEATURE GRID ─────────────────────────────────────── */}
+      {/* ── 5. FEATURE GRID / CTA ──────────────────────────────── */}
       {service.ctaTitle && (
         <section className="py-20 px-6 sm:px-12 lg:px-24 bg-white border-b border-[#E5E1D6]">
-          <div className="max-w-7xl mx-auto">
-            <div className="max-w-2xl mb-12">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-8">
+            <div className="max-w-2xl">
               <h2 className="font-serif text-[28px] sm:text-[36px] font-medium text-[#2b2723] mb-4">{service.ctaTitle}</h2>
               {service.ctaDescription && (
                 <p className="text-[16px] text-[#6b6965] font-light leading-relaxed">{service.ctaDescription}</p>
               )}
             </div>
+            {service.ctaButtonText && (
+              <div className="shrink-0">
+                <Link
+                  href="/start"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md"
+                >
+                  {service.ctaButtonText}
+                </Link>
+              </div>
+            )}
           </div>
         </section>
       )}

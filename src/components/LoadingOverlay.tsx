@@ -19,8 +19,10 @@ const LoadingOverlay = () => {
     } else {
       const timer = setTimeout(() => {
         setIsVisible(false);
-        sessionStorage.setItem("hasSeenFoundingLegalsSplash", "true");
-      }, 2500);
+        try {
+          sessionStorage.setItem("hasSeenFoundingLegalsSplash", "true");
+        } catch {}
+      }, 750);
 
       return () => clearTimeout(timer);
     }
@@ -49,8 +51,8 @@ const LoadingOverlay = () => {
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] grid place-items-center bg-[#FFFFFF]"
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="fixed inset-0 z-[9999] grid place-items-center bg-[#FFFFFF] pointer-events-auto"
         >
           <div className="relative w-[180px] h-[180px] md:w-[240px] md:h-[240px]">
             <Image

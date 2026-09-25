@@ -28,7 +28,7 @@ const TIERS: Tier[] = [
     name: "Pre seed",
     tagline: "Everything a small founding team needs to get the paperwork right.",
     bestFor: "1 to 5 person teams.",
-    monthly: 789,
+    monthly: 658,
     monthlyRegular: 999,
     annual: 7890,
     annualRegular: 11988,
