@@ -349,7 +349,7 @@ export default function NewServicePageLayout({ page }: Props) {
                   href="/start"
                   className="inline-flex items-center gap-2 px-7 py-3 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13px] font-bold rounded-full transition-all whitespace-nowrap shadow-sm"
                 >
-                  Start 14-Day Free Trial
+                  Get Started
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link

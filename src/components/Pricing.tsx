@@ -32,8 +32,8 @@ const TIERS: Tier[] = [
     monthlyRegular: 999,
     annual: 7890,
     annualRegular: 11988,
-    ctaText: "Start 14-Day Free Trial",
-    ctaSubtext: "14-day free trial - No credit card needed",
+    ctaText: "Proceed with Pre-Seed",
+    ctaSubtext: "",
     openInNewTab: true,
     features: [
       "25 monthly credits pool",
@@ -117,8 +117,8 @@ const FAQS = [
     a: "Our Monthly Plans carry a promotional 20% Early Bird discount that is active now. Our Annual Plans lock in a 33% Permanent Early Bird rate forever - your price will never increase as we ship new features, making annual billing the smartest long-term choice.",
   },
   {
-    q: "What happens after the 14-day free trial?",
-    a: "You move to the plan you selected at signup. We email you 3 days before the trial ends so you can upgrade, downgrade or cancel - no surprise charges.",
+    q: "Can I cancel or change my plan anytime?",
+    a: "Yes, you can upgrade, downgrade, or cancel your subscription at any time directly from your dashboard - no lock-ins, no surprise charges.",
   },
   {
     q: "Can I change plans later?",

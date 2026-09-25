@@ -70,7 +70,7 @@ export const SERVICE_PRICING: Record<string, ServicePrice> = {
 
   // Annual Compliance & Apps
   "essential-startup-approach": { price: "₹4,999", unit: "/year", note: "Full annual compliance · AOC-4, MGT-7, DIR-3 KYC & Minutes" },
-  "client-management": { price: "₹658", unit: "/month", note: "Included in Founding Legals Pre-Seed Plan · 14-day free trial" },
+  "client-management": { price: "₹658", unit: "/month", note: "Included in Founding Legals Pre-Seed Plan · Up to 5 team members" },
   "team-management": { price: "₹658", unit: "/month", note: "Included in Founding Legals Pre-Seed Plan · Up to 5 team members" },
   "payroll-management": { price: "₹658", unit: "/month", note: "Included in Founding Legals Pre-Seed Plan · Automated payslips & TDS" },
   "spend-analysis": { price: "₹658", unit: "/month", note: "Included in Founding Legals Pre-Seed Plan · Real-time burn & runway tracking" },

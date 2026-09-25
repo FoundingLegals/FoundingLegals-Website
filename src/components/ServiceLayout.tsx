@@ -506,7 +506,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                 href="/start"
                 className="inline-flex items-center gap-2 px-7 py-3 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13px] font-bold rounded-full transition-all whitespace-nowrap shadow-sm"
               >
-                Start 14-Day Free Trial
+                Get Started
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
@@ -609,7 +609,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
               href="/start"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[15px] font-bold rounded-full transition-all shadow-md"
             >
-              Start 14-Day Free Trial
+              Get Started
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link

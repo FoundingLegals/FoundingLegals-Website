@@ -84,12 +84,12 @@ export default function FounderPlanHighlight({ currentFeatureTitle }: FounderPla
                   rel="noopener noreferrer"
                   className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#48532B] hover:bg-[#394222] text-white text-sm font-bold rounded-2xl transition-all shadow-md hover:shadow-lg hover:scale-[1.01] group cursor-pointer"
                 >
-                  <span>Start 14-Day Free Trial</span>
+                  <span>Get Started with Pre-Seed</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </a>
                 <p className="text-[11.5px] text-center text-[#8C867A] mt-2.5 flex items-center justify-center gap-1.5">
                   <Lock className="w-3 h-3 text-[#48532B]" />
-                  <span>14-day free trial · No credit card required</span>
+                  <span>Instant access · No credit card required</span>
                 </p>
               </div>
             </div>
