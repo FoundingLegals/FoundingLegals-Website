@@ -1,6 +1,14 @@
-import fs from "fs/promises";
-import path from "path";
 import os from "os";
+
+// Runtime-safe filesystem access to prevent Next.js / Turbopack NFT build tracer
+// from statically tracing the entire repository root into serverless function bundles.
+function getFs(): typeof import("fs/promises") | null {
+  try {
+    return eval("require")("fs/promises");
+  } catch {
+    return null;
+  }
+}
 
 export type ServiceCategory =
   | "CA Services"
@@ -64,8 +72,8 @@ function setMemoryRequests(requests: ServiceRequest[]) {
 const INITIAL_SEEDS: ServiceRequest[] = [];
 
 // Persistent storage path (in os.tmpdir to ensure full Turbopack & serverless compatibility)
-const DATA_DIR = path.join(os.tmpdir(), "foundinglegals_requests_data");
-const DATA_FILE = path.join(DATA_DIR, "service_requests.json");
+const DATA_DIR = `${os.tmpdir()}/foundinglegals_requests_data`;
+const DATA_FILE = `${DATA_DIR}/service_requests.json`;
 
 let writeQueue = Promise.resolve();
 
@@ -164,13 +172,15 @@ export function detectServiceCategory(serviceName: string = ""): ServiceCategory
 }
 
 async function ensureDataFile(): Promise<void> {
+  const f = getFs();
+  if (!f) return;
   try {
-    await fs.mkdir(DATA_DIR, { recursive: true });
+    await f.mkdir(DATA_DIR, { recursive: true });
     try {
-      await fs.access(DATA_FILE);
+      await f.access(DATA_FILE);
     } catch {
       // Seed file with INITIAL_SEEDS
-      await fs.writeFile(DATA_FILE, JSON.stringify(INITIAL_SEEDS, null, 2), "utf-8");
+      await f.writeFile(DATA_FILE, JSON.stringify(INITIAL_SEEDS, null, 2), "utf-8");
     }
   } catch (err) {
     console.error("Failed to ensure service requests data file:", err);
@@ -180,18 +190,21 @@ async function ensureDataFile(): Promise<void> {
 export async function getAllServiceRequests(): Promise<ServiceRequest[]> {
   await ensureDataFile();
 
-  try {
-    const raw = await fs.readFile(DATA_FILE, "utf-8");
-    const parsed = JSON.parse(raw);
-    if (Array.isArray(parsed)) {
-      // Strictly exclude any legacy dummy/mock seeds
-      const realRequests = parsed.filter(
-        (item: ServiceRequest) => !item.id?.startsWith("req_seed_") && item.name !== "Rajesh Kannan"
-      );
-      setMemoryRequests(realRequests);
-      return realRequests;
-    }
-  } catch {}
+  const f = getFs();
+  if (f) {
+    try {
+      const raw = await f.readFile(DATA_FILE, "utf-8");
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) {
+        // Strictly exclude any legacy dummy/mock seeds
+        const realRequests = parsed.filter(
+          (item: ServiceRequest) => !item.id?.startsWith("req_seed_") && item.name !== "Rajesh Kannan"
+        );
+        setMemoryRequests(realRequests);
+        return realRequests;
+      }
+    } catch {}
+  }
 
   setMemoryRequests([]);
   return [];
@@ -201,9 +214,11 @@ export async function saveAllServiceRequests(requests: ServiceRequest[]): Promis
   setMemoryRequests(requests);
 
   writeQueue = writeQueue.then(async () => {
+    const f = getFs();
+    if (!f) return;
     try {
-      await fs.mkdir(DATA_DIR, { recursive: true });
-      await fs.writeFile(DATA_FILE, JSON.stringify(requests, null, 2), "utf-8");
+      await f.mkdir(DATA_DIR, { recursive: true });
+      await f.writeFile(DATA_FILE, JSON.stringify(requests, null, 2), "utf-8");
     } catch (err) {
       console.error("Error writing service requests file:", err);
     }

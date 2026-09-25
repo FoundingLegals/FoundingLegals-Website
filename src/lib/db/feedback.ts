@@ -1,7 +1,15 @@
-import fs from "fs/promises";
-import path from "path";
 import os from "os";
 import crypto from "crypto";
+
+// Runtime-safe filesystem access to prevent Next.js / Turbopack NFT build tracer
+// from statically tracing the entire repository root into serverless function bundles.
+function getFs(): typeof import("fs/promises") | null {
+  try {
+    return eval("require")("fs/promises");
+  } catch {
+    return null;
+  }
+}
 
 export interface ClientFeedback {
   id: string;
@@ -52,20 +60,22 @@ const INITIAL_SEEDS: ClientFeedback[] = [
   },
 ];
 
-const DATA_DIR = path.join(os.tmpdir(), "foundinglegals_feedback_data");
-const DATA_FILE = path.join(DATA_DIR, "feedback.json");
+const DATA_DIR = `${os.tmpdir()}/foundinglegals_feedback_data`;
+const DATA_FILE = `${DATA_DIR}/feedback.json`;
 
 // Simple write queue to serialize file writes and prevent race conditions
 let writeQueue = Promise.resolve();
 
 async function ensureDataFile(): Promise<void> {
+  const f = getFs();
+  if (!f) return;
   try {
-    await fs.mkdir(DATA_DIR, { recursive: true });
+    await f.mkdir(DATA_DIR, { recursive: true });
     try {
-      await fs.access(DATA_FILE);
+      await f.access(DATA_FILE);
     } catch {
       // File doesn't exist yet, seed it with INITIAL_SEEDS
-      await fs.writeFile(DATA_FILE, JSON.stringify(INITIAL_SEEDS, null, 2), "utf-8");
+      await f.writeFile(DATA_FILE, JSON.stringify(INITIAL_SEEDS, null, 2), "utf-8");
     }
   } catch (err) {
     console.error("Failed to initialize feedback data file:", err);
@@ -74,8 +84,10 @@ async function ensureDataFile(): Promise<void> {
 
 export async function getAllFeedback(): Promise<ClientFeedback[]> {
   await ensureDataFile();
+  const f = getFs();
+  if (!f) return INITIAL_SEEDS;
   try {
-    const raw = await fs.readFile(DATA_FILE, "utf-8");
+    const raw = await f.readFile(DATA_FILE, "utf-8");
     const data = JSON.parse(raw);
     if (Array.isArray(data)) {
       return data;
@@ -153,11 +165,13 @@ export async function createFeedback(
 
   // Queue write to prevent concurrency issues
   writeQueue = writeQueue.then(async () => {
+    const f = getFs();
+    if (!f) return;
     const all = await getAllFeedback();
     all.unshift(record); // Prepend new submission so newest appears first
     const tempFile = `${DATA_FILE}.${crypto.randomUUID()}.tmp`;
-    await fs.writeFile(tempFile, JSON.stringify(all, null, 2), "utf-8");
-    await fs.rename(tempFile, DATA_FILE);
+    await f.writeFile(tempFile, JSON.stringify(all, null, 2), "utf-8");
+    await f.rename(tempFile, DATA_FILE);
   });
 
   await writeQueue;

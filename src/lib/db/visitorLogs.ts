@@ -1,6 +1,14 @@
-import fs from "fs/promises";
-import path from "path";
 import os from "os";
+
+// Runtime-safe filesystem access to prevent Next.js / Turbopack NFT build tracer
+// from statically tracing the entire repository root into serverless function bundles.
+function getFs(): typeof import("fs/promises") | null {
+  try {
+    return eval("require")("fs/promises");
+  } catch {
+    return null;
+  }
+}
 
 export interface VisitorLog {
   id: string;
@@ -108,11 +116,12 @@ export function isLegitimateLog(log: VisitorLog): boolean {
  * Resolves storage path using os.tmpdir() to eliminate whole-project NFT tracing and ensure writable storage
  */
 async function getStoragePaths() {
-  const dataDir = path.join(os.tmpdir(), "foundinglegals_visitor_data");
-  await fs.mkdir(dataDir, { recursive: true }).catch(() => {});
+  const dataDir = `${os.tmpdir()}/foundinglegals_visitor_data`;
+  const f = getFs();
+  if (f) await f.mkdir(dataDir, { recursive: true }).catch(() => {});
   return {
-    csv: path.join(dataDir, "visitor_logs.csv"),
-    json: path.join(dataDir, "visitor_logs.json"),
+    csv: `${dataDir}/visitor_logs.csv`,
+    json: `${dataDir}/visitor_logs.json`,
   };
 }
 
@@ -120,19 +129,21 @@ async function getStoragePaths() {
  * Ensures initial files exist
  */
 export async function ensureVisitorLogsFiles(): Promise<void> {
+  const f = getFs();
+  if (!f) return;
   try {
     const { csv, json } = await getStoragePaths();
 
     try {
-      await fs.access(csv);
+      await f.access(csv);
     } catch {
-      await fs.writeFile(csv, "\uFEFF" + CSV_HEADER, "utf-8");
+      await f.writeFile(csv, "\uFEFF" + CSV_HEADER, "utf-8");
     }
 
     try {
-      await fs.access(json);
+      await f.access(json);
     } catch {
-      await fs.writeFile(json, "[]", "utf-8");
+      await f.writeFile(json, "[]", "utf-8");
     }
   } catch (err) {
     console.error("Failed to initialize visitor logs storage:", err);
@@ -153,19 +164,21 @@ export async function recordVisitorLog(log: VisitorLog): Promise<void> {
 
   // Queue write to storage file
   writeQueue = writeQueue.then(async () => {
+    const f = getFs();
+    if (!f) return;
     try {
       const { csv, json } = await getStoragePaths();
 
       // Append to CSV
       const row = formatRowCsv(log);
-      await fs.appendFile(csv, row, "utf-8").catch(async () => {
-        await fs.writeFile(csv, "\uFEFF" + CSV_HEADER + row, "utf-8");
+      await f.appendFile(csv, row, "utf-8").catch(async () => {
+        await f.writeFile(csv, "\uFEFF" + CSV_HEADER + row, "utf-8");
       });
 
       // Update JSON
       let list: VisitorLog[] = [];
       try {
-        const raw = await fs.readFile(json, "utf-8");
+        const raw = await f.readFile(json, "utf-8");
         list = JSON.parse(raw);
         if (!Array.isArray(list)) list = [];
       } catch {
@@ -175,7 +188,7 @@ export async function recordVisitorLog(log: VisitorLog): Promise<void> {
       list.unshift(log);
       if (list.length > 3000) list = list.slice(0, 3000);
 
-      await fs.writeFile(json, JSON.stringify(list, null, 2), "utf-8");
+      await f.writeFile(json, JSON.stringify(list, null, 2), "utf-8");
     } catch (err) {
       console.error("Error writing visitor log:", err);
     }
@@ -202,14 +215,17 @@ export async function getLiveCsvContent(): Promise<string> {
  */
 export async function getRecentVisitorLogs(limit = 200): Promise<VisitorLog[]> {
   try {
-    const { json } = await getStoragePaths();
+    const f = getFs();
     let fileLogs: VisitorLog[] = [];
 
-    try {
-      const raw = await fs.readFile(json, "utf-8");
-      const parsed = JSON.parse(raw);
-      if (Array.isArray(parsed)) fileLogs = parsed;
-    } catch {}
+    if (f) {
+      try {
+        const { json } = await getStoragePaths();
+        const raw = await f.readFile(json, "utf-8");
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) fileLogs = parsed;
+      } catch {}
+    }
 
     // Combine memory and file logs, deduplicating by log.id
     const combined = [...getMemoryLogs(), ...fileLogs];
@@ -238,9 +254,12 @@ export async function getRecentVisitorLogs(limit = 200): Promise<VisitorLog[]> {
  */
 export async function clearVisitorLogs(): Promise<void> {
   setMemoryLogs([]);
-  try {
-    const { csv, json } = await getStoragePaths();
-    await fs.writeFile(csv, "\uFEFF" + CSV_HEADER, "utf-8");
-    await fs.writeFile(json, "[]", "utf-8");
-  } catch {}
+  const f = getFs();
+  if (f) {
+    try {
+      const { csv, json } = await getStoragePaths();
+      await f.writeFile(csv, "\uFEFF" + CSV_HEADER, "utf-8");
+      await f.writeFile(json, "[]", "utf-8");
+    } catch {}
+  }
 }
