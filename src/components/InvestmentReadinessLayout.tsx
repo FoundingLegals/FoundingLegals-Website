@@ -115,7 +115,7 @@ export default function InvestmentReadinessLayout() {
       id: "angel-data",
       name: "Angel Investor Data",
       price: "₹7,000",
-      description: "Gain direct access to a verified database of 15,000+ active global and regional angel investors, filtered by sector preference, historical ticket size, and contact channels, to significantly accelerate and streamline your fundraising cold outreach."
+      description: "Gain direct access to a verified database of 3,000+ active global and regional angel investors, filtered by sector preference, historical ticket size, and contact channels, to significantly accelerate and streamline your fundraising cold outreach."
     }
   ];
 

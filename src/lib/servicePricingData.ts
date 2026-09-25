@@ -65,7 +65,6 @@ export const SERVICE_PRICING: Record<string, ServicePrice> = {
   "financial-investment": { price: "₹1,499", unit: " onwards", note: "Bank project reports, DPIIT recognition & investor data room" },
   "loan-project-report": { price: "₹2,499", unit: "", note: "Bank DPR with 5-year financials, DSCR & market analysis" },
   "pitch-to-investors": { price: "₹2,499", unit: "", note: "Investor pitch deck narrative review & 3-yr financial model" },
-  "find-investors": { price: "Included", unit: "", note: "Access to 500+ angel & VC investor database" },
   "finance-for-fundraising": { price: "₹2,999", unit: "", note: "Company valuation report & VC due diligence readiness" },
 
   // Annual Compliance & Apps

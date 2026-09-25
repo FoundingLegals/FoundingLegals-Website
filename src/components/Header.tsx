@@ -65,7 +65,6 @@ const sections = [
     icon: TrendingUp,
     items: [
       { name: "Pitch to Investors", href: "/services/LegalServices/pitch-to-investors" },
-      { name: "Find Investors", href: "/services/LegalServices/find-investors", isNew: true },
       { name: "Raise Before a Round", href: "/services/LegalServices/raise-before-a-round" },
       { name: "Do a Funding Round", href: "/services/LegalServices/do-a-funding-round" },
       {

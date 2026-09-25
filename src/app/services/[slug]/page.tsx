@@ -50,6 +50,7 @@ const SLUG_ALIASES: Record<string, string> = {
 
   // Financial & Investment subservices
   "loan-project-report": "financial-investment",
+  "find-investors": "pitch-to-investors",
 
   // IP subservices
   "trademark-registration": "intellectual-property",
@@ -424,8 +425,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   // Investment Readiness Layout
   if (
     slug === "pitch-to-investors" ||
-    slug === "finance-for-fundraising" ||
-    slug === "find-investors"
+    slug === "finance-for-fundraising"
   ) {
     return (
       <>

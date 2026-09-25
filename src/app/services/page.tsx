@@ -54,7 +54,6 @@ const iconMap: Record<string, React.ComponentType<any>> = {
   "document-management": FolderOpen,
   "agreements": Scroll,
   "pitch-to-investors": Presentation,
-  "find-investors": Search,
   "raise-before-a-round": Zap,
   "do-a-funding-round": TrendingUp,
   "finance-for-fundraising": BarChart3,
@@ -273,7 +272,7 @@ export default function ServicesPage() {
                           </button>
                           <Link
                             href={
-                              ["agreements", "ip-protection", "trademark-registration", "pitch-to-investors", "find-investors", "finance-for-fundraising", "raise-before-a-round", "do-a-funding-round", "legal-advice-for-a-round", "instant-investment", "document-management", "essential-startup-approach", "client-management", "team-management"].includes(service.slug)
+                              ["agreements", "ip-protection", "trademark-registration", "pitch-to-investors", "finance-for-fundraising", "raise-before-a-round", "do-a-funding-round", "legal-advice-for-a-round", "instant-investment", "document-management", "essential-startup-approach", "client-management", "team-management"].includes(service.slug)
                                 ? `/services/LegalServices/${service.slug}`
                                 : `/services/CAservices/${service.slug}`
                             }

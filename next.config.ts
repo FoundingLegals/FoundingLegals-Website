@@ -20,6 +20,25 @@ const nextConfig: NextConfig = {
       "node_modules/@swc/core-linux-x64-musl/**/*",
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/services/LegalServices/find-investors",
+        destination: "/services/LegalServices/pitch-to-investors",
+        permanent: true,
+      },
+      {
+        source: "/services/legal-services/find-investors",
+        destination: "/services/LegalServices/pitch-to-investors",
+        permanent: true,
+      },
+      {
+        source: "/services/find-investors",
+        destination: "/services/LegalServices/pitch-to-investors",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -563,40 +563,6 @@ export const services: ServicePattern[] = [
     ctaDescription: "Get a framework-first deck that gets you into the partner meeting, not the rejection pile."
   },
   {
-    title: "Find Investors",
-    slug: "find-investors",
-    heroCategory: "Raise",
-    heroTitle: "Stop Cold Emailing. Start Getting Warm Intros.",
-    heroDescription: "Cold emails to VCs convert at under 0.3%. The most funded startups in India raised their rounds through targeted outreach to the right investors, at the right stage, with the right ticket size — often via warm introductions. We give you the infrastructure to fundraise like a pro, not a first-timer.",
-    heroImage: "/startup-raise-hero.png",
-    featuresTitle: "Precision fundraising infrastructure",
-    features: [
-      {
-        title: "Stage & Sector Investor Matching",
-        description: "Access our curated, continuously updated database of 500+ active angels, syndicates, family offices, and institutional VCs — filtered by stage (Pre-Seed to Series B), sector, average ticket size, and portfolio preference.",
-        iconName: "Search"
-      },
-      {
-        title: "Warm Introduction Network",
-        description: "Leverage our network of portfolio founders, CA advisors, and accelerator alumni for warm introductions to partner-level decision makers at top-tier funds — bypassing the cold inbox entirely.",
-        iconName: "Building2"
-      },
-      {
-        title: "Fundraising CRM Pipeline",
-        description: "A dedicated CRM to track every investor contact, meeting stage, follow-up timeline, and term sheet status — ensuring you never drop momentum on a warm lead mid-raise.",
-        iconName: "CheckCircle"
-      }
-    ],
-    benefitsTitle: "Raise with velocity, not volume",
-    benefits: [
-      "Surgical Targeting. Avoid weeks of wasted outreach by pitching exclusively to funds whose stated mandate, check size, and sector focus align with your startup's current stage and business model.",
-      "Higher Meeting Conversion. Warm introductions through trusted intermediaries convert to first meetings at 15–20x the rate of cold emails — compressing your fundraising timeline from months to weeks.",
-      "Parallel Process Management. Run a structured, competitive process with multiple investor conversations simultaneously — creating the urgency and social proof that move term sheets from 'considering' to 'committed'."
-    ],
-    ctaTitle: "Find your perfect investor",
-    ctaDescription: "Stop spray-and-pray. Start targeted, warm, high-conversion fundraising."
-  },
-  {
     title: "Raise Before a Round",
     slug: "raise-before-a-round",
     heroCategory: "Raise",
