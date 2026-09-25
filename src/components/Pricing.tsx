@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Sparkles, ChevronDown, ShieldCheck, Building2, ArrowRight, Star, Zap, FileCheck, IndianRupee, Headphones, Gift } from "lucide-react";
+import { Check, Sparkles, ChevronDown, ShieldCheck, Building2, ArrowRight, Star, Zap, FileCheck, IndianRupee, Headphones } from "lucide-react";
 import { useReveal } from "@/lib/useReveal";
 
 type Tier = {
@@ -204,10 +204,8 @@ export default function Pricing() {
               </div>
 
               {/* Sub-CTA Note */}
-              <div className="flex items-center gap-2.5 text-xs text-[#6B665F] font-medium pt-1">
-                <Gift className="w-4 h-4 text-[#263C1B]" />
-                <span>14-day free trial</span>
-                <span className="text-brown-300">|</span>
+              <div className="flex items-center gap-2 text-xs text-[#6B665F] font-medium pt-1">
+                <ShieldCheck className="w-4 h-4 text-[#263C1B]" />
                 <span>No hidden charges</span>
               </div>
             </div>
