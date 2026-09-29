@@ -304,7 +304,7 @@ export const services: ServicePattern[] = [
       "Stay Ahead of Indian Regulations. Founding Legals tracks statutory ROC filing deadlines, annual compliance requirements, and director KYC so your company stays in good standing effortlessly."
     ],
     ctaTitle: "Build your startup the right way from Day 1",
-    ctaDescription: "Join founders across India who manage their legal and operational foundations with Founding Legals. Plans from ₹658/month.",
+    ctaDescription: "Join founders across India who manage their legal and operational foundations with Founding Legals. Plans start from ₹658/month.",
     ctaButtonText: "Get Started with Founding Legals →"
   },
   {
@@ -344,7 +344,7 @@ export const services: ServicePattern[] = [
       "A Single Source of Truth for Your Team. No more digging through WhatsApp chats or email threads to find client contracts, amendments, or payment histories."
     ],
     ctaTitle: "Bring clarity to your client relationships",
-    ctaDescription: "Manage contracts, billing, and client records seamlessly with Founding Legals. Plans from ₹658/month.",
+    ctaDescription: "Manage contracts, billing, and client records seamlessly with Founding Legals. Plans start from ₹658/month.",
     ctaButtonText: "Get Started with Founding Legals →"
   },
   {
@@ -384,7 +384,7 @@ export const services: ServicePattern[] = [
       "Audit-Ready Employment Records. Maintain clean, accessible employee files, agreements, and tax declarations ready for due diligence and future growth."
     ],
     ctaTitle: "Scale your team on trusted legal foundations",
-    ctaDescription: "Organize offer letters, agreements, and team records in one place with Founding Legals. Plans from ₹658/month.",
+    ctaDescription: "Organize offer letters, agreements, and team records in one place with Founding Legals. Plans start from ₹658/month.",
     ctaButtonText: "Get Started with Founding Legals →"
   },
   {
@@ -424,7 +424,7 @@ export const services: ServicePattern[] = [
       "Investor-Ready Expense Records. Group operating expenses into standard accounting buckets (R&D, S&M, G&A) ready for financial due diligence."
     ],
     ctaTitle: "Take control of your burn and runway",
-    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans from ₹658/month.",
+    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans start from ₹658/month.",
     ctaButtonText: "Analyse Your Spend →"
   },
   {
@@ -498,7 +498,7 @@ export const services: ServicePattern[] = [
       "Permanent MCA & Statutory History. Retain lifetime digital custody of Certificate of Incorporation, MOA, AOA, PAN, TAN, and annual filing receipts in one place."
     ],
     ctaTitle: "Organize your company records today",
-    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans from ₹658/month.",
+    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans start from ₹658/month.",
     ctaButtonText: "Manage Documents →"
   },
   {
@@ -779,7 +779,7 @@ export const services: ServicePattern[] = [
       "A Transparent Experience for Employees. Provide your team with clear, detailed payslips that break down earnings, deductions, and tax withholdings with total clarity."
     ],
     ctaTitle: "Take the headache out of startup payroll",
-    ctaDescription: "Run simple, accurate, and organized monthly payroll with Founding Legals. Plans from ₹658/month.",
+    ctaDescription: "Run simple, accurate, and organized monthly payroll with Founding Legals. Plans start from ₹658/month.",
     ctaButtonText: "Get Started with Founding Legals →"
   },
   {
@@ -819,7 +819,7 @@ export const services: ServicePattern[] = [
       "Complete Compliance Alignment. Ensure your entity meets all statutory prerequisites (DPIIT recognition, MSME Udyam, clean MCA filings) required to pass grant scrutiny."
     ],
     ctaTitle: "Explore eligible government grants today",
-    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans from ₹658/month.",
+    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans start from ₹658/month.",
     ctaButtonText: "Explore Schemes & Grants →"
   },
   {
@@ -859,7 +859,7 @@ export const services: ServicePattern[] = [
       "From Pitch to Term Sheet on One Platform. Once an investor commits, use Founding Legals legal agreements and closing tools to finalize your investment smoothly."
     ],
     ctaTitle: "Find the right investors for your startup",
-    ctaDescription: "Discover active angels and venture funds ready to back your vision with Founding Legals. Plans from ₹658/month.",
+    ctaDescription: "Discover active angels and venture funds ready to back your vision with Founding Legals. Plans start from ₹658/month.",
     ctaButtonText: "Explore Investor Directory →"
   },
   {
@@ -899,7 +899,7 @@ export const services: ServicePattern[] = [
       "Single Founder Hub. Discover, activate, and manage your software perks and specialist engagements from one central workspace."
     ],
     ctaTitle: "Unlock founder perks and partner discounts",
-    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans from ₹658/month.",
+    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans start from ₹658/month.",
     ctaButtonText: "Explore Marketplace →"
   }
 ];

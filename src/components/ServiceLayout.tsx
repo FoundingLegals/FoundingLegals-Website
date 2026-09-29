@@ -299,7 +299,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                     href="/pricing"
                     className="inline-flex items-center gap-2 px-7 py-4 bg-white hover:bg-[#F6F4F0] text-[#2b2723] text-[14px] font-medium rounded-full border border-[#E5E1D6] transition-all shadow-sm"
                   >
-                    View Platform Plans
+                    View Pricing (Starts from ₹658/mo)
                   </Link>
                 </div>
               ) : (
@@ -348,6 +348,9 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                   <span>Founding Legals Founder Plan</span>
                 </div>
 
+                <div className="text-[12px] text-[#7A756F] font-semibold uppercase tracking-wider mb-1">
+                  Price starts from
+                </div>
                 <div className="flex items-baseline gap-2 mb-1">
                   <span className="text-[44px] font-bold text-[#2b2723] leading-none">₹658</span>
                   <span className="text-[18px] text-[#6b6965] font-semibold">/month</span>
@@ -389,10 +392,13 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
               <div className="bg-white border border-[#E5E1D6] rounded-3xl p-8 lg:p-9 shadow-xl shadow-black/[0.03] relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-[#5A7338]/5 rounded-full translate-x-12 -translate-y-12 pointer-events-none" />
                 
-                <div className="text-[10px] font-extrabold uppercase tracking-widest text-[#5A7338] mb-3">
+                <div className="text-[10px] font-extrabold uppercase tracking-widest text-[#5A7338] mb-2">
                   FoundingLegals Fixed Rate
                 </div>
 
+                <div className="text-[11.5px] text-[#7A756F] font-semibold uppercase tracking-wider mb-1">
+                  Price starts from
+                </div>
                 <div className="flex items-baseline gap-2 mb-2">
                   <span className="text-[44px] font-bold text-[#2b2723] leading-none">{memberRate.price}</span>
                   <span className="text-[18px] text-[#6b6965] font-semibold">{memberRate.unit}</span>
@@ -669,7 +675,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                 </div>
 
                 <div className="flex flex-col md:items-end">
-                  <div className="text-[12px] text-[#9b958f] uppercase font-bold tracking-wider mb-1">Fixed Member Rate</div>
+                  <div className="text-[12px] text-[#9b958f] uppercase font-bold tracking-wider mb-1">Price Starts From</div>
                   <div className="flex items-baseline gap-1">
                     <span className="text-[40px] font-bold text-[#2b2723] leading-none">{memberRate.price}</span>
                     <span className="text-[16px] text-[#6b6965] font-medium">{memberRate.unit}</span>
