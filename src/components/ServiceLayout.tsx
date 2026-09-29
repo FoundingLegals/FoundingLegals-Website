@@ -146,6 +146,30 @@ const DEFAULT_PRICING: PricingRow[] = [
 
 // ── Generic process steps keyed by category keywords ────────
 function getProcess(service: ServicePattern) {
+  if (PRODUCT_TOOL_SLUGS.has(service.slug)) {
+    return [
+      {
+        n: "01",
+        title: "1-Click Workspace Setup",
+        desc: `Activate your ${service.title} module instantly from your Founding Legals dashboard with zero complex IT installation.`,
+      },
+      {
+        n: "02",
+        title: "Add Data & Team Members",
+        desc: "Invite your co-founders, team leads, or stakeholders with granular role permissions and import existing records seamlessly.",
+      },
+      {
+        n: "03",
+        title: "Automate Core Workflows",
+        desc: "Run day-to-day operations with automated calculations, digital document generation, and built-in regulatory guardrails.",
+      },
+      {
+        n: "04",
+        title: "Audit-Ready Governance & Exports",
+        desc: "All activities, contracts, and financial logs are securely stored in your vault and exportable to CSV or PDF at any time.",
+      },
+    ];
+  }
   const t = (service.title + " " + (service.heroCategory || "")).toLowerCase();
   if (t.includes("gst") || t.includes("tax") || t.includes("itr") || t.includes("filing")) {
     return [
@@ -173,6 +197,26 @@ function getProcess(service: ServicePattern) {
 
 // ── FAQ generator ────────────────────────────────────────────
 function getFaqs(service: ServicePattern) {
+  if (PRODUCT_TOOL_SLUGS.has(service.slug)) {
+    return [
+      {
+        q: `Who can access ${service.title} on our founding team?`,
+        a: "Founding Legals supports collaborative multi-user access. You can invite your co-founders, HR managers, accountants, or team leads with role-based permissions to view, edit, or manage records securely.",
+      },
+      {
+        q: `Is ${service.title} included in the Founding Legals Pre-Seed plan?`,
+        a: "Yes. All 8 core founder platform tools — including Client Management, Team Operations, Automated Monthly Payroll, Schemes & Grants Finder, and 3,000+ Investor Directory — are bundled into the Pre-Seed plan starting at ₹658/month.",
+      },
+      {
+        q: "How does this tool connect with the rest of my startup operations?",
+        a: "All Founding Legals modules are natively integrated. Your client contracts link to invoicing, employee agreements connect directly to payroll, and compliance events automatically populate your founder dashboard.",
+      },
+      {
+        q: "Can I export my data, reports, and records anytime?",
+        a: "Yes. You maintain 100% ownership of your business data. You can export structured reports, invoices, team records, and legal agreements to CSV, Excel, or PDF whenever needed.",
+      },
+    ];
+  }
   const t = service.title.toLowerCase();
   if (t.includes("gst") && t.includes("filing")) {
     return [
@@ -217,6 +261,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
 
   const process = getProcess(service);
   const faqs = getFaqs(service);
+  const isProductTool = PRODUCT_TOOL_SLUGS.has(service.slug);
 
   return (
     <div className="min-h-screen bg-[#FAF9F6] font-sans text-[#2b2723]">
@@ -230,7 +275,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
               {/* Category badge */}
               <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-olive-50 border border-olive-200 rounded-lg text-olive-700 text-[11px] font-bold uppercase tracking-widest mb-7">
                 <FileText className="w-3.5 h-3.5" />
-                {service.heroCategory || "FoundingLegals Service"}
+                {isProductTool ? `For Founders · ${service.heroCategory || "Start"}` : service.heroCategory || "FoundingLegals Service"}
               </div>
 
               <h1 className="text-[38px] sm:text-[50px] lg:text-[58px] font-medium text-[#2b2723] leading-[1.08] tracking-[-0.02em] font-serif mb-6">
@@ -241,75 +286,150 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                 {service.heroDescription}
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 mb-10">
-                <Link
-                  href="/start"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md"
-                >
-                  Get Started at Member Rate
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-white hover:bg-[#F6F4F0] text-[#2b2723] text-[14px] font-medium rounded-full border border-[#E5E1D6] transition-all shadow-sm"
-                >
-                  Talk to a CA
-                </Link>
-              </div>
+              {isProductTool ? (
+                <div className="flex flex-wrap items-center gap-4 mb-10">
+                  <Link
+                    href="/start"
+                    className="inline-flex items-center gap-2 px-8 py-4 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md hover:shadow-lg hover:scale-[1.01]"
+                  >
+                    Get Started with Pre-Seed Plan
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    href="/pricing"
+                    className="inline-flex items-center gap-2 px-7 py-4 bg-white hover:bg-[#F6F4F0] text-[#2b2723] text-[14px] font-medium rounded-full border border-[#E5E1D6] transition-all shadow-sm"
+                  >
+                    View Pricing (₹658/mo)
+                  </Link>
+                </div>
+              ) : (
+                <div className="flex flex-wrap items-center gap-4 mb-10">
+                  <Link
+                    href="/start"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md"
+                  >
+                    Get Started at Member Rate
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 bg-white hover:bg-[#F6F4F0] text-[#2b2723] text-[14px] font-medium rounded-full border border-[#E5E1D6] transition-all shadow-sm"
+                  >
+                    Talk to a CA
+                  </Link>
+                </div>
+              )}
 
               {/* Trust indicators */}
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[12px] text-[#6b6965]">
-                <span className="flex items-center gap-2"><Shield className="w-3.5 h-3.5 text-[#5A7338]" /> CA-executed service</span>
-                <span className="flex items-center gap-2"><Users className="w-3.5 h-3.5 text-[#5A7338]" /> 1,000+ clients</span>
-                <span className="flex items-center gap-2"><Zap className="w-3.5 h-3.5 text-[#5A7338]" /> 50% below market</span>
-                <span className="flex items-center gap-2"><Clock className="w-3.5 h-3.5 text-[#5A7338]" /> On-time guarantee</span>
-              </div>
+              {isProductTool ? (
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[12px] text-[#6b6965]">
+                  <span className="flex items-center gap-2"><Rocket className="w-3.5 h-3.5 text-[#5A7338]" /> Unified Founder OS</span>
+                  <span className="flex items-center gap-2"><Users className="w-3.5 h-3.5 text-[#5A7338]" /> 1–5 team seats included</span>
+                  <span className="flex items-center gap-2"><Zap className="w-3.5 h-3.5 text-[#5A7338]" /> Instant setup · No IT needed</span>
+                  <span className="flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5 text-[#5A7338]" /> Bank-grade 256-bit security</span>
+                </div>
+              ) : (
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[12px] text-[#6b6965]">
+                  <span className="flex items-center gap-2"><Shield className="w-3.5 h-3.5 text-[#5A7338]" /> CA-executed service</span>
+                  <span className="flex items-center gap-2"><Users className="w-3.5 h-3.5 text-[#5A7338]" /> 1,000+ clients</span>
+                  <span className="flex items-center gap-2"><Zap className="w-3.5 h-3.5 text-[#5A7338]" /> 50% below market</span>
+                  <span className="flex items-center gap-2"><Clock className="w-3.5 h-3.5 text-[#5A7338]" /> On-time guarantee</span>
+                </div>
+              )}
             </div>
 
-            {/* Right: Clean Light Pricing Highlight Card */}
-            <div className="bg-white border border-[#E5E1D6] rounded-3xl p-8 lg:p-9 shadow-xl shadow-black/[0.03] relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-[#5A7338]/5 rounded-full translate-x-12 -translate-y-12 pointer-events-none" />
-              
-              <div className="text-[10px] font-extrabold uppercase tracking-widest text-[#5A7338] mb-3">
-                FoundingLegals Fixed Rate
+            {/* Right: Clean Pricing Card */}
+            {isProductTool ? (
+              <div className="bg-white border-2 border-[#5A7338]/30 rounded-3xl p-8 lg:p-9 shadow-xl shadow-black/[0.04] relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-[#5A7338]/5 rounded-full translate-x-12 -translate-y-12 pointer-events-none" />
+                
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#5A7338] text-white text-[11px] font-bold uppercase tracking-wider mb-3 shadow-xs">
+                  <Zap className="w-3 h-3 text-amber-300" />
+                  <span>Pre-Seed Platform Plan</span>
+                </div>
+
+                <div className="flex items-baseline gap-2 mb-1">
+                  <span className="text-[44px] font-bold text-[#2b2723] leading-none">₹658</span>
+                  <span className="text-[18px] text-[#6b6965] font-semibold">/month</span>
+                </div>
+                <div className="text-[11.5px] text-[#5A7338] font-bold mb-3">Save 34% with annual billing (₹7,890/year)</div>
+
+                <p className="text-[13px] text-[#6b6965] font-light leading-relaxed mb-6">
+                  Includes full access to {service.title} plus all 7 other essential founder tools bundled in one unified workspace.
+                </p>
+
+                <div className="space-y-3 pt-6 border-t border-[#F0EDE6] mb-8">
+                  <div className="flex items-center gap-3 text-[13px] text-[#3a3732]">
+                    <Check className="w-4 h-4 text-[#5A7338] shrink-0" />
+                    <span>Complete {service.title} module access</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-[13px] text-[#3a3732]">
+                    <Check className="w-4 h-4 text-[#5A7338] shrink-0" />
+                    <span>Collaborative workspace for 1–5 team members</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-[13px] text-[#3a3732]">
+                    <Check className="w-4 h-4 text-[#5A7338] shrink-0" />
+                    <span>25 monthly workflow credits pool included</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-[13px] text-[#3a3732]">
+                    <Check className="w-4 h-4 text-[#5A7338] shrink-0" />
+                    <span>Encrypted document vault & cloud backup</span>
+                  </div>
+                </div>
+
+                <Link
+                  href="/start"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13.5px] font-bold rounded-full transition-all shadow-md hover:shadow-lg"
+                >
+                  Start with Pre-Seed Plan
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
+            ) : (
+              <div className="bg-white border border-[#E5E1D6] rounded-3xl p-8 lg:p-9 shadow-xl shadow-black/[0.03] relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-[#5A7338]/5 rounded-full translate-x-12 -translate-y-12 pointer-events-none" />
+                
+                <div className="text-[10px] font-extrabold uppercase tracking-widest text-[#5A7338] mb-3">
+                  FoundingLegals Fixed Rate
+                </div>
 
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-[44px] font-bold text-[#2b2723] leading-none">{memberRate.price}</span>
-                <span className="text-[18px] text-[#6b6965] font-semibold">{memberRate.unit}</span>
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="text-[44px] font-bold text-[#2b2723] leading-none">{memberRate.price}</span>
+                  <span className="text-[18px] text-[#6b6965] font-semibold">{memberRate.unit}</span>
+                </div>
+
+                <p className="text-[13px] text-[#6b6965] font-light leading-relaxed mb-6">
+                  {memberRate.note}
+                </p>
+
+                <div className="space-y-3 pt-6 border-t border-[#F0EDE6] mb-8">
+                  <div className="flex items-center gap-3 text-[13px] text-[#3a3732]">
+                    <Check className="w-4 h-4 text-[#5A7338] shrink-0" />
+                    <span>Qualified CA execution & filing</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-[13px] text-[#3a3732]">
+                    <Check className="w-4 h-4 text-[#5A7338] shrink-0" />
+                    <span>End-to-end document verification</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-[13px] text-[#3a3732]">
+                    <Check className="w-4 h-4 text-[#5A7338] shrink-0" />
+                    <span>Government portal submission & tracking</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-[13px] text-[#3a3732]">
+                    <Check className="w-4 h-4 text-[#5A7338] shrink-0" />
+                    <span>Lifetime vault backup & renewal alerts</span>
+                  </div>
+                </div>
+
+                <Link
+                  href="/start"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13.5px] font-bold rounded-full transition-all shadow-md"
+                >
+                  Proceed with Service
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
-
-              <p className="text-[13px] text-[#6b6965] font-light leading-relaxed mb-6">
-                {memberRate.note}
-              </p>
-
-              <div className="space-y-3 pt-6 border-t border-[#F0EDE6] mb-8">
-                <div className="flex items-center gap-3 text-[13px] text-[#3a3732]">
-                  <Check className="w-4 h-4 text-[#5A7338] shrink-0" />
-                  <span>Qualified CA execution & filing</span>
-                </div>
-                <div className="flex items-center gap-3 text-[13px] text-[#3a3732]">
-                  <Check className="w-4 h-4 text-[#5A7338] shrink-0" />
-                  <span>End-to-end document verification</span>
-                </div>
-                <div className="flex items-center gap-3 text-[13px] text-[#3a3732]">
-                  <Check className="w-4 h-4 text-[#5A7338] shrink-0" />
-                  <span>Government portal submission & tracking</span>
-                </div>
-                <div className="flex items-center gap-3 text-[13px] text-[#3a3732]">
-                  <Check className="w-4 h-4 text-[#5A7338] shrink-0" />
-                  <span>Lifetime vault backup & renewal alerts</span>
-                </div>
-              </div>
-
-              <Link
-                href="/start"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13.5px] font-bold rounded-full transition-all shadow-md"
-              >
-                Proceed with Service
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+            )}
           </div>
         </div>
       </section>
@@ -322,7 +442,9 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
               {service.featuresTitle || "What's included in this service"}
             </h2>
             <p className="text-[15px] text-[#6b6965] font-light max-w-xl mx-auto">
-              Every service is CA-executed from start to finish — not outsourced to a software form or an unqualified operator.
+              {isProductTool
+                ? "Purpose-built founder software designed to streamline operations, eliminate administrative overhead, and keep your startup audit-ready."
+                : "Every service is CA-executed from start to finish — not outsourced to a software form or an unqualified operator."}
             </p>
           </div>
 
@@ -387,7 +509,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
           {/* Right: process steps */}
           <div className="space-y-4">
             <div className="text-[11px] font-extrabold uppercase tracking-widest text-[#5A7338] mb-6">
-              How it works — step by step
+              {isProductTool ? "Operational Workflow — Step by Step" : "How it works — step by step"}
             </div>
             {process.map((step) => (
               <div
@@ -407,118 +529,225 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
         </div>
       </section>
 
-      {/* ── 4. FIXED SERVICE PRICING ────────────────────────────── */}
-      <section className="py-20 px-6 sm:px-12 lg:px-24 bg-[#F6F4F0] border-b border-[#E5E1D6]">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-10">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#5A7338]/10 border border-[#5A7338]/20 rounded-full text-[#5A7338] text-[11px] font-bold uppercase tracking-widest mb-4">
-              <Shield className="w-3.5 h-3.5" />
-              Transparent Fixed Pricing
-            </span>
-            <h2 className="font-serif text-[32px] sm:text-[40px] font-medium text-[#2b2723] mb-3">
-              Fixed Pricing for {service.title}
-            </h2>
-            <p className="text-[15px] text-[#6b6965] font-light max-w-lg mx-auto">
-              100% transparent pricing with qualified Chartered Accountant execution. No hidden charges or unexpected surprise fees.
-            </p>
-          </div>
+      {/* ── 4. FIXED SERVICE PRICING / FOUNDER PLAN ──────────────── */}
+      {isProductTool ? (
+        <section className="py-20 px-6 sm:px-12 lg:px-24 bg-[#F6F4F0] border-b border-[#E5E1D6]">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#5A7338]/10 border border-[#5A7338]/20 rounded-full text-[#5A7338] text-[11px] font-bold uppercase tracking-widest mb-4">
+                <Zap className="w-3.5 h-3.5" />
+                Simple Founder Subscription
+              </span>
+              <h2 className="font-serif text-[32px] sm:text-[40px] font-medium text-[#2b2723] mb-3">
+                One Plan. All 8 Founder Tools Included.
+              </h2>
+              <p className="text-[15px] text-[#6b6965] font-light max-w-lg mx-auto">
+                Get complete access to {service.title} and our full operational suite without purchasing multiple disjointed SaaS tools.
+              </p>
+            </div>
 
-          {/* Premium Fixed Price Card */}
-          <div className="bg-white rounded-3xl border border-[#E5E1D6] p-8 sm:p-10 shadow-lg shadow-black/[0.03] relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-48 h-48 bg-[#5A7338]/5 rounded-full translate-x-16 -translate-y-16 pointer-events-none" />
-            
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-8 border-b border-[#E5E1D6]">
+            {/* Premium Plan Card */}
+            <div className="bg-white rounded-3xl border-2 border-[#5A7338]/30 p-8 sm:p-10 shadow-lg shadow-black/[0.03] relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-[#5A7338]/5 rounded-full translate-x-16 -translate-y-16 pointer-events-none" />
+              
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-8 border-b border-[#E5E1D6]">
+                <div>
+                  <span className="inline-block px-3 py-1 bg-olive-50 border border-olive-200 text-[#5A7338] text-[11px] font-bold rounded-md uppercase tracking-wider mb-3">
+                    Pre-Seed Membership
+                  </span>
+                  <h3 className="text-[24px] font-serif font-bold text-[#2b2723]">
+                    {service.title} & Founder OS Suite
+                  </h3>
+                  <p className="text-[14px] text-[#6b6965] font-light mt-1">
+                    Everything early-stage founders need to run and scale operations from day one.
+                  </p>
+                </div>
+
+                <div className="flex flex-col md:items-end">
+                  <div className="text-[12px] text-[#9b958f] uppercase font-bold tracking-wider mb-1">Founder Plan</div>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-[40px] font-bold text-[#2b2723] leading-none">₹658</span>
+                    <span className="text-[16px] text-[#6b6965] font-medium">/month</span>
+                  </div>
+                  <span className="text-[11px] text-[#5A7338] font-semibold mt-1">✓ Billed ₹7,890 annually</span>
+                </div>
+              </div>
+
+              <div className="py-8 grid sm:grid-cols-2 gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#5A7338]/10 flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 text-[#5A7338]" />
+                  </div>
+                  <span className="text-[13.5px] text-[#3a3732]">Complete {service.title} Platform Access</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#5A7338]/10 flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 text-[#5A7338]" />
+                  </div>
+                  <span className="text-[13.5px] text-[#3a3732]">5 Team Member Seats Included</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#5A7338]/10 flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 text-[#5A7338]" />
+                  </div>
+                  <span className="text-[13.5px] text-[#3a3732]">Automated Workflows & Digital Signatures</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#5A7338]/10 flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 text-[#5A7338]" />
+                  </div>
+                  <span className="text-[13.5px] text-[#3a3732]">1-Click Data Export to CSV, PDF & Excel</span>
+                </div>
+              </div>
+
+              <div className="pt-6 border-t border-[#F0EDE6] flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="text-[12px] text-[#6b6965] font-light">
+                  No long-term lock-in. Cancel or upgrade your platform tier anytime with zero penalty.
+                </div>
+                <Link
+                  href="/start"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md shrink-0"
+                >
+                  Get Started with Pre-Seed Plan
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Value banner */}
+            <div className="mt-8 bg-white border border-[#E5E1D6] rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
               <div>
-                <span className="inline-block px-3 py-1 bg-olive-50 border border-olive-200 text-[#5A7338] text-[11px] font-bold rounded-md uppercase tracking-wider mb-3">
-                  CA-Managed Delivery
-                </span>
-                <h3 className="text-[24px] font-serif font-bold text-[#2b2723]">
-                  {service.title} Package
-                </h3>
-                <p className="text-[14px] text-[#6b6965] font-light mt-1">
-                  {memberRate.note}
-                </p>
-              </div>
-
-              <div className="flex flex-col md:items-end">
-                <div className="text-[12px] text-[#9b958f] uppercase font-bold tracking-wider mb-1">Fixed Member Rate</div>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-[40px] font-bold text-[#2b2723] leading-none">{memberRate.price}</span>
-                  <span className="text-[16px] text-[#6b6965] font-medium">{memberRate.unit}</span>
+                <div className="text-[11px] font-extrabold uppercase tracking-widest text-[#5A7338] mb-2">Compare Membership Tiers</div>
+                <div className="text-[20px] font-bold text-[#2b2723] leading-tight">
+                  Looking for advanced hiring, fundraising advisory or custom cap tables?<br />
+                  <span className="text-[#6b6965] text-[15px] font-light">Explore our Seed (₹2,499/mo) and Series A (₹6,499/mo) founder plans.</span>
                 </div>
-                <span className="text-[11px] text-[#5A7338] font-semibold mt-1">✓ Statutory & MCA Compliant</span>
               </div>
-            </div>
-
-            {/* Included highlights */}
-            <div className="py-8 grid sm:grid-cols-2 gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-full bg-[#5A7338]/10 flex items-center justify-center shrink-0">
-                  <Check className="w-3 h-3 text-[#5A7338]" />
-                </div>
-                <span className="text-[13.5px] text-[#3a3732]">Assigned Senior Chartered Accountant</span>
+              <div className="flex flex-col gap-3 shrink-0">
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center gap-2 px-7 py-3 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13px] font-bold rounded-full transition-all whitespace-nowrap shadow-sm"
+                >
+                  Compare All Plans
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-full bg-[#5A7338]/10 flex items-center justify-center shrink-0">
-                  <Check className="w-3 h-3 text-[#5A7338]" />
-                </div>
-                <span className="text-[13.5px] text-[#3a3732]">Complete Document Verification</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-full bg-[#5A7338]/10 flex items-center justify-center shrink-0">
-                  <Check className="w-3 h-3 text-[#5A7338]" />
-                </div>
-                <span className="text-[13.5px] text-[#3a3732]">Government Portal Filing & Tracking</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-full bg-[#5A7338]/10 flex items-center justify-center shrink-0">
-                  <Check className="w-3 h-3 text-[#5A7338]" />
-                </div>
-                <span className="text-[13.5px] text-[#3a3732]">Secure Storage in Document Vault</span>
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-[#F0EDE6] flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="text-[12px] text-[#6b6965] font-light">
-                Statutory government fees (MCA, GST dept., stamp duty) are non-negotiable and charged at actuals.
-              </div>
-              <Link
-                href="/start"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md shrink-0"
-              >
-                Proceed with Service
-                <ArrowRight className="w-4 h-4" />
-              </Link>
             </div>
           </div>
+        </section>
+      ) : (
+        <section className="py-20 px-6 sm:px-12 lg:px-24 bg-[#F6F4F0] border-b border-[#E5E1D6]">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#5A7338]/10 border border-[#5A7338]/20 rounded-full text-[#5A7338] text-[11px] font-bold uppercase tracking-widest mb-4">
+                <Shield className="w-3.5 h-3.5" />
+                Transparent Fixed Pricing
+              </span>
+              <h2 className="font-serif text-[32px] sm:text-[40px] font-medium text-[#2b2723] mb-3">
+                Fixed Pricing for {service.title}
+              </h2>
+              <p className="text-[15px] text-[#6b6965] font-light max-w-lg mx-auto">
+                100% transparent pricing with qualified Chartered Accountant execution. No hidden charges or unexpected surprise fees.
+              </p>
+            </div>
 
-          {/* Value banner */}
-          <div className="mt-8 bg-white border border-[#E5E1D6] rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
-            <div>
-              <div className="text-[11px] font-extrabold uppercase tracking-widest text-[#5A7338] mb-2">All-Access Platform Membership</div>
-              <div className="text-[20px] font-bold text-[#2b2723] leading-tight">
-                Get every legal & compliance service at member rates<br />
-                <span className="text-[#6b6965] text-[15px] font-light">Starting at just ₹658/month for your entire startup.</span>
+            {/* Premium Fixed Price Card */}
+            <div className="bg-white rounded-3xl border border-[#E5E1D6] p-8 sm:p-10 shadow-lg shadow-black/[0.03] relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-[#5A7338]/5 rounded-full translate-x-16 -translate-y-16 pointer-events-none" />
+              
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-8 border-b border-[#E5E1D6]">
+                <div>
+                  <span className="inline-block px-3 py-1 bg-olive-50 border border-olive-200 text-[#5A7338] text-[11px] font-bold rounded-md uppercase tracking-wider mb-3">
+                    CA-Managed Delivery
+                  </span>
+                  <h3 className="text-[24px] font-serif font-bold text-[#2b2723]">
+                    {service.title} Package
+                  </h3>
+                  <p className="text-[14px] text-[#6b6965] font-light mt-1">
+                    {memberRate.note}
+                  </p>
+                </div>
+
+                <div className="flex flex-col md:items-end">
+                  <div className="text-[12px] text-[#9b958f] uppercase font-bold tracking-wider mb-1">Fixed Member Rate</div>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-[40px] font-bold text-[#2b2723] leading-none">{memberRate.price}</span>
+                    <span className="text-[16px] text-[#6b6965] font-medium">{memberRate.unit}</span>
+                  </div>
+                  <span className="text-[11px] text-[#5A7338] font-semibold mt-1">✓ Statutory & MCA Compliant</span>
+                </div>
+              </div>
+
+              {/* Included highlights */}
+              <div className="py-8 grid sm:grid-cols-2 gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#5A7338]/10 flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 text-[#5A7338]" />
+                  </div>
+                  <span className="text-[13.5px] text-[#3a3732]">Assigned Senior Chartered Accountant</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#5A7338]/10 flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 text-[#5A7338]" />
+                  </div>
+                  <span className="text-[13.5px] text-[#3a3732]">Complete Document Verification</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#5A7338]/10 flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 text-[#5A7338]" />
+                  </div>
+                  <span className="text-[13.5px] text-[#3a3732]">Government Portal Filing & Tracking</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#5A7338]/10 flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 text-[#5A7338]" />
+                  </div>
+                  <span className="text-[13.5px] text-[#3a3732]">Secure Storage in Document Vault</span>
+                </div>
+              </div>
+
+              <div className="pt-6 border-t border-[#F0EDE6] flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="text-[12px] text-[#6b6965] font-light">
+                  Statutory government fees (MCA, GST dept., stamp duty) are non-negotiable and charged at actuals.
+                </div>
+                <Link
+                  href="/start"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md shrink-0"
+                >
+                  Proceed with Service
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             </div>
-            <div className="flex flex-col gap-3 shrink-0">
-              <Link
-                href="/start"
-                className="inline-flex items-center gap-2 px-7 py-3 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13px] font-bold rounded-full transition-all whitespace-nowrap shadow-sm"
-              >
-                Get Started
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/pricing"
-                className="text-[12px] text-[#6b6965] hover:text-[#2b2723] font-medium text-center transition-colors"
-              >
-                View all membership plans →
-              </Link>
+
+            {/* Value banner */}
+            <div className="mt-8 bg-white border border-[#E5E1D6] rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
+              <div>
+                <div className="text-[11px] font-extrabold uppercase tracking-widest text-[#5A7338] mb-2">All-Access Platform Membership</div>
+                <div className="text-[20px] font-bold text-[#2b2723] leading-tight">
+                  Get every legal & compliance service at member rates<br />
+                  <span className="text-[#6b6965] text-[15px] font-light">Starting at just ₹658/month for your entire startup.</span>
+                </div>
+              </div>
+              <div className="flex flex-col gap-3 shrink-0">
+                <Link
+                  href="/start"
+                  className="inline-flex items-center gap-2 px-7 py-3 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13px] font-bold rounded-full transition-all whitespace-nowrap shadow-sm"
+                >
+                  Get Started
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/pricing"
+                  className="text-[12px] text-[#6b6965] hover:text-[#2b2723] font-medium text-center transition-colors"
+                >
+                  View all membership plans →
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ── 5. FEATURE GRID / CTA ──────────────────────────────── */}
       {service.ctaTitle && (
@@ -552,10 +781,21 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
               Frequently asked questions
             </h2>
             <p className="text-[15px] text-[#6b6965] font-light">
-              Still unsure?{" "}
-              <Link href="/contact" className="text-olive-700 font-medium hover:underline">
-                Talk to a CA directly.
-              </Link>
+              {isProductTool ? (
+                <>
+                  Have questions about setting up your founder workspace?{" "}
+                  <Link href="/help" className="text-olive-700 font-medium hover:underline">
+                    Browse our Help Center guides.
+                  </Link>
+                </>
+              ) : (
+                <>
+                  Still unsure?{" "}
+                  <Link href="/contact" className="text-olive-700 font-medium hover:underline">
+                    Talk to a CA directly.
+                  </Link>
+                </>
+              )}
             </p>
           </div>
 
@@ -594,29 +834,33 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
       <section className="py-24 px-6 sm:px-12 lg:px-24 bg-[#FAF9F6] border-t border-[#E5E1D6]">
         <div className="max-w-4xl mx-auto text-center">
           <div className="text-[11px] font-extrabold uppercase tracking-widest text-[#5A7338] mb-5">
-            Ready to get started?
+            {isProductTool ? "Scale Your Operations" : "Ready to get started?"}
           </div>
           <h2 className="font-serif text-[32px] sm:text-[44px] font-medium text-[#2b2723] leading-[1.1] mb-5">
             {service.heroTitle}
             <br />
-            <span className="text-[#5A7338] italic">at 50% of market rate.</span>
+            <span className="text-[#5A7338] italic">
+              {isProductTool ? "All included in your founder subscription." : "at 50% of market rate."}
+            </span>
           </h2>
           <p className="text-[16px] text-[#6b6965] font-light max-w-xl mx-auto mb-10">
-            ₹658 a month. CA-managed execution. One login for every legal and compliance service your startup needs.
+            {isProductTool
+              ? "Starting at ₹658 a month. Full access to all 8 founder tools, multi-seat workspace, and audit-ready governance."
+              : "₹658 a month. CA-managed execution. One login for every legal and compliance service your startup needs."}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/start"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[15px] font-bold rounded-full transition-all shadow-md"
             >
-              Get Started
+              {isProductTool ? "Get Started with Pre-Seed Plan" : "Get Started"}
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/services"
+              href={isProductTool ? "/pricing" : "/services"}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-[#F6F4F0] text-[#2b2723] text-[15px] font-medium rounded-full border border-[#E5E1D6] transition-all shadow-sm"
             >
-              Browse all services
+              {isProductTool ? "View All Founder Plans" : "Browse all services"}
             </Link>
           </div>
         </div>

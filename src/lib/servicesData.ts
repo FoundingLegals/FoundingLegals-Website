@@ -266,157 +266,165 @@ export const services: ServicePattern[] = [
     ctaDescription: "Hand your tax headaches to our certified chartered accountants and focus entirely on growing your business."
   },
 
-  // --- COMPLIANCE ---
+  // --- START (FOR FOUNDERS) ---
   {
     title: "Essential Startup Approach",
     slug: "essential-startup-approach",
-    heroCategory: "Compliance",
-    heroTitle: "Stay Ready for What Comes Next.",
-    heroDescription: "Starting a company is only the beginning. Keeping it organised, compliant, and ready for growth is an ongoing responsibility. The Essential Startup Approach brings important legal, compliance, and corporate tasks into one structured workspace.",
+    heroCategory: "Start",
+    heroTitle: "The Complete Legal & Operational OS for Early-Stage Startups",
+    heroDescription: "Starting a company is only the beginning. Keeping it organized, compliant, and ready for institutional investment requires getting your fundamentals right from day zero. The Essential Startup Approach unifies corporate governance, founder vesting, statutory filings, and cap table hygiene into a structured, proactive workspace.",
     heroImage: "/startup-compliance-hero.png",
-    featuresTitle: "Keep your company on track",
+    featuresTitle: "Your foundational startup operating system",
     features: [
       {
-        title: "Compliance management",
-        description: "Stay aware of important corporate and regulatory requirements.",
+        title: "Corporate Governance & Board Actions",
+        description: "Maintain structured records of board meetings, shareholder resolutions, and statutory MCA declarations with automated audit logs.",
         iconName: "ShieldCheck"
       },
       {
-        title: "Corporate documents",
-        description: "Organise essential company records and documentation.",
+        title: "Cap Table & Equity Health",
+        description: "Track founder shareholdings, ESOP pools, and investor rights with real-time dilution and conversion scenario modeling.",
+        iconName: "TrendingUp"
+      },
+      {
+        title: "Corporate Document Vault",
+        description: "Store Certificate of Incorporation, MOA/AOA, PAN, and ROC filing receipts in an encrypted, instantly searchable repository.",
         iconName: "FileText"
       },
       {
-        title: "Legal & secretarial support",
-        description: "Manage important corporate actions and filings in a more structured way.",
+        title: "Due Diligence Readiness",
+        description: "Keep all essential legal, corporate, and financial assets permanently organized so you are ready for fundraising at a moment's notice.",
         iconName: "Briefcase"
-      },
-      {
-        title: "Growth readiness",
-        description: "Keep your business prepared for investors, audits, and the next stage of growth.",
-        iconName: "TrendingUp"
       }
     ],
-    benefitsTitle: "Build the right foundation early",
+    benefitsTitle: "Build the right foundation from day zero",
     benefits: [
-      "Good company practices should not start when you're preparing for a fundraise. They should start from day one."
+      "Due Diligence on Autopilot. Institutional investors scrutinize legal hygiene before wiring funds. Stay 100% compliant with zero last-minute scramble or deal delays.",
+      "Founder Equity Protection. Formalize vesting schedules, reverse vesting, and exit terms so co-founder departures never jeopardize company control or ownership.",
+      "Proactive Regulatory Compliance. Never miss an MCA annual filing, auditor appointment (ADT-1), or statutory register maintenance deadline."
     ],
-    ctaTitle: "Keep your startup ready",
-    ctaDescription: "Plans from ₹658",
-    ctaButtonText: "Get Started →"
+    ctaTitle: "Build on venture-grade legal foundations",
+    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans from ₹658/month.",
+    ctaButtonText: "Get Started with Pre-Seed Plan →"
   },
   {
     title: "Client Management",
     slug: "client-management",
     heroCategory: "Start",
-    heroTitle: "Manage Clients. Stay on Top of Every Engagement.",
-    heroDescription: "Keep your client relationships, agreements, invoices, and payments organised in one place. Founding Legals helps you manage the complete client journey — from onboarding and contracts to invoicing and payment tracking.",
+    heroTitle: "Manage Clients, Contracts & Invoicing in One Unified Workspace",
+    heroDescription: "Ditch scattered spreadsheets and manual email threads. Founding Legals gives founders an intuitive, centralized system to onboard clients, link legally binding agreements, generate GST-compliant invoices, and track milestone payments in real time.",
     heroImage: "/startup-compliance-hero.png",
     featuresTitle: "Everything your client operations need",
     features: [
       {
-        title: "Client onboarding",
-        description: "Keep client information organised and easy to access.",
+        title: "Client Profiles & Onboarding",
+        description: "Maintain comprehensive customer records, billing addresses, GSTIN numbers, and primary stakeholder contacts in one searchable directory.",
         iconName: "Users"
       },
       {
-        title: "Agreements & contracts",
-        description: "Connect important client agreements with the work you deliver.",
+        title: "Integrated Legal Contracts",
+        description: "Link executed service agreements, SOWs, and NDAs directly to each client profile with milestone deliverables and renewal tracking.",
         iconName: "FileText"
       },
       {
-        title: "Invoices & payments",
-        description: "Create invoices, track outstanding payments, and stay on top of collections.",
+        title: "GST Invoicing & Payments",
+        description: "Create compliant digital invoices with automatic tax calculations, payment status badges, and automated payment reminders.",
         iconName: "Banknote"
       },
       {
-        title: "One connected workspace",
-        description: "Keep your client records, documents, and activities together.",
-        iconName: "Briefcase"
+        title: "Revenue & Outstanding Analytics",
+        description: "Monitor monthly collections, pending receivables, and top customer accounts from a real-time founder dashboard.",
+        iconName: "TrendingUp"
       }
     ],
-    benefitsTitle: "Why founders use it",
+    benefitsTitle: "Why high-growth founders choose Founding Legals",
     benefits: [
-      "Less time searching through emails and spreadsheets. More time focusing on clients, delivery, and growth."
+      "Automated Cash Flow Visibility. Never let an unpaid invoice slip through the cracks. Automated tracking and payment status indicators keep your receivables predictable.",
+      "Single Source of Truth. No more searching through Google Drive, email threads, or accounting folders. Every contract, amendment, and invoice lives in one structured client hub.",
+      "Audit-Ready Customer Records. Keep GST, MCA, and investor due diligence completely frictionless with organized, exportable billing and contract archives."
     ],
-    ctaTitle: "Start with Founding Legals",
-    ctaDescription: "Bring your client operations into one simple workspace. Plans from ₹658",
-    ctaButtonText: "Get Started →"
+    ctaTitle: "Bring clarity to your client operations",
+    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans from ₹658/month.",
+    ctaButtonText: "Get Started with Pre-Seed Plan →"
   },
   {
     title: "Team Management",
     slug: "team-management",
     heroCategory: "Start",
-    heroTitle: "Build Your Team With the Right Foundations.",
-    heroDescription: "Hiring is exciting. Managing everything that comes with it should not be complicated. Founding Legals helps you manage employee onboarding, agreements, team records, and essential workplace documentation from one place.",
+    heroTitle: "Hire, Onboard & Manage Your Team With Legal Precision",
+    heroDescription: "Hiring great talent is your priority — wrestling with HR paperwork and legal liabilities shouldn't be. Founding Legals streamlines employee onboarding, employment contracts, role permissions, and ESOP vesting tracking into one clean founder workspace.",
     heroImage: "/startup-compliance-hero.png",
-    featuresTitle: "Keep your team organised",
+    featuresTitle: "Built for founders building high-performing teams",
     features: [
       {
-        title: "Employee onboarding",
-        description: "Bring new team members into a clear and structured process.",
+        title: "Structured Employee Onboarding",
+        description: "Collect government IDs, signed contracts, and emergency details through a secure digital onboarding flow.",
         iconName: "Users"
       },
       {
-        title: "Employment agreements",
-        description: "Create and manage the documents your team needs from day one.",
+        title: "Enforceable Employment Agreements",
+        description: "Draft partner-vetted employment agreements, NDA clauses, and IP assignment schedules in minutes.",
         iconName: "FileSignature"
       },
       {
-        title: "Team records",
-        description: "Keep important employee information and documents organised.",
+        title: "Digital Headcount & Role Records",
+        description: "Track job titles, departments, probation milestones, and compensation structures without spreadsheet errors.",
         iconName: "Briefcase"
       },
       {
-        title: "Policies & compliance",
-        description: "Stay prepared as your team grows and your responsibilities increase.",
+        title: "Statutory Compliance Guardrails",
+        description: "Ensure full adherence to Indian labour norms, working hours, leave policies, and mandatory staff documentation.",
         iconName: "ShieldCheck"
       }
     ],
-    benefitsTitle: "Made for growing teams",
+    benefitsTitle: "Why early-stage teams rely on our platform",
     benefits: [
-      "Whether you're hiring your first employee or building a larger team, Founding Legals gives you one place to manage the essentials."
+      "Zero Dispute IP Assignment. Ensure every piece of source code, design asset, and business process created by staff is formally assigned to your startup from Day 1.",
+      "Frictionless Team Expansion. Onboard co-founders, interns, full-time developers, and contractors with standardized documentation in under 10 minutes.",
+      "Transparent Role & Policy Governance. Maintain clear staff policies, NDAs, and code-of-conduct records that satisfy angel and VC due diligence checklists."
     ],
-    ctaTitle: "Start building better team operations",
-    ctaDescription: "Plans from ₹658",
-    ctaButtonText: "Set Up Your Team →"
+    ctaTitle: "Set up your team operations the right way",
+    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans from ₹658/month.",
+    ctaButtonText: "Get Started with Pre-Seed Plan →"
   },
   {
     title: "Spend Analysis",
     slug: "spend-analysis",
     heroCategory: "Compliance",
-    heroTitle: "Know Where Your Money Is Going.",
-    heroDescription: "Every rupee matters when you're building a startup. Founding Legals helps you understand business spending, identify recurring costs, and keep a closer eye on your cash position.",
+    heroTitle: "Track Cash Burn, Recurring Subscriptions & Runway in Real Time",
+    heroDescription: "Every rupee matters when building an early-stage startup. Founding Legals gives founders crystal-clear visibility into company disbursements, highlights recurring software licenses, and accurately models your runway horizon before cash crunches occur.",
     heroImage: "/startup-compliance-hero.png",
-    featuresTitle: "See your spending clearly",
+    featuresTitle: "Complete visibility over your startup treasury",
     features: [
       {
-        title: "Expense visibility",
-        description: "Understand where your business money is being spent.",
+        title: "Disbursement & Vendor Breakdown",
+        description: "Categorize monthly operational outlays across vendors, contractors, and cloud hosting with automated expense labeling.",
         iconName: "Eye"
       },
       {
-        title: "Recurring expenses",
-        description: "Identify subscriptions and ongoing costs that may be easy to overlook.",
+        title: "Zombie Subscription Detection",
+        description: "Identify redundant software seats, overlapping tools, and forgotten recurring renewals that unnecessarily deplete your cash.",
         iconName: "Clock"
       },
       {
-        title: "Cash & runway awareness",
-        description: "Get a clearer view of your current spending and future financial position.",
+        title: "Dynamic Runway Horizon Projections",
+        description: "Simulate cash runway against expected collections and projected hiring plans to forecast your optimal fundraising window.",
         iconName: "TrendingUp"
       },
       {
-        title: "Financial reporting",
-        description: "Keep useful financial information organised for better business decisions.",
+        title: "Due Diligence MIS Reports",
+        description: "Export clean, investor-ready monthly financial summaries and unit economics packages with one click.",
         iconName: "LineChart"
       }
     ],
-    benefitsTitle: "Make every expense count",
+    benefitsTitle: "Extend your runway with real-time financial visibility",
     benefits: [
-      "The goal is simple: give founders a clearer picture of their finances before small expenses become big problems."
+      "Eliminate Unnecessary SaaS Waste. Automatically flag unused software seats, duplicate tools, and recurring charges that silently erode early-stage cash.",
+      "Predictable Monthly Burn Rate. Model runway horizons under varying revenue and hiring scenarios to anticipate funding rounds months in advance.",
+      "Investor-Ready Expense Records. Group operating expenses into standard accounting buckets (R&D, S&M, G&A) ready for financial due diligence."
     ],
-    ctaTitle: "Take control of your spending",
-    ctaDescription: "Plans from ₹658",
+    ctaTitle: "Take control of your burn and runway",
+    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans from ₹658/month.",
     ctaButtonText: "Analyse Your Spend →"
   },
   {
@@ -457,38 +465,40 @@ export const services: ServicePattern[] = [
     title: "Document Management",
     slug: "document-management",
     heroCategory: "Compliance",
-    heroTitle: "Keep Every Important Document in One Place.",
-    heroDescription: "Your company's documents should never be scattered across emails, drives, and WhatsApp chats. Founding Legals gives you a structured space to store, manage, organise, and access your important business and legal documents.",
+    heroTitle: "Encrypted Founder Vault for Every Legal, MCA & Corporate Record",
+    heroDescription: "Your company's founding documents, investor agreements, and tax receipts should never live across scattered WhatsApp chats and personal Google Drives. Founding Legals gives your startup an encrypted, organized vault built specifically for Indian corporate compliance.",
     heroImage: "/startup-compliance-hero.png",
-    featuresTitle: "One secure document workspace",
+    featuresTitle: "One encrypted vault for your entire corporate lifecycle",
     features: [
       {
-        title: "Organised document storage",
-        description: "Keep company, legal, financial, HR, and business documents together.",
+        title: "Structured Corporate Folders",
+        description: "Pre-configured taxonomy for incorporation filings, board resolutions, shareholder agreements, trademarks, and vendor contracts.",
         iconName: "FileSearch"
       },
       {
-        title: "Easy access",
-        description: "Find the document you need without searching through multiple platforms.",
+        title: "Instant Global Search & Metadata",
+        description: "Locate any certificate, MCA filing acknowledgment, or signed NDA in seconds with intelligent OCR and metadata tagging.",
         iconName: "CheckCircle"
       },
       {
-        title: "Document sharing",
-        description: "Share the right documents with the right people when required.",
+        title: "Secure Investor Data Room Access",
+        description: "Share granular, read-only permissions with institutional investors and diligence teams without exposing sensitive files.",
         iconName: "Users"
       },
       {
-        title: "Business-ready records",
-        description: "Keep your documentation organised for audits, investors, clients, and day-to-day operations.",
+        title: "Version Control & Audit Logs",
+        description: "Track document updates, signatory changes, and access timestamps with full 256-bit AES encryption.",
         iconName: "ShieldCheck"
       }
     ],
-    benefitsTitle: "Stay organised as you grow",
+    benefitsTitle: "Never scramble during due diligence or audits again",
     benefits: [
-      "A well-maintained document system saves time today and makes important moments—like fundraising or due diligence—much easier tomorrow."
+      "Frictionless Investor Due Diligence. When an investor requests your corporate records, share an instant, organized data room instead of taking two weeks to compile scattered PDFs.",
+      "Bank-Grade Security. All files are encrypted at rest with 256-bit AES encryption and backed up continuously across secure redundant storage.",
+      "Permanent MCA & Statutory History. Retain lifetime digital custody of Certificate of Incorporation, MOA, AOA, PAN, TAN, and annual filing receipts in one place."
     ],
-    ctaTitle: "Bring your documents together",
-    ctaDescription: "Plans from ₹658",
+    ctaTitle: "Organize your company records today",
+    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans from ₹658/month.",
     ctaButtonText: "Manage Documents →"
   },
   {
@@ -736,152 +746,160 @@ export const services: ServicePattern[] = [
     title: "Payroll Management",
     slug: "payroll-management",
     heroCategory: "Start",
-    heroTitle: "Payroll Without the Spreadsheet Headache.",
-    heroDescription: "Running payroll should be simple, accurate, and easy to track. Founding Legals helps you manage salary structures, deductions, payslips, and payroll records in one organised workflow.",
+    heroTitle: "Automate Payroll, Tax Deductions & Payslips in One Click",
+    heroDescription: "Stop wrestling with fragile Excel sheets and manual tax math. Founding Legals gives fast-moving startups a seamless payroll engine to configure salary structures, automate Section 192 TDS and PF deductions, generate digital payslips, and export bank payout batches effortlessly.",
     heroImage: "/startup-start-hero.png",
-    featuresTitle: "Make payroll easier",
+    featuresTitle: "Built for seamless startup compensation",
     features: [
       {
-        title: "Salary management",
-        description: "Keep employee salary structures organised and easy to manage.",
+        title: "Custom Salary Structures & CTC Breakdown",
+        description: "Configure Basic, HRA, Special Allowance, PF, and Professional Tax with automated compliance guardrails tailored for Indian startups.",
         iconName: "Coins"
       },
       {
-        title: "Payroll calculations",
-        description: "Handle salary components and applicable deductions with less manual work.",
+        title: "Automated TDS & Statutory Deductions",
+        description: "Calculate monthly Section 192 TDS withholdings, Provident Fund (PF), and ESI deductions with zero spreadsheet errors.",
         iconName: "Scale"
       },
       {
-        title: "Digital payslips",
-        description: "Generate and manage professional payslips for your team.",
+        title: "1-Click Digital Payslip Distribution",
+        description: "Generate branded, tamper-proof PDF payslips that employees can download directly or receive via automated email dispatches.",
         iconName: "FileText"
       },
       {
-        title: "Payroll records",
-        description: "Keep your payroll information structured and accessible when you need it.",
-        iconName: "Scroll"
+        title: "Bank Disbursement Batch Files",
+        description: "Download pre-formatted NEFT/RTGS salary disbursement files compatible with HDFC, ICICI, Axis, SBI, and RazorpayX.",
+        iconName: "Banknote"
       }
     ],
-    benefitsTitle: "Built for growing businesses",
+    benefitsTitle: "Why early-stage founders run payroll on Founding Legals",
     benefits: [
-      "Spend less time working through complicated sheets and more time running your business."
+      "100% Statutory Accuracy. Eliminate TDS miscalculations and late deduction penalties. Our system applies updated income tax slabs and statutory limits automatically.",
+      "Hours Saved Every Month. Turn a multi-day spreadsheet chore into a 5-minute automated run — calculate, verify, and disburse with complete peace of mind.",
+      "Audit-Ready Payroll Archives. Maintain organized monthly salary registers, TDS deduction records, and employee tax declarations ready for CA audits and investor due diligence."
     ],
-    ctaTitle: "Simplify your payroll",
-    ctaDescription: "Get the essential payroll tools your growing team needs. Plans from ₹658",
-    ctaButtonText: "Manage Payroll →"
+    ctaTitle: "Run error-free startup payroll today",
+    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans from ₹658/month.",
+    ctaButtonText: "Get Started with Pre-Seed Plan →"
   },
   {
     title: "Schemes & Grants",
     slug: "schemes-and-grants",
     heroCategory: "Compliance",
-    heroTitle: "Discover Schemes and Grants Built for Startups.",
-    heroDescription: "There may be funding and support available for your business—but finding the right opportunity can take time. Founding Legals helps founders discover relevant government schemes, grants, and startup support programs in one place.",
+    heroTitle: "Discover Non-Dilutive Government Grants & Startup Schemes",
+    heroDescription: "Billions in state and central government grant capital go unclaimed every year. Founding Legals curates active non-dilutive funding programs, SISFS grants, state startup policies, and incubation subsidies tailored to your entity type and industry sector.",
     heroImage: "/startup-compliance-hero.png",
-    featuresTitle: "Find opportunities that fit",
+    featuresTitle: "Find non-dilutive capital that fits your stage",
     features: [
       {
-        title: "Scheme discovery",
-        description: "Explore relevant schemes, grants, and startup support programs.",
+        title: "Intelligent Scheme Discovery",
+        description: "Explore 150+ active government schemes, DPIIT incentives, and state-backed grant programs curated for Indian tech startups.",
         iconName: "Award"
       },
       {
-        title: "Eligibility information",
-        description: "Understand the basic requirements before investing time in an application.",
+        title: "Pre-Screened Eligibility Criteria",
+        description: "Instantly check eligibility rules — DPIIT recognition status, sector mandate, team composition, and incorporation age — before applying.",
         iconName: "Search"
       },
       {
-        title: "Centralised information",
-        description: "Keep opportunities from different programs and sources together.",
+        title: "Grant Application Document Vault",
+        description: "Organize audited accounts, pitch decks, CA certificates, and milestone projections formatted to government guidelines.",
         iconName: "Building2"
       },
       {
-        title: "Application readiness",
-        description: "Stay organised with the information and documents needed for applications.",
+        title: "Deadline & Milestone Tracker",
+        description: "Track upcoming grant application cycles, evaluation stages, and disbursement tranches from your founder dashboard.",
         iconName: "FileSignature"
       }
     ],
-    benefitsTitle: "Don't miss opportunities meant for your business",
+    benefitsTitle: "Non-dilutive capital to extend your startup runway",
     benefits: [
-      "The right scheme can provide valuable support without relying only on traditional fundraising."
+      "Zero Equity Dilution. Access government subsidies, SISFS grants, state startup seed funds, and incubation grants of ₹10L–₹50L without sacrificing founder equity.",
+      "Targeted Application Success. Filter grants by DPIIT recognition status, sector, founding team diversity, and incorporation age to focus only on high-conviction opportunities.",
+      "Complete Compliance Alignment. Ensure your entity meets all statutory prerequisites (DPIIT recognition, MSME Udyam, clean MCA filings) required to pass grant scrutiny."
     ],
-    ctaTitle: "Explore what you're eligible for",
-    ctaDescription: "Plans from ₹658",
+    ctaTitle: "Explore eligible government grants today",
+    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans from ₹658/month.",
     ctaButtonText: "Explore Schemes & Grants →"
   },
   {
     title: "Investor Directory",
     slug: "investor-directory",
     heroCategory: "Start",
-    heroTitle: "Find Investors Who Fit Your Startup.",
-    heroDescription: "Fundraising starts with finding the right people to speak to. Founding Legals gives you a structured investor directory where you can discover investors based on factors such as industry, stage, and investment focus.",
+    heroTitle: "Verified 3,000+ Angel & VC Directory with Direct Contact Intelligence",
+    heroDescription: "Stop hunting through outdated spreadsheets and dead LinkedIn messages. The Founding Legals Investor Directory connects early-stage founders with verified angel investors, micro-VCs, family offices, and institutional venture funds actively investing in India and Southeast Asia.",
     heroImage: "/startup-start-hero.png",
-    featuresTitle: "Find relevant investors faster",
+    featuresTitle: "Everything you need to run an effective capital raise",
     features: [
       {
-        title: "Investor discovery",
-        description: "Explore a structured network of investors and funds.",
+        title: "3,000+ Verified Investor Profiles",
+        description: "Browse active angel investors, syndicate leads, and venture funds with verified thesis details, past portfolio investments, and check sizes.",
         iconName: "Search"
       },
       {
-        title: "Smart filtering",
-        description: "Narrow your search by sector, stage, and other relevant criteria.",
+        title: "Multi-Factor Stage & Sector Filters",
+        description: "Filter instantly by investment stage (Pre-Seed, Seed, Pre-Series A), sector focus (Fintech, SaaS, AI, D2C, Healthtech), and geographic mandate.",
         iconName: "Eye"
       },
       {
-        title: "Investor information",
-        description: "Understand an investor's focus before starting the conversation.",
+        title: "Cheque Size & Lead Investor Tags",
+        description: "Identify whether an investor leads rounds or writes angel cheques (₹10L to ₹5Cr+), complete with preferred round structures and instruments.",
         iconName: "Building2"
       },
       {
-        title: "Fundraising workspace",
-        description: "Keep your investor outreach and follow-ups more organised.",
+        title: "Outreach & Pipeline Tracking Workspace",
+        description: "Track investor conversations, pipeline stages (Contacted, Pitch Scheduled, Due Diligence, Term Sheet), and follow-up reminders in one place.",
         iconName: "Presentation"
       }
     ],
-    benefitsTitle: "Spend less time searching",
+    benefitsTitle: "Transform fundraising from random cold emails into a systematic pipeline",
     benefits: [
-      "Instead of working through scattered lists and random contacts, build a more focused investor pipeline."
+      "Target High-Conviction Matches. Stop wasting pitch meetings with funds whose investment thesis, check size, or stage parameters do not match your round.",
+      "Direct & Verified Decision-Maker Contacts. Access partner-level and investment committee emails without jumping through gatekeepers or third-party brokers.",
+      "Integrated Round Closing. When an investor commits, seamlessly transition into our Instant Investment and legal documentation modules to close the round without delay."
     ],
-    ctaTitle: "Start your fundraising journey",
-    ctaDescription: "Find relevant investors and manage your outreach from one place. Plans from ₹658",
-    ctaButtonText: "Explore Investors →"
+    ctaTitle: "Access verified investors actively deploying capital",
+    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans from ₹658/month.",
+    ctaButtonText: "Explore Investor Directory →"
   },
   {
     title: "Marketplace",
     slug: "marketplace",
     heroCategory: "Compliance",
-    heroTitle: "The Tools and Experts Your Startup Needs.",
-    heroDescription: "Building a startup often means finding dozens of tools, services, and specialists. Founding Legals Marketplace brings useful startup software, offers, and professional services together in one place.",
+    heroTitle: "Over ₹15 Lakhs in Startup Software Perks & Vetted Expert Services",
+    heroDescription: "Building a startup shouldn't require paying full retail price for essential software or risking your business on unvetted service providers. Founding Legals Marketplace unlocks curated cloud credits, SaaS discounts, and pre-negotiated partner services.",
     heroImage: "/startup-compliance-hero.png",
-    featuresTitle: "Find what your business needs",
+    featuresTitle: "Everything to accelerate your growth stack",
     features: [
       {
-        title: "Startup tools & offers",
-        description: "Discover useful products and services available to growing businesses.",
+        title: "Curated Cloud & SaaS Deals",
+        description: "Claim verified credits on AWS, Google Cloud, Stripe, HubSpot, Notion, and Mixpanel negotiated exclusively for our founders.",
         iconName: "Zap"
       },
       {
-        title: "Software benefits",
-        description: "Find relevant tools and startup-friendly offers in one place.",
+        title: "Vetted Professional Services",
+        description: "Connect with pre-screened fractional CFOs, growth marketing specialists, and patent attorneys at negotiated member rates.",
         iconName: "Coins"
       },
       {
-        title: "Professional services",
-        description: "Connect with service providers across legal, finance, compliance, and business support.",
+        title: "Integrated Partner Workflows",
+        description: "Activate partner integrations directly from your Founding Legals dashboard without redundant onboarding forms.",
         iconName: "Briefcase"
       },
       {
-        title: "One founder workspace",
-        description: "Discover useful resources without jumping between multiple platforms.",
+        title: "Founder Stack Recommendations",
+        description: "Discover battle-tested software stacks categorized by company stage, industry vertical, and operational needs.",
         iconName: "Building2"
       }
     ],
-    benefitsTitle: "Build smarter without adding unnecessary complexity",
+    benefitsTitle: "Preserve early capital while deploying best-in-class software",
     benefits: [
-      "From essential software to professional support, Marketplace helps founders find the resources they need as they grow."
+      "Massive Capital Savings. Save up to ₹15 Lakhs in essential software expenses during your first 18 months of company building.",
+      "Vetted Quality Assurance. Every tool and partner in our marketplace is thoroughly vetted for startup compatibility and enterprise reliability.",
+      "Single Founder Hub. Discover, activate, and manage your software perks and specialist engagements from one central workspace."
     ],
-    ctaTitle: "Get more from your startup ecosystem",
-    ctaDescription: "Plans from ₹658",
+    ctaTitle: "Unlock founder perks and partner discounts",
+    ctaDescription: "Included in the Founding Legals Pre-Seed Plan. Plans from ₹658/month.",
     ctaButtonText: "Explore Marketplace →"
   }
 ];
