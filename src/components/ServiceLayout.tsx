@@ -150,23 +150,23 @@ function getProcess(service: ServicePattern) {
     return [
       {
         n: "01",
-        title: "1-Click Workspace Setup",
-        desc: `Activate your ${service.title} module instantly from your Founding Legals dashboard with zero complex IT installation.`,
+        title: "Set Up Your Workspace",
+        desc: `Activate your ${service.title} workspace on Founding Legals in minutes with zero technical setup.`,
       },
       {
         n: "02",
-        title: "Add Data & Team Members",
-        desc: "Invite your co-founders, team leads, or stakeholders with granular role permissions and import existing records seamlessly.",
+        title: "Bring Your Team & Records In",
+        desc: "Add your co-founders or team members with role-based permissions and organize your business records.",
       },
       {
         n: "03",
-        title: "Automate Core Workflows",
-        desc: "Run day-to-day operations with automated calculations, digital document generation, and built-in regulatory guardrails.",
+        title: "Run Day-to-Day Operations",
+        desc: "Manage workflows smoothly with pre-vetted legal templates, automated calculations, and guided founder workflows.",
       },
       {
         n: "04",
-        title: "Audit-Ready Governance & Exports",
-        desc: "All activities, contracts, and financial logs are securely stored in your vault and exportable to CSV or PDF at any time.",
+        title: "Always Audit & Due-Diligence Ready",
+        desc: "Every contract, record, and transaction is securely stored in your Founding Legals vault for instant export.",
       },
     ];
   }
@@ -200,20 +200,20 @@ function getFaqs(service: ServicePattern) {
   if (PRODUCT_TOOL_SLUGS.has(service.slug)) {
     return [
       {
-        q: `Who can access ${service.title} on our founding team?`,
-        a: "Founding Legals supports collaborative multi-user access. You can invite your co-founders, HR managers, accountants, or team leads with role-based permissions to view, edit, or manage records securely.",
+        q: `How does Founding Legals help me manage ${service.title}?`,
+        a: `Founding Legals combines legal structure with practical software. Instead of juggling loose spreadsheets, WhatsApp messages, or expensive hourly advisors, you can manage ${service.title.toLowerCase()} directly within a centralized, easy-to-use workspace.`,
       },
       {
         q: `Is ${service.title} included in the Founding Legals Pre-Seed plan?`,
-        a: "Yes. All 8 core founder platform tools — including Client Management, Team Operations, Automated Monthly Payroll, Schemes & Grants Finder, and 3,000+ Investor Directory — are bundled into the Pre-Seed plan starting at ₹658/month.",
+        a: "Yes. All 8 core founder platform tools — including Client Management, Team Operations, Payroll Management, Essential Startup Approach, and the 3,000+ Investor Directory — are bundled into the Pre-Seed plan starting at ₹658/month.",
       },
       {
-        q: "How does this tool connect with the rest of my startup operations?",
-        a: "All Founding Legals modules are natively integrated. Your client contracts link to invoicing, employee agreements connect directly to payroll, and compliance events automatically populate your founder dashboard.",
+        q: "Can my co-founders and team members use this together?",
+        a: "Yes. Founding Legals supports collaborative access. You can invite your co-founders, team leads, or staff with role-based permissions so everyone works from the same source of truth.",
       },
       {
-        q: "Can I export my data, reports, and records anytime?",
-        a: "Yes. You maintain 100% ownership of your business data. You can export structured reports, invoices, team records, and legal agreements to CSV, Excel, or PDF whenever needed.",
+        q: "Can I export our company data and documents whenever I need them?",
+        a: "Yes, at any time. You have complete ownership of all your data. You can export contracts, invoices, payslips, and compliance records in standard PDF, CSV, or Excel formats whenever required.",
       },
     ];
   }
@@ -275,7 +275,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
               {/* Category badge */}
               <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-olive-50 border border-olive-200 rounded-lg text-olive-700 text-[11px] font-bold uppercase tracking-widest mb-7">
                 <FileText className="w-3.5 h-3.5" />
-                {isProductTool ? `For Founders · ${service.heroCategory || "Start"}` : service.heroCategory || "FoundingLegals Service"}
+                {isProductTool ? "For Founders · Founding Legals" : service.heroCategory || "FoundingLegals Service"}
               </div>
 
               <h1 className="text-[38px] sm:text-[50px] lg:text-[58px] font-medium text-[#2b2723] leading-[1.08] tracking-[-0.02em] font-serif mb-6">
@@ -292,14 +292,14 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                     href="/start"
                     className="inline-flex items-center gap-2 px-8 py-4 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md hover:shadow-lg hover:scale-[1.01]"
                   >
-                    Get Started with Pre-Seed Plan
+                    Get Started with Founding Legals
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                   <Link
                     href="/pricing"
                     className="inline-flex items-center gap-2 px-7 py-4 bg-white hover:bg-[#F6F4F0] text-[#2b2723] text-[14px] font-medium rounded-full border border-[#E5E1D6] transition-all shadow-sm"
                   >
-                    View Pricing (₹658/mo)
+                    View Platform Plans
                   </Link>
                 </div>
               ) : (
@@ -323,10 +323,10 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
               {/* Trust indicators */}
               {isProductTool ? (
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[12px] text-[#6b6965]">
-                  <span className="flex items-center gap-2"><Rocket className="w-3.5 h-3.5 text-[#5A7338]" /> Unified Founder OS</span>
-                  <span className="flex items-center gap-2"><Users className="w-3.5 h-3.5 text-[#5A7338]" /> 1–5 team seats included</span>
-                  <span className="flex items-center gap-2"><Zap className="w-3.5 h-3.5 text-[#5A7338]" /> Instant setup · No IT needed</span>
-                  <span className="flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5 text-[#5A7338]" /> Bank-grade 256-bit security</span>
+                  <span className="flex items-center gap-2"><Rocket className="w-3.5 h-3.5 text-[#5A7338]" /> Built for Indian Startups</span>
+                  <span className="flex items-center gap-2"><Users className="w-3.5 h-3.5 text-[#5A7338]" /> 1–5 Team Seats Included</span>
+                  <span className="flex items-center gap-2"><Zap className="w-3.5 h-3.5 text-[#5A7338]" /> Instant Setup · No IT Required</span>
+                  <span className="flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5 text-[#5A7338]" /> 256-bit Encrypted Cloud Vault</span>
                 </div>
               ) : (
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[12px] text-[#6b6965]">
@@ -345,7 +345,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                 
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#5A7338] text-white text-[11px] font-bold uppercase tracking-wider mb-3 shadow-xs">
                   <Zap className="w-3 h-3 text-amber-300" />
-                  <span>Pre-Seed Platform Plan</span>
+                  <span>Founding Legals Founder Plan</span>
                 </div>
 
                 <div className="flex items-baseline gap-2 mb-1">
@@ -355,25 +355,25 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                 <div className="text-[11.5px] text-[#5A7338] font-bold mb-3">Save 34% with annual billing (₹7,890/year)</div>
 
                 <p className="text-[13px] text-[#6b6965] font-light leading-relaxed mb-6">
-                  Includes full access to {service.title} plus all 7 other essential founder tools bundled in one unified workspace.
+                  Get full access to {service.title} and the complete Founding Legals operational suite for your team.
                 </p>
 
                 <div className="space-y-3 pt-6 border-t border-[#F0EDE6] mb-8">
                   <div className="flex items-center gap-3 text-[13px] text-[#3a3732]">
                     <Check className="w-4 h-4 text-[#5A7338] shrink-0" />
-                    <span>Complete {service.title} module access</span>
+                    <span>Full access to {service.title}</span>
                   </div>
                   <div className="flex items-center gap-3 text-[13px] text-[#3a3732]">
                     <Check className="w-4 h-4 text-[#5A7338] shrink-0" />
-                    <span>Collaborative workspace for 1–5 team members</span>
+                    <span>Complete 8-tool founder platform suite</span>
                   </div>
                   <div className="flex items-center gap-3 text-[13px] text-[#3a3732]">
                     <Check className="w-4 h-4 text-[#5A7338] shrink-0" />
-                    <span>25 monthly workflow credits pool included</span>
+                    <span>Collaborative workspace for up to 5 team members</span>
                   </div>
                   <div className="flex items-center gap-3 text-[13px] text-[#3a3732]">
                     <Check className="w-4 h-4 text-[#5A7338] shrink-0" />
-                    <span>Encrypted document vault & cloud backup</span>
+                    <span>Encrypted document storage & data export</span>
                   </div>
                 </div>
 
@@ -381,7 +381,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                   href="/start"
                   className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13.5px] font-bold rounded-full transition-all shadow-md hover:shadow-lg"
                 >
-                  Start with Pre-Seed Plan
+                  Get Started with Founding Legals
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -443,7 +443,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
             </h2>
             <p className="text-[15px] text-[#6b6965] font-light max-w-xl mx-auto">
               {isProductTool
-                ? "Purpose-built founder software designed to streamline operations, eliminate administrative overhead, and keep your startup audit-ready."
+                ? "Designed by Founding Legals to simplify your day-to-day operations, remove administrative friction, and keep your business audit-ready."
                 : "Every service is CA-executed from start to finish — not outsourced to a software form or an unqualified operator."}
             </p>
           </div>
@@ -536,13 +536,13 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
             <div className="text-center mb-10">
               <span className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#5A7338]/10 border border-[#5A7338]/20 rounded-full text-[#5A7338] text-[11px] font-bold uppercase tracking-widest mb-4">
                 <Zap className="w-3.5 h-3.5" />
-                Simple Founder Subscription
+                Founding Legals Membership
               </span>
               <h2 className="font-serif text-[32px] sm:text-[40px] font-medium text-[#2b2723] mb-3">
-                One Plan. All 8 Founder Tools Included.
+                One Connected Platform. Everything Included.
               </h2>
               <p className="text-[15px] text-[#6b6965] font-light max-w-lg mx-auto">
-                Get complete access to {service.title} and our full operational suite without purchasing multiple disjointed SaaS tools.
+                Access {service.title} along with our entire founder suite under one simple, transparent subscription.
               </p>
             </div>
 
@@ -553,13 +553,13 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-8 border-b border-[#E5E1D6]">
                 <div>
                   <span className="inline-block px-3 py-1 bg-olive-50 border border-olive-200 text-[#5A7338] text-[11px] font-bold rounded-md uppercase tracking-wider mb-3">
-                    Pre-Seed Membership
+                    Founding Legals Pre-Seed Plan
                   </span>
                   <h3 className="text-[24px] font-serif font-bold text-[#2b2723]">
-                    {service.title} & Founder OS Suite
+                    {service.title} & Founder Suite
                   </h3>
                   <p className="text-[14px] text-[#6b6965] font-light mt-1">
-                    Everything early-stage founders need to run and scale operations from day one.
+                    Everything founders need to start, run, and scale operations with legal clarity.
                   </p>
                 </div>
 
@@ -578,37 +578,37 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                   <div className="w-5 h-5 rounded-full bg-[#5A7338]/10 flex items-center justify-center shrink-0">
                     <Check className="w-3 h-3 text-[#5A7338]" />
                   </div>
-                  <span className="text-[13.5px] text-[#3a3732]">Complete {service.title} Platform Access</span>
+                  <span className="text-[13.5px] text-[#3a3732]">Full access to {service.title}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-[#5A7338]/10 flex items-center justify-center shrink-0">
                     <Check className="w-3 h-3 text-[#5A7338]" />
                   </div>
-                  <span className="text-[13.5px] text-[#3a3732]">5 Team Member Seats Included</span>
+                  <span className="text-[13.5px] text-[#3a3732]">Collaborative access for 1–5 team members</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-[#5A7338]/10 flex items-center justify-center shrink-0">
                     <Check className="w-3 h-3 text-[#5A7338]" />
                   </div>
-                  <span className="text-[13.5px] text-[#3a3732]">Automated Workflows & Digital Signatures</span>
+                  <span className="text-[13.5px] text-[#3a3732]">Pre-vetted legal contracts, templates & workflows</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-[#5A7338]/10 flex items-center justify-center shrink-0">
                     <Check className="w-3 h-3 text-[#5A7338]" />
                   </div>
-                  <span className="text-[13.5px] text-[#3a3732]">1-Click Data Export to CSV, PDF & Excel</span>
+                  <span className="text-[13.5px] text-[#3a3732]">Export your data, reports, and records anytime</span>
                 </div>
               </div>
 
               <div className="pt-6 border-t border-[#F0EDE6] flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="text-[12px] text-[#6b6965] font-light">
-                  No long-term lock-in. Cancel or upgrade your platform tier anytime with zero penalty.
+                  Simple monthly or annual billing. Cancel or adjust your plan anytime with zero friction.
                 </div>
                 <Link
                   href="/start"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md shrink-0"
                 >
-                  Get Started with Pre-Seed Plan
+                  Get Started with Founding Legals
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -834,18 +834,26 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
       <section className="py-24 px-6 sm:px-12 lg:px-24 bg-[#FAF9F6] border-t border-[#E5E1D6]">
         <div className="max-w-4xl mx-auto text-center">
           <div className="text-[11px] font-extrabold uppercase tracking-widest text-[#5A7338] mb-5">
-            {isProductTool ? "Scale Your Operations" : "Ready to get started?"}
+            {isProductTool ? "Built for Founders" : "Ready to get started?"}
           </div>
           <h2 className="font-serif text-[32px] sm:text-[44px] font-medium text-[#2b2723] leading-[1.1] mb-5">
-            {service.heroTitle}
-            <br />
-            <span className="text-[#5A7338] italic">
-              {isProductTool ? "All included in your founder subscription." : "at 50% of market rate."}
-            </span>
+            {isProductTool ? (
+              <>
+                Build Your Startup on Founding Legals.
+                <br />
+                <span className="text-[#5A7338] italic">Everything you need in one connected place.</span>
+              </>
+            ) : (
+              <>
+                {service.heroTitle}
+                <br />
+                <span className="text-[#5A7338] italic">at 50% of market rate.</span>
+              </>
+            )}
           </h2>
           <p className="text-[16px] text-[#6b6965] font-light max-w-xl mx-auto mb-10">
             {isProductTool
-              ? "Starting at ₹658 a month. Full access to all 8 founder tools, multi-seat workspace, and audit-ready governance."
+              ? "Starting at ₹658 a month. Full access to our founder suite, team workspace, pre-vetted legal workflows, and permanent document vault."
               : "₹658 a month. CA-managed execution. One login for every legal and compliance service your startup needs."}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -853,14 +861,14 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
               href="/start"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[15px] font-bold rounded-full transition-all shadow-md"
             >
-              {isProductTool ? "Get Started with Pre-Seed Plan" : "Get Started"}
+              {isProductTool ? "Get Started with Founding Legals" : "Get Started"}
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href={isProductTool ? "/pricing" : "/services"}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-[#F6F4F0] text-[#2b2723] text-[15px] font-medium rounded-full border border-[#E5E1D6] transition-all shadow-sm"
             >
-              {isProductTool ? "View All Founder Plans" : "Browse all services"}
+              {isProductTool ? "Explore Platform Plans" : "Browse all services"}
             </Link>
           </div>
         </div>
