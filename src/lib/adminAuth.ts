@@ -1,10 +1,6 @@
 import crypto from "crypto";
 import { cookies } from "next/headers";
 
-const ADMIN_SECRET =
-  process.env.ADMIN_SESSION_SECRET ||
-  "fl_super_admin_secret_key_2026_foundinglegals_sec_hash";
-
 export const COOKIE_NAME = "fl_admin_token";
 
 export interface AdminSession {
@@ -13,8 +9,32 @@ export interface AdminSession {
   exp: number; // Unix timestamp ms
 }
 
+// Runtime secret fallback: if ADMIN_SESSION_SECRET is omitted from environment variables,
+// generate a secure in-memory random secret rather than hardcoding a static token.
+let runtimeFallbackSecret: string | null = null;
+function getAdminSecret(): string {
+  if (process.env.ADMIN_SESSION_SECRET) {
+    return process.env.ADMIN_SESSION_SECRET;
+  }
+  if (!runtimeFallbackSecret) {
+    runtimeFallbackSecret = crypto.randomBytes(32).toString("hex");
+  }
+  return runtimeFallbackSecret;
+}
+
 /**
- * Validates admin credentials against environment variables and registered admin credentials
+ * Constant-time string comparison using SHA-256 digests to prevent timing attacks.
+ */
+function secureCompare(a: string, b: string): boolean {
+  if (!a || !b) return false;
+  const hashA = crypto.createHash("sha256").update(a).digest();
+  const hashB = crypto.createHash("sha256").update(b).digest();
+  return crypto.timingSafeEqual(hashA, hashB);
+}
+
+/**
+ * Validates admin credentials strictly against environment variables.
+ * NO passwords or credentials are hardcoded in the codebase.
  */
 export function verifyAdminCredentials(inputEmail: string, inputPass: string): { valid: boolean; email: string } {
   const cleanEmail = (inputEmail || "").trim().toLowerCase();
@@ -24,27 +44,43 @@ export function verifyAdminCredentials(inputEmail: string, inputPass: string): {
     return { valid: false, email: "" };
   }
 
-  // 1. Check custom environment variables (trimmed)
-  const envEmail = (process.env.SUPER_ADMIN_EMAIL || "").trim().toLowerCase();
-  const envPass = (process.env.SUPER_ADMIN_PASSWORD || "").trim();
+  // 1. Primary Super Admin credentials from environment variables
+  const envEmail1 = (process.env.SUPER_ADMIN_EMAIL || "").trim().toLowerCase();
+  const envPass1 = (process.env.SUPER_ADMIN_PASSWORD || "").trim();
 
-  if (envEmail && envPass && cleanEmail === envEmail && cleanPass === envPass) {
-    return { valid: true, email: envEmail };
+  if (envEmail1 && envPass1) {
+    if (cleanEmail === envEmail1 && secureCompare(cleanPass, envPass1)) {
+      return { valid: true, email: envEmail1 };
+    }
   }
 
-  // 2. Primary Super Admin credentials
-  if (cleanEmail === "info@foundinglegals.com" && cleanPass === "Arvya2025") {
-    return { valid: true, email: "info@foundinglegals.com" };
+  // 2. Secondary / Backup Super Admin credentials (optional via env)
+  const envEmail2 = (process.env.ADMIN_EMAIL_2 || process.env.ADMIN_BACKUP_EMAIL || "").trim().toLowerCase();
+  const envPass2 = (process.env.ADMIN_PASSWORD_2 || process.env.ADMIN_BACKUP_PASSWORD || "").trim();
+
+  if (envEmail2 && envPass2) {
+    if (cleanEmail === envEmail2 && secureCompare(cleanPass, envPass2)) {
+      return { valid: true, email: envEmail2 };
+    }
   }
 
-  // 3. Fallback admin credentials
-  if (cleanEmail === "koppanapavansai@gmail.com" && cleanPass === "Arvya2025") {
-    return { valid: true, email: "koppanapavansai@gmail.com" };
-  }
-
-  // 4. System backup
-  if (cleanEmail === "admin@foundinglegals.com" && cleanPass === "FoundingLegals@2026") {
-    return { valid: true, email: "admin@foundinglegals.com" };
+  // 3. Optional JSON configuration for team admin users (ADMIN_USERS='[{"email":"...","password":"..."}]')
+  const adminUsersJson = process.env.ADMIN_USERS;
+  if (adminUsersJson) {
+    try {
+      const parsed = JSON.parse(adminUsersJson);
+      if (Array.isArray(parsed)) {
+        for (const u of parsed) {
+          const uEmail = (u?.email || "").trim().toLowerCase();
+          const uPass = (u?.password || "").trim();
+          if (uEmail && uPass && cleanEmail === uEmail && secureCompare(cleanPass, uPass)) {
+            return { valid: true, email: uEmail };
+          }
+        }
+      }
+    } catch {
+      // Ignore malformed JSON in environment configuration
+    }
   }
 
   return { valid: false, email: "" };
@@ -54,9 +90,10 @@ export function verifyAdminCredentials(inputEmail: string, inputPass: string): {
  * Signs a session payload using HMAC-SHA256
  */
 export function signSession(session: AdminSession): string {
+  const secret = getAdminSecret();
   const data = Buffer.from(JSON.stringify(session)).toString("base64url");
   const signature = crypto
-    .createHmac("sha256", ADMIN_SECRET)
+    .createHmac("sha256", secret)
     .update(data)
     .digest("base64url");
   return `${data}.${signature}`;
@@ -70,8 +107,9 @@ export function verifySession(token: string): AdminSession | null {
     const [data, signature] = token.split(".");
     if (!data || !signature) return null;
 
+    const secret = getAdminSecret();
     const expectedSig = crypto
-      .createHmac("sha256", ADMIN_SECRET)
+      .createHmac("sha256", secret)
       .update(data)
       .digest("base64url");
 
