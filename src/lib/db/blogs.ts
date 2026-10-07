@@ -1,8 +1,9 @@
 import os from "os";
 import path from "path";
 import crypto from "crypto";
+import { Pool } from "pg";
 
-// Runtime-safe filesystem access
+// Runtime-safe filesystem access for local caching fallback
 function getFs(): typeof import("fs/promises") | null {
   try {
     return eval("require")("fs/promises");
@@ -11,65 +12,131 @@ function getFs(): typeof import("fs/promises") | null {
   }
 }
 
-export interface BlogPost {
-  id: string;
-  title: string;
-  slug: string;
-  excerpt: string;
-  content: string;
-  coverImage?: string;
-  category: string;
-  tags: string[];
-  authorName: string;
-  authorRole: string;
-  authorAvatar?: string;
-  readTime: string;
-  published: boolean;
-  featured: boolean;
-  views: number;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-}
+export * from "@/lib/blogUtils";
+import {
+  BlogPost,
+  CreateBlogPostInput,
+  UpdateBlogPostInput,
+  estimateReadingTime,
+  slugify,
+} from "@/lib/blogUtils";
 
-export interface CreateBlogPostInput {
-  title: string;
-  slug?: string;
-  excerpt: string;
-  content: string;
-  coverImage?: string;
-  category: string;
-  tags?: string[] | string;
-  authorName?: string;
-  authorRole?: string;
-  authorAvatar?: string;
-  readTime?: string;
-  published?: boolean;
-  featured?: boolean;
-}
-
-export interface UpdateBlogPostInput {
-  title?: string;
-  slug?: string;
-  excerpt?: string;
-  content?: string;
-  coverImage?: string;
-  category?: string;
-  tags?: string[] | string;
-  authorName?: string;
-  authorRole?: string;
-  authorAvatar?: string;
-  readTime?: string;
-  published?: boolean;
-  featured?: boolean;
-  views?: number;
-}
-
-// In-memory cache for fast zero-latency access across serverless functions
+// Global in-memory cache and connection pooling across serverless invocations
 declare global {
+  var __fl_pg_pool: Pool | undefined;
   var __fl_blogs_cache: BlogPost[] | undefined;
+  var __fl_blogs_table_ready: boolean | undefined;
 }
 
+/**
+ * Returns singleton PostgreSQL connection pool if DATABASE_URL is configured
+ */
+function getPool(): Pool | null {
+  const rawUrl = (process.env.DATABASE_URL || "").trim();
+  if (!rawUrl) {
+    return null;
+  }
+
+  if (!globalThis.__fl_pg_pool) {
+    // Strip query params like sslmode to avoid strict verify-ca error with self-signed certificate chain
+    const cleanUrl = rawUrl.replace(/[?&]sslmode=[^&]+/, "").replace(/\?$/, "");
+
+    globalThis.__fl_pg_pool = new Pool({
+      connectionString: cleanUrl,
+      ssl: {
+        rejectUnauthorized: false,
+      },
+      max: 10,
+      idleTimeoutMillis: 30000,
+      connectionTimeoutMillis: 8000,
+    });
+
+    globalThis.__fl_pg_pool.on("error", (err) => {
+      console.error("[PostgreSQL Pool Error]:", err);
+    });
+  }
+  return globalThis.__fl_pg_pool;
+}
+
+/**
+ * Auto-initializes PostgreSQL blogs table and indexes if not already created
+ */
+async function ensureDbTable(): Promise<void> {
+  if (globalThis.__fl_blogs_table_ready) return;
+  try {
+    const pool = getPool();
+    if (!pool) return;
+
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS blogs (
+        id VARCHAR(100) PRIMARY KEY,
+        title TEXT NOT NULL,
+        slug VARCHAR(255) UNIQUE NOT NULL,
+        excerpt TEXT,
+        content TEXT NOT NULL,
+        cover_image TEXT,
+        category VARCHAR(100) NOT NULL,
+        tags JSONB DEFAULT '[]'::jsonb,
+        author_name VARCHAR(150) NOT NULL,
+        author_role VARCHAR(150) NOT NULL,
+        author_avatar TEXT,
+        read_time VARCHAR(50),
+        published BOOLEAN DEFAULT true,
+        featured BOOLEAN DEFAULT false,
+        views INTEGER DEFAULT 0,
+        created_at TIMESTAMPTZ DEFAULT NOW(),
+        updated_at TIMESTAMPTZ DEFAULT NOW(),
+        published_at TIMESTAMPTZ
+      );
+      CREATE INDEX IF NOT EXISTS idx_blogs_slug ON blogs(slug);
+      CREATE INDEX IF NOT EXISTS idx_blogs_published ON blogs(published);
+      CREATE INDEX IF NOT EXISTS idx_blogs_featured ON blogs(featured);
+      CREATE INDEX IF NOT EXISTS idx_blogs_created_at ON blogs(created_at DESC);
+    `);
+    globalThis.__fl_blogs_table_ready = true;
+  } catch (err) {
+    console.warn("[PostgreSQL Table Check Warning]:", err);
+  }
+}
+
+/**
+ * Maps a raw PostgreSQL row to the strongly-typed BlogPost domain object
+ */
+function rowToBlogPost(r: any): BlogPost {
+  let tags: string[] = [];
+  if (Array.isArray(r.tags)) {
+    tags = r.tags;
+  } else if (typeof r.tags === "string") {
+    try {
+      tags = JSON.parse(r.tags);
+    } catch {
+      tags = [r.tags];
+    }
+  }
+
+  return {
+    id: r.id,
+    title: r.title,
+    slug: r.slug,
+    excerpt: r.excerpt || "",
+    content: r.content || "",
+    coverImage: r.cover_image || "",
+    category: r.category || "Legal & Compliance",
+    tags: Array.isArray(tags) ? tags : [],
+    authorName: r.author_name || "Founding Legals Legal Desk",
+    authorRole: r.author_role || "Senior Corporate Counsel",
+    authorAvatar: r.author_avatar || "",
+    readTime: r.read_time || "5 min read",
+    published: Boolean(r.published),
+    featured: Boolean(r.featured),
+    views: Number(r.views) || 0,
+    createdAt: r.created_at ? new Date(r.created_at).toISOString() : new Date().toISOString(),
+    updatedAt: r.updated_at ? new Date(r.updated_at).toISOString() : new Date().toISOString(),
+    publishedAt: r.published_at ? new Date(r.published_at).toISOString() : "",
+  };
+}
+
+// ── In-Memory and Local Storage Fallbacks ──
 function getMemoryBlogs(): BlogPost[] | null {
   return globalThis.__fl_blogs_cache || null;
 }
@@ -78,41 +145,10 @@ function setMemoryBlogs(blogs: BlogPost[]) {
   globalThis.__fl_blogs_cache = blogs;
 }
 
-// Storage paths
 const TMP_DATA_DIR = `${os.tmpdir()}/foundinglegals_blogs_data`;
 const TMP_DATA_FILE = `${TMP_DATA_DIR}/blogs.json`;
-
 let writeQueue = Promise.resolve();
 
-/**
- * Calculates estimated reading time in minutes based on average 200 words per minute
- */
-export function estimateReadingTime(content: string = ""): string {
-  const words = content.trim().split(/\s+/).filter(Boolean).length;
-  const minutes = Math.max(1, Math.ceil(words / 200));
-  return `${minutes} min read`;
-}
-
-/**
- * Generates an SEO-friendly URL slug from a title string
- */
-export function slugify(text: string): string {
-  return text
-    .toString()
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(/&/g, "-and-") // Replace & with 'and'
-    .replace(/[^\w\-]+/g, "") // Remove all non-word chars except -
-    .replace(/\-\-+/g, "-") // Replace multiple - with single -
-    .replace(/^-+/, "") // Trim - from start
-    .replace(/-+$/, ""); // Trim - from end
-}
-
-/**
- * Resolves the candidate paths for reading/writing blogs JSON.
- * We prioritize project's src/data/blogs.json, falling back to os.tmpdir()
- */
 function getStoragePaths() {
   const projectDataFile = path.join(process.cwd(), "src", "data", "blogs.json");
   return {
@@ -122,52 +158,35 @@ function getStoragePaths() {
   };
 }
 
-/**
- * Ensures data file exists with initial seeds
- */
-async function ensureDataFile(): Promise<void> {
-  const f = getFs();
-  if (!f) return;
+async function saveLocalFileCache(blogs: BlogPost[]): Promise<void> {
+  writeQueue = writeQueue.then(async () => {
+    const f = getFs();
+    if (!f) return;
 
-  const { projectFile, tmpDir, tmpFile } = getStoragePaths();
+    const { projectFile, tmpDir, tmpFile } = getStoragePaths();
+    const jsonString = JSON.stringify(blogs, null, 2);
 
-  // 1. Check if projectFile exists
-  let seedData: BlogPost[] = [];
-  try {
-    const raw = await f.readFile(projectFile, "utf-8");
-    const parsed = JSON.parse(raw);
-    if (Array.isArray(parsed) && parsed.length > 0) {
-      seedData = parsed;
-    }
-  } catch {
-    // If not readable yet from projectFile
-  }
-
-  // 2. Ensure tmp directory exists
-  try {
-    await f.mkdir(tmpDir, { recursive: true });
     try {
-      await f.access(tmpFile);
-    } catch {
-      // File doesn't exist in tmp, write seed data
-      await f.writeFile(tmpFile, JSON.stringify(seedData, null, 2), "utf-8");
-    }
-  } catch (err) {
-    console.error("Failed to initialize tmp blogs storage:", err);
-  }
+      const tempProject = `${projectFile}.${crypto.randomUUID()}.tmp`;
+      await f.writeFile(tempProject, jsonString, "utf-8");
+      await f.rename(tempProject, projectFile);
+    } catch {}
+
+    try {
+      await f.mkdir(tmpDir, { recursive: true });
+      const tempTmp = `${tmpFile}.${crypto.randomUUID()}.tmp`;
+      await f.writeFile(tempTmp, jsonString, "utf-8");
+      await f.rename(tempTmp, tmpFile);
+    } catch {}
+  });
+
+  await writeQueue;
 }
 
-/**
- * Fetches all blog posts (both published and drafts)
- */
-export async function getAllBlogs(): Promise<BlogPost[]> {
+async function getFallbackBlogs(): Promise<BlogPost[]> {
   const f = getFs();
-  await ensureDataFile();
-
   if (f) {
     const { projectFile, tmpFile } = getStoragePaths();
-
-    // Check project data file first for real-time changes
     try {
       const raw = await f.readFile(projectFile, "utf-8");
       const parsed = JSON.parse(raw);
@@ -177,7 +196,6 @@ export async function getAllBlogs(): Promise<BlogPost[]> {
       }
     } catch {}
 
-    // Fall back to tmpFile
     try {
       const raw = await f.readFile(tmpFile, "utf-8");
       const parsed = JSON.parse(raw);
@@ -196,46 +214,54 @@ export async function getAllBlogs(): Promise<BlogPost[]> {
   return [];
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// CRUD OPERATIONS
+// ─────────────────────────────────────────────────────────────────────────────
+
 /**
- * Persists all blogs to storage atomically
+ * Fetches all blog posts (both published and drafts)
  */
-export async function saveAllBlogs(blogs: BlogPost[]): Promise<void> {
-  setMemoryBlogs(blogs);
-
-  writeQueue = writeQueue.then(async () => {
-    const f = getFs();
-    if (!f) return;
-
-    const { projectFile, tmpDir, tmpFile } = getStoragePaths();
-    const jsonString = JSON.stringify(blogs, null, 2);
-
-    // Try writing to projectFile (works in local dev and Node runtime)
-    try {
-      const tempProject = `${projectFile}.${crypto.randomUUID()}.tmp`;
-      await f.writeFile(tempProject, jsonString, "utf-8");
-      await f.rename(tempProject, projectFile);
-    } catch {
-      // Read-only environment like Vercel serverless lambda
+export async function getAllBlogs(): Promise<BlogPost[]> {
+  try {
+    await ensureDbTable();
+    const pool = getPool();
+    if (pool) {
+      const result = await pool.query(`
+        SELECT * FROM blogs 
+        ORDER BY CASE WHEN published_at IS NOT NULL THEN published_at ELSE created_at END DESC
+      `);
+      const posts = result.rows.map(rowToBlogPost);
+      setMemoryBlogs(posts);
+      saveLocalFileCache(posts).catch(() => {});
+      return posts;
     }
+  } catch (err) {
+    console.error("[PostgreSQL getAllBlogs error, using fallback]:", err);
+  }
 
-    // Always also write to tmpFile
-    try {
-      await f.mkdir(tmpDir, { recursive: true });
-      const tempTmp = `${tmpFile}.${crypto.randomUUID()}.tmp`;
-      await f.writeFile(tempTmp, jsonString, "utf-8");
-      await f.rename(tempTmp, tmpFile);
-    } catch (err) {
-      console.error("Error writing blogs tmp file:", err);
-    }
-  });
-
-  await writeQueue;
+  return getFallbackBlogs();
 }
 
 /**
  * Fetches only published blog posts for public /blogs
  */
 export async function getPublishedBlogs(): Promise<BlogPost[]> {
+  try {
+    await ensureDbTable();
+    const pool = getPool();
+    if (pool) {
+      const result = await pool.query(`
+        SELECT * FROM blogs 
+        WHERE published = true 
+        ORDER BY CASE WHEN published_at IS NOT NULL THEN published_at ELSE created_at END DESC
+      `);
+      const posts = result.rows.map(rowToBlogPost);
+      return posts;
+    }
+  } catch (err) {
+    console.error("[PostgreSQL getPublishedBlogs error, using fallback]:", err);
+  }
+
   const all = await getAllBlogs();
   return all
     .filter((b) => b.published === true)
@@ -246,8 +272,25 @@ export async function getPublishedBlogs(): Promise<BlogPost[]> {
  * Retrieves a single published blog post by its URL slug
  */
 export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
-  const all = await getAllBlogs();
   const normalized = slug.trim().toLowerCase();
+  try {
+    await ensureDbTable();
+    const pool = getPool();
+    if (pool) {
+      const result = await pool.query(
+        `SELECT * FROM blogs WHERE LOWER(slug) = LOWER($1) AND published = true LIMIT 1`,
+        [normalized]
+      );
+      if (result.rows.length > 0) {
+        return rowToBlogPost(result.rows[0]);
+      }
+      return null;
+    }
+  } catch (err) {
+    console.error("[PostgreSQL getBlogBySlug error, using fallback]:", err);
+  }
+
+  const all = await getAllBlogs();
   return all.find((b) => b.slug.toLowerCase() === normalized && b.published === true) || null;
 }
 
@@ -255,8 +298,25 @@ export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
  * Retrieves any blog post by its slug (including drafts for admin preview)
  */
 export async function getBlogBySlugAny(slug: string): Promise<BlogPost | null> {
-  const all = await getAllBlogs();
   const normalized = slug.trim().toLowerCase();
+  try {
+    await ensureDbTable();
+    const pool = getPool();
+    if (pool) {
+      const result = await pool.query(
+        `SELECT * FROM blogs WHERE LOWER(slug) = LOWER($1) LIMIT 1`,
+        [normalized]
+      );
+      if (result.rows.length > 0) {
+        return rowToBlogPost(result.rows[0]);
+      }
+      return null;
+    }
+  } catch (err) {
+    console.error("[PostgreSQL getBlogBySlugAny error, using fallback]:", err);
+  }
+
+  const all = await getAllBlogs();
   return all.find((b) => b.slug.toLowerCase() === normalized) || null;
 }
 
@@ -264,6 +324,23 @@ export async function getBlogBySlugAny(slug: string): Promise<BlogPost | null> {
  * Retrieves a blog post by its unique ID
  */
 export async function getBlogById(id: string): Promise<BlogPost | null> {
+  try {
+    await ensureDbTable();
+    const pool = getPool();
+    if (pool) {
+      const result = await pool.query(
+        `SELECT * FROM blogs WHERE id = $1 LIMIT 1`,
+        [id]
+      );
+      if (result.rows.length > 0) {
+        return rowToBlogPost(result.rows[0]);
+      }
+      return null;
+    }
+  } catch (err) {
+    console.error("[PostgreSQL getBlogById error, using fallback]:", err);
+  }
+
   const all = await getAllBlogs();
   return all.find((b) => b.id === id) || null;
 }
@@ -272,18 +349,25 @@ export async function getBlogById(id: string): Promise<BlogPost | null> {
  * Increments view count for a published blog post
  */
 export async function incrementBlogViews(slug: string): Promise<void> {
-  const all = await getAllBlogs();
-  const blog = all.find((b) => b.slug === slug);
-  if (blog) {
-    blog.views = (blog.views || 0) + 1;
-    await saveAllBlogs(all);
+  try {
+    await ensureDbTable();
+    const pool = getPool();
+    if (pool) {
+      await pool.query(
+        `UPDATE blogs SET views = COALESCE(views, 0) + 1 WHERE LOWER(slug) = LOWER($1)`,
+        [slug.trim().toLowerCase()]
+      );
+    }
+  } catch (err) {
+    console.error("[PostgreSQL incrementBlogViews error]:", err);
   }
 }
 
 /**
- * Creates a brand new blog post and stores it immediately
+ * Creates a brand new blog post and stores it in PostgreSQL immediately
  */
 export async function createBlogPost(input: CreateBlogPostInput): Promise<BlogPost> {
+  await ensureDbTable();
   const all = await getAllBlogs();
 
   const now = new Date().toISOString();
@@ -313,9 +397,68 @@ export async function createBlogPost(input: CreateBlogPostInput): Promise<BlogPo
 
   const readTime = input.readTime?.trim() || estimateReadingTime(input.content);
   const isPublished = input.published ?? true;
+  const isFeatured = Boolean(input.featured);
+  const newId = `blog_${Date.now()}_${crypto.randomBytes(4).toString("hex")}`;
+  const publishedAt = isPublished ? now : null;
 
-  const newPost: BlogPost = {
-    id: `blog_${Date.now()}_${crypto.randomBytes(4).toString("hex")}`,
+  try {
+    const pool = getPool();
+    if (pool) {
+      if (isFeatured) {
+        await pool.query(`UPDATE blogs SET featured = false`);
+      }
+
+      const insertResult = await pool.query(
+        `INSERT INTO blogs (
+          id, title, slug, excerpt, content, cover_image, category, tags,
+          author_name, author_role, author_avatar, read_time, published,
+          featured, views, created_at, updated_at, published_at
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)
+        RETURNING *`,
+        [
+          newId,
+          input.title.trim(),
+          finalSlug,
+          input.excerpt.trim(),
+          input.content.trim(),
+          input.coverImage?.trim() ||
+            "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+          input.category.trim() || "Legal & Compliance",
+          JSON.stringify(tagList.length > 0 ? tagList : ["Startup", "Legal"]),
+          input.authorName?.trim() || "Founding Legals Legal Desk",
+          input.authorRole?.trim() || "Super Admin",
+          input.authorAvatar?.trim() ||
+            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+          readTime,
+          isPublished,
+          isFeatured,
+          0,
+          now,
+          now,
+          publishedAt,
+        ]
+      );
+
+      const createdPost = rowToBlogPost(insertResult.rows[0]);
+
+      // Update memory and fallback cache
+      const currentMemory = getMemoryBlogs() || [];
+      if (createdPost.featured) {
+        currentMemory.forEach((b) => (b.featured = false));
+      }
+      currentMemory.unshift(createdPost);
+      setMemoryBlogs(currentMemory);
+      saveLocalFileCache(currentMemory).catch(() => {});
+
+      return createdPost;
+    }
+  } catch (dbErr) {
+    console.error("[PostgreSQL createBlogPost error, using local fallback]:", dbErr);
+  }
+
+  // Fallback in-memory / local creation if DB fails
+  const fallbackPost: BlogPost = {
+    id: newId,
     title: input.title.trim(),
     slug: finalSlug,
     excerpt: input.excerpt.trim(),
@@ -332,49 +475,42 @@ export async function createBlogPost(input: CreateBlogPostInput): Promise<BlogPo
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
     readTime,
     published: isPublished,
-    featured: input.featured ?? false,
+    featured: isFeatured,
     views: 0,
     createdAt: now,
     updatedAt: now,
-    publishedAt: isPublished ? now : "",
+    publishedAt: publishedAt || "",
   };
 
-  // If newly created post is marked featured, un-feature others if desired or keep
-  if (newPost.featured) {
-    all.forEach((b) => {
-      b.featured = false;
-    });
+  if (fallbackPost.featured) {
+    all.forEach((b) => (b.featured = false));
   }
-
-  all.unshift(newPost); // Add to beginning so newest post is first
-  await saveAllBlogs(all);
-
-  return newPost;
+  all.unshift(fallbackPost);
+  setMemoryBlogs(all);
+  saveLocalFileCache(all).catch(() => {});
+  return fallbackPost;
 }
 
 /**
- * Updates an existing blog post
+ * Updates an existing blog post in PostgreSQL
  */
 export async function updateBlogPost(
   id: string,
   input: UpdateBlogPostInput
 ): Promise<BlogPost | null> {
-  const all = await getAllBlogs();
-  const index = all.findIndex((b) => b.id === id);
+  await ensureDbTable();
+  const existing = await getBlogById(id);
+  if (!existing) return null;
 
-  if (index === -1) {
-    return null;
-  }
-
-  const existing = all[index];
   const now = new Date().toISOString();
 
-  // If slug was updated, ensure uniqueness
+  // If slug was changed, ensure uniqueness
   let finalSlug = existing.slug;
   if (input.slug && input.slug.trim() !== existing.slug) {
     const candidate = slugify(input.slug);
     let checkSlug = candidate;
     let counter = 1;
+    const all = await getAllBlogs();
     while (all.some((b) => b.id !== id && b.slug === checkSlug)) {
       checkSlug = `${candidate}-${counter}`;
       counter++;
@@ -406,11 +542,83 @@ export async function updateBlogPost(
     publishedAt = now;
   }
 
-  if (input.featured) {
-    all.forEach((b) => {
-      b.featured = false;
-    });
+  const isFeatured = input.featured !== undefined ? input.featured : existing.featured;
+
+  try {
+    const pool = getPool();
+    if (pool) {
+      if (isFeatured) {
+        await pool.query(`UPDATE blogs SET featured = false WHERE id != $1`, [id]);
+      }
+
+      const updateResult = await pool.query(
+        `UPDATE blogs SET
+          title = $1,
+          slug = $2,
+          excerpt = $3,
+          content = $4,
+          cover_image = $5,
+          category = $6,
+          tags = $7,
+          author_name = $8,
+          author_role = $9,
+          author_avatar = $10,
+          read_time = $11,
+          published = $12,
+          featured = $13,
+          views = $14,
+          updated_at = $15,
+          published_at = $16
+        WHERE id = $17
+        RETURNING *`,
+        [
+          input.title !== undefined ? input.title.trim() : existing.title,
+          finalSlug,
+          input.excerpt !== undefined ? input.excerpt.trim() : existing.excerpt,
+          updatedContent,
+          input.coverImage !== undefined ? input.coverImage.trim() : existing.coverImage,
+          input.category !== undefined ? input.category.trim() : existing.category,
+          JSON.stringify(tagList),
+          input.authorName !== undefined ? input.authorName.trim() : existing.authorName,
+          input.authorRole !== undefined ? input.authorRole.trim() : existing.authorRole,
+          input.authorAvatar !== undefined ? input.authorAvatar.trim() : existing.authorAvatar,
+          updatedReadTime,
+          willBePublished,
+          isFeatured,
+          input.views !== undefined ? input.views : existing.views,
+          now,
+          publishedAt ? new Date(publishedAt).toISOString() : null,
+          id,
+        ]
+      );
+
+      if (updateResult.rows.length === 0) return null;
+      const updatedPost = rowToBlogPost(updateResult.rows[0]);
+
+      // Update memory & local cache
+      const mem = getMemoryBlogs();
+      if (mem) {
+        const idx = mem.findIndex((b) => b.id === id);
+        if (idx !== -1) {
+          if (updatedPost.featured) {
+            mem.forEach((b) => (b.featured = false));
+          }
+          mem[idx] = updatedPost;
+          setMemoryBlogs(mem);
+          saveLocalFileCache(mem).catch(() => {});
+        }
+      }
+
+      return updatedPost;
+    }
+  } catch (err) {
+    console.error("[PostgreSQL updateBlogPost error, using fallback]:", err);
   }
+
+  // Fallback local update
+  const all = await getAllBlogs();
+  const index = all.findIndex((b) => b.id === id);
+  if (index === -1) return null;
 
   const updatedBlog: BlogPost = {
     ...existing,
@@ -426,31 +634,48 @@ export async function updateBlogPost(
     authorAvatar: input.authorAvatar !== undefined ? input.authorAvatar.trim() : existing.authorAvatar,
     readTime: updatedReadTime,
     published: willBePublished,
-    featured: input.featured !== undefined ? input.featured : existing.featured,
+    featured: isFeatured,
     views: input.views !== undefined ? input.views : existing.views,
     updatedAt: now,
-    publishedAt,
+    publishedAt: publishedAt || "",
   };
 
+  if (updatedBlog.featured) {
+    all.forEach((b) => (b.featured = false));
+  }
   all[index] = updatedBlog;
-  await saveAllBlogs(all);
-
+  setMemoryBlogs(all);
+  saveLocalFileCache(all).catch(() => {});
   return updatedBlog;
 }
 
 /**
- * Deletes a blog post by ID
+ * Deletes a blog post by ID from PostgreSQL
  */
 export async function deleteBlogPost(id: string): Promise<boolean> {
+  try {
+    await ensureDbTable();
+    const pool = getPool();
+    if (pool) {
+      const result = await pool.query(`DELETE FROM blogs WHERE id = $1`, [id]);
+      const mem = getMemoryBlogs();
+      if (mem) {
+        const filtered = mem.filter((b) => b.id !== id);
+        setMemoryBlogs(filtered);
+        saveLocalFileCache(filtered).catch(() => {});
+      }
+      return (result.rowCount ?? 0) > 0;
+    }
+  } catch (err) {
+    console.error("[PostgreSQL deleteBlogPost error, using fallback]:", err);
+  }
+
   const all = await getAllBlogs();
   const initialLength = all.length;
   const filtered = all.filter((b) => b.id !== id);
-
-  if (filtered.length === initialLength) {
-    return false;
-  }
-
-  await saveAllBlogs(filtered);
+  if (filtered.length === initialLength) return false;
+  setMemoryBlogs(filtered);
+  saveLocalFileCache(filtered).catch(() => {});
   return true;
 }
 
@@ -458,9 +683,7 @@ export async function deleteBlogPost(id: string): Promise<boolean> {
  * Toggles published status
  */
 export async function togglePublishStatus(id: string): Promise<BlogPost | null> {
-  const all = await getAllBlogs();
-  const blog = all.find((b) => b.id === id);
+  const blog = await getBlogById(id);
   if (!blog) return null;
-
   return updateBlogPost(id, { published: !blog.published });
 }

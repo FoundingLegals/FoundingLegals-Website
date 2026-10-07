@@ -11,7 +11,7 @@ import {
   SlidersHorizontal,
   FileText,
 } from "lucide-react";
-import { BlogPost } from "@/lib/db/blogs";
+import type { BlogPost } from "@/lib/blogUtils";
 
 interface Props {
   initialBlogs: BlogPost[];

@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: ["pg"],
   images: {
     formats: ["image/avif", "image/webp"],
   },
@@ -33,6 +34,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        
         source: "/services/find-investors",
         destination: "/services/LegalServices/pitch-to-investors",
         permanent: true,

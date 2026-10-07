@@ -46,7 +46,8 @@ import {
   Share2,
   Camera,
 } from "lucide-react";
-import { BlogPost, estimateReadingTime, slugify } from "@/lib/db/blogs";
+import type { BlogPost } from "@/lib/blogUtils";
+import { estimateReadingTime, slugify } from "@/lib/blogUtils";
 
 const CATEGORY_OPTIONS = [
   "Company Incorporation",
