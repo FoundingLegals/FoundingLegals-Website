@@ -17,6 +17,7 @@ const footerLinks = {
     { name: "Partner CAs", href: "#partners" },
     { name: "Careers", href: "/company/careers" },
     { name: "Client Feedback", href: "/client-feedback" },
+    { name: "Blogs & Insights", href: "/blogs" },
   ],
   Legal: [
     { name: "Privacy Policy", href: "/privacy-policy" },

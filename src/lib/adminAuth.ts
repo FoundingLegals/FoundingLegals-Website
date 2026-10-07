@@ -9,18 +9,29 @@ export interface AdminSession {
   exp: number; // Unix timestamp ms
 }
 
-// Runtime secret fallback: if ADMIN_SESSION_SECRET is omitted from environment variables,
-// generate a secure in-memory random secret rather than hardcoding a static token.
-let runtimeFallbackSecret: string | null = null;
+/**
+ * Resolves a stable, deterministic HMAC secret for admin session tokens.
+ * Uses ADMIN_SESSION_SECRET from environment if available.
+ * If omitted, derives a deterministic, persistent secret from the Super Admin credentials
+ * and a static salt, ensuring HMAC signatures remain completely valid across
+ * all Node worker processes, dev compilations, and server restarts.
+ */
 function getAdminSecret(): string {
-  if (process.env.ADMIN_SESSION_SECRET) {
-    return process.env.ADMIN_SESSION_SECRET;
+  const envSecret = (process.env.ADMIN_SESSION_SECRET || "").trim();
+  if (envSecret.length > 0) {
+    return envSecret;
   }
-  if (!runtimeFallbackSecret) {
-    runtimeFallbackSecret = crypto.randomBytes(32).toString("hex");
-  }
-  return runtimeFallbackSecret;
+
+  // Stable deterministic fallback so tokens NEVER invalidate randomly across workers/restarts
+  const adminEmail = (process.env.SUPER_ADMIN_EMAIL || "info@foundinglegals.com").trim().toLowerCase();
+  const adminPass = (process.env.SUPER_ADMIN_PASSWORD || "Arvya2025").trim();
+  const pepper = "founding_legals_session_signing_salt_v1";
+  return crypto
+    .createHash("sha256")
+    .update(`${adminEmail}:${adminPass}:${pepper}`)
+    .digest("hex");
 }
+
 
 /**
  * Constant-time string comparison using SHA-256 digests to prevent timing attacks.

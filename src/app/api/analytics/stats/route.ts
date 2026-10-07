@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
   try {
-    const allLogs: VisitorLog[] = await getRecentVisitorLogs(2000);
+    const allLogs: VisitorLog[] = await getRecentVisitorLogs(50000);
 
     // Filter out internal admin and test fixtures — ONLY genuine public visits
     const logs = allLogs.filter(
@@ -24,6 +24,18 @@ export async function GET(req: NextRequest) {
     const pageCountMap = new Map<string, { views: number; visitors: Set<string> }>();
     const cityCountMap = new Map<string, { count: number; region: string; country: string }>();
     const referrerMap = new Map<string, number>();
+
+    // Compute distinct dates in historical records with count per date
+    const dateCountsMap = new Map<string, number>();
+    for (const log of logs) {
+      const dKey = log.date || (log.timestamp ? log.timestamp.split("T")[0] : "");
+      if (dKey) {
+        dateCountsMap.set(dKey, (dateCountsMap.get(dKey) || 0) + 1);
+      }
+    }
+    const availableDates = Array.from(dateCountsMap.entries())
+      .map(([date, count]) => ({ date, count }))
+      .sort((a, b) => b.date.localeCompare(a.date));
 
     // 7-day date buckets for the timeline (strictly computed from real logs)
     const dateMap = new Map<string, { views: number; visitors: Set<string> }>();
@@ -70,7 +82,7 @@ export async function GET(req: NextRequest) {
       referrerMap.set(refClean, (referrerMap.get(refClean) || 0) + 1);
 
       // Group into real daily timeline
-      const logDate = (log.timestamp ? log.timestamp.split("T")[0] : null) || now.toISOString().split("T")[0];
+      const logDate = (log.date || (log.timestamp ? log.timestamp.split("T")[0] : null)) || now.toISOString().split("T")[0];
       if (dateMap.has(logDate)) {
         const dEntry = dateMap.get(logDate)!;
         dEntry.views += 1;
@@ -153,7 +165,9 @@ export async function GET(req: NextRequest) {
       topPages,
       topCities,
       topReferrers,
-      recentLogs: logs.slice(0, 40),
+      availableDates,
+      totalLogs: logs.length,
+      recentLogs: logs, // Complete real-time history accessible to client
     });
   } catch (error) {
     console.error("Error computing real stats:", error);

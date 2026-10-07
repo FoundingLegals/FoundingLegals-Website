@@ -12,6 +12,7 @@ import {
   User,
   Radio,
   ClipboardList,
+  PenSquare,
 } from "lucide-react";
 
 export default function AdminLayout({
@@ -33,24 +34,47 @@ export default function AdminLayout({
       return;
     }
 
-    // Check session
-    fetch("/api/admin/session")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.authenticated) {
-          setAuthenticated(true);
-          if (data.user?.email) setAdminEmail(data.user.email);
-        } else {
+    // If already authenticated, do not re-run or interrupt navigation between admin tabs
+    if (authenticated) {
+      setChecking(false);
+      return;
+    }
+
+    let isMounted = true;
+
+    // Check session on initial load
+    fetch("/api/admin/session", {
+      credentials: "include",
+      cache: "no-store",
+    })
+      .then(async (res) => {
+        if (!isMounted) return;
+        if (res.status === 200) {
+          const data = await res.json().catch(() => ({}));
+          if (data.authenticated) {
+            setAuthenticated(true);
+            if (data.user?.email) setAdminEmail(data.user.email);
+            return;
+          }
+        }
+        if (res.status === 401) {
           router.replace("/admin/login");
         }
       })
-      .catch(() => {
-        router.replace("/admin/login");
+      .catch((err) => {
+        // Network or aborted fetch: do not kick out active user
+        console.warn("Admin session check notice:", err);
       })
       .finally(() => {
-        setChecking(false);
+        if (isMounted) {
+          setChecking(false);
+        }
       });
-  }, [pathname, isLoginPage, router]);
+
+    return () => {
+      isMounted = false;
+    };
+  }, [isLoginPage, authenticated, router]);
 
   const handleLogout = async () => {
     try {
@@ -139,6 +163,18 @@ export default function AdminLayout({
                 <span>Client Feedback</span>
               </Link>
 
+              <Link
+                href="/admin/blog"
+                className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2 transition-all ${
+                  pathname.startsWith("/admin/blog")
+                    ? "bg-[#48532B] text-white shadow-xs"
+                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                }`}
+              >
+                <PenSquare className="w-3.5 h-3.5" />
+                <span>Blog Studio</span>
+              </Link>
+
               <a
                 href="/api/analytics/export"
                 download
@@ -220,6 +256,16 @@ export default function AdminLayout({
           }`}
         >
           Client Feedback
+        </Link>
+        <Link
+          href="/admin/blog"
+          className={`px-3 py-1.5 rounded-lg whitespace-nowrap font-bold ${
+            pathname.startsWith("/admin/blog")
+              ? "bg-[#48532B] text-white"
+              : "text-gray-600 bg-gray-100"
+          }`}
+        >
+          Blog Studio
         </Link>
         <a
           href="/api/analytics/export"

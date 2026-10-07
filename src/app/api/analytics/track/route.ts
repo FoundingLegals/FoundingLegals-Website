@@ -174,9 +174,13 @@ export async function POST(req: NextRequest) {
     const location = await resolveLocation(req, ip);
     const istTime = getFormattedIstTime();
 
+    const nowIso = new Date().toISOString();
+    const dateKey = nowIso.split("T")[0];
+
     const logEntry: VisitorLog = {
       id: crypto.randomUUID(),
-      timestamp: new Date().toISOString(),
+      timestamp: nowIso,
+      date: dateKey,
       timestamp_ist: istTime,
       city: location.city,
       region: location.region,

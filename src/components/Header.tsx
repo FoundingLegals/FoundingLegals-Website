@@ -577,6 +577,13 @@ export default function Header() {
             >
               Contact
             </a>
+            <a
+              href="/blogs"
+              onMouseEnter={closeAllDropdowns}
+              className="px-3 py-[6px] text-[12.5px] font-semibold text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
+            >
+              Blogs
+            </a>
 
             {/* 4. Company Dropdown */}
             <div
@@ -862,6 +869,13 @@ export default function Header() {
                 className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Contact
+              </a>
+              <a
+                href="/blogs"
+                onClick={() => setIsMobileOpen(false)}
+                className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
+              >
+                Blogs
               </a>
             </div>
 

@@ -1,8 +1,8 @@
 import os from "os";
+import path from "path";
 import crypto from "crypto";
 
-// Runtime-safe filesystem access to prevent Next.js / Turbopack NFT build tracer
-// from statically tracing the entire repository root into serverless function bundles.
+// Runtime-safe filesystem access to prevent Next.js build tracer from statically tracing root
 function getFs(): typeof import("fs/promises") | null {
   try {
     return eval("require")("fs/promises");
@@ -39,69 +39,141 @@ export interface PublicTestimonial {
   companyLogoUrl: string | null;
 }
 
-// Initial pre-seeded verified testimonial from existing website
-const INITIAL_SEEDS: ClientFeedback[] = [
-  {
-    id: "seed-dhaval-trivedi",
-    full_name: "Dhaval Trivedi",
-    company_name: "TBS Magazine",
-    designation: "Founder",
-    email: "dhaval@tbsmagazine.com",
-    service_id: "company-incorporation",
-    service_name: "Company Incorporation",
-    rating: 5,
-    feedback:
-      "We would recommend Founding Legals incorporation services to any founder without a second doubt. The process was beyond efficient and show's Founding Legals founder's commitment and vision to truly help entrepreneur's and early stage startups to get them incorporated with ease. If you wanna get incorporated, pick them. Thanks for the help Founding Legals.",
-    photo_url: null,
-    company_logo_url: null,
-    permission_to_publish: true,
-    created_at: "2025-10-15T10:00:00.000Z",
-    updated_at: "2025-10-15T10:00:00.000Z",
-  },
-];
+// In-memory global store to guarantee instantaneous access & real-time sync across invocations
+declare global {
+  var __fl_feedback_cache: ClientFeedback[] | undefined;
+}
+
+function getMemoryFeedback(): ClientFeedback[] | null {
+  return globalThis.__fl_feedback_cache || null;
+}
+
+function setMemoryFeedback(feedbacks: ClientFeedback[]) {
+  globalThis.__fl_feedback_cache = feedbacks;
+}
 
 const DATA_DIR = `${os.tmpdir()}/foundinglegals_feedback_data`;
 const DATA_FILE = `${DATA_DIR}/feedback.json`;
 
-// Simple write queue to serialize file writes and prevent race conditions
+function getStoragePaths() {
+  const projectFile = path.join(process.cwd(), "src", "data", "feedback.json");
+  return {
+    projectFile,
+    tmpDir: DATA_DIR,
+    tmpFile: DATA_FILE,
+  };
+}
+
 let writeQueue = Promise.resolve();
 
 async function ensureDataFile(): Promise<void> {
   const f = getFs();
   if (!f) return;
+
+  const { projectFile, tmpDir, tmpFile } = getStoragePaths();
+
   try {
-    await f.mkdir(DATA_DIR, { recursive: true });
+    await f.mkdir(tmpDir, { recursive: true });
+
+    // Check if tmpFile exists; if not, populate from projectFile
     try {
-      await f.access(DATA_FILE);
+      await f.access(tmpFile);
     } catch {
-      // File doesn't exist yet, seed it with INITIAL_SEEDS
-      await f.writeFile(DATA_FILE, JSON.stringify(INITIAL_SEEDS, null, 2), "utf-8");
+      let initial: ClientFeedback[] = [];
+      try {
+        const raw = await f.readFile(projectFile, "utf-8");
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) initial = parsed;
+      } catch {}
+
+      await f.writeFile(tmpFile, JSON.stringify(initial, null, 2), "utf-8");
     }
   } catch (err) {
-    console.error("Failed to initialize feedback data file:", err);
+    console.error("Failed to initialize feedback storage:", err);
   }
 }
 
 export async function getAllFeedback(): Promise<ClientFeedback[]> {
+  const mem = getMemoryFeedback();
+  if (mem && mem.length > 0) {
+    return mem;
+  }
+
   await ensureDataFile();
   const f = getFs();
-  if (!f) return INITIAL_SEEDS;
-  try {
-    const raw = await f.readFile(DATA_FILE, "utf-8");
-    const data = JSON.parse(raw);
-    if (Array.isArray(data)) {
-      return data;
-    }
-    return INITIAL_SEEDS;
-  } catch (err) {
-    console.error("Error reading feedback data:", err);
-    return INITIAL_SEEDS;
+  const { projectFile, tmpFile } = getStoragePaths();
+
+  let results: ClientFeedback[] = [];
+
+  if (f) {
+    // 1. Try tmpFile first (most up-to-date with recent live submissions)
+    try {
+      const raw = await f.readFile(tmpFile, "utf-8");
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        results = parsed;
+      }
+    } catch {}
+
+    // 2. If tmp was empty or had fewer entries, merge with projectFile
+    try {
+      const rawProject = await f.readFile(projectFile, "utf-8");
+      const parsedProject = JSON.parse(rawProject);
+      if (Array.isArray(parsedProject) && parsedProject.length > 0) {
+        // Merge without duplicates by id or (email + created_at)
+        const existingIds = new Set(results.map((r) => r.id));
+        for (const item of parsedProject) {
+          if (!existingIds.has(item.id)) {
+            results.push(item);
+            existingIds.add(item.id);
+          }
+        }
+      }
+    } catch {}
   }
+
+  // Sort descending by created_at (newest first)
+  results.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+
+  setMemoryFeedback(results);
+  return results;
+}
+
+export async function saveAllFeedback(feedbacks: ClientFeedback[]): Promise<void> {
+  // Sort descending by created_at
+  feedbacks.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+  setMemoryFeedback(feedbacks);
+
+  writeQueue = writeQueue.then(async () => {
+    const f = getFs();
+    if (!f) return;
+
+    const { projectFile, tmpDir, tmpFile } = getStoragePaths();
+    const jsonStr = JSON.stringify(feedbacks, null, 2);
+
+    // Write to projectFile if writable (local dev and server)
+    try {
+      const tmpP = `${projectFile}.${crypto.randomUUID()}.tmp`;
+      await f.writeFile(tmpP, jsonStr, "utf-8");
+      await f.rename(tmpP, projectFile);
+    } catch {}
+
+    // Write to tmpFile (works everywhere including serverless)
+    try {
+      await f.mkdir(tmpDir, { recursive: true });
+      const tmpT = `${tmpFile}.${crypto.randomUUID()}.tmp`;
+      await f.writeFile(tmpT, jsonStr, "utf-8");
+      await f.rename(tmpT, tmpFile);
+    } catch (err) {
+      console.error("Error writing feedback to tmp:", err);
+    }
+  });
+
+  await writeQueue;
 }
 
 /**
  * Returns ONLY feedback that has explicit publication consent.
- * Strips emails, internal IDs, and sensitive metadata.
  */
 export async function getPublicTestimonials(): Promise<PublicTestimonial[]> {
   const all = await getAllFeedback();
@@ -113,30 +185,36 @@ export async function getPublicTestimonials(): Promise<PublicTestimonial[]> {
       companyName: item.company_name,
       designation: item.designation,
       rating: item.rating,
-      testimonial: item.feedback, // original verbatim text
+      testimonial: item.feedback,
       photoUrl: item.photo_url,
       companyLogoUrl: item.company_logo_url,
     }));
 }
 
 /**
- * Checks for accidental duplicate submission within the last 24 hours
+ * Checks for duplicate submissions within a short window (60s) to prevent double clicks,
+ * but allows intentional repeat testing.
  */
 export async function isDuplicateSubmission(
   email: string,
-  serviceId: string
+  serviceId: string,
+  feedbackText: string = ""
 ): Promise<boolean> {
   const all = await getAllFeedback();
   const normalizedEmail = email.trim().toLowerCase();
-  const oneDayAgo = Date.now() - 24 * 60 * 60 * 1000;
+  const sixtySecondsAgo = Date.now() - 60 * 1000;
 
   return all.some((item) => {
     if (
       item.email.trim().toLowerCase() === normalizedEmail &&
-      item.service_id === serviceId
+      (item.service_id === serviceId || !serviceId)
     ) {
       const submissionTime = new Date(item.created_at).getTime();
-      return submissionTime > oneDayAgo;
+      if (submissionTime > sixtySecondsAgo) {
+        if (!feedbackText || item.feedback === feedbackText) {
+          return true;
+        }
+      }
     }
     return false;
   });
@@ -153,7 +231,7 @@ export type CreateFeedbackInput = Omit<
 export async function createFeedback(
   input: CreateFeedbackInput
 ): Promise<ClientFeedback> {
-  await ensureDataFile();
+  const all = await getAllFeedback();
 
   const now = new Date().toISOString();
   const record: ClientFeedback = {
@@ -163,17 +241,38 @@ export async function createFeedback(
     updated_at: now,
   };
 
-  // Queue write to prevent concurrency issues
-  writeQueue = writeQueue.then(async () => {
-    const f = getFs();
-    if (!f) return;
-    const all = await getAllFeedback();
-    all.unshift(record); // Prepend new submission so newest appears first
-    const tempFile = `${DATA_FILE}.${crypto.randomUUID()}.tmp`;
-    await f.writeFile(tempFile, JSON.stringify(all, null, 2), "utf-8");
-    await f.rename(tempFile, DATA_FILE);
-  });
+  all.unshift(record); // Prepend so newest is at the top immediately
+  await saveAllFeedback(all);
 
-  await writeQueue;
   return record;
+}
+
+/**
+ * Deletes a feedback item by ID
+ */
+export async function deleteFeedback(id: string): Promise<boolean> {
+  const all = await getAllFeedback();
+  const filtered = all.filter((item) => item.id !== id);
+
+  if (filtered.length === all.length) {
+    return false;
+  }
+
+  await saveAllFeedback(filtered);
+  return true;
+}
+
+/**
+ * Toggles publication consent status for an existing review
+ */
+export async function togglePublishConsent(id: string): Promise<ClientFeedback | null> {
+  const all = await getAllFeedback();
+  const item = all.find((f) => f.id === id);
+  if (!item) return null;
+
+  item.permission_to_publish = !item.permission_to_publish;
+  item.updated_at = new Date().toISOString();
+
+  await saveAllFeedback(all);
+  return item;
 }

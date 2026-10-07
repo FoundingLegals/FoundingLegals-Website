@@ -13,6 +13,18 @@ import {
   Clock,
   Sparkles,
   Trash2,
+  Calendar,
+  Search,
+  ChevronLeft,
+  ChevronRight,
+  Filter,
+  Copy,
+  Check,
+  Pause,
+  Play,
+  Activity,
+  Layers,
+  ArrowUpDown,
 } from "lucide-react";
 
 interface TimelinePoint {
@@ -47,13 +59,17 @@ interface ReferrerStat {
 
 interface VisitorEntry {
   id: string;
+  timestamp: string;
+  date?: string;
   timestamp_ist: string;
   visitor_id?: string;
   session_id?: string;
   city: string;
   region: string;
   country: string;
+  country_code?: string;
   page: string;
+  page_title?: string;
   device: string;
   browser: string;
   os: string;
@@ -73,6 +89,8 @@ interface StatsData {
   topPages: PageStat[];
   topCities: CityStat[];
   topReferrers: ReferrerStat[];
+  availableDates?: { date: string; count: number }[];
+  totalLogs?: number;
   recentLogs: VisitorEntry[];
 }
 
@@ -84,6 +102,19 @@ export default function AnalyticsDashboardPage() {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
   const [clearing, setClearing] = useState(false);
+
+  // ── Search, Date Filter, and Pagination States ──
+  const [logSearchQuery, setLogSearchQuery] = useState("");
+  const [selectedDateFilter, setSelectedDateFilter] = useState<string>("all"); // "all" | "today" | "yesterday" | "last7" | specific date "YYYY-MM-DD"
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState<number>(25);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const handleCopy = (text: string, id: string) => {
+    navigator.clipboard?.writeText(text);
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
 
   const fetchStats = useCallback(async () => {
     try {
@@ -122,7 +153,7 @@ export default function AnalyticsDashboardPage() {
     fetchStats();
   }, [fetchStats]);
 
-  // Auto-refresh interval
+  // Auto-refresh interval (Real-time 6 seconds polling)
   useEffect(() => {
     if (!autoRefresh) return;
     const interval = setInterval(() => {
@@ -199,465 +230,827 @@ export default function AnalyticsDashboardPage() {
     return { solidPath: sPath, dashedPath: dPath, areaPath: aPath };
   }, [points, padTop, chartH]);
 
-  const activePoint = hoverIndex !== null && points[hoverIndex] ? points[hoverIndex] : null;
+  // ── Date Filters and Historical Search Logic ──
+  const todayStr = useMemo(() => new Date().toISOString().split("T")[0], []);
+  const yesterdayStr = useMemo(() => {
+    const d = new Date();
+    d.setDate(d.getDate() - 1);
+    return d.toISOString().split("T")[0];
+  }, []);
+
+  const totalLogsAll = data?.recentLogs || [];
+
+  // Filter logs by date and search query
+  const filteredLogs = useMemo(() => {
+    return totalLogsAll.filter((log) => {
+      const logDate = log.date || (log.timestamp ? log.timestamp.split("T")[0] : "");
+
+      // 1. Date selection
+      if (selectedDateFilter === "today") {
+        if (logDate !== todayStr) return false;
+      } else if (selectedDateFilter === "yesterday") {
+        if (logDate !== yesterdayStr) return false;
+      } else if (selectedDateFilter === "last7") {
+        const d = new Date(log.timestamp || logDate);
+        const diffDays = (Date.now() - d.getTime()) / (1000 * 60 * 60 * 24);
+        if (diffDays > 7) return false;
+      } else if (selectedDateFilter !== "all") {
+        if (logDate !== selectedDateFilter) return false;
+      }
+
+      // 2. Search query
+      if (logSearchQuery.trim()) {
+        const q = logSearchQuery.toLowerCase().trim();
+        const matchPage = (log.page || "").toLowerCase().includes(q);
+        const matchCity = (log.city || "").toLowerCase().includes(q);
+        const matchRegion = (log.region || "").toLowerCase().includes(q);
+        const matchCountry = (log.country || "").toLowerCase().includes(q);
+        const matchIp = (log.ip || "").toLowerCase().includes(q);
+        const matchVisitor = (log.visitor_id || "").toLowerCase().includes(q);
+        const matchDevice = (log.device || "").toLowerCase().includes(q);
+        const matchBrowser = (log.browser || "").toLowerCase().includes(q);
+        const matchReferrer = (log.referrer || "").toLowerCase().includes(q);
+        const matchTime = (log.timestamp_ist || "").toLowerCase().includes(q);
+        return (
+          matchPage ||
+          matchCity ||
+          matchRegion ||
+          matchCountry ||
+          matchIp ||
+          matchVisitor ||
+          matchDevice ||
+          matchBrowser ||
+          matchReferrer ||
+          matchTime
+        );
+      }
+
+      return true;
+    });
+  }, [totalLogsAll, selectedDateFilter, logSearchQuery, todayStr, yesterdayStr]);
+
+  // Counts for quick filter badges
+  const todayCount = useMemo(() => {
+    return totalLogsAll.filter((l) => (l.date || l.timestamp?.split("T")[0]) === todayStr).length;
+  }, [totalLogsAll, todayStr]);
+
+  const yesterdayCount = useMemo(() => {
+    return totalLogsAll.filter((l) => (l.date || l.timestamp?.split("T")[0]) === yesterdayStr).length;
+  }, [totalLogsAll, yesterdayStr]);
+
+  // Pagination calculations
+  const totalPages = useMemo(() => {
+    if (rowsPerPage >= 10000) return 1;
+    return Math.max(Math.ceil(filteredLogs.length / rowsPerPage), 1);
+  }, [filteredLogs.length, rowsPerPage]);
+
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [totalPages, currentPage]);
+
+  const paginatedLogs = useMemo(() => {
+    if (rowsPerPage >= 10000) return filteredLogs;
+    const start = (currentPage - 1) * rowsPerPage;
+    return filteredLogs.slice(start, start + rowsPerPage);
+  }, [filteredLogs, currentPage, rowsPerPage]);
+
+  const startIndex = (currentPage - 1) * rowsPerPage + 1;
+  const endIndex = Math.min(currentPage * rowsPerPage, filteredLogs.length);
 
   return (
-    <div className="bg-[#FAF9F6] text-[#1E1B18] font-sans antialiased min-h-screen pb-24">
-      {/* ── Sub-header: Metadata & Controls ── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div className="min-h-screen bg-[#FAF9F6] text-[#2B2723] font-sans pb-16">
+      {/* ── Header ── */}
+      <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-[#E5E0D8] px-4 sm:px-8 py-3.5 shadow-2xs">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <span className="text-sm font-semibold text-gray-900">founding-legals-website</span>
-            <span className="text-gray-300">·</span>
-            <a
-              href="https://www.foundinglegals.com"
-              target="_blank"
-              rel="noreferrer"
-              className="text-xs font-mono text-gray-500 hover:text-gray-900 flex items-center gap-1 transition-colors"
-            >
-              <span>www.foundinglegals.com</span>
-              <ExternalLink className="w-3 h-3 text-gray-400" />
-            </a>
+            <div className="w-8 h-8 rounded-lg bg-[#48532B] text-white flex items-center justify-center font-bold text-sm shadow-xs">
+              FL
+            </div>
+            <div>
+              <h1 className="text-sm font-bold text-gray-900 tracking-tight flex items-center gap-2">
+                <span>Real-Time Visitor Intelligence</span>
+                <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Live 6s Stream
+                </span>
+              </h1>
+              <p className="text-[11px] text-gray-500">
+                Founding Legals • Verified Traffic Telemetry & Audit Logs
+              </p>
+            </div>
           </div>
 
-          <div className="flex items-center gap-3">
-            {/* Range Indicator */}
-            <div className="bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-xs font-medium text-gray-600 shadow-2xs">
-              Last 7 Days (IST)
-            </div>
-
-            {/* Auto Refresh Toggle */}
+          <div className="flex items-center gap-2.5">
             <button
               onClick={() => setAutoRefresh(!autoRefresh)}
-              className={`text-xs px-3 py-1.5 rounded-lg border font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
                 autoRefresh
-                  ? "bg-[#48532B]/10 border-[#48532B]/20 text-[#48532B]"
-                  : "bg-white border-gray-200 text-gray-500"
+                  ? "bg-emerald-50 text-emerald-800 border-emerald-200 hover:bg-emerald-100"
+                  : "bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200"
               }`}
+              title={autoRefresh ? "Pause real-time auto-refresh" : "Resume 6s auto-refresh"}
             >
-              <Radio className={`w-3.5 h-3.5 ${autoRefresh ? "animate-pulse" : ""}`} />
-              <span>{autoRefresh ? "Live 6s Active" : "Paused"}</span>
+              {autoRefresh ? (
+                <>
+                  <Pause className="w-3 h-3 text-emerald-600" />
+                  <span className="hidden sm:inline">Pause Stream</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-3 h-3 text-gray-600" />
+                  <span className="hidden sm:inline">Resume Stream</span>
+                </>
+              )}
             </button>
 
-            {/* Manual Refresh */}
             <button
-              onClick={() => {
-                setLoading(true);
-                fetchStats();
-              }}
+              onClick={() => fetchStats()}
               disabled={loading}
-              className="p-2 text-gray-600 hover:text-gray-900 bg-white hover:bg-gray-50 rounded-lg border border-gray-200 shadow-2xs transition-colors cursor-pointer"
-              title="Refresh Stats"
+              className="p-1.5 sm:px-3 sm:py-1.5 bg-white border border-gray-200 rounded-xl text-xs font-semibold text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+              title="Manual Refresh"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin text-[#48532B]" : ""}`} />
+              <span className="hidden sm:inline">Sync</span>
             </button>
-
-            {/* CSV Download Link */}
-            <a
-              href="/api/analytics/export"
-              download
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#48532B] hover:bg-[#343D23] text-white text-xs font-bold rounded-lg shadow-2xs transition-colors cursor-pointer"
-            >
-              <Download className="w-3.5 h-3.5" />
-              <span>Download CSV</span>
-            </a>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* ── Main Container: Matching Image 2 (Vercel Analytics Layout) ── */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        {/* Unified Graph Card with Integrated Metric Tabs */}
-        <div className="bg-white rounded-2xl border border-gray-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.05)] overflow-hidden">
-          {/* Top Row: 3 Connected Metric Tabs (Exact Image 2 Blueprint) */}
-          <div className="grid grid-cols-3 border-b border-gray-200 divide-x divide-gray-200 bg-white">
-            {/* Tab 1: Visitors */}
-            <button
-              onClick={() => setActiveTab("visitors")}
-              className={`p-5 text-left transition-all relative cursor-pointer ${
-                activeTab === "visitors"
-                  ? "bg-white"
-                  : "bg-[#FCFBF9] hover:bg-gray-50/80"
-              }`}
-            >
-              <div className="text-xs font-medium text-gray-500 mb-1">Unique Visitors</div>
-              <div className="flex items-baseline gap-2.5">
-                <span className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900">
-                  {data?.stats.uniqueVisitors ?? 0}
-                </span>
-                <span className="text-xs text-gray-400 font-medium">Founders</span>
-              </div>
-              {/* Active Tab Underline Indicator */}
-              {activeTab === "visitors" && (
-                <span className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#1E1B18]" />
-              )}
-            </button>
-
-            {/* Tab 2: Page Views */}
-            <button
-              onClick={() => setActiveTab("views")}
-              className={`p-5 text-left transition-all relative cursor-pointer ${
-                activeTab === "views"
-                  ? "bg-white"
-                  : "bg-[#FCFBF9] hover:bg-gray-50/80"
-              }`}
-            >
-              <div className="text-xs font-medium text-gray-500 mb-1">Total Page Views</div>
-              <div className="flex items-baseline gap-2.5">
-                <span className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900">
-                  {data?.stats.totalViews ?? 0}
-                </span>
-                <span className="text-xs text-gray-400 font-medium">Views</span>
-              </div>
-              {/* Active Tab Underline Indicator */}
-              {activeTab === "views" && (
-                <span className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#1E1B18]" />
-              )}
-            </button>
-
-            {/* Tab 3: Bounce Rate */}
-            <button
-              onClick={() => setActiveTab("bounce")}
-              className={`p-5 text-left transition-all relative cursor-pointer ${
-                activeTab === "bounce"
-                  ? "bg-white"
-                  : "bg-[#FCFBF9] hover:bg-gray-50/80"
-              }`}
-            >
-              <div className="text-xs font-medium text-gray-500 mb-1">Bounce Rate</div>
-              <div className="flex items-baseline gap-2.5">
-                <span className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900">
-                  {data?.stats.bounceRate ?? 0}%
-                </span>
-                <span className="text-xs text-gray-400 font-medium">Single page</span>
-              </div>
-              {/* Active Tab Underline Indicator */}
-              {activeTab === "bounce" && (
-                <span className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#1E1B18]" />
-              )}
-            </button>
+      {/* ── Main Dashboard Body ── */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-8 py-8 space-y-8">
+        
+        {/* ── Top Metric Cards ── */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
+          <div className="bg-white p-4.5 rounded-2xl border border-gray-200/90 shadow-2xs">
+            <div className="flex items-center justify-between text-gray-400">
+              <span className="text-[11px] font-bold uppercase tracking-wider">Total Views</span>
+              <Eye className="w-4 h-4 text-[#48532B]" />
+            </div>
+            <div className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 font-mono">
+              {data?.stats.totalViews ?? "—"}
+            </div>
+            <span className="text-[10px] text-gray-400 mt-0.5 block">Recorded page views</span>
           </div>
 
-          {/* Graph Body (Exact Image 2 Blueprint) */}
-          <div className="p-6 relative">
-            <div className="relative w-full h-[280px]">
-              <svg
-                viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-                className="w-full h-full overflow-visible"
-                preserveAspectRatio="none"
-              >
-                <defs>
-                  {/* Subtle Brand Gradient Fill */}
-                  <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#48532B" stopOpacity="0.16" />
-                    <stop offset="90%" stopColor="#48532B" stopOpacity="0.01" />
-                    <stop offset="100%" stopColor="#48532B" stopOpacity="0.0" />
-                  </linearGradient>
-                </defs>
-
-                {/* Y-Axis Grid Lines & Numerical Labels */}
-                {yTicks.map((val) => {
-                  const y = padTop + chartH - (val / Math.max(maxVal, 1)) * chartH;
-                  return (
-                    <g key={val}>
-                      {/* Left Number Label */}
-                      <text
-                        x={padLeft - 10}
-                        y={y + 4}
-                        textAnchor="end"
-                        className="text-[12px] fill-gray-400 font-sans select-none"
-                      >
-                        {val}
-                      </text>
-                      {/* Horizontal Grid Line */}
-                      <line
-                        x1={padLeft}
-                        y1={y}
-                        x2={svgWidth - padRight}
-                        y2={y}
-                        stroke="#F0EDE8"
-                        strokeWidth="1"
-                      />
-                    </g>
-                  );
-                })}
-
-                {/* Area Gradient Fill */}
-                {areaPath && <path d={areaPath} fill="url(#chartGradient)" />}
-
-                {/* Solid Curve for Past Days */}
-                {solidPath && (
-                  <path
-                    d={solidPath}
-                    fill="none"
-                    stroke="#48532B"
-                    strokeWidth="2.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                )}
-
-                {/* Dashed Line for Today (In-Progress) */}
-                {dashedPath && (
-                  <path
-                    d={dashedPath}
-                    fill="none"
-                    stroke="#48532B"
-                    strokeWidth="2.4"
-                    strokeDasharray="4 4"
-                    strokeLinecap="round"
-                  />
-                )}
-
-                {/* Vertical Hover Tracking Cursor */}
-                {activePoint && (
-                  <g>
-                    <line
-                      x1={activePoint.x}
-                      y1={padTop}
-                      x2={activePoint.x}
-                      y2={padTop + chartH}
-                      stroke="#48532B"
-                      strokeWidth="1"
-                      strokeDasharray="3 3"
-                    />
-                    <circle
-                      cx={activePoint.x}
-                      cy={activePoint.y}
-                      r="5"
-                      fill="#48532B"
-                      stroke="#FFFFFF"
-                      strokeWidth="2.5"
-                    />
-                  </g>
-                )}
-
-                {/* Invisible Hover Hitboxes & X-Axis Date Labels */}
-                {points.map((p, i) => (
-                  <g key={i}>
-                    {/* Date Label on X-Axis */}
-                    <text
-                      x={p.x}
-                      y={svgHeight - 8}
-                      textAnchor="middle"
-                      className={`text-[12px] font-sans select-none ${
-                        hoverIndex === i ? "fill-gray-900 font-bold" : "fill-gray-500"
-                      }`}
-                    >
-                      {p.pt.label}
-                    </text>
-
-                    {/* Wide hit area for hover */}
-                    <rect
-                      x={p.x - chartW / (points.length * 2)}
-                      y={padTop}
-                      width={chartW / points.length}
-                      height={chartH + padBottom}
-                      fill="transparent"
-                      className="cursor-pointer"
-                      onMouseEnter={() => setHoverIndex(i)}
-                      onMouseLeave={() => setHoverIndex(null)}
-                    />
-                  </g>
-                ))}
-              </svg>
-
-              {/* Floating Tooltip */}
-              {activePoint && (
-                <div
-                  className="absolute z-20 bg-gray-900 text-white text-xs px-3 py-1.5 rounded-lg shadow-lg pointer-events-none flex items-center gap-2 transform -translate-x-1/2 -translate-y-full"
-                  style={{
-                    left: `${(activePoint.x / svgWidth) * 100}%`,
-                    top: `${activePoint.y - 12}px`,
-                  }}
-                >
-                  <span className="font-semibold text-gray-300">{activePoint.pt.label}:</span>
-                  <span className="font-bold text-white">
-                    {activePoint.val}{" "}
-                    {activeTab === "visitors"
-                      ? "visitors"
-                      : activeTab === "views"
-                      ? "page views"
-                      : "%"}
-                  </span>
-                  {activePoint.isToday && (
-                    <span className="text-[10px] bg-emerald-500 text-white px-1.5 py-0.2 rounded font-bold">
-                      Live
-                    </span>
-                  )}
-                </div>
-              )}
+          <div className="bg-white p-4.5 rounded-2xl border border-gray-200/90 shadow-2xs">
+            <div className="flex items-center justify-between text-gray-400">
+              <span className="text-[11px] font-bold uppercase tracking-wider">Unique Visitors</span>
+              <Users className="w-4 h-4 text-emerald-600" />
             </div>
+            <div className="text-2xl sm:text-3xl font-bold text-emerald-700 mt-2 font-mono">
+              {data?.stats.uniqueVisitors ?? "—"}
+            </div>
+            <span className="text-[10px] text-emerald-600 mt-0.5 block">Unique visitor UUIDs</span>
+          </div>
+
+          <div className="bg-white p-4.5 rounded-2xl border border-gray-200/90 shadow-2xs">
+            <div className="flex items-center justify-between text-gray-400">
+              <span className="text-[11px] font-bold uppercase tracking-wider">Sessions</span>
+              <Radio className="w-4 h-4 text-blue-600" />
+            </div>
+            <div className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 font-mono">
+              {data?.stats.totalSessions ?? "—"}
+            </div>
+            <span className="text-[10px] text-gray-400 mt-0.5 block">Active session streams</span>
+          </div>
+
+          <div className="bg-white p-4.5 rounded-2xl border border-gray-200/90 shadow-2xs">
+            <div className="flex items-center justify-between text-gray-400">
+              <span className="text-[11px] font-bold uppercase tracking-wider">Bounce Rate</span>
+              <Shield className="w-4 h-4 text-amber-600" />
+            </div>
+            <div className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 font-mono">
+              {data?.stats.bounceRate ?? "0"}%
+            </div>
+            <span className="text-[10px] text-gray-400 mt-0.5 block">Single page sessions</span>
+          </div>
+
+          <div className="bg-white p-4.5 rounded-2xl border border-gray-200/90 shadow-2xs col-span-2 md:col-span-1">
+            <div className="flex items-center justify-between text-gray-400">
+              <span className="text-[11px] font-bold uppercase tracking-wider">Top Location</span>
+              <MapPin className="w-4 h-4 text-rose-600" />
+            </div>
+            <div className="text-base sm:text-lg font-bold text-gray-900 mt-2 truncate">
+              {data?.stats.topCity || "India"}
+            </div>
+            <span className="text-[10px] text-gray-400 mt-0.5 block">Highest engagement city</span>
           </div>
         </div>
 
-        {/* ── Two-Column Breakdown (100% Real Log Calculations) ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Column 1: Pages Visited */}
-          <div className="bg-white rounded-2xl border border-gray-200/90 p-6 shadow-xs">
-            <div className="flex items-center justify-between pb-3 border-b border-gray-100 mb-4">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-gray-500">
-                Pages Visited
-              </h3>
-              <span className="text-xs font-semibold text-gray-400">Views</span>
-            </div>
-
-            <div className="space-y-2.5">
-              {(data?.topPages || []).length > 0 ? (
-                data?.topPages.map((item, i) => (
-                  <div key={i} className="relative group">
-                    <div className="flex items-center justify-between text-xs py-2 px-3 relative z-10">
-                      <span className="font-mono text-gray-800 truncate max-w-[280px] sm:max-w-[360px]">
-                        {item.page}
-                      </span>
-                      <span className="font-bold text-gray-900 shrink-0">{item.views}</span>
-                    </div>
-                    {/* Visual Percentage Bar */}
-                    <div
-                      className="absolute inset-y-0 left-0 bg-[#48532B]/10 rounded-lg -z-0 transition-all"
-                      style={{ width: `${Math.max(item.percentage, 8)}%` }}
-                    />
-                  </div>
-                ))
-              ) : (
-                <p className="text-xs text-gray-400 py-6 text-center">
-                  No public page visits recorded yet today.
-                </p>
-              )}
-            </div>
-          </div>
-
-          {/* Column 2: Places & Cities */}
-          <div className="bg-white rounded-2xl border border-gray-200/90 p-6 shadow-xs">
-            <div className="flex items-center justify-between pb-3 border-b border-gray-100 mb-4">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-gray-500">
-                Places / Cities
-              </h3>
-              <span className="text-xs font-semibold text-gray-400">Visitors</span>
-            </div>
-
-            <div className="space-y-2.5">
-              {(data?.topCities || []).length > 0 ? (
-                data?.topCities.map((item, i) => (
-                  <div key={i} className="relative group">
-                    <div className="flex items-center justify-between text-xs py-2 px-3 relative z-10">
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-3.5 h-3.5 text-[#48532B] shrink-0" />
-                        <span className="font-medium text-gray-800">
-                          {item.city}
-                          {item.region ? `, ${item.region}` : ""}
-                        </span>
-                      </div>
-                      <span className="font-bold text-gray-900 shrink-0">{item.count}</span>
-                    </div>
-                    {/* Visual Percentage Bar */}
-                    <div
-                      className="absolute inset-y-0 left-0 bg-[#48532B]/15 rounded-lg -z-0 transition-all"
-                      style={{ width: `${Math.max(item.percentage, 8)}%` }}
-                    />
-                  </div>
-                ))
-              ) : (
-                <p className="text-xs text-gray-400 py-6 text-center">
-                  No location entries recorded yet today.
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* ── Live Real-Time Feed Table ── */}
-        <div className="bg-white rounded-2xl border border-gray-200/90 overflow-hidden shadow-xs">
-          <div className="p-5 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        {/* ── 7-Day Live Traffic Graph ── */}
+        <div className="bg-white rounded-2xl border border-gray-200/90 p-5 sm:p-7 shadow-xs space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gray-100 pb-4">
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-wider text-gray-700">
-                Live Visitor Stream (Real-Time Feed)
-              </h3>
-              <p className="text-xs text-gray-400 mt-0.5">
-                Every genuine public visitor logged in real time with unique Visitor UUID, IP, and location
+              <h2 className="text-sm font-bold text-gray-900 tracking-tight flex items-center gap-2">
+                <span>7-Day Visitor Trend</span>
+                <span className="text-[11px] font-normal text-gray-400">
+                  (Strictly verified daily counts)
+                </span>
+              </h2>
+              <p className="text-xs text-gray-500 mt-0.5">
+                Dashed marker indicates ongoing live count for today
               </p>
             </div>
 
-            <div className="flex items-center gap-4">
+            {/* Metric Tab Switcher */}
+            <div className="flex items-center gap-1 bg-[#FAF9F6] p-1 rounded-xl border border-gray-200 self-start sm:self-auto">
+              <button
+                onClick={() => setActiveTab("visitors")}
+                className={`px-3 py-1 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+                  activeTab === "visitors"
+                    ? "bg-white text-gray-900 shadow-2xs font-bold"
+                    : "text-gray-500 hover:text-gray-900"
+                }`}
+              >
+                Visitors
+              </button>
+              <button
+                onClick={() => setActiveTab("views")}
+                className={`px-3 py-1 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+                  activeTab === "views"
+                    ? "bg-white text-gray-900 shadow-2xs font-bold"
+                    : "text-gray-500 hover:text-gray-900"
+                }`}
+              >
+                Page Views
+              </button>
+            </div>
+          </div>
+
+          {/* SVG Line Curve Chart */}
+          <div className="relative w-full overflow-x-auto">
+            <svg
+              viewBox={`0 0 ${svgWidth} ${svgHeight}`}
+              className="w-full h-auto min-w-[600px] select-none"
+            >
+              <defs>
+                <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#48532B" stopOpacity="0.25" />
+                  <stop offset="100%" stopColor="#48532B" stopOpacity="0.0" />
+                </linearGradient>
+              </defs>
+
+              {/* Y Axis Grid Lines */}
+              {yTicks.map((tick, i) => {
+                const y = padTop + chartH - (tick / Math.max(maxVal, 1)) * chartH;
+                return (
+                  <g key={i}>
+                    <line
+                      x1={padLeft}
+                      y1={y}
+                      x2={svgWidth - padRight}
+                      y2={y}
+                      stroke="#F0EDE8"
+                      strokeDasharray="4 4"
+                    />
+                    <text
+                      x={padLeft - 8}
+                      y={y + 3}
+                      fill="#9CA3AF"
+                      fontSize="10"
+                      textAnchor="end"
+                      fontFamily="monospace"
+                    >
+                      {tick}
+                    </text>
+                  </g>
+                );
+              })}
+
+              {/* Area Fill */}
+              {areaPath && <path d={areaPath} fill="url(#chartGradient)" />}
+
+              {/* Solid Path for Past Days */}
+              {solidPath && (
+                <path
+                  d={solidPath}
+                  fill="none"
+                  stroke="#48532B"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              )}
+
+              {/* Dashed Path for Today */}
+              {dashedPath && (
+                <path
+                  d={dashedPath}
+                  fill="none"
+                  stroke="#5C6F2D"
+                  strokeWidth="2.5"
+                  strokeDasharray="6 4"
+                  strokeLinecap="round"
+                />
+              )}
+
+              {/* Data Points */}
+              {points.map((pt, i) => (
+                <g key={i} className="cursor-pointer" onMouseEnter={() => setHoverIndex(i)} onMouseLeave={() => setHoverIndex(null)}>
+                  <circle
+                    cx={pt.x}
+                    cy={pt.y}
+                    r={hoverIndex === i ? 6 : pt.isToday ? 5 : 4}
+                    fill={pt.isToday ? "#D4E157" : "#48532B"}
+                    stroke="#FFFFFF"
+                    strokeWidth="2"
+                    className="transition-all duration-150"
+                  />
+                  {/* X Axis Label */}
+                  <text
+                    x={pt.x}
+                    y={svgHeight - 10}
+                    fill={pt.isToday ? "#48532B" : "#6B7280"}
+                    fontSize="11"
+                    fontWeight={pt.isToday ? "700" : "500"}
+                    textAnchor="middle"
+                  >
+                    {pt.pt.label} {pt.isToday ? "(Today)" : ""}
+                  </text>
+                  {/* Value tag above point */}
+                  <text
+                    x={pt.x}
+                    y={pt.y - 10}
+                    fill={pt.isToday ? "#48532B" : "#374151"}
+                    fontSize="10"
+                    fontWeight="700"
+                    fontFamily="monospace"
+                    textAnchor="middle"
+                  >
+                    {pt.val}
+                  </text>
+                </g>
+              ))}
+            </svg>
+          </div>
+        </div>
+
+        {/* ── 3 Column Breakdown (Pages, Cities, Referrers) ── */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Top Pages */}
+          <div className="bg-white rounded-2xl border border-gray-200/90 p-5 shadow-xs space-y-3">
+            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-gray-700">Top Visited Pages</span>
+              <Layers className="w-3.5 h-3.5 text-gray-400" />
+            </div>
+            <div className="space-y-2">
+              {(data?.topPages || []).map((item, i) => (
+                <div key={i} className="flex items-center justify-between text-xs py-1">
+                  <span className="font-mono text-gray-800 truncate max-w-[190px]" title={item.page}>
+                    {item.page}
+                  </span>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <span className="font-bold text-gray-900">{item.views}</span>
+                    <span className="text-[10px] text-gray-400 w-8 text-right font-mono">{item.percentage}%</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Top Cities */}
+          <div className="bg-white rounded-2xl border border-gray-200/90 p-5 shadow-xs space-y-3">
+            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-gray-700">Top Locations</span>
+              <MapPin className="w-3.5 h-3.5 text-gray-400" />
+            </div>
+            <div className="space-y-2">
+              {(data?.topCities || []).map((item, i) => (
+                <div key={i} className="flex items-center justify-between text-xs py-1">
+                  <span className="text-gray-800 truncate max-w-[190px]">
+                    {item.city} {item.region ? `(${item.region})` : ""}
+                  </span>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <span className="font-bold text-gray-900">{item.count}</span>
+                    <span className="text-[10px] text-gray-400 w-8 text-right font-mono">{item.percentage}%</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Top Referrers */}
+          <div className="bg-white rounded-2xl border border-gray-200/90 p-5 shadow-xs space-y-3">
+            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-gray-700">Referrer Channels</span>
+              <ExternalLink className="w-3.5 h-3.5 text-gray-400" />
+            </div>
+            <div className="space-y-2">
+              {(data?.topReferrers || []).map((item, i) => (
+                <div key={i} className="flex items-center justify-between text-xs py-1">
+                  <span className="text-gray-800 truncate max-w-[190px]">{item.referrer}</span>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <span className="font-bold text-gray-900">{item.count}</span>
+                    <span className="text-[10px] text-gray-400 w-8 text-right font-mono">{item.percentage}%</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* =========================================================================
+            ── LIVE VISITOR STREAM & COMPLETE HISTORICAL LOGS ──
+        ========================================================================= */}
+        <div className="bg-white rounded-2xl border border-gray-200/90 overflow-hidden shadow-xs space-y-0">
+          
+          {/* 1. Header Toolbar */}
+          <div className="p-5 border-b border-gray-100 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2.5">
+                <h3 className="text-sm font-bold text-gray-900 tracking-tight flex items-center gap-2">
+                  <Activity className="w-4 h-4 text-[#48532B]" />
+                  <span>Live Visitor Stream & Entire Audit History</span>
+                </h3>
+
+                {autoRefresh ? (
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                    </span>
+                    Live 6s Feed Active
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-gray-100 text-gray-600">
+                    Stream Paused
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-gray-500 mt-0.5">
+                Complete persistent log history with IST dates, client UUIDs, pages, devices, and IP addresses
+              </p>
+            </div>
+
+            {/* Actions: Export CSV & Reset */}
+            <div className="flex items-center gap-3">
               <a
                 href="/api/analytics/export"
                 download
-                className="inline-flex items-center gap-1.5 text-xs text-[#48532B] font-bold hover:underline"
+                className="inline-flex items-center gap-1.5 text-xs text-[#48532B] font-bold hover:underline px-3 py-1.5 bg-[#FAF9F6] border border-gray-200 rounded-xl hover:bg-gray-100 transition-colors"
+                title="Download entire history CSV"
               >
                 <Download className="w-3.5 h-3.5" />
-                <span>Download Real-Time CSV ({data?.stats.totalViews || 0} rows)</span>
+                <span>Export History CSV ({totalLogsAll.length} rows)</span>
               </a>
 
               <button
                 onClick={handleClearLogs}
                 disabled={clearing}
-                className="inline-flex items-center gap-1.5 text-xs text-rose-600 font-semibold hover:text-rose-800 transition-colors cursor-pointer border border-rose-200 hover:border-rose-300 bg-rose-50/60 px-2.5 py-1 rounded-lg"
-                title="Wipe historical/test logs to start fresh with 100% genuine live traffic"
+                className="inline-flex items-center gap-1 text-xs text-rose-600 font-semibold hover:text-rose-800 border border-rose-200 hover:border-rose-300 bg-rose-50/60 px-2.5 py-1.5 rounded-xl transition-colors cursor-pointer"
+                title="Clear test logs to reset counter"
               >
                 <Trash2 className="w-3 h-3" />
-                <span>{clearing ? "Resetting..." : "Reset Logs"}</span>
+                <span>{clearing ? "Resetting..." : "Reset"}</span>
               </button>
             </div>
           </div>
 
+          {/* 2. Interactive Filter & Date Navigation Bar */}
+          <div className="p-4 bg-[#FAF9F6]/80 border-b border-gray-200 flex flex-col md:flex-row md:items-center justify-between gap-3">
+            
+            {/* Left: Quick Date Pills & Specific Date Dropdown */}
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <button
+                onClick={() => {
+                  setSelectedDateFilter("all");
+                  setCurrentPage(1);
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  selectedDateFilter === "all"
+                    ? "bg-[#48532B] text-white shadow-2xs"
+                    : "bg-white text-gray-700 border border-gray-200 hover:bg-gray-50"
+                }`}
+              >
+                All Dates ({totalLogsAll.length})
+              </button>
+
+              <button
+                onClick={() => {
+                  setSelectedDateFilter("today");
+                  setCurrentPage(1);
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  selectedDateFilter === "today"
+                    ? "bg-[#48532B] text-white shadow-2xs"
+                    : "bg-white text-gray-700 border border-gray-200 hover:bg-gray-50"
+                }`}
+              >
+                Today ({todayCount})
+              </button>
+
+              <button
+                onClick={() => {
+                  setSelectedDateFilter("yesterday");
+                  setCurrentPage(1);
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  selectedDateFilter === "yesterday"
+                    ? "bg-[#48532B] text-white shadow-2xs"
+                    : "bg-white text-gray-700 border border-gray-200 hover:bg-gray-50"
+                }`}
+              >
+                Yesterday ({yesterdayCount})
+              </button>
+
+              <button
+                onClick={() => {
+                  setSelectedDateFilter("last7");
+                  setCurrentPage(1);
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  selectedDateFilter === "last7"
+                    ? "bg-[#48532B] text-white shadow-2xs"
+                    : "bg-white text-gray-700 border border-gray-200 hover:bg-gray-50"
+                }`}
+              >
+                Last 7 Days
+              </button>
+
+              {/* Specific Date Dropdown from available recorded dates */}
+              <div className="flex items-center gap-1 pl-1">
+                <Calendar className="w-3.5 h-3.5 text-gray-400" />
+                <select
+                  value={
+                    selectedDateFilter === "all" ||
+                    selectedDateFilter === "today" ||
+                    selectedDateFilter === "yesterday" ||
+                    selectedDateFilter === "last7"
+                      ? ""
+                      : selectedDateFilter
+                  }
+                  onChange={(e) => {
+                    if (e.target.value) {
+                      setSelectedDateFilter(e.target.value);
+                      setCurrentPage(1);
+                    }
+                  }}
+                  className="px-2.5 py-1.5 bg-white border border-gray-200 rounded-xl text-xs font-semibold text-gray-700 focus:outline-none focus:border-[#48532B]"
+                >
+                  <option value="" disabled>
+                    Select Past Date...
+                  </option>
+                  {(data?.availableDates || []).map((ad) => (
+                    <option key={ad.date} value={ad.date}>
+                      {ad.date} ({ad.count} entries)
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            {/* Right: Search Filter Input */}
+            <div className="relative w-full sm:w-72">
+              <Search className="w-3.5 h-3.5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                value={logSearchQuery}
+                onChange={(e) => {
+                  setLogSearchQuery(e.target.value);
+                  setCurrentPage(1);
+                }}
+                placeholder="Search page, IP, location, UUID..."
+                className="w-full pl-9 pr-7 py-1.5 bg-white border border-gray-200 rounded-xl text-xs text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-[#48532B]"
+              />
+              {logSearchQuery && (
+                <button
+                  onClick={() => setLogSearchQuery("")}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 text-xs font-bold"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* 3. Pagination Controls Top */}
+          <div className="px-5 py-3 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-gray-500 bg-white">
+            <div className="flex items-center gap-2">
+              <span className="font-medium text-gray-700">
+                {filteredLogs.length > 0 ? (
+                  <>
+                    Showing <span className="font-bold text-gray-900">{startIndex}</span> to{" "}
+                    <span className="font-bold text-gray-900">{endIndex}</span> of{" "}
+                    <span className="font-bold text-gray-900">{filteredLogs.length}</span> entries
+                    {filteredLogs.length !== totalLogsAll.length && (
+                      <span className="text-gray-400 ml-1">
+                        (filtered from {totalLogsAll.length} total)
+                      </span>
+                    )}
+                  </>
+                ) : (
+                  <span>0 entries found</span>
+                )}
+              </span>
+
+              {/* Rows per page selector */}
+              <div className="flex items-center gap-1.5 ml-3">
+                <span className="text-[11px] text-gray-400">Rows:</span>
+                <select
+                  value={rowsPerPage}
+                  onChange={(e) => {
+                    setRowsPerPage(Number(e.target.value));
+                    setCurrentPage(1);
+                  }}
+                  className="px-2 py-0.5 bg-[#FAF9F6] border border-gray-200 rounded-lg text-xs font-semibold text-gray-700"
+                >
+                  <option value={25}>25</option>
+                  <option value={50}>50</option>
+                  <option value={100}>100</option>
+                  <option value={250}>250</option>
+                  <option value={10000}>All</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Pagination Previous / Next buttons */}
+            <div className="flex items-center gap-1.5 self-end sm:self-auto">
+              <button
+                type="button"
+                onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+                disabled={currentPage <= 1}
+                className="px-3 py-1 rounded-lg border border-gray-200 text-xs font-semibold text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer flex items-center gap-1 transition-colors"
+              >
+                <ChevronLeft className="w-3.5 h-3.5" />
+                <span>Previous</span>
+              </button>
+
+              <span className="px-3 py-1 font-mono text-xs font-bold text-gray-900 bg-[#FAF9F6] border border-gray-200 rounded-lg">
+                Page {currentPage} of {totalPages}
+              </span>
+
+              <button
+                type="button"
+                onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+                disabled={currentPage >= totalPages}
+                className="px-3 py-1 rounded-lg border border-gray-200 text-xs font-semibold text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer flex items-center gap-1 transition-colors"
+              >
+                <span>Next</span>
+                <ChevronRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+
+          {/* 4. Logs Table */}
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#FAF9F6] text-gray-500 border-b border-gray-200">
+              <thead className="bg-[#FAF9F6] text-gray-600 border-b border-gray-200 font-semibold">
                 <tr>
-                  <th className="px-5 py-3 font-semibold">Timestamp (IST)</th>
-                  <th className="px-5 py-3 font-semibold">Visitor UUID (User ID)</th>
-                  <th className="px-5 py-3 font-semibold">Place / Location</th>
-                  <th className="px-5 py-3 font-semibold">Page Visited</th>
-                  <th className="px-5 py-3 font-semibold">Device & OS</th>
-                  <th className="px-5 py-3 font-semibold">Referrer</th>
-                  <th className="px-5 py-3 font-semibold">IP Address</th>
+                  <th className="px-5 py-3 whitespace-nowrap">Date & Time (IST)</th>
+                  <th className="px-5 py-3 whitespace-nowrap">Visitor UUID</th>
+                  <th className="px-5 py-3 whitespace-nowrap">Location / Place</th>
+                  <th className="px-5 py-3 whitespace-nowrap">Page Visited</th>
+                  <th className="px-5 py-3 whitespace-nowrap">Device & Platform</th>
+                  <th className="px-5 py-3 whitespace-nowrap">Referrer</th>
+                  <th className="px-5 py-3 whitespace-nowrap">IP Address</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {(data?.recentLogs || []).length > 0 ? (
-                  data?.recentLogs.map((log, i) => (
-                    <tr key={i} className="hover:bg-gray-50/70 transition-colors">
-                      <td className="px-5 py-3 font-mono text-gray-600 whitespace-nowrap">
-                        {log.timestamp_ist}
+                {paginatedLogs.length > 0 ? (
+                  paginatedLogs.map((log, i) => (
+                    <tr key={log.id || i} className="hover:bg-gray-50/80 transition-colors">
+                      {/* Date & IST Time */}
+                      <td className="px-5 py-3 font-mono text-gray-700 whitespace-nowrap">
+                        <div className="flex items-center gap-1.5">
+                          <Clock className="w-3.5 h-3.5 text-[#5C6F2D] shrink-0" />
+                          <span className="font-semibold text-gray-900">
+                            {log.timestamp_ist || log.timestamp}
+                          </span>
+                        </div>
                       </td>
+
+                      {/* Visitor UUID with 1-click copy */}
                       <td className="px-5 py-3 font-mono whitespace-nowrap">
-                        <span className="bg-stone-100 text-stone-800 px-2 py-0.5 rounded border border-stone-200 font-medium text-[11px]" title={log.visitor_id}>
-                          {log.visitor_id || "usr_anon"}
-                        </span>
+                        <button
+                          type="button"
+                          onClick={() => handleCopy(log.visitor_id || "usr_anon", `v-${i}`)}
+                          className="group inline-flex items-center gap-1 bg-stone-100 hover:bg-stone-200 text-stone-800 px-2 py-0.5 rounded border border-stone-200 font-medium text-[11px] transition-colors cursor-pointer"
+                          title="Click to copy Visitor UUID"
+                        >
+                          <span className="truncate max-w-[120px]">
+                            {log.visitor_id || "usr_anon"}
+                          </span>
+                          {copiedId === `v-${i}` ? (
+                            <Check className="w-3 h-3 text-emerald-600" />
+                          ) : (
+                            <Copy className="w-3 h-3 text-gray-400 group-hover:text-gray-700" />
+                          )}
+                        </button>
                       </td>
+
+                      {/* Location */}
                       <td className="px-5 py-3 font-medium text-gray-900 whitespace-nowrap">
-                        <div>{log.city}</div>
+                        <div className="flex items-center gap-1">
+                          <MapPin className="w-3 h-3 text-rose-500 shrink-0" />
+                          <span>{log.city || "Unknown City"}</span>
+                        </div>
                         {log.region && log.region !== log.city && (
-                          <div className="text-[10px] text-gray-400 font-normal">{log.region}, {log.country}</div>
+                          <div className="text-[10px] text-gray-400 font-normal pl-4">
+                            {log.region}, {log.country || "India"}
+                          </div>
                         )}
                       </td>
-                      <td className="px-5 py-3 font-mono text-[#48532B] max-w-[240px] truncate font-medium">
+
+                      {/* Page Visited */}
+                      <td className="px-5 py-3 font-mono text-[#48532B] font-semibold max-w-[240px] truncate" title={log.page}>
                         {log.page}
                       </td>
-                      <td className="px-5 py-3 text-gray-600 whitespace-nowrap">
-                        {log.device} · {log.browser} <span className="text-gray-400 text-[10px]">({log.os})</span>
+
+                      {/* Device & Platform */}
+                      <td className="px-5 py-3 text-gray-700 whitespace-nowrap">
+                        <span className="font-medium">{log.device || "Desktop"}</span>
+                        <span className="text-gray-400"> · {log.browser}</span>
+                        <span className="text-[10px] text-gray-400 ml-1">({log.os})</span>
                       </td>
-                      <td className="px-5 py-3 text-gray-500 truncate max-w-[160px]">
-                        {log.referrer}
+
+                      {/* Referrer */}
+                      <td className="px-5 py-3 text-gray-500 truncate max-w-[150px]" title={log.referrer}>
+                        {log.referrer || "Direct"}
                       </td>
+
+                      {/* IP Address with 1-click copy */}
                       <td className="px-5 py-3 font-mono whitespace-nowrap">
-                        <span className="bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded border border-emerald-200/80 font-medium text-[11px]">
-                          {log.ip}
-                        </span>
+                        <button
+                          type="button"
+                          onClick={() => handleCopy(log.ip, `ip-${i}`)}
+                          className="group inline-flex items-center gap-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded border border-emerald-200/80 font-medium text-[11px] transition-colors cursor-pointer"
+                          title="Click to copy IP Address"
+                        >
+                          <span>{log.ip}</span>
+                          {copiedId === `ip-${i}` ? (
+                            <Check className="w-3 h-3 text-emerald-600" />
+                          ) : (
+                            <Copy className="w-3 h-3 text-emerald-400 group-hover:text-emerald-700" />
+                          )}
+                        </button>
                       </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
                     <td colSpan={7} className="px-6 py-12 text-center text-gray-400">
-                      <p className="font-semibold text-gray-600">No public visits recorded yet.</p>
-                      <p className="text-xs text-gray-400 mt-1">Open <a href="/" target="_blank" className="text-[#48532B] font-bold underline">Founding Legals</a> in an incognito tab or on your phone to watch genuine visits log here in real time!</p>
+                      <p className="font-semibold text-gray-700">No logs found matching your criteria.</p>
+                      <p className="text-xs text-gray-400 mt-1">
+                        Try resetting your search query or selecting &quot;All Dates&quot; above.
+                      </p>
+                      <button
+                        onClick={() => {
+                          setLogSearchQuery("");
+                          setSelectedDateFilter("all");
+                        }}
+                        className="mt-3 px-3.5 py-1.5 bg-[#48532B] text-white text-xs font-bold rounded-full hover:bg-[#3B4423] transition-colors cursor-pointer"
+                      >
+                        Reset Filters
+                      </button>
                     </td>
                   </tr>
                 )}
               </tbody>
             </table>
           </div>
+
+          {/* 5. Pagination Controls Bottom */}
+          {filteredLogs.length > 0 && (
+            <div className="px-5 py-3.5 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-gray-500 bg-[#FAF9F6]/50">
+              <span className="font-medium text-gray-700">
+                Page <span className="font-bold text-gray-900">{currentPage}</span> of{" "}
+                <span className="font-bold text-gray-900">{totalPages}</span> (Showing{" "}
+                <span className="font-bold text-gray-900">{startIndex}</span> -{" "}
+                <span className="font-bold text-gray-900">{endIndex}</span> of {filteredLogs.length} entries)
+              </span>
+
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setCurrentPage((p) => Math.max(p - 1, 1));
+                    window.scrollTo({ top: 700, behavior: "smooth" });
+                  }}
+                  disabled={currentPage <= 1}
+                  className="px-3.5 py-1.5 rounded-xl border border-gray-200 text-xs font-semibold text-gray-700 hover:bg-white disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer flex items-center gap-1 transition-colors shadow-2xs"
+                >
+                  <ChevronLeft className="w-3.5 h-3.5" />
+                  <span>Previous</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setCurrentPage((p) => Math.min(p + 1, totalPages));
+                    window.scrollTo({ top: 700, behavior: "smooth" });
+                  }}
+                  disabled={currentPage >= totalPages}
+                  className="px-3.5 py-1.5 rounded-xl border border-gray-200 text-xs font-semibold text-gray-700 hover:bg-white disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer flex items-center gap-1 transition-colors shadow-2xs"
+                >
+                  <span>Next</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          )}
+
         </div>
       </main>
     </div>
