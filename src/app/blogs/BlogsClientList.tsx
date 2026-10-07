@@ -106,23 +106,48 @@ export default function BlogsClientList({
 
       {/* ── Articles Grid ── */}
       {filteredBlogs.length === 0 ? (
-        <div className="bg-white rounded-3xl border border-[#E5E0D8] p-12 text-center space-y-3">
-          <FileText className="w-10 h-10 text-gray-300 mx-auto" />
-          <h3 className="text-base font-bold text-gray-800">
-            No articles match your search
-          </h3>
-          <p className="text-xs text-gray-500 max-w-sm mx-auto">
-            Try adjusting your search query or selecting a different category from above.
-          </p>
-          <button
-            onClick={() => {
-              setSearchQuery("");
-              setSelectedCategory("All");
-            }}
-            className="px-4 py-2 bg-[#48532B] text-white text-xs font-bold rounded-full hover:bg-[#3B4423] transition-colors cursor-pointer"
-          >
-            Reset Filters
-          </button>
+        <div className="bg-white rounded-3xl border border-[#E5E0D8] p-12 sm:p-16 text-center space-y-4">
+          <div className="w-12 h-12 rounded-2xl bg-[#5C6F2D]/10 text-[#48532B] flex items-center justify-center mx-auto">
+            <FileText className="w-6 h-6" />
+          </div>
+          <div className="space-y-1.5">
+            <h3 className="text-lg font-serif font-bold text-gray-900">
+              {initialBlogs.length === 0
+                ? "No Articles Published Yet"
+                : "No Articles Match Your Search"}
+            </h3>
+            <p className="text-xs text-gray-500 max-w-md mx-auto leading-relaxed">
+              {initialBlogs.length === 0
+                ? "Founding Legals corporate advocates and Chartered Accountants publish real-time legal intelligence, MCA compliance guides, and founder playbooks. New stories published by the Super Admin will reflect live here automatically."
+                : "Try adjusting your search query or selecting a different category from above."}
+            </p>
+          </div>
+          {initialBlogs.length > 0 ? (
+            <button
+              onClick={() => {
+                setSearchQuery("");
+                setSelectedCategory("All");
+              }}
+              className="px-4 py-2 bg-[#48532B] text-white text-xs font-bold rounded-full hover:bg-[#3B4423] transition-colors cursor-pointer"
+            >
+              Reset Filters
+            </button>
+          ) : (
+            <div className="pt-2 flex items-center justify-center gap-3 flex-wrap">
+              <Link
+                href="/contact"
+                className="px-5 py-2.5 rounded-full bg-[#48532B] text-white text-xs font-bold hover:bg-[#3B4423] transition-colors"
+              >
+                Schedule Legal Consultation
+              </Link>
+              <Link
+                href="/services"
+                className="px-5 py-2.5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-semibold transition-colors"
+              >
+                Explore Services
+              </Link>
+            </div>
+          )}
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">

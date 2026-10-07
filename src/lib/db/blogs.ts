@@ -171,7 +171,7 @@ export async function getAllBlogs(): Promise<BlogPost[]> {
     try {
       const raw = await f.readFile(projectFile, "utf-8");
       const parsed = JSON.parse(raw);
-      if (Array.isArray(parsed) && parsed.length > 0) {
+      if (Array.isArray(parsed)) {
         setMemoryBlogs(parsed);
         return parsed;
       }
@@ -181,7 +181,7 @@ export async function getAllBlogs(): Promise<BlogPost[]> {
     try {
       const raw = await f.readFile(tmpFile, "utf-8");
       const parsed = JSON.parse(raw);
-      if (Array.isArray(parsed) && parsed.length > 0) {
+      if (Array.isArray(parsed)) {
         setMemoryBlogs(parsed);
         return parsed;
       }
@@ -189,7 +189,7 @@ export async function getAllBlogs(): Promise<BlogPost[]> {
   }
 
   const mem = getMemoryBlogs();
-  if (mem && mem.length > 0) {
+  if (mem) {
     return mem;
   }
 
