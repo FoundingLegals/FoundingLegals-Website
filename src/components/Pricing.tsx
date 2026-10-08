@@ -28,7 +28,7 @@ const TIERS: Tier[] = [
     name: "Pre seed",
     tagline: "Everything a small founding team needs to get the paperwork right.",
     bestFor: "1 to 5 person teams.",
-    monthly: 658,
+    monthly: 789,
     monthlyRegular: 999,
     annual: 7890,
     annualRegular: 11988,
@@ -495,9 +495,15 @@ export default function Pricing() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5 items-stretch">
             {TIERS.map((tier) => {
+              const isPreSeed = tier.id === "Basic" || tier.name.toLowerCase().includes("pre seed");
+
               const price =
                 tier.monthly === null || tier.annual === null
                   ? null
+                  : isPreSeed
+                  ? annual
+                    ? 658
+                    : 789
                   : annual
                   ? tier.annual
                   : tier.monthly;
@@ -505,14 +511,43 @@ export default function Pricing() {
               const regularPrice =
                 tier.monthlyRegular === null || tier.annualRegular === null
                   ? null
+                  : isPreSeed
+                  ? annual
+                    ? 999
+                    : 999
                   : annual
                   ? tier.annualRegular
                   : tier.monthlyRegular;
 
               const annualSaving =
                 tier.monthly !== null && tier.annual !== null
-                  ? tier.monthly * 12 - tier.annual
+                  ? isPreSeed
+                    ? 789 * 12 - 7890
+                    : tier.monthly * 12 - tier.annual
                   : 0;
+
+              const unitText = isPreSeed
+                ? "/mo + GST"
+                : annual
+                ? "/year + GST"
+                : "/mo + GST";
+
+              const subtextText =
+                price === null
+                  ? "Custom pricing tailored to your needs."
+                  : isPreSeed
+                  ? annual
+                    ? `Billed annually at ₹7,890 - Save ₹${annualSaving.toLocaleString("en-IN")}/yr`
+                    : `Billed monthly - Save ₹${(
+                        tier.monthlyRegular! - tier.monthly!
+                      ).toLocaleString("en-IN")}/mo vs standard`
+                  : annual
+                  ? `Billed annually at ₹${tier.annual!.toLocaleString(
+                      "en-IN"
+                    )} - Save ₹${annualSaving.toLocaleString("en-IN")}/yr`
+                  : `Billed monthly - Save ₹${(
+                      tier.monthlyRegular! - tier.monthly!
+                    ).toLocaleString("en-IN")}/mo vs standard`;
 
               return (
                 <div
@@ -587,7 +622,7 @@ export default function Pricing() {
                               tier.highlight ? "text-olive-200" : "text-brown-400"
                             }`}
                           >
-                            {annual ? "/year + GST" : "/mo + GST"}
+                            {unitText}
                           </span>
                         </div>
 
@@ -606,20 +641,22 @@ export default function Pricing() {
                       </div>
                     )}
 
+                    {/* Highlighted Annual Total Badge for Pre Seed */}
+                    {isPreSeed && annual ? (
+                      <div className="mt-3 p-2.5 rounded-xl bg-amber-50/90 border border-amber-200 text-xs text-amber-950 font-medium flex items-center justify-between shadow-2xs">
+                        <span className="text-[11px] font-bold text-amber-900">Annual Total:</span>
+                        <span className="text-xs font-black text-amber-950 bg-amber-200/80 px-2.5 py-0.5 rounded-md border border-amber-300 shadow-2xs">
+                          ₹7,890 / year + GST
+                        </span>
+                      </div>
+                    ) : null}
+
                     <p
                       className={`text-xs mt-3 font-medium leading-relaxed ${
                         tier.highlight ? "text-olive-100" : "text-brown-500"
                       }`}
                     >
-                      {price === null
-                        ? "Custom pricing tailored to your needs."
-                        : annual
-                        ? `Billed annually at ₹${tier.annual!.toLocaleString(
-                            "en-IN"
-                          )} - Save ₹${annualSaving.toLocaleString("en-IN")}/yr`
-                        : `Billed monthly - Save ₹${(
-                            tier.monthlyRegular! - tier.monthly!
-                          ).toLocaleString("en-IN")}/mo vs standard`}
+                      {subtextText}
                     </p>
                     <p
                       className={`text-xs mt-2 italic ${

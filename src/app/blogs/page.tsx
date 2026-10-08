@@ -20,6 +20,7 @@ import { getPublishedBlogs, BlogPost } from "@/lib/db/blogs";
 import BlogsClientList from "./BlogsClientList";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export const metadata = {
   title: "Blogs & Legal Guides | Founding Legals",

@@ -4,6 +4,7 @@ import { getAdminSession } from "@/lib/adminAuth";
 import { getAllBlogs, createBlogPost, CreateBlogPostInput } from "@/lib/db/blogs";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export async function GET(req: NextRequest) {
   try {
@@ -22,11 +23,18 @@ export async function GET(req: NextRequest) {
       totalViews: blogs.reduce((sum, b) => sum + (b.views || 0), 0),
     };
 
-    return NextResponse.json({
-      success: true,
-      stats,
-      blogs,
-    });
+    return NextResponse.json(
+      {
+        success: true,
+        stats,
+        blogs,
+      },
+      {
+        headers: {
+          "Cache-Control": "no-store, max-age=0, must-revalidate",
+        },
+      }
+    );
   } catch (error: any) {
     console.error("Error in GET /api/admin/blogs:", error);
     return NextResponse.json(

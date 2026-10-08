@@ -26,9 +26,38 @@ export default function BlogsClientList({
 }: Props) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [blogsList, setBlogsList] = useState<BlogPost[]>(initialBlogs);
+
+  // Sync with server props
+  React.useEffect(() => {
+    setBlogsList(initialBlogs);
+  }, [initialBlogs]);
+
+  // Client background polling sync for instant reflection
+  React.useEffect(() => {
+    let isMounted = true;
+    const syncBlogs = async () => {
+      try {
+        const res = await fetch("/api/blogs?t=" + Date.now(), { cache: "no-store" });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.blogs && Array.isArray(data.blogs) && isMounted) {
+            setBlogsList(data.blogs);
+          }
+        }
+      } catch {}
+    };
+
+    syncBlogs();
+    const timer = setInterval(syncBlogs, 8000);
+    return () => {
+      isMounted = false;
+      clearInterval(timer);
+    };
+  }, []);
 
   const filteredBlogs = useMemo(() => {
-    return initialBlogs.filter((blog) => {
+    return blogsList.filter((blog) => {
       // If filtering by category
       if (
         selectedCategory !== "All" &&
@@ -49,7 +78,7 @@ export default function BlogsClientList({
 
       return true;
     });
-  }, [initialBlogs, selectedCategory, searchQuery]);
+  }, [blogsList, selectedCategory, searchQuery]);
 
   return (
     <div className="space-y-8">
@@ -65,7 +94,7 @@ export default function BlogsClientList({
                 : "bg-white text-gray-700 border border-gray-200 hover:bg-gray-50"
             }`}
           >
-            All Articles ({initialBlogs.length})
+            All Articles ({blogsList.length})
           </button>
 
           {categories.map((cat) => (
@@ -112,17 +141,17 @@ export default function BlogsClientList({
           </div>
           <div className="space-y-1.5">
             <h3 className="text-lg font-serif font-bold text-gray-900">
-              {initialBlogs.length === 0
+              {blogsList.length === 0
                 ? "No Articles Published Yet"
                 : "No Articles Match Your Search"}
             </h3>
             <p className="text-xs text-gray-500 max-w-md mx-auto leading-relaxed">
-              {initialBlogs.length === 0
+              {blogsList.length === 0
                 ? "Founding Legals corporate advocates and Chartered Accountants publish real-time legal intelligence, MCA compliance guides, and founder playbooks. New stories published by the Super Admin will reflect live here automatically."
                 : "Try adjusting your search query or selecting a different category from above."}
             </p>
           </div>
-          {initialBlogs.length > 0 ? (
+          {blogsList.length > 0 ? (
             <button
               onClick={() => {
                 setSearchQuery("");

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import {
@@ -87,6 +88,7 @@ const PRESET_BANNERS = [
 ];
 
 export default function AdminBlogStudioPage() {
+  const router = useRouter();
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -336,9 +338,13 @@ export default function AdminBlogStudioPage() {
       });
       if (res.ok) {
         showToast("success", "Cover image updated in real time! Live on /blogs.");
+        setBlogs((prev) =>
+          prev.map((b) => (b.id === blogId ? { ...b, coverImage: url.trim() } : b))
+        );
         setQuickImageBlog(null);
         setQuickImageUrl("");
-        await loadBlogs();
+        router.refresh();
+        await loadBlogs(true);
       } else {
         showToast("error", "Failed to update cover image");
       }
@@ -480,9 +486,29 @@ export default function AdminBlogStudioPage() {
             : `Story draft saved securely in Super Admin.`,
           data.blog.slug
         );
+
+        // Update local blogs state immediately
+        setBlogs((prev) => {
+          const exists = prev.some((b) => b.id === data.blog.id);
+          if (exists) {
+            return prev.map((b) => (b.id === data.blog.id ? data.blog : b));
+          } else {
+            return [data.blog, ...prev];
+          }
+        });
+
+        // Update stats
+        setStats((prev) => ({
+          total: prev.total + (editingBlogId ? 0 : 1),
+          published: prev.published + (willPublish ? 1 : 0),
+          drafts: prev.drafts + (willPublish ? 0 : 1),
+          totalViews: prev.totalViews,
+        }));
+
         resetEditor();
         setViewMode("list");
-        await loadBlogs();
+        router.refresh();
+        await loadBlogs(true);
       } else {
         showToast("error", data.error || "Failed to save blog post");
       }
@@ -496,6 +522,11 @@ export default function AdminBlogStudioPage() {
   // Toggle publish status directly from list
   const handleTogglePublish = async (blog: BlogPost) => {
     try {
+      // Optimistic update
+      setBlogs((prev) =>
+        prev.map((b) => (b.id === blog.id ? { ...b, published: !b.published } : b))
+      );
+
       const res = await fetch(`/api/admin/blogs/${blog.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -508,28 +539,39 @@ export default function AdminBlogStudioPage() {
             ? `"${blog.title}" is now LIVE on /blogs!`
             : `"${blog.title}" moved to drafts.`
         );
-        loadBlogs();
+        router.refresh();
+        loadBlogs(true);
+      } else {
+        // Rollback
+        loadBlogs(true);
       }
     } catch {
       showToast("error", "Failed to update publish status");
+      loadBlogs(true);
     }
   };
 
   // Delete blog
   const handleDeleteBlog = async (id: string) => {
     try {
+      // Optimistic delete
+      setBlogs((prev) => prev.filter((b) => b.id !== id));
+
       const res = await fetch(`/api/admin/blogs/${id}`, {
         method: "DELETE",
       });
       if (res.ok) {
         showToast("success", "Blog post deleted successfully.");
         setDeleteConfirmId(null);
-        loadBlogs();
+        router.refresh();
+        loadBlogs(true);
       } else {
         showToast("error", "Failed to delete blog post");
+        loadBlogs(true);
       }
     } catch {
       showToast("error", "Error deleting blog post");
+      loadBlogs(true);
     }
   };
 

@@ -3,6 +3,7 @@ import { getPublishedBlogs, getAllBlogs } from "@/lib/db/blogs";
 import { getAdminSession } from "@/lib/adminAuth";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export async function GET(req: NextRequest) {
   try {
