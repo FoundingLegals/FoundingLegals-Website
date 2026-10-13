@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
-export default function AdminIndexPage() {
-  redirect("/admin/analytics");
+export default function AdminRedirectPage() {
+  redirect("https://app.foundinglegals.com/admin");
 }

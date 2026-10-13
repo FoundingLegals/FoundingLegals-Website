@@ -10,11 +10,17 @@ const CostEstimatorModal = dynamic(() => import("@/components/CostEstimatorModal
   ssr: false,
 });
 
+const FreeConsultationModal = dynamic(() => import("@/components/FreeConsultationModal"), {
+  ssr: false,
+});
+
 export default function ClientModals() {
   return (
     <>
+      <FreeConsultationModal />
       <CostEstimatorModal />
       <Chatbot />
     </>
   );
 }
+

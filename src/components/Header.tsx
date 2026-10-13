@@ -33,7 +33,10 @@ import {
   Sparkles,
   Video,
   Check,
+  Calendar,
+  PhoneCall,
 } from "lucide-react";
+import { openFreeConsultation } from "@/lib/consultation";
 
 /* ── Menu data (For Founders Dropdown - Product Platform Showcase) ── */
 const sections = [
@@ -642,14 +645,14 @@ export default function Header() {
 
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-2">
-            <a
-              href={`${appUrl}/sign-up`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 sm:px-4.5 py-[7px] bg-gradient-to-r from-olive-600/15 to-olive-700/25 backdrop-blur-sm border border-olive-600/35 text-olive-800 hover:from-olive-600 hover:to-olive-800 hover:text-white hover:border-olive-700 text-[12.5px] font-semibold rounded-full hover:shadow-md hover:scale-[1.02] transition-all duration-300"
+            <button
+              type="button"
+              onClick={() => openFreeConsultation()}
+              className="px-3.5 sm:px-4 py-[7px] bg-olive-600 hover:bg-olive-700 text-white text-[12.5px] font-semibold rounded-full shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-300 flex items-center gap-1.5 cursor-pointer"
             >
-              Sign Up
-            </a>
+              <Calendar className="w-3.5 h-3.5" />
+              <span>Talk to Experts</span>
+            </button>
             <a
               href={`${appUrl}/sign-in`}
               target="_blank"
@@ -879,18 +882,36 @@ export default function Header() {
               >
                 Contact
               </a>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsMobileOpen(false);
+                  openFreeConsultation();
+                }}
+                className="w-full text-left flex items-center justify-between px-4 py-3 text-[14px] font-bold text-olive-700 hover:text-olive-800 rounded-xl hover:bg-cream transition-colors cursor-pointer"
+              >
+                <span className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-olive-600" />
+                  Free Consultation
+                </span>
+                <span className="text-[10px] font-bold uppercase tracking-wider bg-olive-100 text-olive-800 px-2 py-0.5 rounded-full">
+                  Book Call
+                </span>
+              </button>
             </div>
 
             <div className="mt-6 flex flex-col gap-3">
-              <a
-                href={`${appUrl}/sign-up`}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsMobileOpen(false)}
-                className="block w-full text-center px-4 py-3 bg-gradient-to-r from-olive-600/15 to-olive-700/25 backdrop-blur-sm border border-olive-600/35 text-olive-800 hover:from-olive-600 hover:to-olive-800 hover:text-white hover:border-olive-700 text-[14px] font-semibold rounded-full hover:shadow-md transition-all duration-300"
+              <button
+                type="button"
+                onClick={() => {
+                  setIsMobileOpen(false);
+                  openFreeConsultation();
+                }}
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-olive-600 hover:bg-olive-700 text-white text-[14px] font-semibold rounded-full shadow-md transition-all duration-300 cursor-pointer"
               >
-                Sign Up
-              </a>
+                <Calendar className="w-4 h-4" />
+                <span>Talk to Experts</span>
+              </button>
               <a
                 href={`${appUrl}/sign-in`}
                 target="_blank"

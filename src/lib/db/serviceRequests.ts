@@ -312,7 +312,9 @@ async function relayEmailNotification(req: ServiceRequest): Promise<void> {
       },
       signal: AbortSignal.timeout(4000),
       body: JSON.stringify({
-        _subject: `New ${req.category} Request: ${req.service_name} from ${req.name}`,
+        _subject: req.service_name.toLowerCase().includes("consultation")
+          ? `[FREE CONSULTATION BOOKING] ${req.service_name} from ${req.name}`
+          : `New ${req.category} Request: ${req.service_name} from ${req.name}`,
         full_name: req.name,
         email: req.email,
         mobile_number: req.mobile,

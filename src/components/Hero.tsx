@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, PhoneCall } from "lucide-react";
 import LawyerTrustBadge from "./LawyerTrustBadge";
 import WatchDemoButton from "./WatchDemoButton";
+import { openFreeConsultation } from "@/lib/consultation";
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -247,12 +248,14 @@ export default function Hero() {
             />
           </div>
           <div className="hero-animate hero-animate-delay-3 flex flex-wrap items-center gap-3 sm:gap-4">
-            <a
-              href="/services"
-              className="inline-flex items-center px-8 py-3.5 bg-olive-600 text-white text-[15px] font-semibold rounded-full hover:bg-olive-700 transition-all duration-300 shadow-lg shadow-olive-600/15 hover:shadow-olive-600/25 hover:-translate-y-0.5"
+            <button
+              type="button"
+              onClick={() => openFreeConsultation()}
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-olive-600 text-white text-[15px] font-semibold rounded-full hover:bg-olive-700 transition-all duration-300 shadow-lg shadow-olive-600/20 hover:shadow-olive-600/30 hover:-translate-y-0.5 cursor-pointer"
             >
-              Start Your Journey
-            </a>
+              <PhoneCall className="w-4 h-4" />
+              <span>Talk to Experts</span>
+            </button>
             <WatchDemoButton videoId="lowLIrcGaiQ" />
           </div>
         </div>

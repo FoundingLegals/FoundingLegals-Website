@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, ArrowUp, RotateCcw, Copy, Check } from "lucide-react";
+import { MessageCircle, User, X, ArrowUp, RotateCcw, Copy, Check } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { motion } from "framer-motion";
@@ -551,12 +551,20 @@ export default function Chatbot() {
           onPointerUp={handlePointerUp}
           onClick={handleButtonClick}
           style={{ touchAction: "none" }}
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
           aria-label="Open Chat Assistant"
-          className="absolute bottom-0 right-0 w-[56px] h-[56px] rounded-full bg-[#16a34a] hover:bg-[#15803d] text-white flex items-center justify-center border-none shadow-[0_4px_16px_rgba(22,163,74,0.35)] cursor-grab transition-colors"
+          className="absolute bottom-0 right-0 w-[60px] h-[60px] rounded-full p-[2px] bg-white border-2 border-[#16a34a] shadow-[0_6px_24px_rgba(22,163,74,0.35)] cursor-grab transition-transform overflow-visible select-none"
         >
-          <MessageCircle size={24} />
+          <div className="w-full h-full rounded-full overflow-hidden bg-[#FAF9F5]">
+            <img
+              src="/support-agent-avatar.jpg"
+              alt="Legal Support Specialist"
+              className="w-full h-full object-cover object-top pointer-events-none select-none"
+            />
+          </div>
+          {/* Active Online Indicator */}
+          <span className="absolute bottom-0.5 right-0.5 w-3.5 h-3.5 bg-[#22c55e] border-2 border-white rounded-full shadow-xs pointer-events-none" />
         </motion.button>
       )}
 
@@ -578,11 +586,18 @@ export default function Chatbot() {
           className="px-4 py-3.5 bg-white border-b border-[#F3F4F6] flex items-center justify-between select-none shrink-0"
         >
           <div className="flex items-center gap-2.5">
-            <img
-              src="/founding-legals-logo.png"
-              alt="Founding Legals"
-              className="h-7 max-w-[180px] object-contain"
-            />
+            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#E5E7EB] shrink-0 shadow-2xs">
+              <img
+                src="/support-agent-avatar.jpg"
+                alt="Legal Specialist"
+                className="w-full h-full object-cover object-top"
+              />
+              <span className="absolute bottom-0 right-0 w-2 h-2 bg-green-500 rounded-full border border-white" />
+            </div>
+            <div>
+              <div className="text-[13px] font-bold text-brown-900 leading-none">Founding Legals</div>
+              <div className="text-[11px] text-[#16a34a] font-medium leading-tight mt-0.5">Online • Legal Specialist</div>
+            </div>
           </div>
 
           <div className="flex items-center gap-1">
@@ -623,11 +638,11 @@ export default function Chatbot() {
                   }`}
                 >
                   {!isUser && (
-                    <div className="w-[28px] h-[28px] rounded-full bg-[#F3F4F6] flex items-center justify-center shrink-0 overflow-hidden self-start mt-0.5">
+                    <div className="w-[30px] h-[30px] rounded-full border border-[#E5E7EB] flex items-center justify-center shrink-0 overflow-hidden self-start mt-0.5 shadow-2xs bg-cream">
                       <img
-                        src="/logo.png"
-                        alt="Bot Logo"
-                        className="w-full h-full object-contain rounded-full"
+                        src="/support-agent-avatar.jpg"
+                        alt="Legal Assistant"
+                        className="w-full h-full object-cover object-top"
                       />
                     </div>
                   )}
