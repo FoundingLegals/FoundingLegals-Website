@@ -1,7 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import { Check, Sparkles, ChevronDown, ShieldCheck, Building2, ArrowRight, Zap, IndianRupee, Headphones } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import {
+  Check,
+  Sparkles,
+  ChevronDown,
+  ShieldCheck,
+  Building2,
+  ArrowRight,
+  Zap,
+  IndianRupee,
+  Headphones,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import confetti from "canvas-confetti";
 import { useReveal } from "@/lib/useReveal";
 
 type Tier = {
@@ -139,178 +151,294 @@ export default function Pricing() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const sectionRef = useReveal();
 
+  // Company Types Section & Plans Visibility State
+  const companyTypesRef = useRef<HTMLDivElement>(null);
+  const [hasBlasted, setHasBlasted] = useState(false);
+  const [plansVisible, setPlansVisible] = useState(true);
+
+  const triggerPaperBomb = () => {
+    if (typeof window === "undefined") return;
+    try {
+      // 1. Dual side cannon burst
+      confetti({
+        particleCount: 85,
+        angle: 60,
+        spread: 80,
+        origin: { x: 0.12, y: 0.62 },
+        colors: ["#DDF08B", "#2C4A21", "#F5D061", "#FFFFFF", "#5C6F2D", "#FFA07A"],
+        disableForReducedMotion: true,
+        zIndex: 9999,
+      });
+      confetti({
+        particleCount: 85,
+        angle: 120,
+        spread: 80,
+        origin: { x: 0.88, y: 0.62 },
+        colors: ["#DDF08B", "#2C4A21", "#F5D061", "#FFFFFF", "#5C6F2D", "#FFA07A"],
+        disableForReducedMotion: true,
+        zIndex: 9999,
+      });
+
+      // 2. High-energy center Paper Bomb explosion at +180ms
+      setTimeout(() => {
+        confetti({
+          particleCount: 125,
+          spread: 120,
+          origin: { x: 0.5, y: 0.5 },
+          colors: ["#FFD700", "#DDF08B", "#FFFFFF", "#2C4A21", "#FF6B6B", "#4ADE80"],
+          scalar: 1.25,
+          ticks: 280,
+          zIndex: 9999,
+        });
+      }, 180);
+    } catch (e) {
+      console.warn("Confetti error", e);
+    }
+  };
+
+  useEffect(() => {
+    if (!companyTypesRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting && !hasBlasted) {
+          setHasBlasted(true);
+        }
+      },
+      { threshold: 0.18, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    observer.observe(companyTypesRef.current);
+    return () => observer.disconnect();
+  }, [hasBlasted]);
+
   return (
-    <div ref={sectionRef} className="font-sans text-brown-900 bg-cream">
+    <div ref={sectionRef} className="font-sans text-brown-900 bg-cream relative overflow-hidden">
       {/* - Hero - */}
-      {/* - Hero - */}
-      <section className="pt-24 sm:pt-28 pb-12 sm:pb-16 bg-cream relative overflow-hidden">
+      {/* Centered Indian Incorporation Background - Rich & Vibrant, Scoped Above Footer */}
+      <div className="absolute inset-x-0 top-0 h-[920px] pointer-events-none select-none z-0 overflow-hidden">
+        <img
+          src="/indian-incorporation-hero.jpg"
+          alt="Indian Company Incorporation & Legal Suite"
+          className="w-full h-full object-cover object-[center_15%] opacity-60 filter contrast-[1.08] saturate-[1.05]"
+        />
+        {/* Soft natural ambient wash: ensures text is razor-sharp while keeping the photo rich and vivid */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F5F0EB]/60 via-[#F5F0EB]/35 to-[#F5F0EB]" />
+        <div className="absolute inset-0 bg-radial-[circle_at_center] from-transparent via-[#F5F0EB]/20 to-[#F5F0EB]/50" />
+      </div>
+
+      {/* - Hero Section - */}
+      <section className="pt-24 sm:pt-32 pb-14 sm:pb-20 relative overflow-hidden z-10">
         {/* Soft Ambient Radial Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#48532B]/5 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
           
-          {/* Top 2-Column Hero: Headline & CTAs on Left, Realistic Office Mockup on Right */}
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-12 sm:mb-14">
-            {/* Left Content */}
-            <div className="lg:col-span-7 text-left">
-              {/* Announcement Pill */}
-              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-brown-200/80 shadow-xs mb-6 text-xs hover:border-brown-300 transition-all">
-                <span className="w-2 h-2 rounded-full bg-[#2F4A22] inline-block"></span>
-                <span className="font-bold uppercase tracking-wider text-[#2F4A22]">
-                  Founder Launch Special
-                </span>
-                <span className="text-brown-300 font-light">|</span>
-                <span className="font-medium text-[#55524D]">
-                  Complete MCA Approval &amp; Dedicated CA Support
+          {/* Centered Hero Content Block (Clean Typography, No Artificial Card) */}
+          <div className="max-w-4xl mx-auto text-center mb-14">
+            {/* Announcement Pill */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/95 backdrop-blur-xs border border-brown-200/80 shadow-xs mb-6 text-xs hover:border-brown-300 transition-all">
+              <span className="w-2 h-2 rounded-full bg-[#2F4A22] inline-block"></span>
+              <span className="font-bold uppercase tracking-wider text-[#2F4A22]">
+                Built For Indian Startups
+              </span>
+              <span className="text-brown-300 font-light">|</span>
+              <span className="font-medium text-[#55524D]">
+                Flat MCA Setup &middot; Dedicated CA Counsel
+              </span>
+            </div>
+
+            {/* Grand Hero Headline */}
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-[62px] font-normal text-[#1A1917] leading-[1.12] tracking-[-0.025em] mb-6 max-w-4xl mx-auto">
+              Launch your company right.<br />
+              <span className="text-[#2C4A21] relative inline-block font-normal">
+                Priced to protect your runway.
+                <svg
+                  className="absolute -bottom-1.5 left-0 w-full h-3 text-[#5A7C42]/50 overflow-visible pointer-events-none"
+                  viewBox="0 0 240 12"
+                  fill="none"
+                  preserveAspectRatio="none"
+                >
+                  <path d="M3 8.5C55 2.5 130 3 237 7.5" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" />
+                </svg>
+              </span>
+            </h1>
+
+            <p className="text-[15.5px] sm:text-[17.5px] text-brown-800 leading-relaxed font-medium mb-8 max-w-2xl mx-auto">
+              Flat ₹1,999 professional fee for MCA incorporation, verified CA counsel, and 6 months of complimentary legal software to help you build on solid ground.
+            </p>
+
+            {/* Quick Action CTAs */}
+            <div className="flex flex-wrap items-center justify-center gap-3.5 mb-12">
+              <a
+                href="#company-types"
+                className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#263C1B] hover:bg-[#1E3015] text-white text-[14px] font-semibold rounded-full transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
+              >
+                <span>Incorporate Your Company (₹1,999) ↓</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <a
+                href="#plans"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-white/95 hover:bg-white text-[#1A1917] text-[14px] font-semibold rounded-full border border-brown-200/80 backdrop-blur-xs transition-all shadow-2xs hover:shadow-xs hover:-translate-y-0.5 cursor-pointer"
+              >
+                <span>View Founding Legals OS Plans ↓</span>
+              </a>
+            </div>
+
+            {/* Bottom Feature Strip */}
+            <div className="pt-8 border-t border-brown-200/60 max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-brown-200/50">
+                
+                {/* 1. Fast Track */}
+                <div className="flex items-center gap-3.5 pt-3 sm:pt-0 sm:px-6 justify-center">
+                  <div className="w-11 h-11 rounded-full bg-[#E3F4DE]/90 backdrop-blur-xs text-[#2C4A21] flex items-center justify-center shrink-0 shadow-2xs border border-[#CDE5C5]">
+                    <Zap className="w-5 h-5 fill-current" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-xs sm:text-sm font-bold text-[#1A1917] leading-tight">Fast Track</p>
+                    <p className="text-[11px] sm:text-xs text-brown-600 font-medium">7–10 Days MCA</p>
+                  </div>
+                </div>
+
+                {/* 2. Transparent Pricing */}
+                <div className="flex items-center gap-3.5 pt-3 sm:pt-0 sm:px-6 justify-center">
+                  <div className="w-11 h-11 rounded-full bg-[#E3F4DE]/90 backdrop-blur-xs text-[#2C4A21] flex items-center justify-center shrink-0 shadow-2xs border border-[#CDE5C5]">
+                    <IndianRupee className="w-5 h-5" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-xs sm:text-sm font-bold text-[#1A1917] leading-tight">Transparent Pricing</p>
+                    <p className="text-[11px] sm:text-xs text-brown-600 font-medium">Flat MCA Professional Fee</p>
+                  </div>
+                </div>
+
+                {/* 3. Dedicated Support */}
+                <div className="flex items-center gap-3.5 pt-3 sm:pt-0 sm:px-6 justify-center">
+                  <div className="w-11 h-11 rounded-full bg-[#E3F4DE]/90 backdrop-blur-xs text-[#2C4A21] flex items-center justify-center shrink-0 shadow-2xs border border-[#CDE5C5]">
+                    <Headphones className="w-5 h-5" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-xs sm:text-sm font-bold text-[#1A1917] leading-tight">Dedicated Support</p>
+                    <p className="text-[11px] sm:text-xs text-brown-600 font-medium">CA &amp; Legal Experts</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          {/* - Choose from the most popular company types (Reference from Razorpay Rize)          {/* - Choose from the most popular company types (Reference from Razorpay Rize) - */}
+          <div
+            id="company-types"
+            ref={companyTypesRef}
+            className="pt-6 pb-14 scroll-mt-24 relative overflow-visible"
+          >
+            {/* Soft Celebratory Ambient Glow when blasted */}
+            <div
+              className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[450px] bg-gradient-to-r from-[#DDF08B]/20 via-[#F5D061]/15 to-[#2C4A21]/10 blur-[130px] rounded-full pointer-events-none transition-opacity duration-1000 ${
+                hasBlasted ? "opacity-100" : "opacity-0"
+              }`}
+            />
+
+            <div className="text-center max-w-3xl mx-auto mb-11 relative z-10">
+              {/* Category Badge */}
+              <div className="flex items-center justify-center mb-4">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-[#48532B] bg-[#48532B]/10 px-3.5 py-1.5 rounded-full inline-block border border-[#48532B]/20 shadow-xs">
+                  Company Incorporation
                 </span>
               </div>
 
-              {/* Grand Hero Headline matching attached mockup */}
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-[62px] font-normal text-[#1A1917] leading-[1.08] tracking-[-0.025em] mb-6">
-                Incorporate your<br />
-                company for<br />
-                <span className="text-[#2C4A21] relative inline-block font-normal">
-                  ₹1,999 only.
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] font-medium text-[#1A1917] tracking-tight leading-tight">
+                Choose your{" "}
+                <span className="text-[#3A501F] font-semibold italic relative inline-block">
+                  legal structure
                   <svg
-                    className="absolute -bottom-1.5 left-0 w-full h-3 text-[#5A7C42]/50 overflow-visible pointer-events-none"
-                    viewBox="0 0 240 12"
+                    className="absolute -bottom-1 left-0 w-full h-2.5 text-[#5A7C42]/40 overflow-visible pointer-events-none"
+                    viewBox="0 0 200 8"
                     fill="none"
                     preserveAspectRatio="none"
                   >
-                    <path d="M3 8.5C55 2.5 130 3 237 7.5" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" />
+                    <path
+                      d="M2 5.5C45 2 110 2 198 5"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    />
                   </svg>
                 </span>
-              </h1>
-
-              <p className="text-[15px] sm:text-[17px] text-[#55524D] leading-relaxed font-light mb-8 max-w-[500px]">
-                Everything you need to go from idea to officially registered business with transparent pricing, verified legal contracts,e-sign and dedicated CA support.
-              </p>
-
-              {/* Quick Action CTAs */}
-              <div className="flex flex-wrap items-center gap-3.5 mb-5">
-                <a
-                  href="#company-types"
-                  className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#263C1B] hover:bg-[#1E3015] text-white text-[14px] font-semibold rounded-full transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
-                >
-                  <span>Choose Entity Type</span>
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-                <a
-                  href="#plans"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-white hover:bg-[#FAF9F6] text-[#1A1917] text-[14px] font-semibold rounded-full border border-brown-200/80 transition-all shadow-2xs hover:shadow-xs hover:-translate-y-0.5 cursor-pointer"
-                >
-                  <span>View Founding Legals OS Plans ↓</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Right Showcase Animation */}
-            <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[520px] rounded-3xl overflow-hidden shadow-2xl border border-brown-200/40 bg-white">
-                <img
-                  src="/hero-section-gif.gif"
-                  alt="FoundingLegals Company Registration & Legal OS"
-                  className="w-full h-auto object-contain block"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Feature Strip */}
-          <div className="mt-8 pt-8 border-t border-brown-200/60 max-w-5xl mx-auto mb-14">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-brown-200/50">
-              
-              {/* 1. Fast Track */}
-              <div className="flex items-center gap-3.5 pt-3 sm:pt-0 sm:px-6 justify-start sm:justify-center">
-                <div className="w-11 h-11 rounded-full bg-[#E3F4DE] text-[#2C4A21] flex items-center justify-center shrink-0 shadow-2xs">
-                  <Zap className="w-5 h-5 fill-current" />
-                </div>
-                <div className="text-left">
-                  <p className="text-xs sm:text-sm font-bold text-[#1A1917] leading-tight">Fast Track</p>
-                  <p className="text-[11px] sm:text-xs text-brown-600 font-medium">7–10 Days MCA</p>
-                </div>
-              </div>
-
-              {/* 2. Transparent Pricing */}
-              <div className="flex items-center gap-3.5 pt-3 sm:pt-0 sm:px-6 justify-start sm:justify-center">
-                <div className="w-11 h-11 rounded-full bg-[#E3F4DE] text-[#2C4A21] flex items-center justify-center shrink-0 shadow-2xs">
-                  <IndianRupee className="w-5 h-5" />
-                </div>
-                <div className="text-left">
-                  <p className="text-xs sm:text-sm font-bold text-[#1A1917] leading-tight">Transparent Pricing</p>
-                  <p className="text-[11px] sm:text-xs text-brown-600 font-medium">Flat MCA Professional Fee</p>
-                </div>
-              </div>
-
-              {/* 3. Dedicated Support */}
-              <div className="flex items-center gap-3.5 pt-3 sm:pt-0 sm:px-6 justify-start sm:justify-center">
-                <div className="w-11 h-11 rounded-full bg-[#E3F4DE] text-[#2C4A21] flex items-center justify-center shrink-0 shadow-2xs">
-                  <Headphones className="w-5 h-5" />
-                </div>
-                <div className="text-left">
-                  <p className="text-xs sm:text-sm font-bold text-[#1A1917] leading-tight">Dedicated Support</p>
-                  <p className="text-[11px] sm:text-xs text-brown-600 font-medium">CA &amp; Legal Experts</p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          {/* - Choose from the most popular company types (Reference from Razorpay Rize) - */}
-          {/* - Choose from the most popular company types (Reference from Razorpay Rize) - */}
-          <div id="company-types" className="pt-4 pb-12 scroll-mt-24">
-            <div className="text-center max-w-2xl mx-auto mb-10">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#48532B] bg-[#48532B]/10 px-3.5 py-1.5 rounded-full inline-block mb-3 border border-[#48532B]/20">
-                Founder Incorporation Bundles
-              </span>
-              <h2 className="font-serif text-2xl sm:text-3xl lg:text-[36px] font-medium text-[#1A1917] tracking-tight">
-                Choose from the most popular <span className="text-[#48532B] font-semibold italic">company types</span>
               </h2>
-              <p className="text-[14px] text-brown-600 mt-2 font-light max-w-xl mx-auto">
-                Flat professional fee of ₹1,999 across all structures &middot; <strong className="font-semibold text-brown-900">Includes 6 Months Free Founding Legals OS + 50% Off Annual Plans</strong>.
+
+              <p className="text-[14.5px] sm:text-[16px] text-brown-600 mt-3 font-light max-w-2xl mx-auto leading-relaxed">
+                Flat professional fee of ₹1,999 across all structures &middot;{" "}
+                <strong className="font-semibold text-brown-900 bg-[#E5EFCF] px-2 py-0.5 rounded-md border border-[#D5E3BC]">
+                  Includes 6 Months Free Founding Legals OS + 50% Off Annual Plans
+                </strong>
+                .
               </p>
             </div>
 
-            {/* 3 Small Tiles Grid */}
-            <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto text-left pt-3">
-              
-              {/* Tile 1: Private Limited Company (HIGHLIGHTED - MOST POPULAR) */}
-              <div className="bg-gradient-to-b from-[#445B25] via-[#3C5120] to-[#324419] rounded-[28px] p-6 sm:p-7 border-2 border-[#DDF08B] shadow-2xl shadow-[#1A280B]/40 md:-translate-y-2.5 flex flex-col justify-between relative group transition-all duration-300 hover:shadow-[0_25px_50px_-12px_rgba(20,35,10,0.5)] hover:-translate-y-3.5">
+            {/* 3 Small Tiles Grid with Staggered Entrance */}
+            <motion.div
+              className="grid md:grid-cols-3 gap-5 lg:gap-6 max-w-5xl mx-auto text-left pt-3 relative z-10 items-stretch"
+              initial="hidden"
+              animate={plansVisible ? "visible" : "hidden"}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.16 },
+                },
+              }}
+            >
+              {/* Tile 1: Private Limited Company (HIGHLIGHTED - MOST POPULAR FOR STARTUPS) */}
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 35, scale: 0.95 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: { type: "spring", stiffness: 260, damping: 22 },
+                  },
+                }}
+                whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                className="bg-gradient-to-b from-[#2E4217] via-[#243511] to-[#1A260C] rounded-[24px] p-5 sm:p-5.5 border-2 border-[#DDF08B] shadow-2xl shadow-[#1A280B]/35 flex flex-col justify-between relative group transition-all duration-300 hover:shadow-[0_24px_50px_-12px_rgba(20,35,10,0.55)] h-full"
+              >
                 {/* Floating Highlight Badge */}
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#DDF08B] text-[#1E2E0A] text-[10.5px] sm:text-[11px] font-black uppercase tracking-wider px-4 py-1 rounded-full shadow-md border border-[#F2FCD0] flex items-center gap-1.5 whitespace-nowrap">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#DDF08B] to-[#E9F8A8] text-[#1E2E0A] text-[10px] sm:text-[10.5px] font-black uppercase tracking-wider px-3.5 py-1 rounded-full shadow-lg border border-[#F2FCD0] flex items-center gap-1.5 whitespace-nowrap">
                   <Sparkles className="w-3 h-3 text-[#1E2E0A]" />
                   <span>Most Popular for Startups</span>
                 </div>
 
-                <div>
-                  <h3 className="font-serif text-[22px] sm:text-[23px] font-bold text-white mt-2 mb-2 leading-tight">
+                <div className="flex-1 flex flex-col">
+                  <h3 className="font-serif text-[19px] sm:text-[20px] font-bold text-white mt-1 mb-1.5 leading-snug min-h-[48px] flex items-center">
                     Private Limited Company (Pvt. Ltd.)
                   </h3>
-                  
-                  <div className="flex items-baseline gap-1.5 mb-1">
-                    <span className="text-[38px] font-extrabold font-serif text-white tracking-tight">
+
+                  <div className="flex items-baseline gap-1.5 mb-0.5">
+                    <span className="text-[30px] sm:text-[32px] font-extrabold font-serif text-white tracking-tight leading-none">
                       ₹1,999
                     </span>
                     <span className="text-xs text-[#D8E8B4] font-semibold">
                       + Govt. Fee
                     </span>
                   </div>
-                  <p className="text-[12px] text-[#C1D49D] font-medium mb-4">
+                  <p className="text-[11.5px] text-[#C1D49D] font-medium mb-3">
                     One-time MCA professional registration fee
                   </p>
 
-                  {/* Special Bundle Highlight */}
-                  <div className="mb-6 p-3.5 sm:p-4 rounded-2xl bg-[#283814]/85 border border-[#587330] shadow-inner backdrop-blur-xs">
+                  {/* Included Founder Perk Box */}
+                  <div className="mb-3.5 p-3 sm:p-3.5 rounded-xl bg-[#1D2B0D]/90 border border-[#506C27] shadow-inner backdrop-blur-xs relative overflow-hidden">
                     <div className="flex items-center justify-between gap-1 mb-1.5">
-                      <div className="flex items-center gap-1.5 text-[10.5px] font-extrabold text-[#DDF08B] uppercase tracking-wider">
-                        <Sparkles className="w-3.5 h-3.5 text-[#DDF08B]" />
-                        <span>Special Launch Offer</span>
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold text-[#DDF08B] uppercase tracking-wider">
+                        <Sparkles className="w-3 h-3 text-[#DDF08B]" />
+                        <span>Included Founder Perk</span>
                       </div>
-                      <span className="bg-[#DDF08B] text-[#1E2E0A] text-[9.5px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full shadow-xs">
-                        50% OFF
+                      <span className="bg-[#DDF08B]/20 text-[#DDF08B] text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#DDF08B]/40">
+                        Included Free
                       </span>
                     </div>
-                    <div className="text-[13.5px] font-bold text-white leading-snug">
+                    <div className="text-[13px] font-bold text-white leading-snug">
                       6 Months Free Founding Legals OS
                     </div>
                     <div className="text-[11.5px] text-[#CDE098] font-medium mt-0.5">
@@ -318,20 +446,20 @@ export default function Pricing() {
                     </div>
                   </div>
 
-                  <p className="text-[11px] font-extrabold uppercase tracking-widest text-[#B8CE8E] mb-3">
+                  <p className="text-[10.5px] font-extrabold uppercase tracking-widest text-[#B8CE8E] mb-2">
                     Best Suited For
                   </p>
-                  <ul className="space-y-3 text-[13px] text-white/90 mb-7">
-                    <li className="flex items-start gap-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
+                  <ul className="space-y-1.5 text-[12px] sm:text-[12.5px] text-white/90 mb-4 flex-1">
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
                       <span className="leading-snug">Service-based businesses &amp; tech startups</span>
                     </li>
-                    <li className="flex items-start gap-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
                       <span className="leading-snug">Businesses looking to issue equity shares &amp; ESOPs</span>
                     </li>
-                    <li className="flex items-start gap-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
                       <span className="leading-snug">Startups seeking investment through VC/Angel funding</span>
                     </li>
                   </ul>
@@ -339,49 +467,61 @@ export default function Pricing() {
 
                 <a
                   href="/services/CAservices/company-incorporation"
-                  className="w-full py-3.5 px-5 bg-[#DDF08B] hover:bg-[#E7F89C] text-[#1D2E0A] font-extrabold text-xs sm:text-[13px] rounded-xl text-center flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl active:scale-[0.99] cursor-pointer group-hover:gap-3"
+                  className="w-full py-2.5 sm:py-3 px-4 bg-[#DDF08B] hover:bg-[#E7F89C] text-[#1D2E0A] font-extrabold text-xs sm:text-[12.5px] rounded-xl text-center flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg active:scale-[0.99] cursor-pointer group-hover:gap-2.5 mt-auto"
                 >
                   <span>Register Pvt. Ltd.</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                 </a>
-              </div>
+              </motion.div>
 
-              {/* Tile 2: Limited Liability Partnership */}
-              <div className="bg-gradient-to-b from-[#425824] via-[#3A4E1F] to-[#314219] rounded-[28px] p-6 sm:p-7 border border-[#5F7B36]/70 shadow-xl shadow-[#1A280B]/25 hover:shadow-2xl hover:border-[#83A54C] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between relative group">
+              {/* Tile 2: Limited Liability Partnership (LLP) */}
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 35, scale: 0.95 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: { type: "spring", stiffness: 260, damping: 22 },
+                  },
+                }}
+                whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                className="bg-gradient-to-b from-[#34471B] via-[#2A3915] to-[#1F2C0E] rounded-[24px] p-5 sm:p-5.5 border border-[#526B29]/80 shadow-xl shadow-[#1A280B]/25 hover:shadow-2xl hover:border-[#85A64E] transition-all duration-300 flex flex-col justify-between relative group h-full"
+              >
                 {/* Floating Badge */}
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-white text-[#24350E] text-[10.5px] font-black uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md border border-white/60 whitespace-nowrap">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-white text-[#24350E] text-[10px] sm:text-[10.5px] font-black uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md border border-white/60 whitespace-nowrap">
                   Best for Professionals
                 </div>
 
-                <div>
-                  <h3 className="font-serif text-[22px] sm:text-[23px] font-bold text-white mt-2 mb-2 leading-tight">
+                <div className="flex-1 flex flex-col">
+                  <h3 className="font-serif text-[19px] sm:text-[20px] font-bold text-white mt-1 mb-1.5 leading-snug min-h-[48px] flex items-center">
                     Limited Liability Partnership (LLP)
                   </h3>
-                  
-                  <div className="flex items-baseline gap-1.5 mb-1">
-                    <span className="text-[38px] font-extrabold font-serif text-white tracking-tight">
+
+                  <div className="flex items-baseline gap-1.5 mb-0.5">
+                    <span className="text-[30px] sm:text-[32px] font-extrabold font-serif text-white tracking-tight leading-none">
                       ₹1,999
                     </span>
                     <span className="text-xs text-[#D8E8B4] font-semibold">
                       + Govt. Fee
                     </span>
                   </div>
-                  <p className="text-[12px] text-[#C1D49D] font-medium mb-4">
+                  <p className="text-[11.5px] text-[#C1D49D] font-medium mb-3">
                     One-time MCA professional registration fee
                   </p>
 
-                  {/* Special Bundle Highlight */}
-                  <div className="mb-6 p-3.5 sm:p-4 rounded-2xl bg-[#283814]/85 border border-[#587330] shadow-inner backdrop-blur-xs">
+                  {/* Included Founder Perk Box */}
+                  <div className="mb-3.5 p-3 sm:p-3.5 rounded-xl bg-[#1F2C0E]/90 border border-[#486323] shadow-inner backdrop-blur-xs">
                     <div className="flex items-center justify-between gap-1 mb-1.5">
-                      <div className="flex items-center gap-1.5 text-[10.5px] font-extrabold text-[#DDF08B] uppercase tracking-wider">
-                        <Sparkles className="w-3.5 h-3.5 text-[#DDF08B]" />
-                        <span>Special Launch Offer</span>
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold text-[#DDF08B] uppercase tracking-wider">
+                        <Sparkles className="w-3 h-3 text-[#DDF08B]" />
+                        <span>Included Founder Perk</span>
                       </div>
-                      <span className="bg-[#DDF08B] text-[#1E2E0A] text-[9.5px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full shadow-xs">
-                        50% OFF
+                      <span className="bg-[#DDF08B]/20 text-[#DDF08B] text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#DDF08B]/40">
+                        Included Free
                       </span>
                     </div>
-                    <div className="text-[13.5px] font-bold text-white leading-snug">
+                    <div className="text-[13px] font-bold text-white leading-snug">
                       6 Months Free Founding Legals OS
                     </div>
                     <div className="text-[11.5px] text-[#CDE098] font-medium mt-0.5">
@@ -389,20 +529,20 @@ export default function Pricing() {
                     </div>
                   </div>
 
-                  <p className="text-[11px] font-extrabold uppercase tracking-widest text-[#B8CE8E] mb-3">
+                  <p className="text-[10.5px] font-extrabold uppercase tracking-widest text-[#B8CE8E] mb-2">
                     Best Suited For
                   </p>
-                  <ul className="space-y-3 text-[13px] text-white/90 mb-7">
-                    <li className="flex items-start gap-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
+                  <ul className="space-y-1.5 text-[12px] sm:text-[12.5px] text-white/90 mb-4 flex-1">
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
                       <span className="leading-snug">Professional services &amp; consulting agencies</span>
                     </li>
-                    <li className="flex items-start gap-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
                       <span className="leading-snug">Firms seeking flexible capital contribution from Partners</span>
                     </li>
-                    <li className="flex items-start gap-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
                       <span className="leading-snug">Firms sharing resources with low statutory compliance</span>
                     </li>
                   </ul>
@@ -410,49 +550,61 @@ export default function Pricing() {
 
                 <a
                   href="/services/CAservices/llp-registration"
-                  className="w-full py-3.5 px-5 bg-white hover:bg-[#F3F6EC] text-[#24350E] font-extrabold text-xs sm:text-[13px] rounded-xl text-center flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg active:scale-[0.99] cursor-pointer group-hover:gap-3"
+                  className="w-full py-2.5 sm:py-3 px-4 bg-white hover:bg-[#F3F6EC] text-[#24350E] font-extrabold text-xs sm:text-[12.5px] rounded-xl text-center flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg active:scale-[0.99] cursor-pointer group-hover:gap-2.5 mt-auto"
                 >
                   <span>Register LLP</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                 </a>
-              </div>
+              </motion.div>
 
-              {/* Tile 3: One Person Company */}
-              <div className="bg-gradient-to-b from-[#425824] via-[#3A4E1F] to-[#314219] rounded-[28px] p-6 sm:p-7 border border-[#5F7B36]/70 shadow-xl shadow-[#1A280B]/25 hover:shadow-2xl hover:border-[#83A54C] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between relative group">
+              {/* Tile 3: One Person Company (OPC) */}
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 35, scale: 0.95 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: { type: "spring", stiffness: 260, damping: 22 },
+                  },
+                }}
+                whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                className="bg-gradient-to-b from-[#34471B] via-[#2A3915] to-[#1F2C0E] rounded-[24px] p-5 sm:p-5.5 border border-[#526B29]/80 shadow-xl shadow-[#1A280B]/25 hover:shadow-2xl hover:border-[#85A64E] transition-all duration-300 flex flex-col justify-between relative group h-full"
+              >
                 {/* Floating Badge */}
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-white text-[#24350E] text-[10.5px] font-black uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md border border-white/60 whitespace-nowrap">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-white text-[#24350E] text-[10px] sm:text-[10.5px] font-black uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md border border-white/60 whitespace-nowrap">
                   Single Founder Setup
                 </div>
 
-                <div>
-                  <h3 className="font-serif text-[22px] sm:text-[23px] font-bold text-white mt-2 mb-2 leading-tight">
+                <div className="flex-1 flex flex-col">
+                  <h3 className="font-serif text-[19px] sm:text-[20px] font-bold text-white mt-1 mb-1.5 leading-snug min-h-[48px] flex items-center">
                     One Person Company (OPC)
                   </h3>
-                  
-                  <div className="flex items-baseline gap-1.5 mb-1">
-                    <span className="text-[38px] font-extrabold font-serif text-white tracking-tight">
+
+                  <div className="flex items-baseline gap-1.5 mb-0.5">
+                    <span className="text-[30px] sm:text-[32px] font-extrabold font-serif text-white tracking-tight leading-none">
                       ₹1,999
                     </span>
                     <span className="text-xs text-[#D8E8B4] font-semibold">
                       + Govt. Fee
                     </span>
                   </div>
-                  <p className="text-[12px] text-[#C1D49D] font-medium mb-4">
+                  <p className="text-[11.5px] text-[#C1D49D] font-medium mb-3">
                     One-time MCA professional registration fee
                   </p>
 
-                  {/* Special Bundle Highlight */}
-                  <div className="mb-6 p-3.5 sm:p-4 rounded-2xl bg-[#283814]/85 border border-[#587330] shadow-inner backdrop-blur-xs">
+                  {/* Included Founder Perk Box */}
+                  <div className="mb-3.5 p-3 sm:p-3.5 rounded-xl bg-[#1F2C0E]/90 border border-[#486323] shadow-inner backdrop-blur-xs">
                     <div className="flex items-center justify-between gap-1 mb-1.5">
-                      <div className="flex items-center gap-1.5 text-[10.5px] font-extrabold text-[#DDF08B] uppercase tracking-wider">
-                        <Sparkles className="w-3.5 h-3.5 text-[#DDF08B]" />
-                        <span>Special Launch Offer</span>
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold text-[#DDF08B] uppercase tracking-wider">
+                        <Sparkles className="w-3 h-3 text-[#DDF08B]" />
+                        <span>Included Founder Perk</span>
                       </div>
-                      <span className="bg-[#DDF08B] text-[#1E2E0A] text-[9.5px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full shadow-xs">
-                        50% OFF
+                      <span className="bg-[#DDF08B]/20 text-[#DDF08B] text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-[#DDF08B]/40">
+                        Included Free
                       </span>
                     </div>
-                    <div className="text-[13.5px] font-bold text-white leading-snug">
+                    <div className="text-[13px] font-bold text-white leading-snug">
                       6 Months Free Founding Legals OS
                     </div>
                     <div className="text-[11.5px] text-[#CDE098] font-medium mt-0.5">
@@ -460,20 +612,20 @@ export default function Pricing() {
                     </div>
                   </div>
 
-                  <p className="text-[11px] font-extrabold uppercase tracking-widest text-[#B8CE8E] mb-3">
+                  <p className="text-[10.5px] font-extrabold uppercase tracking-widest text-[#B8CE8E] mb-2">
                     Best Suited For
                   </p>
-                  <ul className="space-y-3 text-[13px] text-white/90 mb-7">
-                    <li className="flex items-start gap-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
+                  <ul className="space-y-1.5 text-[12px] sm:text-[12.5px] text-white/90 mb-4 flex-1">
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
                       <span className="leading-snug">Freelancers, solopreneurs &amp; small-scale businesses</span>
                     </li>
-                    <li className="flex items-start gap-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
                       <span className="leading-snug">Businesses looking for corporate status with minimal compliance</span>
                     </li>
-                    <li className="flex items-start gap-2.5">
-                      <span className="w-2 h-2 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#DDF08B] mt-1.5 shrink-0 shadow-xs"></span>
                       <span className="leading-snug">Founders retaining 100% single-ownership &amp; limited liability</span>
                     </li>
                   </ul>
@@ -481,13 +633,13 @@ export default function Pricing() {
 
                 <a
                   href="/services/CAservices/opc-registration"
-                  className="w-full py-3.5 px-5 bg-white hover:bg-[#F3F6EC] text-[#24350E] font-extrabold text-xs sm:text-[13px] rounded-xl text-center flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg active:scale-[0.99] cursor-pointer group-hover:gap-3"
+                  className="w-full py-2.5 sm:py-3 px-4 bg-white hover:bg-[#F3F6EC] text-[#24350E] font-extrabold text-xs sm:text-[12.5px] rounded-xl text-center flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg active:scale-[0.99] cursor-pointer group-hover:gap-2.5 mt-auto"
                 >
                   <span>Register OPC</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                 </a>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
 
           {/* Billing toggle */}

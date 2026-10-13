@@ -31,7 +31,7 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-cream border-t border-brown-200">
+    <footer className="relative z-30 bg-[#F5F0EB] border-t border-brown-300 shadow-sm">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
@@ -44,7 +44,7 @@ export default function Footer() {
                 className="h-14 sm:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
             </a>
-            <p className="text-sm text-brown-500 leading-relaxed max-w-xs mb-6">
+            <p className="text-sm text-brown-700 font-medium leading-relaxed max-w-xs mb-6">
               India&apos;s all-in-one legal and compliance platform built for founders. From incorporation to fundraising, we handle the paperwork so you can focus on building.
             </p>
             {/* Social Icons */}
@@ -53,7 +53,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/showcase/foundinglegals/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center rounded-full bg-brown-100 text-brown-500 hover:bg-olive-600 hover:text-white transition-all duration-300"
+                className="w-9 h-9 flex items-center justify-center rounded-full bg-brown-200/70 text-brown-700 hover:bg-olive-600 hover:text-white transition-all duration-300 shadow-2xs"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-4 h-4" />
@@ -62,7 +62,7 @@ export default function Footer() {
                 href="https://twitter.com/foundinglegals"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center rounded-full bg-brown-100 text-brown-500 hover:bg-olive-600 hover:text-white transition-all duration-300"
+                className="w-9 h-9 flex items-center justify-center rounded-full bg-brown-200/70 text-brown-700 hover:bg-olive-600 hover:text-white transition-all duration-300 shadow-2xs"
                 aria-label="X"
               >
                 <svg
@@ -78,7 +78,7 @@ export default function Footer() {
                 href="https://www.instagram.com/foundinglegals.india"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center rounded-full bg-brown-100 text-brown-500 hover:bg-olive-600 hover:text-white transition-all duration-300"
+                className="w-9 h-9 flex items-center justify-center rounded-full bg-brown-200/70 text-brown-700 hover:bg-olive-600 hover:text-white transition-all duration-300 shadow-2xs"
                 aria-label="Instagram"
               >
                 <Instagram className="w-4 h-4" />
@@ -87,7 +87,7 @@ export default function Footer() {
                 href="https://www.youtube.com/@foundinglegals?si=wCFdbHLqYCVhz3sm"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center rounded-full bg-brown-100 text-brown-500 hover:bg-olive-600 hover:text-white transition-all duration-300"
+                className="w-9 h-9 flex items-center justify-center rounded-full bg-brown-200/70 text-brown-700 hover:bg-olive-600 hover:text-white transition-all duration-300 shadow-2xs"
                 aria-label="YouTube"
               >
                 <Youtube className="w-4 h-4" />
@@ -98,7 +98,7 @@ export default function Footer() {
           {/* Link Columns */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h3 className="text-sm font-semibold text-brown-900 mb-4">
+              <h3 className="text-sm font-bold text-brown-900 mb-4">
                 {title}
               </h3>
               <ul className="space-y-3">
@@ -106,7 +106,7 @@ export default function Footer() {
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="text-sm text-brown-500 hover:text-olive-600 transition-colors"
+                      className="text-sm text-brown-700 hover:text-olive-700 font-medium transition-colors"
                     >
                       {link.name}
                     </a>
@@ -119,35 +119,35 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-brown-200">
+      <div className="border-t border-brown-300/80 bg-[#EFE9E1]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-4">
-          <div className="text-xs text-brown-400 leading-relaxed">
+          <div className="text-xs text-brown-700 leading-relaxed">
             <p>
-              <span className="font-semibold text-brown-500">Arvya Tech Pvt. Ltd.</span>{" "}
+              <span className="font-bold text-brown-900">Arvya Tech Pvt. Ltd.</span>{" "}
               &middot; CIN: U62011AP2025PTC121416
             </p>
-            <p className="mt-1">
+            <p className="mt-1 text-brown-600">
               Registered Office: 5th Floor, The Herbt&apos;s Square Building, Autonagar, APIIC IT Park, Mangalagiri, Amaravati, Andhra Pradesh 522503, India.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <span className="text-xs text-brown-400">
+          <span className="text-xs text-brown-600 font-medium">
             &copy; {new Date().getFullYear()} Founding Legals (Arvya Tech Pvt. Ltd.) All rights reserved.
           </span>
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-brown-400">
-            <a href="/privacy-policy" className="hover:text-olive-600 transition-colors">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-brown-600 font-medium">
+            <a href="/privacy-policy" className="hover:text-olive-700 transition-colors">
               Privacy Policy
             </a>
-            <a href="/terms" className="hover:text-olive-600 transition-colors">
+            <a href="/terms" className="hover:text-olive-700 transition-colors">
               Terms &amp; Conditions
             </a>
-            <a href="/cookie-policy" className="hover:text-olive-600 transition-colors">
+            <a href="/cookie-policy" className="hover:text-olive-700 transition-colors">
               Cookie Policy
             </a>
-            <a href="/refund-policy" className="hover:text-olive-600 transition-colors">
+            <a href="/refund-policy" className="hover:text-olive-700 transition-colors">
               Refund &amp; Cancellation Policy
             </a>
-            <a href="/contact" className="hover:text-olive-600 transition-colors">
+            <a href="/contact" className="hover:text-olive-700 transition-colors">
               Help Center
             </a>
             <button
@@ -157,7 +157,7 @@ export default function Footer() {
                   window.dispatchEvent(new Event("fl:open-cookie-preferences"));
                 }
               }}
-              className="hover:text-olive-600 transition-colors"
+              className="hover:text-olive-700 transition-colors cursor-pointer"
             >
               Cookie preferences
             </button>
