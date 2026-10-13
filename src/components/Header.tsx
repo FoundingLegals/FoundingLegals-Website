@@ -354,7 +354,7 @@ export default function Header() {
                     : "text-olive-700 hover:bg-cream hover:text-brown-900"
                 }`}
               >
-                For Founders
+                Founder&apos;s OS
                 <ChevronDown
                   className={`w-3 h-3 transition-transform duration-200 ${megaOpen ? "rotate-180" : ""}`}
                 />
@@ -702,7 +702,7 @@ export default function Header() {
                       <Rocket className="w-4 h-4 text-olive-600" />
                     </div>
                     <span className="text-[14px] font-bold text-brown-900 uppercase tracking-wide">
-                      For Founders
+                      Founder&apos;s OS
                     </span>
                   </div>
                   <ChevronDown
