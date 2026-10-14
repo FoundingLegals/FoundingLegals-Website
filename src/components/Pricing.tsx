@@ -554,16 +554,16 @@ export default function Pricing() {
               </div>
 
               {/* 9 Core Incorporation Deliverables - Clean Written Text Alignment */}
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-6 max-w-4xl mx-auto text-left">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-6 max-w-5xl mx-auto text-left">
                 {/* 1. Registration in 7-10 Business Days */}
                 <div className="flex items-start gap-2.5">
                   <Check className="w-4 h-4 text-[#2C4A21] shrink-0 mt-1 stroke-[2.5]" />
                   <div>
-                    <p className="text-[15px] font-semibold text-[#1A1917] leading-snug">
-                      Registration in 7–10 Business Days
-                    </p>
-                    <p className="text-[12.5px] text-brown-500 font-normal mt-0.5">
-                      Excluding Government Approval time
+                    <p className="text-[14.5px] font-semibold text-[#1A1917] leading-snug">
+                      Registration in 7–10 Business Days{" "}
+                      <span className="text-[11px] text-brown-500 font-normal whitespace-nowrap">
+                        Excluding Government Approval time
+                      </span>
                     </p>
                   </div>
                 </div>
@@ -650,43 +650,82 @@ export default function Pricing() {
               </div>
             </div>
           </div>
-
-          {/* Billing toggle */}
-          <div id="plans" className="mt-8 inline-flex items-center bg-cream-dark rounded-full p-1.5 border border-brown-200 shadow-inner scroll-mt-28">
-            <button
-              onClick={() => setAnnual(false)}
-              className={`px-6 py-2.5 text-xs sm:text-[13px] font-bold rounded-full transition-all duration-200 ${
-                !annual
-                  ? "bg-olive-600 text-white shadow-sm"
-                  : "text-brown-600 hover:text-brown-900"
-              }`}
-            >
-              Monthly
-            </button>
-            <button
-              onClick={() => setAnnual(true)}
-              className={`px-6 py-2.5 text-xs sm:text-[13px] font-bold rounded-full transition-all duration-200 inline-flex items-center gap-2 ${
-                annual
-                  ? "bg-olive-600 text-white shadow-sm"
-                  : "text-brown-600 hover:text-brown-900"
-              }`}
-            >
-              Annual
-              <span
-                className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider ${
-                  annual ? "bg-lime-bg text-olive-800" : "bg-olive-600/10 text-olive-700"
-                }`}
-              >
-                Save more
-              </span>
-            </button>
-          </div>
         </div>
       </section>
 
-      {/* - Pricing cards - */}
-      <section className="pb-20 lg:pb-28 bg-cream">
+      {/* - Founder's OS Subscription Section - */}
+      <section id="plans" className="pb-20 lg:pb-28 pt-12 sm:pt-16 bg-cream border-t border-brown-200/50 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          
+          {/* Section Header: Single Line Row for Title, Dash & Highlighted Subtitle */}
+          <div className="text-center max-w-6xl mx-auto mb-4 pt-2">
+            <div className="flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3 gap-y-2">
+              <h2 className="font-serif text-2xl sm:text-[28px] lg:text-[32px] font-bold tracking-tight whitespace-nowrap inline-flex items-center">
+                <span className="text-[#7EB348] font-bold">Founding</span>
+                <span className="text-[#558039] font-bold">Legals</span>
+                <span className="text-[#1A1917] ml-2">Founder’s{" "}</span>
+                <span className="text-[#3A501F] font-semibold italic relative inline-block ml-1">
+                  OS
+                  <svg
+                    className="absolute -bottom-1 left-0 w-full h-2 text-[#5A7C42]/40 overflow-visible pointer-events-none"
+                    viewBox="0 0 200 8"
+                    fill="none"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M2 5.5C45 2 110 2 198 5"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+              </h2>
+
+              {/* Dash separator */}
+              <span className="text-[#4E702D] font-serif font-light text-xl sm:text-2xl lg:text-[26px] select-none mx-0.5 sm:mx-1" aria-hidden="true">
+                —
+              </span>
+
+              {/* Subtitle: Highlighted, prominent text size aligned with heading */}
+              <span className="font-serif italic font-semibold text-[17.5px] sm:text-[19.5px] lg:text-[21.5px] text-[#203A0E] tracking-tight sm:whitespace-nowrap">
+                India’s first founder-centric platform for Indian startup founders
+              </span>
+            </div>
+
+            {/* Save Badge & Billing Toggle - Centered down below */}
+            <div className="mt-5 mb-10 flex flex-col items-center justify-center gap-3">
+              {/* Save up to ₹2 Lakhs Annually Badge */}
+              <span className="bg-[#DDF08B] text-[#1D300A] text-[10.5px] sm:text-[11.5px] font-black px-3.5 py-1 rounded-full uppercase tracking-wider border border-[#C6E25D] shadow-2xs whitespace-nowrap">
+                Save up to ₹2 Lakhs annually
+              </span>
+
+              {/* Monthly / Annual Toggle */}
+              <div className="inline-flex items-center bg-cream-dark rounded-full p-1.5 border border-brown-200 shadow-inner">
+                <button
+                  onClick={() => setAnnual(false)}
+                  className={`px-6 py-2.5 text-xs sm:text-[13px] font-bold rounded-full transition-all duration-200 ${
+                    !annual
+                      ? "bg-olive-600 text-white shadow-sm"
+                      : "text-brown-600 hover:text-brown-900"
+                  }`}
+                >
+                  Monthly
+                </button>
+                <button
+                  onClick={() => setAnnual(true)}
+                  className={`px-6 py-2.5 text-xs sm:text-[13px] font-bold rounded-full transition-all duration-200 ${
+                    annual
+                      ? "bg-olive-600 text-white shadow-sm"
+                      : "text-brown-600 hover:text-brown-900"
+                  }`}
+                >
+                  Annual
+                </button>
+              </div>
+            </div>
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5 items-stretch">
             {TIERS.map((tier) => {
               const isPreSeed = tier.id === "Basic" || tier.name.toLowerCase().includes("pre seed");
