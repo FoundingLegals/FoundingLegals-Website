@@ -8,6 +8,7 @@ import {
   ShieldCheck,
   Building2,
   ArrowRight,
+  Gift,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
@@ -120,7 +121,85 @@ const TIERS: Tier[] = [
   },
 ];
 
+type ComboOffer = {
+  id: string;
+  name: string;
+  badge?: string;
+  highlight?: boolean;
+  tagline: string;
+  bestFor: string;
+  originalAnnualPrice: number;
+  discountedAnnualPrice: number;
+  effectiveMonthlyPrice: number;
+  credits: number;
+  teamMembers: number;
+  drafts: number;
+  esigns: number;
+  invoices: number;
+  ctaText: string;
+  href: string;
+};
+
+// Exclusive Combo Packages for ₹1,999 Company Registrants (Pvt Ltd, LLP, OPC)
+// 6 Months FREE Founder's OS + 50% OFF Annual Subscription
+const COMBO_OFFERS: ComboOffer[] = [
+  {
+    id: "combo-preseed",
+    name: "Pre-seed Combo",
+    tagline: "Essential starter combo for newly incorporated startups.",
+    bestFor: "1 to 5 person teams",
+    originalAnnualPrice: 7890,
+    discountedAnnualPrice: 3945, // ₹7,890 / 2 = 3945
+    effectiveMonthlyPrice: 329,
+    credits: 25,
+    teamMembers: 5,
+    drafts: 5,
+    esigns: 6,
+    invoices: 8,
+    ctaText: "Claim Pre-Seed Combo",
+    href: "/start",
+  },
+  {
+    id: "combo-seed",
+    name: "Seed Combo",
+    badge: "Most Popular Founder Choice",
+    highlight: true,
+    tagline: "The #1 choice for funded and scaling Indian startups.",
+    bestFor: "1 to 10 person teams",
+    originalAnnualPrice: 11390,
+    discountedAnnualPrice: 5695, // ₹11,390 / 2 = 5695
+    effectiveMonthlyPrice: 475,
+    credits: 50,
+    teamMembers: 10,
+    drafts: 10,
+    esigns: 12,
+    invoices: 16,
+    ctaText: "Claim Seed Combo",
+    href: "/start",
+  },
+  {
+    id: "combo-series-a",
+    name: "Series A Combo",
+    tagline: "Comprehensive power bundle for high-growth scaling teams.",
+    bestFor: "1 to 20 person teams",
+    originalAnnualPrice: 14990,
+    discountedAnnualPrice: 7495, // ₹14,990 / 2 = 7495
+    effectiveMonthlyPrice: 625,
+    credits: 100,
+    teamMembers: 20,
+    drafts: 20,
+    esigns: 25,
+    invoices: 33,
+    ctaText: "Claim Series A Combo",
+    href: "/start",
+  },
+];
+
 const FAQS = [
+  {
+    q: "How does the ₹1,999 Incorporation + 6 Months Free Combo work?",
+    a: "When you incorporate your Private Limited, LLP, or OPC with Founding Legals at our flat ₹1,999 MCA fee, you receive our exclusive 12-Month Founder Bundle. In this 12-month total period: your first 6 months of FoundingLegals Founder’s OS are 100% FREE (₹0), and for the next 6 months you pay only 50% of the annual plan (e.g. Pre-seed is ₹7,890 / 2 = ₹3,945 for the next 6 months). This gives you a complete year of Founder’s OS for just half the standard annual fee.",
+  },
   {
     q: "What is the difference between Monthly and Annual Early Bird pricing?",
     a: "Our Monthly Plans carry a promotional 20% Early Bird discount that is active now. Our Annual Plans lock in a 33% Permanent Early Bird rate forever - your price will never increase as we ship new features, making annual billing the smartest long-term choice.",
@@ -979,6 +1058,214 @@ export default function Pricing() {
               DPDP Act 2023 compliant
             </span>
           </div>
+        </div>
+      </section>
+
+      {/* - Special Incorporation Combo Packages Section (12-Month Bundle: 6 Months Free + Next 6 Months at 50%) - */}
+      <section id="combo-offers" className="py-16 lg:py-20 bg-gradient-to-b from-cream via-[#F5F0E6] to-cream border-t border-b border-brown-200/60 scroll-mt-20">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+          
+          {/* Section Header */}
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#EAF5D6] border border-[#CCE58E] text-[#1E360C] text-[11px] font-black uppercase tracking-wider mb-3 shadow-2xs">
+              <Gift className="w-3.5 h-3.5 text-[#4E7324]" />
+              <span>12-Month Founder Bundle • 6 Months Free + Next 6 Months at 50%</span>
+            </div>
+
+            <h2 className="font-serif text-3xl sm:text-4xl font-medium text-brown-900 leading-tight mb-2 tracking-tight">
+              Incorporate for ₹1,999 &amp; Get 6 Months Free
+            </h2>
+            <p className="text-sm sm:text-base text-brown-600">
+              For <strong>Private Limited</strong>, <strong>LLP</strong>, and <strong>OPC</strong>: 6 Months Free + Next 6 Months at 50% of annual plan.
+            </p>
+          </div>
+
+          {/* 3 Streamlined Combo Cards */}
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-6 items-stretch max-w-5xl mx-auto">
+            {COMBO_OFFERS.map((offer) => {
+              const isHighlight = offer.highlight;
+
+              return (
+                <div
+                  key={offer.id}
+                  className={`relative rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 ${
+                    isHighlight
+                      ? "bg-gradient-to-b from-[#2B4618] to-[#1B2F0F] text-white shadow-xl border-2 border-[#7EB348] ring-2 ring-[#7EB348]/20 md:-translate-y-2"
+                      : "bg-[#FCFAF7] border-2 border-brown-200/90 text-brown-900 hover:border-[#7EB348] shadow-sm hover:shadow-md"
+                  }`}
+                >
+                  {/* Highlight Ribbon */}
+                  {offer.badge && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                      <span className="inline-flex items-center gap-1 bg-[#DDF08B] text-[#142605] text-[10px] font-black px-3 py-0.5 rounded-full uppercase tracking-wider border border-[#C2E050] shadow-sm whitespace-nowrap">
+                        <Sparkles className="w-3 h-3 text-[#27440F]" />
+                        {offer.badge}
+                      </span>
+                    </div>
+                  )}
+
+                  <div>
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-1.5 pt-1">
+                      <h3
+                        className={`font-serif text-2xl font-bold ${
+                          isHighlight ? "text-white" : "text-brown-900"
+                        }`}
+                      >
+                        {offer.name}
+                      </h3>
+                      <span
+                        className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${
+                          isHighlight
+                            ? "bg-[#3D5E24] text-[#E0F3AA] border border-[#527931]"
+                            : "bg-[#EAF5D6] text-[#223E0E] border border-[#CCE58E]"
+                        }`}
+                      >
+                        {offer.bestFor}
+                      </span>
+                    </div>
+
+                    <p
+                      className={`text-xs mb-4 ${
+                        isHighlight ? "text-olive-100" : "text-brown-500"
+                      }`}
+                    >
+                      {offer.tagline}
+                    </p>
+
+                    {/* Compact Price & 6+6 Offer Box */}
+                    <div
+                      className={`rounded-xl p-3.5 mb-4 border ${
+                        isHighlight
+                          ? "bg-[#233A14]/90 border-[#5A8235]"
+                          : "bg-[#F7FAEF] border-[#CCE58E]"
+                      }`}
+                    >
+                      <div className="flex items-baseline justify-between mb-2">
+                        <div className="flex items-baseline gap-1.5">
+                          <span
+                            className={`text-3xl sm:text-4xl font-extrabold tracking-tight ${
+                              isHighlight ? "text-white" : "text-[#1B320B]"
+                            }`}
+                          >
+                            ₹{offer.discountedAnnualPrice.toLocaleString("en-IN")}
+                          </span>
+                          <span
+                            className={`text-xs font-semibold ${
+                              isHighlight ? "text-olive-200" : "text-brown-500"
+                            }`}
+                          >
+                            / 1-Yr Total
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-black text-[#142605] bg-[#DDF08B] px-2 py-0.5 rounded-full border border-[#C5E15B]">
+                          50% OFF
+                        </span>
+                      </div>
+
+                      {/* 2 Quick Visual Badges: 6 Mos Free + Next 6 Mos Pay */}
+                      <div className="grid grid-cols-2 gap-2 text-center text-xs pt-1.5 border-t border-current/10">
+                        <div
+                          className={`py-1 px-1.5 rounded-lg font-bold ${
+                            isHighlight
+                              ? "bg-white/10 text-[#DDF08B]"
+                              : "bg-white text-[#2B4B13] border border-[#CCE58E]"
+                          }`}
+                        >
+                          <span className="block text-[9px] font-medium opacity-80 uppercase">1st 6 Months</span>
+                          <span className="text-xs font-black">100% FREE</span>
+                        </div>
+                        <div
+                          className={`py-1 px-1.5 rounded-lg font-bold ${
+                            isHighlight
+                              ? "bg-white/10 text-white"
+                              : "bg-white text-brown-900 border border-brown-200"
+                          }`}
+                        >
+                          <span className="block text-[9px] font-medium opacity-80 uppercase">Next 6 Months</span>
+                          <span className="text-xs font-black">₹{offer.discountedAnnualPrice.toLocaleString("en-IN")}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Crisp 3-Bullet List */}
+                    <ul className="space-y-2 text-xs sm:text-[13px] mb-5">
+                      <li
+                        className={`flex items-start gap-2 font-medium ${
+                          isHighlight ? "text-[#DDF08B]" : "text-[#1E360B]"
+                        }`}
+                      >
+                        <Check
+                          className={`w-4 h-4 shrink-0 mt-0.5 stroke-[3] ${
+                            isHighlight ? "text-[#DDF08B]" : "text-[#4E702D]"
+                          }`}
+                        />
+                        <span>Pvt Ltd / LLP / OPC Registration (₹1,999)</span>
+                      </li>
+                      <li
+                        className={`flex items-start gap-2 ${
+                          isHighlight ? "text-olive-50" : "text-brown-700"
+                        }`}
+                      >
+                        <Check
+                          className={`w-4 h-4 shrink-0 mt-0.5 stroke-[2.5] ${
+                            isHighlight ? "text-[#97CC52]" : "text-olive-600"
+                          }`}
+                        />
+                        <span>{offer.credits} Monthly Credits (Drafts, e-Signs &amp; Invoices)</span>
+                      </li>
+                      <li
+                        className={`flex items-start gap-2 ${
+                          isHighlight ? "text-olive-50" : "text-brown-700"
+                        }`}
+                      >
+                        <Check
+                          className={`w-4 h-4 shrink-0 mt-0.5 stroke-[2.5] ${
+                            isHighlight ? "text-[#97CC52]" : "text-olive-600"
+                          }`}
+                        />
+                        <span>Hiring Agreements &amp; Team Portal ({offer.teamMembers} Members)</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* CTA Button */}
+                  <div>
+                    <a
+                      href={offer.href}
+                      className={`inline-flex items-center justify-center gap-1.5 w-full px-5 py-3 rounded-full text-xs sm:text-[13px] font-bold tracking-wide transition-all duration-300 shadow-sm hover:shadow-md group ${
+                        isHighlight
+                          ? "bg-[#DDF08B] text-[#142605] hover:bg-white"
+                          : "bg-olive-600 text-white hover:bg-olive-700"
+                      }`}
+                    >
+                      <span>{offer.ctaText}</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Clean 1-Line 3-Step Banner */}
+          <div className="mt-8 max-w-2xl mx-auto flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs text-brown-600 bg-white/70 border border-brown-200 rounded-xl py-2.5 px-4 shadow-2xs">
+            <span className="font-semibold text-brown-900 inline-flex items-center gap-1">
+              <span className="w-4 h-4 rounded-full bg-[#EAF5D6] text-[#233F0F] font-bold text-[10px] flex items-center justify-center">1</span>
+              Register @ ₹1,999
+            </span>
+            <span className="text-brown-300">→</span>
+            <span className="font-semibold text-[#284614] inline-flex items-center gap-1">
+              <span className="w-4 h-4 rounded-full bg-[#EAF5D6] text-[#233F0F] font-bold text-[10px] flex items-center justify-center">2</span>
+              1st 6 Months: Free
+            </span>
+            <span className="text-brown-300">→</span>
+            <span className="font-semibold text-brown-900 inline-flex items-center gap-1">
+              <span className="w-4 h-4 rounded-full bg-[#EAF5D6] text-[#233F0F] font-bold text-[10px] flex items-center justify-center">3</span>
+              Next 6 Months: Pay 50%
+            </span>
+          </div>
+
         </div>
       </section>
 
