@@ -56,8 +56,8 @@ export const STATE_STAMP_DUTY_LOOKUP: Record<string, StateStampDuty> = {
   },
   "Gujarat": {
     state: "Gujarat",
-    pvtLtdStampDuty: 620,
-    llpStampDuty: 1000,
+    pvtLtdStampDuty: 820,
+    llpStampDuty: 2000,
     partnershipStampDuty: 500,
     rocOffice: "ROC Ahmedabad",
     turnaroundDays: "5–8 Working Days",
@@ -191,8 +191,8 @@ export const STATE_STAMP_DUTY_LOOKUP: Record<string, StateStampDuty> = {
   },
   "Bihar": {
     state: "Bihar",
-    pvtLtdStampDuty: 1520,
-    llpStampDuty: 500,
+    pvtLtdStampDuty: 1600,
+    llpStampDuty: 5000,
     partnershipStampDuty: 200,
     rocOffice: "ROC Patna",
     turnaroundDays: "6–9 Working Days",
@@ -535,7 +535,7 @@ export const ENTITY_CONFIGS: Record<EntityTypeId, EntityTypeConfig> = {
     defaultDirectors: 1,
     minDirectors: 1,
     maxDirectors: 1,
-    defaultDsc: 1,
+    defaultDsc: 2,
     defaultCapital: 100000,
     hasShareCapitalOption: true,
     baseProfessionalFee: 1999,
@@ -751,6 +751,236 @@ export const ENTITY_CONFIGS: Record<EntityTypeId, EntityTypeConfig> = {
   },
 };
 
+export interface GovtFeeRegisterItem {
+  pvtLtd: { slab1L: number; slab5L: number };
+  opc: { slab1L: number; slab5L: number };
+  llp: { slab1L: number; slab5L: number };
+}
+
+/**
+ * Official Government Fee Register (State-wise statutory fees).
+ * Slabs: ₹1,00,000 and ₹5,00,000 share capital.
+ * Pvt Ltd and OPC figures include 2 DSC and standard incorporation verifications as specified in the register.
+ */
+export const GOVT_FEE_REGISTER: Record<string, GovtFeeRegisterItem> = {
+  "Andaman & Nicobar Islands": {
+    pvtLtd: { slab1L: 6920, slab5L: 8920 },
+    opc: { slab1L: 6920, slab5L: 8920 },
+    llp: { slab1L: 7700, slab5L: 13200 },
+  },
+  "Andhra Pradesh": {
+    pvtLtd: { slab1L: 7920, slab5L: 9920 },
+    opc: { slab1L: 7920, slab5L: 9920 },
+    llp: { slab1L: 7200, slab5L: 8700 },
+  },
+  "Arunachal Pradesh": {
+    pvtLtd: { slab1L: 7110, slab5L: 9110 },
+    opc: { slab1L: 7110, slab5L: 9110 },
+    llp: { slab1L: 6800, slab5L: 8300 },
+  },
+  "Assam": {
+    pvtLtd: { slab1L: 6925, slab5L: 8925 },
+    opc: { slab1L: 6925, slab5L: 8925 },
+    llp: { slab1L: 6800, slab5L: 8300 },
+  },
+  "Bihar": {
+    pvtLtd: { slab1L: 8000, slab5L: 10000 },
+    opc: { slab1L: 8000, slab5L: 10000 },
+    llp: { slab1L: 11700, slab5L: 13200 },
+  },
+  "Chandigarh": {
+    pvtLtd: { slab1L: 7903, slab5L: 9903 },
+    opc: { slab1L: 7903, slab5L: 9903 },
+    llp: { slab1L: 7700, slab5L: 13200 },
+  },
+  "Chhattisgarh": {
+    pvtLtd: { slab1L: 7910, slab5L: 9910 },
+    opc: { slab1L: 7910, slab5L: 9910 },
+    llp: { slab1L: 8700, slab5L: 10200 },
+  },
+  "Goa": {
+    pvtLtd: { slab1L: 7600, slab5L: 9600 },
+    opc: { slab1L: 7600, slab5L: 9600 },
+    llp: { slab1L: 6850, slab5L: 8350 },
+  },
+  "Haryana": {
+    pvtLtd: { slab1L: 6535, slab5L: 8595 },
+    opc: { slab1L: 6535, slab5L: 8595 },
+    llp: { slab1L: 7700, slab5L: 9200 },
+  },
+  "Himachal Pradesh": {
+    pvtLtd: { slab1L: 6523, slab5L: 8583 },
+    opc: { slab1L: 6523, slab5L: 8583 },
+    llp: { slab1L: 6800, slab5L: 8300 },
+  },
+  "Jammu & Kashmir": {
+    pvtLtd: { slab1L: 6710, slab5L: 8860 },
+    opc: { slab1L: 6710, slab5L: 8860 },
+    llp: { slab1L: 6800, slab5L: 8300 },
+  },
+  "Jharkhand": {
+    pvtLtd: { slab1L: 6573, slab5L: 8573 },
+    opc: { slab1L: 6573, slab5L: 8573 },
+    llp: { slab1L: 11700, slab5L: 13200 },
+  },
+  "Karnataka": {
+    pvtLtd: { slab1L: 16420, slab5L: 18420 },
+    opc: { slab1L: 16420, slab5L: 19919 },
+    llp: { slab1L: 11700, slab5L: 13200 },
+  },
+  "Kerala": {
+    pvtLtd: { slab1L: 9425, slab5L: 11425 },
+    opc: { slab1L: 9425, slab5L: 11425 },
+    llp: { slab1L: 11700, slab5L: 13200 },
+  },
+  "Lakshadweep": {
+    pvtLtd: { slab1L: 7925, slab5L: 9925 },
+    opc: { slab1L: 7925, slab5L: 9925 },
+    llp: { slab1L: 7700, slab5L: 13200 },
+  },
+  "Madhya Pradesh": {
+    pvtLtd: { slab1L: 13950, slab5L: 15950 },
+    opc: { slab1L: 13950, slab5L: 15950 },
+    llp: { slab1L: 8700, slab5L: 10200 },
+  },
+  "Maharashtra": {
+    pvtLtd: { slab1L: 7700, slab5L: 9700 },
+    opc: { slab1L: 7700, slab5L: 9700 },
+    llp: { slab1L: 7700, slab5L: 13200 },
+  },
+  "Manipur": {
+    pvtLtd: { slab1L: 6660, slab5L: 8660 },
+    opc: { slab1L: 6660, slab5L: 8660 },
+    llp: { slab1L: 6800, slab5L: 8300 },
+  },
+  "Meghalaya": {
+    pvtLtd: { slab1L: 6810, slab5L: 8810 },
+    opc: { slab1L: 6810, slab5L: 8810 },
+    llp: { slab1L: 6800, slab5L: 8300 },
+  },
+  "Mizoram": {
+    pvtLtd: { slab1L: 6660, slab5L: 8660 },
+    opc: { slab1L: 6660, slab5L: 8660 },
+    llp: { slab1L: 6800, slab5L: 8300 },
+  },
+  "Nagaland": {
+    pvtLtd: { slab1L: 6660, slab5L: 8660 },
+    opc: { slab1L: 6660, slab5L: 8660 },
+    llp: { slab1L: 6800, slab5L: 8300 },
+  },
+  "Odisha": {
+    pvtLtd: { slab1L: 7010, slab5L: 9010 },
+    opc: { slab1L: 7010, slab5L: 9010 },
+    llp: { slab1L: 6900, slab5L: 8400 },
+  },
+  "Puducherry": {
+    pvtLtd: { slab1L: 6910, slab5L: 8910 },
+    opc: { slab1L: 6910, slab5L: 8910 },
+    llp: { slab1L: 7700, slab5L: 13200 },
+  },
+  "Punjab": {
+    pvtLtd: { slab1L: 16425, slab5L: 23425 },
+    opc: { slab1L: 16425, slab5L: 23425 },
+    llp: { slab1L: 7700, slab5L: 9200 },
+  },
+  "Rajasthan": {
+    pvtLtd: { slab1L: 11910, slab5L: 13910 },
+    opc: { slab1L: 11910, slab5L: 13910 },
+    llp: { slab1L: 10700, slab5L: 18200 },
+  },
+  "Sikkim": {
+    pvtLtd: { slab1L: 6400, slab5L: 8400 },
+    opc: { slab1L: 6400, slab5L: 8400 },
+    llp: { slab1L: 6800, slab5L: 8300 },
+  },
+  "Tamil Nadu": {
+    pvtLtd: { slab1L: 7120, slab5L: 9120 },
+    opc: { slab1L: 7120, slab5L: 9120 },
+    llp: { slab1L: 7000, slab5L: 8500 },
+  },
+  "Telangana": {
+    pvtLtd: { slab1L: 7920, slab5L: 9920 },
+    opc: { slab1L: 7920, slab5L: 9920 },
+    llp: { slab1L: 7700, slab5L: 13200 },
+  },
+  "Tripura": {
+    pvtLtd: { slab1L: 6660, slab5L: 8660 },
+    opc: { slab1L: 6660, slab5L: 8660 },
+    llp: { slab1L: 6800, slab5L: 8300 },
+  },
+  "Uttar Pradesh": {
+    pvtLtd: { slab1L: 7410, slab5L: 9410 },
+    opc: { slab1L: 7410, slab5L: 9410 },
+    llp: { slab1L: 7450, slab5L: 8950 },
+  },
+  "Uttarakhand": {
+    pvtLtd: { slab1L: 7410, slab5L: 9410 },
+    opc: { slab1L: 7410, slab5L: 9410 },
+    llp: { slab1L: 7450, slab5L: 8950 },
+  },
+  "West Bengal": {
+    pvtLtd: { slab1L: 6770, slab5L: 8770 },
+    opc: { slab1L: 6770, slab5L: 8770 },
+    llp: { slab1L: 6850, slab5L: 8350 },
+  },
+  "Gujarat": {
+    pvtLtd: { slab1L: 7220, slab5L: 11020 },
+    opc: { slab1L: 7220, slab5L: 11020 },
+    llp: { slab1L: 8700, slab5L: 10200 },
+  },
+  "Delhi": {
+    pvtLtd: { slab1L: 6760, slab5L: 8760 },
+    opc: { slab1L: 6760, slab5L: 8760 },
+    llp: { slab1L: 7200, slab5L: 8700 },
+  },
+  "Ladakh": {
+    pvtLtd: { slab1L: 6710, slab5L: 8860 },
+    opc: { slab1L: 6710, slab5L: 8860 },
+    llp: { slab1L: 6800, slab5L: 8300 },
+  },
+  "Daman and Diu": {
+    pvtLtd: { slab1L: 7570, slab5L: 9570 },
+    opc: { slab1L: 7570, slab5L: 9570 },
+    llp: { slab1L: 7700, slab5L: 13200 },
+  },
+  "Dadra and Nagar Haveli": {
+    pvtLtd: { slab1L: 6441, slab5L: 8441 },
+    opc: { slab1L: 6441, slab5L: 8441 },
+    llp: { slab1L: 7200, slab5L: 8700 },
+  },
+};
+
+/**
+ * Normalizes state name to match GOVT_FEE_REGISTER keys
+ */
+export function getGovtFeeRegisterEntry(stateName: string): GovtFeeRegisterItem {
+  if (!stateName) return GOVT_FEE_REGISTER["Maharashtra"];
+  if (GOVT_FEE_REGISTER[stateName]) return GOVT_FEE_REGISTER[stateName];
+
+  const trimmed = stateName.trim();
+  if (GOVT_FEE_REGISTER[trimmed]) return GOVT_FEE_REGISTER[trimmed];
+
+  const withAnd = trimmed.replace(/&/g, "and");
+  if (GOVT_FEE_REGISTER[withAnd]) return GOVT_FEE_REGISTER[withAnd];
+
+  const withAmp = trimmed.replace(/\band\b/gi, "&");
+  if (GOVT_FEE_REGISTER[withAmp]) return GOVT_FEE_REGISTER[withAmp];
+
+  if (/Andaman/i.test(trimmed)) return GOVT_FEE_REGISTER["Andaman & Nicobar Islands"];
+  if (/Jammu/i.test(trimmed)) return GOVT_FEE_REGISTER["Jammu & Kashmir"];
+  if (/Daman/i.test(trimmed)) return GOVT_FEE_REGISTER["Daman and Diu"];
+  if (/Dadra/i.test(trimmed)) return GOVT_FEE_REGISTER["Dadra and Nagar Haveli"];
+
+  const lower = trimmed.toLowerCase();
+  for (const [key, val] of Object.entries(GOVT_FEE_REGISTER)) {
+    if (key.toLowerCase() === lower || key.toLowerCase().includes(lower) || lower.includes(key.toLowerCase())) {
+      return val;
+    }
+  }
+
+  return GOVT_FEE_REGISTER["Maharashtra"];
+}
+
 export interface QuoteCalculationParams {
   entityType: EntityTypeId;
   state: string;
@@ -791,7 +1021,7 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
     STATE_STAMP_DUTY_LOOKUP["Maharashtra"];
 
   const hasCap = params.hasShareCapital !== false;
-  const numDsc = Math.max(0, params.numDsc ?? config.defaultDsc);
+  const numDsc = Math.max(0, params.numDsc ?? (params.entityType === "opc" ? 2 : config.defaultDsc));
   const capital = !hasCap || params.authorizedCapital === 0
     ? 0
     : (params.authorizedCapital ?? config.defaultCapital);
@@ -804,14 +1034,24 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
   let govtIncorporationFee = 0;
   let panTanFee = 0;
 
-  const normState = (params.state || "Karnataka").trim().toLowerCase();
-
   switch (params.entityType) {
     case "pvt_ltd":
     case "opc": {
       rocFees = 1000;
-      directorFees = (params.numDirectors || (params.entityType === "opc" ? 1 : 2)) * 200;
       panTanFee = 0;
+
+      // Official Government Fee Register entry
+      const regEntry = getGovtFeeRegisterEntry(params.state || "Karnataka");
+      const slabPair = params.entityType === "opc" ? regEntry.opc : regEntry.pvtLtd;
+
+      // Standard register baseline includes 2 DSC (₹5,000) & 2 director/nominee verifications (₹400)
+      const baseDsc = 2 * 2500;
+      const baseDirectors = 2 * 200;
+      const baseStandardFees = rocFees + baseDirectors + baseDsc; // ₹6,400
+
+      // Compute exact statutory stamp duties for the 1L and 5L slabs
+      const stampDuty1L = Math.max(0, slabPair.slab1L - baseStandardFees);
+      const stampDuty5L = Math.max(0, slabPair.slab5L - baseStandardFees);
 
       // MCA Tiered SPICe+ Part B incorporation fee
       // Zero fee up to ₹15,00,000 capital under SPICe+
@@ -829,148 +1069,88 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
       if (capital === 0) {
         stampDuty = 1000;
         stampDutyDescription = "MOA + AOA · Company not having share capital";
-      } else if (normState.includes("karnataka")) {
-        if (capital <= 100000) {
-          stampDuty = 10020;
-          stampDutyDescription = "MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹1 lakh";
-        } else if (capital <= 500000) {
-          const extra = Math.ceil((capital - 100000) / 100000) * 500;
-          stampDuty = 10020 + extra;
-          stampDutyDescription = `MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹${(capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1)} lakh`;
-        } else if (capital <= 1000000) {
-          const extra = 2000 + Math.ceil((capital - 500000) / 100000) * 400;
-          stampDuty = 10020 + extra;
-          stampDutyDescription = `MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹${(capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1)} lakh`;
-        } else if (capital <= 1500000) {
-          const extra = 4000 + Math.ceil((capital - 1000000) / 100000) * 400;
-          stampDuty = 10020 + extra;
-          stampDutyDescription = `MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹${(capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1)} lakh`;
-        } else {
-          const extra = 6000 + Math.ceil((capital - 1500000) / 200000) * 500;
-          stampDuty = 10020 + extra;
-          stampDutyDescription = `MOA + AOA (INC-33 / INC-34) · Authorised capital ₹${(capital / 100000).toFixed(0)} lakh`;
-        }
-      } else if (normState.includes("maharashtra")) {
-        if (capital <= 100000) {
-          stampDuty = 1000;
-        } else if (capital <= 500000) {
-          stampDuty = 1000 + Math.ceil((capital - 100000) / 100000) * 250;
-        } else if (capital <= 1000000) {
-          stampDuty = 2000 + Math.ceil((capital - 500000) / 100000) * 200;
-        } else {
-          const extraSlabs = Math.ceil((capital - 1000000) / 500000);
-          stampDuty = Math.min(50000, 3000 + extraSlabs * 1000);
-        }
-        stampDutyDescription = `MOA + AOA · Bombay Stamp Act (${capital <= 100000 ? "up to ₹1 lakh" : `₹${(capital / 100000).toFixed(0)} lakh`})`;
-      } else if (normState.includes("delhi")) {
-        if (capital <= 100000) {
-          stampDuty = 360;
-        } else if (capital <= 500000) {
-          stampDuty = 360 + Math.ceil((capital - 100000) / 100000) * 75;
-        } else if (capital <= 1000000) {
-          stampDuty = 660 + Math.ceil((capital - 500000) / 100000) * 128;
-        } else {
-          const extraSlabs = Math.ceil((capital - 1000000) / 500000);
-          stampDuty = 1300 + extraSlabs * 500;
-        }
-        stampDutyDescription = `MOA + AOA · Delhi Stamp Rules (Authorised capital up to ₹${(capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1)} lakh)`;
-      } else if (normState.includes("sikkim")) {
-        stampDuty = 0;
-        stampDutyDescription = "MOA + AOA · Sikkim Statutory Industrial Exemption (₹0 Stamp Duty)";
+      } else if (capital <= 100000) {
+        stampDuty = stampDuty1L;
+        stampDutyDescription = `MOA + AOA · ${stateData.state} Stamp Act (Authorised capital up to ₹1 lakh)`;
+      } else if (capital === 500000) {
+        stampDuty = stampDuty5L;
+        stampDutyDescription = `MOA + AOA · ${stateData.state} Stamp Act (Authorised capital ₹5 lakh)`;
+      } else if (capital < 500000) {
+        const progress = (capital - 100000) / 400000;
+        stampDuty = Math.round(stampDuty1L + progress * (stampDuty5L - stampDuty1L));
+        const capStr = (capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1);
+        stampDutyDescription = `MOA + AOA · ${stateData.state} Stamp Act (Authorised capital up to ₹${capStr} lakh)`;
       } else {
-        const base = stateData.pvtLtdStampDuty || 1000;
-        if (capital <= 100000) {
-          stampDuty = base;
-        } else if (capital <= 500000) {
-          const extra = Math.ceil((capital - 100000) / 100000) * 250;
-          stampDuty = base + extra;
-        } else if (capital <= 1000000) {
-          const extra = 1000 + Math.ceil((capital - 500000) / 100000) * 200;
-          stampDuty = base + extra;
-        } else if (capital <= 1500000) {
-          const extra = 2000 + Math.ceil((capital - 1000000) / 100000) * 200;
-          stampDuty = base + extra;
-        } else {
-          const extra = 3000 + Math.ceil((capital - 1500000) / 200000) * 250;
-          stampDuty = base + extra;
-        }
-        const capStr = capital >= 100000
-          ? `up to ₹${(capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1)} lakh`
-          : `₹${capital.toLocaleString("en-IN")}`;
-        stampDutyDescription = `MOA + AOA · ${stateData.state} Stamp Act (${capStr})`;
+        const slabDiff = stampDuty5L - stampDuty1L;
+        const extraPerLakh = Math.max(200, Math.round(slabDiff / 4));
+        const extraLakhs = Math.ceil((capital - 500000) / 100000);
+        stampDuty = stampDuty5L + extraLakhs * extraPerLakh;
+        const capStr = (capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1);
+        stampDutyDescription = `MOA + AOA · ${stateData.state} Stamp Act (Authorised capital ₹${capStr} lakh)`;
       }
+
+      // Dynamic director verification fees
+      const dirCount = params.numDirectors !== undefined
+        ? params.numDirectors
+        : (params.entityType === "opc" ? 2 : 2);
+      directorFees = dirCount * 200;
+
+      // Dynamic DSC fees (defaults to 2 DSC as specified in the source register)
+      const dscCount = params.numDsc !== undefined ? params.numDsc : 2;
+      dscFees = dscCount * 2500;
+
       break;
     }
 
     case "llp": {
-      directorFees = (params.numDirectors || 2) * 500;
       panTanFee = 0;
+      const regEntry = getGovtFeeRegisterEntry(params.state || "Karnataka");
+      const slabPair = regEntry.llp;
+
+      // Dynamic partners and DSC
+      const partnerCount = params.numDirectors !== undefined ? params.numDirectors : 2;
+      directorFees = partnerCount * 500; // ₹1,000 for 2 partners
+
+      const dscCount = params.numDsc !== undefined ? params.numDsc : 2;
+      dscFees = dscCount * 2500; // ₹5,000 for 2 DSC
+
+      // Standard register baseline components:
+      // At 1L: ROC is ₹700, Partner fees is ₹1,000, DSC is ₹5,000 => base is ₹6,700
+      const stampDuty1L = Math.max(0, slabPair.slab1L - (700 + 1000 + 5000));
+      // At 5L: ROC is ₹1,000, Partner fees is ₹1,000, DSC is ₹5,000 => base is ₹7,000
+      const stampDuty5L = Math.max(0, slabPair.slab5L - (1000 + 1000 + 5000));
 
       // MCA FiLLiP ROC fees based on capital contribution
       if (capital <= 100000) {
         rocFees = 700;
-      } else if (capital <= 500000) {
+        stampDuty = stampDuty1L;
+        stampDutyDescription = `LLP Agreement · ${stateData.state} Stamp Act (Contribution up to ₹1 lakh)`;
+      } else if (capital === 500000) {
         rocFees = 1000;
+        stampDuty = stampDuty5L;
+        stampDutyDescription = `LLP Agreement · ${stateData.state} Stamp Act (Contribution ₹5 lakh)`;
+      } else if (capital < 500000) {
+        rocFees = 1000;
+        const progress = (capital - 100000) / 400000;
+        stampDuty = Math.round(stampDuty1L + progress * (stampDuty5L - stampDuty1L));
+        const capStr = (capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1);
+        stampDutyDescription = `LLP Agreement · ${stateData.state} Stamp Act (Contribution ₹${capStr} lakh)`;
       } else if (capital <= 1000000) {
         rocFees = 2200;
+        const slabDiff = stampDuty5L - stampDuty1L;
+        const extraPerLakh = Math.max(250, Math.round(slabDiff / 4));
+        const extraLakhs = Math.ceil((capital - 500000) / 100000);
+        stampDuty = stampDuty5L + extraLakhs * extraPerLakh;
+        const capStr = (capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1);
+        stampDutyDescription = `LLP Agreement · ${stateData.state} Stamp Act (Contribution ₹${capStr} lakh)`;
       } else {
         rocFees = 4200;
-      }
-
-      // LLP Agreement Stamp Duty based on contribution
-      if (normState.includes("karnataka")) {
-        if (capital <= 100000) {
-          stampDuty = 5000;
-          stampDutyDescription = "LLP Agreement · Contribution ₹1 lakh – ₹5 lakh";
-        } else if (capital <= 500000) {
-          stampDuty = 5000 + Math.ceil((capital - 100000) / 100000) * 300;
-          stampDutyDescription = "LLP Agreement · Contribution ₹1 lakh – ₹5 lakh";
-        } else if (capital <= 1000000) {
-          stampDuty = 6200 + Math.ceil((capital - 500000) / 100000) * 400;
-          stampDutyDescription = "LLP Agreement · Contribution ₹5 lakh – ₹10 lakh";
-        } else {
-          const extraSlabs = Math.ceil((capital - 1000000) / 200000);
-          stampDuty = Math.min(25000, 8200 + extraSlabs * 500);
-          stampDutyDescription = "LLP Agreement · Contribution above ₹10 lakh";
-        }
-      } else if (normState.includes("maharashtra")) {
-        if (capital <= 100000) {
-          stampDuty = 1000;
-        } else if (capital <= 500000) {
-          stampDuty = 1000 + Math.ceil((capital - 100000) / 100000) * 375;
-        } else if (capital <= 1000000) {
-          stampDuty = 2500 + Math.ceil((capital - 500000) / 100000) * 500;
-        } else {
-          stampDuty = Math.min(50000, Math.round(capital * 0.01));
-        }
-        stampDutyDescription = `LLP Agreement · Maharashtra Stamp Act Article 40 (${capital <= 100000 ? "up to ₹1 lakh" : `₹${(capital / 100000).toFixed(0)} lakh`})`;
-      } else if (normState.includes("delhi")) {
-        if (capital <= 100000) {
-          stampDuty = 500;
-        } else if (capital <= 500000) {
-          stampDuty = 500 + Math.ceil((capital - 100000) / 100000) * 125;
-        } else {
-          stampDuty = Math.min(10000, Math.round(capital * 0.005));
-        }
-        stampDutyDescription = `LLP Agreement · Delhi Stamp Rules (${capital <= 100000 ? "up to ₹1 lakh" : `₹${(capital / 100000).toFixed(0)} lakh`})`;
-      } else if (normState.includes("sikkim")) {
-        stampDuty = 0;
-        stampDutyDescription = "LLP Agreement · Sikkim Statutory Exemption (₹0 Stamp Duty)";
-      } else {
-        const base = stateData.llpStampDuty || 1000;
-        if (capital <= 100000) {
-          stampDuty = base;
-        } else if (capital <= 500000) {
-          stampDuty = base + Math.ceil((capital - 100000) / 100000) * 200;
-        } else if (capital <= 1000000) {
-          stampDuty = base + 800 + Math.ceil((capital - 500000) / 100000) * 250;
-        } else {
-          stampDuty = base + 2050 + Math.ceil((capital - 1000000) / 200000) * 300;
-        }
-        const capStr = capital >= 100000
-          ? `Contribution up to ₹${(capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1)} lakh`
-          : `Contribution ₹${capital.toLocaleString("en-IN")}`;
-        stampDutyDescription = `LLP Agreement · ${stateData.state} Stamp Act (${capStr})`;
+        const slabDiff = stampDuty5L - stampDuty1L;
+        const extraPerLakh = Math.max(250, Math.round(slabDiff / 4));
+        const extraLakhs = Math.ceil((capital - 500000) / 100000);
+        stampDuty = stampDuty5L + extraLakhs * extraPerLakh;
+        const capStr = (capital / 100000).toFixed(0);
+        stampDutyDescription = `LLP Agreement · ${stateData.state} Stamp Act (Contribution ₹${capStr} lakh)`;
       }
       break;
     }

@@ -471,55 +471,55 @@ export default function CostEstimatorModal() {
             </form>
           </div>
 
-          {/* RIGHT COLUMN: Dark Card Summary (Founding Legals High-Contrast Luxury Theme) */}
-          <div className="md:col-span-5 bg-[#131d2e] rounded-2xl p-6 text-white shadow-xl flex flex-col justify-between space-y-4">
+          {/* RIGHT COLUMN: Summary Card (Founding Legals Signature Luxury Dark Olive Theme) */}
+          <div className="md:col-span-5 bg-[#1C2618] border border-[#324029] rounded-2xl p-6 text-white shadow-xl flex flex-col justify-between space-y-4">
 
             {/* Top row: Total incorporation cost label + Entity & State badge */}
             <div>
               <div className="flex items-start justify-between">
                 <div>
-                  <span className="text-xs text-slate-300 font-normal">Total incorporation cost</span>
+                  <span className="text-xs text-[#C5D2BA] font-normal">Total incorporation cost</span>
                   <div className="text-3xl sm:text-4xl font-serif font-extrabold text-white tracking-tight mt-1">
                     {formatRs(quote.totalCost)}
                   </div>
                 </div>
                 <div className="text-right">
                   <div className="text-xs font-semibold text-white">{entityDisplayBadge}</div>
-                  <div className="text-[11px] text-slate-400">{selectedState}</div>
+                  <div className="text-[11px] text-[#A6B698]">{selectedState}</div>
                 </div>
               </div>
 
               {/* Ratio Bar */}
-              <div className="w-full h-1.5 rounded-full overflow-hidden flex bg-slate-700/60 mt-4">
-                <div style={{ width: `${govtPercent}%` }} className="bg-[#ea580c] h-full transition-all duration-300" />
-                <div style={{ width: `${profPercent}%` }} className="bg-[#10b981] h-full transition-all duration-300" />
+              <div className="w-full h-1.5 rounded-full overflow-hidden flex bg-[#2D3B26] mt-4">
+                <div style={{ width: `${govtPercent}%` }} className="bg-[#E58A42] h-full transition-all duration-300" />
+                <div style={{ width: `${profPercent}%` }} className="bg-[#9AB545] h-full transition-all duration-300" />
               </div>
 
               {/* Legend */}
-              <div className="flex items-center gap-4 text-[11px] text-slate-300 mt-2">
+              <div className="flex items-center gap-4 text-[11px] text-[#C5D2BA] mt-2">
                 <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#ea580c] inline-block" />
+                  <span className="w-2 h-2 rounded-full bg-[#E58A42] inline-block" />
                   <span>Government</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#10b981] inline-block" />
+                  <span className="w-2 h-2 rounded-full bg-[#9AB545] inline-block" />
                   <span>Professional</span>
                 </div>
               </div>
             </div>
 
             {/* Middle Section: Government Fees Accordion */}
-            <div className="space-y-2 border-t border-slate-700/60 pt-3">
+            <div className="space-y-2 border-t border-[#34442A] pt-3">
               <button
                 type="button"
                 onClick={() => setIsGovtFeesExpanded(!isGovtFeesExpanded)}
-                className="w-full flex items-center justify-between text-xs sm:text-[13px] font-bold text-white py-1 hover:text-slate-200 cursor-pointer"
+                className="w-full flex items-center justify-between text-xs sm:text-[13px] font-bold text-white py-1 hover:text-[#E8F0DD] cursor-pointer transition-colors"
               >
                 <div className="flex items-center gap-1.5">
                   {isGovtFeesExpanded ? (
-                    <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+                    <ChevronDown className="w-3.5 h-3.5 text-[#A6B698]" />
                   ) : (
-                    <ChevronUp className="w-3.5 h-3.5 text-slate-400" />
+                    <ChevronUp className="w-3.5 h-3.5 text-[#A6B698]" />
                   )}
                   <span>Government fees</span>
                 </div>
@@ -527,23 +527,23 @@ export default function CostEstimatorModal() {
               </button>
 
               {isGovtFeesExpanded && (
-                <div className="space-y-2.5 pt-1 text-xs text-slate-300">
+                <div className="space-y-2.5 pt-1 text-xs text-[#CAD8BE]">
                   {/* ROC fees */}
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-300">ROC fees</span>
-                    <span className="flex-1 border-b border-dotted border-slate-700/80 mx-2 mb-1" />
+                    <span className="text-[#CAD8BE]">ROC fees</span>
+                    <span className="flex-1 border-b border-dotted border-[#3F5033] mx-2 mb-1" />
                     <span className="font-semibold text-white">{formatRs(quote.rocFees + quote.govtIncorporationFee)}</span>
                   </div>
 
                   {/* Stamp Duty */}
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="text-slate-300">Stamp duty ({selectedState})</span>
-                      <span className="flex-1 border-b border-dotted border-slate-700/80 mx-2 mb-1" />
+                      <span className="text-[#CAD8BE]">Stamp duty ({selectedState})</span>
+                      <span className="flex-1 border-b border-dotted border-[#3F5033] mx-2 mb-1" />
                       <span className="font-semibold text-white">{formatRs(quote.stampDuty)}</span>
                     </div>
                     {/* Dynamic statutory stamp duty info box */}
-                    <div className="mt-1 pl-2.5 py-1 border-l-2 border-[#ea580c] bg-[#1a2340]/70 rounded-r text-[10.5px] text-slate-300 leading-snug">
+                    <div className="mt-1 pl-2.5 py-1.5 border-l-2 border-[#D4E157] bg-[#273421] rounded-r text-[10.5px] text-[#D8E4CE] leading-snug">
                       {quote.stampDutyDescription ||
                         (isLLP
                           ? "LLP Agreement · Contribution ₹1 lakh – ₹5 lakh"
@@ -553,15 +553,15 @@ export default function CostEstimatorModal() {
 
                   {/* Director fees / Partner fees */}
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-300">{isLLP ? "Partner fees" : "Director fees"}</span>
-                    <span className="flex-1 border-b border-dotted border-slate-700/80 mx-2 mb-1" />
+                    <span className="text-[#CAD8BE]">{isLLP ? "Partner fees" : "Director fees"}</span>
+                    <span className="flex-1 border-b border-dotted border-[#3F5033] mx-2 mb-1" />
                     <span className="font-semibold text-white">{formatRs(quote.directorFees)}</span>
                   </div>
 
                   {/* DSC */}
                   <div className="flex items-center justify-between">
-                    <span className="text-slate-300">DSC ({numDsc} × ₹2,500)</span>
-                    <span className="flex-1 border-b border-dotted border-slate-700/80 mx-2 mb-1" />
+                    <span className="text-[#CAD8BE]">DSC ({numDsc} × ₹2,500)</span>
+                    <span className="flex-1 border-b border-dotted border-[#3F5033] mx-2 mb-1" />
                     <span className="font-semibold text-white">{formatRs(quote.dscFees)}</span>
                   </div>
                 </div>
@@ -569,9 +569,9 @@ export default function CostEstimatorModal() {
             </div>
 
             {/* Professional Fees Box (Calibrated to ₹1,999) */}
-            <div className="bg-[#1c2940] rounded-xl px-4 py-3 flex items-center justify-between text-xs sm:text-[13px] font-bold text-white shadow-xs">
-              <span>Professional fees</span>
-              <span className="font-bold text-white">{formatRs(quote.professionalFees)}</span>
+            <div className="bg-[#273520] border border-[#3E5133] rounded-xl px-4 py-3 flex items-center justify-between text-xs sm:text-[13px] font-bold text-white shadow-xs">
+              <span className="text-[#E8F0DD]">Professional fees</span>
+              <span className="font-bold text-[#D4E157] sm:text-[14px]">{formatRs(quote.professionalFees)}</span>
             </div>
 
             {/* Proceed to Pay Button & Footer Note */}
@@ -579,11 +579,11 @@ export default function CostEstimatorModal() {
               <button
                 type="button"
                 onClick={handleProceedToPay}
-                className="w-full py-3.5 px-4 bg-[#5C6F2D] hover:bg-[#4a5a24] text-white font-bold text-sm rounded-xl shadow-lg transition-all cursor-pointer text-center active:scale-98"
+                className="w-full py-3.5 px-4 bg-[#5C6F2D] hover:bg-[#4a5a24] text-white font-bold text-sm rounded-xl shadow-lg shadow-[#141C10]/40 transition-all cursor-pointer text-center active:scale-98"
               >
                 Proceed to Pay
               </button>
-              <p className="text-[10px] text-slate-400 text-center mt-2.5 font-normal">
+              <p className="text-[10px] text-[#A6B698] text-center mt-2.5 font-normal">
                 Estimate only — final fees depend on MCA filing and state stamp rules.
               </p>
             </div>
