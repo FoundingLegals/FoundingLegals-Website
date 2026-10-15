@@ -1218,7 +1218,7 @@ export default function Pricing() {
                                 : "bg-olive-600 hover:bg-olive-700 text-white"
                             }`}
                           >
-                            <span>Pay ₹{offer.discountedAnnualPrice.toLocaleString("en-IN")}/-</span>
+                            <span>Pay ₹{(1999 + offer.discountedAnnualPrice).toLocaleString("en-IN")}/-</span>
                             <ArrowRight className="w-5 h-5" />
                           </a>
                         </div>

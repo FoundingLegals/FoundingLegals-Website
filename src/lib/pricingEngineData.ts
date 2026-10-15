@@ -21,7 +21,7 @@ export const STATE_STAMP_DUTY_LOOKUP: Record<string, StateStampDuty> = {
   "Karnataka": {
     state: "Karnataka",
     pvtLtdStampDuty: 10020,
-    llpStampDuty: 2000,
+    llpStampDuty: 5000,
     partnershipStampDuty: 1000,
     rocOffice: "ROC Bengaluru",
     turnaroundDays: "6–9 Working Days",
@@ -478,7 +478,7 @@ export const ENTITY_CONFIGS: Record<EntityTypeId, EntityTypeConfig> = {
     defaultDsc: 2,
     defaultCapital: 100000,
     hasShareCapitalOption: true,
-    baseProfessionalFee: 1999,
+    baseProfessionalFee: 1499,
     marketTraditionalRate: 9999,
     fixedRocFee: 1000,
     adminVerificationFee: 400,
@@ -512,10 +512,10 @@ export const ENTITY_CONFIGS: Record<EntityTypeId, EntityTypeConfig> = {
     defaultDsc: 2,
     defaultCapital: 100000,
     hasShareCapitalOption: false,
-    baseProfessionalFee: 1999,
+    baseProfessionalFee: 1499,
     marketTraditionalRate: 7500,
     fixedRocFee: 700,
-    adminVerificationFee: 0,
+    adminVerificationFee: 1000,
     dscUnitPrice: 2500,
     description: "Combines partnership flexibility with corporate limited liability, audit-free up to ₹40L.",
   },
@@ -529,7 +529,7 @@ export const ENTITY_CONFIGS: Record<EntityTypeId, EntityTypeConfig> = {
     defaultDsc: 1,
     defaultCapital: 100000,
     hasShareCapitalOption: true,
-    baseProfessionalFee: 1999,
+    baseProfessionalFee: 1499,
     marketTraditionalRate: 8500,
     fixedRocFee: 1000,
     adminVerificationFee: 400,
@@ -794,7 +794,7 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
       stampDuty = stateData.pvtLtdStampDuty;
       rocFees = 1000;
       directorFees = (params.numDirectors || 2) * 200;
-      panTanFee = 132;
+      panTanFee = 0;
       // MCA zero fee on SPICe+ up to 15L capital; tiered fee above 15L
       if (capital > 1500000) {
         const extraLakhs = Math.ceil((capital - 1500000) / 100000);
@@ -805,8 +805,8 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
     case "public_ltd":
       stampDuty = Math.max(stateData.pvtLtdStampDuty, Math.round(capital * 0.001));
       rocFees = 1000;
-      directorFees = (params.numDirectors || 3) * 243;
-      panTanFee = 132;
+      directorFees = (params.numDirectors || 3) * 200;
+      panTanFee = 0;
       if (capital > 1500000) {
         const extraLakhs = Math.ceil((capital - 1500000) / 100000);
         govtIncorporationFee = extraLakhs * 500;
@@ -816,15 +816,15 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
     case "llp":
       stampDuty = stateData.llpStampDuty;
       rocFees = 700;
-      directorFees = 0;
-      panTanFee = 132;
+      directorFees = (params.numDirectors || 2) * 500;
+      panTanFee = 0;
       break;
 
     case "opc":
-      stampDuty = Math.round(stateData.pvtLtdStampDuty * 0.8);
+      stampDuty = stateData.pvtLtdStampDuty;
       rocFees = 1000;
-      directorFees = 400;
-      panTanFee = 132;
+      directorFees = (params.numDirectors || 1) * 200;
+      panTanFee = 0;
       if (capital > 1500000) {
         const extraLakhs = Math.ceil((capital - 1500000) / 100000);
         govtIncorporationFee = extraLakhs * 400;
@@ -836,7 +836,7 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
       rocFees = 500;
       directorFees = 0;
       dscFees = 0;
-      panTanFee = 132;
+      panTanFee = 0;
       break;
 
     case "sole_prop":
@@ -850,8 +850,8 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
     case "section8":
       stampDuty = Math.round(stateData.pvtLtdStampDuty * 0.5);
       rocFees = 3000;
-      directorFees = 400;
-      panTanFee = 132;
+      directorFees = (params.numDirectors || 2) * 200;
+      panTanFee = 0;
       break;
 
     case "iec":

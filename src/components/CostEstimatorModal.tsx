@@ -5,8 +5,8 @@ import {
   X,
   ChevronDown,
   ChevronUp,
-  Check,
-  Search,
+  Plus,
+  Minus,
 } from "lucide-react";
 import {
   ALL_INDIAN_STATES,
@@ -18,41 +18,24 @@ import {
 
 const APP_URL = (process.env.NEXT_PUBLIC_APP_URL || "https://app.foundinglegals.com").replace(/\/$/, "");
 
-// Entity display label mapping
-const ENTITY_DISPLAY_NAMES: Record<EntityTypeId, string> = {
-  pvt_ltd: "Private Company",
-  llp: "Limited Liability Partnership (LLP)",
-  opc: "One Person Company (OPC)",
-  public_ltd: "Public Limited Company",
-  partnership: "Partnership Firm",
-  sole_prop: "Sole Proprietorship",
-  section8: "Section 8 Company",
-  dpiit: "DPIIT Startup India",
-  gst: "GST Registration",
-  udyam: "UDYAM / MSME",
-  iec: "Import Export Code",
-  fssai_state: "FSSAI State License",
-  fssai_central: "FSSAI Central License",
-  trademark: "Trademark Registration",
-  ptax: "Professional Tax",
-  labour: "Labour License"
-};
+// Primary entity tabs shown in the cost estimator header
+const PRIMARY_ENTITIES: { id: EntityTypeId; label: string }[] = [
+  { id: "pvt_ltd", label: "Private Company" },
+  { id: "opc", label: "OPC" },
+  { id: "llp", label: "LLP" },
+  { id: "section8", label: "Section 8" },
+];
 
 export default function CostEstimatorModal() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Form input states (using strings for smooth typing and backspace handling)
+  // Form input states
   const [entityType, setEntityType] = useState<EntityTypeId>("pvt_ltd");
-  const [lockedEntity, setLockedEntity] = useState<EntityTypeId | null>("pvt_ltd");
-  const [selectedState, setSelectedState] = useState<string>("Maharashtra");
+  const [selectedState, setSelectedState] = useState<string>("Karnataka");
   const [hasShareCapital, setHasShareCapital] = useState<string>("yes");
-  const [numDirectors, setNumDirectors] = useState<string>("2");
-  const [authorizedCapital, setAuthorizedCapital] = useState<string>("100000");
-  const [numDsc, setNumDsc] = useState<string>("2");
-
-  // Custom Dropdown Open States
-  const [openDropdown, setOpenDropdown] = useState<"entity" | "state" | "capital" | null>(null);
-  const [stateSearchQuery, setStateSearchQuery] = useState("");
+  const [numDirectors, setNumDirectors] = useState<number>(2);
+  const [numDsc, setNumDsc] = useState<number>(2);
+  const [authorizedCapital, setAuthorizedCapital] = useState<number>(100000);
 
   // Accordion toggle for Government Fees
   const [isGovtFeesExpanded, setIsGovtFeesExpanded] = useState<boolean>(true);
@@ -61,7 +44,7 @@ export default function CostEstimatorModal() {
   const [quote, setQuote] = useState<ItemizedQuote>(() =>
     calculateQuote({
       entityType: "pvt_ltd",
-      state: "Maharashtra",
+      state: "Karnataka",
       authorizedCapital: 100000,
       numDirectors: 2,
       numDsc: 2
@@ -69,18 +52,6 @@ export default function CostEstimatorModal() {
   );
 
   const modalRef = useRef<HTMLDivElement>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  // Close custom dropdowns on click outside
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setOpenDropdown(null);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   // Listen for global open-cost-estimator event
   useEffect(() => {
@@ -91,18 +62,15 @@ export default function CostEstimatorModal() {
         : "pvt_ltd";
       const targetState = customEvent.detail?.state && ALL_INDIAN_STATES.includes(customEvent.detail.state)
         ? customEvent.detail.state
-        : "Maharashtra";
+        : "Karnataka";
 
       setEntityType(targetEntity);
-      setLockedEntity(targetEntity);
       setSelectedState(targetState);
-      setOpenDropdown(null);
-      setStateSearchQuery("");
 
       const conf = ENTITY_CONFIGS[targetEntity];
-      const directors = String(conf.defaultDirectors);
-      const dsc = String(conf.defaultDsc);
-      const capital = String(conf.defaultCapital);
+      const directors = conf.defaultDirectors;
+      const dsc = conf.defaultDsc;
+      const capital = conf.defaultCapital;
 
       setNumDirectors(directors);
       setNumDsc(dsc);
@@ -112,9 +80,9 @@ export default function CostEstimatorModal() {
       const newQuote = calculateQuote({
         entityType: targetEntity,
         state: targetState,
-        authorizedCapital: conf.defaultCapital,
-        numDirectors: conf.defaultDirectors,
-        numDsc: conf.defaultDsc
+        authorizedCapital: capital,
+        numDirectors: directors,
+        numDsc: dsc
       });
       setQuote(newQuote);
       setIsOpen(true);
@@ -133,11 +101,7 @@ export default function CostEstimatorModal() {
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        if (openDropdown) {
-          setOpenDropdown(null);
-        } else {
-          setIsOpen(false);
-        }
+        setIsOpen(false);
       }
     };
 
@@ -146,37 +110,41 @@ export default function CostEstimatorModal() {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen, openDropdown]);
+  }, [isOpen]);
 
-  // Auto-recalculate in real time whenever user changes any parameter
+  // Real-time calculation effect
   useEffect(() => {
-    const parsedCap = hasShareCapital === "no" ? 0 : Number(authorizedCapital) || 100000;
-    const parsedDir = Math.max(1, Number(numDirectors) || 1);
-    const parsedDsc = Math.max(0, Number(numDsc) || 0);
-
+    const parsedCap = hasShareCapital === "no" ? 0 : authorizedCapital;
     const newQuote = calculateQuote({
       entityType,
       state: selectedState,
       authorizedCapital: parsedCap,
-      numDirectors: parsedDir,
-      numDsc: parsedDsc
+      numDirectors,
+      numDsc
     });
     setQuote(newQuote);
-  }, [entityType, selectedState, hasShareCapital, numDirectors, authorizedCapital, numDsc]);
+  }, [entityType, selectedState, hasShareCapital, numDirectors, numDsc, authorizedCapital]);
+
+  const handleEntitySelect = (type: EntityTypeId) => {
+    setEntityType(type);
+    const conf = ENTITY_CONFIGS[type];
+    if (conf) {
+      setNumDirectors(conf.defaultDirectors);
+      setNumDsc(conf.defaultDsc);
+      setAuthorizedCapital(conf.defaultCapital);
+      setHasShareCapital(conf.hasShareCapitalOption ? "yes" : "no");
+    }
+  };
 
   const handleCalculate = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    setOpenDropdown(null);
-    const parsedCap = hasShareCapital === "no" ? 0 : Number(authorizedCapital) || 100000;
-    const parsedDir = Math.max(1, Number(numDirectors) || 1);
-    const parsedDsc = Math.max(0, Number(numDsc) || 0);
-
+    const parsedCap = hasShareCapital === "no" ? 0 : authorizedCapital;
     const newQuote = calculateQuote({
       entityType,
       state: selectedState,
       authorizedCapital: parsedCap,
-      numDirectors: parsedDir,
-      numDsc: parsedDsc
+      numDirectors,
+      numDsc
     });
     setQuote(newQuote);
   };
@@ -188,17 +156,26 @@ export default function CostEstimatorModal() {
 
   if (!isOpen) return null;
 
-  // Format currency helpers
-  const formatRs = (val: number) => `Rs ${val.toLocaleString("en-IN")}`;
-  const parsedCapNum = Number(authorizedCapital) || 0;
-  const capitalInLakh = parsedCapNum >= 100000
-    ? `${(parsedCapNum / 100000).toFixed(parsedCapNum % 100000 === 0 ? 0 : 1)} lakh`
-    : `${parsedCapNum.toLocaleString("en-IN")}`;
+  const isLLP = entityType === "llp";
+  const isOPC = entityType === "opc";
+  const minDirectors = isOPC ? 1 : 2;
 
-  // Filtered states for custom dropdown search
-  const filteredStates = ALL_INDIAN_STATES.filter((st) =>
-    st.toLowerCase().includes(stateSearchQuery.toLowerCase())
-  );
+  // Formatting helpers
+  const formatRs = (val: number) => `₹${val.toLocaleString("en-IN")}`;
+
+  // Government vs Professional Ratio for progress bar
+  const total = quote.totalCost || 1;
+  const govtPercent = Math.min(100, Math.round((quote.govtFeesSubtotal / total) * 100));
+  const profPercent = Math.max(0, 100 - govtPercent);
+
+  // Entity display name
+  const entityDisplayBadge = isLLP
+    ? "LLP"
+    : isOPC
+    ? "OPC"
+    : entityType === "section8"
+    ? "Section 8"
+    : "Private Company";
 
   return (
     <div
@@ -212,7 +189,7 @@ export default function CostEstimatorModal() {
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-4xl bg-[#FDFCF9] rounded-2xl sm:rounded-3xl shadow-2xl border border-[#E5E1D6] p-6 sm:p-8 md:p-9 text-left font-sans animate-dropdown max-h-[95vh] overflow-y-auto"
+        className="relative w-full max-w-4xl bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-200 p-6 sm:p-8 md:p-9 text-left font-sans max-h-[95vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -220,393 +197,367 @@ export default function CostEstimatorModal() {
           type="button"
           onClick={() => setIsOpen(false)}
           aria-label="Close modal"
-          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#F0EBE1] hover:bg-[#E5E1D6] text-brown-700 hover:text-brown-900 flex items-center justify-center transition-colors cursor-pointer"
+          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors cursor-pointer"
         >
           <X className="w-4 h-4" />
         </button>
 
         {/* ── HEADER ── */}
         <div className="mb-6 pr-8">
-          <h2 id="cost-estimator-heading" className="font-serif text-2xl sm:text-[28px] font-medium text-brown-900 tracking-tight">
+          <h2 id="cost-estimator-heading" className="text-2xl sm:text-[26px] font-bold text-[#1e293b] tracking-tight">
             Estimate Your Incorporation Cost
           </h2>
-          <p className="text-xs sm:text-[13.5px] text-brown-500 font-light mt-1 leading-relaxed">
+          <p className="text-xs sm:text-[13px] text-slate-500 font-normal mt-1 leading-relaxed">
             Government fees, stamp duty, DSC and professional fees, calculated for your state and capital.
           </p>
         </div>
 
-        {/* ── 2-COLUMN STRUCTURE (FOUNDING LEGALS THEME) ── */}
+        {/* ── 2-COLUMN STRUCTURE (EXACT TO REFERENCE SCREENSHOT) ── */}
         <div className="grid md:grid-cols-12 gap-6 lg:gap-8 items-start">
-          
+
           {/* LEFT COLUMN: Input Parameters Form */}
-          <div ref={dropdownRef} className="md:col-span-6 bg-white rounded-2xl border-2 border-[#5A7338]/40 p-5 sm:p-6 shadow-sm relative">
+          <div className="md:col-span-7 space-y-4">
             <form onSubmit={handleCalculate} className="space-y-4">
-              
-              {/* Row 1: Entity Type & State */}
-              <div className="grid grid-cols-2 gap-3.5">
-                
-                {/* 1. Custom Entity Type Dropdown */}
-                <div className="relative">
-                  <label className="block text-[11.5px] font-bold text-olive-900 mb-1.5">
-                    Entity Type
-                  </label>
-                  <button
-                    type="button"
-                    onClick={() => setOpenDropdown(openDropdown === "entity" ? null : "entity")}
-                    className="w-full flex items-center justify-between px-3.5 py-2.5 bg-[#FAF9F6] hover:bg-white border border-[#D5DFBE] hover:border-[#5A7338] focus:border-[#5A7338] focus:ring-2 focus:ring-[#5A7338]/20 rounded-xl text-xs sm:text-[13px] text-brown-900 font-semibold shadow-2xs transition-all cursor-pointer text-left"
-                  >
-                    <span className="truncate">
-                      {ENTITY_DISPLAY_NAMES[entityType] || ENTITY_CONFIGS[entityType]?.name || "Private Company"}
-                    </span>
-                    <ChevronDown className={`w-4 h-4 text-[#5A7338] shrink-0 transition-transform duration-200 ${openDropdown === "entity" ? "rotate-180" : ""}`} />
-                  </button>
 
-                  {/* Dropdown Menu */}
-                  {openDropdown === "entity" && (
-                    <div className="absolute z-50 left-0 right-0 top-full mt-1.5 bg-white rounded-xl shadow-xl border border-brown-200 py-1 max-h-56 overflow-y-auto animate-dropdown">
-                      {lockedEntity ? (
-                        <div
-                          onClick={() => setOpenDropdown(null)}
-                          className="px-3.5 py-2 text-xs sm:text-[12.5px] font-semibold text-olive-900 bg-olive-50 flex items-center justify-between cursor-pointer"
-                        >
-                          <span>{ENTITY_DISPLAY_NAMES[lockedEntity] || ENTITY_CONFIGS[lockedEntity]?.name}</span>
-                          <Check className="w-3.5 h-3.5 text-[#5A7338]" />
-                        </div>
-                      ) : (
-                        [
-                          { id: "pvt_ltd", name: "Private Company" },
-                          { id: "llp", name: "Limited Liability Partnership (LLP)" },
-                          { id: "opc", name: "One Person Company (OPC)" },
-                          { id: "public_ltd", name: "Public Limited Company" },
-                          { id: "partnership", name: "Partnership Firm" },
-                          { id: "sole_prop", name: "Sole Proprietorship" },
-                          { id: "section8", name: "Section 8 Company" }
-                        ].map((item) => {
-                          const isSelected = entityType === item.id;
-                          return (
-                            <div
-                              key={item.id}
-                              onClick={() => {
-                                const newType = item.id as EntityTypeId;
-                                setEntityType(newType);
-                                const conf = ENTITY_CONFIGS[newType];
-                                if (conf) {
-                                  setNumDirectors(String(conf.defaultDirectors));
-                                  setNumDsc(String(conf.defaultDsc));
-                                  setAuthorizedCapital(String(conf.defaultCapital));
-                                }
-                                setOpenDropdown(null);
-                              }}
-                              className={`px-3.5 py-2 text-xs sm:text-[12.5px] font-medium flex items-center justify-between cursor-pointer transition-colors ${
-                                isSelected ? "bg-olive-50 text-olive-900 font-bold" : "text-brown-700 hover:bg-[#FAF9F6] hover:text-brown-900"
-                              }`}
-                            >
-                              <span>{item.name}</span>
-                              {isSelected && <Check className="w-3.5 h-3.5 text-[#5A7338]" />}
-                            </div>
-                          );
-                        })
-                      )}
-                    </div>
-                  )}
-                </div>
-
-                {/* 2. Custom State Dropdown with Search */}
-                <div className="relative">
-                  <label className="block text-[11.5px] font-bold text-olive-900 mb-1.5">
-                    State
-                  </label>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setOpenDropdown(openDropdown === "state" ? null : "state");
-                      setStateSearchQuery("");
-                    }}
-                    className="w-full flex items-center justify-between px-3.5 py-2.5 bg-[#FAF9F6] hover:bg-white border border-[#D5DFBE] hover:border-[#5A7338] focus:border-[#5A7338] focus:ring-2 focus:ring-[#5A7338]/20 rounded-xl text-xs sm:text-[13px] text-brown-900 font-semibold shadow-2xs transition-all cursor-pointer text-left"
-                  >
-                    <span className="truncate">{selectedState}</span>
-                    <ChevronDown className={`w-4 h-4 text-[#5A7338] shrink-0 transition-transform duration-200 ${openDropdown === "state" ? "rotate-180" : ""}`} />
-                  </button>
-
-                  {/* Dropdown Menu */}
-                  {openDropdown === "state" && (
-                    <div className="absolute z-50 left-0 right-0 top-full mt-1.5 bg-white rounded-xl shadow-xl border border-brown-200 overflow-hidden animate-dropdown">
-                      {/* Search Bar */}
-                      <div className="p-2 border-b border-brown-100 bg-[#FAF9F6]">
-                        <div className="relative">
-                          <Search className="w-3.5 h-3.5 text-brown-400 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-                          <input
-                            type="text"
-                            placeholder="Search state..."
-                            value={stateSearchQuery}
-                            onChange={(e) => setStateSearchQuery(e.target.value)}
-                            className="w-full pl-8 pr-3 py-1.5 bg-white border border-brown-200 rounded-lg text-xs text-brown-900 focus:outline-none focus:border-[#5A7338]"
-                            autoFocus
-                          />
-                        </div>
-                      </div>
-
-                      {/* State Options */}
-                      <div className="max-h-48 overflow-y-auto py-1">
-                        {filteredStates.length > 0 ? (
-                          filteredStates.map((st) => {
-                            const isSelected = selectedState === st;
-                            return (
-                              <div
-                                key={st}
-                                onClick={() => {
-                                  setSelectedState(st);
-                                  setOpenDropdown(null);
-                                }}
-                                className={`px-3.5 py-2 text-xs sm:text-[12.5px] font-medium flex items-center justify-between cursor-pointer transition-colors ${
-                                  isSelected ? "bg-olive-50 text-olive-900 font-bold" : "text-brown-700 hover:bg-[#FAF9F6] hover:text-brown-900"
-                                }`}
-                              >
-                                <span>{st}</span>
-                                {isSelected && <Check className="w-3.5 h-3.5 text-[#5A7338]" />}
-                              </div>
-                            );
-                          })
-                        ) : (
-                          <div className="px-3.5 py-3 text-xs text-brown-400 text-center">
-                            No state found
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-              </div>
-
-              {/* Row 2: Share Capital Status & No. Of Directors */}
-              <div className="grid grid-cols-2 gap-3.5">
-                
-                {/* 3. Custom Share Capital Status Dropdown */}
-                <div className="relative">
-                  <label className="block text-[11.5px] font-bold text-olive-900 mb-1.5">
-                    Share Capital Status
-                  </label>
-                  <button
-                    type="button"
-                    onClick={() => setOpenDropdown(openDropdown === "capital" ? null : "capital")}
-                    className="w-full flex items-center justify-between px-3.5 py-2.5 bg-[#FAF9F6] hover:bg-white border border-[#D5DFBE] hover:border-[#5A7338] focus:border-[#5A7338] focus:ring-2 focus:ring-[#5A7338]/20 rounded-xl text-xs sm:text-[13px] text-brown-900 font-semibold shadow-2xs transition-all cursor-pointer text-left"
-                  >
-                    <span className="truncate">
-                      {hasShareCapital === "yes" ? "Company having share capital" : "Company not having share capital"}
-                    </span>
-                    <ChevronDown className={`w-4 h-4 text-[#5A7338] shrink-0 transition-transform duration-200 ${openDropdown === "capital" ? "rotate-180" : ""}`} />
-                  </button>
-
-                  {/* Dropdown Menu */}
-                  {openDropdown === "capital" && (
-                    <div className="absolute z-50 left-0 right-0 top-full mt-1.5 bg-white rounded-xl shadow-xl border border-brown-200 py-1 animate-dropdown">
-                      {[
-                        { val: "yes", label: "Company having share capital" },
-                        { val: "no", label: "Company not having share capital" }
-                      ].map((item) => {
-                        const isSelected = hasShareCapital === item.val;
-                        return (
-                          <div
-                            key={item.val}
-                            onClick={() => {
-                              setHasShareCapital(item.val);
-                              setOpenDropdown(null);
-                            }}
-                            className={`px-3.5 py-2 text-xs sm:text-[12.5px] font-medium flex items-center justify-between cursor-pointer transition-colors ${
-                              isSelected ? "bg-olive-50 text-olive-900 font-bold" : "text-brown-700 hover:bg-[#FAF9F6] hover:text-brown-900"
-                            }`}
-                          >
-                            <span>{item.label}</span>
-                            {isSelected && <Check className="w-3.5 h-3.5 text-[#5A7338]" />}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-
-                {/* No. of Directors Input */}
-                <div>
-                  <label className="block text-[11.5px] font-bold text-olive-900 mb-1.5">
-                    No. Of Directors
-                  </label>
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    pattern="[0-9]*"
-                    value={numDirectors}
-                    onChange={(e) => {
-                      const val = e.target.value.replace(/[^0-9]/g, "");
-                      setNumDirectors(val);
-                    }}
-                    placeholder="2"
-                    className="w-full px-3.5 py-2.5 bg-[#FAF9F6] hover:bg-white border border-[#D5DFBE] hover:border-[#5A7338] rounded-xl text-xs sm:text-[13px] text-brown-900 font-semibold focus:outline-none focus:border-[#5A7338] focus:ring-2 focus:ring-[#5A7338]/20 shadow-2xs transition-all"
-                  />
+              {/* Entity type tabs / pills */}
+              <div>
+                <label className="block text-xs font-semibold text-slate-800 mb-2">
+                  Entity type
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {PRIMARY_ENTITIES.map((item) => {
+                    const isSelected = entityType === item.id;
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => handleEntitySelect(item.id)}
+                        className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                          isSelected
+                            ? "bg-[#0B1528] text-white shadow-xs"
+                            : "bg-white hover:bg-slate-50 text-slate-700 border border-slate-200"
+                        }`}
+                      >
+                        {item.label}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
-              {/* Row 3: Authorized Share Capital & No. Of DSC */}
+              {/* Row 1: State & Number of Directors/Partners */}
               <div className="grid grid-cols-2 gap-3.5">
+                {/* State Dropdown */}
                 <div>
-                  <label className="block text-[11.5px] font-bold text-olive-900 mb-1.5">
-                    Authorized Share Capital (Rs)
+                  <label className="block text-xs font-semibold text-slate-800 mb-1.5">
+                    State of registered office
                   </label>
                   <div className="relative">
-                    <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-olive-700 pointer-events-none select-none">
-                      ₹
-                    </span>
-                    <input
-                      type="text"
-                      inputMode="numeric"
-                      pattern="[0-9]*"
-                      disabled={hasShareCapital === "no"}
-                      value={hasShareCapital === "no" ? "0" : authorizedCapital}
-                      onChange={(e) => {
-                        const val = e.target.value.replace(/[^0-9]/g, "");
-                        setAuthorizedCapital(val);
-                      }}
-                      placeholder="100000"
-                      className="w-full pl-8 pr-3.5 py-2.5 bg-[#FAF9F6] hover:bg-white border border-[#D5DFBE] hover:border-[#5A7338] rounded-xl text-xs sm:text-[13px] text-brown-900 font-semibold focus:outline-none focus:border-[#5A7338] focus:ring-2 focus:ring-[#5A7338]/20 shadow-2xs disabled:bg-gray-100 disabled:text-gray-400 transition-all"
-                    />
+                    <select
+                      value={selectedState}
+                      onChange={(e) => setSelectedState(e.target.value)}
+                      className="w-full px-3 py-2.5 bg-white border border-slate-200 hover:border-slate-300 rounded-xl text-xs sm:text-[13px] text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-[#ea580c]/20 focus:border-[#ea580c] transition-all cursor-pointer appearance-none pr-8"
+                    >
+                      {ALL_INDIAN_STATES.map((st) => (
+                        <option key={st} value={st}>
+                          {st}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="w-4 h-4 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                   </div>
                 </div>
 
+                {/* No. of directors / partners Stepper */}
                 <div>
-                  <label className="block text-[11.5px] font-bold text-olive-900 mb-1.5">
-                    No. Of DSC Required
-                  </label>
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    pattern="[0-9]*"
-                    value={numDsc}
-                    onChange={(e) => {
-                      const val = e.target.value.replace(/[^0-9]/g, "");
-                      setNumDsc(val);
-                    }}
-                    placeholder="2"
-                    className="w-full px-3.5 py-2.5 bg-[#FAF9F6] hover:bg-white border border-[#D5DFBE] hover:border-[#5A7338] rounded-xl text-xs sm:text-[13px] text-brown-900 font-semibold focus:outline-none focus:border-[#5A7338] focus:ring-2 focus:ring-[#5A7338]/20 shadow-2xs transition-all"
-                  />
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label className="text-xs font-semibold text-slate-800">
+                      {isLLP ? "No. of partners" : "No. of directors"}
+                    </label>
+                    <span className="text-[11px] text-slate-400">
+                      min {minDirectors}
+                    </span>
+                  </div>
+                  <div className="flex items-center border border-slate-200 rounded-xl bg-white overflow-hidden h-[42px]">
+                    <button
+                      type="button"
+                      onClick={() => setNumDirectors((prev) => Math.max(minDirectors, prev - 1))}
+                      disabled={numDirectors <= minDirectors}
+                      className="w-10 h-full flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                    >
+                      <Minus className="w-3.5 h-3.5" />
+                    </button>
+                    <div className="flex-1 text-center font-bold text-xs sm:text-[13px] text-slate-800 select-none">
+                      {numDirectors}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setNumDirectors((prev) => prev + 1)}
+                      className="w-10 h-full flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-colors cursor-pointer"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </div>
               </div>
 
-              {/* Accent Note */}
-              <div className="pt-2 text-xs font-semibold text-brown-800 flex items-center gap-2">
-                <span className="w-1.5 h-4 bg-[#5A7338] rounded-full inline-block" />
-                <span>Calculate Stamp Duty Fees:</span>
+              {/* Row 2: Share capital (or Entity Subtype for LLP) & DSC Required */}
+              <div className="grid grid-cols-2 gap-3.5">
+                {/* Left: Share Capital or Subtype */}
+                {isLLP ? (
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-800 mb-1.5">
+                      Entity subtype
+                    </label>
+                    <div className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-[12.5px] text-slate-600 font-medium select-none h-[42px] flex items-center truncate">
+                      Limited Liability Partnership
+                    </div>
+                  </div>
+                ) : (
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-800 mb-1.5">
+                      Share capital
+                    </label>
+                    <div className="flex bg-slate-100 p-1 rounded-xl h-[42px] items-center">
+                      <button
+                        type="button"
+                        onClick={() => setHasShareCapital("yes")}
+                        className={`flex-1 h-full rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center justify-center ${
+                          hasShareCapital === "yes"
+                            ? "bg-white text-slate-800 shadow-xs"
+                            : "text-slate-500 hover:text-slate-800"
+                        }`}
+                      >
+                        Has capital
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setHasShareCapital("no")}
+                        className={`flex-1 h-full rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center justify-center ${
+                          hasShareCapital === "no"
+                            ? "bg-white text-slate-800 shadow-xs"
+                            : "text-slate-500 hover:text-slate-800"
+                        }`}
+                      >
+                        No capital
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Right: DSC Required Stepper */}
+                <div>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label className="text-xs font-semibold text-slate-800">
+                      DSC required
+                    </label>
+                    <span className="text-[11px] text-slate-400">
+                      ₹2,500 each
+                    </span>
+                  </div>
+                  <div className="flex items-center border border-slate-200 rounded-xl bg-white overflow-hidden h-[42px]">
+                    <button
+                      type="button"
+                      onClick={() => setNumDsc((prev) => Math.max(0, prev - 1))}
+                      disabled={numDsc <= 0}
+                      className="w-10 h-full flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                    >
+                      <Minus className="w-3.5 h-3.5" />
+                    </button>
+                    <div className="flex-1 text-center font-bold text-xs sm:text-[13px] text-slate-800 select-none">
+                      {numDsc}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setNumDsc((prev) => prev + 1)}
+                      className="w-10 h-full flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-colors cursor-pointer"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Row 3: Authorized share capital / Capital contribution */}
+              <div>
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="text-xs font-semibold text-slate-800">
+                    {isLLP ? "Capital contribution" : "Authorized share capital"}
+                  </label>
+                  <div className="flex items-center gap-1.5">
+                    {[
+                      { label: "₹1L", value: 100000 },
+                      { label: "₹5L", value: 500000 },
+                      { label: "₹10L", value: 1000000 },
+                      { label: "₹15L", value: 1500000 },
+                    ].map((pill) => (
+                      <button
+                        key={pill.label}
+                        type="button"
+                        onClick={() => setAuthorizedCapital(pill.value)}
+                        className={`px-2 py-0.5 rounded-full text-[11px] font-semibold transition-all cursor-pointer ${
+                          authorizedCapital === pill.value
+                            ? "bg-[#fed7aa] text-[#9a3412] font-bold"
+                            : "bg-[#fff7ed] text-[#c2410c] hover:bg-[#ffedd5]"
+                        }`}
+                      >
+                        {pill.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="relative">
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-medium text-slate-400 select-none">
+                    ₹
+                  </span>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    disabled={hasShareCapital === "no"}
+                    value={hasShareCapital === "no" ? "0" : authorizedCapital.toLocaleString("en-IN")}
+                    onChange={(e) => {
+                      const numericVal = Number(e.target.value.replace(/[^0-9]/g, "")) || 0;
+                      setAuthorizedCapital(numericVal);
+                    }}
+                    placeholder="1,00,000"
+                    className="w-full pl-8 pr-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs sm:text-[13px] text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#ea580c]/20 focus:border-[#ea580c] transition-all disabled:bg-slate-100 disabled:text-slate-400"
+                  />
+                </div>
               </div>
 
               {/* Calculate Cost Button */}
-              <button
-                type="submit"
-                className="w-full py-3 px-4 bg-[#5A7338] hover:bg-[#48532B] text-white font-bold text-sm rounded-xl shadow-md shadow-olive-900/15 transition-all cursor-pointer active:scale-98"
-              >
-                Calculate Cost
-              </button>
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  className="w-full py-3.5 px-4 bg-[#ea580c] hover:bg-[#c2410c] text-white font-bold text-sm rounded-xl shadow-md shadow-orange-900/10 transition-all cursor-pointer active:scale-98"
+                >
+                  Calculate Cost
+                </button>
+                <p className="text-[11px] text-slate-400 text-center mt-2 font-normal">
+                  {isLLP
+                    ? `Stamp duty at published LLP Agreement rates for ${selectedState}.`
+                    : `Stamp duty at published MOA and AOA rates for ${selectedState}.`}
+                </p>
+              </div>
+
             </form>
           </div>
 
-          {/* RIGHT COLUMN: Real-Time Breakdown & Summary */}
-          <div className="md:col-span-6 space-y-3.5">
-            
-            {/* 1. Government Fees Accordion Box */}
-            <div className="bg-white rounded-2xl border border-brown-200/90 overflow-hidden shadow-xs">
+          {/* RIGHT COLUMN: Dark Card Summary (EXACT TO REFERENCE SCREENSHOT) */}
+          <div className="md:col-span-5 bg-[#121c38] rounded-2xl p-6 text-white shadow-xl flex flex-col justify-between space-y-4">
+
+            {/* Top row: Total incorporation cost label + Entity & State badge */}
+            <div>
+              <div className="flex items-start justify-between">
+                <div>
+                  <span className="text-xs text-slate-300 font-normal">Total incorporation cost</span>
+                  <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">
+                    {formatRs(quote.totalCost)}
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="text-xs font-semibold text-white">{entityDisplayBadge}</div>
+                  <div className="text-[11px] text-slate-400">{selectedState}</div>
+                </div>
+              </div>
+
+              {/* Ratio Bar */}
+              <div className="w-full h-1.5 rounded-full overflow-hidden flex bg-slate-700/60 mt-4">
+                <div style={{ width: `${govtPercent}%` }} className="bg-[#ea580c] h-full" />
+                <div style={{ width: `${profPercent}%` }} className="bg-[#10b981] h-full" />
+              </div>
+
+              {/* Legend */}
+              <div className="flex items-center gap-4 text-[11px] text-slate-300 mt-2">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#ea580c] inline-block" />
+                  <span>Government</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#10b981] inline-block" />
+                  <span>Professional</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Middle Section: Government Fees Accordion */}
+            <div className="space-y-2 border-t border-slate-700/60 pt-3">
               <button
                 type="button"
                 onClick={() => setIsGovtFeesExpanded(!isGovtFeesExpanded)}
-                className="w-full px-4 py-3.5 flex items-center justify-between font-bold text-xs sm:text-sm text-brown-900 hover:bg-[#FAF9F6] transition-colors cursor-pointer"
+                className="w-full flex items-center justify-between text-xs sm:text-[13px] font-bold text-white py-1 hover:text-slate-200 cursor-pointer"
               >
-                <span>Government Fees</span>
-                <div className="flex items-center gap-1.5 text-brown-900 font-bold">
-                  <span>{formatRs(quote.govtFeesSubtotal)}</span>
+                <div className="flex items-center gap-1.5">
                   {isGovtFeesExpanded ? (
-                    <ChevronUp className="w-4 h-4 text-brown-500" />
+                    <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
                   ) : (
-                    <ChevronDown className="w-4 h-4 text-brown-500" />
+                    <ChevronUp className="w-3.5 h-3.5 text-slate-400" />
                   )}
+                  <span>Government fees</span>
                 </div>
+                <span className="font-bold text-white">{formatRs(quote.govtFeesSubtotal)}</span>
               </button>
 
               {isGovtFeesExpanded && (
-                <div className="px-4 pb-4 pt-1 border-t border-brown-100 space-y-3 text-xs text-brown-700 bg-[#FAF9F6]/40">
-                  
-                  {/* ROC Fees */}
-                  <div className="flex items-center justify-between py-1 border-b border-brown-100/60">
-                    <span className="text-brown-600">ROC Fees</span>
-                    <span className="font-semibold text-brown-900">
-                      {formatRs(quote.rocFees + quote.govtIncorporationFee)}
-                    </span>
+                <div className="space-y-2.5 pt-1 text-xs text-slate-300">
+                  {/* ROC fees */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-300">ROC fees</span>
+                    <span className="flex-1 border-b border-dotted border-slate-700/80 mx-2 mb-1" />
+                    <span className="font-semibold text-white">{formatRs(quote.rocFees + quote.govtIncorporationFee)}</span>
                   </div>
 
-                  {/* Stamp Duty Row + Detail Sub-card */}
-                  <div className="py-1 border-b border-brown-100/60 space-y-1.5">
+                  {/* Stamp Duty */}
+                  <div>
                     <div className="flex items-center justify-between">
-                      <span className="text-brown-600">
-                        Stamp Duty ({quote.selectedState})
-                      </span>
-                      <span className="font-semibold text-olive-800">
-                        {formatRs(quote.stampDuty)}
-                      </span>
+                      <span className="text-slate-300">Stamp duty ({selectedState})</span>
+                      <span className="flex-1 border-b border-dotted border-slate-700/80 mx-2 mb-1" />
+                      <span className="font-semibold text-white">{formatRs(quote.stampDuty)}</span>
                     </div>
-
-                    {/* Sub details card */}
-                    <div className="bg-white rounded-xl p-3 border border-brown-200/80 space-y-1 shadow-2xs">
-                      <div className="flex items-center justify-between font-semibold text-brown-900 text-[11.5px]">
-                        <span>MOA + AOA (INC-33 / INC-34)</span>
-                        <span className="font-bold text-[#5A7338]">{formatRs(quote.stampDuty)}</span>
-                      </div>
-                      <div className="text-[10.5px] text-brown-500 font-light">
-                        {quote.selectedState} rate for authorised capital of ₹{(Number(authorizedCapital) || 0).toLocaleString("en-IN")}
-                      </div>
-                      <div className="text-[10px] text-brown-400 font-light">
-                        Authorised capital up to ₹{capitalInLakh}
-                      </div>
+                    {/* Orange-bordered info box */}
+                    <div className="mt-1 pl-2.5 py-1 border-l-2 border-[#ea580c] bg-[#1a2340]/70 rounded-r text-[10.5px] text-slate-300 leading-snug">
+                      {isLLP
+                        ? "LLP Agreement · Contribution ₹1 lakh – ₹5 lakh"
+                        : "MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹1 lakh"}
                     </div>
                   </div>
 
-                  {/* Director / Partner Fees */}
-                  <div className="flex items-center justify-between py-1 border-b border-brown-100/60">
-                    <span className="text-brown-600">Director / Partner Fees</span>
-                    <span className="font-semibold text-brown-900">
-                      {formatRs(quote.directorFees)}
-                    </span>
+                  {/* Director fees / Partner fees */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-300">{isLLP ? "Partner fees" : "Director fees"}</span>
+                    <span className="flex-1 border-b border-dotted border-slate-700/80 mx-2 mb-1" />
+                    <span className="font-semibold text-white">{formatRs(quote.directorFees)}</span>
                   </div>
 
-                  {/* DSC Fees */}
-                  <div className="flex items-center justify-between py-1">
-                    <span className="text-brown-600">DSC Fees ({Number(numDsc) || 0} × ₹2500)</span>
-                    <span className="font-semibold text-brown-900">
-                      {formatRs(quote.dscFees)}
-                    </span>
+                  {/* DSC */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-300">DSC ({numDsc} × ₹2,500)</span>
+                    <span className="flex-1 border-b border-dotted border-slate-700/80 mx-2 mb-1" />
+                    <span className="font-semibold text-white">{formatRs(quote.dscFees)}</span>
                   </div>
-
                 </div>
               )}
             </div>
 
-            {/* 2. Professional Fees Box */}
-            <div className="bg-white rounded-2xl border border-brown-200/90 px-4 py-3.5 flex items-center justify-between font-bold text-xs sm:text-sm text-brown-900 shadow-xs">
-              <span className="text-brown-800">Professional Fees</span>
-              <span className="text-brown-900 font-bold">{formatRs(quote.professionalFees)}</span>
+            {/* Professional Fees Box */}
+            <div className="bg-[#1b2648] rounded-xl px-4 py-3 flex items-center justify-between text-xs sm:text-[13px] font-bold text-white shadow-xs">
+              <span>Professional fees</span>
+              <span className="font-bold text-white">{formatRs(quote.professionalFees)}</span>
             </div>
 
-            {/* 3. Total Incorporation Cost Box in Warm Luxury Theme */}
-            <div className="bg-[#F5F1E6]/80 rounded-2xl border-2 border-olive-300/80 px-4 py-3.5 flex items-center justify-between font-bold text-xs sm:text-sm shadow-xs">
-              <span className="text-brown-900 font-bold">Total Incorporation Cost</span>
-              <span className="text-base sm:text-lg font-serif font-extrabold text-[#48532B]">
-                {formatRs(quote.totalCost)}
-              </span>
+            {/* Proceed to Pay Button & Footer Note */}
+            <div>
+              <button
+                type="button"
+                onClick={handleProceedToPay}
+                className="w-full py-3.5 px-4 bg-[#ea580c] hover:bg-[#c2410c] text-white font-bold text-sm rounded-xl shadow-lg transition-all cursor-pointer text-center active:scale-98"
+              >
+                Proceed to Pay
+              </button>
+              <p className="text-[10px] text-slate-400 text-center mt-2.5 font-normal">
+                Estimate only — final fees depend on MCA filing and state stamp rules.
+              </p>
             </div>
-
-            {/* 4. Proceed to Pay Button in Olive Theme */}
-            <button
-              type="button"
-              onClick={handleProceedToPay}
-              className="w-full py-3.5 px-4 bg-[#48532B] hover:bg-olive-800 text-white font-bold text-sm rounded-xl shadow-lg shadow-olive-900/20 transition-all cursor-pointer text-center active:scale-98"
-            >
-              Proceed to Pay
-            </button>
 
           </div>
 
