@@ -18,12 +18,11 @@ import {
 
 const APP_URL = (process.env.NEXT_PUBLIC_APP_URL || "https://app.foundinglegals.com").replace(/\/$/, "");
 
-// Primary entity tabs shown in the cost estimator header
+// Primary entity tabs shown in the cost estimator (Section 8 removed as requested)
 const PRIMARY_ENTITIES: { id: EntityTypeId; label: string }[] = [
   { id: "pvt_ltd", label: "Private Company" },
   { id: "opc", label: "OPC" },
   { id: "llp", label: "LLP" },
-  { id: "section8", label: "Section 8" },
 ];
 
 export default function CostEstimatorModal() {
@@ -40,7 +39,7 @@ export default function CostEstimatorModal() {
   // Accordion toggle for Government Fees
   const [isGovtFeesExpanded, setIsGovtFeesExpanded] = useState<boolean>(true);
 
-  // Calculated quote state
+  // Calculated quote state (Professional fee = ₹1,999)
   const [quote, setQuote] = useState<ItemizedQuote>(() =>
     calculateQuote({
       entityType: "pvt_ltd",
@@ -57,8 +56,9 @@ export default function CostEstimatorModal() {
   useEffect(() => {
     const handleOpen = (e: Event) => {
       const customEvent = e as CustomEvent<{ state?: string; entityType?: EntityTypeId }>;
-      const targetEntity = customEvent.detail?.entityType && ENTITY_CONFIGS[customEvent.detail.entityType]
-        ? customEvent.detail.entityType
+      const incomingEntity = customEvent.detail?.entityType;
+      const targetEntity = incomingEntity && incomingEntity !== "section8" && ENTITY_CONFIGS[incomingEntity]
+        ? incomingEntity
         : "pvt_ltd";
       const targetState = customEvent.detail?.state && ALL_INDIAN_STATES.includes(customEvent.detail.state)
         ? customEvent.detail.state
@@ -112,7 +112,7 @@ export default function CostEstimatorModal() {
     };
   }, [isOpen]);
 
-  // Real-time calculation effect
+  // Real-time calculation effect dynamically updated with authorized capital
   useEffect(() => {
     const parsedCap = hasShareCapital === "no" ? 0 : authorizedCapital;
     const newQuote = calculateQuote({
@@ -168,13 +168,11 @@ export default function CostEstimatorModal() {
   const govtPercent = Math.min(100, Math.round((quote.govtFeesSubtotal / total) * 100));
   const profPercent = Math.max(0, 100 - govtPercent);
 
-  // Entity display name
+  // Entity display badge
   const entityDisplayBadge = isLLP
     ? "LLP"
     : isOPC
     ? "OPC"
-    : entityType === "section8"
-    ? "Section 8"
     : "Private Company";
 
   return (
@@ -189,7 +187,7 @@ export default function CostEstimatorModal() {
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-4xl bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-200 p-6 sm:p-8 md:p-9 text-left font-sans max-h-[95vh] overflow-y-auto"
+        className="relative w-full max-w-4xl bg-[#FDFCF9] rounded-2xl sm:rounded-3xl shadow-2xl border border-[#E5E1D6] p-6 sm:p-8 md:p-9 text-left font-sans max-h-[95vh] overflow-y-auto animate-dropdown"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -197,31 +195,31 @@ export default function CostEstimatorModal() {
           type="button"
           onClick={() => setIsOpen(false)}
           aria-label="Close modal"
-          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors cursor-pointer"
+          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#F0EBE1] hover:bg-[#E5E1D6] text-brown-700 hover:text-brown-900 flex items-center justify-center transition-colors cursor-pointer"
         >
           <X className="w-4 h-4" />
         </button>
 
-        {/* ── HEADER ── */}
+        {/* ── HEADER (FOUNDING LEGALS WARM LUXURY THEME) ── */}
         <div className="mb-6 pr-8">
-          <h2 id="cost-estimator-heading" className="text-2xl sm:text-[26px] font-bold text-[#1e293b] tracking-tight">
+          <h2 id="cost-estimator-heading" className="font-serif text-2xl sm:text-[28px] font-medium text-brown-900 tracking-tight">
             Estimate Your Incorporation Cost
           </h2>
-          <p className="text-xs sm:text-[13px] text-slate-500 font-normal mt-1 leading-relaxed">
+          <p className="text-xs sm:text-[13.5px] text-brown-500 font-light mt-1 leading-relaxed">
             Government fees, stamp duty, DSC and professional fees, calculated for your state and capital.
           </p>
         </div>
 
-        {/* ── 2-COLUMN STRUCTURE (EXACT TO REFERENCE SCREENSHOT) ── */}
+        {/* ── 2-COLUMN STRUCTURE (FOUNDING LEGALS THEME) ── */}
         <div className="grid md:grid-cols-12 gap-6 lg:gap-8 items-start">
 
           {/* LEFT COLUMN: Input Parameters Form */}
-          <div className="md:col-span-7 space-y-4">
+          <div className="md:col-span-7 bg-white rounded-2xl border border-brown-200/80 p-5 sm:p-6 shadow-xs space-y-4">
             <form onSubmit={handleCalculate} className="space-y-4">
 
-              {/* Entity type tabs / pills */}
+              {/* Entity type tabs / pills (Section 8 removed) */}
               <div>
-                <label className="block text-xs font-semibold text-slate-800 mb-2">
+                <label className="block text-[11.5px] font-bold text-olive-900 mb-2">
                   Entity type
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -234,8 +232,8 @@ export default function CostEstimatorModal() {
                         onClick={() => handleEntitySelect(item.id)}
                         className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                           isSelected
-                            ? "bg-[#0B1528] text-white shadow-xs"
-                            : "bg-white hover:bg-slate-50 text-slate-700 border border-slate-200"
+                            ? "bg-[#3c481d] text-white shadow-xs"
+                            : "bg-white hover:bg-olive-50 text-brown-700 border border-brown-200"
                         }`}
                       >
                         {item.label}
@@ -249,14 +247,14 @@ export default function CostEstimatorModal() {
               <div className="grid grid-cols-2 gap-3.5">
                 {/* State Dropdown */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-800 mb-1.5">
+                  <label className="block text-[11.5px] font-bold text-olive-900 mb-1.5">
                     State of registered office
                   </label>
                   <div className="relative">
                     <select
                       value={selectedState}
                       onChange={(e) => setSelectedState(e.target.value)}
-                      className="w-full px-3 py-2.5 bg-white border border-slate-200 hover:border-slate-300 rounded-xl text-xs sm:text-[13px] text-slate-800 font-medium focus:outline-none focus:ring-2 focus:ring-[#ea580c]/20 focus:border-[#ea580c] transition-all cursor-pointer appearance-none pr-8"
+                      className="w-full px-3 py-2.5 bg-[#FAF9F6] border border-brown-200 hover:border-olive-600 focus:border-olive-600 focus:ring-2 focus:ring-olive-500/20 rounded-xl text-xs sm:text-[13px] text-brown-900 font-semibold transition-all cursor-pointer appearance-none pr-8"
                     >
                       {ALL_INDIAN_STATES.map((st) => (
                         <option key={st} value={st}>
@@ -264,36 +262,36 @@ export default function CostEstimatorModal() {
                         </option>
                       ))}
                     </select>
-                    <ChevronDown className="w-4 h-4 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                    <ChevronDown className="w-4 h-4 text-brown-500 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                   </div>
                 </div>
 
                 {/* No. of directors / partners Stepper */}
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
-                    <label className="text-xs font-semibold text-slate-800">
+                    <label className="text-[11.5px] font-bold text-olive-900">
                       {isLLP ? "No. of partners" : "No. of directors"}
                     </label>
-                    <span className="text-[11px] text-slate-400">
+                    <span className="text-[11px] text-brown-400">
                       min {minDirectors}
                     </span>
                   </div>
-                  <div className="flex items-center border border-slate-200 rounded-xl bg-white overflow-hidden h-[42px]">
+                  <div className="flex items-center border border-brown-200 rounded-xl bg-[#FAF9F6] overflow-hidden h-[42px]">
                     <button
                       type="button"
                       onClick={() => setNumDirectors((prev) => Math.max(minDirectors, prev - 1))}
                       disabled={numDirectors <= minDirectors}
-                      className="w-10 h-full flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                      className="w-10 h-full flex items-center justify-center text-brown-600 hover:text-brown-900 hover:bg-brown-100 transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
                     >
                       <Minus className="w-3.5 h-3.5" />
                     </button>
-                    <div className="flex-1 text-center font-bold text-xs sm:text-[13px] text-slate-800 select-none">
+                    <div className="flex-1 text-center font-bold text-xs sm:text-[13px] text-brown-900 select-none">
                       {numDirectors}
                     </div>
                     <button
                       type="button"
                       onClick={() => setNumDirectors((prev) => prev + 1)}
-                      className="w-10 h-full flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-colors cursor-pointer"
+                      className="w-10 h-full flex items-center justify-center text-brown-600 hover:text-brown-900 hover:bg-brown-100 transition-colors cursor-pointer"
                     >
                       <Plus className="w-3.5 h-3.5" />
                     </button>
@@ -306,26 +304,26 @@ export default function CostEstimatorModal() {
                 {/* Left: Share Capital or Subtype */}
                 {isLLP ? (
                   <div>
-                    <label className="block text-xs font-semibold text-slate-800 mb-1.5">
+                    <label className="block text-[11.5px] font-bold text-olive-900 mb-1.5">
                       Entity subtype
                     </label>
-                    <div className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-[12.5px] text-slate-600 font-medium select-none h-[42px] flex items-center truncate">
+                    <div className="w-full px-3 py-2.5 bg-[#FAF9F6] border border-brown-200 rounded-xl text-xs sm:text-[12.5px] text-brown-700 font-semibold select-none h-[42px] flex items-center truncate">
                       Limited Liability Partnership
                     </div>
                   </div>
                 ) : (
                   <div>
-                    <label className="block text-xs font-semibold text-slate-800 mb-1.5">
+                    <label className="block text-[11.5px] font-bold text-olive-900 mb-1.5">
                       Share capital
                     </label>
-                    <div className="flex bg-slate-100 p-1 rounded-xl h-[42px] items-center">
+                    <div className="flex bg-[#EDE6DE] p-1 rounded-xl h-[42px] items-center">
                       <button
                         type="button"
                         onClick={() => setHasShareCapital("yes")}
                         className={`flex-1 h-full rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center justify-center ${
                           hasShareCapital === "yes"
-                            ? "bg-white text-slate-800 shadow-xs"
-                            : "text-slate-500 hover:text-slate-800"
+                            ? "bg-white text-brown-900 shadow-xs"
+                            : "text-brown-600 hover:text-brown-900"
                         }`}
                       >
                         Has capital
@@ -335,8 +333,8 @@ export default function CostEstimatorModal() {
                         onClick={() => setHasShareCapital("no")}
                         className={`flex-1 h-full rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center justify-center ${
                           hasShareCapital === "no"
-                            ? "bg-white text-slate-800 shadow-xs"
-                            : "text-slate-500 hover:text-slate-800"
+                            ? "bg-white text-brown-900 shadow-xs"
+                            : "text-brown-600 hover:text-brown-900"
                         }`}
                       >
                         No capital
@@ -348,29 +346,29 @@ export default function CostEstimatorModal() {
                 {/* Right: DSC Required Stepper */}
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
-                    <label className="text-xs font-semibold text-slate-800">
+                    <label className="text-[11.5px] font-bold text-olive-900">
                       DSC required
                     </label>
-                    <span className="text-[11px] text-slate-400">
+                    <span className="text-[11px] text-brown-400">
                       ₹2,500 each
                     </span>
                   </div>
-                  <div className="flex items-center border border-slate-200 rounded-xl bg-white overflow-hidden h-[42px]">
+                  <div className="flex items-center border border-brown-200 rounded-xl bg-[#FAF9F6] overflow-hidden h-[42px]">
                     <button
                       type="button"
                       onClick={() => setNumDsc((prev) => Math.max(0, prev - 1))}
                       disabled={numDsc <= 0}
-                      className="w-10 h-full flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                      className="w-10 h-full flex items-center justify-center text-brown-600 hover:text-brown-900 hover:bg-brown-100 transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
                     >
                       <Minus className="w-3.5 h-3.5" />
                     </button>
-                    <div className="flex-1 text-center font-bold text-xs sm:text-[13px] text-slate-800 select-none">
+                    <div className="flex-1 text-center font-bold text-xs sm:text-[13px] text-brown-900 select-none">
                       {numDsc}
                     </div>
                     <button
                       type="button"
                       onClick={() => setNumDsc((prev) => prev + 1)}
-                      className="w-10 h-full flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-colors cursor-pointer"
+                      className="w-10 h-full flex items-center justify-center text-brown-600 hover:text-brown-900 hover:bg-brown-100 transition-colors cursor-pointer"
                     >
                       <Plus className="w-3.5 h-3.5" />
                     </button>
@@ -381,7 +379,7 @@ export default function CostEstimatorModal() {
               {/* Row 3: Authorized share capital / Capital contribution */}
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <label className="text-xs font-semibold text-slate-800">
+                  <label className="text-[11.5px] font-bold text-olive-900">
                     {isLLP ? "Capital contribution" : "Authorized share capital"}
                   </label>
                   <div className="flex items-center gap-1.5">
@@ -395,10 +393,10 @@ export default function CostEstimatorModal() {
                         key={pill.label}
                         type="button"
                         onClick={() => setAuthorizedCapital(pill.value)}
-                        className={`px-2 py-0.5 rounded-full text-[11px] font-semibold transition-all cursor-pointer ${
+                        className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold transition-all cursor-pointer ${
                           authorizedCapital === pill.value
-                            ? "bg-[#fed7aa] text-[#9a3412] font-bold"
-                            : "bg-[#fff7ed] text-[#c2410c] hover:bg-[#ffedd5]"
+                            ? "bg-[#5C6F2D] text-white font-bold shadow-xs"
+                            : "bg-[#F5F0EB] text-brown-800 hover:bg-[#E6EDC6] border border-brown-200/80"
                         }`}
                       >
                         {pill.label}
@@ -407,7 +405,7 @@ export default function CostEstimatorModal() {
                   </div>
                 </div>
                 <div className="relative">
-                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-medium text-slate-400 select-none">
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-olive-700 select-none">
                     ₹
                   </span>
                   <input
@@ -420,7 +418,7 @@ export default function CostEstimatorModal() {
                       setAuthorizedCapital(numericVal);
                     }}
                     placeholder="1,00,000"
-                    className="w-full pl-8 pr-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs sm:text-[13px] text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-[#ea580c]/20 focus:border-[#ea580c] transition-all disabled:bg-slate-100 disabled:text-slate-400"
+                    className="w-full pl-8 pr-3.5 py-2.5 bg-[#FAF9F6] hover:bg-white border border-brown-200 hover:border-olive-600 focus:border-olive-600 focus:ring-2 focus:ring-olive-500/20 rounded-xl text-xs sm:text-[13px] text-brown-900 font-semibold transition-all disabled:bg-gray-100 disabled:text-gray-400"
                   />
                 </div>
               </div>
@@ -429,11 +427,11 @@ export default function CostEstimatorModal() {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-3.5 px-4 bg-[#ea580c] hover:bg-[#c2410c] text-white font-bold text-sm rounded-xl shadow-md shadow-orange-900/10 transition-all cursor-pointer active:scale-98"
+                  className="w-full py-3.5 px-4 bg-[#5C6F2D] hover:bg-[#4a5a24] text-white font-bold text-sm rounded-xl shadow-md shadow-olive-900/15 transition-all cursor-pointer active:scale-98"
                 >
                   Calculate Cost
                 </button>
-                <p className="text-[11px] text-slate-400 text-center mt-2 font-normal">
+                <p className="text-[11px] text-brown-500 text-center mt-2 font-light">
                   {isLLP
                     ? `Stamp duty at published LLP Agreement rates for ${selectedState}.`
                     : `Stamp duty at published MOA and AOA rates for ${selectedState}.`}
@@ -443,15 +441,15 @@ export default function CostEstimatorModal() {
             </form>
           </div>
 
-          {/* RIGHT COLUMN: Dark Card Summary (EXACT TO REFERENCE SCREENSHOT) */}
-          <div className="md:col-span-5 bg-[#121c38] rounded-2xl p-6 text-white shadow-xl flex flex-col justify-between space-y-4">
+          {/* RIGHT COLUMN: Dark Card Summary (Founding Legals High-Contrast Luxury Theme) */}
+          <div className="md:col-span-5 bg-[#131d2e] rounded-2xl p-6 text-white shadow-xl flex flex-col justify-between space-y-4">
 
             {/* Top row: Total incorporation cost label + Entity & State badge */}
             <div>
               <div className="flex items-start justify-between">
                 <div>
                   <span className="text-xs text-slate-300 font-normal">Total incorporation cost</span>
-                  <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">
+                  <div className="text-3xl sm:text-4xl font-serif font-extrabold text-white tracking-tight mt-1">
                     {formatRs(quote.totalCost)}
                   </div>
                 </div>
@@ -463,8 +461,8 @@ export default function CostEstimatorModal() {
 
               {/* Ratio Bar */}
               <div className="w-full h-1.5 rounded-full overflow-hidden flex bg-slate-700/60 mt-4">
-                <div style={{ width: `${govtPercent}%` }} className="bg-[#ea580c] h-full" />
-                <div style={{ width: `${profPercent}%` }} className="bg-[#10b981] h-full" />
+                <div style={{ width: `${govtPercent}%` }} className="bg-[#ea580c] h-full transition-all duration-300" />
+                <div style={{ width: `${profPercent}%` }} className="bg-[#10b981] h-full transition-all duration-300" />
               </div>
 
               {/* Legend */}
@@ -514,11 +512,12 @@ export default function CostEstimatorModal() {
                       <span className="flex-1 border-b border-dotted border-slate-700/80 mx-2 mb-1" />
                       <span className="font-semibold text-white">{formatRs(quote.stampDuty)}</span>
                     </div>
-                    {/* Orange-bordered info box */}
+                    {/* Dynamic statutory stamp duty info box */}
                     <div className="mt-1 pl-2.5 py-1 border-l-2 border-[#ea580c] bg-[#1a2340]/70 rounded-r text-[10.5px] text-slate-300 leading-snug">
-                      {isLLP
-                        ? "LLP Agreement · Contribution ₹1 lakh – ₹5 lakh"
-                        : "MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹1 lakh"}
+                      {quote.stampDutyDescription ||
+                        (isLLP
+                          ? "LLP Agreement · Contribution ₹1 lakh – ₹5 lakh"
+                          : "MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹1 lakh")}
                     </div>
                   </div>
 
@@ -539,8 +538,8 @@ export default function CostEstimatorModal() {
               )}
             </div>
 
-            {/* Professional Fees Box */}
-            <div className="bg-[#1b2648] rounded-xl px-4 py-3 flex items-center justify-between text-xs sm:text-[13px] font-bold text-white shadow-xs">
+            {/* Professional Fees Box (Calibrated to ₹1,999) */}
+            <div className="bg-[#1c2940] rounded-xl px-4 py-3 flex items-center justify-between text-xs sm:text-[13px] font-bold text-white shadow-xs">
               <span>Professional fees</span>
               <span className="font-bold text-white">{formatRs(quote.professionalFees)}</span>
             </div>
@@ -550,7 +549,7 @@ export default function CostEstimatorModal() {
               <button
                 type="button"
                 onClick={handleProceedToPay}
-                className="w-full py-3.5 px-4 bg-[#ea580c] hover:bg-[#c2410c] text-white font-bold text-sm rounded-xl shadow-lg transition-all cursor-pointer text-center active:scale-98"
+                className="w-full py-3.5 px-4 bg-[#5C6F2D] hover:bg-[#4a5a24] text-white font-bold text-sm rounded-xl shadow-lg transition-all cursor-pointer text-center active:scale-98"
               >
                 Proceed to Pay
               </button>

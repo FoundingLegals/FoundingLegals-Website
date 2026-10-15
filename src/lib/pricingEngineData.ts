@@ -478,7 +478,7 @@ export const ENTITY_CONFIGS: Record<EntityTypeId, EntityTypeConfig> = {
     defaultDsc: 2,
     defaultCapital: 100000,
     hasShareCapitalOption: true,
-    baseProfessionalFee: 1499,
+    baseProfessionalFee: 1999,
     marketTraditionalRate: 9999,
     fixedRocFee: 1000,
     adminVerificationFee: 400,
@@ -512,7 +512,7 @@ export const ENTITY_CONFIGS: Record<EntityTypeId, EntityTypeConfig> = {
     defaultDsc: 2,
     defaultCapital: 100000,
     hasShareCapitalOption: false,
-    baseProfessionalFee: 1499,
+    baseProfessionalFee: 1999,
     marketTraditionalRate: 7500,
     fixedRocFee: 700,
     adminVerificationFee: 1000,
@@ -529,7 +529,7 @@ export const ENTITY_CONFIGS: Record<EntityTypeId, EntityTypeConfig> = {
     defaultDsc: 1,
     defaultCapital: 100000,
     hasShareCapitalOption: true,
-    baseProfessionalFee: 1499,
+    baseProfessionalFee: 1999,
     marketTraditionalRate: 8500,
     fixedRocFee: 1000,
     adminVerificationFee: 400,
@@ -758,6 +758,7 @@ export interface ItemizedQuote {
   turnaroundDays: string;
   rocFees: number;
   stampDuty: number;
+  stampDutyDescription?: string;
   directorFees: number;
   dscFees: number;
   panTanFee: number;
@@ -772,11 +773,12 @@ export interface ItemizedQuote {
 
 export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
   const config = ENTITY_CONFIGS[params.entityType] || ENTITY_CONFIGS.pvt_ltd;
-  const stateKey = params.state || "Maharashtra";
+  const stateKey = params.state || "Karnataka";
   const stateData =
     STATE_STAMP_DUTY_LOOKUP[stateKey] ||
     STATE_STAMP_DUTY_LOOKUP[stateKey.replace("&", "and")] ||
     STATE_STAMP_DUTY_LOOKUP[stateKey.replace("and", "&")] ||
+    STATE_STAMP_DUTY_LOOKUP["Karnataka"] ||
     STATE_STAMP_DUTY_LOOKUP["Maharashtra"];
 
   const numDsc = Math.max(0, params.numDsc ?? config.defaultDsc);
@@ -784,52 +786,164 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
 
   let rocFees = config.fixedRocFee;
   let stampDuty = 0;
+  let stampDutyDescription = "";
   let directorFees = config.adminVerificationFee;
   let dscFees = numDsc * config.dscUnitPrice;
   let govtIncorporationFee = 0;
   let panTanFee = 0;
 
+  const normState = (params.state || "Karnataka").trim().toLowerCase();
+
   switch (params.entityType) {
     case "pvt_ltd":
-      stampDuty = stateData.pvtLtdStampDuty;
+    case "opc": {
       rocFees = 1000;
-      directorFees = (params.numDirectors || 2) * 200;
+      directorFees = (params.numDirectors || (params.entityType === "opc" ? 1 : 2)) * 200;
       panTanFee = 0;
-      // MCA zero fee on SPICe+ up to 15L capital; tiered fee above 15L
+
+      // MCA Tiered SPICe+ Part B incorporation fee
+      // Zero fee up to ₹15,00,000 capital under SPICe+
       if (capital > 1500000) {
-        const extraLakhs = Math.ceil((capital - 1500000) / 100000);
-        govtIncorporationFee = extraLakhs * 400;
+        if (capital <= 5000000) {
+          govtIncorporationFee = Math.ceil((capital - 1500000) / 100000) * 400;
+        } else if (capital <= 10000000) {
+          govtIncorporationFee = 35 * 400 + Math.ceil((capital - 5000000) / 100000) * 300;
+        } else {
+          govtIncorporationFee = 35 * 400 + 50 * 300 + Math.ceil((capital - 10000000) / 100000) * 100;
+        }
+      }
+
+      // State MOA + AOA Stamp Duty based on authorised share capital
+      if (normState.includes("karnataka")) {
+        if (capital <= 1000000) {
+          stampDuty = 10020;
+        } else {
+          const extraSlabs = Math.ceil((capital - 1000000) / 500000);
+          stampDuty = 10020 + extraSlabs * 1000;
+        }
+        stampDutyDescription = capital <= 100000
+          ? "MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹1 lakh"
+          : capital <= 500000
+          ? "MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹5 lakh"
+          : capital <= 1000000
+          ? "MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹10 lakh"
+          : `MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹${(capital / 100000).toFixed(0)} lakh`;
+      } else if (normState.includes("maharashtra")) {
+        if (capital <= 1000000) {
+          stampDuty = 2000;
+        } else {
+          const extraSlabs = Math.ceil((capital - 1000000) / 500000);
+          stampDuty = Math.min(50000, 2000 + extraSlabs * 1000);
+        }
+        stampDutyDescription = `MOA + AOA · Bombay Stamp Act (${capital <= 1000000 ? "up to ₹10 lakh" : `up to ₹${(capital / 100000).toFixed(0)} lakh`})`;
+      } else if (normState.includes("delhi")) {
+        if (capital <= 100000) {
+          stampDuty = 360;
+        } else if (capital <= 500000) {
+          stampDuty = 660;
+        } else if (capital <= 1000000) {
+          stampDuty = 1300;
+        } else {
+          const extraSlabs = Math.ceil((capital - 1000000) / 500000);
+          stampDuty = 1300 + extraSlabs * 500;
+        }
+        stampDutyDescription = `MOA + AOA · Delhi Stamp Rules (up to ₹${(capital / 100000).toFixed(0)} lakh)`;
+      } else if (normState.includes("telangana") || normState.includes("andhra")) {
+        if (capital <= 1000000) {
+          stampDuty = 1520;
+        } else {
+          const extraSlabs = Math.ceil((capital - 1000000) / 500000);
+          stampDuty = 1520 + extraSlabs * 1000;
+        }
+        stampDutyDescription = `MOA + AOA · Statutory e-stamp rate`;
+      } else {
+        if (capital <= 1000000) {
+          stampDuty = stateData.pvtLtdStampDuty;
+        } else {
+          const extraSlabs = Math.ceil((capital - 1000000) / 500000);
+          stampDuty = stateData.pvtLtdStampDuty + extraSlabs * 1000;
+        }
+        stampDutyDescription = `MOA + AOA statutory stamp duty`;
       }
       break;
+    }
 
-    case "public_ltd":
-      stampDuty = Math.max(stateData.pvtLtdStampDuty, Math.round(capital * 0.001));
+    case "llp": {
+      directorFees = (params.numDirectors || 2) * 500;
+      panTanFee = 0;
+
+      // MCA FiLLiP ROC fees based on capital contribution
+      if (capital <= 500000) {
+        rocFees = 700;
+      } else if (capital <= 1000000) {
+        rocFees = 2200;
+      } else {
+        rocFees = 4200;
+      }
+
+      // LLP Agreement Stamp Duty based on contribution
+      if (normState.includes("karnataka")) {
+        if (capital <= 500000) {
+          stampDuty = 5000;
+          stampDutyDescription = "LLP Agreement · Contribution ₹1 lakh – ₹5 lakh";
+        } else if (capital <= 1000000) {
+          stampDuty = 7000;
+          stampDutyDescription = "LLP Agreement · Contribution ₹5 lakh – ₹10 lakh";
+        } else {
+          const extraSlabs = Math.ceil((capital - 1000000) / 500000);
+          stampDuty = Math.min(25000, 10000 + extraSlabs * 1000);
+          stampDutyDescription = "LLP Agreement · Contribution above ₹10 lakh";
+        }
+      } else if (normState.includes("maharashtra")) {
+        if (capital <= 100000) {
+          stampDuty = 1000;
+        } else if (capital <= 500000) {
+          stampDuty = 2500;
+        } else if (capital <= 1000000) {
+          stampDuty = 5000;
+        } else {
+          stampDuty = Math.min(50000, Math.round(capital * 0.01));
+        }
+        stampDutyDescription = "LLP Agreement · Maharashtra Stamp Act Article 40";
+      } else if (normState.includes("delhi")) {
+        if (capital <= 100000) {
+          stampDuty = 500;
+        } else if (capital <= 500000) {
+          stampDuty = 1000;
+        } else {
+          stampDuty = Math.min(10000, Math.round(capital * 0.005));
+        }
+        stampDutyDescription = "LLP Agreement · Delhi Stamp Rules";
+      } else {
+        if (capital <= 500000) {
+          stampDuty = stateData.llpStampDuty || 2000;
+        } else if (capital <= 1000000) {
+          stampDuty = Math.round((stateData.llpStampDuty || 2000) * 1.5);
+        } else {
+          stampDuty = Math.round((stateData.llpStampDuty || 2000) * 2);
+        }
+        stampDutyDescription = "LLP Agreement statutory rate";
+      }
+      break;
+    }
+
+    case "public_ltd": {
       rocFees = 1000;
       directorFees = (params.numDirectors || 3) * 200;
       panTanFee = 0;
+      if (capital <= 1000000) {
+        stampDuty = Math.max(stateData.pvtLtdStampDuty, Math.round(capital * 0.001));
+      } else {
+        const extraSlabs = Math.ceil((capital - 1000000) / 500000);
+        stampDuty = Math.max(stateData.pvtLtdStampDuty + extraSlabs * 1000, Math.round(capital * 0.001));
+      }
       if (capital > 1500000) {
         const extraLakhs = Math.ceil((capital - 1500000) / 100000);
         govtIncorporationFee = extraLakhs * 500;
       }
+      stampDutyDescription = "Public Ltd MOA & AOA Statutory Stamping";
       break;
-
-    case "llp":
-      stampDuty = stateData.llpStampDuty;
-      rocFees = 700;
-      directorFees = (params.numDirectors || 2) * 500;
-      panTanFee = 0;
-      break;
-
-    case "opc":
-      stampDuty = stateData.pvtLtdStampDuty;
-      rocFees = 1000;
-      directorFees = (params.numDirectors || 1) * 200;
-      panTanFee = 0;
-      if (capital > 1500000) {
-        const extraLakhs = Math.ceil((capital - 1500000) / 100000);
-        govtIncorporationFee = extraLakhs * 400;
-      }
-      break;
+    }
 
     case "partnership":
       stampDuty = stateData.partnershipStampDuty;
@@ -837,6 +951,7 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
       directorFees = 0;
       dscFees = 0;
       panTanFee = 0;
+      stampDutyDescription = "Partnership Deed Stamp Duty";
       break;
 
     case "sole_prop":
@@ -845,6 +960,7 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
       directorFees = 0;
       dscFees = 0;
       panTanFee = 0;
+      stampDutyDescription = "No stamp duty applicable for proprietorship";
       break;
 
     case "section8":
@@ -852,6 +968,7 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
       rocFees = 3000;
       directorFees = (params.numDirectors || 2) * 200;
       panTanFee = 0;
+      stampDutyDescription = "Section 8 Concessional MOA Stamp Duty";
       break;
 
     case "iec":
@@ -907,6 +1024,7 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
     turnaroundDays: stateData.turnaroundDays || "5–8 Working Days",
     rocFees,
     stampDuty,
+    stampDutyDescription,
     directorFees,
     dscFees,
     panTanFee,
