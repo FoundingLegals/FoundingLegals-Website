@@ -12,8 +12,10 @@ import {
   BookOpen,
   BarChart3,
   Clock,
+  Headphones,
 } from "lucide-react";
 import { useState } from "react";
+import { navigateToApp, talkToExpert } from "@/lib/appNavigation";
 import type { NewServicePage } from "@/lib/newServicesData";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -64,19 +66,22 @@ export default function NewServicePageLayout({ page }: Props) {
 
               {/* CTAs */}
               <div className="flex flex-wrap items-center gap-4">
-                <Link
-                  href="/start"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md"
+                <button
+                  type="button"
+                  onClick={() => navigateToApp(page.name)}
+                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md cursor-pointer"
                 >
-                  Get Started at Member Rate
+                  Opt Service
                   <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-white hover:bg-[#F6F4F0] text-[#2b2723] text-[14px] font-medium rounded-full border border-[#E5E1D6] transition-all shadow-sm"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => talkToExpert(page.name)}
+                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-white hover:bg-[#F6F4F0] text-[#2b2723] text-[14px] font-medium rounded-full border border-[#E5E1D6] transition-all shadow-sm cursor-pointer"
                 >
-                  Talk to a CA
-                </Link>
+                  <Headphones className="w-4 h-4 text-[#5A7338]" />
+                  Talk to Expert
+                </button>
               </div>
 
               {/* Trust indicators */}
@@ -325,13 +330,24 @@ export default function NewServicePageLayout({ page }: Props) {
                 <div className="text-[12px] text-[#6b6965] font-light">
                   Statutory fees (MCA, GST Dept., stamp duty, trademark registry) are charged strictly at actual government receipts.
                 </div>
-                <Link
-                  href="/start"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md shrink-0"
-                >
-                  Get Started Now
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+                <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+                  <button
+                    type="button"
+                    onClick={() => navigateToApp(page.name)}
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md shrink-0 cursor-pointer"
+                  >
+                    Opt Service
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => talkToExpert(page.name)}
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-olive-50 text-[#5A7338] border border-[#5A7338]/30 text-[14px] font-semibold rounded-full transition-all shadow-xs shrink-0 cursor-pointer"
+                  >
+                    <Headphones className="w-4 h-4 text-[#5A7338]" />
+                    Talk to Expert
+                  </button>
+                </div>
               </div>
             </div>
 

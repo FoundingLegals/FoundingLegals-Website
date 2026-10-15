@@ -7,8 +7,10 @@ import {
   Award,
   Zap,
   ShieldCheck,
-  Sparkles
+  Sparkles,
+  Headphones
 } from "lucide-react";
+import { talkToExpert } from "@/lib/appNavigation";
 
 interface PlanFeature {
   text: string;
@@ -261,19 +263,29 @@ export default function InvestmentReadinessLayout() {
                     ))}
                   </ul>
 
-                  {/* Opt & Pay CTA */}
-                  <button
-                    type="button"
-                    onClick={() => handleOptAndPay(pkg.name, "plan")}
-                    className={`mt-7 w-full py-3.5 rounded-xl text-[13px] font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg group/btn ${
-                      isPopular
-                        ? "bg-[#d4e8b0] text-olive-900 hover:bg-white"
-                        : "bg-white/15 text-white hover:bg-white hover:text-olive-800 border border-white/20"
-                    }`}
-                  >
-                    Opt &amp; Pay
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                  </button>
+                  {/* Opt & Pay & Talk to Expert CTAs */}
+                  <div className="mt-7 flex flex-col gap-2">
+                    <button
+                      type="button"
+                      onClick={() => handleOptAndPay(pkg.name, "plan")}
+                      className={`w-full py-3.5 rounded-xl text-[13px] font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg group/btn cursor-pointer ${
+                        isPopular
+                          ? "bg-[#d4e8b0] text-olive-900 hover:bg-white"
+                          : "bg-white/15 text-white hover:bg-white hover:text-olive-800 border border-white/20"
+                      }`}
+                    >
+                      <span>Opt &amp; Pay</span>
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => talkToExpert(`Investment Readiness — ${pkg.name}`)}
+                      className="w-full py-2.5 rounded-xl text-[12px] font-semibold bg-black/20 hover:bg-black/30 text-white/90 border border-white/15 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      <Headphones className="w-3.5 h-3.5 text-[#d4e8b0]" />
+                      <span>Talk to Expert</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             );
@@ -306,14 +318,24 @@ export default function InvestmentReadinessLayout() {
                   <span className="text-[22px] font-bold text-white">{addon.price}</span>
                   <span className="text-[10px] text-olive-200 font-light">one-time</span>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => handleOptAndPay(addon.name, "addon")}
-                  className="w-full py-3 rounded-xl text-[13px] font-bold bg-white/15 text-white hover:bg-white hover:text-olive-800 border border-white/20 shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center gap-2 group/btn"
-                >
-                  Opt &amp; Pay
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                </button>
+                <div className="flex flex-col gap-2">
+                  <button
+                    type="button"
+                    onClick={() => handleOptAndPay(addon.name, "addon")}
+                    className="w-full py-3 rounded-xl text-[13px] font-bold bg-white/15 text-white hover:bg-white hover:text-olive-800 border border-white/20 shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center gap-2 group/btn cursor-pointer"
+                  >
+                    <span>Opt &amp; Pay</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => talkToExpert(`Addon: ${addon.name}`)}
+                    className="w-full py-2 rounded-xl text-[11px] font-semibold bg-black/20 hover:bg-black/30 text-white/80 border border-white/15 transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <Headphones className="w-3 h-3 text-[#d4e8b0]" />
+                    <span>Talk to Expert</span>
+                  </button>
+                </div>
               </div>
             </div>
           ))}

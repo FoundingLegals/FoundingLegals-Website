@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Check, X, Send, ArrowRight, ChevronDown, Search, Star, ShieldCheck, Building2, FileText, Award, Calculator } from "lucide-react";
-import { useForm, ValidationError } from "@formspree/react";
+import { Check, X, Send, ArrowRight, ChevronDown, Search, Star, ShieldCheck, Building2, FileText, Award, Calculator, Headphones } from "lucide-react";
 import { openCostEstimator } from "@/lib/pricingEngineData";
+import { navigateToApp, talkToExpert } from "@/lib/appNavigation";
 
 // --- SECTION TABS ---
 const TABS = [
@@ -96,10 +96,7 @@ const PUBLIC_PLANS = [
 
 export default function PublicLimitedRegistrationLayout() {
   const [activeTab, setActiveTab] = useState("overview");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState("");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const [modalState, handleModalSubmit] = useForm("xqeyrnpp");
 
   // Track active section on scroll
   useEffect(() => {
@@ -122,11 +119,6 @@ export default function PublicLimitedRegistrationLayout() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const openModal = (serviceName: string) => {
-    setSelectedService(serviceName);
-    setIsModalOpen(true);
-  };
 
   const handleTabClick = (id: string) => {
     setActiveTab(id);
@@ -175,10 +167,19 @@ export default function PublicLimitedRegistrationLayout() {
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <button
-            onClick={() => openModal("Public Limited Company Registration")}
+            onClick={() => navigateToApp("Public Limited Company Registration")}
             className="px-6 py-3.5 bg-olive-600 hover:bg-olive-705 text-white font-bold text-[13px] rounded-full transition-all cursor-pointer shadow-md flex items-center gap-2 shrink-0"
           >
-            Register Public Limited Company
+            <span>Opt Service &amp; Register</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => talkToExpert("Public Limited Company Registration")}
+            className="px-6 py-3.5 bg-white hover:bg-olive-50 text-olive-750 border border-olive-600/40 font-semibold text-[13px] rounded-full transition-all cursor-pointer shadow-2xs flex items-center gap-2 shrink-0"
+          >
+            <Headphones className="w-4 h-4 text-olive-700" />
+            <span>Talk to Expert</span>
           </button>
           <button
             type="button"
@@ -261,13 +262,23 @@ export default function PublicLimitedRegistrationLayout() {
                   </div>
                 </div>
 
-                <button
-                  onClick={() => openModal(plan.serviceName)}
-                  className="w-full py-3.5 rounded-xl font-bold text-[13.5px] bg-[#2E4218] hover:bg-[#1E2E0F] text-white transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-2 shadow-md hover:shadow-xl transform hover:scale-[1.01] active:scale-[0.99]"
-                >
-                  <span>Opt &amp; Register</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
+                <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full">
+                  <button
+                    onClick={() => navigateToApp(plan.serviceName)}
+                    className="flex-1 w-full py-3.5 px-4 rounded-xl font-bold text-[13.5px] bg-[#2E4218] hover:bg-[#1E2E0F] text-white transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-2 shadow-md hover:shadow-xl transform hover:scale-[1.01] active:scale-[0.99]"
+                  >
+                    <span>Opt Service</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => talkToExpert(plan.serviceName)}
+                    className="w-full sm:w-auto py-3.5 px-4 rounded-xl font-semibold text-[13.5px] bg-white hover:bg-olive-50 text-[#2E4218] border border-[#2E4218]/40 transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-1.5 shadow-xs"
+                  >
+                    <Headphones className="w-4 h-4 text-[#2E4218]" />
+                    <span>Talk to Expert</span>
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -576,131 +587,7 @@ export default function PublicLimitedRegistrationLayout() {
         </div>
       </section>
 
-      {/* ── FORMSPREE MODAL ── */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/55 backdrop-blur-xs animate-fadeIn">
-          <div className="bg-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl relative border border-gray-100 flex flex-col max-h-[90vh]">
-            <div className="bg-[#FAF9F6] p-6 border-b border-gray-150 relative">
-              <span className="text-[9px] font-bold text-olive-700 tracking-widest uppercase block mb-1">
-                PUBLIC LIMITED INCORPORATION
-              </span>
-              <h3 className="font-serif text-lg font-bold text-brown-900 pr-8">
-                {selectedService}
-              </h3>
-              <button
-                onClick={() => {
-                  setIsModalOpen(false);
-                  modalState.succeeded = false;
-                }}
-                className="absolute top-6 right-6 text-brown-400 hover:text-brown-900 cursor-pointer transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="p-6 overflow-y-auto">
-              {modalState.succeeded ? (
-                <div className="py-8 text-center space-y-4">
-                  <div className="w-14 h-14 bg-olive-50 rounded-full flex items-center justify-center mx-auto">
-                    <Check className="w-7 h-7 text-olive-600" />
-                  </div>
-                  <h4 className="font-serif text-lg font-bold text-brown-900">Application Submitted!</h4>
-                  <p className="text-sm text-brown-500 max-w-sm mx-auto leading-relaxed">
-                    Thank you. A senior corporate secretary from our team will contact you within 24 hours to begin your Public Limited Company filing.
-                  </p>
-                  <button
-                    onClick={() => {
-                      setIsModalOpen(false);
-                      modalState.succeeded = false;
-                    }}
-                    className="mt-6 px-6 py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[12px] rounded-full transition-all cursor-pointer"
-                  >
-                    Close Window
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleModalSubmit} className="space-y-4">
-                  <input type="hidden" name="service" value={selectedService} />
-
-                  <div>
-                    <label htmlFor="modal-name" className="block text-[11px] font-bold text-brown-500 uppercase tracking-wider mb-1.5">
-                      Full Name
-                    </label>
-                    <input
-                      id="modal-name"
-                      type="text"
-                      name="name"
-                      required
-                      placeholder="e.g. Vikramaditya Singh"
-                      className="w-full px-4 py-2.5 bg-[#FAF9F6] border border-gray-200/80 rounded-xl text-sm focus:outline-none focus:border-olive-600 transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="modal-email" className="block text-[11px] font-bold text-brown-500 uppercase tracking-wider mb-1.5">
-                      Email Address
-                    </label>
-                    <input
-                      id="modal-email"
-                      type="email"
-                      name="email"
-                      required
-                      placeholder="vikram@example.com"
-                      className="w-full px-4 py-2.5 bg-[#FAF9F6] border border-gray-200/80 rounded-xl text-sm focus:outline-none focus:border-olive-600 transition-colors"
-                    />
-                    <ValidationError prefix="Email" field="email" errors={modalState.errors} className="text-xs text-red-500 mt-1" />
-                  </div>
-
-                  <div>
-                    <label htmlFor="modal-phone" className="block text-[11px] font-bold text-brown-500 uppercase tracking-wider mb-1.5">
-                      Phone Number
-                    </label>
-                    <input
-                      id="modal-phone"
-                      type="tel"
-                      name="phone"
-                      required
-                      placeholder="+91 98765 43210"
-                      className="w-full px-4 py-2.5 bg-[#FAF9F6] border border-gray-200/80 rounded-xl text-sm focus:outline-none focus:border-olive-600 transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="modal-city" className="block text-[11px] font-bold text-brown-500 uppercase tracking-wider mb-1.5">
-                      City of Business
-                    </label>
-                    <input
-                      id="modal-city"
-                      type="text"
-                      name="city"
-                      required
-                      placeholder="e.g. Mumbai"
-                      className="w-full px-4 py-2.5 bg-[#FAF9F6] border border-gray-200/80 rounded-xl text-sm focus:outline-none focus:border-olive-600 transition-colors"
-                    />
-                  </div>
-
-                  <div className="pt-2">
-                    <button
-                      type="submit"
-                      disabled={modalState.submitting}
-                      className="w-full py-3 bg-olive-600 hover:bg-olive-700 disabled:bg-gray-300 text-white font-bold text-[12px] rounded-full transition-all cursor-pointer flex items-center justify-center gap-2 shadow-md shadow-olive-600/10"
-                    >
-                      {modalState.submitting ? (
-                        <span>Submitting...</span>
-                      ) : (
-                        <>
-                          <span>Submit Application</span>
-                          <Send className="w-3.5 h-3.5" />
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </form>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+      {/* ── Direct application routing active: in-page form modal removed ── */}
 
     </div>
   );

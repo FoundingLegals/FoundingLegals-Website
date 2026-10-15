@@ -27,8 +27,9 @@ import {
   Truck,
   Globe,
   Star,
+  Headphones,
 } from "lucide-react";
-import { useForm, ValidationError } from "@formspree/react";
+import { navigateToApp, talkToExpert } from "@/lib/appNavigation";
 import Link from "next/link";
 
 // --- SECTION TABS ---
@@ -292,12 +293,9 @@ const FAQS = [
 export default function FssaiRegistrationLayout() {
   const [activeTab, setActiveTab] = useState("overview");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const subTabsContainerRef = useRef<HTMLDivElement>(null);
-
-  const [formState, handleSubmit] = useForm("xqeyrnpp");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -335,9 +333,16 @@ export default function FssaiRegistrationLayout() {
 
   useEffect(() => {
     if (subTabsContainerRef.current) {
-      const activeBtn = subTabsContainerRef.current.querySelector<HTMLButtonElement>(`[data-tab-id="${activeTab}"]`);
+      const container = subTabsContainerRef.current;
+      const activeBtn = container.querySelector<HTMLButtonElement>(`[data-tab-id="${activeTab}"]`);
       if (activeBtn) {
-        activeBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        const btnLeft = activeBtn.offsetLeft;
+        const btnWidth = activeBtn.offsetWidth;
+        const containerWidth = container.offsetWidth;
+        container.scrollTo({
+          left: btnLeft - containerWidth / 2 + btnWidth / 2,
+          behavior: "smooth",
+        });
       }
     }
   }, [activeTab]);
@@ -403,16 +408,23 @@ export default function FssaiRegistrationLayout() {
             </div>
           </div>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
             <button
-              onClick={() => setIsModalOpen(true)}
-              className="w-full sm:w-auto px-8 py-4 bg-[#48532B] hover:bg-[#394222] text-white text-sm font-semibold rounded-2xl shadow-lg transition-all duration-200 hover:scale-[1.02] flex items-center justify-center gap-2 group cursor-pointer"
+              onClick={() => navigateToApp("FSSAI Basic Registration (Food License)")}
+              className="w-full sm:w-auto px-8 py-4 bg-[#2E4218] hover:bg-[#1E2E0F] text-white text-sm font-bold rounded-2xl shadow-lg transition-all duration-200 hover:scale-[1.02] flex items-center justify-center gap-2 group cursor-pointer"
             >
-              <span>Apply for Food License (FSSAI)</span>
+              <span>Opt Service</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
-
-            <span className="text-xs text-[#706D67] font-medium flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => talkToExpert("FSSAI Basic Registration (Food License)")}
+              className="w-full sm:w-auto px-6 py-4 bg-white hover:bg-olive-50 text-[#2E4218] border border-[#2E4218]/40 text-sm font-semibold rounded-2xl shadow-xs transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <Headphones className="w-4 h-4 text-[#2E4218]" />
+              <span>Talk to Expert</span>
+            </button>
+            <span className="text-xs text-[#706D67] font-medium flex items-center gap-1.5 ml-2">
               <Clock className="w-4 h-4 text-[#48532B]" /> Issued in 3–10 Business Days
             </span>
           </div>
@@ -512,12 +524,23 @@ export default function FssaiRegistrationLayout() {
                 </li>
               </ul>
 
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="w-full py-2.5 bg-[#48532B] text-white text-xs font-semibold rounded-xl hover:bg-[#394222] transition-colors cursor-pointer"
-              >
-                Check My FSSAI Eligibility
-              </button>
+              <div className="flex flex-col gap-2">
+                <button
+                  type="button"
+                  onClick={() => navigateToApp("FSSAI Registration")}
+                  className="w-full py-2.5 bg-[#48532B] text-white text-xs font-semibold rounded-xl hover:bg-[#394222] transition-colors cursor-pointer"
+                >
+                  Opt Service
+                </button>
+                <button
+                  type="button"
+                  onClick={() => talkToExpert("FSSAI Eligibility")}
+                  className="w-full py-2 bg-white text-[#48532B] border border-[#D4D8C8] text-xs font-semibold rounded-xl hover:bg-[#F0F2EB] transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                >
+                  <Headphones className="w-3.5 h-3.5 text-[#48532B]" />
+                  <span>Talk to Expert</span>
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -569,12 +592,23 @@ export default function FssaiRegistrationLayout() {
                     <span className="text-xs font-bold text-[#1A1917]">{type.statutoryFee}</span>
                   </div>
 
-                  <button
-                    onClick={() => setIsModalOpen(true)}
-                    className="px-4 py-2 bg-[#F0F2EB] hover:bg-[#48532B] text-[#48532B] hover:text-white rounded-xl text-xs font-semibold transition-all cursor-pointer"
-                  >
-                    Select Plan
-                  </button>
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => navigateToApp(`FSSAI - ${type.title}`)}
+                      className="px-3 py-2 bg-[#48532B] hover:bg-[#394222] text-white rounded-xl text-xs font-semibold transition-all cursor-pointer"
+                    >
+                      Opt Service
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => talkToExpert(`FSSAI - ${type.title}`)}
+                      className="px-2.5 py-2 bg-white hover:bg-[#F0F2EB] text-[#48532B] border border-[#D4D8C8] rounded-xl text-xs font-semibold transition-all cursor-pointer flex items-center gap-1"
+                      title="Talk to Expert"
+                    >
+                      <Headphones className="w-3.5 h-3.5 text-[#48532B]" />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -696,12 +730,23 @@ export default function FssaiRegistrationLayout() {
 
           <div className="p-4 rounded-2xl bg-[#F0F2EB] border border-[#D4D8C8] text-xs text-[#48532B] flex items-center justify-between flex-wrap gap-3">
             <span>Need assistance preparing your kitchen layout blueprint or water test report?</span>
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="px-4 py-2 bg-[#48532B] text-white rounded-xl font-semibold hover:bg-[#394222] transition-colors cursor-pointer"
-            >
-              Get Expert Documentation Support
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => navigateToApp("FSSAI Basic Registration (Food License)")}
+                className="px-4 py-2 bg-[#2E4218] text-white rounded-xl font-bold hover:bg-[#1E2E0F] transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm"
+              >
+                <span>Opt Service</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => talkToExpert("FSSAI Basic Registration (Food License)")}
+                className="px-4 py-2 bg-white text-[#2E4218] border border-[#2E4218]/40 rounded-xl font-semibold hover:bg-olive-50 transition-colors cursor-pointer flex items-center gap-1.5 shadow-xs"
+              >
+                <Headphones className="w-3.5 h-3.5 text-[#2E4218]" />
+                <span>Talk to Expert</span>
+              </button>
+            </div>
           </div>
         </section>
 
@@ -953,119 +998,29 @@ export default function FssaiRegistrationLayout() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-            <input
-              type="text"
-              name="fullName"
-              placeholder="Your Full Name*"
-              required
-              className="px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-stone-300 text-xs focus:outline-none focus:ring-2 focus:ring-white/40"
-            />
-            <input
-              type="tel"
-              name="phoneNumber"
-              placeholder="Phone Number*"
-              required
-              className="px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-stone-300 text-xs focus:outline-none focus:ring-2 focus:ring-white/40"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Business Email Address*"
-              required
-              className="px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-stone-300 text-xs focus:outline-none focus:ring-2 focus:ring-white/40"
-            />
-            <div className="sm:col-span-3 flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
-              <button
-                type="submit"
-                disabled={formState.submitting}
-                className="w-full sm:w-auto px-8 py-3.5 bg-white text-[#48532B] hover:bg-stone-100 font-bold text-xs rounded-xl transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
-              >
-                <span>{formState.submitting ? "Submitting..." : "Claim Your Free Consultation"}</span>
-                <Send className="w-3.5 h-3.5" />
-              </button>
-              <span className="text-[11px] text-stone-300">
-                🔒 Your Information Is 100% Confidential. Zero Spam.
-              </span>
-            </div>
-            {formState.succeeded && (
-              <div className="sm:col-span-3 p-3 bg-emerald-500/20 border border-emerald-400/40 rounded-xl text-center text-xs text-white">
-                Thank you! Our FSSAI legal expert will contact you within 15 minutes.
-              </div>
-            )}
-          </form>
+          <div className="pt-2 flex flex-wrap items-center gap-4">
+            <button
+              onClick={() => navigateToApp("FSSAI Basic Registration (Food License)")}
+              className="px-8 py-3.5 bg-white text-[#2E4218] hover:bg-stone-100 font-bold text-xs rounded-xl transition-all shadow-md cursor-pointer flex items-center gap-2"
+            >
+              <span>Opt Service</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => talkToExpert("FSSAI Basic Registration (Food License)")}
+              className="px-6 py-3.5 bg-[#2E4218] text-white hover:bg-[#1E2E0F] border border-white/20 font-semibold text-xs rounded-xl shadow-xs transition-all cursor-pointer flex items-center gap-1.5"
+            >
+              <Headphones className="w-3.5 h-3.5 text-white" />
+              <span>Talk to Expert</span>
+            </button>
+            <span className="text-[11px] text-stone-300 ml-2">
+              🔒 Your Information Is 100% Confidential. Zero Spam.
+            </span>
+          </div>
         </section>
 
       </div>
-
-      {/* ── MODAL FORM ── */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative space-y-4">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-lg cursor-pointer"
-            >
-              ✕
-            </button>
-
-            <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#48532B]">Founding Legals Consultation</span>
-              <h3 className="font-serif font-bold text-xl text-[#1A1917] mt-0.5">Apply for FSSAI License</h3>
-              <p className="text-xs text-[#706D67] mt-1">
-                Enter your details to receive an instant eligibility assessment and government fee quote.
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-3">
-              <input
-                type="text"
-                name="name"
-                placeholder="Full Name*"
-                required
-                className="w-full px-4 py-2.5 rounded-xl border border-[#E5E0DA] text-xs focus:outline-none focus:border-[#48532B]"
-              />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone Number*"
-                required
-                className="w-full px-4 py-2.5 rounded-xl border border-[#E5E0DA] text-xs focus:outline-none focus:border-[#48532B]"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email Address*"
-                required
-                className="w-full px-4 py-2.5 rounded-xl border border-[#E5E0DA] text-xs focus:outline-none focus:border-[#48532B]"
-              />
-              <select
-                name="licenseType"
-                className="w-full px-4 py-2.5 rounded-xl border border-[#E5E0DA] text-xs focus:outline-none focus:border-[#48532B] text-gray-700"
-              >
-                <option value="Basic Registration (Up to ₹1.5 Cr)">Basic FSSAI Registration (Turnover up to ₹1.5 Cr)</option>
-                <option value="State License (₹1.5 Cr to ₹50 Cr)">State FSSAI License (Turnover ₹1.5 Cr to ₹50 Cr)</option>
-                <option value="Central License (> ₹50 Cr / Importer)">Central FSSAI License (Above ₹50 Cr / Importers)</option>
-                <option value="Not Sure - Need Guidance">Not Sure - Need CA Guidance</option>
-              </select>
-
-              <button
-                type="submit"
-                disabled={formState.submitting}
-                className="w-full py-3 bg-[#48532B] text-white text-xs font-bold rounded-xl hover:bg-[#394222] transition-colors cursor-pointer"
-              >
-                {formState.submitting ? "Submitting..." : "Submit Application Request"}
-              </button>
-
-              {formState.succeeded && (
-                <p className="text-xs text-emerald-600 font-semibold text-center pt-1">
-                  Application received! Our senior CA will reach out promptly.
-                </p>
-              )}
-            </form>
-          </div>
-        </div>
-      )}
 
     </div>
   );

@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Check, X, Send, ArrowRight, ChevronDown, ShieldCheck, Sparkles, Award, FileText, TrendingUp, DollarSign, Building2, Clock, HelpCircle, CheckCircle2 } from "lucide-react";
-import { useForm, ValidationError } from "@formspree/react";
+import { Check, X, Send, ArrowRight, ChevronDown, ShieldCheck, Sparkles, Award, FileText, TrendingUp, DollarSign, Building2, Clock, HelpCircle, CheckCircle2, Headphones } from "lucide-react";
+import { navigateToApp, talkToExpert } from "@/lib/appNavigation";
 
 // --- SECTION TABS ---
 const TABS = [
@@ -157,12 +157,9 @@ const FAQS = [
 export default function Gstr9AnnualReturnLayout() {
   const [activeTab, setActiveTab] = useState("overview");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const subTabsContainerRef = useRef<HTMLDivElement>(null);
-
-  const [formState, handleSubmit] = useForm("xqeyrnpp");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -200,9 +197,16 @@ export default function Gstr9AnnualReturnLayout() {
 
   useEffect(() => {
     if (subTabsContainerRef.current) {
-      const activeBtn = subTabsContainerRef.current.querySelector<HTMLButtonElement>(`[data-tab-id="${activeTab}"]`);
+      const container = subTabsContainerRef.current;
+      const activeBtn = container.querySelector<HTMLButtonElement>(`[data-tab-id="${activeTab}"]`);
       if (activeBtn) {
-        activeBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        const btnLeft = activeBtn.offsetLeft;
+        const btnWidth = activeBtn.offsetWidth;
+        const containerWidth = container.offsetWidth;
+        container.scrollTo({
+          left: btnLeft - containerWidth / 2 + btnWidth / 2,
+          behavior: "smooth",
+        });
       }
     }
   }, [activeTab]);
@@ -248,16 +252,23 @@ export default function Gstr9AnnualReturnLayout() {
             Comprehensive annual consolidation of 12-month GSTR-1 outward sales and GSTR-3B tax returns. Reconcile monthly portal filings, rectify year-end reporting variances, and file DRC-03 voluntary tax settlements with CA accuracy.
           </p>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
             <button
-              onClick={() => setIsModalOpen(true)}
-              className="w-full sm:w-auto px-8 py-4 bg-[#48532B] hover:bg-[#394222] text-white text-sm font-semibold rounded-2xl shadow-lg transition-all duration-200 hover:scale-[1.02] flex items-center justify-center gap-2 group cursor-pointer"
+              onClick={() => navigateToApp("Annual GST Return (GSTR-9)")}
+              className="w-full sm:w-auto px-8 py-4 bg-[#2E4218] hover:bg-[#1E2E0F] text-white text-sm font-bold rounded-2xl shadow-lg transition-all duration-200 hover:scale-[1.02] flex items-center justify-center gap-2 group cursor-pointer"
             >
-              <span>File GSTR-9 Annual Return</span>
+              <span>Opt Service</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
-
-            <span className="text-xs text-[#706D67] font-medium flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => talkToExpert("Annual GST Return (GSTR-9)")}
+              className="w-full sm:w-auto px-6 py-4 bg-white hover:bg-olive-50 text-[#2E4218] border border-[#2E4218]/40 text-sm font-semibold rounded-2xl shadow-xs transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <Headphones className="w-4 h-4 text-[#2E4218]" />
+              <span>Talk to Expert</span>
+            </button>
+            <span className="text-xs text-[#706D67] font-medium flex items-center gap-1.5 ml-2">
               <CheckCircle2 className="w-4 h-4 text-[#48532B]" /> 12-Month Consolidation & Zero Audit Notice Guarantee
             </span>
           </div>
@@ -342,12 +353,23 @@ export default function Gstr9AnnualReturnLayout() {
                   <span className="font-bold text-[#48532B]">0.04% Turnover</span>
                 </li>
               </ul>
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="w-full py-2.5 bg-[#F0F2EB] hover:bg-[#E2E6D8] text-[#48532B] text-xs font-semibold rounded-xl transition-colors cursor-pointer"
-              >
-                Schedule Annual Audit Review
-              </button>
+              <div className="flex flex-col gap-2">
+                <button
+                  type="button"
+                  onClick={() => navigateToApp("Annual GST Return (GSTR-9)")}
+                  className="w-full py-2.5 bg-[#48532B] hover:bg-[#394222] text-white text-xs font-semibold rounded-xl transition-colors cursor-pointer"
+                >
+                  Opt Service
+                </button>
+                <button
+                  type="button"
+                  onClick={() => talkToExpert("Annual GST Return Review")}
+                  className="w-full py-2 bg-[#F0F2EB] hover:bg-[#E2E6D8] text-[#48532B] text-xs font-semibold rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                >
+                  <Headphones className="w-3.5 h-3.5 text-[#48532B]" />
+                  <span>Talk to Expert</span>
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -541,56 +563,7 @@ export default function Gstr9AnnualReturnLayout() {
 
       </div>
 
-      {/* ── MODAL CONSULTATION FORM ── */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs">
-          <div className="bg-white rounded-3xl p-8 max-w-md w-full relative space-y-6 shadow-2xl border border-[#E5E0DA]">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-6 right-6 text-[#706D67] hover:text-[#1A1917] cursor-pointer"
-            >
-              <X className="w-5 h-5" />
-            </button>
 
-            <div className="space-y-2">
-              <h3 className="text-xl font-serif font-bold text-[#1A1917]">File GSTR-9 & 9C Audit</h3>
-              <p className="text-xs text-[#55524D]">Connect with a Chartered Accountant to reconcile your financial ledgers & file annual returns.</p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                type="text"
-                name="name"
-                required
-                placeholder="Your Full Name"
-                className="w-full px-4 py-3 text-xs bg-[#FAF9F6] border border-[#E5E0DA] rounded-xl focus:outline-none focus:border-[#48532B]"
-              />
-              <input
-                type="email"
-                name="email"
-                required
-                placeholder="Business Email Address"
-                className="w-full px-4 py-3 text-xs bg-[#FAF9F6] border border-[#E5E0DA] rounded-xl focus:outline-none focus:border-[#48532B]"
-              />
-              <input
-                type="tel"
-                name="phone"
-                required
-                placeholder="Mobile / WhatsApp Number"
-                className="w-full px-4 py-3 text-xs bg-[#FAF9F6] border border-[#E5E0DA] rounded-xl focus:outline-none focus:border-[#48532B]"
-              />
-
-              <button
-                type="submit"
-                disabled={formState.submitting}
-                className="w-full py-3.5 bg-[#48532B] hover:bg-[#394222] text-white text-xs font-semibold rounded-xl shadow-md transition-colors cursor-pointer"
-              >
-                {formState.submitting ? "Submitting..." : "Schedule CA Audit Consultation"}
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
 
     </div>
   );

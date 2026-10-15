@@ -1080,172 +1080,157 @@ export default function Pricing() {
             </p>
           </div>
 
-          {/* 3 Streamlined Combo Cards */}
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-6 items-stretch max-w-5xl mx-auto">
-            {COMBO_OFFERS.map((offer) => {
-              const isHighlight = offer.highlight;
+          {/* 3 Combo Packages with Left Timeline Rail & Equation Tiles (+ and = Pay Button) */}
+          <div className="max-w-5xl mx-auto pl-6 sm:pl-10 relative">
+            
+            {/* Left Vertical Timeline Rail */}
+            <div className="absolute left-2.5 sm:left-4 top-6 bottom-10 w-0.5 bg-gradient-to-b from-[#7EB348] via-[#7EB348]/60 to-[#7EB348]/20" />
 
-              return (
-                <div
-                  key={offer.id}
-                  className={`relative rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 ${
-                    isHighlight
-                      ? "bg-gradient-to-b from-[#2B4618] to-[#1B2F0F] text-white shadow-xl border-2 border-[#7EB348] ring-2 ring-[#7EB348]/20 md:-translate-y-2"
-                      : "bg-[#FCFAF7] border-2 border-brown-200/90 text-brown-900 hover:border-[#7EB348] shadow-sm hover:shadow-md"
-                  }`}
-                >
-                  {/* Highlight Ribbon */}
-                  {offer.badge && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="inline-flex items-center gap-1 bg-[#DDF08B] text-[#142605] text-[10px] font-black px-3 py-0.5 rounded-full uppercase tracking-wider border border-[#C2E050] shadow-sm whitespace-nowrap">
-                        <Sparkles className="w-3 h-3 text-[#27440F]" />
-                        {offer.badge}
-                      </span>
-                    </div>
-                  )}
+            <div className="space-y-8 sm:space-y-10 relative">
+              {COMBO_OFFERS.map((offer) => {
+                const isHighlight = offer.highlight;
 
-                  <div>
-                    {/* Header */}
-                    <div className="flex items-center justify-between mb-1.5 pt-1">
-                      <h3
-                        className={`font-serif text-2xl font-bold ${
-                          isHighlight ? "text-white" : "text-brown-900"
-                        }`}
-                      >
-                        {offer.name}
-                      </h3>
-                      <span
-                        className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${
-                          isHighlight
-                            ? "bg-[#3D5E24] text-[#E0F3AA] border border-[#527931]"
-                            : "bg-[#EAF5D6] text-[#223E0E] border border-[#CCE58E]"
-                        }`}
-                      >
-                        {offer.bestFor}
-                      </span>
-                    </div>
-
-                    <p
-                      className={`text-xs mb-4 ${
-                        isHighlight ? "text-olive-100" : "text-brown-500"
-                      }`}
-                    >
-                      {offer.tagline}
-                    </p>
-
-                    {/* Compact Price & 6+6 Offer Box */}
-                    <div
-                      className={`rounded-xl p-3.5 mb-4 border ${
+                return (
+                  <div key={offer.id} className="relative">
+                    
+                    {/* Left Timeline Node (Dot) */}
+                    <div className="absolute -left-[23px] sm:-left-[31px] top-7 z-10 flex items-center justify-center">
+                      <div className={`w-5 h-5 rounded-full border-2 transition-all flex items-center justify-center ${
                         isHighlight
-                          ? "bg-[#233A14]/90 border-[#5A8235]"
-                          : "bg-[#F7FAEF] border-[#CCE58E]"
-                      }`}
-                    >
-                      <div className="flex items-baseline justify-between mb-2">
-                        <div className="flex items-baseline gap-1.5">
-                          <span
-                            className={`text-3xl sm:text-4xl font-extrabold tracking-tight ${
-                              isHighlight ? "text-white" : "text-[#1B320B]"
-                            }`}
-                          >
-                            ₹{offer.discountedAnnualPrice.toLocaleString("en-IN")}
-                          </span>
-                          <span
-                            className={`text-xs font-semibold ${
-                              isHighlight ? "text-olive-200" : "text-brown-500"
-                            }`}
-                          >
-                            / 1-Yr Total
-                          </span>
+                          ? "bg-[#2C4A21] border-[#7EB348] ring-4 ring-[#EAF5D6] shadow-sm"
+                          : "bg-white border-[#7EB348] ring-4 ring-[#F2F7EA]"
+                      }`}>
+                        <div className={`w-2 h-2 rounded-full ${isHighlight ? "bg-[#DDF08B]" : "bg-[#2C4A21]"}`} />
+                      </div>
+                    </div>
+
+                    {/* Main Outer Card */}
+                    <div className={`rounded-3xl p-5 sm:p-7 border-2 transition-all duration-300 ${
+                      isHighlight
+                        ? "bg-white border-[#7EB348] ring-4 ring-[#7EB348]/15 shadow-xl"
+                        : "bg-white border-brown-200/90 shadow-sm hover:shadow-md"
+                    }`}>
+                      
+                      {/* Top Bar: Plan Title & Team Badge */}
+                      <div className="flex flex-wrap items-center justify-between gap-3 mb-5 pb-4 border-b border-brown-100">
+                        <div className="flex items-center gap-2.5">
+                          <h3 className="font-serif text-2xl font-bold text-brown-900 tracking-tight">
+                            {offer.name}
+                          </h3>
+                          {offer.badge && (
+                            <span className="inline-flex items-center gap-1 bg-[#DDF08B] text-[#142605] text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider border border-[#C2E050] shadow-2xs whitespace-nowrap">
+                              <Sparkles className="w-3 h-3 text-[#27440F]" />
+                              {offer.badge}
+                            </span>
+                          )}
                         </div>
-                        <span className="text-[10px] font-black text-[#142605] bg-[#DDF08B] px-2 py-0.5 rounded-full border border-[#C5E15B]">
-                          50% OFF
+                        <span className="text-xs font-bold text-[#233F0F] bg-[#EAF5D6] px-3.5 py-1 rounded-full border border-[#CCE58E]">
+                          {offer.bestFor}
                         </span>
                       </div>
 
-                      {/* 2 Quick Visual Badges: 6 Mos Free + Next 6 Mos Pay */}
-                      <div className="grid grid-cols-2 gap-2 text-center text-xs pt-1.5 border-t border-current/10">
-                        <div
-                          className={`py-1 px-1.5 rounded-lg font-bold ${
-                            isHighlight
-                              ? "bg-white/10 text-[#DDF08B]"
-                              : "bg-white text-[#2B4B13] border border-[#CCE58E]"
-                          }`}
-                        >
-                          <span className="block text-[9px] font-medium opacity-80 uppercase">1st 6 Months</span>
-                          <span className="text-xs font-black">100% FREE</span>
+                      {/* Inner Equation Grid: Card 1 + Card 2 = Pay Button (Direct Button, No Card Wrapper) */}
+                      <div className="grid grid-cols-1 lg:grid-cols-[1fr_32px_1fr_32px_auto] items-center gap-y-4 gap-x-3 sm:gap-x-4">
+                        
+                        {/* Card 1: Company Incorporation (Olive Green Matched to Pay Button) */}
+                        <div className="h-[210px] bg-gradient-to-br from-[#5C6F2D] via-[#546629] to-[#485723] border-2 border-[#768F3C] rounded-2xl p-5 flex flex-col justify-between shadow-sm">
+                          <div>
+                            <span className="text-[10px] font-black uppercase tracking-wider text-[#F0F8E2] bg-white/20 px-2.5 py-0.5 rounded-md border border-white/25 inline-block mb-1.5 shadow-2xs">
+                              Entity Registration
+                            </span>
+                            <h4 className="font-serif text-lg font-bold text-white leading-snug">
+                              Company Incorporation
+                            </h4>
+                            <p className="text-xs text-[#EAF5D8] mt-1 font-semibold">
+                              Pvt Ltd / LLP / OPC
+                            </p>
+                            <p className="text-[11.5px] text-[#DCEEC4] mt-0.5 leading-relaxed">
+                              Includes PAN, TAN, MOA, AOA &amp; DSC
+                            </p>
+                          </div>
+                          <div className="pt-3 border-t border-white/20 flex items-baseline justify-between">
+                            <span className="text-xs text-[#EAF5D8] font-semibold">Standard MCA Fee:</span>
+                            <span className="font-serif text-2xl font-black text-white">
+                              ₹1,999/-
+                            </span>
+                          </div>
                         </div>
-                        <div
-                          className={`py-1 px-1.5 rounded-lg font-bold ${
-                            isHighlight
-                              ? "bg-white/10 text-white"
-                              : "bg-white text-brown-900 border border-brown-200"
-                          }`}
-                        >
-                          <span className="block text-[9px] font-medium opacity-80 uppercase">Next 6 Months</span>
-                          <span className="text-xs font-black">₹{offer.discountedAnnualPrice.toLocaleString("en-IN")}</span>
+
+                        {/* PLUS Operator (Clean Symbol, No Background) */}
+                        <div className="flex items-center justify-center py-1 lg:py-0">
+                          <span className="text-3xl font-light text-olive-700/90 select-none leading-none">
+                            +
+                          </span>
                         </div>
+
+                        {/* Card 2: Plan (Light Olive Green Theme, No 'Founder's Plan' text) */}
+                        <div className={`h-[210px] rounded-2xl p-5 flex flex-col justify-between border-2 bg-gradient-to-br from-[#F4F8EE] via-[#ECF4E2] to-[#E3EED5] ${
+                          isHighlight
+                            ? "border-olive-500 ring-2 ring-olive-400/20 shadow-md"
+                            : "border-olive-300 shadow-xs"
+                        }`}>
+                          <div>
+                            <div className="flex items-center justify-between gap-2 mb-2">
+                              <h4 className="font-serif text-lg font-bold text-olive-950 leading-snug">
+                                {offer.name.replace(" Combo", "")} Plan
+                              </h4>
+                              <span className="text-[10px] font-black text-olive-900 bg-lime-light px-2.5 py-0.5 rounded-full border border-olive-300 shadow-2xs">
+                                50% OFF
+                              </span>
+                            </div>
+
+                            <div className="space-y-1.5 mt-2.5 text-xs bg-white/85 border border-olive-200/90 rounded-xl p-2.5 shadow-2xs">
+                              <div className="flex items-center justify-between">
+                                <span className="font-semibold text-brown-800">1st 6 Months:</span>
+                                <span className="font-bold text-olive-900 bg-olive-100 px-2 py-0.5 rounded-md border border-olive-200">
+                                  100% Free (₹0)
+                                </span>
+                              </div>
+                              <div className="flex items-center justify-between">
+                                <span className="font-semibold text-brown-800">Next 6 Months:</span>
+                                <strong className="text-olive-950 font-extrabold text-sm">
+                                  ₹1,999 + ₹{offer.discountedAnnualPrice.toLocaleString("en-IN")}/-
+                                </strong>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="pt-3 border-t border-olive-200/90 flex items-center justify-between text-xs text-olive-900 font-bold">
+                            <span>{offer.credits} Monthly Credits</span>
+                            <span>{offer.teamMembers} Team Members</span>
+                          </div>
+                        </div>
+
+                        {/* EQUALS Operator (Clean Symbol, No Background) */}
+                        <div className="flex items-center justify-center py-1 lg:py-0">
+                          <span className="text-3xl font-light text-olive-700/90 select-none leading-none">
+                            =
+                          </span>
+                        </div>
+
+                        {/* Result: Direct Pay Button Only */}
+                        <div className="flex items-center justify-center lg:justify-start py-2 lg:py-0">
+                          <a
+                            href={offer.href}
+                            className={`w-full lg:w-auto px-8 py-4 rounded-2xl font-extrabold text-base flex items-center justify-center gap-2.5 transition-all shadow-md hover:shadow-xl active:scale-95 cursor-pointer whitespace-nowrap ${
+                              isHighlight
+                                ? "bg-olive-800 hover:bg-olive-900 text-white ring-2 ring-olive-400/40 shadow-lg"
+                                : "bg-olive-600 hover:bg-olive-700 text-white"
+                            }`}
+                          >
+                            <span>Pay ₹{offer.discountedAnnualPrice.toLocaleString("en-IN")}/-</span>
+                            <ArrowRight className="w-5 h-5" />
+                          </a>
+                        </div>
+
                       </div>
+
                     </div>
 
-                    {/* Crisp 3-Bullet List */}
-                    <ul className="space-y-2 text-xs sm:text-[13px] mb-5">
-                      <li
-                        className={`flex items-start gap-2 font-medium ${
-                          isHighlight ? "text-[#DDF08B]" : "text-[#1E360B]"
-                        }`}
-                      >
-                        <Check
-                          className={`w-4 h-4 shrink-0 mt-0.5 stroke-[3] ${
-                            isHighlight ? "text-[#DDF08B]" : "text-[#4E702D]"
-                          }`}
-                        />
-                        <span>Pvt Ltd / LLP / OPC Registration (₹1,999)</span>
-                      </li>
-                      <li
-                        className={`flex items-start gap-2 ${
-                          isHighlight ? "text-olive-50" : "text-brown-700"
-                        }`}
-                      >
-                        <Check
-                          className={`w-4 h-4 shrink-0 mt-0.5 stroke-[2.5] ${
-                            isHighlight ? "text-[#97CC52]" : "text-olive-600"
-                          }`}
-                        />
-                        <span>{offer.credits} Monthly Credits (Drafts, e-Signs &amp; Invoices)</span>
-                      </li>
-                      <li
-                        className={`flex items-start gap-2 ${
-                          isHighlight ? "text-olive-50" : "text-brown-700"
-                        }`}
-                      >
-                        <Check
-                          className={`w-4 h-4 shrink-0 mt-0.5 stroke-[2.5] ${
-                            isHighlight ? "text-[#97CC52]" : "text-olive-600"
-                          }`}
-                        />
-                        <span>Hiring Agreements &amp; Team Portal ({offer.teamMembers} Members)</span>
-                      </li>
-                    </ul>
                   </div>
-
-                  {/* CTA Button */}
-                  <div>
-                    <a
-                      href={offer.href}
-                      className={`inline-flex items-center justify-center gap-1.5 w-full px-5 py-3 rounded-full text-xs sm:text-[13px] font-bold tracking-wide transition-all duration-300 shadow-sm hover:shadow-md group ${
-                        isHighlight
-                          ? "bg-[#DDF08B] text-[#142605] hover:bg-white"
-                          : "bg-olive-600 text-white hover:bg-olive-700"
-                      }`}
-                    >
-                      <span>{offer.ctaText}</span>
-                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                    </a>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
 
           {/* Clean 1-Line 3-Step Banner */}

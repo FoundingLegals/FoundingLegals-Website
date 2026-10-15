@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Check, X, Send, ArrowRight, ChevronDown, ShieldCheck } from "lucide-react";
-import { useForm, ValidationError } from "@formspree/react";
+import { Check, X, Send, ArrowRight, ChevronDown, ShieldCheck, Headphones } from "lucide-react";
+import { navigateToApp, talkToExpert } from "@/lib/appNavigation";
 
 // --- SECTION TABS ---
 const TABS = [
@@ -251,10 +251,7 @@ const FAQ_ITEMS = [
 
 export default function TrademarkRegistrationLayout() {
   const [activeTab, setActiveTab] = useState("overview");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState("");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const [modalState, handleModalSubmit] = useForm("xqeyrnpp");
 
   const navRef = useRef<HTMLDivElement>(null);
   const [isSticky, setIsSticky] = useState(false);
@@ -288,10 +285,6 @@ export default function TrademarkRegistrationLayout() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const openModal = (serviceName: string) => {
-    setSelectedService(serviceName);
-    setIsModalOpen(true);
-  };
 
   const handleTabClick = (id: string) => {
     setActiveTab(id);
@@ -332,15 +325,23 @@ export default function TrademarkRegistrationLayout() {
               </p>
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-4">
+            <div className="mt-6 flex flex-wrap items-center gap-3">
               <button
-                onClick={() => openModal("Trademark Registration Service")}
-                className="bg-[#48532B] hover:bg-olive-800 text-white font-semibold text-[14px] px-8 py-3.5 rounded-xl transition-all cursor-pointer shadow-sm active:scale-95 flex items-center gap-2"
+                onClick={() => navigateToApp("Trademark Registration Service")}
+                className="bg-[#2E4218] hover:bg-[#1E2E0F] text-white font-bold text-[14px] px-8 py-3.5 rounded-xl transition-all cursor-pointer shadow-md active:scale-95 flex items-center gap-2"
               >
-                <span>Register Your Trademark</span>
+                <span>Opt Service</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
-              <span className="text-[13px] text-gray-500 flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={() => talkToExpert("Trademark Registration Service")}
+                className="bg-white hover:bg-olive-50 text-[#2E4218] border border-[#2E4218]/40 font-semibold text-[14px] px-6 py-3.5 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 flex items-center gap-2"
+              >
+                <Headphones className="w-4 h-4 text-[#2E4218]" />
+                <span>Talk to Expert</span>
+              </button>
+              <span className="text-[13px] text-gray-500 flex items-center gap-1.5 ml-1">
                 <ShieldCheck className="w-4 h-4 text-olive-600" />
                 Senior IP Attorney Oversight
               </span>
@@ -735,144 +736,7 @@ export default function TrademarkRegistrationLayout() {
         </div>
       </section>
 
-      {/* ── MODAL FORM FOR SERVICE ENQUIRY ── */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
-          <div
-            className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Header */}
-            <div className="p-6 bg-gradient-to-r from-[#FAF9F6] to-[#F4F1EA] border-b border-gray-200/60 flex items-center justify-between">
-              <div>
-                <span className="text-[10px] font-bold tracking-widest text-olive-700 uppercase bg-olive-100/60 px-2.5 py-1 rounded-full">
-                  Opt &amp; Register Service
-                </span>
-                <h3 className="font-serif text-[20px] font-bold text-[#1A1917] mt-1">
-                  Start Trademark Registration
-                </h3>
-              </div>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-800 transition-colors cursor-pointer"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
 
-            {/* Modal Form */}
-            {modalState.succeeded ? (
-              <div className="p-8 text-center space-y-4">
-                <div className="w-12 h-12 bg-olive-100 text-olive-800 rounded-full flex items-center justify-center mx-auto">
-                  <Check className="w-6 h-6" />
-                </div>
-                <h4 className="font-serif text-xl font-bold text-gray-900">Application Submitted!</h4>
-                <p className="text-sm text-gray-600">
-                  Thank you for opting for <strong>{selectedService}</strong>. Our senior IP attorney will reach out within 2 business hours.
-                </p>
-                <button
-                  onClick={() => setIsModalOpen(false)}
-                  className="mt-4 px-6 py-2.5 bg-[#48532B] text-white font-semibold rounded-xl text-sm"
-                >
-                  Close
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleModalSubmit} className="p-6 space-y-4 bg-white">
-                <div>
-                  <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    placeholder="e.g. Arjun Mehta"
-                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-800 bg-[#FAF9F6] focus:outline-none focus:border-olive-500 placeholder:text-gray-300"
-                  />
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                      Work Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      placeholder="arjun@startup.com"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-800 bg-[#FAF9F6] focus:outline-none focus:border-olive-500 placeholder:text-gray-300"
-                    />
-                    <ValidationError prefix="Email" field="email" errors={modalState.errors} className="text-xs text-red-500 mt-1" />
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                      Mobile Number
-                    </label>
-                    <div className="flex gap-2">
-                      <span className="flex items-center px-3 border border-gray-200 rounded-xl bg-[#FAF9F6] text-[13px] text-gray-500 flex-shrink-0">
-                        +91
-                      </span>
-                      <input
-                        type="tel"
-                        name="mobile"
-                        required
-                        placeholder="98765 43210"
-                        className="flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-800 bg-[#FAF9F6] focus:outline-none focus:border-olive-500 placeholder:text-gray-300"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                    Selected Service
-                  </label>
-                  <input
-                    type="text"
-                    name="service"
-                    readOnly
-                    value={selectedService}
-                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-600 bg-gray-50 font-medium cursor-not-allowed focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                    Brand Name / Details (Optional)
-                  </label>
-                  <textarea
-                    name="message"
-                    rows={3}
-                    placeholder="Enter your proposed brand name or logo details..."
-                    className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-800 bg-[#FAF9F6] focus:outline-none focus:border-olive-500 placeholder:text-gray-300 resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={modalState.submitting}
-                  className="w-full py-3.5 rounded-full bg-olive-600 hover:bg-olive-700 text-white font-bold text-[14px] transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2 disabled:opacity-75 disabled:cursor-not-allowed cursor-pointer"
-                >
-                  {modalState.submitting ? (
-                    <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      Send Form &amp; Opt Service
-                    </>
-                  )}
-                </button>
-                <p className="text-[11px] text-gray-400 text-center leading-relaxed">
-                  We guarantee 100% confidentiality. Your data is protected by industry standard encryption.
-                </p>
-              </form>
-            )}
-          </div>
-        </div>
-      )}
 
     </div>
   );

@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Check, X, Send, ArrowRight, ChevronDown, Search, Star } from "lucide-react";
-import { useForm, ValidationError } from "@formspree/react";
+import { Check, X, Send, ArrowRight, ChevronDown, Search, Star, Headphones } from "lucide-react";
+import { navigateToApp, talkToExpert } from "@/lib/appNavigation";
 
 // --- TABLE OF CONTENT ITEMS ---
 const TOC_ITEMS = [
@@ -102,10 +102,7 @@ const INCORPORATION_PLANS = [
 
 export default function NameRegistrationLayout() {
   const [activeSection, setActiveSection] = useState("formation-types");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState("");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const [modalState, handleModalSubmit] = useForm("xqeyrnpp");
 
   // Track active section on scroll
   useEffect(() => {
@@ -128,11 +125,6 @@ export default function NameRegistrationLayout() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const openModal = (serviceName: string) => {
-    setSelectedService(serviceName);
-    setIsModalOpen(true);
-  };
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -175,12 +167,21 @@ export default function NameRegistrationLayout() {
               </p>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               <button
-                onClick={() => openModal("Company Registration")}
-                className="bg-olive-700 hover:bg-olive-800 text-white font-semibold text-[14px] px-8 py-3.5 rounded-xl transition-all cursor-pointer shadow-sm active:scale-95"
+                onClick={() => navigateToApp("Company Name Approval / Registration")}
+                className="bg-olive-700 hover:bg-olive-800 text-white font-semibold text-[14px] px-8 py-3.5 rounded-xl transition-all cursor-pointer shadow-sm active:scale-95 flex items-center gap-2"
               >
-                Register Your Company
+                <span>Opt Service &amp; Register</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => talkToExpert("Company Name Approval / Registration")}
+                className="bg-white hover:bg-olive-50 text-olive-750 border border-olive-600/40 font-semibold text-[14px] px-6 py-3.5 rounded-xl transition-all cursor-pointer shadow-2xs inline-flex items-center gap-2 active:scale-95"
+              >
+                <Headphones className="w-4 h-4 text-olive-700" />
+                <span>Talk to Expert</span>
               </button>
             </div>
           </div>
@@ -268,13 +269,23 @@ export default function NameRegistrationLayout() {
                   </div>
                 </div>
 
-                <button
-                  onClick={() => openModal(plan.serviceName)}
-                  className="w-full py-3.5 rounded-xl font-bold text-[13.5px] bg-[#2E4218] hover:bg-[#1E2E0F] text-white transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-2 shadow-md hover:shadow-xl transform hover:scale-[1.01] active:scale-[0.99]"
-                >
-                  <span>Opt &amp; Register</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
+                <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full">
+                  <button
+                    onClick={() => navigateToApp(plan.serviceName)}
+                    className="flex-1 w-full py-3.5 px-4 rounded-xl font-bold text-[13.5px] bg-[#2E4218] hover:bg-[#1E2E0F] text-white transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-2 shadow-md hover:shadow-xl transform hover:scale-[1.01] active:scale-[0.99]"
+                  >
+                    <span>Opt Service</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => talkToExpert(plan.serviceName)}
+                    className="w-full sm:w-auto py-3.5 px-4 rounded-xl font-semibold text-[13.5px] bg-white hover:bg-olive-50 text-[#2E4218] border border-[#2E4218]/40 transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-1.5 shadow-xs"
+                  >
+                    <Headphones className="w-4 h-4 text-[#2E4218]" />
+                    <span>Talk to Expert</span>
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -308,14 +319,22 @@ export default function NameRegistrationLayout() {
               </nav>
             </div>
 
-            <div className="bg-[#FAF9F6] rounded-2xl border border-gray-200/60 p-5 text-center">
+            <div className="bg-[#FAF9F6] rounded-2xl border border-gray-200/60 p-5 text-center space-y-2">
               <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Founding Legals Price</p>
-              <p className="text-[18px] font-serif font-bold text-olive-700 mb-3">Starts at ₹1,999 <span className="text-xs text-gray-400 font-sans font-normal block mt-0.5">+ Govt fee</span></p>
+              <p className="text-[18px] font-serif font-bold text-olive-700 mb-2">Starts at ₹1,999 <span className="text-xs text-gray-400 font-sans font-normal block mt-0.5">+ Govt fee</span></p>
               <button
-                onClick={() => openModal("Company Registration package")}
+                onClick={() => navigateToApp("Company Registration Package")}
                 className="w-full text-center py-2.5 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[12px] rounded-full transition-all shadow-sm cursor-pointer"
               >
-                Register your Business
+                Opt Service &amp; Register
+              </button>
+              <button
+                type="button"
+                onClick={() => talkToExpert("Company Registration Package")}
+                className="w-full text-center py-2 bg-white hover:bg-olive-50 text-olive-800 border border-olive-600/40 font-semibold text-[12px] rounded-full transition-all cursor-pointer flex items-center justify-center gap-1.5"
+              >
+                <Headphones className="w-3.5 h-3.5" />
+                <span>Talk to Expert</span>
               </button>
             </div>
           </aside>
@@ -719,151 +738,7 @@ export default function NameRegistrationLayout() {
         </div>
       </section>
 
-      {/* ── OPT SERVICE MODAL ── */}
-      {isModalOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-brown-900/60 backdrop-blur-sm animate-fade-in"
-          onClick={() => setIsModalOpen(false)}
-        >
-          <div
-            className="relative w-full max-w-lg bg-white rounded-3xl border border-gray-200 shadow-2xl overflow-hidden animate-scale-up"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-all duration-200"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            {/* Modal Content */}
-            {modalState.succeeded ? (
-              <div className="p-8 text-center flex flex-col items-center justify-center min-h-[350px]">
-                <div className="w-16 h-16 bg-olive-50 rounded-full flex items-center justify-center mb-6 border border-olive-100">
-                  <Check className="w-8 h-8 text-olive-600 stroke-[3]" />
-                </div>
-                <h3 className="font-serif text-[24px] font-semibold text-brown-900 mb-3">Service Selected!</h3>
-                <p className="text-[14px] text-gray-600 leading-relaxed max-w-sm mx-auto mb-6">
-                  Thank you for opting for <strong className="text-olive-700">{selectedService}</strong>. A Founding Legals expert will contact you shortly to complete your application.
-                </p>
-                <button
-                  onClick={() => {
-                    setIsModalOpen(false);
-                    window.location.reload();
-                  }}
-                  className="px-6 py-2.5 rounded-full bg-olive-600 hover:bg-olive-700 text-white font-bold text-[13px] transition-all"
-                >
-                  Close Window
-                </button>
-              </div>
-            ) : (
-              <div>
-                {/* Header */}
-                <div className="bg-olive-600 p-6 text-white">
-                  <h3 className="font-serif text-[20px] font-semibold mb-1">Opt Service Form</h3>
-                  <p className="text-[12px] text-olive-100">
-                    Provide your details to initiate company registration.
-                  </p>
-                </div>
-
-                {/* Form Body */}
-                <form onSubmit={handleModalSubmit} className="p-6 space-y-4 bg-white">
-                  <div>
-                    <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      placeholder="e.g. Arjun Mehta"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-800 bg-[#FAF9F6] focus:outline-none focus:border-olive-500 placeholder:text-gray-300"
-                    />
-                  </div>
-
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                        Work Email
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        required
-                        placeholder="arjun@startup.com"
-                        className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-800 bg-[#FAF9F6] focus:outline-none focus:border-olive-500 placeholder:text-gray-300"
-                      />
-                      <ValidationError prefix="Email" field="email" errors={modalState.errors} className="text-xs text-red-500 mt-1" />
-                    </div>
-
-                    <div>
-                      <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                        Mobile Number
-                      </label>
-                      <div className="flex gap-2">
-                        <span className="flex items-center px-3 border border-gray-200 rounded-xl bg-[#FAF9F6] text-[13px] text-gray-500 flex-shrink-0">
-                          +91
-                        </span>
-                        <input
-                          type="tel"
-                          name="mobile"
-                          required
-                          placeholder="98765 43210"
-                          className="flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-800 bg-[#FAF9F6] focus:outline-none focus:border-olive-500 placeholder:text-gray-300"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                      Selected Service
-                    </label>
-                    <input
-                      type="text"
-                      name="service"
-                      readOnly
-                      value={selectedService}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-600 bg-gray-50 font-medium cursor-not-allowed focus:outline-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                      Special Requirements (Optional)
-                    </label>
-                    <textarea
-                      name="message"
-                      rows={3}
-                      placeholder="Tell us about your business goals or structure preference..."
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-800 bg-[#FAF9F6] focus:outline-none focus:border-olive-500 placeholder:text-gray-300 resize-none"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={modalState.submitting}
-                    className="w-full py-3.5 rounded-full bg-olive-600 hover:bg-olive-700 text-white font-bold text-[14px] transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2 disabled:opacity-75 disabled:cursor-not-allowed"
-                  >
-                    {modalState.submitting ? (
-                      <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    ) : (
-                      <>
-                        <Send className="w-4 h-4" />
-                        Send Form & Opt Service
-                      </>
-                    )}
-                  </button>
-                  <p className="text-[11px] text-gray-400 text-center leading-relaxed">
-                    We guarantee 100% confidentiality. Your data is protected by industry standard encryption.
-                  </p>
-                </form>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+      {/* ── Direct application routing active: in-page form modal removed ── */}
 
     </div>
   );

@@ -6,11 +6,12 @@ import {
   ChevronDown, FileText, CheckCircle2, CheckCircle, Search,
   ShieldCheck, Rocket, Briefcase, Banknote, Scroll, Scale,
   LineChart, FileSignature, Coins, TrendingUp, Eye, FileSearch,
-  Building2, Award, Presentation
+  Building2, Award, Presentation, Headphones
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import FounderPlanHighlight from "./FounderPlanHighlight";
+import { navigateToApp, talkToExpert } from "@/lib/appNavigation";
 
 const ICON_MAP: Record<string, React.ElementType> = {
   Search, ShieldCheck, CheckCircle, CheckCircle2, Rocket, Shield,
@@ -380,13 +381,24 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                   </div>
                 </div>
 
-                <Link
-                  href="/start"
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13.5px] font-bold rounded-full transition-all shadow-md hover:shadow-lg"
-                >
-                  Get Started with Founding Legals
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <button
+                    type="button"
+                    onClick={() => navigateToApp(service.title)}
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13.5px] font-bold rounded-full transition-all shadow-md cursor-pointer"
+                  >
+                    Opt Service
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => talkToExpert(service.title)}
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3.5 bg-white hover:bg-olive-50 text-[#5A7338] border border-[#5A7338]/30 text-[13px] font-semibold rounded-full transition-all shadow-xs cursor-pointer"
+                  >
+                    <Headphones className="w-4 h-4 text-[#5A7338]" />
+                    Talk to Expert
+                  </button>
+                </div>
               </div>
             ) : (
               <div className="bg-white border border-[#E5E1D6] rounded-3xl p-8 lg:p-9 shadow-xl shadow-black/[0.03] relative overflow-hidden">
@@ -427,13 +439,24 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                   </div>
                 </div>
 
-                <Link
-                  href="/start"
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13.5px] font-bold rounded-full transition-all shadow-md"
-                >
-                  Proceed with Service
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <button
+                    type="button"
+                    onClick={() => navigateToApp(service.title)}
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13.5px] font-bold rounded-full transition-all shadow-md cursor-pointer"
+                  >
+                    Opt Service
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => talkToExpert(service.title)}
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3.5 bg-white hover:bg-olive-50 text-[#5A7338] border border-[#5A7338]/30 text-[13px] font-semibold rounded-full transition-all shadow-xs cursor-pointer"
+                  >
+                    <Headphones className="w-4 h-4 text-[#5A7338]" />
+                    Talk to Expert
+                  </button>
+                </div>
               </div>
             )}
           </div>
@@ -610,13 +633,24 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                 <div className="text-[12px] text-[#6b6965] font-light">
                   Simple monthly or annual billing. Cancel or adjust your plan anytime with zero friction.
                 </div>
-                <Link
-                  href="/start"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md shrink-0"
-                >
-                  Get Started with Founding Legals
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+                <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+                  <button
+                    type="button"
+                    onClick={() => navigateToApp(service.title)}
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md shrink-0 cursor-pointer"
+                  >
+                    Opt Service
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => talkToExpert(service.title)}
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-olive-50 text-[#5A7338] border border-[#5A7338]/30 text-[14px] font-semibold rounded-full transition-all shadow-xs shrink-0 cursor-pointer"
+                  >
+                    <Headphones className="w-4 h-4 text-[#5A7338]" />
+                    Talk to Expert
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -716,13 +750,24 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                 <div className="text-[12px] text-[#6b6965] font-light">
                   Statutory government fees (MCA, GST dept., stamp duty) are non-negotiable and charged at actuals.
                 </div>
-                <Link
-                  href="/start"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md shrink-0"
-                >
-                  Proceed with Service
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+                <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+                  <button
+                    type="button"
+                    onClick={() => navigateToApp(service.title)}
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md shrink-0 cursor-pointer"
+                  >
+                    Opt Service
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => talkToExpert(service.title)}
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-olive-50 text-[#5A7338] border border-[#5A7338]/30 text-[14px] font-semibold rounded-full transition-all shadow-xs shrink-0 cursor-pointer"
+                  >
+                    <Headphones className="w-4 h-4 text-[#5A7338]" />
+                    Talk to Expert
+                  </button>
+                </div>
               </div>
             </div>
 

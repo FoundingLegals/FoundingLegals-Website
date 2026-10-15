@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Check, X, Send, ArrowRight, ChevronDown, ShieldCheck, Sparkles, Award, FileText, TrendingUp, DollarSign, Building2, Clock, HelpCircle, CheckCircle2 } from "lucide-react";
-import { useForm, ValidationError } from "@formspree/react";
+import { Check, X, Send, ArrowRight, ChevronDown, ShieldCheck, Sparkles, Award, FileText, TrendingUp, DollarSign, Building2, Clock, HelpCircle, CheckCircle2, Headphones } from "lucide-react";
+import { navigateToApp, talkToExpert } from "@/lib/appNavigation";
 
 // --- SECTION TABS ---
 const TABS = [
@@ -197,12 +197,9 @@ const FAQS = [
 export default function UdyamRegistrationLayout() {
   const [activeTab, setActiveTab] = useState("overview");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const subTabsContainerRef = useRef<HTMLDivElement>(null);
-
-  const [formState, handleSubmit] = useForm("xqeyrnpp");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -240,9 +237,16 @@ export default function UdyamRegistrationLayout() {
 
   useEffect(() => {
     if (subTabsContainerRef.current) {
-      const activeBtn = subTabsContainerRef.current.querySelector<HTMLButtonElement>(`[data-tab-id="${activeTab}"]`);
+      const container = subTabsContainerRef.current;
+      const activeBtn = container.querySelector<HTMLButtonElement>(`[data-tab-id="${activeTab}"]`);
       if (activeBtn) {
-        activeBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        const btnLeft = activeBtn.offsetLeft;
+        const btnWidth = activeBtn.offsetWidth;
+        const containerWidth = container.offsetWidth;
+        container.scrollTo({
+          left: btnLeft - containerWidth / 2 + btnWidth / 2,
+          behavior: "smooth",
+        });
       }
     }
   }, [activeTab]);
@@ -288,16 +292,23 @@ export default function UdyamRegistrationLayout() {
             Formally register your Micro, Small, or Medium Enterprise under the MSMED Act, 2006 on the official Udyam portal. Unlock <strong className="font-semibold text-[#1A1917]">50% Trademark & Patent filing rebates</strong>, <strong className="font-semibold text-[#1A1917]">priority sector bank lending</strong>, <strong className="font-semibold text-[#1A1917]">45-day payment protection (Samadhaan)</strong>, and <strong className="font-semibold text-[#1A1917]">public tender EMD exemptions</strong>.
           </p>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
             <button
-              onClick={() => setIsModalOpen(true)}
-              className="w-full sm:w-auto px-8 py-4 bg-[#48532B] hover:bg-[#394222] text-white text-sm font-semibold rounded-2xl shadow-lg transition-all duration-200 hover:scale-[1.02] flex items-center justify-center gap-2 group cursor-pointer"
+              onClick={() => navigateToApp("UDYAM / MSME Registration")}
+              className="w-full sm:w-auto px-8 py-4 bg-[#2E4218] hover:bg-[#1E2E0F] text-white text-sm font-bold rounded-2xl shadow-lg transition-all duration-200 hover:scale-[1.02] flex items-center justify-center gap-2 group cursor-pointer"
             >
-              <span>Apply for UDYAM Registration</span>
+              <span>Opt Service</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
-
-            <span className="text-xs text-[#706D67] font-medium flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => talkToExpert("UDYAM / MSME Registration")}
+              className="w-full sm:w-auto px-6 py-4 bg-white hover:bg-olive-50 text-[#2E4218] border border-[#2E4218]/40 text-sm font-semibold rounded-2xl shadow-xs transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <Headphones className="w-4 h-4 text-[#2E4218]" />
+              <span>Talk to Expert</span>
+            </button>
+            <span className="text-xs text-[#706D67] font-medium flex items-center gap-1.5 ml-2">
               <CheckCircle2 className="w-4 h-4 text-[#48532B]" /> Issued in 24–48 Business Hours
             </span>
           </div>
@@ -571,12 +582,21 @@ export default function UdyamRegistrationLayout() {
               </div>
             </div>
 
-            <div className="pt-4 flex justify-center">
+            <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
               <button
-                onClick={() => setIsModalOpen(true)}
-                className="px-8 py-3.5 bg-white text-[#48532B] hover:bg-[#F0F2EB] font-semibold text-xs rounded-xl shadow-md transition-all cursor-pointer"
+                onClick={() => navigateToApp("UDYAM / MSME Registration")}
+                className="px-8 py-3.5 bg-white text-[#2E4218] hover:bg-[#F0F2EB] font-bold text-xs rounded-xl shadow-md transition-all cursor-pointer flex items-center gap-1.5"
               >
-                Apply for UDYAM Registration Now
+                <span>Opt Service</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => talkToExpert("UDYAM / MSME Registration")}
+                className="px-6 py-3.5 bg-[#2E4218] text-white hover:bg-[#1E2E0F] border border-white/20 font-semibold text-xs rounded-xl shadow-xs transition-all cursor-pointer flex items-center gap-1.5"
+              >
+                <Headphones className="w-3.5 h-3.5 text-white" />
+                <span>Talk to Expert</span>
               </button>
             </div>
           </div>
@@ -617,85 +637,7 @@ export default function UdyamRegistrationLayout() {
 
       </div>
 
-      {/* ── LEAD CAPTURE MODAL ── */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 md:p-8 space-y-6 shadow-2xl relative">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-5 right-5 text-[#706D67] hover:text-[#1A1917] p-1 rounded-full hover:bg-[#F2ECE4] transition-colors cursor-pointer"
-            >
-              <X className="w-5 h-5" />
-            </button>
 
-            <div className="space-y-2">
-              <span className="text-xs font-semibold text-[#48532B] uppercase tracking-wider">Fast-Track Filing</span>
-              <h3 className="text-xl font-serif font-bold text-[#1A1917]">Apply for UDYAM Registration</h3>
-              <p className="text-xs text-[#55524D] font-light">Fill your details below. Our senior CA team will issue your official Udyam Certificate.</p>
-            </div>
-
-            {formState.succeeded ? (
-              <div className="bg-[#F0F2EB] border border-[#D4D8C8] text-[#48532B] p-6 rounded-2xl text-center space-y-2">
-                <CheckCircle2 className="w-8 h-8 text-[#48532B] mx-auto" />
-                <h4 className="font-serif font-bold text-base">Application Received!</h4>
-                <p className="text-xs font-light">Our MSME registration consultant will contact you within 30 minutes.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4 text-xs">
-                <input type="hidden" name="service" value="UDYAM / MSME Registration" />
-                <div>
-                  <label className="block text-[#1A1917] font-semibold mb-1">Business / Enterprise Name</label>
-                  <input
-                    type="text"
-                    name="company_name"
-                    required
-                    placeholder="e.g. Acme Industries"
-                    className="w-full px-4 py-3 rounded-xl border border-[#E5E0DA] bg-[#FAF7F2] focus:outline-none focus:border-[#48532B] transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[#1A1917] font-semibold mb-1">Full Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    placeholder="e.g. Rahul Sharma"
-                    className="w-full px-4 py-3 rounded-xl border border-[#E5E0DA] bg-[#FAF7F2] focus:outline-none focus:border-[#48532B] transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[#1A1917] font-semibold mb-1">Phone Number (Aadhaar-Linked)</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    required
-                    placeholder="e.g. +91 98765 43210"
-                    className="w-full px-4 py-3 rounded-xl border border-[#E5E0DA] bg-[#FAF7F2] focus:outline-none focus:border-[#48532B] transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[#1A1917] font-semibold mb-1">Email Address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="e.g. founder@acme.com"
-                    className="w-full px-4 py-3 rounded-xl border border-[#E5E0DA] bg-[#FAF7F2] focus:outline-none focus:border-[#48532B] transition-colors"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={formState.submitting}
-                  className="w-full py-3.5 bg-[#48532B] hover:bg-[#394222] text-white font-semibold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
-                >
-                  <Send className="w-4 h-4" />
-                  <span>Submit UDYAM Application</span>
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-      )}
 
     </div>
   );

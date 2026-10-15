@@ -18,9 +18,10 @@ import {
   Sparkles,
   ShieldCheck,
   Award,
-  Star
+  Star,
+  Headphones
 } from "lucide-react";
-import { useForm, ValidationError } from "@formspree/react";
+import { navigateToApp, talkToExpert } from "@/lib/appNavigation";
 
 // --- COMPANY STRUCTURE DATA ---
 const STRUCTURES = [
@@ -150,10 +151,6 @@ const COMPARISON_ROWS = [
 ];
 
 export default function WhichCompanyTypeLayout() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState("");
-  const [modalState, handleModalSubmit] = useForm("xqeyrnpp");
-
   // Dynamic Testimonials state
   const [testimonials, setTestimonials] = useState<any[]>([
     {
@@ -192,11 +189,6 @@ export default function WhichCompanyTypeLayout() {
     liability: ""
   });
   const [quizResult, setQuizResult] = useState<string | null>(null);
-
-  const openModal = (serviceName: string) => {
-    setSelectedService(serviceName);
-    setIsModalOpen(true);
-  };
 
   const handleQuizAnswer = (key: "founders" | "funding" | "liability", value: string) => {
     const updatedAnswers = { ...quizAnswers, [key]: value };
@@ -423,12 +415,23 @@ export default function WhichCompanyTypeLayout() {
                     </button>
                   )}
                   {STRUCTURES.find((s) => s.id === quizResult)?.cost !== "No Formal Registration Required" && (
-                    <button
-                      onClick={() => openModal(`${STRUCTURES.find((s) => s.id === quizResult)?.name} Registration`)}
-                      className="w-full sm:w-auto px-6 py-3 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[13px] rounded-xl transition-all shadow-sm"
-                    >
-                      Register Now for {STRUCTURES.find((s) => s.id === quizResult)?.cost.split(" ")[0]}
-                    </button>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <button
+                        onClick={() => navigateToApp(`${STRUCTURES.find((s) => s.id === quizResult)?.name} Registration`)}
+                        className="w-full sm:w-auto px-6 py-3 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[13px] rounded-xl transition-all shadow-sm flex items-center justify-center gap-1.5"
+                      >
+                        <span>Register Now for {STRUCTURES.find((s) => s.id === quizResult)?.cost.split(" ")[0]}</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => talkToExpert(`${STRUCTURES.find((s) => s.id === quizResult)?.name} Registration`)}
+                        className="w-full sm:w-auto px-5 py-3 bg-white hover:bg-olive-50 text-olive-800 border border-olive-600/40 font-semibold text-[13px] rounded-xl transition-all shadow-xs flex items-center justify-center gap-1.5"
+                      >
+                        <Headphones className="w-4 h-4 text-olive-700" />
+                        <span>Talk to Expert</span>
+                      </button>
+                    </div>
                   )}
                 </div>
 
@@ -501,12 +504,23 @@ export default function WhichCompanyTypeLayout() {
                     Learn More
                   </a>
                   {struct.cost !== "No Formal Registration Required" && (
-                    <button
-                      onClick={() => openModal(`${struct.name} Registration`)}
-                      className="w-full text-center py-2 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[10.5px] rounded-lg transition-all shadow-xs cursor-pointer"
-                    >
-                      Register
-                    </button>
+                    <div className="flex flex-col gap-1.5 w-full">
+                      <button
+                        onClick={() => navigateToApp(`${struct.name} Registration`)}
+                        className="w-full text-center py-2 bg-olive-600 hover:bg-olive-700 text-white font-bold text-[10.5px] rounded-lg transition-all shadow-xs cursor-pointer flex items-center justify-center gap-1"
+                      >
+                        <span>Opt &amp; Register</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => talkToExpert(`${struct.name} Registration`)}
+                        className="w-full text-center py-1.5 bg-white hover:bg-olive-50 text-olive-800 border border-olive-600/30 font-semibold text-[10px] rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1"
+                      >
+                        <Headphones className="w-3 h-3 text-olive-700" />
+                        <span>Talk to Expert</span>
+                      </button>
+                    </div>
                   )}
                 </div>
               </div>
@@ -735,164 +749,28 @@ export default function WhichCompanyTypeLayout() {
             <p className="text-[14px] sm:text-[15.5px] text-olive-100 leading-relaxed max-w-xl mx-auto">
               Make your business ready to scale. Become an incorporated company through Founding Legals.
             </p>
-            <div className="pt-4">
+            <div className="pt-4 flex flex-wrap justify-center gap-3">
               <button
-                onClick={() => openModal("Standard Incorporation Package")}
-                className="px-8 py-3.5 bg-white hover:bg-cream text-olive-800 font-bold text-[13px] rounded-xl transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95"
+                onClick={() => navigateToApp("Standard Incorporation Package")}
+                className="px-8 py-3.5 bg-white hover:bg-cream text-olive-800 font-bold text-[13px] rounded-xl transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95 flex items-center gap-1.5"
               >
-                Register your business
+                <span>Opt Service &amp; Register</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => talkToExpert("Standard Incorporation Package")}
+                className="px-6 py-3.5 bg-transparent hover:bg-white/10 text-white border border-white/50 font-bold text-[13px] rounded-xl transition-all cursor-pointer shadow-xs active:scale-95 flex items-center gap-1.5"
+              >
+                <Headphones className="w-4 h-4" />
+                <span>Talk to Expert</span>
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── OPT SERVICE MODAL ── */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
-          {/* Backdrop */}
-          <div
-            onClick={() => setIsModalOpen(false)}
-            className="absolute inset-0 bg-brown-900/60 backdrop-blur-xs"
-          />
-
-          {/* Modal Box */}
-          <div className="bg-white rounded-3xl overflow-hidden shadow-2xl max-w-lg w-full relative z-10 animate-scale-up border border-brown-100">
-            {/* Close Button */}
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-all"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            {/* Modal Content */}
-            {modalState.succeeded ? (
-              <div className="p-8 text-center flex flex-col items-center justify-center min-h-[350px]">
-                <div className="w-16 h-16 bg-olive-50 rounded-full flex items-center justify-center mb-6 border border-olive-100">
-                  <Check className="w-8 h-8 text-olive-600 stroke-[3]" />
-                </div>
-                <h3 className="font-serif text-[24px] font-semibold text-brown-900 mb-3">Service Selected!</h3>
-                <p className="text-[14px] text-gray-600 leading-relaxed max-w-sm mx-auto mb-6">
-                  Thank you for opting for <strong className="text-olive-700">{selectedService}</strong>. A Founding Legals expert will contact you shortly to complete your application.
-                </p>
-                <button
-                  onClick={() => {
-                    setIsModalOpen(false);
-                    window.location.reload();
-                  }}
-                  className="px-6 py-2.5 rounded-full bg-olive-600 hover:bg-olive-700 text-white font-bold text-[13px] transition-all"
-                >
-                  Close Window
-                </button>
-              </div>
-            ) : (
-              <div>
-                {/* Header */}
-                <div className="bg-olive-600 p-6 text-white">
-                  <h3 className="font-serif text-[20px] font-semibold mb-1">Opt Service Form</h3>
-                  <p className="text-[12px] text-olive-100">
-                    Provide your details to initiate company registration.
-                  </p>
-                </div>
-
-                {/* Form Body */}
-                <form onSubmit={handleModalSubmit} className="p-6 space-y-4 bg-white">
-                  <div>
-                    <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      placeholder="e.g. Arjun Mehta"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-800 bg-[#FAF9F6] focus:outline-none focus:border-olive-500 placeholder:text-gray-300"
-                    />
-                  </div>
-
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                        Work Email
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        required
-                        placeholder="arjun@startup.com"
-                        className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-800 bg-[#FAF9F6] focus:outline-none focus:border-olive-500 placeholder:text-gray-300"
-                      />
-                      <ValidationError prefix="Email" field="email" errors={modalState.errors} className="text-xs text-red-500 mt-1" />
-                    </div>
-
-                    <div>
-                      <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                        Mobile Number
-                      </label>
-                      <div className="flex gap-2">
-                        <span className="flex items-center px-3 border border-gray-200 rounded-xl bg-[#FAF9F6] text-[13px] text-gray-500 flex-shrink-0">
-                          +91
-                        </span>
-                        <input
-                          type="tel"
-                          name="mobile"
-                          required
-                          placeholder="98765 43210"
-                          className="flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-800 bg-[#FAF9F6] focus:outline-none focus:border-olive-500 placeholder:text-gray-300"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                      Selected Service
-                    </label>
-                    <input
-                      type="text"
-                      name="service"
-                      readOnly
-                      value={selectedService}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-600 bg-gray-50 font-medium cursor-not-allowed focus:outline-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">
-                      Special Requirements (Optional)
-                    </label>
-                    <textarea
-                      name="message"
-                      rows={3}
-                      placeholder="Tell us about your business goals or structure preference..."
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-[14px] text-gray-800 bg-[#FAF9F6] focus:outline-none focus:border-olive-500 placeholder:text-gray-300 resize-none"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={modalState.submitting}
-                    className="w-full py-3.5 rounded-full bg-olive-600 hover:bg-olive-700 text-white font-bold text-[14px] transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2 disabled:opacity-75 disabled:cursor-not-allowed"
-                  >
-                    {modalState.submitting ? (
-                      <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    ) : (
-                      <>
-                        <Send className="w-4 h-4" />
-                        Send Form & Opt Service
-                      </>
-                    )}
-                  </button>
-                  <p className="text-[11px] text-gray-400 text-center leading-relaxed">
-                    We guarantee 100% confidentiality. Your data is protected by industry standard encryption.
-                  </p>
-                </form>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+      {/* ── Direct application routing active: in-page form modal removed ── */}
 
     </div>
   );

@@ -5,8 +5,10 @@ import {
   FileText, Shield, Briefcase, Handshake, Search, Scale, 
   ArrowRight, ArrowLeft, ShieldCheck, Check, Info, 
   AlertCircle, Sparkles, HelpCircle, ChevronDown, CheckCircle2,
-  Copy, CheckSquare, Clock, Plus, X, FileSpreadsheet, Building2, UserCheck, ZoomIn, ZoomOut, RotateCcw
+  Copy, CheckSquare, Clock, Plus, X, FileSpreadsheet, Building2, UserCheck, ZoomIn, ZoomOut, RotateCcw,
+  Headphones
 } from "lucide-react";
+import { talkToExpert } from "@/lib/appNavigation";
 import { 
   AGREEMENTS_DATABASE, 
   AgreementDetail, 
@@ -218,9 +220,16 @@ export default function AgreementsLayout({ initialAgreementId }: { initialAgreem
   // Auto-scroll active sub-tab pill into horizontal view
   useEffect(() => {
     if (viewMode === "single" && subTabsContainerRef.current) {
-      const activeBtn = subTabsContainerRef.current.querySelector<HTMLButtonElement>(`[data-tab-id="${activeSubTab}"]`);
+      const container = subTabsContainerRef.current;
+      const activeBtn = container.querySelector<HTMLButtonElement>(`[data-tab-id="${activeSubTab}"]`);
       if (activeBtn) {
-        activeBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        const btnLeft = activeBtn.offsetLeft;
+        const btnWidth = activeBtn.offsetWidth;
+        const containerWidth = container.offsetWidth;
+        container.scrollTo({
+          left: btnLeft - containerWidth / 2 + btnWidth / 2,
+          behavior: "smooth",
+        });
       }
     }
   }, [activeSubTab, viewMode]);
@@ -424,8 +433,8 @@ export default function AgreementsLayout({ initialAgreementId }: { initialAgreem
                   {/* Action Box */}
                   <div className={`bg-[#FAF9F6] border border-brown-200/60 rounded-2xl flex transition-all duration-300 ${
                     isSticky
-                      ? "p-2.5 flex-row md:flex-col items-center justify-between gap-2 md:w-52"
-                      : "p-3.5 flex-col items-center justify-center space-y-1.5 shrink-0 text-center md:w-60"
+                      ? "p-2.5 flex-row md:flex-col items-center justify-between gap-2 md:w-56"
+                      : "p-3.5 flex-col items-center justify-center space-y-1.5 shrink-0 text-center md:w-64"
                   }`}>
                     {!isSticky && (
                       <span className="text-[11px] text-brown-500 font-light">
@@ -435,13 +444,23 @@ export default function AgreementsLayout({ initialAgreementId }: { initialAgreem
                     <span className="text-sm font-serif font-bold text-[#2E7D32] shrink-0">
                       Starting at ₹50
                     </span>
-                    <button
-                      onClick={(e) => handleCreateAgreement(e, activeAgreement.id)}
-                      className="w-full py-2 px-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-xs font-bold rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm hover:shadow cursor-pointer active:scale-95"
-                    >
-                      <Plus className="w-4 h-4" />
-                      <span>Create Agreement</span>
-                    </button>
+                    <div className="w-full flex flex-col gap-1.5">
+                      <button
+                        onClick={(e) => handleCreateAgreement(e, activeAgreement.id)}
+                        className="w-full py-2 px-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-xs font-bold rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm hover:shadow cursor-pointer active:scale-95"
+                      >
+                        <Plus className="w-4 h-4" />
+                        <span>Opt Service</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => talkToExpert(activeAgreement.name)}
+                        className="w-full py-1.5 px-3 bg-white hover:bg-olive-50 text-[#5A7338] border border-[#5A7338]/40 text-xs font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 shadow-xs cursor-pointer"
+                      >
+                        <Headphones className="w-3.5 h-3.5 text-[#5A7338]" />
+                        <span>Talk to Expert</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1065,22 +1084,36 @@ export default function AgreementsLayout({ initialAgreementId }: { initialAgreem
                         </div>
 
                         {/* Card Bottom Action Bar */}
-                        <div className="flex items-center gap-2 pt-2 border-t border-brown-100/50">
-                          <button
-                            onClick={(e) => handleCreateAgreement(e, ag.id)}
-                            className="flex-1 py-2.5 px-4 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-xs font-bold rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm hover:shadow cursor-pointer"
-                          >
-                            <Plus className="w-3.5 h-3.5" />
-                            <span>Create</span>
-                          </button>
+                        <div className="flex flex-col gap-2 pt-2 border-t border-brown-100/50">
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={(e) => handleCreateAgreement(e, ag.id)}
+                              className="flex-1 py-2 px-3 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-xs font-bold rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm hover:shadow cursor-pointer"
+                            >
+                              <Plus className="w-3.5 h-3.5" />
+                              <span>Opt Service</span>
+                            </button>
+
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                talkToExpert(ag.name);
+                              }}
+                              className="py-2 px-3 bg-white hover:bg-olive-50 text-[#5A7338] border border-[#5A7338]/30 text-xs font-semibold rounded-xl transition-all duration-200 flex items-center gap-1 cursor-pointer shadow-xs"
+                              title="Talk to an expert about this agreement"
+                            >
+                              <Headphones className="w-3.5 h-3.5 text-[#5A7338]" />
+                              <span>Expert</span>
+                            </button>
+                          </div>
 
                           <button
                             onClick={(e) => handleOpenParticularAgreement(ag.id, e)}
-                            className="px-3.5 py-2.5 bg-brown-50 hover:bg-olive-50 text-brown-700 hover:text-[#5A7338] text-xs font-bold rounded-xl transition-colors border border-brown-200/50 flex items-center gap-1 cursor-pointer"
+                            className="w-full py-1.5 px-3 bg-brown-50 hover:bg-olive-50 text-brown-700 hover:text-[#5A7338] text-[11px] font-medium rounded-lg transition-colors border border-brown-200/50 flex items-center justify-center gap-1 cursor-pointer"
                             title="View sample template & details"
                           >
-                            <span>Sample</span>
-                            <ArrowRight className="w-3.5 h-3.5" />
+                            <span>View Sample Template</span>
+                            <ArrowRight className="w-3 h-3" />
                           </button>
                         </div>
 
