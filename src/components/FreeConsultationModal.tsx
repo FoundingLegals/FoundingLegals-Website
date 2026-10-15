@@ -240,53 +240,51 @@ export default function FreeConsultationModal() {
       source_page: typeof window !== "undefined" ? window.location.pathname : "/consultation",
     };
 
+    const formspreePayload = {
+      _subject: `New Free Consultation Request: ${selectedService} from ${fullName.trim()}`,
+      name: fullName.trim(),
+      email: email.trim(),
+      _replyto: email.trim(),
+      phone: mobile.trim(),
+      mobile: mobile.trim(),
+      company: companyName.trim() || "N/A",
+      service: `Free Consultation: ${selectedService}`,
+      consultation_mode: modeLabel,
+      preferred_date: computedDate,
+      preferred_slot: selectedSlot,
+      message: message.trim() || "Free Consultation Requested",
+      client_notes: message.trim() || "N/A",
+      helpline: "+91 9791222557",
+    };
+
     let delivered = false;
 
-    // 1. Submit to internal API endpoint which persists & relays via Formspree
+    // Parallel dispatch: Submit directly to Formspree (for immediate email alert) AND internal API endpoint
     try {
-      const response = await fetch("/api/service-requests", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      if (response.ok) {
-        delivered = true;
-      }
-    } catch (err) {
-      console.warn("Primary API route error:", err);
-    }
-
-    // 2. Direct Formspree fallback to guarantee 100% email delivery if needed
-    if (!delivered) {
-      try {
-        const formspreeRes = await fetch("https://formspree.io/f/xqeyrnpp", {
+      const [internalResult, formspreeResult] = await Promise.allSettled([
+        fetch("/api/service-requests", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }),
+        fetch("https://formspree.io/f/xqeyrnpp", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
           },
-          body: JSON.stringify({
-            _subject: `New Free Consultation Request: ${selectedService} from ${fullName.trim()}`,
-            name: fullName.trim(),
-            email: email.trim(),
-            mobile: mobile.trim(),
-            company: companyName.trim() || "N/A",
-            service: `Free Consultation: ${selectedService}`,
-            consultation_mode: modeLabel,
-            preferred_date: computedDate,
-            preferred_slot: selectedSlot,
-            client_notes: message.trim() || "N/A",
-            helpline: "+91 9791222557",
-          }),
-        });
+          body: JSON.stringify(formspreePayload),
+        }),
+      ]);
 
-        if (formspreeRes.ok) {
-          delivered = true;
-        }
-      } catch (err) {
-        console.warn("Direct Formspree relay error:", err);
+      const isInternalOk = internalResult.status === "fulfilled" && internalResult.value.ok;
+      const isFormspreeOk = formspreeResult.status === "fulfilled" && formspreeResult.value.ok;
+
+      if (isFormspreeOk || isInternalOk) {
+        delivered = true;
       }
+    } catch (err) {
+      console.warn("Consultation dispatch error:", err);
     }
 
     setIsSubmitting(false);

@@ -261,14 +261,19 @@ export async function createServiceRequest(
     email_sent: false,
   };
 
+  // Attempt to relay email notification via Formspree with timeout protection
+  try {
+    const sent = await relayEmailNotification(newRequest);
+    if (sent) {
+      newRequest.email_sent = true;
+    }
+  } catch (err) {
+    console.error("Failed to relay email notification:", err);
+  }
+
   // Prepend so newest appears first
   const updated = [newRequest, ...current];
   await saveAllServiceRequests(updated);
-
-  // Trigger email notification in background (via Formspree / internal mailer relay)
-  relayEmailNotification(newRequest).catch((err) => {
-    console.error("Failed to relay email notification:", err);
-  });
 
   return newRequest;
 }
@@ -302,7 +307,7 @@ export async function deleteServiceRequest(id: string): Promise<boolean> {
 }
 
 // Relay email notification through Formspree endpoint so admin receives email alert immediately
-async function relayEmailNotification(req: ServiceRequest): Promise<void> {
+async function relayEmailNotification(req: ServiceRequest): Promise<boolean> {
   try {
     const res = await fetch("https://formspree.io/f/xqeyrnpp", {
       method: "POST",
@@ -310,14 +315,18 @@ async function relayEmailNotification(req: ServiceRequest): Promise<void> {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      signal: AbortSignal.timeout(4000),
+      signal: AbortSignal.timeout(5000),
       body: JSON.stringify({
         _subject: req.service_name.toLowerCase().includes("consultation")
           ? `[FREE CONSULTATION BOOKING] ${req.service_name} from ${req.name}`
           : `New ${req.category} Request: ${req.service_name} from ${req.name}`,
+        name: req.name,
         full_name: req.name,
         email: req.email,
+        _replyto: req.email,
+        phone: req.mobile,
         mobile_number: req.mobile,
+        service: req.service_name,
         service_opted: req.service_name,
         category: req.category,
         company: req.company_name || "N/A",
@@ -331,9 +340,12 @@ async function relayEmailNotification(req: ServiceRequest): Promise<void> {
 
     if (res.ok) {
       req.email_sent = true;
+      return true;
     }
+    return false;
   } catch (err) {
     console.error("Error in relayEmailNotification:", err);
+    return false;
   }
 }
 
