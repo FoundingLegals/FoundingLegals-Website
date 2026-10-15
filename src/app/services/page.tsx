@@ -508,21 +508,46 @@ export default function ServicesPage() {
 
                   <div className="space-y-2 text-xs text-brown-700">
                     <div className="flex justify-between py-1 border-b border-brown-50">
-                      <span className="text-brown-500">State Stamp Duty (MOA/AOA)</span>
+                      <span className="text-brown-500">
+                        {selectedEntity === "llp"
+                          ? "State Stamp Duty (LLP Agreement)"
+                          : selectedEntity === "partnership"
+                          ? "State Stamp Duty (Partnership Deed)"
+                          : "State Stamp Duty (MOA/AOA)"}
+                      </span>
                       <span className="font-semibold text-brown-900">₹{liveQuote.stampDuty.toLocaleString("en-IN")}</span>
                     </div>
+                    {liveQuote.stampDutyDescription && (
+                      <div className="text-[11px] text-olive-800 bg-olive-50/70 px-2 py-1 rounded border border-olive-200/60 leading-tight">
+                        {liveQuote.stampDutyDescription}
+                      </div>
+                    )}
                     <div className="flex justify-between py-1 border-b border-brown-50">
-                      <span className="text-brown-500">MCA SPICe+ Name &amp; Filing</span>
+                      <span className="text-brown-500">
+                        {selectedEntity === "llp"
+                          ? "MCA FiLLiP & RUN Filing"
+                          : selectedEntity === "partnership"
+                          ? "Registrar of Firms (ROF) Filing"
+                          : "MCA SPICe+ Name & Filing"}
+                      </span>
                       <span className="font-semibold text-brown-900">
-                        {liveQuote.govtIncorporationFee === 0 ? "₹1,000 (SPICe+ Exemption)" : `₹${(liveQuote.rocFees + liveQuote.govtIncorporationFee).toLocaleString("en-IN")}`}
+                        ₹{(liveQuote.rocFees + liveQuote.govtIncorporationFee).toLocaleString("en-IN")}
                       </span>
                     </div>
+                    {liveQuote.dscFees > 0 && (
+                      <div className="flex justify-between py-1 border-b border-brown-50">
+                        <span className="text-brown-500">Class-3 DSC ({numDsc} Tokens)</span>
+                        <span className="font-semibold text-brown-900">₹{liveQuote.dscFees.toLocaleString("en-IN")}</span>
+                      </div>
+                    )}
                     <div className="flex justify-between py-1 border-b border-brown-50">
-                      <span className="text-brown-500">Class-3 DSC ({numDsc} Tokens)</span>
-                      <span className="font-semibold text-brown-900">₹{liveQuote.dscFees.toLocaleString("en-IN")}</span>
-                    </div>
-                    <div className="flex justify-between py-1 border-b border-brown-50">
-                      <span className="text-brown-500">PAN, TAN &amp; Verification</span>
+                      <span className="text-brown-500">
+                        {selectedEntity === "llp"
+                          ? "Partner Verification & KYC"
+                          : selectedEntity === "partnership"
+                          ? "Partner Deed Verification"
+                          : "PAN, TAN & Director Verification"}
+                      </span>
                       <span className="font-semibold text-brown-900">₹{(liveQuote.panTanFee + liveQuote.directorFees).toLocaleString("en-IN")}</span>
                     </div>
                     <div className="flex justify-between py-1 bg-olive-50/60 px-2 rounded-lg border border-olive-100">

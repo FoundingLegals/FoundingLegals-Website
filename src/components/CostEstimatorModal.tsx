@@ -59,9 +59,8 @@ export default function CostEstimatorModal() {
     const handleOpen = (e: Event) => {
       const customEvent = e as CustomEvent<{ state?: string; entityType?: EntityTypeId }>;
       const incomingEntity = customEvent.detail?.entityType;
-      const targetEntity = incomingEntity && incomingEntity !== "section8" && ENTITY_CONFIGS[incomingEntity]
-        ? incomingEntity
-        : "pvt_ltd";
+      const isPrimary = incomingEntity === "pvt_ltd" || incomingEntity === "opc" || incomingEntity === "llp";
+      const targetEntity: EntityTypeId = isPrimary ? (incomingEntity as EntityTypeId) : "pvt_ltd";
       const targetState = customEvent.detail?.state && ALL_INDIAN_STATES.includes(customEvent.detail.state)
         ? customEvent.detail.state
         : "Karnataka";
