@@ -35,6 +35,7 @@ export default function CostEstimatorModal() {
   const [numDirectors, setNumDirectors] = useState<number>(2);
   const [numDsc, setNumDsc] = useState<number>(2);
   const [authorizedCapital, setAuthorizedCapital] = useState<number>(100000);
+  const [capitalInput, setCapitalInput] = useState<string>("1,00,000");
 
   // Accordion toggle for Government Fees
   const [isGovtFeesExpanded, setIsGovtFeesExpanded] = useState<boolean>(true);
@@ -44,6 +45,7 @@ export default function CostEstimatorModal() {
     calculateQuote({
       entityType: "pvt_ltd",
       state: "Karnataka",
+      hasShareCapital: true,
       authorizedCapital: 100000,
       numDirectors: 2,
       numDsc: 2
@@ -75,11 +77,13 @@ export default function CostEstimatorModal() {
       setNumDirectors(directors);
       setNumDsc(dsc);
       setAuthorizedCapital(capital);
+      setCapitalInput(Number(capital).toLocaleString("en-IN"));
       setHasShareCapital(conf.hasShareCapitalOption ? "yes" : "no");
 
       const newQuote = calculateQuote({
         entityType: targetEntity,
         state: targetState,
+        hasShareCapital: conf.hasShareCapitalOption,
         authorizedCapital: capital,
         numDirectors: directors,
         numDsc: dsc
@@ -114,10 +118,12 @@ export default function CostEstimatorModal() {
 
   // Real-time calculation effect dynamically updated with authorized capital
   useEffect(() => {
-    const parsedCap = hasShareCapital === "no" ? 0 : authorizedCapital;
+    const isCap = hasShareCapital === "yes";
+    const parsedCap = !isCap ? 0 : authorizedCapital;
     const newQuote = calculateQuote({
       entityType,
       state: selectedState,
+      hasShareCapital: isCap,
       authorizedCapital: parsedCap,
       numDirectors,
       numDsc
@@ -132,16 +138,43 @@ export default function CostEstimatorModal() {
       setNumDirectors(conf.defaultDirectors);
       setNumDsc(conf.defaultDsc);
       setAuthorizedCapital(conf.defaultCapital);
+      setCapitalInput(Number(conf.defaultCapital).toLocaleString("en-IN"));
       setHasShareCapital(conf.hasShareCapitalOption ? "yes" : "no");
+    }
+  };
+
+  const handleSelectCapitalPreset = (val: number) => {
+    setAuthorizedCapital(val);
+    setCapitalInput(val.toLocaleString("en-IN"));
+  };
+
+  const handleCapitalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value.replace(/[^0-9]/g, "");
+    if (raw === "") {
+      setAuthorizedCapital(0);
+      setCapitalInput("");
+    } else {
+      const num = Number(raw);
+      setAuthorizedCapital(num);
+      setCapitalInput(num.toLocaleString("en-IN"));
+    }
+  };
+
+  const handleCapitalBlur = () => {
+    if (authorizedCapital <= 0) {
+      setAuthorizedCapital(100000);
+      setCapitalInput("1,00,000");
     }
   };
 
   const handleCalculate = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    const parsedCap = hasShareCapital === "no" ? 0 : authorizedCapital;
+    const isCap = hasShareCapital === "yes";
+    const parsedCap = !isCap ? 0 : authorizedCapital;
     const newQuote = calculateQuote({
       entityType,
       state: selectedState,
+      hasShareCapital: isCap,
       authorizedCapital: parsedCap,
       numDirectors,
       numDsc
@@ -392,7 +425,7 @@ export default function CostEstimatorModal() {
                       <button
                         key={pill.label}
                         type="button"
-                        onClick={() => setAuthorizedCapital(pill.value)}
+                        onClick={() => handleSelectCapitalPreset(pill.value)}
                         className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold transition-all cursor-pointer ${
                           authorizedCapital === pill.value
                             ? "bg-[#5C6F2D] text-white font-bold shadow-xs"
@@ -412,11 +445,9 @@ export default function CostEstimatorModal() {
                     type="text"
                     inputMode="numeric"
                     disabled={hasShareCapital === "no"}
-                    value={hasShareCapital === "no" ? "0" : authorizedCapital.toLocaleString("en-IN")}
-                    onChange={(e) => {
-                      const numericVal = Number(e.target.value.replace(/[^0-9]/g, "")) || 0;
-                      setAuthorizedCapital(numericVal);
-                    }}
+                    value={hasShareCapital === "no" ? "0" : capitalInput}
+                    onChange={handleCapitalChange}
+                    onBlur={handleCapitalBlur}
                     placeholder="1,00,000"
                     className="w-full pl-8 pr-3.5 py-2.5 bg-[#FAF9F6] hover:bg-white border border-brown-200 hover:border-olive-600 focus:border-olive-600 focus:ring-2 focus:ring-olive-500/20 rounded-xl text-xs sm:text-[13px] text-brown-900 font-semibold transition-all disabled:bg-gray-100 disabled:text-gray-400"
                   />

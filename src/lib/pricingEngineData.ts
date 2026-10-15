@@ -781,8 +781,11 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
     STATE_STAMP_DUTY_LOOKUP["Karnataka"] ||
     STATE_STAMP_DUTY_LOOKUP["Maharashtra"];
 
+  const hasCap = params.hasShareCapital !== false;
   const numDsc = Math.max(0, params.numDsc ?? config.defaultDsc);
-  const capital = params.authorizedCapital || config.defaultCapital;
+  const capital = !hasCap || params.authorizedCapital === 0
+    ? 0
+    : (params.authorizedCapital ?? config.defaultCapital);
 
   let rocFees = config.fixedRocFee;
   let stampDuty = 0;
@@ -814,54 +817,68 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
       }
 
       // State MOA + AOA Stamp Duty based on authorised share capital
-      if (normState.includes("karnataka")) {
-        if (capital <= 1000000) {
+      if (capital === 0) {
+        stampDuty = 1000;
+        stampDutyDescription = "MOA + AOA · Company not having share capital";
+      } else if (normState.includes("karnataka")) {
+        if (capital <= 100000) {
           stampDuty = 10020;
+          stampDutyDescription = "MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹1 lakh";
+        } else if (capital <= 500000) {
+          const extra = Math.ceil((capital - 100000) / 100000) * 500;
+          stampDuty = 10020 + extra;
+          stampDutyDescription = `MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹${(capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1)} lakh`;
+        } else if (capital <= 1000000) {
+          const extra = 2000 + Math.ceil((capital - 500000) / 100000) * 400;
+          stampDuty = 10020 + extra;
+          stampDutyDescription = `MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹${(capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1)} lakh`;
+        } else if (capital <= 1500000) {
+          const extra = 4000 + Math.ceil((capital - 1000000) / 100000) * 400;
+          stampDuty = 10020 + extra;
+          stampDutyDescription = `MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹${(capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1)} lakh`;
         } else {
-          const extraSlabs = Math.ceil((capital - 1000000) / 500000);
-          stampDuty = 10020 + extraSlabs * 1000;
+          const extra = 6000 + Math.ceil((capital - 1500000) / 200000) * 500;
+          stampDuty = 10020 + extra;
+          stampDutyDescription = `MOA + AOA (INC-33 / INC-34) · Authorised capital ₹${(capital / 100000).toFixed(0)} lakh`;
         }
-        stampDutyDescription = capital <= 100000
-          ? "MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹1 lakh"
-          : capital <= 500000
-          ? "MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹5 lakh"
-          : capital <= 1000000
-          ? "MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹10 lakh"
-          : `MOA + AOA (INC-33 / INC-34) · Authorised capital up to ₹${(capital / 100000).toFixed(0)} lakh`;
       } else if (normState.includes("maharashtra")) {
-        if (capital <= 1000000) {
-          stampDuty = 2000;
+        if (capital <= 100000) {
+          stampDuty = 1000;
+        } else if (capital <= 500000) {
+          stampDuty = 1000 + Math.ceil((capital - 100000) / 100000) * 250;
+        } else if (capital <= 1000000) {
+          stampDuty = 2000 + Math.ceil((capital - 500000) / 100000) * 200;
         } else {
           const extraSlabs = Math.ceil((capital - 1000000) / 500000);
-          stampDuty = Math.min(50000, 2000 + extraSlabs * 1000);
+          stampDuty = Math.min(50000, 3000 + extraSlabs * 1000);
         }
-        stampDutyDescription = `MOA + AOA · Bombay Stamp Act (${capital <= 1000000 ? "up to ₹10 lakh" : `up to ₹${(capital / 100000).toFixed(0)} lakh`})`;
+        stampDutyDescription = `MOA + AOA · Bombay Stamp Act (${capital <= 100000 ? "up to ₹1 lakh" : `₹${(capital / 100000).toFixed(0)} lakh`})`;
       } else if (normState.includes("delhi")) {
         if (capital <= 100000) {
           stampDuty = 360;
         } else if (capital <= 500000) {
-          stampDuty = 660;
+          stampDuty = 360 + Math.ceil((capital - 100000) / 100000) * 75;
         } else if (capital <= 1000000) {
-          stampDuty = 1300;
+          stampDuty = 660 + Math.ceil((capital - 500000) / 100000) * 128;
         } else {
           const extraSlabs = Math.ceil((capital - 1000000) / 500000);
           stampDuty = 1300 + extraSlabs * 500;
         }
         stampDutyDescription = `MOA + AOA · Delhi Stamp Rules (up to ₹${(capital / 100000).toFixed(0)} lakh)`;
       } else if (normState.includes("telangana") || normState.includes("andhra")) {
-        if (capital <= 1000000) {
+        if (capital <= 100000) {
           stampDuty = 1520;
         } else {
-          const extraSlabs = Math.ceil((capital - 1000000) / 500000);
-          stampDuty = 1520 + extraSlabs * 1000;
+          const extra = Math.ceil((capital - 100000) / 100000) * 250;
+          stampDuty = 1520 + extra;
         }
         stampDutyDescription = `MOA + AOA · Statutory e-stamp rate`;
       } else {
-        if (capital <= 1000000) {
+        if (capital <= 100000) {
           stampDuty = stateData.pvtLtdStampDuty;
         } else {
-          const extraSlabs = Math.ceil((capital - 1000000) / 500000);
-          stampDuty = stateData.pvtLtdStampDuty + extraSlabs * 1000;
+          const extra = Math.ceil((capital - 100000) / 100000) * 250;
+          stampDuty = stateData.pvtLtdStampDuty + extra;
         }
         stampDutyDescription = `MOA + AOA statutory stamp duty`;
       }
@@ -873,8 +890,10 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
       panTanFee = 0;
 
       // MCA FiLLiP ROC fees based on capital contribution
-      if (capital <= 500000) {
+      if (capital <= 100000) {
         rocFees = 700;
+      } else if (capital <= 500000) {
+        rocFees = 1000;
       } else if (capital <= 1000000) {
         rocFees = 2200;
       } else {
@@ -883,24 +902,27 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
 
       // LLP Agreement Stamp Duty based on contribution
       if (normState.includes("karnataka")) {
-        if (capital <= 500000) {
+        if (capital <= 100000) {
           stampDuty = 5000;
           stampDutyDescription = "LLP Agreement · Contribution ₹1 lakh – ₹5 lakh";
+        } else if (capital <= 500000) {
+          stampDuty = 5000 + Math.ceil((capital - 100000) / 100000) * 300;
+          stampDutyDescription = "LLP Agreement · Contribution ₹1 lakh – ₹5 lakh";
         } else if (capital <= 1000000) {
-          stampDuty = 7000;
+          stampDuty = 6200 + Math.ceil((capital - 500000) / 100000) * 400;
           stampDutyDescription = "LLP Agreement · Contribution ₹5 lakh – ₹10 lakh";
         } else {
-          const extraSlabs = Math.ceil((capital - 1000000) / 500000);
-          stampDuty = Math.min(25000, 10000 + extraSlabs * 1000);
+          const extraSlabs = Math.ceil((capital - 1000000) / 200000);
+          stampDuty = Math.min(25000, 8200 + extraSlabs * 500);
           stampDutyDescription = "LLP Agreement · Contribution above ₹10 lakh";
         }
       } else if (normState.includes("maharashtra")) {
         if (capital <= 100000) {
           stampDuty = 1000;
         } else if (capital <= 500000) {
-          stampDuty = 2500;
+          stampDuty = 1000 + Math.ceil((capital - 100000) / 100000) * 375;
         } else if (capital <= 1000000) {
-          stampDuty = 5000;
+          stampDuty = 2500 + Math.ceil((capital - 500000) / 100000) * 500;
         } else {
           stampDuty = Math.min(50000, Math.round(capital * 0.01));
         }
@@ -909,18 +931,21 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
         if (capital <= 100000) {
           stampDuty = 500;
         } else if (capital <= 500000) {
-          stampDuty = 1000;
+          stampDuty = 500 + Math.ceil((capital - 100000) / 100000) * 125;
         } else {
           stampDuty = Math.min(10000, Math.round(capital * 0.005));
         }
         stampDutyDescription = "LLP Agreement · Delhi Stamp Rules";
       } else {
-        if (capital <= 500000) {
-          stampDuty = stateData.llpStampDuty || 2000;
+        const base = stateData.llpStampDuty || 2000;
+        if (capital <= 100000) {
+          stampDuty = base;
+        } else if (capital <= 500000) {
+          stampDuty = base + Math.ceil((capital - 100000) / 100000) * 200;
         } else if (capital <= 1000000) {
-          stampDuty = Math.round((stateData.llpStampDuty || 2000) * 1.5);
+          stampDuty = Math.round(base * 1.5);
         } else {
-          stampDuty = Math.round((stateData.llpStampDuty || 2000) * 2);
+          stampDuty = Math.round(base * 2);
         }
         stampDutyDescription = "LLP Agreement statutory rate";
       }
