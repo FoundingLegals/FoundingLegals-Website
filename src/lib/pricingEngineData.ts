@@ -825,7 +825,7 @@ export const GOVT_FEE_REGISTER: Record<string, GovtFeeRegisterItem> = {
   },
   "Karnataka": {
     pvtLtd: { slab1L: 16420, slab5L: 18420 },
-    opc: { slab1L: 16420, slab5L: 19919 },
+    opc: { slab1L: 16420, slab5L: 18420 },
     llp: { slab1L: 11700, slab5L: 13200 },
   },
   "Kerala": {
@@ -1022,36 +1022,30 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
 
   const hasCap = params.hasShareCapital !== false;
   const numDsc = Math.max(0, params.numDsc ?? (params.entityType === "opc" ? 2 : config.defaultDsc));
-  const capital = !hasCap || params.authorizedCapital === 0
-    ? 0
-    : (params.authorizedCapital ?? config.defaultCapital);
+  const capital = params.authorizedCapital && params.authorizedCapital > 0
+    ? params.authorizedCapital
+    : config.defaultCapital;
 
   let rocFees = config.fixedRocFee;
   let stampDuty = 0;
   let stampDutyDescription = "";
   let directorFees = config.adminVerificationFee;
-  let dscFees = numDsc * config.dscUnitPrice;
+  let dscFees = 5000;
   let govtIncorporationFee = 0;
   let panTanFee = 0;
+  let govtFeesSubtotal = 0;
 
   switch (params.entityType) {
     case "pvt_ltd":
     case "opc": {
       rocFees = 1000;
       panTanFee = 0;
+      directorFees = 400;
+      dscFees = 5000;
 
       // Official Government Fee Register entry
-      const regEntry = getGovtFeeRegisterEntry(params.state || "Karnataka");
+      const regEntry = getGovtFeeRegisterEntry(params.state || "Maharashtra");
       const slabPair = params.entityType === "opc" ? regEntry.opc : regEntry.pvtLtd;
-
-      // Standard register baseline includes 2 DSC (₹5,000) & 2 director/nominee verifications (₹400)
-      const baseDsc = 2 * 2500;
-      const baseDirectors = 2 * 200;
-      const baseStandardFees = rocFees + baseDirectors + baseDsc; // ₹6,400
-
-      // Compute exact statutory stamp duties for the 1L and 5L slabs
-      const stampDuty1L = Math.max(0, slabPair.slab1L - baseStandardFees);
-      const stampDuty5L = Math.max(0, slabPair.slab5L - baseStandardFees);
 
       // MCA Tiered SPICe+ Part B incorporation fee
       // Zero fee up to ₹15,00,000 capital under SPICe+
@@ -1065,93 +1059,74 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
         }
       }
 
-      // State MOA + AOA Stamp Duty based on authorised share capital
-      if (capital === 0) {
-        stampDuty = 1000;
-        stampDutyDescription = "MOA + AOA · Company not having share capital";
-      } else if (capital <= 100000) {
-        stampDuty = stampDuty1L;
+      // Government fee subtotal directly matching the official Government Fee Register
+      if (capital <= 100000) {
+        govtFeesSubtotal = slabPair.slab1L;
         stampDutyDescription = `MOA + AOA · ${stateData.state} Stamp Act (Authorised capital up to ₹1 lakh)`;
       } else if (capital === 500000) {
-        stampDuty = stampDuty5L;
+        govtFeesSubtotal = slabPair.slab5L;
         stampDutyDescription = `MOA + AOA · ${stateData.state} Stamp Act (Authorised capital ₹5 lakh)`;
       } else if (capital < 500000) {
         const progress = (capital - 100000) / 400000;
-        stampDuty = Math.round(stampDuty1L + progress * (stampDuty5L - stampDuty1L));
+        govtFeesSubtotal = Math.round(slabPair.slab1L + progress * (slabPair.slab5L - slabPair.slab1L));
         const capStr = (capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1);
         stampDutyDescription = `MOA + AOA · ${stateData.state} Stamp Act (Authorised capital up to ₹${capStr} lakh)`;
       } else {
-        const slabDiff = stampDuty5L - stampDuty1L;
-        const extraPerLakh = Math.max(200, Math.round(slabDiff / 4));
+        const slabDiff = slabPair.slab5L - slabPair.slab1L;
+        const extraPerLakh = Math.max(250, Math.round(slabDiff / 4));
         const extraLakhs = Math.ceil((capital - 500000) / 100000);
-        stampDuty = stampDuty5L + extraLakhs * extraPerLakh;
+        govtFeesSubtotal = slabPair.slab5L + extraLakhs * extraPerLakh + govtIncorporationFee;
         const capStr = (capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1);
         stampDutyDescription = `MOA + AOA · ${stateData.state} Stamp Act (Authorised capital ₹${capStr} lakh)`;
       }
 
-      // Dynamic director verification fees
-      const dirCount = params.numDirectors !== undefined
-        ? params.numDirectors
-        : (params.entityType === "opc" ? 2 : 2);
-      directorFees = dirCount * 200;
-
-      // Dynamic DSC fees (defaults to 2 DSC as specified in the source register)
-      const dscCount = params.numDsc !== undefined ? params.numDsc : 2;
-      dscFees = dscCount * 2500;
-
+      // Stamp duty is the exact remaining statutory portion
+      stampDuty = Math.max(0, govtFeesSubtotal - (rocFees + directorFees + dscFees + govtIncorporationFee));
       break;
     }
 
     case "llp": {
       panTanFee = 0;
-      const regEntry = getGovtFeeRegisterEntry(params.state || "Karnataka");
+      directorFees = 1000;
+      dscFees = 5000;
+
+      const regEntry = getGovtFeeRegisterEntry(params.state || "Maharashtra");
       const slabPair = regEntry.llp;
-
-      // Dynamic partners and DSC
-      const partnerCount = params.numDirectors !== undefined ? params.numDirectors : 2;
-      directorFees = partnerCount * 500; // ₹1,000 for 2 partners
-
-      const dscCount = params.numDsc !== undefined ? params.numDsc : 2;
-      dscFees = dscCount * 2500; // ₹5,000 for 2 DSC
-
-      // Standard register baseline components:
-      // At 1L: ROC is ₹700, Partner fees is ₹1,000, DSC is ₹5,000 => base is ₹6,700
-      const stampDuty1L = Math.max(0, slabPair.slab1L - (700 + 1000 + 5000));
-      // At 5L: ROC is ₹1,000, Partner fees is ₹1,000, DSC is ₹5,000 => base is ₹7,000
-      const stampDuty5L = Math.max(0, slabPair.slab5L - (1000 + 1000 + 5000));
 
       // MCA FiLLiP ROC fees based on capital contribution
       if (capital <= 100000) {
         rocFees = 700;
-        stampDuty = stampDuty1L;
+        govtFeesSubtotal = slabPair.slab1L;
         stampDutyDescription = `LLP Agreement · ${stateData.state} Stamp Act (Contribution up to ₹1 lakh)`;
       } else if (capital === 500000) {
         rocFees = 1000;
-        stampDuty = stampDuty5L;
+        govtFeesSubtotal = slabPair.slab5L;
         stampDutyDescription = `LLP Agreement · ${stateData.state} Stamp Act (Contribution ₹5 lakh)`;
       } else if (capital < 500000) {
         rocFees = 1000;
         const progress = (capital - 100000) / 400000;
-        stampDuty = Math.round(stampDuty1L + progress * (stampDuty5L - stampDuty1L));
+        govtFeesSubtotal = Math.round(slabPair.slab1L + progress * (slabPair.slab5L - slabPair.slab1L));
         const capStr = (capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1);
         stampDutyDescription = `LLP Agreement · ${stateData.state} Stamp Act (Contribution ₹${capStr} lakh)`;
       } else if (capital <= 1000000) {
         rocFees = 2200;
-        const slabDiff = stampDuty5L - stampDuty1L;
+        const slabDiff = slabPair.slab5L - slabPair.slab1L;
         const extraPerLakh = Math.max(250, Math.round(slabDiff / 4));
         const extraLakhs = Math.ceil((capital - 500000) / 100000);
-        stampDuty = stampDuty5L + extraLakhs * extraPerLakh;
+        govtFeesSubtotal = slabPair.slab5L + extraLakhs * extraPerLakh;
         const capStr = (capital / 100000).toFixed(capital % 100000 === 0 ? 0 : 1);
         stampDutyDescription = `LLP Agreement · ${stateData.state} Stamp Act (Contribution ₹${capStr} lakh)`;
       } else {
         rocFees = 4200;
-        const slabDiff = stampDuty5L - stampDuty1L;
+        const slabDiff = slabPair.slab5L - slabPair.slab1L;
         const extraPerLakh = Math.max(250, Math.round(slabDiff / 4));
         const extraLakhs = Math.ceil((capital - 500000) / 100000);
-        stampDuty = stampDuty5L + extraLakhs * extraPerLakh;
+        govtFeesSubtotal = slabPair.slab5L + extraLakhs * extraPerLakh;
         const capStr = (capital / 100000).toFixed(0);
         stampDutyDescription = `LLP Agreement · ${stateData.state} Stamp Act (Contribution ₹${capStr} lakh)`;
       }
+
+      stampDuty = Math.max(0, govtFeesSubtotal - (rocFees + directorFees + dscFees));
       break;
     }
 
@@ -1239,15 +1214,23 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
       break;
   }
 
-  const govtFeesSubtotal = rocFees + stampDuty + directorFees + dscFees + govtIncorporationFee + panTanFee;
-  const professionalFees = config.baseProfessionalFee;
-  const totalCost = govtFeesSubtotal + professionalFees;
-  const marketTotal = govtFeesSubtotal + config.marketTraditionalRate;
+  const finalGovtFeesSubtotal =
+    params.entityType === "pvt_ltd" || params.entityType === "opc" || params.entityType === "llp"
+      ? govtFeesSubtotal
+      : (rocFees + stampDuty + directorFees + dscFees + govtIncorporationFee + panTanFee);
+
+  const professionalFees =
+    params.entityType === "pvt_ltd" || params.entityType === "opc" || params.entityType === "llp"
+      ? 1999
+      : config.baseProfessionalFee;
+
+  const totalCost = finalGovtFeesSubtotal + professionalFees;
+  const marketTotal = finalGovtFeesSubtotal + config.marketTraditionalRate;
   const estimatedSavings = Math.max(0, marketTotal - totalCost);
 
   return {
     entityName: config.name,
-    selectedState: params.state,
+    selectedState: params.state || "Maharashtra",
     rocOffice: stateData.rocOffice || "Registrar of Companies",
     turnaroundDays: stateData.turnaroundDays || "5–8 Working Days",
     rocFees,
@@ -1257,7 +1240,7 @@ export function calculateQuote(params: QuoteCalculationParams): ItemizedQuote {
     dscFees,
     panTanFee,
     govtIncorporationFee,
-    govtFeesSubtotal,
+    govtFeesSubtotal: finalGovtFeesSubtotal,
     professionalFees,
     marketTraditionalRate: marketTotal,
     estimatedSavings,

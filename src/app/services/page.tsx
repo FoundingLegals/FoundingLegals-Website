@@ -87,7 +87,7 @@ export default function ServicesPage() {
   }, []);
 
   // Calculator State
-  const [selectedState, setSelectedState] = useState("Karnataka");
+  const [selectedState, setSelectedState] = useState("Maharashtra");
   const [selectedEntity, setSelectedEntity] = useState<EntityTypeId>("pvt_ltd");
   const [authorizedCapital, setAuthorizedCapital] = useState(100000);
   const [numDirectors, setNumDirectors] = useState(2);
@@ -550,8 +550,12 @@ export default function ServicesPage() {
                       </span>
                       <span className="font-semibold text-brown-900">₹{(liveQuote.panTanFee + liveQuote.directorFees).toLocaleString("en-IN")}</span>
                     </div>
-                    <div className="flex justify-between py-1 bg-olive-50/60 px-2 rounded-lg border border-olive-100">
-                      <span className="font-bold text-olive-900">Founding Legals Member Fee</span>
+                    <div className="flex justify-between py-1.5 px-2 bg-brown-50/70 rounded-lg border border-brown-100">
+                      <span className="font-bold text-brown-800">Statutory Government Fees</span>
+                      <span className="font-extrabold text-brown-900">₹{liveQuote.govtFeesSubtotal.toLocaleString("en-IN")}</span>
+                    </div>
+                    <div className="flex justify-between py-1.5 px-2 bg-olive-50/70 rounded-lg border border-olive-100">
+                      <span className="font-bold text-olive-900">Founding Legals Professional Fee</span>
                       <span className="font-extrabold text-olive-900">₹{liveQuote.professionalFees.toLocaleString("en-IN")}</span>
                     </div>
                   </div>

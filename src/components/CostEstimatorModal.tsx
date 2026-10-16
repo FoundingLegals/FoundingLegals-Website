@@ -30,7 +30,7 @@ export default function CostEstimatorModal() {
 
   // Form input states
   const [entityType, setEntityType] = useState<EntityTypeId>("pvt_ltd");
-  const [selectedState, setSelectedState] = useState<string>("Karnataka");
+  const [selectedState, setSelectedState] = useState<string>("Maharashtra");
   const [hasShareCapital, setHasShareCapital] = useState<string>("yes");
   const [numDirectors, setNumDirectors] = useState<number>(2);
   const [numDsc, setNumDsc] = useState<number>(2);
@@ -44,7 +44,7 @@ export default function CostEstimatorModal() {
   const [quote, setQuote] = useState<ItemizedQuote>(() =>
     calculateQuote({
       entityType: "pvt_ltd",
-      state: "Karnataka",
+      state: "Maharashtra",
       hasShareCapital: true,
       authorizedCapital: 100000,
       numDirectors: 2,
@@ -63,26 +63,26 @@ export default function CostEstimatorModal() {
       const targetEntity: EntityTypeId = isPrimary ? (incomingEntity as EntityTypeId) : "pvt_ltd";
       const targetState = customEvent.detail?.state && ALL_INDIAN_STATES.includes(customEvent.detail.state)
         ? customEvent.detail.state
-        : "Karnataka";
+        : "Maharashtra";
 
       setEntityType(targetEntity);
       setSelectedState(targetState);
 
       const conf = ENTITY_CONFIGS[targetEntity];
-      const directors = conf.defaultDirectors;
+      const directors = targetEntity === "opc" ? 1 : conf.defaultDirectors;
       const dsc = conf.defaultDsc;
-      const capital = conf.defaultCapital;
+      const capital = 100000;
 
       setNumDirectors(directors);
       setNumDsc(dsc);
       setAuthorizedCapital(capital);
-      setCapitalInput(Number(capital).toLocaleString("en-IN"));
-      setHasShareCapital(conf.hasShareCapitalOption ? "yes" : "no");
+      setCapitalInput("1,00,000");
+      setHasShareCapital("yes");
 
       const newQuote = calculateQuote({
         entityType: targetEntity,
         state: targetState,
-        hasShareCapital: conf.hasShareCapitalOption,
+        hasShareCapital: true,
         authorizedCapital: capital,
         numDirectors: directors,
         numDsc: dsc
@@ -117,8 +117,8 @@ export default function CostEstimatorModal() {
 
   // Real-time calculation effect dynamically updated with authorized capital
   useEffect(() => {
-    const isCap = hasShareCapital === "yes";
-    const parsedCap = !isCap ? 0 : authorizedCapital;
+    const isCap = entityType === "llp" ? true : hasShareCapital === "yes";
+    const parsedCap = isCap ? authorizedCapital : 0;
     const newQuote = calculateQuote({
       entityType,
       state: selectedState,
@@ -134,17 +134,20 @@ export default function CostEstimatorModal() {
     setEntityType(type);
     const conf = ENTITY_CONFIGS[type];
     if (conf) {
-      setNumDirectors(conf.defaultDirectors);
+      setNumDirectors(type === "opc" ? 1 : conf.defaultDirectors);
       setNumDsc(conf.defaultDsc);
-      setAuthorizedCapital(conf.defaultCapital);
-      setCapitalInput(Number(conf.defaultCapital).toLocaleString("en-IN"));
-      setHasShareCapital(conf.hasShareCapitalOption ? "yes" : "no");
+      setAuthorizedCapital(100000);
+      setCapitalInput("1,00,000");
+      setHasShareCapital("yes");
     }
   };
 
   const handleSelectCapitalPreset = (val: number) => {
     setAuthorizedCapital(val);
     setCapitalInput(val.toLocaleString("en-IN"));
+    if (hasShareCapital === "no") {
+      setHasShareCapital("yes");
+    }
   };
 
   const handleCapitalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -168,8 +171,8 @@ export default function CostEstimatorModal() {
 
   const handleCalculate = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    const isCap = hasShareCapital === "yes";
-    const parsedCap = !isCap ? 0 : authorizedCapital;
+    const isCap = entityType === "llp" ? true : hasShareCapital === "yes";
+    const parsedCap = isCap ? authorizedCapital : 0;
     const newQuote = calculateQuote({
       entityType,
       state: selectedState,
@@ -443,8 +446,8 @@ export default function CostEstimatorModal() {
                   <input
                     type="text"
                     inputMode="numeric"
-                    disabled={hasShareCapital === "no"}
-                    value={hasShareCapital === "no" ? "0" : capitalInput}
+                    disabled={!isLLP && hasShareCapital === "no"}
+                    value={!isLLP && hasShareCapital === "no" ? "0" : capitalInput}
                     onChange={handleCapitalChange}
                     onBlur={handleCapitalBlur}
                     placeholder="1,00,000"
@@ -553,14 +556,14 @@ export default function CostEstimatorModal() {
 
                   {/* Director fees / Partner fees */}
                   <div className="flex items-center justify-between">
-                    <span className="text-[#CAD8BE]">{isLLP ? "Partner fees" : "Director fees"}</span>
+                    <span className="text-[#CAD8BE]">{isLLP ? "Partner fees" : isOPC ? "Director & Nominee KYC" : "Director fees"}</span>
                     <span className="flex-1 border-b border-dotted border-[#3F5033] mx-2 mb-1" />
                     <span className="font-semibold text-white">{formatRs(quote.directorFees)}</span>
                   </div>
 
                   {/* DSC */}
                   <div className="flex items-center justify-between">
-                    <span className="text-[#CAD8BE]">DSC ({numDsc} × ₹2,500)</span>
+                    <span className="text-[#CAD8BE]">DSC (2 Tokens)</span>
                     <span className="flex-1 border-b border-dotted border-[#3F5033] mx-2 mb-1" />
                     <span className="font-semibold text-white">{formatRs(quote.dscFees)}</span>
                   </div>
