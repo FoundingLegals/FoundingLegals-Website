@@ -807,52 +807,28 @@ export default function Pricing() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5 items-stretch">
             {TIERS.map((tier) => {
-              const isPreSeed = tier.id === "Basic" || tier.name.toLowerCase().includes("pre seed");
-
               const price =
                 tier.monthly === null || tier.annual === null
                   ? null
-                  : isPreSeed
-                  ? annual
-                    ? 658
-                    : 789
                   : annual
-                  ? tier.annual
+                  ? Math.round(tier.annual / 12)
                   : tier.monthly;
 
               const regularPrice =
-                tier.monthlyRegular === null || tier.annualRegular === null
+                tier.monthlyRegular === null
                   ? null
-                  : isPreSeed
-                  ? annual
-                    ? 999
-                    : 999
-                  : annual
-                  ? tier.annualRegular
                   : tier.monthlyRegular;
 
               const annualSaving =
                 tier.monthly !== null && tier.annual !== null
-                  ? isPreSeed
-                    ? 789 * 12 - 7890
-                    : tier.monthly * 12 - tier.annual
+                  ? tier.monthly * 12 - tier.annual
                   : 0;
 
-              const unitText = isPreSeed
-                ? "/mo + GST"
-                : annual
-                ? "/year + GST"
-                : "/mo + GST";
+              const unitText = "/mo + GST";
 
               const subtextText =
                 price === null
                   ? "Custom pricing tailored to your needs."
-                  : isPreSeed
-                  ? annual
-                    ? `Billed annually at ₹7,890 - Save ₹${annualSaving.toLocaleString("en-IN")}/yr`
-                    : `Billed monthly - Save ₹${(
-                        tier.monthlyRegular! - tier.monthly!
-                      ).toLocaleString("en-IN")}/mo vs standard`
                   : annual
                   ? `Billed annually at ₹${tier.annual!.toLocaleString(
                       "en-IN"
@@ -953,12 +929,30 @@ export default function Pricing() {
                       </div>
                     )}
 
-                    {/* Highlighted Annual Total Badge for Pre Seed */}
-                    {isPreSeed && annual ? (
-                      <div className="mt-3 p-2.5 rounded-xl bg-amber-50/90 border border-amber-200 text-xs text-amber-950 font-medium flex items-center justify-between shadow-2xs">
-                        <span className="text-[11px] font-bold text-amber-900">Annual Total:</span>
-                        <span className="text-xs font-black text-amber-950 bg-amber-200/80 px-2.5 py-0.5 rounded-md border border-amber-300 shadow-2xs">
-                          ₹7,890 / year + GST
+                    {/* Highlighted Annual Total Badge for All Paid Tiers */}
+                    {annual && tier.annual !== null ? (
+                      <div
+                        className={`mt-3 p-2.5 rounded-xl border text-xs font-medium flex items-center justify-between shadow-2xs ${
+                          tier.highlight
+                            ? "bg-white/15 border-white/25 text-white"
+                            : "bg-amber-50/90 border-amber-200 text-amber-950"
+                        }`}
+                      >
+                        <span
+                          className={`text-[11px] font-bold ${
+                            tier.highlight ? "text-olive-100" : "text-amber-900"
+                          }`}
+                        >
+                          Annual Total:
+                        </span>
+                        <span
+                          className={`text-xs font-black px-2.5 py-0.5 rounded-md border shadow-2xs ${
+                            tier.highlight
+                              ? "bg-lime-bg text-olive-950 border-lime-300"
+                              : "bg-amber-200/80 text-amber-950 border-amber-300"
+                          }`}
+                        >
+                          ₹{tier.annual.toLocaleString("en-IN")} / year + GST
                         </span>
                       </div>
                     ) : null}
