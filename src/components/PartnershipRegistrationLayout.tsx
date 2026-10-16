@@ -63,15 +63,21 @@ const PARTNERSHIP_PLANS = [
     name: "BASIC",
     price: "₹1,999",
     feeSubtext: "+ Stamp Duty",
-    description: "Essential partnership deed drafting, notarization support, and PAN/TAN kit.",
+    description: "Comprehensive partnership legal drafting, stamp execution, and firm registration kit.",
     badge: "Essential Package",
     badgeStyles: "bg-olive-100 text-olive-800 border border-olive-200/50",
     serviceName: "Partnership Firm - BASIC Plan (₹1,999 + Stamp Duty)",
     included: [
-      "Partnership Deed Drafting",
+      "Custom Partnership Deed Drafting",
       "Stamp Duty & Notarization Support",
-      "Firm PAN & TAN Allotment",
-      "Current Bank Account Assistance"
+      "Firm PAN Card Allotment",
+      "Firm TAN (Tax Deduction) Allotment",
+      "Current Bank Account Opening Support",
+      "Partner Profit-Sharing & Capital Clause Drafting",
+      "ROF (Registrar of Firms) Filing Guidance",
+      "MSME / Udyam Certificate Support",
+      "Business Commencement Checklist",
+      "Dedicated Legal & CA Expert Advisory"
     ]
   }
 ];
@@ -182,85 +188,170 @@ export default function PartnershipRegistrationLayout() {
         <div className="border-t border-gray-200 mb-8" />
 
         <div className="space-y-6 pt-4 mb-10 pb-4">
-          <div className="text-center max-w-xl mx-auto">
-            <h2 className="font-serif text-[22px] sm:text-[26px] md:text-[28px] font-semibold text-[#1A1917] mb-2">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <h2 className="font-serif text-[24px] sm:text-[28px] md:text-[32px] font-semibold text-[#1A1917] mb-2 tracking-tight">
               Select Your Partnership Registration Plan
             </h2>
-            <p className="text-[13.5px] text-gray-500 max-w-md mx-auto">
-              Transparent package covering legal deed drafting, notarization support, PAN, and TAN allotment.
+            <p className="text-[14px] text-gray-600 max-w-lg mx-auto font-light leading-relaxed">
+              Transparent package covering custom legal deed drafting, state stamp paper notarization, PAN, and TAN allotment.
             </p>
           </div>
 
-          <div className="flex justify-center pt-2">
+          <div className="w-full">
             {PARTNERSHIP_PLANS.map((plan) => (
               <div
                 key={plan.name}
-                className="w-full max-w-lg bg-gradient-to-b from-[#F9FAF6] via-white to-[#F4F7EE] rounded-3xl p-7 sm:p-8 border-2 border-[#48592A] shadow-xl hover:shadow-2xl transition-all duration-300 relative group flex flex-col justify-between"
+                className="w-full bg-gradient-to-br from-[#FAFBF8] via-white to-[#F2F6EC] rounded-3xl p-6 sm:p-8 lg:p-10 border-2 border-[#48592A]/80 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
               >
-                <div>
-                  {/* Plan Badge */}
-                  {plan.badge && (
-                    <div className="mb-4 flex items-center justify-between">
-                      <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-[#E4ECDC] text-[#2C3E14] border border-[#CCD8B8]">
-                        <Star className="w-3 h-3 fill-[#2C3E14]" />
-                        {plan.badge}
-                      </span>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#5B6836]">
-                        Essential Kit
+                {/* Decorative Subtle Accent */}
+                <div className="absolute top-0 right-0 w-96 h-96 bg-olive-100/30 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
+
+                {/* Top Badge Row */}
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-[#D8E4CA]/60">
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#E4ECDC] text-[#2C3E14] border border-[#CCD8B8]">
+                      <Star className="w-3.5 h-3.5 fill-[#2C3E14]" />
+                      {plan.badge || "Essential Package"}
+                    </span>
+                    <span className="text-[12px] font-bold uppercase tracking-wider text-[#5B6836] bg-white/80 px-3 py-1 rounded-full border border-olive-200/60 shadow-2xs">
+                      Deed Drafting &amp; Tax Kit
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-xs font-semibold text-olive-800">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>Fast Track 3–5 Working Days Execution</span>
+                  </div>
+                </div>
+
+                {/* Main Landscape 2-Column Grid */}
+                <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+                  
+                  {/* LEFT COLUMN: Pricing, Plan Meta & CTAs */}
+                  <div className="lg:col-span-5 flex flex-col justify-between space-y-6 lg:border-r lg:border-[#D8E4CA]/70 lg:pr-8">
+                    <div>
+                      {/* Price Badge */}
+                      <div className="mb-3 flex items-baseline gap-2.5">
+                        <span className="text-[44px] sm:text-[52px] font-extrabold font-serif text-[#1A1917] tracking-tight leading-none">
+                          {plan.price}
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-[14px] font-bold text-olive-900 leading-tight">
+                            {plan.feeSubtext}
+                          </span>
+                          <span className="text-[11px] text-gray-500 font-medium">
+                            State stamp paper at actuals
+                          </span>
+                        </div>
+                      </div>
+
+                      <h3 className="font-serif text-[22px] sm:text-[24px] font-bold text-[#1A1917] mb-2">
+                        {plan.name} Partnership Registration Kit
+                      </h3>
+                      <p className="text-[13.5px] text-gray-600 leading-relaxed font-light mb-6">
+                        {plan.description} Complete legal structuring to protect partner liabilities and establish clear profit sharing.
+                      </p>
+
+                      {/* Trust Highlights */}
+                      <div className="space-y-2 bg-white/80 border border-olive-200/70 rounded-2xl p-4 shadow-2xs">
+                        <div className="flex items-center gap-2 text-xs text-[#2A3416] font-medium">
+                          <Check className="w-3.5 h-3.5 text-olive-700 shrink-0" />
+                          <span>Custom Partnership Deed drafted by corporate lawyers</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-[#2A3416] font-medium">
+                          <Check className="w-3.5 h-3.5 text-olive-700 shrink-0" />
+                          <span>Firm PAN &amp; TAN allotment for corporate banking</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-[#2A3416] font-medium">
+                          <Check className="w-3.5 h-3.5 text-olive-700 shrink-0" />
+                          <span>Notarization &amp; ROF guidance with dedicated legal support</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="space-y-2.5 pt-2">
+                      <button
+                        type="button"
+                        onClick={() => navigateToApp(plan.serviceName)}
+                        className="w-full py-4 px-6 rounded-xl font-bold text-[14px] bg-[#2E4218] hover:bg-[#1E2E0F] text-white transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-2.5 shadow-md hover:shadow-xl transform hover:scale-[1.01] active:scale-[0.99]"
+                      >
+                        <span>Opt Service &amp; Register</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+
+                      <div className="grid grid-cols-2 gap-2.5">
+                        <button
+                          type="button"
+                          onClick={() => talkToExpert(plan.serviceName)}
+                          className="py-3 px-3 rounded-xl font-semibold text-[13px] bg-white hover:bg-olive-50 text-[#2E4218] border border-[#2E4218]/40 transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-1.5 shadow-2xs"
+                        >
+                          <Headphones className="w-3.5 h-3.5 text-[#2E4218]" />
+                          <span>Talk to Expert</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => openCostEstimator({ entityType: "partnership" })}
+                          className="py-3 px-3 rounded-xl font-semibold text-[13px] bg-white hover:bg-[#F2F6EC] text-[#2E4218] border border-[#2E4218]/40 transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-1.5 shadow-2xs"
+                        >
+                          <Calculator className="w-3.5 h-3.5 text-olive-700" />
+                          <span>Estimate Cost</span>
+                        </button>
+                      </div>
+
+                      <p className="text-[11px] text-gray-500 text-center font-light pt-1">
+                        Zero hidden charges · Official stamp duty receipts &amp; legal verification
+                      </p>
+                    </div>
+
+                  </div>
+
+                  {/* RIGHT COLUMN: What's Included Grid */}
+                  <div className="lg:col-span-7 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <p className="text-[11.5px] font-extrabold uppercase tracking-widest text-[#48592A] flex items-center gap-1.5">
+                          <span>What&apos;s Included in This Package</span>
+                          <span className="text-[10.5px] font-bold text-olive-800 bg-olive-100/80 px-2 py-0.5 rounded-full border border-olive-200">
+                            {plan.included.length} Deliverables
+                          </span>
+                        </p>
+                        <span className="text-[11.5px] text-gray-500 font-medium hidden sm:inline">
+                          Complete Initiation Kit
+                        </span>
+                      </div>
+
+                      {/* Deliverables Grid in 2 Columns */}
+                      <ul className="grid sm:grid-cols-2 gap-3 text-[13px]">
+                        {plan.included.map((feature, fIdx) => (
+                          <li
+                            key={fIdx}
+                            className="flex items-start gap-3 p-3 rounded-xl bg-white/70 hover:bg-white border border-[#D8E4CA]/50 hover:border-[#48592A]/40 transition-all duration-200 shadow-2xs leading-snug"
+                          >
+                            <span className="w-5 h-5 rounded-full bg-[#E4ECDC] text-[#2C3E14] flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                              <Check className="w-3 h-3 stroke-[2.5]" />
+                            </span>
+                            <span className="font-semibold text-[#1A1917]">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Bottom Helper Strip */}
+                    <div className="mt-6 pt-4 border-t border-[#D8E4CA]/50 flex flex-wrap items-center justify-between gap-3 text-xs text-gray-600 bg-white/50 p-3 rounded-xl">
+                      <div className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-olive-700 shrink-0" />
+                        <span>Indian Partnership Act, 1932 compliant drafting by Senior Advocates.</span>
+                      </div>
+                      <span className="text-olive-800 font-semibold cursor-pointer hover:underline" onClick={() => openCostEstimator({ entityType: "partnership" })}>
+                        View Stamp Duty Calculator →
                       </span>
                     </div>
-                  )}
 
-                  {/* Price */}
-                  <div className="mb-2 flex items-baseline gap-2">
-                    <span className="text-[40px] font-extrabold font-serif text-[#1A1917] tracking-tight">
-                      {plan.price}
-                    </span>
-                    <span className="text-xs text-gray-500 font-medium">
-                      {plan.feeSubtext}
-                    </span>
                   </div>
 
-                  <h3 className="font-serif text-[21px] font-bold text-[#1A1917] mb-1">
-                    {plan.name}
-                  </h3>
-                  <p className="text-[12.5px] text-gray-600 mb-6 pb-4 border-b border-[#D5DFBE]/60 leading-relaxed">
-                    {plan.description}
-                  </p>
-
-                  {/* Features */}
-                  <div className="mb-8">
-                    <p className="text-[11px] font-extrabold uppercase tracking-widest text-[#48592A] mb-3.5">
-                      What&apos;s Included in This Package
-                    </p>
-                    <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-3 text-[12.5px] text-[#2A3416]">
-                      {plan.included.map((feature, fIdx) => (
-                        <li key={fIdx} className="flex items-start gap-2.5 leading-snug">
-                          <Check className="w-4 h-4 shrink-0 mt-0.5 text-[#3D5620]" />
-                          <span className="font-medium text-[#222B13]">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full">
-                  <button
-                    onClick={() => navigateToApp(plan.serviceName)}
-                    className="flex-1 w-full py-3.5 px-4 rounded-xl font-bold text-[13.5px] bg-[#2E4218] hover:bg-[#1E2E0F] text-white transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-2 shadow-md hover:shadow-xl transform hover:scale-[1.01] active:scale-[0.99]"
-                  >
-                    <span>Opt Service</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => talkToExpert(plan.serviceName)}
-                    className="w-full sm:w-auto py-3.5 px-4 rounded-xl font-semibold text-[13.5px] bg-white hover:bg-olive-50 text-[#2E4218] border border-[#2E4218]/40 transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-1.5 shadow-xs"
-                  >
-                    <Headphones className="w-4 h-4 text-[#2E4218]" />
-                    <span>Talk to Expert</span>
-                  </button>
-                </div>
               </div>
             ))}
           </div>

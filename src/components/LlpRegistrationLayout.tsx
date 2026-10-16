@@ -250,86 +250,183 @@ export default function LlpRegistrationLayout() {
       <section className="max-w-7xl mx-auto px-6 md:px-12 pb-10">
         <div className="border-t border-gray-200 mb-8" />
 
-        <div className="space-y-6 pt-4 mb-10 pb-4">
-          <div className="text-center max-w-xl mx-auto">
-            <h2 className="font-serif text-[22px] sm:text-[26px] md:text-[28px] font-semibold text-[#1A1917] mb-2">
-              Choose the Best LLP Company Registration Plan
-            </h2>
-            <p className="text-[13.5px] text-gray-500 max-w-md mx-auto">
-              Select the plan that fits your business needs. Includes standard drafting, filings, and dedicated CA support.
+        {/* ── LANDSCAPE PRICING & DELIVERABLES HERO PANEL ── */}
+        <div className="space-y-6 pt-4 mb-14 pb-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-2">
+            <div>
+              <span className="text-[11px] font-bold text-olive-800 uppercase tracking-widest bg-[#E9EFE2] px-3.5 py-1 rounded-full border border-olive-200/60 inline-flex items-center gap-1.5 mb-2.5">
+                <Star className="w-3 h-3 fill-olive-700 text-olive-700" />
+                Transparent MCA Partnership Package
+              </span>
+              <h2 className="font-serif text-[24px] sm:text-[28px] md:text-[32px] font-semibold text-[#1A1917] tracking-tight">
+                Complete LLP Registration Package
+              </h2>
+            </div>
+            <p className="text-[13px] md:text-[13.5px] text-gray-600 max-w-md font-light leading-relaxed">
+              All-inclusive statutory drafting, MCA FiLLiP filing, LLP Agreement drafting, and dedicated CA support with zero hidden margins.
             </p>
           </div>
 
-          <div className="flex justify-center pt-2">
+          <div className="w-full">
             {LLP_PLANS.map((plan) => (
               <div
                 key={plan.name}
-                className="w-full max-w-lg bg-gradient-to-b from-[#F9FAF6] via-white to-[#F4F7EE] rounded-3xl p-7 sm:p-8 border-2 border-[#48592A] shadow-xl hover:shadow-2xl transition-all duration-300 relative group flex flex-col justify-between"
+                className="w-full bg-gradient-to-br from-[#FAFBF8] via-white to-[#F2F6EC] rounded-[28px] md:rounded-[32px] border-2 border-[#48592A]/50 p-6 sm:p-8 lg:p-10 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
               >
-                <div>
-                  {/* Plan Badge */}
-                  {plan.badge && (
-                    <div className="mb-4 flex items-center justify-between">
-                      <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-[#E4ECDC] text-[#2C3E14] border border-[#CCD8B8]">
-                        <Star className="w-3 h-3 fill-[#2C3E14]" />
-                        {plan.badge}
-                      </span>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#5B6836]">
-                        Flat MCA Package
-                      </span>
+                {/* Subtle Luxury Corner Glow Accent */}
+                <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#D4E157]/10 rounded-full blur-3xl pointer-events-none" />
+
+                {/* Top Badge Strip */}
+                <div className="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-[#D8E4CA]/70 mb-8">
+                  <div className="flex flex-wrap items-center gap-2.5">
+                    <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#E4ECDC] text-[#2C3E14] border border-[#CCD8B8]">
+                      <Star className="w-3 h-3 fill-[#2C3E14]" />
+                      {plan.badge}
+                    </span>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#48592A] bg-white px-3 py-1 rounded-full border border-brown-200/60">
+                      Flat MCA Package · Form FiLLiP &amp; Form 3
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-xs font-semibold text-olive-800">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>Fast Track 7–12 Working Days Process</span>
+                  </div>
+                </div>
+
+                {/* Main Landscape 2-Column Grid */}
+                <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+                  
+                  {/* LEFT COLUMN: Pricing, Plan Meta & CTAs */}
+                  <div className="lg:col-span-5 flex flex-col justify-between space-y-6 lg:border-r lg:border-[#D8E4CA]/70 lg:pr-8">
+                    <div>
+                      {/* Price Badge */}
+                      <div className="mb-3 flex items-baseline gap-2.5">
+                        <span className="text-[44px] sm:text-[52px] font-extrabold font-serif text-[#1A1917] tracking-tight leading-none">
+                          {plan.price}
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-[14px] font-bold text-olive-900 leading-tight">
+                            {plan.feeSubtext}
+                          </span>
+                          <span className="text-[11px] text-gray-500 font-medium">
+                            Statutory receipts provided
+                          </span>
+                        </div>
+                      </div>
+
+                      <h3 className="font-serif text-[22px] sm:text-[24px] font-bold text-[#1A1917] mb-2">
+                        {plan.name} LLP Registration Kit
+                      </h3>
+                      <p className="text-[13.5px] text-gray-600 leading-relaxed font-light mb-6">
+                        {plan.description} End-to-end execution from partner DPIN and RUN-LLP name approval to final LLP Agreement Form 3 filing.
+                      </p>
+
+                      {/* Trust Highlights */}
+                      <div className="space-y-2 bg-white/80 border border-olive-200/70 rounded-2xl p-4 shadow-2xs">
+                        <div className="flex items-center gap-2 text-xs text-[#2A3416] font-medium">
+                          <Check className="w-3.5 h-3.5 text-olive-700 shrink-0" />
+                          <span>Includes 2 Class-3 Digital Signature Certificates (DSC)</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-[#2A3416] font-medium">
+                          <Check className="w-3.5 h-3.5 text-olive-700 shrink-0" />
+                          <span>Includes 2 Designated Partner Identification Numbers (DPIN)</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-[#2A3416] font-medium">
+                          <Check className="w-3.5 h-3.5 text-olive-700 shrink-0" />
+                          <span>Partnership PAN, TAN &amp; Custom LLP Agreement Drafting</span>
+                        </div>
+                      </div>
                     </div>
-                  )}
 
-                  {/* Price */}
-                  <div className="mb-2 flex items-baseline gap-2">
-                    <span className="text-[40px] font-extrabold font-serif text-[#1A1917] tracking-tight">
-                      {plan.price}
-                    </span>
-                    <span className="text-xs text-gray-500 font-medium">
-                      {plan.feeSubtext}
-                    </span>
+                    {/* Action Buttons */}
+                    <div className="space-y-2.5 pt-2">
+                      <button
+                        type="button"
+                        onClick={() => navigateToApp(plan.serviceName)}
+                        className="w-full py-4 px-6 rounded-xl font-bold text-[14px] bg-[#2E4218] hover:bg-[#1E2E0F] text-white transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-2.5 shadow-md hover:shadow-xl transform hover:scale-[1.01] active:scale-[0.99]"
+                      >
+                        <span>Opt Service &amp; Register</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+
+                      <div className="grid grid-cols-2 gap-2.5">
+                        <button
+                          type="button"
+                          onClick={() => talkToExpert(plan.serviceName)}
+                          className="py-3 px-3 rounded-xl font-semibold text-[13px] bg-white hover:bg-olive-50 text-[#2E4218] border border-[#2E4218]/40 transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-1.5 shadow-2xs"
+                        >
+                          <Headphones className="w-3.5 h-3.5 text-[#2E4218]" />
+                          <span>Talk to Expert</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => openCostEstimator({ entityType: "llp" })}
+                          className="py-3 px-3 rounded-xl font-semibold text-[13px] bg-white hover:bg-[#F2F6EC] text-[#2E4218] border border-[#2E4218]/40 transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-1.5 shadow-2xs"
+                        >
+                          <Calculator className="w-3.5 h-3.5 text-olive-700" />
+                          <span>Estimate Cost</span>
+                        </button>
+                      </div>
+
+                      <p className="text-[11px] text-gray-500 text-center font-light pt-1">
+                        Zero hidden charges · Official MCA statutory receipts provided
+                      </p>
+                    </div>
+
                   </div>
 
-                  <h3 className="font-serif text-[21px] font-bold text-[#1A1917] mb-1">
-                    {plan.name}
-                  </h3>
-                  <p className="text-[12.5px] text-gray-600 mb-6 pb-4 border-b border-[#D5DFBE]/60 leading-relaxed">
-                    {plan.description}
-                  </p>
+                  {/* RIGHT COLUMN: What's Included Grid */}
+                  <div className="lg:col-span-7 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <p className="text-[11.5px] font-extrabold uppercase tracking-widest text-[#48592A] flex items-center gap-1.5">
+                          <span>What&apos;s Included in This Package</span>
+                          <span className="text-[10.5px] font-bold text-olive-800 bg-olive-100/80 px-2 py-0.5 rounded-full border border-olive-200">
+                            10 Deliverables
+                          </span>
+                        </p>
+                        <span className="text-[11.5px] text-gray-500 font-medium hidden sm:inline">
+                          Complete Partnership Kit
+                        </span>
+                      </div>
 
-                  {/* Features */}
-                  <div className="mb-8">
-                    <p className="text-[11px] font-extrabold uppercase tracking-widest text-[#48592A] mb-3.5">
-                      What&apos;s Included in This Package
-                    </p>
-                    <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-3 text-[12.5px] text-[#2A3416]">
-                      {plan.included.map((feature, fIdx) => (
-                        <li key={fIdx} className="flex items-start gap-2.5 leading-snug">
-                          <Check className="w-4 h-4 shrink-0 mt-0.5 text-[#3D5620]" />
-                          <span className="font-medium text-[#222B13]">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                      {/* Deliverables Grid in 2 Columns */}
+                      <ul className="grid sm:grid-cols-2 gap-3 text-[13px]">
+                        {plan.included.map((feature, fIdx) => (
+                          <li
+                            key={fIdx}
+                            className="flex items-start gap-3 p-3 rounded-xl bg-white/70 hover:bg-white border border-[#D8E4CA]/50 hover:border-[#48592A]/40 transition-all duration-200 shadow-2xs leading-snug"
+                          >
+                            <span className="w-5 h-5 rounded-full bg-[#E4ECDC] text-[#2C3E14] flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                              <Check className="w-3 h-3 stroke-[2.5]" />
+                            </span>
+                            <span className="font-semibold text-[#1A1917]">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Bottom Helper Strip */}
+                    <div className="mt-6 pt-4 border-t border-[#D8E4CA]/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[#2A3416]">
+                      <div className="flex items-center gap-2 text-olive-900 font-medium">
+                        <span className="w-1.5 h-1.5 rounded-full bg-olive-600" />
+                        <span>Need higher capital contribution or state stamp duty estimate?</span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => openCostEstimator({ entityType: "llp" })}
+                        className="text-olive-800 hover:text-olive-950 font-bold underline inline-flex items-center gap-1 cursor-pointer"
+                      >
+                        <span>Calculate exact state fee</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </button>
+                    </div>
+
                   </div>
+
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full">
-                  <button
-                    onClick={() => navigateToApp(plan.serviceName)}
-                    className="flex-1 w-full py-3.5 px-4 rounded-xl font-bold text-[13.5px] bg-[#2E4218] hover:bg-[#1E2E0F] text-white transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-2 shadow-md hover:shadow-xl transform hover:scale-[1.01] active:scale-[0.99]"
-                  >
-                    <span>Opt Service</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => talkToExpert(plan.serviceName)}
-                    className="w-full sm:w-auto py-3.5 px-4 rounded-xl font-semibold text-[13.5px] bg-white hover:bg-olive-50 text-[#2E4218] border border-[#2E4218]/40 transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-1.5 shadow-xs"
-                  >
-                    <Headphones className="w-4 h-4 text-[#2E4218]" />
-                    <span>Talk to Expert</span>
-                  </button>
-                </div>
               </div>
             ))}
           </div>
