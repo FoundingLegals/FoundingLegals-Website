@@ -5,6 +5,7 @@ import {
   Menu,
   X,
   ChevronDown,
+  ChevronRight,
   Shield,
   FileText,
   Building2,
@@ -392,9 +393,12 @@ export default function Header() {
                     </div>
 
                     <div className="grid grid-cols-3 divide-x divide-brown-100/50 p-8 gap-0">
-                      {sections.map((section) => (
+                      {sections.map((section, sIdx) => (
                         <div key={section.title} className="px-6 first:pl-0 last:pr-0">
-                          <div className="flex items-center gap-2.5 mb-2">
+                          <div
+                            className="animate-item-stagger flex items-center gap-2.5 mb-2"
+                            style={{ animationDelay: `${sIdx * 50}ms` }}
+                          >
                             <div className="w-8 h-8 rounded-lg bg-olive-600/10 flex items-center justify-center">
                               <section.icon className="w-4 h-4 text-olive-600" />
                             </div>
@@ -402,20 +406,27 @@ export default function Header() {
                               {section.title}
                             </h3>
                           </div>
-                          <p className="text-[12px] text-brown-400 leading-relaxed mb-5 pl-[42px]">
+                          <p
+                            className="animate-item-stagger text-[12px] text-brown-400 leading-relaxed mb-5 pl-[42px]"
+                            style={{ animationDelay: `${sIdx * 50 + 25}ms` }}
+                          >
                             {section.description}
                           </p>
 
-                          <div className="space-y-0.5">
-                            {section.items.map((item) => (
+                          <div className="space-y-1">
+                            {section.items.map((item, iIdx) => (
                               <a
                                 key={item.name}
                                 href={item.href}
-                                className="flex items-center gap-2 px-3 py-[6px] -mx-1 rounded-lg text-[12.5px] font-medium text-brown-600 hover:text-brown-900 hover:bg-cream transition-colors duration-150"
+                                style={{ animationDelay: `${sIdx * 40 + (iIdx + 1) * 35}ms` }}
+                                className="animate-item-stagger group flex items-center justify-between px-3 py-1.5 -mx-1 rounded-xl text-[12.5px] font-medium text-brown-700 hover:text-olive-950 hover:bg-[#F6F8F0] border border-transparent hover:border-olive-200/50 transition-all duration-200"
                               >
-                                {item.name}
+                                <span className="flex items-center gap-2">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-olive-400 group-hover:bg-olive-700 transition-colors shrink-0" />
+                                  <span>{item.name}</span>
+                                </span>
                                 {"isNew" in item && item.isNew && (
-                                  <span className="text-[9px] font-bold uppercase tracking-widest bg-lime-bg text-olive-700 px-1.5 py-0.5 rounded-full">
+                                  <span className="text-[9px] font-bold uppercase tracking-widest bg-lime-bg text-olive-800 px-1.5 py-0.5 rounded-full border border-olive-200/60 shadow-2xs">
                                     New
                                   </span>
                                 )}
@@ -462,34 +473,47 @@ export default function Header() {
                         <button
                           key={category.id}
                           onMouseEnter={() => setActiveServiceCategory(category.id)}
-                          className={`w-full text-left px-4 py-2.5 rounded-xl text-[12.5px] font-bold transition-all leading-snug ${
+                          onClick={() => setActiveServiceCategory(category.id)}
+                          className={`w-full text-left px-4 py-2.5 rounded-xl text-[12.5px] font-bold transition-all leading-snug flex items-center justify-between cursor-pointer ${
                             activeServiceCategory === category.id
                               ? "bg-[#5C6F2D] text-white shadow-sm"
                               : "text-brown-700 hover:bg-brown-100/30"
                           }`}
                         >
-                          {category.name}
+                          <span>{category.name}</span>
+                          {activeServiceCategory === category.id && (
+                            <ChevronRight className="w-3.5 h-3.5 text-white/90 shrink-0" />
+                          )}
                         </button>
                       ))}
                     </div>
 
-                    {/* Right Pane (Dynamic Contents) */}
+                    {/* Right Pane (Dynamic Contents with Staggered Transition) */}
                     <div className="col-span-8 p-6 max-h-[460px] overflow-y-auto bg-white text-left">
                       {SERVICE_CATEGORIES.map((category) => {
                         if (activeServiceCategory !== category.id) return null;
                         return (
                           <div key={category.id} className="space-y-4">
-                            <h4 className="text-[12px] font-bold uppercase tracking-wider text-[#5C6F2D] border-b border-brown-100/40 pb-2">
-                              {category.fullName}
-                            </h4>
-                            <div className="grid grid-cols-2 gap-y-3.5 gap-x-6">
-                              {category.services.map((s) => (
+                            <div className="animate-item-stagger" style={{ animationDelay: "0ms" }}>
+                              <h4 className="text-[12px] font-bold uppercase tracking-wider text-[#5C6F2D] border-b border-brown-100/40 pb-2 flex items-center justify-between">
+                                <span>{category.fullName}</span>
+                                <span className="text-[10.5px] font-semibold text-olive-800 bg-olive-50 px-2.5 py-0.5 rounded-full border border-olive-200/50 normal-case">
+                                  {category.services.length} services
+                                </span>
+                              </h4>
+                            </div>
+                            <div className="grid grid-cols-2 gap-y-2 gap-x-4">
+                              {category.services.map((s, idx) => (
                                 <a
                                   key={s.name}
                                   href={s.href}
-                                  className="text-[12.5px] font-medium text-brown-600 hover:text-olive-700 transition-colors leading-tight py-1"
+                                  style={{ animationDelay: `${(idx + 1) * 35}ms` }}
+                                  className="animate-item-stagger group flex items-start gap-2.5 p-2 rounded-xl hover:bg-[#F6F8F0] border border-transparent hover:border-olive-200/60 transition-all duration-200 text-left"
                                 >
-                                  {s.name}
+                                  <span className="w-1.5 h-1.5 rounded-full bg-olive-400 group-hover:bg-olive-700 transition-colors mt-1.5 shrink-0" />
+                                  <span className="text-[12.5px] font-medium text-brown-700 group-hover:text-olive-900 group-hover:font-semibold transition-colors leading-snug">
+                                    {s.name}
+                                  </span>
                                 </a>
                               ))}
                             </div>
@@ -534,25 +558,32 @@ export default function Header() {
                         <button
                           key={category.id}
                           onMouseEnter={() => setActiveLegalCategory(category.id)}
-                          className={`w-full text-left px-4 py-2.5 rounded-xl text-[12.5px] font-bold transition-all leading-snug ${
+                          onClick={() => setActiveLegalCategory(category.id)}
+                          className={`w-full text-left px-4 py-2.5 rounded-xl text-[12.5px] font-bold transition-all leading-snug flex items-center justify-between cursor-pointer ${
                             activeLegalCategory === category.id
                               ? "bg-[#5C6F2D] text-white shadow-sm"
                               : "text-brown-700 hover:bg-brown-100/30"
                           }`}
                         >
-                          {category.name}
+                          <span>{category.name}</span>
+                          {activeLegalCategory === category.id && (
+                            <ChevronRight className="w-3.5 h-3.5 text-white/90 shrink-0" />
+                          )}
                         </button>
                       ))}
                     </div>
 
-                    {/* Right Pane (Dynamic Contents) */}
+                    {/* Right Pane (Dynamic Contents with Staggered Transition) */}
                     <div className="col-span-8 p-6 max-h-[460px] overflow-y-auto bg-white text-left flex flex-col justify-between">
                       <div>
                         {LEGAL_SERVICE_CATEGORIES.map((category) => {
                           if (activeLegalCategory !== category.id) return null;
                           return (
                             <div key={category.id} className="space-y-4">
-                              <div className="flex items-center justify-between border-b border-brown-100/40 pb-2">
+                              <div
+                                className="animate-item-stagger flex items-center justify-between border-b border-brown-100/40 pb-2"
+                                style={{ animationDelay: "0ms" }}
+                              >
                                 <h4 className="text-[12px] font-bold uppercase tracking-wider text-[#5C6F2D]">
                                   {category.fullName}
                                 </h4>
@@ -563,14 +594,18 @@ export default function Header() {
                                   Explore All 20+ Agreements →
                                 </a>
                               </div>
-                              <div className="grid grid-cols-2 gap-y-3.5 gap-x-6">
-                                {category.services.map((s) => (
+                              <div className="grid grid-cols-2 gap-y-2 gap-x-4">
+                                {category.services.map((s, idx) => (
                                   <a
                                     key={s.name}
                                     href={s.href}
-                                    className="text-[12.5px] font-medium text-brown-600 hover:text-olive-700 transition-colors leading-tight py-1"
+                                    style={{ animationDelay: `${(idx + 1) * 35}ms` }}
+                                    className="animate-item-stagger group flex items-start gap-2.5 p-2 rounded-xl hover:bg-[#F6F8F0] border border-transparent hover:border-olive-200/60 transition-all duration-200 text-left"
                                   >
-                                    {s.name}
+                                    <span className="w-1.5 h-1.5 rounded-full bg-olive-400 group-hover:bg-olive-700 transition-colors mt-1.5 shrink-0" />
+                                    <span className="text-[12.5px] font-medium text-brown-700 group-hover:text-olive-900 group-hover:font-semibold transition-colors leading-snug">
+                                      {s.name}
+                                    </span>
                                   </a>
                                 ))}
                               </div>
