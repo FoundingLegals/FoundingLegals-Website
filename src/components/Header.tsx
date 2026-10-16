@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import {
   Menu,
   X,
@@ -327,13 +328,13 @@ export default function Header() {
       >
         <div className="flex items-center justify-between h-[54px] sm:h-[60px] px-4 sm:px-6 lg:px-7">
           {/* Logo */}
-          <a href="/" className="flex items-center shrink-0 group">
+          <Link href="/" className="flex items-center shrink-0 group">
             <img
               src="/founding-legals-logo.png"
               alt="Founding Legals"
               className="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center h-full gap-0.5 sm:gap-1">
@@ -365,7 +366,7 @@ export default function Header() {
                 <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1 w-full max-w-[880px] z-50">
                   <div className="bg-white rounded-2xl shadow-[0_16px_48px_rgba(43,39,35,0.14)] border border-brown-100/50 animate-dropdown overflow-hidden">
                     {/* Centered Luxury Header Banner above Start, Compliance, and Raise */}
-                    <div className="px-8 py-6 border-b border-brown-100/50 bg-gradient-to-b from-[#FAFBF8] via-white to-[#F7F9F3] text-center relative">
+                    <div className="px-8 py-5 border-b border-brown-100/50 bg-gradient-to-b from-[#FAFBF8] via-white to-[#F7F9F3] text-center relative">
                       <div className="inline-flex items-baseline justify-center font-serif text-[26px] sm:text-[28px] font-bold tracking-tight">
                         <span className="text-[#6EA034]">Founding</span>
                         <span className="text-[#365922]">Legals</span>
@@ -387,9 +388,6 @@ export default function Header() {
                           </svg>
                         </span>
                       </div>
-                      <p className="text-[12.5px] text-gray-500 font-light mt-1.5 max-w-md mx-auto">
-                        Unified operating system to build, manage compliance &amp; raise capital for Indian startups
-                      </p>
                     </div>
 
                     <div className="grid grid-cols-3 divide-x divide-brown-100/50 p-8 gap-0">
@@ -415,9 +413,10 @@ export default function Header() {
 
                           <div className="space-y-1">
                             {section.items.map((item, iIdx) => (
-                              <a
+                              <Link
                                 key={item.name}
                                 href={item.href}
+                                onClick={closeAllDropdowns}
                                 style={{ animationDelay: `${sIdx * 40 + (iIdx + 1) * 35}ms` }}
                                 className="animate-item-stagger group flex items-center justify-between px-3 py-1.5 -mx-1 rounded-xl text-[12.5px] font-medium text-brown-700 hover:text-olive-950 hover:bg-[#F6F8F0] border border-transparent hover:border-olive-200/50 transition-all duration-200"
                               >
@@ -430,7 +429,7 @@ export default function Header() {
                                     New
                                   </span>
                                 )}
-                              </a>
+                              </Link>
                             ))}
                           </div>
                         </div>
@@ -504,9 +503,10 @@ export default function Header() {
                             </div>
                             <div className="grid grid-cols-2 gap-y-2 gap-x-4">
                               {category.services.map((s, idx) => (
-                                <a
+                                <Link
                                   key={s.name}
                                   href={s.href}
+                                  onClick={closeAllDropdowns}
                                   style={{ animationDelay: `${(idx + 1) * 35}ms` }}
                                   className="animate-item-stagger group flex items-start gap-2.5 p-2 rounded-xl hover:bg-[#F6F8F0] border border-transparent hover:border-olive-200/60 transition-all duration-200 text-left"
                                 >
@@ -514,7 +514,7 @@ export default function Header() {
                                   <span className="text-[12.5px] font-medium text-brown-700 group-hover:text-olive-900 group-hover:font-semibold transition-colors leading-snug">
                                     {s.name}
                                   </span>
-                                </a>
+                                </Link>
                               ))}
                             </div>
                           </div>
@@ -587,18 +587,20 @@ export default function Header() {
                                 <h4 className="text-[12px] font-bold uppercase tracking-wider text-[#5C6F2D]">
                                   {category.fullName}
                                 </h4>
-                                <a
+                                <Link
                                   href="/services/LegalServices/agreements"
+                                  onClick={closeAllDropdowns}
                                   className="inline-flex items-center gap-1 text-[11.5px] font-bold text-[#5C6F2D] hover:underline"
                                 >
                                   Explore All 20+ Agreements →
-                                </a>
+                                </Link>
                               </div>
                               <div className="grid grid-cols-2 gap-y-2 gap-x-4">
                                 {category.services.map((s, idx) => (
-                                  <a
+                                  <Link
                                     key={s.name}
                                     href={s.href}
+                                    onClick={closeAllDropdowns}
                                     style={{ animationDelay: `${(idx + 1) * 35}ms` }}
                                     className="animate-item-stagger group flex items-start gap-2.5 p-2 rounded-xl hover:bg-[#F6F8F0] border border-transparent hover:border-olive-200/60 transition-all duration-200 text-left"
                                   >
@@ -606,7 +608,7 @@ export default function Header() {
                                     <span className="text-[12.5px] font-medium text-brown-700 group-hover:text-olive-900 group-hover:font-semibold transition-colors leading-snug">
                                       {s.name}
                                     </span>
-                                  </a>
+                                  </Link>
                                 ))}
                               </div>
                             </div>
@@ -619,9 +621,9 @@ export default function Header() {
                           <Sparkles className="w-3.5 h-3.5 text-amber-600" />
                           Need a custom legal agreement tailored by senior advocate experts?
                         </span>
-                        <a href="/contact" className="font-bold text-[#5C6F2D] hover:underline">
+                        <Link href="/contact" onClick={closeAllDropdowns} className="font-bold text-[#5C6F2D] hover:underline">
                           Request Custom Legal Drafting →
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -630,20 +632,22 @@ export default function Header() {
             </div>
 
             {/* Static Pricing & Contact items */}
-            <a
+            <Link
               href="/pricing"
+              onClick={closeAllDropdowns}
               onMouseEnter={closeAllDropdowns}
               className="px-3 py-[6px] text-[12.5px] font-semibold text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
             >
               Pricing
-            </a>
-            <a
+            </Link>
+            <Link
               href="/contact"
+              onClick={closeAllDropdowns}
               onMouseEnter={closeAllDropdowns}
               className="px-3 py-[6px] text-[12.5px] font-semibold text-brown-600 hover:bg-cream hover:text-brown-800 rounded-full transition-all duration-200"
             >
               Contact
-            </a>
+            </Link>
 
             {/* 4. Company Dropdown */}
             <div
@@ -671,35 +675,39 @@ export default function Header() {
               {companyOpen && (
                 <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1 z-50">
                   <div className="bg-[#f5f1e6] rounded-[20px] shadow-[0_12px_40px_rgba(43,39,35,0.08)] border border-brown-200/50 animate-dropdown flex items-center gap-1 px-2.5 py-2">
-                    <a
+                    <Link
                       href="/company/about-us"
+                      onClick={closeAllDropdowns}
                       className="px-3.5 py-1.5 text-[12.5px] font-semibold text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap"
                     >
                       About us
-                    </a>
+                    </Link>
                     <div className="w-px h-4 bg-brown-300/40" />
-                    <a
+                    <Link
                       href="/company/careers"
+                      onClick={closeAllDropdowns}
                       className="px-3.5 py-1.5 text-[12.5px] font-semibold text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap"
                     >
                       Careers
-                    </a>
+                    </Link>
                     <div className="w-px h-4 bg-brown-300/40" />
-                    <a
+                    <Link
                       href="/company/partnership"
+                      onClick={closeAllDropdowns}
                       className="px-3.5 py-1.5 text-[12.5px] font-semibold text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap flex items-center gap-1.5"
                     >
                       <Handshake className="w-3.5 h-3.5 text-olive-600" />
                       Partnership
-                    </a>
+                    </Link>
                     <div className="w-px h-4 bg-brown-300/40" />
-                    <a
+                    <Link
                       href="/blogs"
+                      onClick={closeAllDropdowns}
                       className="px-3.5 py-1.5 text-[12.5px] font-semibold text-[#33312c] hover:text-olive-700 hover:bg-white/60 rounded-xl transition-all duration-200 whitespace-nowrap flex items-center gap-1.5"
                     >
                       <BookOpen className="w-3.5 h-3.5 text-olive-600" />
                       Blogs
-                    </a>
+                    </Link>
                   </div>
                 </div>
               )}
@@ -808,14 +816,14 @@ export default function Header() {
                         <span className="text-[11px] font-bold text-brown-400 uppercase tracking-wider">{sec.title}</span>
                         <div className="pl-2 space-y-1">
                           {sec.items.map((item) => (
-                            <a
+                            <Link
                               key={item.name}
                               href={item.href}
                               onClick={() => setIsMobileOpen(false)}
                               className="block py-1.5 text-[13px] font-medium text-brown-600 hover:text-brown-900"
                             >
                               {item.name}
-                            </a>
+                            </Link>
                           ))}
                         </div>
                       </div>
@@ -858,14 +866,14 @@ export default function Header() {
                         {mobileActiveSub === category.id && (
                           <div className="pl-3 space-y-2 max-h-[250px] overflow-y-auto">
                             {category.services.map((item) => (
-                              <a
+                              <Link
                                 key={item.name}
                                 href={item.href}
                                 onClick={() => setIsMobileOpen(false)}
                                 className="block py-1 text-[13px] font-medium text-brown-600"
                               >
                                 {item.name}
-                              </a>
+                              </Link>
                             ))}
                           </div>
                         )}
@@ -909,14 +917,14 @@ export default function Header() {
                         {mobileActiveSub === category.id && (
                           <div className="pl-3 space-y-2 max-h-[250px] overflow-y-auto">
                             {category.services.map((item) => (
-                              <a
+                              <Link
                                 key={item.name}
                                 href={item.href}
                                 onClick={() => setIsMobileOpen(false)}
                                 className="block py-1 text-[13px] font-medium text-brown-600 hover:text-brown-900"
                               >
                                 {item.name}
-                              </a>
+                              </Link>
                             ))}
                           </div>
                         )}
@@ -930,48 +938,48 @@ export default function Header() {
 
             {/* Other Mobile Nav Items */}
             <div className="mt-6 pt-4 border-t border-brown-200/50 px-2 space-y-1 text-left">
-              <a
+              <Link
                 href="/company/about-us"
                 onClick={() => setIsMobileOpen(false)}
                 className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 About Us
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/company/careers"
                 onClick={() => setIsMobileOpen(false)}
                 className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Careers
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/company/partnership"
                 onClick={() => setIsMobileOpen(false)}
                 className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Partnership
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/blogs"
                 onClick={() => setIsMobileOpen(false)}
                 className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Blogs
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/pricing"
                 onClick={() => setIsMobileOpen(false)}
                 className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Pricing
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 onClick={() => setIsMobileOpen(false)}
                 className="block px-4 py-3 text-[14px] font-medium text-brown-700 hover:text-brown-900 rounded-xl hover:bg-cream transition-colors"
               >
                 Contact
-              </a>
+              </Link>
               <button
                 type="button"
                 onClick={() => {

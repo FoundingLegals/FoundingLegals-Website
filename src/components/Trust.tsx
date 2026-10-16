@@ -6,6 +6,7 @@ import {
   Eye,
   CheckCircle2,
 } from "lucide-react";
+import Link from "next/link";
 import { useReveal } from "@/lib/useReveal";
 
 const badges = [
@@ -92,13 +93,13 @@ export default function Trust() {
                 Founding Legals is the toolkit we wish someone had handed
                 us on incorporation day.
               </p>
-              <a
+              <Link
                 href="/pricing"
                 className="inline-flex items-center gap-2 px-8 py-3.5 bg-lime-bg text-olive-800 font-semibold rounded-full hover:bg-white transition-all"
               >
                 <Eye className="w-5 h-5" />
                 See Plans & Credits
-              </a>
+              </Link>
             </div>
           </div>
         </div>

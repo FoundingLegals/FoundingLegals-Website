@@ -1,6 +1,7 @@
 "use client";
 
 import { Linkedin, Instagram, Youtube } from "lucide-react";
+import Link from "next/link";
 
 const footerLinks = {
   Services: [
@@ -37,13 +38,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-3">
-            <a href="/" className="flex items-center mb-6 group">
+            <Link href="/" className="flex items-center mb-6 group">
               <img
                 src="/founding-legals-logo.png"
                 alt="Founding Legals"
                 className="h-14 sm:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
-            </a>
+            </Link>
             <p className="text-sm text-brown-700 font-medium leading-relaxed max-w-xs mb-6">
               India&apos;s all-in-one legal and compliance platform built for founders. From incorporation to fundraising, we handle the paperwork so you can focus on building.
             </p>
@@ -104,12 +105,21 @@ export default function Footer() {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-brown-700 hover:text-olive-700 font-medium transition-colors"
-                    >
-                      {link.name}
-                    </a>
+                    {link.href.startsWith("#") ? (
+                      <a
+                        href={link.href}
+                        className="text-sm text-brown-700 hover:text-olive-700 font-medium transition-colors"
+                      >
+                        {link.name}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-sm text-brown-700 hover:text-olive-700 font-medium transition-colors"
+                      >
+                        {link.name}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -135,21 +145,21 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Founding Legals (Arvya Tech Pvt. Ltd.) All rights reserved.
           </span>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-brown-600 font-medium">
-            <a href="/privacy-policy" className="hover:text-olive-700 transition-colors">
+            <Link href="/privacy-policy" className="hover:text-olive-700 transition-colors">
               Privacy Policy
-            </a>
-            <a href="/terms" className="hover:text-olive-700 transition-colors">
+            </Link>
+            <Link href="/terms" className="hover:text-olive-700 transition-colors">
               Terms &amp; Conditions
-            </a>
-            <a href="/cookie-policy" className="hover:text-olive-700 transition-colors">
+            </Link>
+            <Link href="/cookie-policy" className="hover:text-olive-700 transition-colors">
               Cookie Policy
-            </a>
-            <a href="/refund-policy" className="hover:text-olive-700 transition-colors">
+            </Link>
+            <Link href="/refund-policy" className="hover:text-olive-700 transition-colors">
               Refund &amp; Cancellation Policy
-            </a>
-            <a href="/contact" className="hover:text-olive-700 transition-colors">
+            </Link>
+            <Link href="/contact" className="hover:text-olive-700 transition-colors">
               Help Center
-            </a>
+            </Link>
             <button
               type="button"
               onClick={() => {
