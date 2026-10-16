@@ -363,35 +363,32 @@ export default function Header() {
               {megaOpen && (
                 <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1 w-full max-w-[880px] z-50">
                   <div className="bg-white rounded-2xl shadow-[0_16px_48px_rgba(43,39,35,0.14)] border border-brown-100/50 animate-dropdown overflow-hidden">
-                    {/* Top Header Banner above Start, Compliance, and Raise */}
-                    <div className="px-8 py-5 border-b border-brown-100/60 bg-gradient-to-r from-[#FAFBF8] via-white to-[#F4F7EE] flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-olive-700/10 border border-olive-700/15 flex items-center justify-center text-olive-800 shadow-2xs">
-                          <Rocket className="w-5 h-5 text-olive-800" />
-                        </div>
-                        <div>
-                          <div className="flex items-center gap-2.5">
-                            <h2 className="font-serif text-[18px] font-bold text-[#1A1917] tracking-tight">
-                              Founding Legals Founders OS
-                            </h2>
-                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-lime-bg text-olive-900 border border-olive-200/60">
-                              <Sparkles className="w-2.5 h-2.5 text-olive-700" />
-                              Platform Suite
-                            </span>
-                          </div>
-                          <p className="text-[12.5px] text-gray-500 font-light mt-0.5">
-                            Unified operating system to build, manage compliance, and raise capital for Indian startups
-                          </p>
-                        </div>
+                    {/* Centered Luxury Header Banner above Start, Compliance, and Raise */}
+                    <div className="px-8 py-6 border-b border-brown-100/50 bg-gradient-to-b from-[#FAFBF8] via-white to-[#F7F9F3] text-center relative">
+                      <div className="inline-flex items-baseline justify-center font-serif text-[26px] sm:text-[28px] font-bold tracking-tight">
+                        <span className="text-[#6EA034]">Founding</span>
+                        <span className="text-[#365922]">Legals</span>
+                        <span className="text-[#1A1917] ml-2 font-bold">Founder&apos;s</span>
+                        <span className="text-[#264417] italic font-bold ml-1.5 relative inline-block">
+                          OS
+                          <svg
+                            className="absolute -bottom-1 left-0 w-full h-[5px] text-[#9CB57F] overflow-visible"
+                            viewBox="0 0 34 5"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M1 4C10 1.2 24 1.2 33 4"
+                              stroke="currentColor"
+                              strokeWidth="2.2"
+                              strokeLinecap="round"
+                            />
+                          </svg>
+                        </span>
                       </div>
-
-                      <a
-                        href="/pricing"
-                        className="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold text-olive-800 hover:text-olive-950 bg-white hover:bg-olive-50 px-3.5 py-1.5 rounded-full border border-olive-200/80 transition-all shadow-2xs"
-                      >
-                        <span>View Plans &amp; Pricing</span>
-                        <ArrowRight className="w-3 h-3" />
-                      </a>
+                      <p className="text-[12.5px] text-gray-500 font-light mt-1.5 max-w-md mx-auto">
+                        Unified operating system to build, manage compliance &amp; raise capital for Indian startups
+                      </p>
                     </div>
 
                     <div className="grid grid-cols-3 divide-x divide-brown-100/50 p-8 gap-0">
@@ -745,18 +742,31 @@ export default function Header() {
                 {openSections.includes("founders") && (
                   <div className="px-4 pb-4 space-y-3.5">
                     {/* Mobile Header Banner */}
-                    <div className="p-3 rounded-xl bg-gradient-to-r from-[#FAFBF8] to-[#F4F7EE] border border-brown-100/60 flex items-center justify-between">
-                      <div>
-                        <p className="text-[12.5px] font-bold text-[#1A1917]">Founding Legals Founders OS</p>
-                        <p className="text-[10.5px] text-gray-500 font-light">Startup Operating System Suite</p>
+                    <div className="p-4 rounded-xl bg-gradient-to-b from-[#FAFBF8] to-[#F7F9F3] border border-brown-100/60 text-center">
+                      <div className="inline-flex items-baseline justify-center font-serif text-[19px] font-bold tracking-tight">
+                        <span className="text-[#6EA034]">Founding</span>
+                        <span className="text-[#365922]">Legals</span>
+                        <span className="text-[#1A1917] ml-1.5 font-bold">Founder&apos;s</span>
+                        <span className="text-[#264417] italic font-bold ml-1 relative inline-block">
+                          OS
+                          <svg
+                            className="absolute -bottom-0.5 left-0 w-full h-[4px] text-[#9CB57F] overflow-visible"
+                            viewBox="0 0 34 5"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M1 4C10 1.2 24 1.2 33 4"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                            />
+                          </svg>
+                        </span>
                       </div>
-                      <a
-                        href="/pricing"
-                        onClick={() => setIsMobileOpen(false)}
-                        className="text-[11px] font-bold text-olive-800 bg-white px-2.5 py-1 rounded-full border border-olive-200 shadow-2xs"
-                      >
-                        Plans →
-                      </a>
+                      <p className="text-[11px] text-[#6B665F] font-light mt-1">
+                        Startup Operating System Suite
+                      </p>
                     </div>
                     {sections.map((sec) => (
                       <div key={sec.title} className="space-y-1">
