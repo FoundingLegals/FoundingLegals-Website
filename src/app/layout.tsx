@@ -24,6 +24,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.foundinglegals.com"),
   title:
     "FoundingLegals    Complete Startup Legal & Compliance Platform for India",
   description:
