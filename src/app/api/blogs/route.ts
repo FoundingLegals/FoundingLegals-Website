@@ -19,10 +19,14 @@ export async function GET(req: NextRequest) {
     const includeDrafts = searchParams.get("includeDrafts") === "true";
     const forceRevalidate = searchParams.get("revalidate") === "true" || searchParams.get("refresh") === "true";
 
+    const slug = searchParams.get("slug");
     if (forceRevalidate) {
       clearMemoryBlogsCache();
       try {
         revalidatePath("/blogs");
+        if (slug) {
+          revalidatePath(`/blogs/${slug}`);
+        }
       } catch {}
     }
 

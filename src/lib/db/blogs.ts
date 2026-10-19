@@ -28,6 +28,99 @@ declare global {
   var __fl_blogs_table_ready: boolean | undefined;
 }
 
+const BACKEND_API_BASE = (process.env.NEXT_PUBLIC_APP_URL || "https://app.foundinglegals.com").replace(/\/+$/, "");
+
+/**
+ * Maps raw backend API blog object to BlogPost domain model
+ */
+function apiBlogToBlogPost(b: any): BlogPost {
+  let tags: string[] = [];
+  if (Array.isArray(b.tags)) {
+    tags = b.tags;
+  } else if (typeof b.tags === "string") {
+    try {
+      tags = JSON.parse(b.tags);
+    } catch {
+      tags = b.tags.split(",").map((s: string) => s.trim()).filter(Boolean);
+    }
+  }
+
+  return {
+    id: String(b.id ? (String(b.id).startsWith("saas_") ? b.id : `saas_${b.id}`) : `blog_${Date.now()}`),
+    title: b.title || "Untitled Blog",
+    slug: b.slug,
+    excerpt: b.summary || b.excerpt || "",
+    content: b.content || "",
+    coverImage: b.cover_image || b.coverImage || "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80",
+    category: b.category || "Legal Insights",
+    tags: Array.isArray(tags) && tags.length > 0 ? tags : ["Startups", "Legal"],
+    authorName: b.author || b.author_name || "Founding Legals Editorial Team",
+    authorRole: b.author_role || "Senior Corporate Counsel",
+    authorAvatar: b.author_avatar || "",
+    readTime: b.read_time || "5 min read",
+    published: b.status === "published" || b.published === true,
+    featured: Boolean(b.featured),
+    views: Number(b.views_count) || Number(b.views) || 0,
+    createdAt: b.created_at ? new Date(b.created_at).toISOString() : new Date().toISOString(),
+    updatedAt: b.updated_at ? new Date(b.updated_at).toISOString() : new Date().toISOString(),
+    publishedAt: b.published_at ? new Date(b.published_at).toISOString() : (b.created_at ? new Date(b.created_at).toISOString() : ""),
+  };
+}
+
+/**
+ * Fetch all published blogs live from droplet backend API
+ */
+async function fetchBlogsFromBackendApi(): Promise<BlogPost[] | null> {
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 4000);
+
+    const res = await fetch(`${BACKEND_API_BASE}/api/v1/blogs`, {
+      signal: controller.signal,
+      headers: { Accept: "application/json" },
+      cache: "no-store",
+    });
+    clearTimeout(timer);
+
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (data && Array.isArray(data.blogs) && data.blogs.length > 0) {
+      return data.blogs.map(apiBlogToBlogPost);
+    }
+    return null;
+  } catch (err: any) {
+    console.warn("[fetchBlogsFromBackendApi Warning]:", err?.message || err);
+    return null;
+  }
+}
+
+/**
+ * Fetch a single blog by slug live from droplet backend API
+ */
+async function fetchSingleBlogFromBackendApi(slug: string): Promise<BlogPost | null> {
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 3500);
+
+    const res = await fetch(`${BACKEND_API_BASE}/api/v1/blogs/${encodeURIComponent(slug)}`, {
+      signal: controller.signal,
+      headers: { Accept: "application/json" },
+      cache: "no-store",
+    });
+    clearTimeout(timer);
+
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (data && data.blog) {
+      return apiBlogToBlogPost(data.blog);
+    }
+    return null;
+  } catch (err: any) {
+    console.warn("[fetchSingleBlogFromBackendApi Warning]:", err?.message || err);
+    return null;
+  }
+}
+
 /**
  * Returns singleton PostgreSQL connection pool optimized for Vercel / serverless deployments
  */
@@ -172,11 +265,12 @@ function dedupeBlogs(posts: BlogPost[]): BlogPost[] {
   return result;
 }
 
-// ── In-Memory and Local Storage Fallbacks with 60s TTL ──
+// -------------------------------------------------------------
+// In-Memory and Local Storage Fallbacks with 60s TTL
+// -------------------------------------------------------------
 function getMemoryBlogs(): BlogPost[] | null {
   const g = globalThis as any;
   if (g.__fl_blogs_cache && g.__fl_blogs_cache_time) {
-    // 60-second in-memory TTL
     if (Date.now() - g.__fl_blogs_cache_time < 60000) {
       return g.__fl_blogs_cache;
     }
@@ -263,14 +357,26 @@ async function getFallbackBlogs(): Promise<BlogPost[]> {
   return mem || [];
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// =============================================================
 // CRUD OPERATIONS
-// ─────────────────────────────────────────────────────────────────────────────
+// =============================================================
 
 /**
  * Fetches all blog posts (both published and drafts)
  */
 export async function getAllBlogs(): Promise<BlogPost[]> {
+  // 1. Live Fetch from backend droplet API
+  try {
+    const apiBlogs = await fetchBlogsFromBackendApi();
+    if (apiBlogs && apiBlogs.length > 0) {
+      const fallback = await getFallbackBlogs();
+      const combined = dedupeBlogs([...apiBlogs, ...fallback]);
+      setMemoryBlogs(combined);
+      saveLocalFileCache(combined).catch(() => {});
+      return combined;
+    }
+  } catch {}
+
   const mem = getMemoryBlogs();
   if (mem && mem.length > 0) {
     return mem;
@@ -295,7 +401,7 @@ export async function getAllBlogs(): Promise<BlogPost[]> {
       FROM blogs
 
       ORDER BY created_at DESC
-    `, [], 1800);
+    `, [], 3500);
 
     if (result && Array.isArray(result.rows) && result.rows.length > 0) {
       const posts = dedupeBlogs(result.rows.map(rowToBlogPost));
@@ -314,7 +420,21 @@ export async function getAllBlogs(): Promise<BlogPost[]> {
  * Fetches only published blog posts for public /blogs
  */
 export async function getPublishedBlogs(): Promise<BlogPost[]> {
-  // 1. Fast in-memory check (0ms response)
+  // 1. Live Fetch from droplet backend API (instant real-time view of newly created Super Admin blogs)
+  try {
+    const apiBlogs = await fetchBlogsFromBackendApi();
+    if (apiBlogs && apiBlogs.length > 0) {
+      const fallback = await getFallbackBlogs();
+      const combined = dedupeBlogs([...apiBlogs, ...fallback])
+        .filter((b) => b.published === true)
+        .sort((a, b) => new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime());
+      setMemoryBlogs(combined);
+      saveLocalFileCache(combined).catch(() => {});
+      return combined;
+    }
+  } catch {}
+
+  // 2. Fast in-memory check
   const mem = getMemoryBlogs();
   if (mem && mem.length > 0) {
     return mem
@@ -322,6 +442,7 @@ export async function getPublishedBlogs(): Promise<BlogPost[]> {
       .sort((a, b) => new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime());
   }
 
+  // 3. Direct DB query fallback
   try {
     const result = await queryDb(`
       SELECT 
@@ -343,7 +464,7 @@ export async function getPublishedBlogs(): Promise<BlogPost[]> {
       WHERE published = true
 
       ORDER BY created_at DESC
-    `, [], 1800);
+    `, [], 3500);
 
     if (result && Array.isArray(result.rows) && result.rows.length > 0) {
       const posts = dedupeBlogs(result.rows.map(rowToBlogPost));
@@ -355,6 +476,7 @@ export async function getPublishedBlogs(): Promise<BlogPost[]> {
     console.warn("[getPublishedBlogs using fallback]:", err);
   }
 
+  // 4. Local Seed fallback
   const fallback = await getFallbackBlogs();
   return fallback
     .filter((b) => b.published === true)
@@ -367,13 +489,30 @@ export async function getPublishedBlogs(): Promise<BlogPost[]> {
 export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
   const normalized = slug.trim().toLowerCase();
 
-  // 1. Fast in-memory check
+  // 1. Live Fetch from droplet backend API (instant real-time view of newly created Super Admin blogs)
+  try {
+    const apiBlog = await fetchSingleBlogFromBackendApi(normalized);
+    if (apiBlog && apiBlog.published) {
+      const mem = getMemoryBlogs() || [];
+      const idx = mem.findIndex((b) => b.slug.toLowerCase() === normalized);
+      if (idx !== -1) {
+        mem[idx] = apiBlog;
+      } else {
+        mem.unshift(apiBlog);
+      }
+      setMemoryBlogs(mem);
+      return apiBlog;
+    }
+  } catch {}
+
+  // 2. Fast in-memory check
   const mem = getMemoryBlogs();
   if (mem && mem.length > 0) {
     const found = mem.find((b) => b.slug.toLowerCase() === normalized && b.published === true);
     if (found) return found;
   }
 
+  // 3. Direct PostgreSQL Database Query fallback
   try {
     const result = await queryDb(
       `SELECT 
@@ -396,7 +535,7 @@ export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
 
       LIMIT 1`,
       [normalized],
-      1500
+      3500
     );
     if (result && result.rows && result.rows.length > 0) {
       return rowToBlogPost(result.rows[0]);
@@ -414,6 +553,14 @@ export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
  */
 export async function getBlogBySlugAny(slug: string): Promise<BlogPost | null> {
   const normalized = slug.trim().toLowerCase();
+
+  // 1. Live Fetch from backend droplet API
+  try {
+    const apiBlog = await fetchSingleBlogFromBackendApi(normalized);
+    if (apiBlog) {
+      return apiBlog;
+    }
+  } catch {}
 
   const mem = getMemoryBlogs();
   if (mem && mem.length > 0) {
@@ -443,7 +590,7 @@ export async function getBlogBySlugAny(slug: string): Promise<BlogPost | null> {
 
       LIMIT 1`,
       [normalized],
-      1800
+      3500
     );
     if (result && result.rows && result.rows.length > 0) {
       return rowToBlogPost(result.rows[0]);
@@ -486,7 +633,8 @@ export async function incrementBlogViews(slug: string): Promise<void> {
   try {
     await ensureDbTable();
     await queryDb(
-      `UPDATE blogs SET views = COALESCE(views, 0) + 1 WHERE LOWER(slug) = LOWER($1)`,
+      `UPDATE blogs SET views = COALESCE(views, 0) + 1 WHERE LOWER(slug) = LOWER($1);
+       UPDATE legal_saas.website_blogs SET views_count = COALESCE(views_count, 0) + 1 WHERE LOWER(slug) = LOWER($1);`,
       [normalized],
       3000
     );

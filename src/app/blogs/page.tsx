@@ -19,7 +19,8 @@ import {
 import { getPublishedBlogs, BlogPost } from "@/lib/db/blogs";
 import BlogsClientList from "./BlogsClientList";
 
-export const revalidate = 60; // Instant 20ms page transitions with real-time background revalidation
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export const metadata = {
   title: "Blogs & Legal Guides | Founding Legals",

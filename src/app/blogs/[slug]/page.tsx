@@ -22,7 +22,8 @@ import {
 import { getBlogBySlug, getBlogBySlugAny, getPublishedBlogs, BlogPost } from "@/lib/db/blogs";
 import BlogShareBar from "./BlogShareBar";
 
-export const revalidate = 60; // Instant 20ms page loads with real-time background revalidation
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
