@@ -174,23 +174,26 @@ function dedupeBlogs(posts: BlogPost[]): BlogPost[] {
 
 // ── In-Memory and Local Storage Fallbacks with 60s TTL ──
 function getMemoryBlogs(): BlogPost[] | null {
-  if (globalThis.__fl_blogs_cache && globalThis.__fl_blogs_cache_time) {
+  const g = globalThis as any;
+  if (g.__fl_blogs_cache && g.__fl_blogs_cache_time) {
     // 60-second in-memory TTL
-    if (Date.now() - globalThis.__fl_blogs_cache_time < 60000) {
-      return globalThis.__fl_blogs_cache;
+    if (Date.now() - g.__fl_blogs_cache_time < 60000) {
+      return g.__fl_blogs_cache;
     }
   }
   return null;
 }
 
 function setMemoryBlogs(blogs: BlogPost[]) {
-  globalThis.__fl_blogs_cache = blogs;
-  globalThis.__fl_blogs_cache_time = Date.now();
+  const g = globalThis as any;
+  g.__fl_blogs_cache = blogs;
+  g.__fl_blogs_cache_time = Date.now();
 }
 
 export function clearMemoryBlogsCache() {
-  globalThis.__fl_blogs_cache = undefined;
-  globalThis.__fl_blogs_cache_time = undefined;
+  const g = globalThis as any;
+  g.__fl_blogs_cache = undefined;
+  g.__fl_blogs_cache_time = undefined;
 }
 
 const TMP_DATA_DIR = `${os.tmpdir()}/foundinglegals_blogs_data`;
