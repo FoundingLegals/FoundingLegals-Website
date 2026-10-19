@@ -7,6 +7,9 @@ import {
   ChevronUp,
   Plus,
   Minus,
+  Check,
+  Search,
+  MapPin,
 } from "lucide-react";
 import {
   ALL_INDIAN_STATES,
@@ -53,6 +56,29 @@ export default function CostEstimatorModal() {
   );
 
   const modalRef = useRef<HTMLDivElement>(null);
+
+  // Modern state dropdown UI states
+  const [isStateDropdownOpen, setIsStateDropdownOpen] = useState<boolean>(false);
+  const [stateSearchQuery, setStateSearchQuery] = useState<string>("");
+  const stateDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close state dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        stateDropdownRef.current &&
+        !stateDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsStateDropdownOpen(false);
+      }
+    }
+    if (isStateDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isStateDropdownOpen]);
 
   // Listen for global open-cost-estimator event
   useEffect(() => {
@@ -280,25 +306,102 @@ export default function CostEstimatorModal() {
 
               {/* Row 1: State & Number of Directors/Partners */}
               <div className="grid grid-cols-2 gap-3.5">
-                {/* State Dropdown */}
-                <div>
+                {/* State Dropdown (Modern, Searchable & Alphabetical) */}
+                <div ref={stateDropdownRef} className="relative">
                   <label className="block text-[11.5px] font-bold text-olive-900 mb-1.5">
                     State of registered office
                   </label>
-                  <div className="relative">
-                    <select
-                      value={selectedState}
-                      onChange={(e) => setSelectedState(e.target.value)}
-                      className="w-full px-3 py-2.5 bg-[#FAF9F6] border border-brown-200 hover:border-olive-600 focus:border-olive-600 focus:ring-2 focus:ring-olive-500/20 rounded-xl text-xs sm:text-[13px] text-brown-900 font-semibold transition-all cursor-pointer appearance-none pr-8"
-                    >
-                      {ALL_INDIAN_STATES.map((st) => (
-                        <option key={st} value={st}>
-                          {st}
-                        </option>
-                      ))}
-                    </select>
-                    <ChevronDown className="w-4 h-4 text-brown-500 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-                  </div>
+                  
+                  {/* Modern Trigger Button */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsStateDropdownOpen((prev) => !prev);
+                      setStateSearchQuery("");
+                    }}
+                    className={`w-full h-[42px] px-3 bg-[#FAF9F6] border rounded-xl flex items-center justify-between text-xs sm:text-[13px] text-brown-900 font-semibold transition-all cursor-pointer ${
+                      isStateDropdownOpen
+                        ? "border-olive-600 ring-2 ring-olive-500/20 bg-white"
+                        : "border-brown-200 hover:border-olive-600"
+                    }`}
+                  >
+                    <span className="flex items-center gap-1.5 truncate pr-2">
+                      <MapPin className="w-3.5 h-3.5 text-olive-700 shrink-0" />
+                      <span className="truncate">{selectedState}</span>
+                    </span>
+                    <ChevronDown
+                      className={`w-4 h-4 text-brown-500 shrink-0 transition-transform duration-200 ${
+                        isStateDropdownOpen ? "rotate-180 text-olive-700" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {/* Modern Dropdown Popover */}
+                  {isStateDropdownOpen && (
+                    <div className="absolute left-0 right-0 top-full mt-1.5 z-50 bg-white border border-[#E5E1D6] rounded-2xl shadow-xl overflow-hidden animate-in fade-in-0 zoom-in-95 duration-150">
+                      {/* Search Bar inside Dropdown */}
+                      <div className="p-2 border-b border-[#EFECE6] bg-[#FAF9F6]">
+                        <div className="relative flex items-center">
+                          <Search className="w-3.5 h-3.5 text-brown-400 absolute left-2.5 pointer-events-none" />
+                          <input
+                            type="text"
+                            value={stateSearchQuery}
+                            onChange={(e) => setStateSearchQuery(e.target.value)}
+                            placeholder="Search state..."
+                            autoFocus
+                            className="w-full pl-8 pr-7 py-1.5 bg-white border border-brown-200 rounded-lg text-xs text-brown-900 placeholder:text-brown-400 focus:outline-none focus:border-olive-600 focus:ring-1 focus:ring-olive-600 font-medium"
+                          />
+                          {stateSearchQuery && (
+                            <button
+                              type="button"
+                              onClick={() => setStateSearchQuery("")}
+                              className="absolute right-2 text-brown-400 hover:text-brown-700 p-0.5 cursor-pointer"
+                            >
+                              <X className="w-3 h-3" />
+                            </button>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Alphabetical State List */}
+                      <div className="max-h-52 overflow-y-auto py-1 divide-y divide-gray-50/50">
+                        {ALL_INDIAN_STATES.filter((st) =>
+                          st.toLowerCase().includes(stateSearchQuery.toLowerCase().trim())
+                        ).length > 0 ? (
+                          ALL_INDIAN_STATES.filter((st) =>
+                            st.toLowerCase().includes(stateSearchQuery.toLowerCase().trim())
+                          ).map((st) => {
+                            const isSelected = selectedState === st;
+                            return (
+                              <button
+                                key={st}
+                                type="button"
+                                onClick={() => {
+                                  setSelectedState(st);
+                                  setIsStateDropdownOpen(false);
+                                  setStateSearchQuery("");
+                                }}
+                                className={`w-full px-3.5 py-2 text-left text-xs sm:text-[13px] flex items-center justify-between transition-colors cursor-pointer ${
+                                  isSelected
+                                    ? "bg-olive-50 text-olive-900 font-bold"
+                                    : "text-[#4A4642] hover:bg-[#F7F6F2] hover:text-[#1A1917] font-medium"
+                                }`}
+                              >
+                                <span>{st}</span>
+                                {isSelected && (
+                                  <Check className="w-3.5 h-3.5 text-olive-700 shrink-0" />
+                                )}
+                              </button>
+                            );
+                          })
+                        ) : (
+                          <div className="px-3 py-4 text-center text-xs text-brown-400">
+                            No state found matching &ldquo;{stateSearchQuery}&rdquo;
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* No. of directors / partners Stepper */}
