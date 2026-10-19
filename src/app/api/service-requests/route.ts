@@ -6,6 +6,12 @@ import {
   CreateServiceRequestInput,
   ServiceCategory,
 } from "@/lib/db/serviceRequests";
+import { isSuperAdminAuthorized } from "@/lib/adminAuth";
+import { handleCorsOptions, withCors } from "@/lib/cors";
+
+export async function OPTIONS(req: NextRequest) {
+  return handleCorsOptions(req);
+}
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -131,27 +137,44 @@ export async function POST(req: NextRequest) {
 
     const saved = await createServiceRequest(input);
 
-    return NextResponse.json(
-      {
-        success: true,
-        message: "Your service request has been received. Our team will contact you shortly.",
-        id: saved.id,
-        service: saved.service_name,
-        category: saved.category,
-      },
-      { status: 201 }
+    return withCors(
+      req,
+      NextResponse.json(
+        {
+          success: true,
+          message: "Your service request has been received. Our team will contact you shortly.",
+          id: saved.id,
+          service: saved.service_name,
+          category: saved.category,
+        },
+        { status: 201 }
+      )
     );
   } catch (error: any) {
     console.error("Error creating service request:", error);
-    return NextResponse.json(
-      { error: error?.message || "Internal server error" },
-      { status: 500 }
+    return withCors(
+      req,
+      NextResponse.json(
+        { error: error?.message || "Internal server error" },
+        { status: 500 }
+      )
     );
   }
 }
 
 export async function GET(req: NextRequest) {
   try {
+    const isAuthorized = await isSuperAdminAuthorized(req);
+    if (!isAuthorized) {
+      return withCors(
+        req,
+        NextResponse.json(
+          { error: "Unauthorized. Super Admin access required." },
+          { status: 401 }
+        )
+      );
+    }
+
     const { searchParams } = new URL(req.url);
     const category = searchParams.get("category");
     const status = searchParams.get("status");
@@ -166,12 +189,18 @@ export async function GET(req: NextRequest) {
       requests = requests.filter((r) => r.status.toLowerCase() === status.toLowerCase());
     }
 
-    return NextResponse.json({
-      success: true,
-      count: requests.length,
-      requests,
-    });
+    return withCors(
+      req,
+      NextResponse.json({
+        success: true,
+        count: requests.length,
+        requests,
+      })
+    );
   } catch (error: any) {
-    return NextResponse.json({ error: error?.message || "Failed to fetch requests" }, { status: 500 });
+    return withCors(
+      req,
+      NextResponse.json({ error: error?.message || "Failed to fetch requests" }, { status: 500 })
+    );
   }
 }

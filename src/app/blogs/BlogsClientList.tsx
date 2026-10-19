@@ -33,28 +33,56 @@ export default function BlogsClientList({
     setBlogsList(initialBlogs);
   }, [initialBlogs]);
 
-  // Client background polling sync for instant reflection
+  // Client-side real-time synchronization on visibility/focus & gentle background interval
   React.useEffect(() => {
     let isMounted = true;
+    let lastSyncTime = Date.now();
+
     const syncBlogs = async () => {
+      // Avoid syncing if tab is in the background
+      if (typeof document !== "undefined" && document.hidden) return;
+
       try {
         const res = await fetch("/api/blogs?t=" + Date.now(), { cache: "no-store" });
         if (res.ok) {
           const data = await res.json();
           if (data.blogs && Array.isArray(data.blogs) && isMounted) {
             setBlogsList(data.blogs);
+            lastSyncTime = Date.now();
           }
         }
       } catch {}
     };
 
-    syncBlogs();
-    const timer = setInterval(syncBlogs, 8000);
+    // If initialBlogs was empty, fetch immediately
+    if (!initialBlogs || initialBlogs.length === 0) {
+      syncBlogs();
+    }
+
+    // Refresh when user returns to this tab / window focus if older than 30s
+    const handleFocus = () => {
+      if (Date.now() - lastSyncTime > 30000) {
+        syncBlogs();
+      }
+    };
+
+    window.addEventListener("focus", handleFocus);
+    document.addEventListener("visibilitychange", handleFocus);
+
+    // Heartbeat sync every 45 seconds while active
+    const timer = setInterval(() => {
+      if (typeof document !== "undefined" && !document.hidden) {
+        syncBlogs();
+      }
+    }, 45000);
+
     return () => {
       isMounted = false;
+      window.removeEventListener("focus", handleFocus);
+      document.removeEventListener("visibilitychange", handleFocus);
       clearInterval(timer);
     };
-  }, []);
+  }, [initialBlogs]);
 
   const filteredBlogs = useMemo(() => {
     return blogsList.filter((blog) => {

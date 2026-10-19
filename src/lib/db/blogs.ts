@@ -133,39 +133,64 @@ function rowToBlogPost(r: any): BlogPost {
     try {
       tags = JSON.parse(r.tags);
     } catch {
-      tags = [r.tags];
+      tags = r.tags.split(",").map((s: string) => s.trim()).filter(Boolean);
     }
   }
 
   return {
-    id: r.id,
+    id: String(r.id),
     title: r.title,
     slug: r.slug,
-    excerpt: r.excerpt || "",
+    excerpt: r.excerpt || r.summary || "",
     content: r.content || "",
-    coverImage: r.cover_image || "",
-    category: r.category || "Legal & Compliance",
-    tags: Array.isArray(tags) ? tags : [],
-    authorName: r.author_name || "Founding Legals Legal Desk",
+    coverImage: r.cover_image || "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80",
+    category: r.category || "Legal Insights",
+    tags: Array.isArray(tags) && tags.length > 0 ? tags : ["Startups", "Legal"],
+    authorName: r.author_name || r.author || "Founding Legals Legal Desk",
     authorRole: r.author_role || "Senior Corporate Counsel",
     authorAvatar: r.author_avatar || "",
     readTime: r.read_time || "5 min read",
-    published: Boolean(r.published),
+    published: r.published === true || r.status === "published",
     featured: Boolean(r.featured),
-    views: Number(r.views) || 0,
+    views: Number(r.views) || Number(r.views_count) || 0,
     createdAt: r.created_at ? new Date(r.created_at).toISOString() : new Date().toISOString(),
     updatedAt: r.updated_at ? new Date(r.updated_at).toISOString() : new Date().toISOString(),
-    publishedAt: r.published_at ? new Date(r.published_at).toISOString() : "",
+    publishedAt: r.published_at ? new Date(r.published_at).toISOString() : (r.created_at ? new Date(r.created_at).toISOString() : ""),
   };
 }
 
-// ── In-Memory and Local Storage Fallbacks ──
+function dedupeBlogs(posts: BlogPost[]): BlogPost[] {
+  const seen = new Set<string>();
+  const result: BlogPost[] = [];
+  for (const p of posts) {
+    const slugLower = p.slug.toLowerCase();
+    if (!seen.has(slugLower)) {
+      seen.add(slugLower);
+      result.push(p);
+    }
+  }
+  return result;
+}
+
+// ── In-Memory and Local Storage Fallbacks with 60s TTL ──
 function getMemoryBlogs(): BlogPost[] | null {
-  return globalThis.__fl_blogs_cache || null;
+  if (globalThis.__fl_blogs_cache && globalThis.__fl_blogs_cache_time) {
+    // 60-second in-memory TTL
+    if (Date.now() - globalThis.__fl_blogs_cache_time < 60000) {
+      return globalThis.__fl_blogs_cache;
+    }
+  }
+  return null;
 }
 
 function setMemoryBlogs(blogs: BlogPost[]) {
   globalThis.__fl_blogs_cache = blogs;
+  globalThis.__fl_blogs_cache_time = Date.now();
+}
+
+export function clearMemoryBlogsCache() {
+  globalThis.__fl_blogs_cache = undefined;
+  globalThis.__fl_blogs_cache_time = undefined;
 }
 
 const TMP_DATA_DIR = `${os.tmpdir()}/foundinglegals_blogs_data`;
@@ -243,15 +268,34 @@ async function getFallbackBlogs(): Promise<BlogPost[]> {
  * Fetches all blog posts (both published and drafts)
  */
 export async function getAllBlogs(): Promise<BlogPost[]> {
+  const mem = getMemoryBlogs();
+  if (mem && mem.length > 0) {
+    return mem;
+  }
+
   try {
-    await ensureDbTable();
     const result = await queryDb(`
-      SELECT * FROM blogs 
-      ORDER BY CASE WHEN published_at IS NOT NULL THEN published_at ELSE created_at END DESC
-    `, [], 5000);
+      SELECT 
+        CONCAT('saas_', id) as id, title, slug, summary as excerpt, content, cover_image, 
+        category, tags::text, author as author_name, 'Senior Corporate Counsel' as author_role, 
+        '' as author_avatar, read_time, (status = 'published') as published, false as featured, 
+        COALESCE(views_count, 0) as views, created_at, updated_at, created_at as published_at
+      FROM legal_saas.website_blogs
+
+      UNION ALL
+
+      SELECT 
+        id, title, slug, excerpt, content, cover_image, 
+        category, tags::text, author_name, author_role, 
+        author_avatar, read_time, published, featured, 
+        views, created_at, updated_at, published_at
+      FROM blogs
+
+      ORDER BY created_at DESC
+    `, [], 1800);
 
     if (result && Array.isArray(result.rows) && result.rows.length > 0) {
-      const posts = result.rows.map(rowToBlogPost);
+      const posts = dedupeBlogs(result.rows.map(rowToBlogPost));
       setMemoryBlogs(posts);
       saveLocalFileCache(posts).catch(() => {});
       return posts;
@@ -267,24 +311,49 @@ export async function getAllBlogs(): Promise<BlogPost[]> {
  * Fetches only published blog posts for public /blogs
  */
 export async function getPublishedBlogs(): Promise<BlogPost[]> {
+  // 1. Fast in-memory check (0ms response)
+  const mem = getMemoryBlogs();
+  if (mem && mem.length > 0) {
+    return mem
+      .filter((b) => b.published === true)
+      .sort((a, b) => new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime());
+  }
+
   try {
-    await ensureDbTable();
     const result = await queryDb(`
-      SELECT * FROM blogs 
-      WHERE published = true 
-      ORDER BY CASE WHEN published_at IS NOT NULL THEN published_at ELSE created_at END DESC
-    `, [], 5000);
+      SELECT 
+        CONCAT('saas_', id) as id, title, slug, summary as excerpt, content, cover_image, 
+        category, tags::text, author as author_name, 'Senior Corporate Counsel' as author_role, 
+        '' as author_avatar, read_time, (status = 'published') as published, false as featured, 
+        COALESCE(views_count, 0) as views, created_at, updated_at, created_at as published_at
+      FROM legal_saas.website_blogs
+      WHERE status = 'published'
+
+      UNION ALL
+
+      SELECT 
+        id, title, slug, excerpt, content, cover_image, 
+        category, tags::text, author_name, author_role, 
+        author_avatar, read_time, published, featured, 
+        views, created_at, updated_at, published_at
+      FROM blogs
+      WHERE published = true
+
+      ORDER BY created_at DESC
+    `, [], 1800);
 
     if (result && Array.isArray(result.rows) && result.rows.length > 0) {
-      const posts = result.rows.map(rowToBlogPost);
+      const posts = dedupeBlogs(result.rows.map(rowToBlogPost));
+      setMemoryBlogs(posts);
+      saveLocalFileCache(posts).catch(() => {});
       return posts;
     }
   } catch (err) {
     console.warn("[getPublishedBlogs using fallback]:", err);
   }
 
-  const all = await getAllBlogs();
-  return all
+  const fallback = await getFallbackBlogs();
+  return fallback
     .filter((b) => b.published === true)
     .sort((a, b) => new Date(b.publishedAt || b.createdAt).getTime() - new Date(a.publishedAt || a.createdAt).getTime());
 }
@@ -294,12 +363,37 @@ export async function getPublishedBlogs(): Promise<BlogPost[]> {
  */
 export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
   const normalized = slug.trim().toLowerCase();
+
+  // 1. Fast in-memory check
+  const mem = getMemoryBlogs();
+  if (mem && mem.length > 0) {
+    const found = mem.find((b) => b.slug.toLowerCase() === normalized && b.published === true);
+    if (found) return found;
+  }
+
   try {
-    await ensureDbTable();
     const result = await queryDb(
-      `SELECT * FROM blogs WHERE LOWER(slug) = LOWER($1) AND published = true LIMIT 1`,
+      `SELECT 
+        CONCAT('saas_', id) as id, title, slug, summary as excerpt, content, cover_image, 
+        category, tags::text, author as author_name, 'Senior Corporate Counsel' as author_role, 
+        '' as author_avatar, read_time, (status = 'published') as published, false as featured, 
+        COALESCE(views_count, 0) as views, created_at, updated_at, created_at as published_at
+      FROM legal_saas.website_blogs
+      WHERE LOWER(slug) = LOWER($1) AND status = 'published'
+
+      UNION ALL
+
+      SELECT 
+        id, title, slug, excerpt, content, cover_image, 
+        category, tags::text, author_name, author_role, 
+        author_avatar, read_time, published, featured, 
+        views, created_at, updated_at, published_at
+      FROM blogs
+      WHERE LOWER(slug) = LOWER($1) AND published = true
+
+      LIMIT 1`,
       [normalized],
-      4000
+      1500
     );
     if (result && result.rows && result.rows.length > 0) {
       return rowToBlogPost(result.rows[0]);
@@ -308,7 +402,7 @@ export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
     console.warn("[getBlogBySlug using fallback]:", err);
   }
 
-  const all = await getAllBlogs();
+  const all = await getFallbackBlogs();
   return all.find((b) => b.slug.toLowerCase() === normalized && b.published === true) || null;
 }
 
@@ -317,12 +411,36 @@ export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
  */
 export async function getBlogBySlugAny(slug: string): Promise<BlogPost | null> {
   const normalized = slug.trim().toLowerCase();
+
+  const mem = getMemoryBlogs();
+  if (mem && mem.length > 0) {
+    const found = mem.find((b) => b.slug.toLowerCase() === normalized);
+    if (found) return found;
+  }
+
   try {
-    await ensureDbTable();
     const result = await queryDb(
-      `SELECT * FROM blogs WHERE LOWER(slug) = LOWER($1) LIMIT 1`,
+      `SELECT 
+        CONCAT('saas_', id) as id, title, slug, summary as excerpt, content, cover_image, 
+        category, tags::text, author as author_name, 'Senior Corporate Counsel' as author_role, 
+        '' as author_avatar, read_time, (status = 'published') as published, false as featured, 
+        COALESCE(views_count, 0) as views, created_at, updated_at, created_at as published_at
+      FROM legal_saas.website_blogs
+      WHERE LOWER(slug) = LOWER($1)
+
+      UNION ALL
+
+      SELECT 
+        id, title, slug, excerpt, content, cover_image, 
+        category, tags::text, author_name, author_role, 
+        author_avatar, read_time, published, featured, 
+        views, created_at, updated_at, published_at
+      FROM blogs
+      WHERE LOWER(slug) = LOWER($1)
+
+      LIMIT 1`,
       [normalized],
-      4000
+      1800
     );
     if (result && result.rows && result.rows.length > 0) {
       return rowToBlogPost(result.rows[0]);
@@ -331,7 +449,7 @@ export async function getBlogBySlugAny(slug: string): Promise<BlogPost | null> {
     console.warn("[getBlogBySlugAny using fallback]:", err);
   }
 
-  const all = await getAllBlogs();
+  const all = await getFallbackBlogs();
   return all.find((b) => b.slug.toLowerCase() === normalized) || null;
 }
 
