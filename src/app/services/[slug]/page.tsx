@@ -371,10 +371,143 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   // Company Incorporation gets the rich article layout
   if (slug === "company-incorporation") {
+    const incorporationJsonLd = [
+      {
+        "@context": "https://schema.org",
+        "@type": "LegalService",
+        "@id": "https://www.foundinglegals.com/services/CAservices/company-incorporation#service",
+        name: "Private Limited Company Registration in India",
+        alternateName: [
+          "Company Incorporation India",
+          "Pvt Ltd Company Registration",
+          "Register a Private Limited Company",
+          "Private Limited Company Incorporation Online",
+        ],
+        description:
+          "Fast-track private limited company incorporation in India with digital signatures (DSC), Director Identification Number (DIN), MOA & AOA drafting, PAN, TAN, bank account opening, and MCA Certificate of Incorporation.",
+        url: "https://www.foundinglegals.com/services/CAservices/company-incorporation",
+        provider: {
+          "@type": "ProfessionalService",
+          name: "Founding Legals",
+          url: "https://www.foundinglegals.com",
+          telephone: "+91-9108168270",
+          email: "connect@foundinglegals.com",
+          address: {
+            "@type": "PostalAddress",
+            addressCountry: "IN",
+          },
+        },
+        serviceType: "Company Incorporation",
+        areaServed: {
+          "@type": "Country",
+          name: "India",
+        },
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Company Incorporation Packages",
+          itemListElement: [
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Private Limited Company Registration Professional Service",
+              },
+              price: "1999",
+              priceCurrency: "INR",
+            },
+          ],
+        },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What is the total cost to register a Private Limited Company in India?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The total cost consists of Founding Legals flat professional fee of ₹1,999 + MCA SPICe+ filing fees (waived ₹0 by the Central Government for authorized capital up to ₹15 Lakhs) + mandatory Class-3 DSC tokens (approx ₹1,500-₹2,000 for 2 directors) + state-specific stamp duty on SPICe+ Part B, MOA, and AOA (ranging from ₹1,000 to ₹8,000 depending on your state and capital).",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How long does company registration take in India?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "With Founding Legals fast-track workflow, incorporation typically takes 7 to 10 working days, subject to MCA ROC processing speeds and document readiness.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What are the minimum requirements to incorporate a Pvt Ltd company?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "You require at least two directors (at least one must be a resident of India), two shareholders (can be the same individuals as directors), a unique company name complying with MCA naming rules, and a registered office address in India.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is commercial office space mandatory for company registration?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "No. You can register your company at a residential address or home office. You simply need an electricity or water bill (less than 2 months old) and an NOC from the property owner.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What documents are required for private limited company registration?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "For each director/shareholder: PAN Card, Aadhaar Card, Passport/Voter ID/Driving License, recent bank statement or utility bill (under 2 months old), and passport-size photo. For the registered office: latest electricity/utility bill, NOC from the owner, and rent agreement if leased.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Can a foreign national or NRI be a director in an Indian Pvt Ltd Company?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes, foreign nationals and NRIs can become directors and hold shares, provided at least one director on the board is a resident of India. Foreign documents must be notarized or apostilled.",
+            },
+          },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://www.foundinglegals.com",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Services",
+            item: "https://www.foundinglegals.com/services",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: "Company Incorporation",
+            item: "https://www.foundinglegals.com/services/CAservices/company-incorporation",
+          },
+        ],
+      },
+    ];
+
     return (
       <>
         <Header />
         <main>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(incorporationJsonLd),
+            }}
+          />
           <CompanyIncorporationLayout />
         </main>
         <Footer />
