@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import type { Metadata } from "next";
 import { services } from "@/lib/servicesData";
 import { getNewServicePage, newServiceSlugs } from "@/lib/newServicesData";
 import { AGREEMENTS_DATABASE } from "@/lib/agreementsData";
@@ -145,6 +146,148 @@ export function generateStaticParams() {
   ]);
 
   return Array.from(allSlugs).map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const rawParams = await params;
+  let rawSlug = rawParams.slug || "";
+  let slug = decodeURIComponent(rawSlug).toLowerCase().trim().replace(/[\s_]+/g, "-");
+  if (SLUG_ALIASES[slug]) {
+    slug = SLUG_ALIASES[slug];
+  }
+
+  const BASE_URL = "https://www.foundinglegals.com";
+
+  // Dedicated high-ranking metadata for Private Limited Company Registration
+  if (slug === "company-incorporation" || slug === "pvt-ltd-registration" || slug === "private-limited-company") {
+    return {
+      title: "Private Limited Company Registration in India | Founding Legals",
+      description:
+        "Register your Private Limited Company in India in 7-10 days. Get MCA SPICe+ approval, DSC, DIN, MOA/AOA, PAN/TAN, and certificate of incorporation with zero hidden fees.",
+      keywords: [
+        "private limited company registration",
+        "company incorporation",
+        "company registration in India",
+        "register a private limited company",
+        "company incorporation cost",
+        "company registration fees",
+        "pvt ltd registration online",
+        "SPICe plus MCA registration",
+        "startup registration India",
+      ],
+      alternates: {
+        canonical: `${BASE_URL}/services/CAservices/company-incorporation`,
+      },
+      openGraph: {
+        title: "Private Limited Company Registration in India | Founding Legals",
+        description:
+          "Fast-track company incorporation in India with dedicated CA support. Transparent government fees, zero hidden margins, and 100% digital execution.",
+        url: `${BASE_URL}/services/CAservices/company-incorporation`,
+        type: "website",
+        images: [
+          {
+            url: `${BASE_URL}/company-registration-hero.png`,
+            width: 1200,
+            height: 630,
+            alt: "Private Limited Company Registration in India",
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "Private Limited Company Registration in India | Founding Legals",
+        description: "Register your Private Limited Company in India in 7-10 days with dedicated CA support.",
+        images: [`${BASE_URL}/company-registration-hero.png`],
+      },
+    };
+  }
+
+  // Dedicated titles for key legal & CA services
+  const customMetadata: Record<string, { title: string; desc: string; keywords: string[] }> = {
+    "llp-registration": {
+      title: "Limited Liability Partnership (LLP) Registration in India | Founding Legals",
+      desc: "Register your Limited Liability Partnership (LLP) in 7-10 days. 100% online MCA filing, RUN-LLP name approval, FiLLiP forms, and drafted LLP agreement.",
+      keywords: ["LLP registration India", "register LLP online", "limited liability partnership", "LLP agreement drafting"],
+    },
+    "opc-registration": {
+      title: "One Person Company (OPC) Registration in India | Founding Legals",
+      desc: "Incorporate a One Person Company (OPC) with 100% sole promoter ownership and corporate limited liability. Fast SPICe+ filing by qualified CAs.",
+      keywords: ["One Person Company registration", "OPC registration India", "register OPC online", "solo founder company incorporation"],
+    },
+    "gst-registration": {
+      title: "GST Registration Online in India | Founding Legals",
+      desc: "Get your 15-digit GSTIN in 3-5 working days. Seamless online GST registration for startups, proprietorships, LLPs, and companies across all Indian states.",
+      keywords: ["GST registration online", "apply for GSTIN", "startup GST registration", "GST registration fees India"],
+    },
+    "dpiit-recognition": {
+      title: "DPIIT Startup India Registration & 80-IAC Tax Exemption | Founding Legals",
+      desc: "Get officially recognised by DPIIT under Startup India. Unlock 3-year Section 80-IAC tax holiday, patent fee rebates, and self-certification benefits.",
+      keywords: ["DPIIT registration", "Startup India certification", "Section 80 IAC tax exemption", "DPIIT certificate"],
+    },
+    "trademark-registration": {
+      title: "Trademark Registration Online in India | Founding Legals",
+      desc: "Protect your brand name, logo, and slogan under the Trade Marks Act, 1999. Online trademark search, Vienna classification, and TM-A filing by IP attorneys.",
+      keywords: ["trademark registration India", "register brand name", "online TM filing", "trademark search India"],
+    },
+    "udyam-registration": {
+      title: "UDYAM & MSME Registration Online | Founding Legals",
+      desc: "Apply for MSME / UDYAM certificate online. Gain priority sector bank loans, government tender subsidies, and protection against delayed payments.",
+      keywords: ["Udyam registration online", "MSME registration", "MSME certificate", "Udyam portal India"],
+    },
+    "fssai-registration": {
+      title: "FSSAI Food License Registration in India | Founding Legals",
+      desc: "Apply for Basic, State, and Central FSSAI Food Licenses online. Complete FosCos compliance, document verification, and fast certificate delivery.",
+      keywords: ["FSSAI registration online", "food license India", "FosCos registration", "FSSAI license fees"],
+    },
+  };
+
+  if (customMetadata[slug]) {
+    const item = customMetadata[slug];
+    return {
+      title: item.title,
+      description: item.desc,
+      keywords: item.keywords,
+      alternates: {
+        canonical: `${BASE_URL}/services/CAservices/${slug}`,
+      },
+      openGraph: {
+        title: item.title,
+        description: item.desc,
+        url: `${BASE_URL}/services/CAservices/${slug}`,
+        type: "website",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: item.title,
+        description: item.desc,
+      },
+    };
+  }
+
+  // Dynamic fallback for all other services & categories
+  const svc = services.find((s) => s.slug === slug);
+  const newP = getNewServicePage(slug);
+  const title = svc?.title || newP?.name || slug.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+  const desc = svc?.heroDescription || newP?.tagline || `Expert legal and CA services for ${title} in India. Fast, 100% online compliance by Founding Legals.`;
+
+  return {
+    title: `${title} | Founding Legals`,
+    description: desc,
+    alternates: {
+      canonical: `${BASE_URL}/services/${slug}`,
+    },
+    openGraph: {
+      title: `${title} | Founding Legals`,
+      description: desc,
+      url: `${BASE_URL}/services/${slug}`,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | Founding Legals`,
+      description: desc,
+    },
+  };
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {

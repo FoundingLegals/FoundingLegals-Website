@@ -5,12 +5,12 @@ import Link from "next/link";
 
 const footerLinks = {
   Services: [
-    { name: "Company Incorporation", href: "#services" },
-    { name: "GST & Compliance", href: "#services" },
-    { name: "DPIIT Certification", href: "#services" },
-    { name: "Agreements & Documents", href: "#services" },
-    { name: "Fund Raising", href: "#services" },
-    { name: "Marketplace", href: "#services" },
+    { name: "Company Incorporation", href: "/services/CAservices/company-incorporation" },
+    { name: "GST & Compliance", href: "/services/CAservices/gst-registration" },
+    { name: "DPIIT Certification", href: "/services/CAservices/dpiit-recognition" },
+    { name: "Agreements & Documents", href: "/services/LegalServices/agreements/founders-agreement" },
+    { name: "Fund Raising", href: "/services/LegalServices/pitch-to-investors" },
+    { name: "Marketplace", href: "/services/LegalServices/marketplace" },
   ],
   Company: [
     { name: "About Us", href: "/company/about-us" },

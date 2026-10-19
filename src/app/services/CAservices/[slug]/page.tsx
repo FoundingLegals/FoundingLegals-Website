@@ -1,4 +1,4 @@
-import ServiceSlugPage, { generateStaticParams } from "../../[slug]/page";
+import ServiceSlugPage, { generateStaticParams, generateMetadata } from "../../[slug]/page";
 
-export { generateStaticParams };
+export { generateStaticParams, generateMetadata };
 export default ServiceSlugPage;
