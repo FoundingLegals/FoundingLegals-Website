@@ -87,6 +87,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "itr-7-filing",
     "tax-audit",
     "spend-analysis",
+    "lut-registration",
+    "ad-code-registration",
+    "subsidy-application-support",
+    "grant-application-support",
+    "government-loan-assistance",
+    "government-tender-support",
+    "registration-licence-assistance",
+    "government-certification-support",
+    "project-report-preparation",
+    "loan-project-report",
   ];
 
   for (const slug of CA_SERVICES) {
@@ -111,6 +121,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "instant-investment",
     "ip-protection",
     "trademark-registration",
+    "customized-agreement-draft",
   ];
 
   for (const slug of LEGAL_SERVICES) {

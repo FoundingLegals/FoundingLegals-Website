@@ -88,6 +88,33 @@ const SLUG_ALIASES: Record<string, string> = {
   "iec-code": "iec-registration",
   "contract-labour-license": "labour-license",
   "clra-license": "labour-license",
+
+  // LUT and AD Code aliases
+  "letter-of-undertaking": "lut-registration",
+  "gst-lut": "lut-registration",
+  "lut": "lut-registration",
+  "ad-code": "ad-code-registration",
+
+  // Custom agreement draft aliases
+  "custom-agreement-draft": "customized-agreement-draft",
+  "customized-agreement": "customized-agreement-draft",
+  "custom-contract-draft": "customized-agreement-draft",
+
+  // Subsidies, Grants & Loan aliases
+  "subsidy-application": "subsidy-application-support",
+  "government-subsidies": "subsidy-application-support",
+  "grant-application": "grant-application-support",
+  "startup-grants": "grant-application-support",
+  "government-loans": "government-loan-assistance",
+  "cgtmse-loan": "government-loan-assistance",
+  "tender-support": "government-tender-support",
+  "gem-registration": "government-tender-support",
+  "licence-assistance": "registration-licence-assistance",
+  "statutory-licence-assistance": "registration-licence-assistance",
+  "certification-support": "government-certification-support",
+  "iso-certification": "government-certification-support",
+  "cma-project-report": "project-report-preparation",
+  "bank-project-report": "project-report-preparation",
 };
 
 export function generateStaticParams() {

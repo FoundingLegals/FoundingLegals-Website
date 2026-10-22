@@ -1014,6 +1014,616 @@ export const newServicePages: NewServicePage[] = [
       { name: "Income Tax Advisory", href: "/services/CAservices/income-tax-advisory" },
     ],
   },
+
+  // ══════════════════════════════════════════════════
+  // INDIVIDUAL SERVICE: Letter of Undertaking (LUT) Registration
+  // ══════════════════════════════════════════════════
+  {
+    slug: "lut-registration",
+    type: "individual",
+    badge: "GST Compliance · Export LUT",
+    name: "Letter of Undertaking (LUT)\nRegistration Online",
+    tagline: "Export goods and services outside India without paying upfront IGST. Protect your operating working capital with fast zero-rated GST compliance filed within 1–2 business days.",
+    seoTitle: "Letter of Undertaking (LUT) Registration Online for Exporters | Founding Legals",
+    seoDescription: "File Form GST RFD-11 Letter of Undertaking (LUT) online in 1-2 days. Zero-rated exports without IGST payment. Fixed CA fee ₹2,999 with Founding Legals.",
+    description: [
+      "Under the Integrated Goods and Services Tax (IGST) Act, 2017, all exports of goods and services outside India, as well as supplies to Special Economic Zone (SEZ) developers or units, qualify as 'zero-rated supplies'. However, exporters face two choices: pay upfront IGST on the invoice value and wait 90 to 120 days for departmental refunds, or file a Letter of Undertaking (LUT) in Form GST RFD-11 to export completely tax-free upfront.",
+      "Filing an LUT unlocks zero-rated exports immediately from Day 1. It completely eliminates working capital lockups, shields against interest levies under Section 50, and streamlines international invoice generation for IT exporters, digital agencies, freelancers, and merchant exporters. Founding Legals GST advocates manage end-to-end verification, witness documentation, and electronic filing with instant ARN generation.",
+    ],
+    idealFor: [
+      "Exporters of services (SaaS, software development, consulting, design) billing foreign clients in convertible foreign exchange",
+      "Exporters of physical goods shipping across international borders wanting to eliminate upfront IGST payments",
+      "Businesses making zero-rated supplies to Special Economic Zone (SEZ) developer units",
+      "GST-registered companies seeking immediate cash-flow relief without waiting months for tax refund claims",
+    ],
+    whatsIncluded: [
+      { title: "Export eligibility & GST compliance audit", description: "Verification of your GSTIN status and past filing track record to ensure zero scrutiny blocks or pending notices." },
+      { title: "Form GST RFD-11 electronic preparation", description: "Accurate compilation of export details, financial year selection, and authorized signatory declarations on the GST portal." },
+      { title: "Witness verification & documentation", description: "Preparation of mandatory dual-witness credentials complying with Central Board of Indirect Taxes & Customs (CBIC) rules." },
+      { title: "Digital signature (DSC / EVC) filing", description: "Submission using Class-3 DSC or authorized signatory Aadhaar OTP with instant generation of the LUT ARN certificate." },
+      { title: "FIRC & BRC reconciliation advisory", description: "Guidance on linking Foreign Inward Remittance Certificates (FIRC) with your electronic invoices to withstand audit scrutiny." },
+      { title: "Annual compliance & renewal calendar", description: "Automated renewal alerts prior to March 31st each financial year to prevent unintentional export tax liabilities." },
+    ],
+    documentsRequired: [
+      "GSTIN Registration Certificate",
+      "PAN Card and Aadhaar Card of authorized director / partner / proprietor",
+      "Details of two independent witnesses (Full Name, Address, and PAN/Aadhaar number)",
+      "Import Export Code (IEC) Certificate (for physical goods exporters)",
+      "Bank Account details receiving foreign remittances (cancelled cheque with account details)",
+      "Class-3 Digital Signature Certificate (DSC) or registered Aadhaar mobile number for OTP verification",
+    ],
+    process: [
+      { title: "GST & export document verification", description: "Our indirect tax desk verifies your GST portal credentials, authorized signatory rights, and zero-rated eligibility." },
+      { title: "Witness compilation & RFD-11 drafting", description: "Form GST RFD-11 is prepared with formal declarations under Rule 96A of the CGST Rules, 2017." },
+      { title: "Electronic filing via DSC or EVC", description: "The application is signed and transmitted securely on the GST Common Portal." },
+      { title: "Instant ARN certificate issuance", description: "Your Letter of Undertaking Acknowledgment Reference Number (ARN) is generated and archived permanently in your founder vault." },
+      { title: "Zero-rated export invoicing setup", description: "We provide compliant export invoice wording: 'Supply meant for export under bond or letter of undertaking without payment of integrated tax'." },
+    ],
+    competitorPricing: [
+      { vendor: "IndiaFilings", price: "₹3,899", note: "Excludes witness coordination" },
+      { vendor: "ClearTax", price: "₹3,499", note: "Standard export filing" },
+      { vendor: "Vakilsearch", price: "₹3,999", note: "Per financial year" },
+      { vendor: "Independent CA (market rate)", price: "₹4,500–₹8,000", note: "All-inclusive" },
+    ],
+    memberRateNote: "Fixed fee ₹2,999 all-inclusive. Annual April renewals for Founding Legals members handled automatically without disruption.",
+    faqs: [
+      { q: "What is a Letter of Undertaking (LUT) under GST?", a: "An LUT (Form GST RFD-11) is a legal declaration submitted by an exporter to the GST department stating that all export obligations under Section 16 of the IGST Act will be fulfilled. Once accepted, it permits the exporter to supply goods or services outside India without paying Integrated GST (IGST)." },
+      { q: "What is the validity period of an LUT?", a: "An LUT is valid for one entire financial year (from April 1st to March 31st of the subsequent year). A fresh LUT must be filed prior to April 1st for every subsequent financial year." },
+      { q: "What happens if an exporter does not file an LUT?", a: "If an exporter fails to submit an LUT before making export supplies, they are legally required to charge and pay 18% IGST on every foreign invoice out of their own pocket, and subsequently file a lengthy refund application (GST RFD-01) which can tie up funds for 3 to 6 months." },
+      { q: "Are two witnesses mandatory for filing an LUT?", a: "Yes. Under CBIC guidelines, Form GST RFD-11 requires the names, addresses, and identity details of two independent witnesses to guarantee the statutory declaration." },
+      { q: "How long does it take to get the LUT approval ARN?", a: "With Founding Legals, the preparation, witness verification, and portal submission are completed within 1 to 2 working days. The GST portal issues the ARN immediately upon successful DSC/EVC submission." },
+    ],
+    relatedLinks: [
+      { name: "GST Registration", href: "/services/CAservices/gst-registration" },
+      { name: "Monthly GST Return Filing", href: "/services/CAservices/gst-monthly-returns" },
+      { name: "IEC (Import Export Code)", href: "/services/CAservices/iec-registration" },
+      { name: "AD Code Registration", href: "/services/CAservices/ad-code-registration" },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════
+  // INDIVIDUAL SERVICE: AD Code Registration
+  // ══════════════════════════════════════════════════
+  {
+    slug: "ad-code-registration",
+    type: "individual",
+    badge: "Export & Customs · AD Code",
+    name: "AD Code Registration\n(Bank Authorized Dealer Port Code)",
+    tagline: "Link your bank's 14-digit Authorized Dealer code to ICEGATE port customs. Essential for shipping bill generation, customs clearance, and receiving export duty drawbacks.",
+    seoTitle: "AD Code Registration Online with Port Customs & ICEGATE | Founding Legals",
+    seoDescription: "Register your Bank AD Code on ICEGATE Customs portal in 1-3 business days. Enable customs shipping bills, duty drawback, and export incentives with Founding Legals.",
+    description: [
+      "An Authorized Dealer Code (AD Code) is a 14-digit numerical code issued by the Reserve Bank of India (RBI) to scheduled commercial banks authorized to deal in foreign exchange. Once you obtain an Import Export Code (IEC) from DGFT, an AD Code must be formally registered at every port (seaport, airport, or inland container depot) from which you intend to ship consignments.",
+      "Without AD Code port registration on ICEGATE, Indian Customs will not generate a Shipping Bill for your cargo, halting your export consignment at the port terminal. Furthermore, registering your AD Code links your business bank account with the Public Financial Management System (PFMS), ensuring government export duty drawbacks (DBK), RoDTEP, and RoSCTL incentives are directly deposited into your account without delays.",
+    ],
+    idealFor: [
+      "Exporters preparing their first physical or digital cargo shipment abroad before shipping bills are filed",
+      "Businesses routing goods through a new seaport, airport, or inland container depot (ICD)",
+      "Exporters experiencing frozen or delayed government duty drawbacks and export incentive remittances",
+      "E-commerce merchants shipping international retail orders through postal or courier customs terminals",
+    ],
+    whatsIncluded: [
+      { title: "Bank AD Code authorization letter review", description: "Verification that the bank letter adheres strictly to DGFT Annexure-A format with official banker seal and signatures." },
+      { title: "ICEGATE registration & portal profile linking", description: "Registration of your digital signature and entity profile on the Indian Customs Electronic Gateway." },
+      { title: "Port customs e-filing & assignment", description: "Submission of AD Code registration to specific Customs port locations (e.g. JNPT, Chennai Port, Air Cargo Delhi)." },
+      { title: "PFMS bank account verification", description: "Validation on the Public Financial Management System to activate automated duty drawback deposits." },
+      { title: "Customs query resolution & ICEGATE tracking", description: "Proactive liaison with port customs superintendents to clear system queries or documentation mismatches." },
+      { title: "Confirmation receipt & shipping bill clearance", description: "Delivery of official Customs acknowledgment confirming active status for instant shipping bill filing." },
+    ],
+    documentsRequired: [
+      "Bank AD Code authorization letter issued on bank letterhead (in prescribed DGFT Annexure-A format)",
+      "DGFT Import Export Code (IEC) certificate",
+      "GST Registration Certificate",
+      "PAN Card of the company, LLP, or proprietor",
+      "Cancelled bank cheque with pre-printed corporate name, account number, and IFSC code",
+      "Class-3 Digital Signature Certificate (DSC) for ICEGATE registration",
+    ],
+    process: [
+      { title: "Bank letter & IEC verification", description: "We examine your bank AD Code letter to ensure branch codes, BSR codes, and account numbers match ICEGATE requirements." },
+      { title: "ICEGATE profile setup & DSC integration", description: "Your digital signature token is mapped to the Indian Customs portal for electronic authorization." },
+      { title: "Port customs submission", description: "The registration request is transmitted to designated port locations for customs officer approval." },
+      { title: "PFMS validation & drawback linkage", description: "Bank account is cleared through PFMS for direct credit of export benefits and customs duty refunds." },
+      { title: "Port clearance activation", description: "Customs approval is confirmed, enabling your CHA or logistics partner to immediately file shipping bills." },
+    ],
+    competitorPricing: [
+      { vendor: "IndiaFilings", price: "₹3,899", note: "Single port only" },
+      { vendor: "Vakilsearch", price: "₹3,499", note: "Excludes ICEGATE registration" },
+      { vendor: "Customs Clearing House Agent (CHA)", price: "₹5,000–₹10,000", note: "Varies by port" },
+      { vendor: "Independent CA", price: "₹4,000–₹8,000", note: "Standard fee" },
+    ],
+    memberRateNote: "Fixed fee ₹2,499 per primary port. Multi-port bundles available at bundled member pricing.",
+    faqs: [
+      { q: "What is an AD Code in export business?", a: "An Authorized Dealer Code (AD Code) is a 14-digit code provided by your bank under RBI foreign exchange regulations. It associates your bank account with port customs so customs authorities can track international trade payments and credit government export incentives." },
+      { q: "Is AD Code registration mandatory after obtaining an IEC?", a: "Yes. An IEC grants legal authority to export, but port customs cannot generate a Shipping Bill for export clearance without an active AD Code registered at the physical port of departure." },
+      { q: "Do I need to register my AD Code at multiple ports?", a: "Yes. If your company exports goods from Nhava Sheva (JNPT) and also from Delhi Air Cargo, the AD Code must be registered separately at both port codes. However, you only need one letter from your bank." },
+      { q: "What is the validity of an AD Code registration?", a: "Once approved by port customs, an AD Code registration carries lifetime validity for that specific port, provided your bank account and IEC remain active and in good standing." },
+    ],
+    relatedLinks: [
+      { name: "IEC (Import Export Code)", href: "/services/CAservices/iec-registration" },
+      { name: "Letter of Undertaking (LUT)", href: "/services/CAservices/lut-registration" },
+      { name: "GST Registration", href: "/services/CAservices/gst-registration" },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════
+  // INDIVIDUAL SERVICE: Customized Agreement Draft Request
+  // ══════════════════════════════════════════════════
+  {
+    slug: "customized-agreement-draft",
+    type: "individual",
+    badge: "Legal Services · Bespoke Contracts",
+    name: "Customized Agreement\nDrafting Service",
+    tagline: "Bespoke legal contracts tailored by senior corporate advocates to your exact commercial terms, cap table structure, and risk mitigation requirements.",
+    seoTitle: "Custom Legal Agreement Drafting by Corporate Advocates | Founding Legals",
+    seoDescription: "Request bespoke startup and commercial contract drafting in 1-2 business days. Vetted by specialized corporate lawyers. Founder vesting, SLAs, JVs, and complex deals.",
+    description: [
+      "Generic internet templates and automated form-fillers cannot capture the nuances of high-stakes commercial relationships, strategic equity splits, or enterprise procurement. A single omitted indemnity carve-out, ambiguous termination trigger, or weak intellectual property assignment clause can expose founders to personal liability, legal deadlocks, and severe due diligence write-downs.",
+      "Founding Legals Customized Agreement Drafting pairs you directly with specialized startup advocates and commercial attorneys. Whether you require bespoke founder vesting agreements with multi-tier milestones, enterprise-grade Master Service Agreements (MSAs) with custom SLAs, cross-border technology licensing, or structured Joint Venture pacts, our legal team architects legally airtight contracts tailored to your exact business objectives.",
+    ],
+    idealFor: [
+      "Companies with two or more founders seeking custom equity vesting, role responsibilities, and clear exit buyback terms",
+      "Startups preparing for an institutional funding round needing clean, audit-ready documentation ahead of investor due diligence",
+      "SaaS and enterprise technology providers negotiating high-value vendor contracts with customized SLA penalty matrices",
+      "Firms entering into collaborative Joint Ventures, Profit-Sharing partnerships, or Consortia requiring robust dispute resolution clauses",
+    ],
+    whatsIncluded: [
+      { title: "One-on-one attorney consultation", description: "In-depth scoping call with a senior corporate advocate to understand business dynamics, risk tolerance, and commercial objectives." },
+      { title: "Bespoke contract drafting from scratch", description: "Comprehensive drafting aligned with the Indian Contract Act, 1872 and industry-specific statutory regulations." },
+      { title: "Enterprise risk & liability ring-fencing", description: "Tailored clauses governing limitation of liability, consequential damages, mutual indemnification, and IP ownership." },
+      { title: "Two iterative revision cycles included", description: "Complete clause adjustments based on internal founder feedback and counterparty redlines." },
+      { title: "State-specific stamp duty guidance", description: "Exact calculation of judicial and non-judicial stamp duty across 28 Indian states to guarantee court enforceability." },
+      { title: "Execution-ready PDF & Word formats", description: "Final delivery in editable Word format along with Aadhaar-based OTP electronic signature setup." },
+    ],
+    documentsRequired: [
+      "Commercial terms summary, email agreement, or term sheet",
+      "Corporate identity details (CIN/LLPIN/PAN) and registered addresses of all parties",
+      "Scope of work, milestone deliverables, and payment fee schedules",
+      "Specific risk factors, non-compete durations, or restrictive covenants requested",
+    ],
+    process: [
+      { title: "Requirements intake & legal scoping", description: "You submit your commercial requirements and schedule an intake consultation with our corporate legal desk." },
+      { title: "First legal draft formulation", description: "Our advocates craft a comprehensive, bespoke contract within 1 to 2 business days." },
+      { title: "Review & iterative refinement", description: "We incorporate your line-by-line feedback and refine clauses based on commercial discussions." },
+      { title: "Execution packaging & e-signature", description: "The finalized agreement is prepared with state stamp duty stamping instructions and digital execution links." },
+    ],
+    competitorPricing: [
+      { vendor: "Top-tier Law Firm", price: "₹25,000–₹60,000", note: "Bespoke commercial drafting" },
+      { vendor: "Vakilsearch Custom Desk", price: "₹6,999–₹12,000", note: "Limited revisions" },
+      { vendor: "IndiaFilings", price: "₹5,000–₹8,000", note: "Standard template customization" },
+    ],
+    memberRateNote: "Starts at ₹1,999 for standard custom agreements. Complex cross-border and venture capital documents quoted transparently upfront.",
+    faqs: [
+      { q: "What types of agreements can be customized?", a: "We customize all corporate and commercial contracts including Founders' Agreements, Term Sheets, Shareholders' Agreements (SHA), Master Service Agreements (MSA), White-Label Licensing, Technology Transfer, Joint Ventures, Commercial Leases, and Non-Disclosure Agreements (NDAs)." },
+      { q: "How quickly can I receive the first draft?", a: "Standard custom agreements are delivered within 1 to 2 business days. Urgent expedited turnarounds are available upon request." },
+      { q: "Are custom agreements court-enforceable in India?", a: "Yes. All contracts are drafted in accordance with the Indian Contract Act, 1872, executed on appropriate non-judicial stamp paper, and electronically signed under the Information Technology Act, 2000." },
+    ],
+    relatedLinks: [
+      { name: "Founders' Agreement", href: "/services/LegalServices/agreements/founders-agreement" },
+      { name: "Master Service Agreement", href: "/services/LegalServices/agreements/master-service-agreement" },
+      { name: "IP Assignment Agreement", href: "/services/LegalServices/agreements/ip-assignment-agreement" },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════
+  // INDIVIDUAL SERVICE: Subsidy Application Support
+  // ══════════════════════════════════════════════════
+  {
+    slug: "subsidy-application-support",
+    type: "individual",
+    badge: "Government Support · Subsidies",
+    name: "Government Subsidy\nApplication Support",
+    tagline: "Unlock non-dilutive government capital, state industrial incentives, interest subsidies, and technology upgradation schemes with complete CA-managed filing.",
+    seoTitle: "Government Subsidy Application Support in India | Founding Legals",
+    seoDescription: "End-to-end assistance for Central & State government industrial subsidies, interest subvention, and MSME capital grants. Expert CA documentation by Founding Legals.",
+    description: [
+      "Every year, thousands of crores in central and state government industrial subsidies remain unclaimed due to complex application procedures, stringent documentation requirements, and lack of statutory follow-up. From capital investment subsidies (up to 30% on plant & machinery) to interest subventions (2%–5% on term loans) and stamp duty exemptions, government incentives can dramatically accelerate business profitability.",
+      "Founding Legals Government Desk bridges the gap between commercial enterprises and departmental nodal agencies. Our chartered accountants and policy specialists identify high-value central schemes (such as PLI, CLCSS, and PMFME) as well as State Industrial Development Policies, compile CA-certified capital expenditure statements, prepare official project dossiers, and manage submission through to sanction and fund release.",
+    ],
+    idealFor: [
+      "Manufacturing, assembly, processing, and green energy enterprises establishing new industrial facilities",
+      "MSMEs undertaking technological modernization, plant expansion, or adopting renewable energy infrastructure",
+      "Businesses seeking capital investment subsidies, electricity tariff subsidies, and stamp duty reimbursements",
+      "Commercial entities seeking interest subventions on active bank term loans under state industrial packages",
+    ],
+    whatsIncluded: [
+      { title: "Multi-scheme eligibility assessment", description: "Comprehensive audit against 50+ central and state government industrial incentive policies." },
+      { title: "CA-certified capital expenditure certification", description: "Independent chartered accountant verification of plant, machinery, civil construction, and equipment expenses." },
+      { title: "Departmental dossier preparation", description: "Compilation of detailed statutory application sets aligned with District Industries Centre (DIC) guidelines." },
+      { title: "Nodal portal submission & tracking", description: "Digital application filing on state single-window clearance and central departmental portals." },
+      { title: "Physical inspection liaison guidance", description: "Preparation for departmental officer visits, technical verifications, and compliance queries." },
+      { title: "Disbursement follow-up & sanction monitoring", description: "Continuous tracking until the subsidy amount is sanctioned and credited into your corporate account." },
+    ],
+    documentsRequired: [
+      "Udyam MSME Registration Certificate and Entity Incorporation documents (COI/MOA/AOA/Partnership Deed)",
+      "Audited financial statements and tax returns for the last 2 to 3 years",
+      "Industrial land title deed, lease agreement, and factory building plan approvals",
+      "Invoices, delivery challans, and payment receipts for plant and machinery",
+      "Bank loan sanction letter, bank appraisal report, and bank account disbursement statements",
+    ],
+    process: [
+      { title: "Scheme matching & project audit", description: "We evaluate your industry sector, location, capital investment, and team structure against active state policies." },
+      { title: "Financial documentation & CA certification", description: "Our chartered accountants audit invoices and certify eligible capital investments." },
+      { title: "Government portal filing", description: "The complete dossier is submitted on the designated state/central single-window portal." },
+      { title: "Query management & inspection support", description: "We handle departmental clarifications and assist during physical verification audits." },
+      { title: "Sanction order & subsidy release", description: "The subsidy is formally approved and financial tranches are disbursed directly to your bank account." },
+    ],
+    competitorPricing: [
+      { vendor: "Industrial Subsidy Consultants", price: "₹25,000–₹50,000", note: "+ 5% to 10% commission on disbursement" },
+      { vendor: "Local Chartered Accountant", price: "₹20,000–₹35,000", note: "Varies by state" },
+    ],
+    memberRateNote: "Fixed CA advisory fee starting at ₹4,999. We charge zero percentage commission on your sanctioned subsidy amount.",
+    faqs: [
+      { q: "What types of government subsidies are available for businesses in India?", a: "Key subsidies include Capital Investment Subsidies (15%–30% reimbursement on machinery), Interest Subventions (2%–5% reduction on bank loan interest), Electricity Duty exemptions, Stamp Duty refunds on industrial land purchase, and Quality Certification (ISO/ZED) reimbursements." },
+      { q: "Does a startup need to be profitable to apply for subsidies?", a: "No. Greenfield subsidies and capital investment incentives are awarded based on physical infrastructure setup, machinery purchases, and employment generation, regardless of immediate business profitability." },
+      { q: "How long does government subsidy approval take?", a: "Depending on the specific central or state department, initial application scrutiny takes 4 to 8 weeks, followed by physical inspection and sanction committee review within 3 to 6 months." },
+    ],
+    relatedLinks: [
+      { name: "UDYAM / MSME Registration", href: "/services/CAservices/msme-registration" },
+      { name: "Government Loan Assistance", href: "/services/CAservices/government-loan-assistance" },
+      { name: "Detailed Project Report (DPR)", href: "/services/CAservices/project-report-preparation" },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════
+  // INDIVIDUAL SERVICE: Grant Application Support
+  // ══════════════════════════════════════════════════
+  {
+    slug: "grant-application-support",
+    type: "individual",
+    badge: "Subsidies & Loans · Startup Grants",
+    name: "Startup Grant\nApplication Support",
+    tagline: "Secure non-dilutive, equity-free government funding from ₹10 Lakhs to ₹50 Lakhs under SISFS, BIRAC BIG, MeitY TIDE 2.0, and state innovation seed funds.",
+    seoTitle: "Startup India Grant Application Support (SISFS, BIRAC, MeitY) | Founding Legals",
+    seoDescription: "Win non-dilutive government startup grants with professional narrative drafting, financial modeling, and DPIIT pitch preparation by Founding Legals.",
+    description: [
+      "Non-dilutive capital is the highest quality funding a founder can receive: you get early-stage growth capital to build prototypes, run pilot trials, and hire talent without giving up equity or taking on debt. Across India, the Central Government (DPIIT, MeitY, BIRAC, DST) and state startup missions disburse over ₹2,000 Crores annually through institutional startup grant schemes.",
+      "However, winning government grants requires precise alignment with evaluation criteria, problem-solution articulation, measurable innovation metrics, and clean milestone budgeting. Founding Legals Grant Application Desk pairs founders with experienced startup analysts and CA specialists to draft government-compliant grant proposals, select optimal incubators, and prepare founders for presentation committee rounds.",
+    ],
+    idealFor: [
+      "Early-stage technology, hardware, AI, biotech, and sustainability startups building innovative IP-driven products",
+      "DPIIT-recognized startups applying for up to ₹20 Lakhs (prototype grant) or ₹50 Lakhs (commercialization) under SISFS",
+      "Biotechnology, medtech, and life sciences innovators applying for BIRAC BIG or SPARSH funding grants",
+      "Deeptech and electronics hardware ventures seeking NIDHI-PRAYAS or MeitY TIDE 2.0 incubator funding",
+    ],
+    whatsIncluded: [
+      { title: "Grant scheme matching & eligibility vetting", description: "Analysis of your MVP stage, technology readiness level (TRL), and IP novelty against active grant mandates." },
+      { title: "Narrative drafting & proposal formulation", description: "Writing professional, compelling responses for problem statement, societal impact, addressable market, and innovation moat." },
+      { title: "3-year milestone expenditure budget", description: "Formulation of CA-certified utilization schedules detailing manpower, prototyping, testing, and operational allocations." },
+      { title: "Incubator selection strategy", description: "Guidance on shortlisting the most aligned partner incubators to maximize application acceptance probability." },
+      { title: "Portal filing & compliance verification", description: "Digital submission on Startup India, MeitY, or BIRAC portals with all mandatory statutory attachments." },
+      { title: "Mock committee pitch & Q&A preparation", description: "Simulated presentation coaching with feedback on presentation deck delivery and technical questioning." },
+    ],
+    documentsRequired: [
+      "DPIIT Certificate of Recognition (Startup India)",
+      "Certificate of Incorporation and Company PAN",
+      "Pitch deck and product demonstration video / prototype architecture diagram",
+      "3-year projected financial roadmap and milestone-linked fund utilization budget",
+      "Founder CVs and details of patents, trademarks, or research publications (if any)",
+    ],
+    process: [
+      { title: "Diagnostic scoping call", description: "We assess your product's TRL level, novelty, and commercial viability against target grant criteria." },
+      { title: "Narrative drafting & budget formulation", description: "Our team drafts your proposal narrative and formats the financial milestone tables." },
+      { title: "Application filing & incubator selection", description: "We route your proposal to optimal authorized incubators on the government portal." },
+      { title: "Pitch coaching & screening", description: "We run mock evaluation sessions to prepare founders for the incubator screening committee." },
+      { title: "Grant agreement & fund tranche release", description: "Support with post-selection documentation and milestone compliance reporting." },
+    ],
+    competitorPricing: [
+      { vendor: "Grant Consulting Boutique", price: "₹20,000–₹40,000", note: "+ 5% grant commission" },
+      { vendor: "Incubator Application Agents", price: "₹15,000–₹25,000", note: "Limited drafting" },
+    ],
+    memberRateNote: "Fixed fee starting at ₹4,999. Zero percentage commission on your sanctioned grant capital.",
+    faqs: [
+      { q: "Do I have to give equity to the government or incubator for a grant?", a: "No. True grants (such as SISFS prototype grants, MeitY TIDE 2.0, and BIRAC BIG) are 100% non-dilutive, equity-free funding. You retain 100% ownership of your company and intellectual property." },
+      { q: "Is DPIIT recognition required to apply for startup grants?", a: "Yes, for central schemes like the Startup India Seed Fund Scheme (SISFS), official DPIIT recognition is a mandatory prerequisite. We can bundle DPIIT registration alongside your grant application." },
+      { q: "Can a software or mobile app startup get government grants?", a: "Yes. Software, AI, SaaS, and platform startups are eligible under multiple schemes (including SISFS, MeitY TIDE 2.0, and state startup seed funds) provided they demonstrate original technical innovation and scalability." },
+    ],
+    relatedLinks: [
+      { name: "DPIIT Startup India Certification", href: "/services/CAservices/dpiit-recognition" },
+      { name: "Government Subsidy Application", href: "/services/CAservices/subsidy-application-support" },
+      { name: "Schemes & Grants Dashboard", href: "/services/LegalServices/schemes-and-grants" },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════
+  // INDIVIDUAL SERVICE: Government Loan Assistance
+  // ══════════════════════════════════════════════════
+  {
+    slug: "government-loan-assistance",
+    type: "individual",
+    badge: "Subsidies & Loans · Priority Lending",
+    name: "Government Loan\nAssistance & CGTMSE",
+    tagline: "Apply for collateral-free bank financing up to ₹5 Crore under CGTMSE, PMEGP, Stand-Up India, MUDRA, and SIDBI low-interest credit schemes.",
+    seoTitle: "Collateral-Free Government Loan Assistance (CGTMSE, MUDRA, PMEGP) | Founding Legals",
+    seoDescription: "Get expert assistance applying for collateral-free MSME loans up to ₹5 Crore under CGTMSE, PMEGP, and MUDRA. Complete project report and bank liaison with Founding Legals.",
+    description: [
+      "Securing debt capital from institutional banks is often the most cost-effective way to fund working capital and capital expenditure without equity dilution. However, traditional banks routinely demand residential property or physical assets as security. To overcome this, the Government of India operates specialized credit guarantee programs that allow startups and MSMEs to secure collateral-free credit up to ₹5 Crores.",
+      "Founding Legals Government Loan Assistance guides business owners through the Credit Guarantee Fund Trust for Micro and Small Enterprises (CGTMSE), Prime Minister's Employment Generation Programme (PMEGP), Stand-Up India, and MUDRA loan schemes. Our CA desk compiles bank-compliant 5-year Detailed Project Reports (DPRs), formats official CMA data, and liaises with authorized lending branches.",
+    ],
+    idealFor: [
+      "MSMEs and early-stage companies needing working capital (CC/OD limits) or machinery loans without pledging personal assets",
+      "Entrepreneurs applying for manufacturing loans up to ₹50 Lakhs (with up to 35% government subsidy) under PMEGP",
+      "Women or SC/ST entrepreneurs seeking greenfield project financing from ₹10 Lakhs to ₹1 Crore under Stand-Up India",
+      "Small traders, artisans, and service units seeking quick credit up to ₹10 Lakhs under the MUDRA scheme",
+    ],
+    whatsIncluded: [
+      { title: "Credit scheme matching & eligibility check", description: "Evaluating turnover, credit history, and asset requirements against CGTMSE, PMEGP, and SIDBI norms." },
+      { title: "CA-certified 5-year Detailed Project Report (DPR)", description: "Bank-approved project report with comprehensive financial projections, DSCR calculations, and sensitivity analysis." },
+      { title: "CMA data compilation (7 statements)", description: "Preparation of Credit Monitoring Arrangement (CMA) data formatted to nationalized bank appraisal standards." },
+      { title: "Application filing on government loan portals", description: "Digital submission through the Udyamimitra, JanSamarth, and bank MSME portals." },
+      { title: "CGTMSE coverage & fee structuring advisory", description: "Ensuring your sanction letter includes collateral waivers under official government guarantee coverage." },
+      { title: "Branch manager liaison support", description: "Assisting founders during bank interviews, credit appraisal meetings, and query resolution." },
+    ],
+    documentsRequired: [
+      "Udyam MSME Registration Certificate and Incorporation/Registration documents",
+      "Audited financial statements and tax returns for the last 2 to 3 years (or projected financials for new units)",
+      "Bank statements for the last 12 months for all active business and promoter accounts",
+      "Quotations and proforma invoices for machinery, equipment, or software purchases",
+      "KYC documents (PAN, Aadhaar) and Net Worth statements of all promoters/partners",
+    ],
+    process: [
+      { title: "Credit assessment & scheme alignment", description: "We evaluate your financial standing and recommend the most suitable government loan program." },
+      { title: "DPR & CMA data formulation", description: "Our chartered accountants prepare bank-compliant financial models and project feasibility reports." },
+      { title: "Bank application submission", description: "The complete loan dossier is submitted via designated government lending platforms." },
+      { title: "Bank scrutiny & appraisal follow-up", description: "We assist with bank queries, inspection visits, and financial ratio clarifications." },
+      { title: "Sanction letter & credit disbursement", description: "Your loan is formally sanctioned with CGTMSE guarantee cover and funds are released." },
+    ],
+    competitorPricing: [
+      { vendor: "Loan DSA / Broker Agents", price: "1%–3% of total loan amount", note: "Commission on disbursement" },
+      { vendor: "Independent CA Firm", price: "₹15,000–₹30,000", note: "DPR and CMA filing" },
+    ],
+    memberRateNote: "Fixed advisory fee starting at ₹3,999 with zero percentage broker commissions on sanctioned loan proceeds.",
+    faqs: [
+      { q: "What is the maximum loan amount under CGTMSE without collateral?", a: "Under the updated CGTMSE guidelines, eligible micro and small enterprises can avail collateral-free credit facilities (term loan and/or working capital) up to ₹5 Crore from participating banks and financial institutions." },
+      { q: "Can a new startup get a loan under CGTMSE?", a: "Yes. Both new and existing micro and small enterprises in manufacturing and service sectors (including IT, healthcare, and retail trade) are eligible for CGTMSE coverage." },
+      { q: "What is the interest rate on government-assisted MSME loans?", a: "Interest rates are benchmarked to the bank's external repo rate (EBLR) or MCLR, typically ranging between 8.5% and 11.5% per annum, subject to the credit rating and scheme guidelines." },
+    ],
+    relatedLinks: [
+      { name: "Detailed Project Report (DPR)", href: "/services/CAservices/project-report-preparation" },
+      { name: "UDYAM / MSME Registration", href: "/services/CAservices/msme-registration" },
+      { name: "Subsidy Application Support", href: "/services/CAservices/subsidy-application-support" },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════
+  // INDIVIDUAL SERVICE: Government Tender Support
+  // ══════════════════════════════════════════════════
+  {
+    slug: "government-tender-support",
+    type: "individual",
+    badge: "Government Services · GeM & Tenders",
+    name: "Government Tender\n& GeM Portal Support",
+    tagline: "Win government procurement contracts. Complete GeM portal onboarding, tender search, Earnest Money Deposit (EMD) exemption filing, and technical bid preparation.",
+    seoTitle: "Government Tender Support & GeM Portal Registration | Founding Legals",
+    seoDescription: "Bid for public tenders with confidence. GeM registration, MSME EMD exemption, technical bid drafting, and tender compliance by Founding Legals.",
+    description: [
+      "The Indian public procurement market exceeds ₹20 Lakh Crores annually across Central Ministries, State Governments, Public Sector Undertakings (PSUs), and Defence establishments. Under the Public Procurement Policy for MSEs, central government departments are mandated to procure a minimum of 25% of their total annual purchases from micro and small enterprises.",
+      "Furthermore, registered MSMEs enjoy critical statutory advantages: complete exemption from paying Earnest Money Deposits (EMD), free tender document issuance, and purchase preferences in competitive bidding. Founding Legals Tender Support Desk assists businesses with GeM (Government e-Marketplace) primary and secondary seller onboarding, catalogue approvals, vendor assessment, EMD waiver documentation, and technical bid compliance.",
+    ],
+    idealFor: [
+      "Product manufacturers, suppliers, and service providers wanting to sell directly to government buyers on GeM",
+      "MSMEs seeking exemption from tender fees and Earnest Money Deposits (EMD) under public procurement rules",
+      "Companies bidding on Central Public Procurement Portal (CPPP) or State e-Procurement portals for the first time",
+      "Businesses needing professional assistance to avoid technical bid disqualifications due to document discrepancies",
+    ],
+    whatsIncluded: [
+      { title: "GeM portal seller onboarding & profile verification", description: "Primary seller registration, authorized signatory Aadhaar validation, and bank account linking." },
+      { title: "Brand approval & catalogue listing", description: "Listing your products or services under relevant GeM categories with OEM/reseller authorization." },
+      { title: "Vendor Assessment (QCI) guidance", description: "Assistance with Quality Council of India desktop assessment and technical verification for OEMs." },
+      { title: "EMD exemption & tender waiver filings", description: "Preparation of statutory MSME tender fee exemption certificates and non-conviction affidavits." },
+      { title: "Technical bid compliance & compilation", description: "Review of Tender Document (RFP/NIT), compiling experience certificates, solvency certificates, and technical forms." },
+      { title: "Reverse Auction (RA) & L1 bidding strategy", description: "Guidance on electronic bid submission, pricing structure, and post-award contract management." },
+    ],
+    documentsRequired: [
+      "Udyam MSME Registration Certificate and Entity Incorporation documents",
+      "Class-3 Digital Signature Certificate (DSC) enabled for e-Tendering and GeM",
+      "GSTIN Registration Certificate and last 3 months GSTR-3B filings",
+      "Audited financial statements and Turnover Certificate certified by a CA",
+      "PAN Card and Aadhaar Card of authorized signatory",
+      "Past performance work orders, completion certificates, and client feedback (if available)",
+    ],
+    process: [
+      { title: "GeM registration & identity verification", description: "We configure your seller account and register your authorized digital signature on the GeM portal." },
+      { title: "Brand approval & catalogue upload", description: "Your products and services are classified under standardized GeM categories with pricing matrices." },
+      { title: "Tender search & requirement analysis", description: "We analyze tender eligibility criteria, turnover thresholds, and technical qualification terms." },
+      { title: "Technical bid dossier compilation", description: "All mandatory certificates, EMD exemption affidavits, and compliance matrices are compiled." },
+      { title: "e-Bid submission & post-tender support", description: "The bid is uploaded securely before the closing deadline, followed by tracking until award announcement." },
+    ],
+    competitorPricing: [
+      { vendor: "Tender Bidding Agency", price: "₹8,000–₹18,000", note: "Per tender filing" },
+      { vendor: "GeM Registration Agents", price: "₹3,500–₹6,000", note: "Excludes catalogue approval" },
+    ],
+    memberRateNote: "Fixed fee starting at ₹2,999. Dedicated assistance across both GeM and state e-tendering portals.",
+    faqs: [
+      { q: "Are MSMEs completely exempt from paying EMD in government tenders?", a: "Yes. Under Rule 170 of the General Financial Rules (GFR), 2017, and the Public Procurement Policy, micro and small enterprises registered with Udyam are 100% exempt from submitting Earnest Money Deposits (EMD) and tender document fees." },
+      { q: "What is GeM (Government e-Marketplace)?", a: "GeM is the mandatory national public procurement portal in India where central and state government ministries, departments, and public sector enterprises purchase goods and services." },
+      { q: "Can a newly incorporated company bid for government tenders?", a: "Yes. For DPIIT-recognized startups and MSMEs, central government guidelines allow relaxation of prior turnover and prior experience criteria for many public tenders, provided quality and technical standards are satisfied." },
+    ],
+    relatedLinks: [
+      { name: "UDYAM / MSME Registration", href: "/services/CAservices/msme-registration" },
+      { name: "DPIIT Startup India Certification", href: "/services/CAservices/dpiit-recognition" },
+      { name: "Government Certification Support", href: "/services/CAservices/government-certification-support" },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════
+  // INDIVIDUAL SERVICE: Registration & Licence Assistance
+  // ══════════════════════════════════════════════════
+  {
+    slug: "registration-licence-assistance",
+    type: "individual",
+    badge: "Government Services · Statutory Permits",
+    name: "Statutory Registration\n& Licence Assistance",
+    tagline: "Consolidated statutory licensing for your offices, warehouses, and commercial operations. Shop Act, Municipal Trade License, Pollution NOC, and state registrations.",
+    seoTitle: "Commercial Business Licenses & Statutory Registration Support | Founding Legals",
+    seoDescription: "Obtain Shop & Establishment licenses, Municipal Trade Permits, and statutory commercial certificates across all Indian states with Founding Legals.",
+    description: [
+      "Operating a commercial business in India requires compliance with a matrix of local, municipal, and state-level statutory regulations. Opening an office, warehouse, retail store, or cloud kitchen without mandatory local permits exposes businesses to administrative penalties, closure notices from municipal corporations, and inspection roadblocks.",
+      "Founding Legals Statutory Licensing Desk offers single-window assistance across all 28 Indian states. We handle Shop and Establishment (Gumasta) registration, Municipal Corporation Trade Licenses, Pollution Control Board (SPCB) CTE/CTO consents, Fire Safety clearances, and local labour permits — ensuring your operational premises are 100% legally compliant from day one.",
+    ],
+    idealFor: [
+      "Commercial offices, retail storefronts, and co-working spaces establishing presence in any Indian municipal ward",
+      "Warehouses, logistics hubs, and e-commerce fulfillment centers requiring state commercial licenses",
+      "Cloud kitchens, bakeries, and food processing facilities needing municipal health trade licenses",
+      "Enterprises expanding multi-city footprints needing consistent, headache-free regulatory licensing",
+    ],
+    whatsIncluded: [
+      { title: "Statutory licensing audit & jurisdiction check", description: "Comprehensive mapping of mandatory state, district, and municipal permissions required for your business activity." },
+      { title: "Shop & Establishment (Gumasta) registration", description: "Preparation and submission of state labour department registrations for commercial establishments." },
+      { title: "Municipal Corporation Trade License", description: "Filing and tracking of local body commercial trade permits and health licensing." },
+      { title: "Pollution Control (SPCB) categorization & NOC", description: "Guidance on White/Green/Orange industrial category classifications and Consent to Establish/Operate filings." },
+      { title: "Inspector liaison & query resolution", description: "Direct communication with local municipal ward inspectors to resolve documentation clarifications." },
+      { title: "Digital vault storage & annual renewal alerts", description: "All issued licenses archived in your secure vault with automated renewal reminders." },
+    ],
+    documentsRequired: [
+      "Certificate of Incorporation, Partnership Deed, or Proprietorship identity proof",
+      "Proof of registered premises (Electricity bill, water bill, or property tax receipt not older than 2 months)",
+      "Registered rent agreement with landlord along with a formal No Objection Certificate (NOC)",
+      "PAN Card, Aadhaar Card, and passport-size photographs of all directors/partners/proprietor",
+      "Premises layout plan and list of employees / operational machinery (if applicable)",
+    ],
+    process: [
+      { title: "Jurisdiction & permit identification", description: "We determine the exact state and municipal ward rules governing your commercial premises." },
+      { title: "Document compilation & notarization", description: "Premises documents, landlord NOCs, and identity proofs are compiled into statutory application sets." },
+      { title: "Municipal & state portal submission", description: "Applications are submitted through state single-window or municipal corporation systems." },
+      { title: "Inspection management & approval", description: "Our team coordinates with local authorities to ensure prompt license clearance." },
+      { title: "Certificate issuance", description: "Official commercial certificates are delivered and stored permanently in your digital vault." },
+    ],
+    competitorPricing: [
+      { vendor: "Local Municipal Clearing Agent", price: "₹4,000–₹8,000", note: "+ unofficial inspection costs" },
+      { vendor: "Online Legal Portals", price: "₹3,500–₹6,000", note: "Basic filing only" },
+    ],
+    memberRateNote: "Transparent CA-managed execution starting at ₹1,999. Zero surprise broker markups or hidden fees.",
+    faqs: [
+      { q: "Is a Shop and Establishment license mandatory for IT or consulting offices?", a: "Yes. In almost all Indian states, every commercial establishment (including software companies, consultants, and agencies) employing staff or operating from physical premises must register under the state's Shop and Establishment Act within 30 days of opening." },
+      { q: "Can I register a commercial license for a residential address or home office?", a: "Yes, many municipal bodies permit home-office commercial registrations for service-oriented businesses and consultancies, provided an NOC is obtained from the property owner." },
+      { q: "How long is a Municipal Trade License valid?", a: "Most trade licenses are valid for one financial year and must be renewed annually in March/April. Certain states offer 3 to 5-year multi-year validity options upon payment of advance municipal fees." },
+    ],
+    relatedLinks: [
+      { name: "Labour License Registration", href: "/services/CAservices/labour-license" },
+      { name: "Professional Tax Registration", href: "/services/CAservices/professional-tax-registration" },
+      { name: "GST Registration", href: "/services/CAservices/gst-registration" },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════
+  // INDIVIDUAL SERVICE: Government Certification Support
+  // ══════════════════════════════════════════════════
+  {
+    slug: "government-certification-support",
+    type: "individual",
+    badge: "Government Services · Quality Accreditations",
+    name: "Government Certification\n& Quality Accreditations",
+    tagline: "Elevate brand trust and tender eligibility with ISO 9001:2015, ISO 27001, MSME ZED Certification, CE Marking, and Bureau of Indian Standards (BIS/ISI) approvals.",
+    seoTitle: "ISO 9001, ISO 27001, ZED & BIS Certification Support | Founding Legals",
+    seoDescription: "Obtain ISO 9001, ISO 27001, ZED MSME, and BIS quality certifications with end-to-end audit readiness, documentation, and accreditation support by Founding Legals.",
+    description: [
+      "In competitive B2B sales, public procurement, and international exports, quality accreditations are no longer optional marketing badges — they are strict pre-qualification criteria. Enterprise buyers and government tenders routinely reject vendors who lack ISO 9001 (Quality Management) or ISO 27001 (Information Security) accreditations. Moreover, the Ministry of MSME offers up to 80% subsidies on MSME Sustainable (ZED) Certification.",
+      "Founding Legals Quality & Certification Desk delivers end-to-end audit readiness. We conduct gap analyses, draft Standard Operating Procedures (SOPs) and Quality Manuals, execute internal compliance audits, and coordinate with IAF/NABCB-accredited certification bodies to secure authentic, internationally recognized certifications without disruption to your daily operations.",
+    ],
+    idealFor: [
+      "Technology and SaaS companies seeking ISO 27001 certification to win enterprise, banking, and overseas customers",
+      "Manufacturing and service businesses seeking ISO 9001:2015 to satisfy government tender pre-qualification thresholds",
+      "MSMEs seeking up to 80% government financial assistance under the Ministry of MSME ZED (Zero Defect Zero Effect) scheme",
+      "Exporters and electronic hardware manufacturers requiring CE marking, RoHS, or Bureau of Indian Standards (BIS/ISI) licensing",
+    ],
+    whatsIncluded: [
+      { title: "Diagnostic gap analysis & roadmap", description: "Assessment of existing operational processes against the requirements of your target quality standard." },
+      { title: "Quality manual & SOP documentation", description: "Drafting of mandatory compliance policies, risk registers, operational procedures, and corrective action workflows." },
+      { title: "Internal audit & readiness simulation", description: "Execution of pre-audit checks to identify and resolve non-conformances prior to the official audit." },
+      { title: "IAF/NABCB accredited body coordination", description: "Liaison with authorized independent certification auditors ensuring worldwide acceptance." },
+      { title: "External audit defense support", description: "Direct guidance during Stage 1 (Documentation Audit) and Stage 2 (Implementation Audit) verification." },
+      { title: "Official certificate delivery & registry listing", description: "Issuance of verifiable certificate and registration on the international accreditation forum database." },
+    ],
+    documentsRequired: [
+      "Certificate of Incorporation, Partnership Deed, or Business Registration",
+      "Udyam MSME Registration Certificate (for subsidized ZED certification)",
+      "Organizational hierarchy chart and operational process flow diagrams",
+      "List of products, services, test equipment, or technical infrastructure",
+      "Entity PAN, registered office address proof, and authorized signatory KYC",
+    ],
+    process: [
+      { title: "Scoping & standard selection", description: "We determine the most strategic accreditation (ISO 9001, ISO 27001, ZED, or BIS) based on your commercial goals." },
+      { title: "Policy & manual documentation", description: "Our certification specialists draft your customized quality manual, SOPs, and risk assessment registers." },
+      { title: "Implementation & internal audit", description: "We conduct internal audit reviews to ensure operational workflows match documented standards." },
+      { title: "External body certification audit", description: "Independent accredited auditors execute formal Stage 1 and Stage 2 assessment audits." },
+      { title: "Accreditation issuance", description: "Your official certification is published and entered into international accreditation registries." },
+    ],
+    competitorPricing: [
+      { vendor: "ISO Quality Consultants", price: "₹10,000–₹25,000", note: "Documentation only" },
+      { vendor: "ZED Assessment Advisors", price: "₹8,000–₹18,000", note: "Standard support" },
+    ],
+    memberRateNote: "Fixed CA advisory fee starting at ₹3,499. Audit fees from accredited certifying bodies billed transparently at cost.",
+    faqs: [
+      { q: "What is the difference between IAF and Non-IAF ISO certificates?", a: "IAF (International Accreditation Forum) certified ISO documents are recognized by governments, public tenders, and multinational corporations worldwide. Non-IAF certificates are often cheaper but frequently rejected during government tender evaluations. Founding Legals exclusively facilitates genuine IAF/NABCB accredited certifications." },
+      { q: "What is the MSME ZED Certification scheme?", a: "ZED (Zero Defect Zero Effect) is an initiative by the Ministry of MSME that certifies micro, small, and medium enterprises for high quality and minimal environmental impact. The Central Government provides up to 80% financial subsidy on the certification fees." },
+      { q: "How long is an ISO 9001 or ISO 27001 certificate valid?", a: "Standard ISO certifications are valid for three years, subject to annual surveillance audits conducted at the end of Year 1 and Year 2 to verify ongoing procedural compliance." },
+    ],
+    relatedLinks: [
+      { name: "DPIIT Startup India Certification", href: "/services/CAservices/dpiit-recognition" },
+      { name: "Government Tender Support", href: "/services/CAservices/government-tender-support" },
+      { name: "Statutory Licence Assistance", href: "/services/CAservices/registration-licence-assistance" },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════
+  // INDIVIDUAL SERVICE: Project Report Preparation
+  // ══════════════════════════════════════════════════
+  {
+    slug: "project-report-preparation",
+    type: "individual",
+    badge: "Financial & Subsidies · Bank DPR",
+    name: "Detailed Project Report (DPR)\n& CMA Data Preparation",
+    tagline: "Bank-grade financial project reports with Credit Monitoring Arrangement (CMA) data, 5-year projections, DSCR, and break-even analysis for loans and subsidies.",
+    seoTitle: "Detailed Project Report (DPR) & CMA Data for Bank Loans & Subsidies | Founding Legals",
+    seoDescription: "CA-certified Detailed Project Report (DPR) with 5-year CMA data, DSCR calculations, and financial feasibility models for bank loans and government subsidies.",
+    description: [
+      "A Detailed Project Report (DPR) accompanied by comprehensive Credit Monitoring Arrangement (CMA) data is the single most critical document evaluated by commercial banks, nationalized lending institutions, and government subsidy appraisal committees. Incomplete financial modeling, unrealistic debt-service coverage ratios (DSCR), or inconsistent working capital assumptions are the leading causes of bank loan rejections.",
+      "Founding Legals Financial Advisory Desk builds institutional-grade Detailed Project Reports certified by qualified Chartered Accountants. We craft robust 5-year financial models tailored to your industry, compute all 7 mandatory CMA data statements, determine Debt Service Coverage Ratios (DSCR), Break-Even Points (BEP), and Internal Rate of Return (IRR), and provide a persuasive project narrative designed to win bank sanction.",
+    ],
+    idealFor: [
+      "Entrepreneurs applying for bank term loans, working capital limits (Cash Credit/Overdraft), and CGTMSE financing",
+      "Enterprises applying for central and state capital investment subsidies requiring bank-appraised Detailed Project Reports",
+      "Founders pitching to state financial corporations (SFCs), SIDBI, or industrial development boards for project funding",
+      "Growing companies requesting credit limit enhancement or restructuring with existing nationalized or private banks",
+    ],
+    whatsIncluded: [
+      { title: "5-year comprehensive financial forecast", description: "Projected Balance Sheets, Profit & Loss accounts, and Cash Flow statements built on realistic commercial assumptions." },
+      { title: "Full 7-statement CMA data compilation", description: "Standardized Credit Monitoring Arrangement format required by public sector and private commercial banks." },
+      { title: "Critical banking credit ratios analysis", description: "Computation of DSCR, Current Ratio, Debt-Equity Ratio, Interest Coverage Ratio (ISCR), and Net Working Capital (NWC)." },
+      { title: "Sensitivity & break-even analysis", description: "Rigorous break-even point (BEP) determination and revenue threshold calculations under variable margin conditions." },
+      { title: "Executive project narrative & promoter profile", description: "Comprehensive business overview, promoter credentials, market opportunity, SWOT, and risk mitigation strategies." },
+      { title: "Chartered Accountant attestation", description: "Signed CA verification and delivery in both editable Excel model format and high-resolution printable PDF." },
+    ],
+    documentsRequired: [
+      "Project cost estimates (land, civil work, plant & machinery quotations, working capital requirements)",
+      "Past 2–3 years audited financial statements and tax returns (for existing businesses)",
+      "Provisional financial balance sheet and P&L for the current financial year",
+      "Promoters' net worth statements and banking relationship details",
+      "Proposed loan tenure, repayment grace period, and promoter equity contribution ratio",
+    ],
+    process: [
+      { title: "Financial data intake & assumption review", description: "We analyze your project expenditure, revenue drivers, pricing, and operating margin assumptions." },
+      { title: "Financial modeling & ratio calculation", description: "Our financial analysts formulate the 5-year projections and compute statutory banking ratios." },
+      { title: "CMA data compilation", description: "The standardized 7-statement CMA dossier is prepared in full compliance with RBI credit monitoring standards." },
+      { title: "Chartered Accountant review & certification", description: "A senior CA reviews the project feasibility, validates assumptions, and formally attests the report." },
+      { title: "Delivery of bank-ready dossier", description: "You receive the complete, print-ready DPR and editable Excel financial model within 3 to 5 business days." },
+    ],
+    competitorPricing: [
+      { vendor: "Commercial Loan Consultant", price: "₹10,000–₹25,000", note: "Standard DPR & CMA" },
+      { vendor: "Independent CA Firm", price: "₹8,000–₹16,000", note: "Varies by loan ticket size" },
+    ],
+    memberRateNote: "Fixed fee ₹2,499 for complete DPR with CMA data. Includes one complimentary post-review revision.",
+    faqs: [
+      { q: "What is CMA Data and why do banks require it?", a: "Credit Monitoring Arrangement (CMA) data is a standardized set of 7 financial statements established by the Reserve Bank of India that banks use to assess the past performance and projected financial health of a borrower applying for large term loans or working capital limits." },
+      { q: "What is a healthy DSCR ratio for bank loan approval?", a: "Banks generally consider an average Debt Service Coverage Ratio (DSCR) between 1.5 and 2.0 as safe and healthy, indicating that the business generates sufficient operational cash flow to comfortably service its loan principal and interest obligations." },
+      { q: "Can this project report be used for government subsidies as well?", a: "Yes. Our DPRs adhere to central and state industrial subsidy guidelines (including DIC, PMEGP, PMFME, and state industrial policies) and can be submitted concurrently to banks and government departments." },
+    ],
+    relatedLinks: [
+      { name: "Government Loan Assistance", href: "/services/CAservices/government-loan-assistance" },
+      { name: "Subsidy Application Support", href: "/services/CAservices/subsidy-application-support" },
+      { name: "UDYAM / MSME Registration", href: "/services/CAservices/msme-registration" },
+    ],
+  },
 ];
 
 export function getNewServicePage(slug: string): NewServicePage | undefined {
@@ -1021,3 +1631,4 @@ export function getNewServicePage(slug: string): NewServicePage | undefined {
 }
 
 export const newServiceSlugs = newServicePages.map((p) => p.slug);
+

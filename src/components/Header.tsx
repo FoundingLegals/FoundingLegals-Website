@@ -110,6 +110,8 @@ const SERVICE_CATEGORIES = [
       { name: "GST Registration", href: "/services/CAservices/gst-registration" },
       { name: "UDYAM / MSME Registration", href: "/services/CAservices/msme-registration" },
       { name: "IEC (Import Export Code)", href: "/services/CAservices/iec-registration" },
+      { name: "Letter of Undertaking (LUT)", href: "/services/CAservices/lut-registration" },
+      { name: "AD Code Registration", href: "/services/CAservices/ad-code-registration" },
       { name: "Labour License", href: "/services/CAservices/labour-license" },
       { name: "Professional Tax Registration", href: "/services/CAservices/professional-tax-registration" },
     ]
@@ -130,6 +132,20 @@ const SERVICE_CATEGORIES = [
     fullName: "Intellectual Property (IP) Services",
     services: [
       { name: "Trademark Registration", href: "/services/LegalServices/trademark-registration" },
+    ]
+  },
+  {
+    id: "subsidies_loans",
+    name: "Subsidies & Loans",
+    fullName: "Government Subsidies, Grants & Loan Services",
+    services: [
+      { name: "Subsidy Application Support", href: "/services/CAservices/subsidy-application-support" },
+      { name: "Grant Application Support", href: "/services/CAservices/grant-application-support" },
+      { name: "Government Loan Assistance", href: "/services/CAservices/government-loan-assistance" },
+      { name: "Government Tender Support", href: "/services/CAservices/government-tender-support" },
+      { name: "Registration & Licence Assistance", href: "/services/CAservices/registration-licence-assistance" },
+      { name: "Government Certification Support", href: "/services/CAservices/government-certification-support" },
+      { name: "Project Report Preparation", href: "/services/CAservices/project-report-preparation" },
     ]
   },
   {
@@ -175,6 +191,7 @@ const SERVICE_CATEGORIES = [
     fullName: "Certifications & Filings",
     services: [
       { name: "DPIIT Startup India Certification", href: "/services/CAservices/dpiit-recognition" },
+      { name: "Government Certification Support (ISO/ZED)", href: "/services/CAservices/government-certification-support" },
       { name: "ROC Annual Compliance Filing", href: "/services/CAservices/certifications" },
       { name: "ISO Certification", href: "/services/CAservices/certifications" },
     ]
@@ -185,6 +202,7 @@ const SERVICE_CATEGORIES = [
     fullName: "Financial & Investment Services",
     services: [
       { name: "Loan Project Report Preparation", href: "/services/CAservices/loan-project-report" },
+      { name: "Project Report Preparation (DPR & CMA)", href: "/services/CAservices/project-report-preparation" },
     ]
   },
   {
@@ -208,6 +226,7 @@ const LEGAL_SERVICE_CATEGORIES = [
     fullName: "Startup & Founder Agreements",
     services: [
       { name: "Founders' Agreement", href: "/services/LegalServices/agreements/founders-agreement" },
+      { name: "Customized Agreement Draft Request", href: "/services/LegalServices/customized-agreement-draft" },
       { name: "Shareholders' Agreement (SHA)", href: "/services/LegalServices/agreements/shareholders-agreement" },
       { name: "Share Subscription Agreement (SSA)", href: "/services/LegalServices/agreements/share-subscription-agreement" },
       { name: "Convertible Note Agreement", href: "/services/LegalServices/agreements/convertible-note-agreement" },
@@ -365,8 +384,8 @@ export default function Header() {
               {megaOpen && (
                 <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1 w-full max-w-[880px] z-50">
                   <div className="bg-white rounded-2xl shadow-[0_16px_48px_rgba(43,39,35,0.14)] border border-brown-100/50 animate-dropdown overflow-hidden">
-                    {/* Centered Luxury Header Banner above Start, Compliance, and Raise */}
-                    <div className="px-8 py-5 border-b border-brown-100/50 bg-gradient-to-b from-[#FAFBF8] via-white to-[#F7F9F3] text-center relative">
+                    {/* Centered Luxury Header Banner with Right-Side Savings Badge */}
+                    <div className="px-8 py-5 border-b border-brown-100/50 bg-gradient-to-b from-[#FAFBF8] via-white to-[#F7F9F3] text-center relative flex items-center justify-center">
                       <div className="inline-flex items-baseline justify-center font-serif text-[26px] sm:text-[28px] font-bold tracking-tight">
                         <span className="text-[#6EA034]">Founding</span>
                         <span className="text-[#365922]">Legals</span>
@@ -387,6 +406,22 @@ export default function Header() {
                             />
                           </svg>
                         </span>
+                      </div>
+
+                      {/* Right-aligned Promotional Savings Badge with right-side spacing and gap */}
+                      <div className="absolute right-6 lg:right-8 top-1/2 -translate-y-1/2 flex items-center">
+                        <Link
+                          href="/pricing"
+                          onClick={closeAllDropdowns}
+                          className="group inline-flex items-center transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]"
+                          title="Founder's OS - Save up to ₹2 Lakhs Annually"
+                        >
+                          <img
+                            src="/Glossy Green Savings Promotional Badge.png"
+                            alt="Save up to ₹2 Lakhs Annually | Plans start at ₹658"
+                            className="h-[44px] w-auto object-contain drop-shadow-[0_2px_8px_rgba(46,125,50,0.18)] group-hover:drop-shadow-[0_4px_12px_rgba(46,125,50,0.28)] transition-all duration-300"
+                          />
+                        </Link>
                       </div>
                     </div>
 
@@ -810,6 +845,20 @@ export default function Header() {
                       <p className="text-[11px] text-[#6B665F] font-light mt-1">
                         Startup Operating System Suite
                       </p>
+                      <div className="mt-3 flex justify-center">
+                        <Link
+                          href="/pricing"
+                          onClick={() => setIsMobileOpen(false)}
+                          className="inline-block transition-transform duration-200 active:scale-95"
+                          title="Founder's OS - Save up to ₹2 Lakhs Annually"
+                        >
+                          <img
+                            src="/Glossy Green Savings Promotional Badge.png"
+                            alt="Save up to ₹2 Lakhs Annually | Plans start at ₹658"
+                            className="h-[36px] w-auto object-contain drop-shadow-sm"
+                          />
+                        </Link>
+                      </div>
                     </div>
                     {sections.map((sec) => (
                       <div key={sec.title} className="space-y-1">
