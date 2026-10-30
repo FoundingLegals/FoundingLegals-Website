@@ -310,9 +310,9 @@ export const services: ServicePattern[] = [
   {
     title: "Client Management",
     slug: "client-management",
-    heroCategory: "Start",
-    heroTitle: "Manage Clients, Contracts & Invoices with Founding Legals",
-    heroDescription: "Early-stage founders shouldn't have to juggle scattered client emails, unorganized contracts, and manual payment tracking. Founding Legals gives you a clean workspace to onboard clients, link legally binding agreements, generate professional GST invoices, and keep your cash flow predictable.",
+    heroCategory: "Client Management Software for Startups",
+    heroTitle: "Keep Every Client Record, Invoice and Payment Update and Organised",
+    heroDescription: "Founding Legals Founder's OS gives Indian startups a unified, calm workspace to maintain client profiles, link executed contracts, generate compliant GST invoices, and track live payment updates without spreadsheets or manual follow-ups.",
     heroImage: "/startup-compliance-hero.png",
     featuresTitle: "Everything your client operations need in one place",
     features: [

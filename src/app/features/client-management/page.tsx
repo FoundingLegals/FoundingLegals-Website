@@ -174,11 +174,11 @@ export default function ClientManagementPage() {
               {/* Badge */}
               <div className="hero-animate hero-animate-delay-1 inline-flex items-center gap-2 px-3 py-1.5 bg-lime-bg border border-olive-200 rounded-full text-olive-700 text-[13px] font-medium mb-8">
                 <Sparkles className="w-3.5 h-3.5" />
-                Client Workspace · Founding Legals
+                Client Management Software for Startups · Founder&apos;s OS
               </div>
 
               <h1 className="hero-animate hero-animate-delay-2 font-serif text-[48px] sm:text-[58px] lg:text-[64px] font-medium text-brown-900 leading-[1.08] tracking-[-0.02em] mb-6">
-                Run your client relationships from one calm, capable workspace.
+                Keep every client record, invoice and payment update and organised.
               </h1>
 
               <p className="hero-animate hero-animate-delay-3 text-[18px] sm:text-[20px] text-brown-500 leading-relaxed mb-10 max-w-xl font-light">

@@ -19,7 +19,10 @@ import {
   Zap,
   Shield,
   Plus,
+  Users,
+  ArrowRight,
 } from "lucide-react";
+import Link from "next/link";
 import { useReveal } from "@/lib/useReveal";
 import LazyVideo from "@/components/LazyVideo";
 
@@ -59,66 +62,67 @@ export function StartSection() {
             </div>
           </div>
 
-          {/* Right    features (founding leals style: icon + badge, heading, 3 bullet features) */}
+          {/* Right — features (Founder's OS: Client Management Software for Startups) */}
           <div className="reveal-right">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-xl bg-olive-600 flex items-center justify-center">
-                <Building2 className="w-5 h-5 text-lime-bg" />
+                <Users className="w-5 h-5 text-lime-bg" />
               </div>
-              <span className="text-sm font-medium text-olive-700 bg-lime-bg px-3 py-1 rounded-full">
-                Start
+              <span className="text-sm font-medium text-olive-700 bg-lime-bg px-3.5 py-1 rounded-full border border-olive-200/60 shadow-2xs">
+                Client Management Software for Startups
               </span>
             </div>
 
-            <h2 className="font-serif text-4xl sm:text-[42px] lg:text-5xl font-medium text-brown-900 leading-[1.15] mb-10">
-              Born ready. From day one.
+            <h2 className="font-serif text-4xl sm:text-[42px] lg:text-5xl font-medium text-brown-900 leading-[1.15] mb-8">
+              Keep every client record, invoice and payment update and organised.
             </h2>
 
-            <div className="space-y-8">
+            <div className="space-y-8 mb-8">
+              {/* Point 1: Client Records & Contracts */}
               <div className="flex gap-4">
-                <div className="shrink-0 mt-0.5">
-                  <FileText className="w-5 h-5 text-olive-600" />
+                <div className="shrink-0 mt-0.5 w-9 h-9 rounded-xl bg-olive-50 flex items-center justify-center text-olive-700">
+                  <Users className="w-5 h-5 text-olive-700" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Incorporation in 7 days
+                  <h3 className="font-semibold text-brown-900 mb-1.5 text-base sm:text-[17px]">
+                    Centralised client records &amp; linked contracts
                   </h3>
-                  <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Name, SPICe+, DIN, DSC, PAN and TAN — filed for you
-                    with live status updates.
+                  <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed font-light">
+                    Keep client profiles, signatory details, GSTIN, PAN, and executed Master Service Agreements (MSAs) or NDAs connected in one clean directory — zero lost emails or scattered files.
                   </p>
                 </div>
               </div>
 
+              {/* Point 2: Invoicing & Payment Updates */}
               <div className="flex gap-4">
-                <div className="shrink-0 mt-0.5">
-                  <Landmark className="w-5 h-5 text-olive-600" />
+                <div className="shrink-0 mt-0.5 w-9 h-9 rounded-xl bg-olive-50 flex items-center justify-center text-olive-700">
+                  <Receipt className="w-5 h-5 text-olive-700" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-brown-900 mb-1.5">
-                    Banking &amp; certifications, sorted
+                  <h3 className="font-semibold text-brown-900 mb-1.5 text-base sm:text-[17px]">
+                    GST-ready invoices with live payment updates
                   </h3>
-                  <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    Current account, Udyam (MSME) and DPIIT recognition
-                        lined up without portal-hopping.
+                  <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed font-light">
+                    Issue compliant GST invoices with automated tax calculations, track receivables in real time, and record settlements instantly so your startup&apos;s cash flow stays clear and predictable.
                   </p>
                 </div>
               </div>
+            </div>
 
-              <div className="flex gap-4">
-                <div className="shrink-0 mt-0.5">
-                  <Receipt className="w-5 h-5 text-olive-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-brown-900 mb-1.5">
-                    GST set up, returns on autopilot
-                  </h3>
-                  <p className="text-brown-500 text-[15px] sm:text-base leading-relaxed">
-                    GSTIN registration plus monthly and quarterly returns
-                        nudged a week ahead, never the night before.
-                  </p>
-                </div>
-              </div>
+            <div className="flex items-center gap-4 pt-1">
+              <Link
+                href="/services/LegalServices/client-management"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-olive-600 hover:bg-olive-700 text-lime-bg text-[14px] font-semibold rounded-full transition-all duration-200 shadow-sm hover:shadow"
+              >
+                <span>Explore Client Management</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/pricing"
+                className="inline-flex items-center gap-1.5 text-[14px] font-medium text-brown-700 hover:text-olive-900 px-4 py-3 rounded-full hover:bg-cream-dark transition-colors"
+              >
+                <span>Included in Founder&apos;s OS</span>
+              </Link>
             </div>
           </div>
         </div>
