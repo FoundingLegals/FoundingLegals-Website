@@ -255,7 +255,12 @@ function getFaqs(service: ServicePattern) {
 import { getServicePrice } from "@/lib/servicePricingData";
 
 // ── Main Layout ──────────────────────────────────────────────
+import ProductToolLayout from "./ProductToolLayout";
+
 export default function ServiceLayout({ service }: { service: ServicePattern }) {
+  if (PRODUCT_TOOL_SLUGS.has(service.slug)) {
+    return <ProductToolLayout service={service} />;
+  }
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const memberRate = getServicePrice(service.slug);
@@ -387,7 +392,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                     onClick={() => navigateToApp(service.title)}
                     className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[13.5px] font-bold rounded-full transition-all shadow-md cursor-pointer"
                   >
-                    Opt Service
+                    Get Started
                     <ArrowRight className="w-4 h-4" />
                   </button>
                   <button
@@ -639,7 +644,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                     onClick={() => navigateToApp(service.title)}
                     className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#5A7338] hover:bg-[#4a5f2e] text-white text-[14px] font-bold rounded-full transition-all shadow-md shrink-0 cursor-pointer"
                   >
-                    Opt Service
+                    Get Started
                     <ArrowRight className="w-4 h-4" />
                   </button>
                   <button

@@ -37,6 +37,27 @@ const TdsReturnFilingLayout = dynamic(() => import("@/components/TdsReturnFiling
 const AgreementsLayout = dynamic(() => import("@/components/AgreementsLayout"));
 const InvestmentReadinessLayout = dynamic(() => import("@/components/InvestmentReadinessLayout"));
 const NewServicePageLayout = dynamic(() => import("@/components/NewServicePageLayout"));
+const ClientManagementLayout = dynamic(() => import("@/components/ClientManagementLayout"));
+const TeamManagementLayout = dynamic(() => import("@/components/TeamManagementLayout"));
+const PayrollManagementLayout = dynamic(() => import("@/components/PayrollManagementLayout"));
+const InvestorDirectoryLayout = dynamic(() => import("@/components/InvestorDirectoryLayout"));
+const SpendAnalysisLayout = dynamic(() => import("@/components/SpendAnalysisLayout"));
+const DocumentManagementLayout = dynamic(() => import("@/components/DocumentManagementLayout"));
+const SchemesAndGrantsLayout = dynamic(() => import("@/components/SchemesAndGrantsLayout"));
+const MarketplaceLayout = dynamic(() => import("@/components/MarketplaceLayout"));
+const ProductToolLayout = dynamic(() => import("@/components/ProductToolLayout"));
+
+const PRODUCT_TOOL_SLUGS = new Set([
+  "client-management",
+  "team-management",
+  "payroll-management",
+  "schemes-and-grants",
+  "investor-directory",
+  "marketplace",
+  "spend-analysis",
+  "document-management",
+  "essential-startup-approach",
+]);
 
 const AGREEMENT_SLUGS = new Set<string>([
   ...AGREEMENTS_DATABASE.map((a) => a.id),
@@ -266,6 +287,46 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       desc: "Apply for Basic, State, and Central FSSAI Food Licenses online. Complete FosCos compliance, document verification, and fast certificate delivery.",
       keywords: ["FSSAI registration online", "food license India", "FosCos registration", "FSSAI license fees"],
     },
+    "team-management": {
+      title: "Team Management Software for Startups | Founding Legals",
+      desc: "Manage teams, employee contracts, onboarding and workplace policies in one place.",
+      keywords: ["team management", "employee contracts", "startup HR software"],
+    },
+    "payroll-management": {
+      title: "Startup Payroll Management & Digital Payslips | Founding Legals",
+      desc: "Automate salary structures, statutory tax deductions, digital payslips and compliance records in one monthly pay run.",
+      keywords: ["startup payroll", "salary slips", "TDS PF compliance", "payroll software India"],
+    },
+    "marketplace": {
+      title: "Startup Marketplace & Founder Perks | Founding Legals",
+      desc: "Unlock over ₹15 Lakhs in cloud credits, SaaS perks, and vetted expert services for tech startups.",
+      keywords: ["startup perks", "cloud credits", "AWS activate", "startup discounts", "software deals"],
+    },
+    "schemes-and-grants": {
+      title: "Government Schemes & Grants for Startups | Founding Legals",
+      desc: "Access non-dilutive startup capital, SISFS grants, DPIIT incentives and state subsidies with zero equity dilution.",
+      keywords: ["startup schemes", "government grants", "SISFS", "DPIIT benefits", "non dilutive funding"],
+    },
+    "document-management": {
+      title: "Startup Document Management & Legal Vault | Founding Legals",
+      desc: "Secure 256-bit encrypted founder vault for incorporation certificates, board resolutions, investor SHAs and tax records.",
+      keywords: ["document management", "legal vault", "investor data room", "corporate compliance", "startup contracts"],
+    },
+    "spend-analysis": {
+      title: "Startup Spend Analysis & Runway Tracking | Founding Legals",
+      desc: "Track startup burn rate, vendor disbursements, recurring subscriptions and runway horizons in one place.",
+      keywords: ["spend analysis", "startup runway", "burn rate tracking", "SaaS subscription management", "startup expenses"],
+    },
+    "investor-directory": {
+      title: "Investor Directory for Startups | Discover 3,000+ Angels & VCs | Founding Legals",
+      desc: "Connect with verified angel investors, syndicates and venture capital funds actively deploying capital into Indian tech startups.",
+      keywords: ["investor directory", "angel investors India", "venture capital funds", "startup fundraising"],
+    },
+    "client-management": {
+      title: "Client Management Software for Startups | Founding Legals",
+      desc: "Run your client operations from one smart workspace. Manage clients, contracts, invoices and payments — all in one place.",
+      keywords: ["client management software", "startup client management", "GST invoices", "contract management", "client CRM"],
+    },
   };
 
   if (customMetadata[slug]) {
@@ -330,6 +391,107 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   }
 
   const service = services.find((s) => s.slug === slug);
+
+  // Dedicated Product Tools Layout (Matching Image 1 Reference for all 9 platform tools)
+  if (PRODUCT_TOOL_SLUGS.has(slug) && service) {
+    if (slug === "client-management") {
+      return (
+        <>
+          <Header />
+          <main>
+            <ClientManagementLayout />
+          </main>
+          <Footer />
+        </>
+      );
+    }
+    if (slug === "team-management") {
+      return (
+        <>
+          <Header />
+          <main>
+            <TeamManagementLayout />
+          </main>
+          <Footer />
+        </>
+      );
+    }
+    if (slug === "investor-directory") {
+      return (
+        <>
+          <Header />
+          <main>
+            <InvestorDirectoryLayout />
+          </main>
+          <Footer />
+        </>
+      );
+    }
+    if (slug === "marketplace") {
+      return (
+        <>
+          <Header />
+          <main>
+            <MarketplaceLayout />
+          </main>
+          <Footer />
+        </>
+      );
+    }
+    if (slug === "schemes-and-grants") {
+      return (
+        <>
+          <Header />
+          <main>
+            <SchemesAndGrantsLayout />
+          </main>
+          <Footer />
+        </>
+      );
+    }
+    if (slug === "document-management") {
+      return (
+        <>
+          <Header />
+          <main>
+            <DocumentManagementLayout />
+          </main>
+          <Footer />
+        </>
+      );
+    }
+    if (slug === "spend-analysis") {
+      return (
+        <>
+          <Header />
+          <main>
+            <SpendAnalysisLayout />
+          </main>
+          <Footer />
+        </>
+      );
+    }
+    if (slug === "payroll-management") {
+      return (
+        <>
+          <Header />
+          <main>
+            <PayrollManagementLayout />
+          </main>
+          <Footer />
+        </>
+      );
+    }
+    return (
+      <>
+        <Header />
+        <main>
+          <ProductToolLayout service={service} />
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
   // Which Company Type to Register Layout
   if (slug === "which-company-type-to-register") {
