@@ -351,8 +351,11 @@ export default function Chatbot() {
     return () => window.removeEventListener("resize", handleCheckMobile);
   }, []);
 
-  // ── Inline lead capture form state ──────────────────────────────
+  // ── Inline lead capture form & interest prompt state ────────────
   const [showLeadForm, setShowLeadForm] = useState(false);
+  const [showInterestPrompt, setShowInterestPrompt] = useState(false);
+  const [hasAskedInterestOnce, setHasAskedInterestOnce] = useState(false);
+  const [hasShownLeadFormOnce, setHasShownLeadFormOnce] = useState(false);
   const [leadName, setLeadName] = useState("");
   const [leadPhone, setLeadPhone] = useState("");
   const [leadEmail, setLeadEmail] = useState("");
@@ -493,6 +496,9 @@ export default function Chatbot() {
       },
     ]);
     setShowLeadForm(false);
+    setShowInterestPrompt(false);
+    setHasAskedInterestOnce(false);
+    setHasShownLeadFormOnce(false);
     setLeadFormDismissed(false);
     setLeadSubmitted(false);
     setLeadError("");
@@ -502,6 +508,54 @@ export default function Chatbot() {
     if (!userText.trim()) return;
 
     const trimmed = userText.trim();
+
+    // Check if user is replying to the "Are you interested?" prompt
+    const isAffirmative = /^(yes|yeah|yep|sure|ok|interested|i am interested|connect me|y|please connect|call me|yes please)\b/i.test(trimmed);
+    const isNegative = /^(no|nope|not now|not interested|later|nah|n)\b/i.test(trimmed);
+
+    if (showInterestPrompt && isAffirmative) {
+      setShowInterestPrompt(false);
+      setHasShownLeadFormOnce(true);
+      setShowLeadForm(true);
+      setLeadFormDismissed(false);
+      setMessages((prev) => [
+        ...prev,
+        { id: Date.now().toString(), text: trimmed, sender: "user", timestamp: new Date() },
+        {
+          id: (Date.now() + 1).toString(),
+          text: "Great! Please fill in your contact details in the form below, and our Senior CA & Legal Specialist will reach out to you shortly.",
+          sender: "bot",
+          timestamp: new Date(),
+        },
+      ]);
+      setInputValue("");
+      setTimeout(scrollToBottom, 120);
+      return;
+    }
+
+    if (showInterestPrompt && isNegative) {
+      setShowInterestPrompt(false);
+      setHasShownLeadFormOnce(true);
+      setShowLeadForm(false);
+      setLeadFormDismissed(true);
+      setMessages((prev) => [
+        ...prev,
+        { id: Date.now().toString(), text: trimmed, sender: "user", timestamp: new Date() },
+        {
+          id: (Date.now() + 1).toString(),
+          text: "No problem at all! Feel free to ask any other questions about startup compliance, incorporation, or legal agreements.",
+          sender: "bot",
+          timestamp: new Date(),
+        },
+      ]);
+      setInputValue("");
+      return;
+    }
+
+    if (showInterestPrompt) {
+      setShowInterestPrompt(false);
+    }
+
     const newUserMsg: Message = {
       id: Date.now().toString(),
       text: trimmed,
@@ -509,14 +563,10 @@ export default function Chatbot() {
       timestamp: new Date(),
     };
 
-    // Auto-detect service from user message (e.g. Pvt Ltd, LLP, GST, Trademark, etc.)
+    // Auto-detect service from user message for pre-filling dropdown when requested
     const detected = detectServiceFromText(trimmed);
     if (detected) {
       setLeadService(detected);
-      if (!leadSubmitted) {
-        setShowLeadForm(true);
-        setLeadFormDismissed(false);
-      }
     }
 
     setMessages((prev) => [...prev, newUserMsg]);
@@ -605,13 +655,17 @@ export default function Chatbot() {
           playPeacefulNotificationSound();
         }
 
-        // Auto-detect service from bot response if not yet detected
-        if (!leadSubmitted && !leadFormDismissed) {
-          const detectedFromBot = detectServiceFromText(fullBotReply);
-          if (detectedFromBot) {
-            setLeadService(detectedFromBot);
-            setShowLeadForm(true);
-          }
+        // Auto-detect service from bot response if available
+        const detectedFromBot = detectServiceFromText(fullBotReply);
+        if (detectedFromBot) {
+          setLeadService(detectedFromBot);
+        }
+
+        // Ask only once after completion of response if user is interested
+        if (!leadSubmitted && !hasAskedInterestOnce && !hasShownLeadFormOnce) {
+          setHasAskedInterestOnce(true);
+          setShowInterestPrompt(true);
+          setTimeout(scrollToBottom, 150);
         }
       } else {
         const data = await response.json();
@@ -626,12 +680,16 @@ export default function Chatbot() {
           playPeacefulNotificationSound();
         }
 
-        if (!leadSubmitted && !leadFormDismissed) {
-          const detectedFromBot = detectServiceFromText(answerText);
-          if (detectedFromBot) {
-            setLeadService(detectedFromBot);
-            setShowLeadForm(true);
-          }
+        const detectedFromBot = detectServiceFromText(answerText);
+        if (detectedFromBot) {
+          setLeadService(detectedFromBot);
+        }
+
+        // Ask only once after completion of response if user is interested
+        if (!leadSubmitted && !hasAskedInterestOnce && !hasShownLeadFormOnce) {
+          setHasAskedInterestOnce(true);
+          setShowInterestPrompt(true);
+          setTimeout(scrollToBottom, 150);
         }
       }
     } catch (error) {
@@ -663,19 +721,31 @@ export default function Chatbot() {
     const detected = detectServiceFromText(queryText);
     if (detected) {
       setLeadService(detected);
-      if (!leadSubmitted) {
-        setShowLeadForm(true);
-        setLeadFormDismissed(false);
-      }
     }
     sendMessage(queryText);
   };
 
   const handleRequestConsultation = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
+    setShowInterestPrompt(false);
+    setShowLeadForm(true);
+    setHasShownLeadFormOnce(true);
+    setLeadFormDismissed(false);
+    setTimeout(scrollToBottom, 120);
+  };
+
+  const handleInterestYes = () => {
+    setShowInterestPrompt(false);
+    setHasShownLeadFormOnce(true);
     setShowLeadForm(true);
     setLeadFormDismissed(false);
     setTimeout(scrollToBottom, 120);
+  };
+
+  const handleInterestNo = () => {
+    setShowInterestPrompt(false);
+    setHasShownLeadFormOnce(true);
+    setLeadFormDismissed(true);
   };
 
   const handleLeadSubmit = async (e: React.FormEvent) => {
@@ -1231,6 +1301,42 @@ export default function Chatbot() {
               </div>
             )}
 
+            {/* Interest Prompt - Only asked once after completion of response */}
+            {showInterestPrompt && !showLeadForm && !leadSubmitted && !hasShownLeadFormOnce && (
+              <div className="w-full bg-[#FAF9F5] border border-[#4a5f2e]/25 rounded-2xl p-3 sm:p-3.5 shadow-2xs animate-fadeIn text-[#2B2723]">
+                <div className="flex items-start gap-2.5">
+                  <div className="w-7 h-7 rounded-lg bg-[#4a5f2e]/10 border border-[#4a5f2e]/20 flex items-center justify-center text-[#4a5f2e] shrink-0 mt-0.5">
+                    <Sparkles className="w-3.5 h-3.5 text-[#4a5f2e]" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[12px] sm:text-[12.5px] font-bold text-brown-900 leading-snug">
+                      Are you interested in speaking with our Legal & CA expert?
+                    </div>
+                    <p className="text-[11px] sm:text-[11.5px] text-brown-600 leading-normal mt-0.5">
+                      Get an official quotation, free consultation, and dedicated expert callback.
+                    </p>
+                    <div className="flex items-center gap-2 mt-2.5">
+                      <button
+                        type="button"
+                        onClick={handleInterestYes}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#4a5f2e] hover:bg-[#384823] text-white rounded-lg text-[11px] sm:text-[11.5px] font-semibold transition-all shadow-2xs hover:scale-[1.02] active:scale-95 cursor-pointer"
+                      >
+                        <Check className="w-3.5 h-3.5" />
+                        <span>Yes, I&apos;m interested</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleInterestNo}
+                        className="px-3 py-1.5 bg-white hover:bg-[#F5F2EA] text-brown-700 border border-brown-200/80 rounded-lg text-[11px] sm:text-[11.5px] font-medium transition-all cursor-pointer shadow-2xs"
+                      >
+                        <span>Not right now</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Inline Lead Capture Form */}
             {showLeadForm && !leadSubmitted && (
               <div className="w-full bg-[#FAF9F5] border border-[#4a5f2e]/30 rounded-2xl p-3 sm:p-4 shadow-sm animate-fadeIn text-[#2B2723]">
@@ -1253,6 +1359,7 @@ export default function Chatbot() {
                     onClick={() => {
                       setShowLeadForm(false);
                       setLeadFormDismissed(true);
+                      setHasShownLeadFormOnce(true);
                     }}
                     title="Dismiss form"
                     className="text-brown-400 hover:text-brown-700 p-1 rounded-md transition-colors cursor-pointer shrink-0"
@@ -1420,23 +1527,7 @@ export default function Chatbot() {
               </div>
             )}
 
-            {/* Re-open subtle chip if user dismissed or closed form */}
-            {!showLeadForm && !leadSubmitted && messages.length > 1 && (
-              <div className="flex items-center justify-center my-0.5 animate-fadeIn">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setShowLeadForm(true);
-                    setLeadFormDismissed(false);
-                    setTimeout(scrollToBottom, 100);
-                  }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-olive-50 hover:bg-olive-100/90 border border-olive-200 text-[10.5px] sm:text-[11px] font-semibold text-[#3D4A26] transition-all shadow-2xs hover:scale-[1.02] cursor-pointer"
-                >
-                  <Building2 className="w-3 h-3 text-[#4a5f2e]" />
-                  <span>Need an official quote or CA call? Tap here</span>
-                </button>
-              </div>
-            )}
+
 
             {/* Typing Indicator */}
             {isTyping && (
