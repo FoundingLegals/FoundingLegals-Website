@@ -78,7 +78,7 @@ export default function ClientManagementLayout() {
               </div>
 
               {/* Main Heading */}
-              <h1 className="text-[38px] sm:text-[48px] lg:text-[54px] font-bold tracking-tight text-[#1C1A17] leading-[1.08] mb-6">
+              <h1 className="text-[28px] sm:text-[36px] lg:text-[40px] xl:text-[44px] font-bold tracking-tight text-[#1C1A17] leading-[1.12] mb-5">
                 Manage Clients, <br />
                 Contracts &amp; Invoices <br />
                 <span className="relative inline-block text-[#3F5E24] italic font-normal mt-1">
@@ -99,7 +99,7 @@ export default function ClientManagementLayout() {
               </h1>
 
               {/* Subtitle */}
-              <p className="text-[15.5px] sm:text-[17px] text-[#5C5850] font-normal leading-relaxed mb-8 max-w-lg">
+              <p className="text-[14px] sm:text-[15.5px] text-[#5C5850] font-normal leading-relaxed mb-7 max-w-lg">
                 Keep client records, agreements, invoices and payments organised — without the manual work.
               </p>
 

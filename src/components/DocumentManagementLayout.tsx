@@ -79,7 +79,7 @@ export default function DocumentManagementLayout() {
               </div>
 
               {/* Main Heading (Properly aligned into 3 balanced lines) */}
-              <h1 className="text-[34px] sm:text-[44px] lg:text-[48px] xl:text-[52px] font-bold tracking-tight text-[#1C1A17] leading-[1.1] mb-5">
+              <h1 className="text-[28px] sm:text-[36px] lg:text-[40px] xl:text-[44px] font-bold tracking-tight text-[#1C1A17] leading-[1.12] mb-5">
                 Organize Legal Vault, <br />
                 <span className="whitespace-nowrap">Agreements &amp; MCA Records</span> <br />
                 <span className="relative inline-block text-[#3F5E24] italic font-normal mt-1">
@@ -100,7 +100,7 @@ export default function DocumentManagementLayout() {
               </h1>
 
               {/* Subtitle / Tag Line */}
-              <p className="text-[15px] sm:text-[16.5px] text-[#5C5850] font-normal leading-relaxed mb-7 max-w-xl">
+              <p className="text-[14px] sm:text-[15.5px] text-[#5C5850] font-normal leading-relaxed mb-7 max-w-lg">
                 Keep incorporation files, investor agreements, board minutes and compliance certificates organised — without the scattered folders.
               </p>
 

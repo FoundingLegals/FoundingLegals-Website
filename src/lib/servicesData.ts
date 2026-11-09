@@ -757,7 +757,7 @@ export const services: ServicePattern[] = [
         iconName: "Coins"
       },
       {
-        title: "Automatic Deductions & Tax Math",
+        title: "Automatic Deductions & Statutory Calculations",
         description: "Handle TDS tax calculations, Provident Fund (PF), and Professional Tax deductions accurately every month without manual formulas.",
         iconName: "Scale"
       },

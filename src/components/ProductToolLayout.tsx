@@ -87,8 +87,8 @@ interface ToolConfig {
 
 const TOOL_CONFIGS: Record<string, ToolConfig> = {
   "client-management": {
-    titlePart1: "Client work, contracts and payments.",
-    titleItalic: "In one organised workspace.",
+    titlePart1: "Manage Clients, Contracts & Payments",
+    titleItalic: "in One Place",
     description: "Manage client records, organise agreements, generate GST-compliant invoices and track payments — all in one place for growing businesses.",
     ctaButtonText: "Explore Client Management",
     capabilitiesTitle: "Everything you need to run client operations.",
@@ -172,8 +172,8 @@ const TOOL_CONFIGS: Record<string, ToolConfig> = {
   },
 
   "team-management": {
-    titlePart1: "Hire, onboard and protect your team.",
-    titleItalic: "In one unified workspace.",
+    titlePart1: "Manage Teams, Contracts & Onboarding",
+    titleItalic: "in One Place",
     description: "Streamline employee onboarding, contractor agreements, headcount records, and statutory HR policies without spreadsheets or legal confusion.",
     ctaButtonText: "Explore Team Management",
     capabilitiesTitle: "Everything you need to run team operations.",
@@ -253,7 +253,7 @@ const TOOL_CONFIGS: Record<string, ToolConfig> = {
   },
 
   "payroll-management": {
-    titlePart1: "Simple, reliable payroll and salary payouts.",
+    titlePart1: "Simple, Reliable Payroll & Salaries",
     titleItalic: "Built for startup teams.",
     description: "Automate salary structures, statutory tax deductions, digital payslips, and compliance records in one stress-free monthly pay run.",
     ctaButtonText: "Explore Payroll Management",
@@ -334,8 +334,8 @@ const TOOL_CONFIGS: Record<string, ToolConfig> = {
   },
 
   "schemes-and-grants": {
-    titlePart1: "Discover non-dilutive startup grants.",
-    titleItalic: "Zero founder equity dilution.",
+    titlePart1: "Discover Startup Grants & Schemes",
+    titleItalic: "Zero Equity Dilution",
     description: "Discover active central and state government grant capital, SISFS funding, and incubation subsidies tailored to your startup's sector and stage.",
     ctaButtonText: "Explore Schemes & Grants",
     capabilitiesTitle: "Everything you need to secure grant funding.",
@@ -415,8 +415,8 @@ const TOOL_CONFIGS: Record<string, ToolConfig> = {
   },
 
   "investor-directory": {
-    titlePart1: "Connect with 3,000+ active investors.",
-    titleItalic: "Direct contact intelligence.",
+    titlePart1: "Connect with 3,000+ Active Investors",
+    titleItalic: "Direct Contact Intelligence",
     description: "Filter curated angels, syndicates, and venture capital funds by stage, sector, and typical ticket size to accelerate your fundraising timeline.",
     ctaButtonText: "Explore Investor Directory",
     capabilitiesTitle: "Everything you need to run your fundraising pipeline.",
@@ -496,8 +496,8 @@ const TOOL_CONFIGS: Record<string, ToolConfig> = {
   },
 
   "spend-analysis": {
-    titlePart1: "Track burn rate, SaaS costs and runway.",
-    titleItalic: "In real-time clarity.",
+    titlePart1: "Track Burn Rate, SaaS Costs & Runway",
+    titleItalic: "in Real-Time Clarity",
     description: "Gain total visibility into startup cash disbursements, eliminate duplicate software subscriptions, and forecast your runway horizon before cash crunches occur.",
     ctaButtonText: "Explore Spend Analysis",
     capabilitiesTitle: "Everything you need to master your startup burn.",
@@ -577,8 +577,8 @@ const TOOL_CONFIGS: Record<string, ToolConfig> = {
   },
 
   "document-management": {
-    titlePart1: "Your encrypted founder document vault.",
-    titleItalic: "Always audit & diligence ready.",
+    titlePart1: "Your Encrypted Document Vault",
+    titleItalic: "Always Audit & Diligence Ready",
     description: "Securely organise corporate certificates, board resolutions, shareholder agreements, and compliance records with bank-grade 256-bit encryption.",
     ctaButtonText: "Explore Document Management",
     capabilitiesTitle: "Everything you need to organise corporate records.",
@@ -658,8 +658,8 @@ const TOOL_CONFIGS: Record<string, ToolConfig> = {
   },
 
   "marketplace": {
-    titlePart1: "Over ₹15 Lakhs in startup perks.",
-    titleItalic: "Cloud credits & vetted tools.",
+    titlePart1: "Curated Startup Perks & Credits",
+    titleItalic: "Save Lakhs on Tools You Need",
     description: "Unlock curated AWS, Google Cloud, and SaaS discounts alongside pre-vetted legal and accounting partner services to preserve early-stage cash.",
     ctaButtonText: "Explore Marketplace",
     capabilitiesTitle: "Everything you need to save early-stage capital.",
@@ -739,8 +739,8 @@ const TOOL_CONFIGS: Record<string, ToolConfig> = {
   },
 
   "essential-startup-approach": {
-    titlePart1: "Start your company on solid legal ground.",
-    titleItalic: "Clean equity & governance.",
+    titlePart1: "Start Your Company on Solid Ground",
+    titleItalic: "Clean Equity & Governance",
     description: "Formalise founder vesting, cap tables, corporate governance, and statutory filings so you never have to scramble when investors run due diligence.",
     ctaButtonText: "Explore Essential Startup Approach",
     capabilitiesTitle: "Everything you need for clean corporate governance.",
@@ -875,14 +875,14 @@ export default function ProductToolLayout({ service }: { service: ServicePattern
             
             {/* Left Column: Heading, Value Prop & CTAs */}
             <div className="lg:col-span-5 text-left">
-              <h1 className="font-serif text-[36px] sm:text-[46px] lg:text-[52px] font-medium leading-[1.1] tracking-tight text-[#1C1A17] mb-5">
+              <h1 className="font-serif text-[30px] sm:text-[38px] lg:text-[44px] font-medium leading-[1.12] tracking-tight text-[#1C1A17] mb-5">
                 {tool.titlePart1}{" "}
                 <span className="italic font-normal text-[#1C1A17] block sm:inline">
                   {tool.titleItalic}
                 </span>
               </h1>
 
-              <p className="text-[15px] sm:text-[16.5px] text-[#5C5850] font-light leading-relaxed mb-7 max-w-lg">
+              <p className="text-[14.5px] sm:text-[15.5px] text-[#5C5850] font-normal leading-relaxed mb-7 max-w-lg">
                 {tool.description || service.heroDescription}
               </p>
 

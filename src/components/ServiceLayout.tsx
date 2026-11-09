@@ -296,7 +296,7 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                     </span>
                   </div>
 
-                  <h1 className="text-[34px] sm:text-[44px] lg:text-[48px] xl:text-[52px] font-bold tracking-tight text-[#1C1A17] leading-[1.1] mb-5">
+                  <h1 className="text-[28px] sm:text-[36px] lg:text-[40px] xl:text-[44px] font-bold tracking-tight text-[#1C1A17] leading-[1.12] mb-5">
                     {service.heroTitle}
                   </h1>
 
@@ -431,11 +431,11 @@ export default function ServiceLayout({ service }: { service: ServicePattern }) 
                   {isProductTool ? "For Founders · Founding Legals" : service.heroCategory || "FoundingLegals Service"}
                 </div>
 
-                <h1 className="text-[38px] sm:text-[50px] lg:text-[58px] font-medium text-[#2b2723] leading-[1.08] tracking-[-0.02em] font-serif mb-6">
+                <h1 className="text-[30px] sm:text-[40px] lg:text-[46px] font-medium text-[#2b2723] leading-[1.1] tracking-[-0.02em] font-serif mb-6">
                   {service.heroTitle}
                 </h1>
 
-                <p className="text-[17px] sm:text-[19px] text-[#6b6965] leading-relaxed mb-10 max-w-xl font-light">
+                <p className="text-[15px] sm:text-[17px] text-[#6b6965] leading-relaxed mb-10 max-w-xl font-light">
                   {service.heroDescription}
                 </p>
 

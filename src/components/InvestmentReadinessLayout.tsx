@@ -204,7 +204,7 @@ export default function InvestmentReadinessLayout({ serviceSlug = "pitch-to-inve
                 </span>
               </div>
 
-              <h1 className="text-[34px] sm:text-[44px] lg:text-[48px] xl:text-[52px] font-bold tracking-tight text-[#1C1A17] leading-[1.1] mb-5">
+              <h1 className="text-[28px] sm:text-[36px] lg:text-[40px] xl:text-[44px] font-bold tracking-tight text-[#1C1A17] leading-[1.12] mb-5">
                 {heroTitle}
               </h1>
 
