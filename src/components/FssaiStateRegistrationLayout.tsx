@@ -273,7 +273,7 @@ export default function FssaiStateRegistrationLayout() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6] text-[#1A1917] font-sans antialiased selection:bg-[#F0F2EB] selection:text-[#48532B]">
+    <div className="min-h-screen bg-[#FAF9F6] text-[#1A1917] font-sans antialiased">
       
       {/* ── HERO SECTION ── */}
       <section className="relative pt-32 pb-16 md:pt-36 md:pb-20 overflow-hidden bg-gradient-to-b from-[#F5F0EB] via-[#FAF9F6] to-[#FAF9F6]">

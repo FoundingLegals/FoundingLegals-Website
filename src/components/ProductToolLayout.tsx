@@ -832,7 +832,7 @@ export default function ProductToolLayout({ service }: { service: ServicePattern
   const currentRows = tool.tableRows[activeTabId] || tool.tableRows[tool.tabs[0]?.id] || [];
 
   return (
-    <div className="w-full bg-[#FAF8F5] text-[#1C1A17] selection:bg-[#DCE7D0] selection:text-[#2A3B18]">
+    <div className="w-full bg-[#FAF8F5] text-[#1C1A17]">
       
       {/* ══════════════════════════════════════════════════════════
           1. HERO SECTION (Warm Cream with Tailored Dashboard Mockup)

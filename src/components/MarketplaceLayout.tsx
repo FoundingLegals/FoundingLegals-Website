@@ -49,7 +49,7 @@ export default function MarketplaceLayout() {
   ];
 
   return (
-    <div className="w-full bg-[#FAF8F5] text-[#1C1A17] selection:bg-[#DCE7D0] selection:text-[#2A3B18]">
+    <div className="w-full bg-[#FAF8F5] text-[#1C1A17]">
       
       {/* ══════════════════════════════════════════════════════════
           HERO SECTION (Matching Senior Executive Standard DITTO)
