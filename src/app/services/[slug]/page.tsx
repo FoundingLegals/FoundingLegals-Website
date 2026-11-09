@@ -899,7 +899,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       <>
         <Header />
         <main>
-          <InvestmentReadinessLayout />
+          <InvestmentReadinessLayout serviceSlug={slug} />
         </main>
         <Footer />
       </>

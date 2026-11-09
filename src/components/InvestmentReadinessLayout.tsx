@@ -35,7 +35,7 @@ interface Addon {
 
 const APP_SIGNUP_URL = (process.env.NEXT_PUBLIC_APP_URL || "https://app.foundinglegals.com").replace(/\/$/, "") + "/sign-up";
 
-export default function InvestmentReadinessLayout() {
+export default function InvestmentReadinessLayout({ serviceSlug = "pitch-to-investors" }: { serviceSlug?: string }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -43,6 +43,28 @@ export default function InvestmentReadinessLayout() {
     startupName: "",
     briefDescription: ""
   });
+
+  const isFinance = serviceSlug === "finance-for-fundraising";
+  const badgeText = isFinance ? "FINANCE FOR FUNDRAISING" : "PITCH TO INVESTORS";
+  const heroTitle = isFinance
+    ? "Make Your Financials & Valuation VC-Ready Before Diligence"
+    : "Build a Pitch Deck That Gets Meetings & Closes Investment";
+  const heroDescription = isFinance
+    ? "Clear investor due diligence smoothly with IBBI-registered valuation reports, clean financial models, and full statutory compliance that keep your valuation intact."
+    : "Turn your startup vision into an investor-ready deck. Battle-tested narrative structures, dynamic financial models, and slide design preferred by top angels and VC partners.";
+  const heroImage = isFinance
+    ? "/finance-for-fundraising-hero-seamless.png"
+    : "/pitch-to-investors-hero-seamless.png";
+
+  const trustCards = isFinance ? [
+    { icon: <Award className="w-5 h-5" />, title: "IBBI Certified Reports", desc: "Mandatory valuation reports for domestic and FEMA foreign investment." },
+    { icon: <TrendingUp className="w-5 h-5" />, title: "Pre-DD Audit Complete", desc: "Identify and resolve hidden tax liabilities and revenue recognition gaps." },
+    { icon: <ShieldCheck className="w-5 h-5" />, title: "SEBI & FEMA Aligned", desc: "Ensure your startup books withstand institutional partner scrutiny." }
+  ] : [
+    { icon: <Zap className="w-5 h-5" />, title: "VC-Grade Narrative", desc: "Engineered to keep investor attention within the critical 3-minute window." },
+    { icon: <TrendingUp className="w-5 h-5" />, title: "Dynamic Financial Models", desc: "Transparent unit economics and growth models to support your valuation." },
+    { icon: <ShieldCheck className="w-5 h-5" />, title: "Compliance Guardrails", desc: "Align documents with Indian ROC, MCA, and FEMA regulations." }
+  ];
 
   const plans: Plan[] = [
     {
@@ -162,37 +184,80 @@ export default function InvestmentReadinessLayout() {
     <div className="min-h-screen bg-[#F6F4F0] font-sans text-[#2c2b29] pt-[100px] pb-24">
 
       {/* ── Hero ── */}
-      <section className="px-6 md:px-16 lg:px-28 py-16 text-center max-w-[1200px] mx-auto">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-olive-50 border border-olive-200/50 text-olive-700 text-xs font-semibold uppercase tracking-wider mb-6">
-          <Award className="w-3.5 h-3.5" />
-          Fundraising Suite
-        </div>
-        <h1 className="text-[44px] sm:text-[56px] lg:text-[68px] font-medium text-[#2b2723] leading-[1.05] tracking-[-0.02em] font-serif mb-6">
-          Investment Ready Services
-        </h1>
-        <p className="text-[18px] sm:text-[21px] text-[#6b6965] leading-relaxed max-w-3xl mx-auto font-light mb-14">
-          Get institutional-grade materials that stand up to partner due diligence and VC scrutiny. Battle-tested frameworks that get meetings.
-        </p>
+      <section className="relative overflow-hidden bg-[#FAF9F6] border-b border-[#E5E1D6] pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 px-6 sm:px-12 lg:px-24 mb-16">
+        {/* Soft atmospheric gradient */}
+        <div className="absolute top-0 right-1/4 w-[500px] h-[350px] bg-[#E8EFE0]/60 blur-[130px] rounded-full pointer-events-none" />
 
-        <div className="grid md:grid-cols-3 gap-5 text-left max-w-4xl mx-auto">
-          {[
-            { icon: <Zap className="w-5 h-5" />, title: "VC-Grade Narrative", desc: "Engineered to keep investor attention within the critical 3-minute window." },
-            { icon: <TrendingUp className="w-5 h-5" />, title: "Dynamic Financial Models", desc: "Transparent unit economics and growth models to support your valuation." },
-            { icon: <ShieldCheck className="w-5 h-5" />, title: "Compliance Guardrails", desc: "Align documents with Indian ROC, MCA, and FEMA regulations." }
-          ].map(c => (
-            <div key={c.title} className="bg-white rounded-2xl p-6 border border-[#E8E4DC] shadow-sm flex items-start gap-4">
-              <div className="p-2.5 bg-olive-50 rounded-xl text-olive-700 shrink-0">{c.icon}</div>
-              <div>
-                <h3 className="font-serif font-bold text-[#2b2723] text-[14px] mb-1">{c.title}</h3>
-                <p className="text-[12px] text-[#9b958f] font-light leading-relaxed">{c.desc}</p>
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left: Heading, Badge, Subtitle, CTAs */}
+            <div className="lg:col-span-7 text-left">
+              {/* Category badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EBF2E3] border border-[#D5E4C3] text-xs font-semibold text-[#486330] mb-5 sm:mb-6 shadow-2xs">
+                <span className="flex items-center gap-1.5 font-bold tracking-wider uppercase text-[10px] sm:text-[11px] text-[#3D5A20]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#486330]" />
+                  {badgeText}
+                </span>
+                <span className="text-[#8DA07B] font-light">·</span>
+                <span className="text-[#597441] font-normal text-[11px] sm:text-[11.5px]">
+                  Part of the Founding Legals Platform
+                </span>
+              </div>
+
+              <h1 className="text-[34px] sm:text-[44px] lg:text-[48px] xl:text-[52px] font-bold tracking-tight text-[#1C1A17] leading-[1.1] mb-5">
+                {heroTitle}
+              </h1>
+
+              <p className="text-[15px] sm:text-[16.5px] text-[#5C5850] font-normal leading-relaxed mb-7 max-w-xl">
+                {heroDescription}
+              </p>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center gap-3.5 mb-8">
+                <a
+                  href="#plans-section"
+                  className="inline-flex items-center gap-2 px-6 sm:px-7 py-3.5 bg-[#445626] hover:bg-[#35431D] text-white font-bold text-[14px] rounded-full transition-all duration-200 shadow-sm hover:shadow-md hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
+                >
+                  <span>Choose Your Plan (From ₹6,999)</span>
+                  <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                </a>
+                <button
+                  type="button"
+                  onClick={() => talkToExpert(isFinance ? "Finance for Fundraising" : "Pitch to Investors")}
+                  className="inline-flex items-center gap-2 px-5 sm:px-6 py-3.5 bg-white hover:bg-[#F5F2EA] text-[#1C1A17] font-semibold text-[13.5px] rounded-full border border-[#D8D3C8] transition-all duration-200 cursor-pointer shadow-2xs hover:border-[#BFB8AA]"
+                >
+                  <Headphones className="w-4 h-4 text-[#445626]" />
+                  <span>Talk to an Expert</span>
+                </button>
+              </div>
+
+              {/* 3 Trust Cards */}
+              <div className="grid sm:grid-cols-3 gap-3.5 pt-3 border-t border-[#EAE5DC]">
+                {trustCards.map(c => (
+                  <div key={c.title} className="bg-white rounded-xl p-3.5 border border-[#E8E4DC] shadow-2xs">
+                    <div className="text-[#445626] mb-1.5">{c.icon}</div>
+                    <h3 className="font-bold text-[#1C1A17] text-[12.5px] mb-0.5">{c.title}</h3>
+                    <p className="text-[11px] text-[#736F66] leading-snug">{c.desc}</p>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+
+            {/* Right: Seamless Hero Image */}
+            <div className="lg:col-span-5 relative flex items-center justify-center lg:justify-end">
+              <div className="absolute inset-0 bg-radial from-[#E2ECDB]/60 via-[#FAF8F5]/30 to-transparent blur-3xl pointer-events-none -z-10" />
+              <img
+                src={heroImage}
+                alt={heroTitle}
+                className="w-full h-auto max-w-[500px] object-contain mix-blend-multiply opacity-95 transition-opacity duration-300 drop-shadow-[0_12px_32px_rgba(40,60,25,0.06)]"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ── Plans ── */}
-      <section className="px-6 md:px-12 lg:px-20 max-w-[1440px] mx-auto mb-24">
+      <section id="plans-section" className="px-6 md:px-12 lg:px-20 max-w-[1440px] mx-auto mb-24 scroll-mt-28">
         <div className="text-center mb-14">
           <h2 className="text-3xl sm:text-[38px] font-serif font-medium text-[#2b2723] mb-3">Choose Your Plan</h2>
           <p className="text-[13px] text-[#9b958f] font-light max-w-lg mx-auto">

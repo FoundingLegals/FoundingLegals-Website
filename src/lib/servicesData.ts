@@ -431,9 +431,9 @@ export const services: ServicePattern[] = [
     title: "IP Protection",
     slug: "ip-protection",
     heroCategory: "Raise",
-    heroTitle: "Your IP Is Your Most Valuable Asset. Protect It.",
-    heroDescription: "In the eyes of institutional investors, unprotected intellectual property is a valuation killer. VCs and acquirers run IP searches on Day 1 of due diligence. An unregistered trademark, an unprotected codebase, or a disputed patent can kill a deal mid-negotiation. We help you build an IP moat that survives the most rigorous audit.",
-    heroImage: "/startup-compliance-hero.png",
+    heroTitle: "Protect Your Intellectual Property & Build an IP Moat",
+    heroDescription: "Unprotected code, unregistered trademarks, or unassigned IP can stall institutional due diligence. Founding Legals secures your brand, software source code, and inventions with end-to-end trademark filings, copyright protection, and founder IP assignments.",
+    heroImage: "/ip-protection-hero-seamless.png",
     featuresTitle: "Comprehensive IP coverage",
     features: [
       {
@@ -542,9 +542,9 @@ export const services: ServicePattern[] = [
     title: "Pitch to Investors",
     slug: "pitch-to-investors",
     heroCategory: "Raise",
-    heroTitle: "Build a Pitch Deck That Gets Meetings, Not Polite Rejections",
-    heroDescription: "The average VC spends 3 minutes and 44 seconds on a pitch deck. In that window, your slides must communicate market size, business model, traction, and team credibility with absolute clarity. We give you the battle-tested frameworks, financial models, and narrative structures used by startups that have collectively raised over ₹500 Crore.",
-    heroImage: "/startup-raise-hero.png",
+    heroTitle: "Build a Pitch Deck That Gets Meetings & Closes Investment",
+    heroDescription: "Turn your startup vision into an investor-ready deck. Battle-tested narrative structures, dynamic financial models, and slide design preferred by top angels and VC partners.",
+    heroImage: "/pitch-to-investors-hero-seamless.png",
     featuresTitle: "The complete pitch-readiness suite",
     features: [
       {
@@ -576,9 +576,9 @@ export const services: ServicePattern[] = [
     title: "Raise Before a Round",
     slug: "raise-before-a-round",
     heroCategory: "Raise",
-    heroTitle: "Close Angel Checks in Days, Not Months — With SAFEs & CCPS",
-    heroDescription: "When an angel investor says 'I'm in,' you have a 72-hour window before their conviction fades. Traditional equity rounds take 2–3 months to close. SAFEs and CCPS let you receive capital in days by deferring the valuation conversation to your next priced round — keeping momentum without diluting your cap table prematurely.",
-    heroImage: "/startup-raise-hero.png",
+    heroTitle: "Close Angel Checks in Days With SAFEs & CCPS",
+    heroDescription: "Receive investment quickly without the delay of a priced round. Simple, MCA-compliant iSAFEs and CCPS that defer valuation, preserve your cap table, and keep momentum high.",
+    heroImage: "/raise-before-a-round-hero-seamless.png",
     featuresTitle: "Pre-round funding instruments, done right",
     features: [
       {
@@ -610,9 +610,9 @@ export const services: ServicePattern[] = [
     title: "Do a Funding Round",
     slug: "do-a-funding-round",
     heroCategory: "Raise",
-    heroTitle: "Execute Your Seed or Series A Round With Zero Missteps",
-    heroDescription: "A priced equity round involves a minimum of 12 legal documents, 4 board resolutions, 2 EGM filings, 1 ROC allotment form, and coordination between your lawyers, the investor's lawyers, and the company secretarial team. One error in a SHA clause or a missed PAS-3 deadline can freeze your round mid-close. We run the entire process so you can focus on closing.",
-    heroImage: "/startup-raise-hero.png",
+    heroTitle: "Execute Seed & Series A Rounds With Zero Missteps",
+    heroDescription: "From term sheet to ROC allotment: manage Shareholders Agreements (SHA), Share Subscription Agreements (SSA), board resolutions, and Form PAS-3 filings with complete legal precision.",
+    heroImage: "/do-a-funding-round-hero-seamless.png",
     featuresTitle: "Complete round management infrastructure",
     features: [
       {
@@ -644,9 +644,9 @@ export const services: ServicePattern[] = [
     title: "Finance for Fundraising",
     slug: "finance-for-fundraising",
     heroCategory: "Raise",
-    heroTitle: "Make Your Financials Investor-Proof Before Due Diligence Begins",
-    heroDescription: "Institutional investors run three parallel tracks during due diligence: legal, technical, and financial. The financial track is the most common deal-killer. Restated financials, missing GST returns, incorrect TDS compliance, inflated revenue recognition, or an invalid valuation report can trigger a repricing demand, a delayed closing, or a full deal withdrawal.",
-    heroImage: "/startup-raise-hero.png",
+    heroTitle: "Make Your Financials & Valuation VC-Ready Before Diligence",
+    heroDescription: "Clear investor due diligence smoothly with IBBI-registered valuation reports, clean financial models, and full statutory compliance that keep your valuation intact.",
+    heroImage: "/finance-for-fundraising-hero-seamless.png",
     featuresTitle: "Financial due diligence preparation",
     features: [
       {
@@ -678,9 +678,9 @@ export const services: ServicePattern[] = [
     title: "Legal Advice for a Round",
     slug: "legal-advice-for-a-round",
     heroCategory: "Raise",
-    heroTitle: "A Term Sheet Without Legal Counsel Is a Liability, Not a Win",
-    heroDescription: "VCs negotiate term sheets every week. Most first-time founders see their first term sheet on the day it arrives. The power asymmetry is enormous. A single aggressive clause — a 2x participating liquidation preference, a full-ratchet anti-dilution, or a drag-along without a carve-out — can hand institutional investors control of your exit at the exact moment you should be celebrating.",
-    heroImage: "/startup-raise-hero.png",
+    heroTitle: "Founder-Side Legal Counsel & Term Sheet Redlining",
+    heroDescription: "Protect your equity, board control, and exit economics. Senior startup attorneys redline aggressive investor terms, liquidation preferences, and veto rights before you sign.",
+    heroImage: "/legal-advice-for-a-round-hero-seamless.png",
     featuresTitle: "Founder-first legal representation",
     features: [
       {
@@ -712,9 +712,9 @@ export const services: ServicePattern[] = [
     title: "Instant Investment",
     slug: "instant-investment",
     heroCategory: "Raise",
-    heroTitle: "Angel Ready to Wire? Close the Investment Today.",
-    heroDescription: "Investor conviction has a half-life. The longer the gap between 'I'm interested' and signed documents, the greater the chance of a change of heart, a competing deal, or a market shift. Instant Investment compresses the entire investment closing process into a single business day — from document generation to e-signature to share allotment notification.",
-    heroImage: "/startup-raise-hero.png",
+    heroTitle: "Angel Ready to Wire? Close the Investment Today",
+    heroDescription: "Compress round closing into 24 hours. Automated SSA generation, Aadhaar OTP-based e-signatures, and instant share allotment notifications with full Section 42 compliance.",
+    heroImage: "/instant-investment-hero-seamless.png",
     featuresTitle: "Same-day investment closing",
     features: [
       {
